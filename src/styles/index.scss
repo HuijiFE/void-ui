@@ -1,0 +1,96 @@
+@import 'normalize';
+
+body {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+}
+
+.hello-world {
+  text-align: center;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 16px;
+  }
+
+  label {
+    margin: 0 16px;
+  }
+
+  a {
+    color: #42b983;
+  }
+}
+
+.main-nav {
+  display: flex;
+  flex: 1;
+  align-content: stretch;
+  align-items: stretch;
+  background: linear-gradient(to right, #42b983, #42b983 60%, #294E80);
+  height: 64px;
+
+  .nav-separator {
+    display: flex;
+    flex: 1;
+  }
+
+  .nav-item {
+    display: flex;
+    flex: 0;
+    align-content: center;
+    align-items: center;
+    padding: 0 16px;
+    text-decoration: none;
+    font-size: 20px;
+    opacity: 0.8;
+
+    &.first {
+      font-size: 24px;
+      opacity: 1;
+    }
+
+    &,
+    &:active,
+    &:hover,
+    &:focus,
+    &:visited {
+      color: white;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    &:active {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.container {
+  padding: 16px;
+}
+
+.test-component {
+  text-align: center;
+}
+
+.logo {
+  display: inline-flex;
+  width: 192px;
+  height: 192px;
+
+  &.vue {
+    background-image: url('../assets/vuejs-192x192.png');
+  }
+  &.ts {
+    background-image: url('../assets/typescript-192x192.png');
+  }
+}

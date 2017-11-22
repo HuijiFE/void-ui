@@ -1,0 +1,42 @@
+{
+  "extends": "tslint-config-standard",
+  "globals": {
+    "require": true
+  },
+  "rules": {
+    "no-consecutive-blank-lines": false,
+    "no-string-throw": true,
+    "no-unused-expression": true,
+    "no-duplicate-variable": true,
+    "no-unused-variable": true,
+    "no-console": [true, "warn", "error"],
+    "curly": true,
+    "class-name": true,
+    "semicolon": [true, "always"],
+    "space-before-function-paren": [true, "never"],
+    "triple-equals": true,
+    "no-unexternalized-strings": [
+      true,
+      {
+        "signatures": ["localize", "nls.localize"],
+        "keyIndex": 0,
+        "messageIndex": 1
+      }
+    ],
+    "linebreak-style": [true, "LF"],
+    "layering": [
+      true,
+      {
+        "common": [],
+        "node": ["common"],
+        "browser": ["common"],
+        "electron-main": ["common", "node"],
+        "electron-browser": ["common", "browser", "node"]
+      }
+    ],
+    "import-patterns": true,
+    "duplicate-imports": true,
+    "translation-remind": true,
+    "trailing-comma": true
+  }
+}

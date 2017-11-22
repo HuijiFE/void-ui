@@ -1,0 +1,107 @@
+{
+  "terminal.integrated.shell.windows": "C:\\WINDOWS\\Sysnative\\bash.exe",
+  "workbench.colorTheme": "Quiet Light for VSC",
+  "workbench.iconTheme": "vscode-icons",
+  "highlight-matching-tag.style": {
+    "backgroundColor": "#ffff66"
+  },
+  "editor.tabSize": 2,
+  "editor.fontFamily": "'Inziu Iosevka SC', Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.minimap.enabled": false,
+  "editor.formatOnSave": true,
+  "files.eol": "\n",
+  "auto-comment-blocks.slashStyleBlocks": ["scss"],
+  "css.validate": false,
+  "beautify.language": {
+    "js": {
+      "type": [],
+      "filename": [],
+      "ext": []
+    },
+    "css": ["css", "less", "scss"],
+    "html": ["htm", "html", "mustache", "xml"]
+  },
+  "beautify.config": {
+    "eol": "\n",
+    "end_with_newline": true,
+    "indent_char": " ",
+    "indent_size": 2,
+    "indent_with_tabs": false,
+    "preserve_newlines": true,
+    "brace_style": "collapse",
+    "max_preserve_newlines": 2,
+    "extra_liners": ["head", "body", "/html"],
+    "indent_body_inner_html": true,
+    "indent_inner_html": false,
+    "indent_scripts": "separate",
+    "wrap_attributes": "force-aligned",
+    "newline_between_rules": false,
+    "selector_separator_newline": false,
+    "space_around_combinator": true,
+    "space_around_selector_separator": true,
+    "keep_array_indentation": true,
+    "space_before_conditional": true
+  },
+  "beautify.ignore": [
+    "**/extends.scss",
+    "**/extends/*.scss",
+    "**/mixins.scss",
+    "**/normalize.css",
+    "**/reset.scss",
+    "**/variables.scss"
+  ],
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "vetur.format.defaultFormatterOptions": {
+    "js-beautify-html": {
+      "eol": "\n",
+      "end_with_newline": false,
+      "indent_char": " ",
+      "indent_size": 2,
+      "indent_with_tabs": false,
+      "preserve_newlines": true,
+      "brace_style": "collapse",
+      "max_preserve_newlines": 2,
+      "extra_liners": ["head", "body", "/html"],
+      "indent_body_inner_html": true,
+      "indent_inner_html": false,
+      "indent_scripts": "separate",
+      "wrap_attributes": "force-aligned",
+      "newline_between_rules": false,
+      "selector_separator_newline": false,
+      "space_around_combinator": true,
+      "space_around_selector_separator": true,
+      "keep_array_indentation": true,
+      "space_before_conditional": true
+    }
+  },
+  "prettier.cssEnable": [],
+  "prettier.printWidth": 96,
+  "prettier.tabWidth": 2,
+  "prettier.useTabs": false,
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+  "prettier.bracketSpacing": true,
+  "css.lint.universalSelector": "warning",
+  "css.lint.important": "warning",
+  "css.lint.float": "warning",
+  "css.lint.idSelector": "warning",
+  "scss.lint.important": "warning",
+  "scss.lint.float": "warning",
+  "scss.lint.idSelector": "warning",
+  "less.lint.important": "warning",
+  "less.lint.float": "warning",
+  "stylelint.config": {
+    "css.validate": true,
+    "less.validate": true,
+    "scss.validate": true
+  },
+  "eslint.enable": true,
+  "eslint.validate": ["javascript", "javascriptreact", "html"],
+  "eslint.options": {
+    "configFile": ".eslintrc.js"
+  },
+  "tslint.enable": true,
+  "tslint.configFile": "tslint.json"
+}

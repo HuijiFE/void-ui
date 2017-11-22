@@ -1,8 +1,20 @@
-// https://github.com/michael-ciniawsky/postcss-load-config
+const browsers = ['> 1%', 'last 2 versions', 'ie >= 9'];
 
 module.exports = {
-  "plugins": {
-    // to edit target browsers: use "browserslist" field in package.json
-    "autoprefixer": {}
-  }
-}
+  plugins: {
+    autoprefixer: {
+      browsers,
+    },
+    cssnano: {
+      preset: [
+        'default',
+        {
+          safe: true,
+          discardComments: {
+            removeAll: true,
+          },
+        },
+      ],
+    },
+  },
+};

@@ -1,4 +1,4 @@
-# template-webpack-typescript
+# Vue-TypeScript-Webpack
 
 > A Webpack template base on TypeScript for Vue.js
 
@@ -7,6 +7,9 @@
 ``` bash
 # install dependencies
 npm install
+
+# if Failed at the chromedriver@X.XX.X install script, try:
+npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver
 
 # serve with hot reload at localhost:8080
 npm run dev

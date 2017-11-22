@@ -1,23 +1,50 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <main-nav></main-nav>
+    <div class="container">
+      <router-view/>
+    </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'app'
+<script lang="ts">
+// Learn more:
+// https://github.com/vuejs/vue-class-component
+// https://github.com/kaorun343/vue-property-decorator
+import {
+  Component,
+  Emit,
+  Inject,
+  Model,
+  Prop,
+  Provide,
+  Vue,
+  Watch,
+} from 'vue-property-decorator';
+
+import MainNav from 'src/components/MainNav.vue';
+
+@Component({
+  components: {
+    MainNav,
+  },
+})
+export default class Main extends Vue {
+  beforeCreate(): void {
+    let ghost = document.getElementById('ghost');
+    console.log(`[DEBUG beforeCreate] ${ghost ? ghost.innerHTML : 'ghost no found.'}`);
+  }
+  created(): void {
+    let ghost = document.getElementById('ghost');
+    console.log(`[DEBUG beforeCreate] ${ghost ? ghost.innerHTML : 'ghost no found.'}`);
+  }
+  beforeMount(): void {
+    let ghost = document.getElementById('ghost');
+    console.log(`[DEBUG beforeCreate] ${ghost ? ghost.innerHTML : 'ghost no found.'}`);
+  }
+  mounted(): void {
+    let ghost = document.getElementById('ghost');
+    console.log(`[DEBUG beforeCreate] ${ghost ? ghost.innerHTML : 'ghost no found.'}`);
+  }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
