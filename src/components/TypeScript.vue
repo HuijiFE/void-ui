@@ -2,6 +2,7 @@
   <div class="test-component">
     <div class="logo ts"></div>
     <h1>TypeScript</h1>
+    <h2>Hello!</h2>
     <p>TypeScript is a superset of JavaScript that compiles to clean JavaScript output.
       <a href="http://www.typescriptlang.org">http://www.typescriptlang.org</a>
     </p>

@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    // for vue-class-component and vuex-class
     "experimentalDecorators": true,
+    // for vue-class
+    "strictFunctionTypes": false,
     "strict": true,
     "module": "es2015",
     "moduleResolution": "node",

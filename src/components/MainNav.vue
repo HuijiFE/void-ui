@@ -1,5 +1,6 @@
 <template>
   <div class="main-nav">
+    <!-- use a-link istead of router-link to support multi pages app. -->
     <!-- <router-link class="nav-item first"
                  to="/">Hello</router-link> -->
     <a class="nav-item first"

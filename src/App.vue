@@ -24,6 +24,9 @@ import {
 
 import MainNav from 'src/components/MainNav.vue';
 
+let ghost = document.getElementById('ghost');
+console.log(`[DEBUG beforeInstance] ${ghost ? ghost.innerHTML : 'ghost no found.'}`);
+
 @Component({
   components: {
     MainNav,
@@ -36,15 +39,15 @@ export default class Main extends Vue {
   }
   created(): void {
     let ghost = document.getElementById('ghost');
-    console.log(`[DEBUG beforeCreate] ${ghost ? ghost.innerHTML : 'ghost no found.'}`);
+    console.log(`[DEBUG created] ${ghost ? ghost.innerHTML : 'ghost no found.'}`);
   }
   beforeMount(): void {
     let ghost = document.getElementById('ghost');
-    console.log(`[DEBUG beforeCreate] ${ghost ? ghost.innerHTML : 'ghost no found.'}`);
+    console.log(`[DEBUG beforeMount] ${ghost ? ghost.innerHTML : 'ghost no found.'}`);
   }
   mounted(): void {
     let ghost = document.getElementById('ghost');
-    console.log(`[DEBUG beforeCreate] ${ghost ? ghost.innerHTML : 'ghost no found.'}`);
+    console.log(`[DEBUG mounted] ${ghost ? ghost.innerHTML : 'ghost no found.'}`);
   }
 }
 </script>

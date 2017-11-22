@@ -62,10 +62,10 @@ Object.keys(proxyTable).forEach(function(context) {
   app.use(proxyMiddleware(options.filter || context, options));
 });
 
+// disabled this in multi pages app mode
+// so that each page app can get its own index.html
 // handle fallback for HTML5 history API
 // app.use(require('connect-history-api-fallback')());
-// disabled in multi page app mode
-// so that each page app can get its own index.html
 
 // serve webpack bundle output
 app.use(devMiddleware);
@@ -86,6 +86,7 @@ app.get('/', (req, res) => {
     res.set('content-type', 'text/html');
     res.send(result);
     res.end();
+    console.log('responsed root page app.');
   });
 });
 
@@ -101,6 +102,7 @@ app.get('/:pageName', (req, res) => {
     res.set('content-type', 'text/html');
     res.send(result);
     res.end();
+    console.log(`responsed ${req.params.pageName} page app.`);
   });
 });
 

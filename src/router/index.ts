@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Hello from 'src/components/Hello.vue';
+import HelloWorld from 'src/components/HelloWorld.vue';
 import VueJs from 'src/components/VueJs.vue';
 import TypeScript from 'src/components/TypeScript.vue';
 
@@ -13,8 +13,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello,
+      name: 'HelloWorld',
+      component: HelloWorld,
     },
     {
       path: '/vuejs',

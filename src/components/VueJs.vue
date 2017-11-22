@@ -2,6 +2,7 @@
   <div class="test-component">
     <div class="logo vue"></div>
     <h1>Vue.js</h1>
+    <h2>Hello!</h2>
     <p>A progressive, incrementally-adoptable JavaScript framework for building UI on the web.
       <a href="http://vuejs.org">http://vuejs.org</a>
     </p>

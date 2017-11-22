@@ -4,7 +4,7 @@
     <div class="logo ts"></div>
     <h1 v-if="firstName && lastName">{{ message }}</h1>
     <h1 v-else>Hello, Front-End!</h1>
-    <h2>Welcome to Vue.js App based on TypeScript.</h2>
+    <h2>Welcome to Vue.js App base on TypeScript.</h2>
     <label>First Name: <input type="text"
              name=""
              id=""
