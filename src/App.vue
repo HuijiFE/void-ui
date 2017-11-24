@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <main-nav mode="link"></main-nav>
+    <main-nav mode="router"></main-nav>
     <div class="container">
       <keep-alive>
         <router-view></router-view>
