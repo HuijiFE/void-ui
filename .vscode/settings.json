@@ -76,7 +76,7 @@
     }
   },
   "prettier.cssEnable": [],
-  "prettier.printWidth": 180,
+  "prettier.printWidth": 90,
   "prettier.tabWidth": 2,
   "prettier.useTabs": false,
   "prettier.semi": true,

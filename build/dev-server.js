@@ -71,7 +71,10 @@ Object.keys(proxyTable).forEach(function(context) {
 app.use(devMiddleware);
 
 // serve pure static assets
-const staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory);
+const staticPath = path.posix.join(
+  config.dev.assetsPublicPath,
+  config.dev.assetsSubDirectory,
+);
 app.use(staticPath, express.static('./static'));
 
 // serve root page app

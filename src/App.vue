@@ -13,7 +13,16 @@
 // Learn more:
 // https://github.com/vuejs/vue-class-component
 // https://github.com/kaorun343/vue-property-decorator
-import { Component, Emit, Inject, Model, Prop, Provide, Vue, Watch } from 'vue-property-decorator';
+import {
+  Component,
+  Emit,
+  Inject,
+  Model,
+  Prop,
+  Provide,
+  Vue,
+  Watch,
+} from 'vue-property-decorator';
 
 import MainNav from 'src/components/MainNav.vue';
 

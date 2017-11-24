@@ -28,7 +28,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Inject, Model, Prop, Provide, Vue, Watch } from 'vue-property-decorator';
+import {
+  Component,
+  Emit,
+  Inject,
+  Model,
+  Prop,
+  Provide,
+  Vue,
+  Watch,
+} from 'vue-property-decorator';
 
 @Component
 export default class HelloWorld extends Vue {
@@ -58,20 +67,23 @@ export default class HelloWorld extends Vue {
     return `Hello, ${this.fullName}!`;
   }
 
+  content = {
+    ghost: '',
+  };
+
+  beforeMount() {
+    this.$store.dispatch('ghostGet', {
+      routePath: this.$route.path,
+      container: this.content,
+    });
+  }
+
   sayHello(event: Event) {
     if (!this.firstName || !this.lastName) {
       alert('First name or last name con not be empty.');
     } else {
       alert(`Hello, ${this.fullName}!`);
     }
-  }
-
-  content = {
-    ghost: '',
-  };
-
-  beforeMount() {
-    this.$store.dispatch('ghostGet', { routePath: this.$route.path, container: this.content });
   }
 }
 </script>

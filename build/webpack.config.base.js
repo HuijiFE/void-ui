@@ -25,6 +25,7 @@ if (config.build.productionVueRuntimeOnly) {
 }
 
 module.exports = {
+  context: path.resolve(__dirname, '../'),
   entry: Object.assign({}, config.solution.commons, config.solution.entries),
   output: {
     path: config.build.assetsRoot,
@@ -43,6 +44,7 @@ module.exports = {
           loader: 'eslint-loader',
           options: {
             formatter: require('eslint-friendly-formatter'),
+            emitWarning: !config.dev.showEslintErrorsInOverlay,
           },
         },
         enforce: 'pre',

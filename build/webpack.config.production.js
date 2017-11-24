@@ -13,7 +13,9 @@ const config = require('../config');
 const baseWebpackConfig = require('./webpack.config.base');
 
 const env =
-  process.env.NODE_ENV === 'testing' ? require('../config/test.env') : config.build.env;
+  process.env.NODE_ENV === 'testing'
+    ? require('../config/test.env')
+    : require('../config/prod.env');
 
 // #region minify_and_hash
 
@@ -31,6 +33,7 @@ const uglifyJsPlugin = jsMinify
           warnings: false,
         },
         sourceMap: true,
+        parallel: true,
       }),
     ]
   : [];
@@ -58,12 +61,20 @@ const optimizeCSSPlugin = cssMinify
       // Compress extracted CSS. We are using this plugin so that possible
       // duplicated CSS from different components can be deduped.
       new OptimizeCSSPlugin({
-        cssProcessorOptions: {
-          safe: true,
-          discardComments: {
-            removeAll: true,
-          },
-        },
+        cssProcessorOptions: config.build.productionSourceMap
+          ? {
+              safe: true,
+              discardComments: {
+                removeAll: true,
+              },
+              map: { inline: false },
+            }
+          : {
+              safe: true,
+              discardComments: {
+                removeAll: true,
+              },
+            },
       }),
     ]
   : [];
@@ -71,8 +82,9 @@ const optimizeCSSPlugin = cssMinify
 // add hash in output css file, see also '/config/index.js'
 const cssOutput = config.build.productionCss.useHash
   ? utils.assetsPath(
-      `css/[name].[${config.build.hashFunction}:contenthash:${config.build.hashDigest}:${config
-        .build.hashDigestLength}].css`,
+      `css/[name].[${config.build.hashFunction}:contenthash:${config.build.hashDigest}:${
+        config.build.hashDigestLength
+      }].css`,
     )
   : utils.assetsPath('css/[name].css');
 
@@ -104,7 +116,12 @@ const htmlWebpackPlugins =
       ]
     : config.solution.pages.map(page => {
         let pluginConfig = {
-          chunks: ['manifest', 'vendor', ...Object.keys(config.solution.commons), page.entry],
+          chunks: [
+            'manifest',
+            'vendor',
+            ...Object.keys(config.solution.commons),
+            page.entry,
+          ],
           template: page.template,
           filename: path.join(config.build.assetsRoot, page.output, 'index.html'),
           inject: true,
@@ -123,9 +140,10 @@ const webpackConfig = merge(baseWebpackConfig, {
       minimize: cssMinify,
       sourceMap: config.build.productionSourceMap,
       extract: true,
+      usePostCSS: true,
     }),
   },
-  devtool: config.build.productionSourceMap ? '#source-map' : false,
+  devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: jsOutput,
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
@@ -136,11 +154,17 @@ const webpackConfig = merge(baseWebpackConfig, {
     // extract css into its own file
     new ExtractTextPlugin({
       filename: cssOutput,
+      // set the following option to `true` if you want to extract CSS from
+      // codesplit chunks into this main css file as well.
+      // This will result in *all* of your app's CSS being loaded upfront.
+      allChunks: false,
     }),
     ...optimizeCSSPlugin,
     ...htmlWebpackPlugins,
     // keep module.id stable when vender modules does not change
     new webpack.HashedModuleIdsPlugin(),
+    // enable scope hoisting
+    new webpack.optimize.ModuleConcatenationPlugin(),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -157,8 +181,18 @@ const webpackConfig = merge(baseWebpackConfig, {
     // prevent vendor hash from being updated whenever app bundle is updated
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
-      chunks: ['vendor'],
+      minChunks: Infinity,
     }),
+    // This instance extracts shared chunks from code splitted chunks and bundles them
+    // in a separate chunk, similar to the vendor chunk
+    // see: https://webpack.js.org/plugins/commons-chunk-plugin/#extra-async-commons-chunk
+    new webpack.optimize.CommonsChunkPlugin({
+      names: config.solution.entries,
+      async: 'vendor-async',
+      children: true,
+      minChunks: 3,
+    }),
+
     // copy custom static assets
     new CopyWebpackPlugin([
       {

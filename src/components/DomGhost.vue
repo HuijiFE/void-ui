@@ -39,7 +39,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Inject, Model, Prop, Provide, Vue, Watch } from 'vue-property-decorator';
+import {
+  Component,
+  Emit,
+  Inject,
+  Model,
+  Prop,
+  Provide,
+  Vue,
+  Watch,
+} from 'vue-property-decorator';
 
 @Component
 export default class DomGhost extends Vue {
@@ -67,7 +76,10 @@ export default class DomGhost extends Vue {
   };
 
   beforeMount() {
-    this.$store.dispatch('ghostGet', { routePath: this.$route.path, container: this.content });
+    this.$store.dispatch('ghostGet', {
+      routePath: this.$route.path,
+      container: this.content,
+    });
   }
 }
 </script>
