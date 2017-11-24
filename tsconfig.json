@@ -6,11 +6,16 @@
     // for vue-class
     "strictFunctionTypes": false,
     "strict": true,
+    "lib": ["dom", "es5", "scripthost", "es2015"],
     "module": "es2015",
     "moduleResolution": "node",
     "target": "es5",
     "outDir": "./dist/",
-    "sourceMap": true
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "src": ["./src/*"]
+    }
   },
   "include": ["./src/**/*"]
 }

@@ -25,6 +25,11 @@ const solution = {
       template: './src/pages/typescript.html',
       output: 'typescript',
     },
+    {
+      entry: 'main',
+      template: './src/pages/domghost.html',
+      output: 'domghost',
+    },
   ],
 };
 

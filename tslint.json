@@ -9,7 +9,7 @@
     "no-unused-expression": true,
     "no-duplicate-variable": true,
     "no-unused-variable": true,
-    "no-console": [true, "warn", "error"],
+    "no-console": [true, "warning", "error"],
     "curly": true,
     "class-name": true,
     "semicolon": [true, "always"],

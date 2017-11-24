@@ -17,8 +17,11 @@
   },
   "dependencies": {
     "@tweenjs/tween.js": "^17.1.1",
+    "axios": "^0.17.1",
+    "vue-class": "^2.0.0",
     "vue-property-decorator": "^6.0.0",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuex-class": "^0.3.0"
   },
   "peerDependencies": {
     "vue": "^2.5.3"
@@ -114,5 +117,9 @@
     "node": ">= 8.0.0",
     "npm": ">= 5.0.0"
   },
-  "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"]
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }

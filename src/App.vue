@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <main-nav></main-nav>
+    <main-nav mode="link"></main-nav>
     <div class="container">
-      <router-view/>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </div>
   </div>
 </template>
@@ -11,16 +13,7 @@
 // Learn more:
 // https://github.com/vuejs/vue-class-component
 // https://github.com/kaorun343/vue-property-decorator
-import {
-  Component,
-  Emit,
-  Inject,
-  Model,
-  Prop,
-  Provide,
-  Vue,
-  Watch,
-} from 'vue-property-decorator';
+import { Component, Emit, Inject, Model, Prop, Provide, Vue, Watch } from 'vue-property-decorator';
 
 import MainNav from 'src/components/MainNav.vue';
 
@@ -33,21 +26,8 @@ console.log(`[DEBUG beforeInstance] ${ghost ? ghost.innerHTML : 'ghost no found.
   },
 })
 export default class Main extends Vue {
-  beforeCreate(): void {
-    let ghost = document.getElementById('ghost');
-    console.log(`[DEBUG beforeCreate] ${ghost ? ghost.innerHTML : 'ghost no found.'}`);
-  }
-  created(): void {
-    let ghost = document.getElementById('ghost');
-    console.log(`[DEBUG created] ${ghost ? ghost.innerHTML : 'ghost no found.'}`);
-  }
-  beforeMount(): void {
-    let ghost = document.getElementById('ghost');
-    console.log(`[DEBUG beforeMount] ${ghost ? ghost.innerHTML : 'ghost no found.'}`);
-  }
-  mounted(): void {
-    let ghost = document.getElementById('ghost');
-    console.log(`[DEBUG mounted] ${ghost ? ghost.innerHTML : 'ghost no found.'}`);
+  created() {
+    this.$store.commit('updateGhost', this.$route.path);
   }
 }
 </script>
