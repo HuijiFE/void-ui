@@ -1,9 +1,31 @@
 {
-  "name": "template-webpack-typescript",
-  "version": "1.0.0",
-  "description": "A Webpack template base on TypeScript for Vue.js",
-  "author": "duduluu <duduluu@outlook.com>",
-  "private": true,
+  "name": "void-ui",
+  "version": "0.0.1",
+  "description": "A ui components library base on TypeScript for Vue.js.",
+  "author": "HuijiFE",
+  "keywords": [
+    "vue",
+    "typescript",
+    "components",
+    "ui",
+    "huiji"
+  ],
+  "homepage": "huijiwiki.com",
+  "bugs": {
+    "url": "https://github.com/HuijiFE/void-ui/issues"
+  },
+  "license": "MIT",
+  "main": "lib/void-ui.common.js",
+  "files": [
+    "lib",
+    "src",
+    "typings"
+  ],
+  "typings": "typings/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HuijiFE/void-ui.git"
+  },
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.config.development.js",
     "start": "npm run dev",
