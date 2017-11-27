@@ -22,8 +22,6 @@
       <li>Full Name: {{fullName}}</li>
     </ul>
     <hr/>
-    <h1>Current Route Path: {{currentRout}}</h1>
-    <div> Ghost: {{content.ghost}}</div>
   </div>
 </template>
 
@@ -41,26 +39,10 @@ import {
 
 @Component
 export default class HelloWorld extends Vue {
-  get currentRout(): string {
-    return this.$route.path;
-  }
-
-  get firstName(): string {
-    return this.$store.state.personName.firstName;
-  }
-  set firstName(newValue: string) {
-    this.$store.dispatch('updateFirstName', newValue);
-  }
-
-  get lastName(): string {
-    return this.$store.state.personName.firstName;
-  }
-  set lastName(newValue: string) {
-    this.$store.dispatch('updateLastName', newValue);
-  }
-
-  get fullName() {
-    return this.$store.getters.fullName;
+  firstName: string = '';
+  lastName: string = '';
+  get fullName(): string {
+    return `${this.firstName} ${this.lastName}`;
   }
 
   get message(): String {
@@ -70,13 +52,6 @@ export default class HelloWorld extends Vue {
   content = {
     ghost: '',
   };
-
-  beforeMount() {
-    this.$store.dispatch('ghostGet', {
-      routePath: this.$route.path,
-      container: this.content,
-    });
-  }
 
   sayHello(event: Event) {
     if (!this.firstName || !this.lastName) {

@@ -24,10 +24,7 @@ import {
   Watch,
 } from 'vue-property-decorator';
 
-import MainNav from 'src/components/MainNav.vue';
-
-let ghost = document.getElementById('ghost');
-console.log(`[DEBUG beforeInstance] ${ghost ? ghost.innerHTML : 'ghost no found.'}`);
+import MainNav from 'docs/components/MainNav.vue';
 
 @Component({
   components: {
@@ -35,8 +32,6 @@ console.log(`[DEBUG beforeInstance] ${ghost ? ghost.innerHTML : 'ghost no found.
   },
 })
 export default class Main extends Vue {
-  created() {
-    this.$store.commit('updateGhost', this.$route.path);
-  }
+  created() {}
 }
 </script>

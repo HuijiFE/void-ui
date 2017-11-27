@@ -6,16 +6,5 @@ module.exports = {
     autoprefixer: {
       browsers,
     },
-    cssnano: {
-      preset: [
-        'default',
-        {
-          safe: true,
-          discardComments: {
-            removeAll: true,
-          },
-        },
-      ],
-    },
   },
 };

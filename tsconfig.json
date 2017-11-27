@@ -14,8 +14,11 @@
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      "src": ["./src/*"]
+      "src": ["./src/*"],
+      "docs": ["./docs/*"],
+      "void-ui": ["./src/*"]
     }
   },
-  "include": ["./src/**/*"]
+  "include": ["./docs/**/*", "./src/**/*", "./typings/**/*"],
+  "exclude": ["node_modules"]
 }

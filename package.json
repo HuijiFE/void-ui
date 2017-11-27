@@ -26,7 +26,9 @@
     "eslint": "eslint --ext .js src test/unit/specs test/e2e/specs",
     "tslint": "tslint -c tslint.json 'src/**/*.ts'",
     "lint": "npm run eslint && npm run tslint",
-    "build": "node build/build.js"
+    "build:lib": "node build/build-lib.js",
+    "build:docs": "node build/build-docs.js",
+    "build": "npm run build:lib && npm run build:docs"
   },
   "dependencies": {
     "@tweenjs/tween.js": "^17.1.1"
@@ -49,6 +51,7 @@
     "chai": "^4.1.2",
     "chalk": "^2.3.0",
     "chromedriver": "^2.33.2",
+    "compression-webpack-plugin": "^1.0.1",
     "copy-webpack-plugin": "^4.2.0",
     "cross-spawn": "^5.1.0",
     "css-loader": "^0.28.7",
@@ -103,7 +106,6 @@
     "vue-router": "^3.0.1",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.2",
-    "vuex-class": "^0.3.0",
     "webpack": "^3.8.1",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.4",

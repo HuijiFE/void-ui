@@ -11,14 +11,13 @@ const vueLoaderConfig = require('./vue-loader.config');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-const publicPath =
-  process.env.NODE_ENV === 'production'
-    ? config.build.assetsPublicPath
-    : config.dev.assetsPublicPath;
 const urlLoaderLimit = config.common.urlLoaderLimit;
 
+// reference path alias
 const alias = {
+  docs: resolve('docs'),
   src: resolve('src'),
+  'void-ui': isProduction ? resolve('lib/void-ui.common.js') : resolve('src'),
 };
 if (config.build.productionVueRuntimeOnly) {
   alias.vue$ = 'vue/dist/vue.esm.js';
@@ -26,11 +25,12 @@ if (config.build.productionVueRuntimeOnly) {
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
-  entry: Object.assign({}, config.solution.commons, config.solution.entries),
   output: {
-    path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath,
+    path: config.build.assetsRoot,
+    publicPath: isProduction
+      ? config.build.assetsPublicPath
+      : config.dev.assetsPublicPath,
   },
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json', '.scss'],
@@ -48,13 +48,13 @@ module.exports = {
           },
         },
         enforce: 'pre',
-        include: [resolve('src'), resolve('test')],
+        include: [resolve('src'), resolve('docs'), resolve('test')],
       },
       {
         test: /\.ts$/,
         use: 'tslint-loader',
         enforce: 'pre',
-        include: [resolve('src')],
+        include: [resolve('src'), resolve('docs')],
       },
       {
         test: /\.vue$/,
@@ -71,12 +71,12 @@ module.exports = {
             appendTsSuffixTo: [/\.vue$/],
           },
         },
-        include: [resolve('src')],
+        include: [resolve('src'), resolve('docs')],
       },
       {
         test: /\.js$/,
         use: 'babel-loader',
-        include: [resolve('src'), resolve('test')],
+        include: [resolve('src'), resolve('docs'), resolve('test')],
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

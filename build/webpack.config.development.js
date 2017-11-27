@@ -13,6 +13,7 @@ const config = require('../config');
 const baseWebpackConfig = require('./webpack.config.base');
 
 const devWebpackConfig = merge(baseWebpackConfig, {
+  entry: Object.assign({}, config.solution.commons, config.solution.entries),
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true }),
   },
