@@ -6,7 +6,7 @@
     // for vue-class
     "strictFunctionTypes": false,
     "strict": true,
-    "lib": ["dom", "es5", "scripthost", "es2015"],
+    "lib": ["dom", "es5", "scripthost", "es2015", "es2016", "es2017"],
     "module": "es2015",
     "moduleResolution": "node",
     "target": "es5",
@@ -14,9 +14,10 @@
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      "src": ["./src/*"],
-      "docs": ["./docs/*"],
-      "void-ui": ["./src/*"]
+      "src/*": ["./src/*"],
+      "docs/*": ["./docs/*"],
+      "void-ui": ["./src/index"],
+      "void-ui/style": ["./src/index"]
     }
   },
   "include": ["./docs/**/*", "./src/**/*", "./typings/**/*"],

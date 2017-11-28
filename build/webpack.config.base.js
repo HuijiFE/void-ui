@@ -17,7 +17,10 @@ const urlLoaderLimit = config.common.urlLoaderLimit;
 const alias = {
   docs: resolve('docs'),
   src: resolve('src'),
-  'void-ui': isProduction ? resolve('lib/void-ui.common.js') : resolve('src'),
+  'void-ui': isProduction ? resolve('lib/void-ui.common.ts') : resolve('src/index.ts'),
+  'void-ui/style': isProduction
+    ? resolve('lib/void-ui.style.common.ts')
+    : resolve('src/index.scss'),
 };
 if (config.build.productionVueRuntimeOnly) {
   alias.vue$ = 'vue/dist/vue.esm.js';
