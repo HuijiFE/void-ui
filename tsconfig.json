@@ -6,8 +6,18 @@
     // for vue-class
     "strictFunctionTypes": false,
     "strict": true,
-    "lib": ["dom", "es5", "scripthost", "es2015", "es2016", "es2017"],
-    "module": "es2015",
+    "lib": [
+      "dom",
+      "scripthost",
+      "es5",
+      "es6",
+      "es2015",
+      "es7",
+      "es2016",
+      "es2017",
+      "esnext"
+    ],
+    "module": "esnext",
     "moduleResolution": "node",
     "target": "es5",
     "outDir": "./dist/",
