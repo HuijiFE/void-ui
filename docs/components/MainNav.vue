@@ -1,7 +1,7 @@
 <template>
   <div class="main-nav">
     <router-link class="nav-item first"
-                 to="/">Hello</router-link>
+                 to="/">Void-UI</router-link>
     <span class="nav-separator"></span>
 
     <router-link class="nav-item"

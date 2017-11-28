@@ -1,0 +1,32 @@
+.#{$void}-score {
+  display: inline-flex;
+  align-content: flex-end;
+  align-items: flex-end;
+  width: $score-width;
+  height: $score-height;
+
+  font-family: $score-font-family, $font-family-base;
+  font-size: $score-font-size;
+
+  .score-inner {
+    display: flex;
+    justify-content: center;
+    align-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+    color: $color-white;
+    border-radius: $border-radius-base;
+    padding-bottom: $score-inner-padding;
+
+    @each $level, $color in $score-colors {
+      &.level-#{$level} {
+        background-color: $color;
+      }
+    }
+    @each $level, $height in $score-inner-heights {
+      &.level-#{$level} {
+        height: $height;
+      }
+    }
+  }
+}

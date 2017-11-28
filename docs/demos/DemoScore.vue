@@ -1,7 +1,9 @@
 <template>
-  <button class="vd-button">
-    <slot></slot>
-  </button>
+  <div class="demo">
+    <vd-score v-for="value in 10"
+              :key="value"
+              :value="value"></vd-score>
+  </div>
 </template>
 
 <script lang="ts">
@@ -17,6 +19,6 @@ import {
 } from 'vue-property-decorator';
 
 @Component
-export default class VdButton extends Vue {}
+export default class DemoScore extends Vue {}
 </script>
 

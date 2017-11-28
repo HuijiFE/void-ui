@@ -1,3 +1,14 @@
-# Button 按钮
+# Score 分数
 
-<vd-button>按钮</vd-button>
+<demo-score></demo-score>
+
+<script>
+import Vue from 'vue';
+import DemoScore from 'docs/demos/DemoScore.vue';
+
+export default {
+  components: {
+    DemoScore,
+  }
+}
+</script>

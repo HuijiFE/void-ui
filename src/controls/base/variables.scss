@@ -1,0 +1,149 @@
+/*----------  Prefix Namespace  ----------*/
+
+$void: 'vd';
+
+
+/*----------  Sytle System  ----------*/
+
+$ss-genres:   'lite', 'dark';
+$ss-themes:   'primary', 'success', 'warning', 'danger', 'secondary';
+$ss-skins:    'fill', 'flat', 'plain', 'silk';
+$ss-shape:    'rect', 'square', 'circle';
+$ss-size:     'small', 'medium', 'large';
+
+
+/*----------  Root  ----------*/
+
+$font-size-root: 100px;
+
+
+/*----------  Common  ----------*/
+
+// font
+$font-family-base: 'Helvetica Neue', 'Helvetica', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', 'Arial', 'sans-serif';
+
+$font-size-base:    0.14rem;
+$font-size-small:   0.12rem;
+$font-size-medium:  0.14rem;
+$font-size-large:   0.18rem;
+
+$font-size-article: 0.16rem;
+
+$line-height-base: 1.6;
+
+// border
+$border-base: 1px solid transparent;
+$border-radius-base: 2px;
+
+
+/*----------  Theme Colors  ----------*/
+
+$color-white: #fff;
+$color-black: #000;
+
+$color-primary-darkener:    #0080b0;
+$color-primary-darken:      #0098c2;
+$color-primary:             #00abd0;
+$color-primary-lighten:     #00bedb;
+$color-primary-lightenner:  #34d2e9;
+
+$color-danger-darkener:    #f16c00;
+$color-danger-darken:      #fc7a00;
+$color-danger:             #ff9100;
+$color-danger-lighten:     #ffaa00;
+$color-danger-lightener:   #ffc017;
+
+$color-warning-darkener:    #f16c00;
+$color-warning-darken:      #fc7a00;
+$color-warning:             #ff9100;
+$color-warning-lighten:     #ffaa00;
+$color-warning-lightener:   #ffc017;
+
+$color-success-darkener:    #2a9a2f;
+$color-success-darken:      #42a546;
+$color-success:             #4caf50;
+$color-success-lighten:     #54bf58;
+$color-success-lightener:   #65d669;
+
+$color-secondary-darkener:  #888;
+$color-secondary-darken:    #999;
+$color-secondary:           #aaa;
+$color-secondary-lighten:   #bbb;
+$color-secondary-lightener: #ccc;
+
+$theme-colors: (
+  primary-darkener:    $color-primary-darkener,
+  primary-darken:      $color-primary-darken,
+  primary:             $color-primary,
+  primary-lighten:     $color-primary-lighten,
+  primary-lightenner:  $color-primary-lightenner,
+
+  danger-darkener:    $color-danger-darkener,
+  danger-darken:      $color-danger-darken,
+  danger:             $color-danger,
+  danger-lighten:     $color-danger-lighten,
+  danger-lightener:   $color-danger-lightener,
+
+  warning-darkener:    $color-warning-darkener,
+  warning-darken:      $color-warning-darken,
+  warning:             $color-warning,
+  warning-lighten:     $color-warning-lighten,
+  warning-lightener:   $color-warning-lightener,
+
+  success-darkener:    $color-success-darkener,
+  success-darken:      $color-success-darken,
+  success:             $color-success,
+  success-lighten:     $color-success-lighten,
+  success-lightener:   $color-success-lightener,
+
+  secondary-darkener:  $color-secondary-darkener,
+  secondary-darken:    $color-secondary-darken,
+  secondary:           $color-secondary,
+  secondary-lighten:   $color-secondary-lighten,
+  secondary-lightener: $color-secondary-lightener,
+);
+
+
+
+/*----------  Score  ----------*/
+
+$score-width: 0.48rem;
+$score-height: 0.75rem;
+
+$score-font-family: 'Aldrich-Regular';
+$score-font-size: 0.22rem;
+
+$color-score-0: #ff3333;
+$color-score-1: #ff7e34;
+$color-score-2: #ffcc00;
+$color-score-3: #58d000;
+$color-score-4: #24cf4c;
+
+$score-colors: (
+  0: $color-score-0,
+  1: $color-score-0,
+  2: $color-score-1,
+  3: $color-score-1,
+  4: $color-score-2,
+  5: $color-score-2,
+  6: $color-score-3,
+  7: $color-score-3,
+  8: $color-score-4,
+  9: $color-score-4,
+);
+
+$score-inner-heights: (
+  0: $score-height,
+  1: $score-height - (0.03rem * 1),
+  2: $score-height - (0.03rem * 2),
+  3: $score-height - (0.03rem * 3),
+  4: $score-height - (0.03rem * 4),
+  5: $score-height - (0.03rem * 5),
+  6: $score-height - (0.03rem * 6),
+  7: $score-height - (0.03rem * 7),
+  8: $score-height - (0.03rem * 8),
+  9: $score-height - (0.03rem * 9),
+);
+
+$score-inner-padding: 0.04rem;
+

@@ -2,9 +2,6 @@
   <div id="app">
     <main-nav mode="router"></main-nav>
     <div class="container">
-      <vd-button>按钮</vd-button>
-    </div>
-    <div class="container">
       <keep-alive>
         <router-view></router-view>
       </keep-alive>

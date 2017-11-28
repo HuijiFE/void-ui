@@ -43,14 +43,7 @@
     "keep_array_indentation": true,
     "space_before_conditional": true
   },
-  "beautify.ignore": [
-    "**/extends.scss",
-    "**/extends/*.scss",
-    "**/mixins.scss",
-    "**/normalize.css",
-    "**/reset.scss",
-    "**/variables.scss"
-  ],
+  "beautify.ignore": ["**/variables.scss", "**/normalize.css", "**/reset.scss"],
   "vetur.format.defaultFormatter.html": "js-beautify-html",
   "vetur.format.defaultFormatterOptions": {
     "js-beautify-html": {
@@ -75,7 +68,7 @@
       "space_before_conditional": true
     }
   },
-  "prettier.cssEnable": [],
+  "prettier.disableLanguages": ["scss", "css", "less"],
   "prettier.printWidth": 90,
   "prettier.tabWidth": 2,
   "prettier.useTabs": false,
