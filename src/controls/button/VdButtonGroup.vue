@@ -1,7 +1,7 @@
 <template>
-  <button class="vd-button">
+  <div class="vd-button-group">
     <slot></slot>
-  </button>
+  </div>
 </template>
 
 <script lang="ts">
@@ -17,8 +17,8 @@ import {
 } from 'vue-property-decorator';
 
 @Component({
-  name: 'VdButton',
+  name: 'VdButtonGroup',
 })
-export default class VdButton extends Vue {}
+export default class VdButtonGroup extends Vue {}
 </script>
 

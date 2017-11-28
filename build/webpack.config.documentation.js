@@ -12,6 +12,8 @@ const utils = require('./utils');
 const config = require('../config');
 const baseWebpackConfig = require('./webpack.config.base');
 
+baseWebpackConfig.resolve.alias.vue$ = 'vue/dist/vue.esm.js';
+
 const env =
   process.env.NODE_ENV === 'testing'
     ? require('../config/test.env')

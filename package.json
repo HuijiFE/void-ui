@@ -3,22 +3,31 @@
   "version": "0.0.1",
   "description": "A UI components library base on TypeScript for Vue.js.",
   "author": "HuijiFE",
-  "keywords": ["vue", "typescript", "components", "ui", "huiji"],
+  "keywords": [
+    "vue",
+    "typescript",
+    "components",
+    "ui",
+    "huiji"
+  ],
   "homepage": "huijiwiki.com",
   "bugs": {
     "url": "https://github.com/HuijiFE/void-ui/issues"
   },
   "license": "MIT",
   "main": "lib/void-ui.common.js",
-  "files": ["lib", "src", "typings"],
+  "files": [
+    "lib",
+    "src",
+    "typings"
+  ],
   "typings": "typings/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/HuijiFE/void-ui.git"
   },
   "scripts": {
-    "dev":
-      "webpack-dev-server --inline --progress --config build/webpack.config.development.js",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.config.development.js",
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
@@ -102,6 +111,7 @@
     "vue-class-component": "^6.1.0",
     "vue-jest": "^1.0.2",
     "vue-loader": "^13.3.0",
+    "vue-markdown-loader": "^2.3.0",
     "vue-property-decorator": "^6.0.0",
     "vue-router": "^3.0.1",
     "vue-style-loader": "^3.0.1",
@@ -115,5 +125,9 @@
     "node": ">= 8.0.0",
     "npm": ">= 5.0.0"
   },
-  "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"]
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }

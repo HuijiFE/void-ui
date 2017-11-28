@@ -2,6 +2,9 @@
   <div id="app">
     <main-nav mode="router"></main-nav>
     <div class="container">
+      <vd-button>按钮</vd-button>
+    </div>
+    <div class="container">
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
@@ -23,6 +26,8 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
+import VoidUI from 'void-ui';
+Vue.use(VoidUI);
 
 import MainNav from 'docs/components/MainNav.vue';
 
@@ -31,7 +36,5 @@ import MainNav from 'docs/components/MainNav.vue';
     MainNav,
   },
 })
-export default class Main extends Vue {
-  created() {}
-}
+export default class Main extends Vue {}
 </script>

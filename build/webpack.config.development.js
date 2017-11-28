@@ -12,10 +12,23 @@ const utils = require('./utils');
 const config = require('../config');
 const baseWebpackConfig = require('./webpack.config.base');
 
+baseWebpackConfig.resolve.alias.vue$ = 'vue/dist/vue.esm.js';
+
 const devWebpackConfig = merge(baseWebpackConfig, {
   entry: Object.assign({}, config.solution.commons, config.solution.entries),
   module: {
-    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true }),
+    rules: [
+      ...utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true }),
+      {
+        test: /\.md$/,
+        use: {
+          loader: 'vue-markdown-loader',
+          options: {
+            wrapper: 'article',
+          },
+        },
+      },
+    ],
   },
   // cheap-module-eval-source-map is faster for development
   devtool: config.dev.devtool,

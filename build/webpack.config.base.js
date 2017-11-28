@@ -22,9 +22,6 @@ const alias = {
     ? resolve('lib/void-ui.style.common.ts')
     : resolve('src/index.scss'),
 };
-if (config.build.productionVueRuntimeOnly) {
-  alias.vue$ = 'vue/dist/vue.esm.js';
-}
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
