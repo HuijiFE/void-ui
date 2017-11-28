@@ -32,7 +32,7 @@ body {
   flex: 1;
   align-content: stretch;
   align-items: stretch;
-  background: linear-gradient(to right, #42b983, #42b983 60%, #294e80);
+  background: $color-primary;
   height: 64px;
 
   .nav-separator {
@@ -48,28 +48,25 @@ body {
     padding: 0 16px;
     text-decoration: none;
     font-size: 20px;
-    opacity: 0.8;
+    opacity: 0.9;
     flex-wrap: nowrap;
     white-space: nowrap;
+    color: white;
+
+    transition: 0.2s ease-in-out;
+    transition-property: opacity, background-color;
 
     &.first {
       font-size: 24px;
       opacity: 1;
     }
 
-    &,
-    &:active,
-    &:hover,
-    &:focus,
-    &:visited {
-      color: white;
-    }
-
     &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(255, 255, 255, 0.05);
+      opacity: 1;
     }
     &:active {
-      background-color: rgba(0, 0, 0, 0.1);
+      background-color: rgba(0, 0, 0, 0.05);
     }
   }
 }
@@ -96,6 +93,10 @@ body {
 }
 
 @font-face {
-  font-family: $score-font-family;
+  font-family: 'Aldrich';
   src: url('assets/font/Aldrich-Regular.ttf') format('truetype');
+}
+
+.vd-score {
+  font-family: 'Aldrich', $font-family-base;
 }
