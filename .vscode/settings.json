@@ -19,7 +19,7 @@
       "filename": [],
       "ext": []
     },
-    "css": ["css", "less", "scss"],
+    "css": [],
     "html": ["htm", "html", "mustache", "xml"]
   },
   "beautify.config": {
@@ -68,7 +68,7 @@
       "space_before_conditional": true
     }
   },
-  "prettier.disableLanguages": ["scss", "css", "less"],
+  "prettier.disableLanguages": [],
   "prettier.printWidth": 90,
   "prettier.tabWidth": 2,
   "prettier.useTabs": false,
