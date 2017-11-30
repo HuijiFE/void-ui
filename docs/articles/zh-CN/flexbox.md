@@ -6,7 +6,7 @@
 
 flex 属性定义一个 flexbox 占其父 flexbox 的宽度比例。
 
-<example-board :component="examples.FlexboxBasic">{{examples.FlexboxBasicSource}}</example-board>
+<example-board :component="FlexboxBasic" :source="FlexboxBasicSource"></example-board>
 
 <script>
 import FlexboxBasic from 'docs/examples/FlexboxBasic';
@@ -15,10 +15,8 @@ import FlexboxBasicSource from 'docs/examples/FlexboxBasic.txt';
 export default {
   data() {
     return {
-      examples: {
-        FlexboxBasic,
-        FlexboxBasicSource,
-      }
+      FlexboxBasic,
+      FlexboxBasicSource,
     }
   }
 }

@@ -1,5 +1,3 @@
-<example src="./test.vue" />
-
 <template>
   <vd-flexbox gutter="xsmall">
     <vd-flexbox flex="5">
@@ -53,9 +51,5 @@
 </template>
 
 <script>
-export default {
-  mounted() {
-    window._debug = this.$options;
-  },
-};
+export default {};
 </script>

@@ -3,10 +3,8 @@
     <div class="demo">
       <component :is="component"></component>
     </div>
-    <div v-if="$slots.default"
-         class="source">
-      <pre><code ref="codeblock" class="html"><slot v-pre></slot></code></pre>
-    </div>
+    <code-board v-if="source"
+                :lang="lang">{{source}}</code-board>
   </div>
 </template>
 
@@ -21,9 +19,13 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
-import highlight from 'highlight.js';
+import CodeBoard from './CodeBoard.vue';
 
-@Component
+@Component({
+  components: {
+    CodeBoard,
+  },
+})
 export default class DemoBoard extends Vue {
   @Prop() label: string;
   @Prop() description: string;
@@ -31,8 +33,9 @@ export default class DemoBoard extends Vue {
   @Prop({ default: () => {} })
   component: any;
 
-  mounted() {
-    highlight.highlightBlock(this.$refs.codeblock);
-  }
+  @Prop({ default: 'html' })
+  lang: string;
+
+  @Prop() source: string;
 }
 </script>

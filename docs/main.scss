@@ -51,16 +51,27 @@ article {
   }
 }
 
+.code-board {
+  margin: 0.16rem 0;
+  pre {
+    margin: 0;
+  }
+  .hljs {
+    padding: $gutter-medium;
+  }
+}
+
 .demo-board {
   border-radius: $border-radius-base;
   border: 1px solid $lite-border;
+  margin: 0.16rem 0;
 
   .demo {
     padding: $gutter-medium;
   }
-
-  .source {
+  .code-board {
     border-top: 1px solid $lite-border;
+    margin: 0;
   }
 }
 
@@ -70,9 +81,14 @@ article {
   height: 0.32rem;
   opacity: 0.5;
   color: $color-primary;
+  background-color: rgba($color-primary, 0.05);
   font-weight: bold;
-  border-radius: 4px;
+  border-radius: $border-radius-base;
   border: 1px solid $color-primary;
+}
+
+.vd-wrapper {
+  min-height: 100vh;
 }
 
 @font-face {

@@ -27,6 +27,7 @@
     "url": "https://github.com/HuijiFE/void-ui.git"
   },
   "scripts": {
+    "bootstrap": "npm i || npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.config.development.js",
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
