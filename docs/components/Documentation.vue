@@ -6,9 +6,12 @@
                    :configs="docIndexConfigs"></doc-index>
       </vd-flexbox>
       <vd-flexbox flex="70">
-        <keep-alive>
-          <router-view></router-view>
-        </keep-alive>
+        <transition name="component-fade"
+                    mode="out-in">
+          <keep-alive>
+            <router-view></router-view>
+          </keep-alive>
+        </transition>
       </vd-flexbox>
     </vd-flexbox>
   </div>

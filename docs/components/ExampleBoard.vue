@@ -3,8 +3,14 @@
     <div class="demo">
       <component :is="component"></component>
     </div>
-    <code-board v-if="source"
-                :lang="lang">{{source}}</code-board>
+    <div v-if="source && showCode"
+         class="source">
+      <code-board :lang="lang">{{source}}</code-board>
+    </div>
+    <div v-if="source">
+      <button class="show-button"
+              @click="showCode = !showCode">&lt;/&gt;</button>
+    </div>
   </div>
 </template>
 
@@ -27,6 +33,8 @@ import CodeBoard from './CodeBoard.vue';
   },
 })
 export default class DemoBoard extends Vue {
+  showCode: boolean = false;
+
   @Prop() label: string;
   @Prop() description: string;
 

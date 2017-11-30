@@ -73,6 +73,21 @@ article {
     border-top: 1px solid $lite-border;
     margin: 0;
   }
+  .show-button {
+    width: 100%;
+    height: 0.4rem;
+    color: $color-primary;
+    background-color: rgba($lite-border, 0.5);
+  }
+}
+
+.component-fade-enter-active,
+.component-fade-leave-active {
+  transition: opacity 0.25s ease-in-out;
+}
+.component-fade-enter,
+.component-fade-leave-to {
+  opacity: 0;
 }
 
 .layout-content {
@@ -85,6 +100,12 @@ article {
   font-weight: bold;
   border-radius: $border-radius-base;
   border: 1px solid $color-primary;
+
+  transition: opacity 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 0.9;
+  }
 }
 
 .vd-wrapper {
