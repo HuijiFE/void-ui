@@ -1,8 +1,6 @@
 <template>
-  <div class="demo">
-    <vd-score v-for="value in 10"
-              :key="value"
-              :value="value"></vd-score>
+  <div class="vd-control">
+
   </div>
 </template>
 
@@ -19,6 +17,5 @@ import {
 } from 'vue-property-decorator';
 
 @Component
-export default class DemoScore extends Vue {}
+export default class Test extends Vue {}
 </script>
-

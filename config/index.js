@@ -14,7 +14,7 @@ module.exports = {
   solution,
   build: {
     // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsRoot: path.resolve(__dirname, '../dist_site'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
 
@@ -32,12 +32,12 @@ module.exports = {
     productionVueRuntimeOnly: true,
 
     productionJs: {
-      minify: true,
-      useHash: true,
+      minify: false,
+      useHash: false,
     },
     productionCss: {
-      minify: true,
-      useHash: true,
+      minify: false,
+      useHash: false,
     },
     productionHtml: {
       minify: false,

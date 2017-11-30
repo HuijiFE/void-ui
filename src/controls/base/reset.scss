@@ -7,3 +7,120 @@
 body {
   font-size: $font-size-base;
 }
+
+html {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+}
+
+body {
+  position: relative;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+}
+a:hover {
+  color: $color-primary-lighten;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  line-height: $line-height-base;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+  color: inherit;
+  padding: 0;
+  border: $border-base;
+  outline: none;
+}
+
+a
+select,
+button {
+  cursor: pointer;
+}
+
+article {
+  width: 100%;
+  font-size: $article-font-size;
+  line-height: $article-line-height;
+  color: $article-foreground;
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: $article-heading-line-height;
+    margin: $article-heading-margin;
+    font-weight: $article-heading-font-weight-default;
+  }
+
+  @for $heading from 1 through 6 {
+    .h#{$heading} {
+      font-size: map-get($map: $article-heading-font-sizes, $key: $heading);
+      font-weight: map-get($map: $article-heading-font-weights, $key: $heading);
+    }
+  }
+
+  p {
+    font-size: $article-paragraph-font-size;
+    margin: $article-paragraph-margin
+  }
+
+  blockquote {
+    color: $article-blockquote-foreground;
+    background-color: $article-blockquote-background;
+    padding: $article-blockquote-padding;
+    border-left: $article-blockquote-border-left;
+    margin: $article-blockquote-margin;
+
+    p {
+      margin: $article-blockquote-paragraph-margin;
+    }
+  }
+
+  a {
+    color: $color-primary;
+    text-decoration: none;
+  }
+  a:hover {
+    color: $color-primary-lighten;
+  }
+
+  li {
+    margin: $article-listitem-margin;
+  }
+
+  ul, ol {
+    padding-left: $article-list-padding-left;
+    margin: $article-list-margin;
+  }
+
+  sub,
+  sup {
+    font-size: 80%;
+  }
+}

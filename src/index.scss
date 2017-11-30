@@ -1,4 +1,3 @@
-
 /**
  *
  * Void-UI Style
@@ -9,8 +8,11 @@
 @charset 'UTF-8';
 
 @import 'controls/base/variables';
+@import 'controls/base/mixins';
+@import 'controls/base/media';
+@import 'controls/flexbox/flexbox';
 @import 'controls/base/reset';
-@import 'controls/base/common';
 
+@import 'controls/common/common';
 @import 'controls/button/button';
 @import 'controls/score/score';

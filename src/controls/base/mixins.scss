@@ -1,0 +1,27 @@
+
+/* Add padding to the top, force center the text vertically. */
+@mixin clear-baseline($level: 1) {
+  padding-top: #{$level}px;
+}
+
+
+/*
+CSS Flexible Box Layout
+https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout
+
+flex-direction: row, column
+justify-content: flex-start, flex-end, center, space-between, space-around
+align-content/align-items: flex-start, flex-end, center, stretch, baseline
+
+https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content
+https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-content
+*/
+@mixin flex($direction: row, $justify: flex-start, $align: flex-start, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-content: $align;
+  align-items: $align;
+  flex-wrap: $wrap;
+  white-space: $wrap;
+}

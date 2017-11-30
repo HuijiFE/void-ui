@@ -14,7 +14,7 @@ const webpackConfig = require('./webpack.config.production');
 const spinner = ora('building for production...');
 spinner.start();
 
-rm(config.build.assetsRoot, err => {
+rm(path.resolve(__dirname, '../dist'), err => {
   if (err) throw err;
   webpack(webpackConfig, function(err, stats) {
     spinner.stop();

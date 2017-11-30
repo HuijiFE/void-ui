@@ -1,0 +1,145 @@
+/**
+ *
+ * Control Flexbox
+ *
+ */
+
+.#{$void}-flexbox {
+  display: flex;
+  position: relative;
+  flex: 0;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+
+  // Gutter
+  @mixin gen-getter($name, $size) {
+    &.gutter-#{$name} {
+      margin: $size / -2;
+      > .#{$void}-flexbox {
+        padding: $size / 2;
+      }
+    }
+  }
+  @each $name, $size in $gutter-sizes {
+    @include gen-getter($name, $size);
+  }
+  @include gen-getter('auto', map-get($map: $gutter-sizes, $key: 'medium'));
+  @include media-small {
+    @include gen-getter('auto', map-get($map: $gutter-sizes, $key: 'small'));
+  }
+  @include media-xsmall {
+    @include gen-getter('auto', map-get($map: $gutter-sizes, $key: 'xsmall'));
+  }
+
+  // Direction
+  &.direction {
+    &-row {
+      flex-direction: row;
+    }
+    &-col,
+    &-column {
+      flex-direction: column;
+    }
+  }
+
+  // Justify
+  $justifies: (
+    start: flex-start,
+    end: flex-end,
+    center: center,
+    between: space-between,
+    around: space-around
+  );
+  &.justify {
+    @each $key, $value in $justifies {
+      &-#{$key} {
+        justify-content: $value;
+      }
+    }
+  }
+
+  // Align
+  $aligns: (
+    start: flex-start,
+    end: flex-end,
+    center: center,
+    stretch: stretch,
+    baseline: baseline
+  );
+  &.align {
+    @each $key, $value in $aligns {
+      &-#{$key} {
+        align-content: $value;
+        align-items: $value;
+      }
+    }
+  }
+
+  // Wrapped
+  &.wrapped-false {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+
+  $flexs: 'auto', 'initial', 'none';
+  @mixin gen-flex($media) {
+    &.flex {
+      @each $flex in $flexs {
+        &#{$media}-#{$flex} {
+          flex: $flex;
+        }
+      }
+      &#{$media}-33 {
+        min-width: 33.333333%;
+        flex: 0 1 33.333333%;
+      }
+      &#{$media}-66 {
+        min-width: 33.333333%;
+        flex: 0 1 66.666666%;
+      }
+      @for $i from 1 through 20 {
+        $ratio: $i * 5;
+        &#{$media}-#{$ratio} {
+          min-width: #{$ratio + '%'};
+          flex: 0 1 #{$ratio + '%'};
+        }
+      }
+    }
+  }
+
+  // Hidden
+  @mixin gen-hidden($media) {
+    &.hidden#{$media} {
+      display: none;
+    }
+  }
+
+  @mixin gen-all($media: '') {
+    @if $media != '' {
+      $media: -#{$media};
+    } @else {
+      $media: '';
+    }
+    @include gen-flex($media);
+    @include gen-hidden($media);
+  }
+
+  @include gen-all();
+  @include media-xlarge {
+    @include gen-all('xlarge');
+  }
+  @include media-large {
+    @include gen-all('large');
+  }
+  @include media-medium {
+    @include gen-all('medium');
+  }
+  @include media-small {
+    @include gen-all('small');
+  }
+  @include media-xsmall {
+    @include gen-all('xsmall');
+  }
+}

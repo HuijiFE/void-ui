@@ -1,0 +1,50 @@
+@mixin media-xsmall {
+  @media (max-width: #{$breakpoint-small - $scrollbar-width}) {
+    @content;
+  }
+}
+@mixin media-small {
+  @media (max-width: #{$breakpoint-medium - $scrollbar-width}) {
+    @content;
+  }
+}
+@mixin media-medium {
+  @media (max-width: #{$breakpoint-large - $scrollbar-width}) {
+    @content;
+  }
+}
+@mixin media-large {
+  @media (max-width: #{$breakpoint-xlarge - $scrollbar-width}) {
+    @content;
+  }
+}
+@mixin media-xlarge {
+  @media (min-width: #{$breakpoint-xlarge - $scrollbar-width}) {
+    @content;
+  }
+}
+@mixin media-xsmall-and-up {
+  @media (min-width: #{$breakpoint-xsmall - $scrollbar-width +1px}) {
+    @content;
+  }
+}
+@mixin media-small-and-up {
+  @media (min-width: #{$breakpoint-small - $scrollbar-width + 1px}) {
+    @content;
+  }
+}
+@mixin media-medium-and-up {
+  @media (min-width: #{$breakpoint-medium - $scrollbar-width + 1px}) {
+    @content;
+  }
+}
+@mixin media-large-and-up {
+  @media (min-width: #{$breakpoint-large - $scrollbar-width + 1px}) {
+    @content;
+  }
+}
+@mixin media-xlarge-and-up {
+  @media (min-width: #{$breakpoint-xlarge - $scrollbar-width + 1px}) {
+    @content;
+  }
+}

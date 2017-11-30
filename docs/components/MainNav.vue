@@ -1,17 +1,23 @@
 <template>
   <div class="main-nav">
     <router-link class="nav-item first"
-                 to="/">Void-UI</router-link>
+                 :to="`/${language}`">Void-UI</router-link>
+
     <span class="nav-separator"></span>
 
     <router-link class="nav-item"
-                 to="/zhcn/controls/button">button</router-link>
+                 :to="`/${language}/documentation`">Documenation</router-link>
+    <router-link class="nav-item"
+                 :to="`/${language}/changelog`">ChangeLog</router-link>
+    <!-- <span class="nav-item">
+      <button @click="setLanguage('zh-CN')">中</button>
+      /
+      <button @click="setLanguage('en-US')">En</button>
+    </span> -->
   </div>
 </template>
 
 <script lang="ts">
-// Vue.js and Property Decorator
-// https://github.com/kaorun343/vue-property-decorator
 import {
   Component,
   Emit,
@@ -25,7 +31,14 @@ import {
 
 @Component
 export default class MainNav extends Vue {
-  @Prop() mode: 'router' | 'link' = 'router';
+  get language(): string {
+    return this.$route.path.startsWith('/zh-CN') ? 'zh-CN' : 'en-US';
+  }
+
+  setLanguage(targetLanguage: string) {
+    if (this.language === targetLanguage) return;
+    this.$router.push(this.$route.path.replace(this.language, targetLanguage));
+  }
 }
 </script>
 

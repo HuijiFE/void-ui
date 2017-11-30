@@ -32,7 +32,7 @@ const uglifyJsPlugin = new webpack.optimize.UglifyJsPlugin({
 });
 
 const jsOutput = {
-  path: path.resolve(__dirname, '../lib'),
+  path: path.resolve(__dirname, '../dist'),
   filename: '[name].js',
   library: 'VoidUI',
   libraryTarget: 'umd',

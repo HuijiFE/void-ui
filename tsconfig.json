@@ -30,6 +30,5 @@
       "void-ui/style": ["./src/index"]
     }
   },
-  "include": ["./docs/**/*", "./src/**/*", "./typings/**/*"],
   "exclude": ["node_modules"]
 }

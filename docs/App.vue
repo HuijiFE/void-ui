@@ -1,10 +1,12 @@
 <template>
   <div id="app">
     <main-nav mode="router"></main-nav>
-    <div class="container">
-      <keep-alive>
-        <router-view></router-view>
-      </keep-alive>
+    <div class="vd-wrapper">
+      <div class="vd-section vd-container">
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+      </div>
     </div>
   </div>
 </template>
@@ -33,5 +35,10 @@ import MainNav from 'docs/components/MainNav.vue';
     MainNav,
   },
 })
-export default class Main extends Vue {}
+export default class Main extends Vue {
+  @Watch('$route')
+  changePageTitle() {
+    document.title = this.$route.name || 'Void-UI';
+  }
+}
 </script>

@@ -1,11 +1,13 @@
 import { PluginFunction } from 'vue/types/plugin';
 import { Vue as _Vue } from 'vue/types/vue';
 
+import VdFlexbox from 'src/controls/flexbox/VdFlexbox.vue';
 import VdButton from 'src/controls/button/VdButton.vue';
 import VdButtonGroup from 'src/controls/button/VdButtonGroup.vue';
 import VdScore from 'src/controls/score/VdScore.vue';
 
 const allControls = {
+  VdFlexbox,
   VdButton,
   VdButtonGroup,
   VdScore,

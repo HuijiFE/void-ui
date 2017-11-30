@@ -17,9 +17,9 @@ const urlLoaderLimit = config.common.urlLoaderLimit;
 const alias = {
   docs: resolve('docs'),
   src: resolve('src'),
-  'void-ui': isProduction ? resolve('lib/void-ui.common.ts') : resolve('src/index.ts'),
+  'void-ui': isProduction ? resolve('lib/void-ui.common.js') : resolve('src/index.ts'),
   'void-ui/style': isProduction
-    ? resolve('lib/void-ui.style.common.ts')
+    ? resolve('lib/void-ui.style.common.js')
     : resolve('src/index.scss'),
 };
 
@@ -105,6 +105,15 @@ module.exports = {
           options: {
             limit: urlLoaderLimit,
             name: utils.assetsPath('fonts/[name].[hash:8].[ext]'),
+          },
+        },
+      },
+      {
+        test: /\.md$/,
+        use: {
+          loader: 'vue-markdown-loader',
+          options: {
+            wrapper: 'article',
           },
         },
       },
