@@ -83,7 +83,7 @@
     white-space: nowrap;
   }
 
-  $flexs: 'auto', 'initial', 'none';
+  $flexs: auto, initial, none;
   @mixin gen-flex($media) {
     &.flex {
       @each $flex in $flexs {

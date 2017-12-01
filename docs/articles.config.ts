@@ -30,12 +30,12 @@ export const zhCN: DocConfig[] = [
     fileName: 'documentation',
   },
   {
-    name: '基础组件',
+    name: '布局',
     children: [
       {
         name: 'flexbox 弹性盒子',
         path: 'flexbox',
-        fileName: 'flexbox',
+        fileName: 'layout/flexbox',
       },
     ],
   },

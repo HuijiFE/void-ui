@@ -1,24 +1,10 @@
 import { PluginFunction } from 'vue/types/plugin';
 import { Vue as _Vue } from 'vue/types/vue';
 
-import VdFlexbox from 'src/controls/flexbox/VdFlexbox.vue';
-import VdButton from 'src/controls/button/VdButton.vue';
-import VdButtonGroup from 'src/controls/button/VdButtonGroup.vue';
-import VdScore from 'src/controls/score/VdScore.vue';
-import VdToggle from 'src/controls/toggle/VdToggle.vue';
-import VdRadio from 'src/controls/radio/VdRadio.vue';
-
-const allControls = {
-  VdFlexbox,
-  VdButton,
-  VdButtonGroup,
-  VdScore,
-  VdToggle,
-  VdRadio,
-};
+import * as controls from 'src/controls';
 
 const install: PluginFunction<any> = function(Vue, options = {}) {
-  Object.entries(allControls).map(([name, control]) => {
+  Object.entries(controls).map(([name, control]) => {
     console.warn(`${name}: ${control}`);
     Vue.component(name, control);
   });
