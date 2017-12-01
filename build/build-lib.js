@@ -26,7 +26,7 @@ rm(path.resolve(__dirname, '../dist'), err => {
         children: false,
         chunks: false,
         chunkModules: false,
-      }) + '\n\n',
+      }) + '\n\n'
     );
 
     if (stats.hasErrors()) {
