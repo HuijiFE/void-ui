@@ -128,4 +128,9 @@ article {
     font-family: $font-family-code;
     font-size: $font-size-code;
   }
+
+  code {
+    padding: 0.02rem 0.04rem;
+    background-color: rgba($color-primary-lightener, 0.1);
+  }
 }
