@@ -5,12 +5,16 @@ import VdFlexbox from 'src/controls/flexbox/VdFlexbox.vue';
 import VdButton from 'src/controls/button/VdButton.vue';
 import VdButtonGroup from 'src/controls/button/VdButtonGroup.vue';
 import VdScore from 'src/controls/score/VdScore.vue';
+import VdToggle from 'src/controls/toggle/VdToggle.vue';
+import VdRadio from 'src/controls/radio/VdRadio.vue';
 
 const allControls = {
   VdFlexbox,
   VdButton,
   VdButtonGroup,
   VdScore,
+  VdToggle,
+  VdRadio,
 };
 
 const install: PluginFunction<any> = function(Vue, options = {}) {

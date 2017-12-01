@@ -39,4 +39,19 @@ export const zhCN: DocConfig[] = [
       },
     ],
   },
+  {
+    name: '表单',
+    children: [
+      {
+        name: 'toggle 开关',
+        path: 'radio',
+        fileName: 'form/toggle',
+      },
+      {
+        name: 'radio 单选框',
+        path: 'toggle',
+        fileName: 'form/radio',
+      },
+    ],
+  },
 ];
