@@ -1,6 +1,6 @@
 <template>
-  <div class="demo-board">
-    <div class="demo">
+  <div class="example-board">
+    <div class="example">
       <component :is="component"></component>
     </div>
     <div v-if="source && showCode"

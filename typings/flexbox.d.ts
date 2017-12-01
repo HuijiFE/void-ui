@@ -2,7 +2,6 @@ export type FlexboxFlex = null | string | number;
 export type FlexboxGutter =
   | null
   | 'auto'
-  | 'initial'
   | 'none'
   | 'xsmall'
   | 'small'

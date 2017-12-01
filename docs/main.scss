@@ -5,6 +5,10 @@ article {
   h1 {
     margin-top: 0;
   }
+
+  table tr td:first-child {
+    white-space: nowrap;
+  }
 }
 
 .main-nav {
@@ -61,12 +65,13 @@ article {
   }
 }
 
-.demo-board {
+.example-board {
   border-radius: $border-radius-base;
   border: 1px solid $lite-border;
-  margin: 0.16rem 0;
+  margin-top: 0.16rem;
+  margin-bottom: 0.32rem;
 
-  .demo {
+  .example {
     padding: $gutter-medium;
   }
   .code-board {
@@ -77,7 +82,7 @@ article {
     width: 100%;
     height: 0.4rem;
     color: $color-primary;
-    background-color: rgba($lite-border, 0.5);
+    background-color: rgba($lite-border, 0.2);
   }
 }
 
@@ -92,14 +97,16 @@ article {
 
 .layout-content {
   @include flex(row,center,center,wrap);
-  width: 100%;
-  height: 0.32rem;
   opacity: 0.5;
   color: $color-primary;
   background-color: rgba($color-primary, 0.05);
   font-weight: bold;
-  border-radius: $border-radius-base;
+  width: 100%;
+  min-height: 0.32rem;
+  height: 100%;
+  padding: 0.08rem;
   border: 1px solid $color-primary;
+  border-radius: $border-radius-base;
 
   transition: opacity 0.3s ease-in-out;
 
