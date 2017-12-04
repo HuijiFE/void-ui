@@ -17,6 +17,7 @@ const urlLoaderLimit = config.common.urlLoaderLimit;
 const alias = {
   docs: resolve('docs'),
   src: resolve('src'),
+  typings: resolve('typings'),
   'void-ui': isProduction ? resolve('dist/void-ui.common.js') : resolve('src/index.ts'),
   'void-ui/style': resolve('src/index.scss'),
 };
