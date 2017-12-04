@@ -33,7 +33,7 @@
     "auto:docs": "node auto/docs.js",
     "auto": "npm run auto:lib && npm run auto:types && npm run auto:docs",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.config.development.js",
-    "start": "npm run auto:docs && npm run dev",
+    "start": "npm run auto && npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
