@@ -28,9 +28,10 @@
   },
   "scripts": {
     "bootstrap": "npm i || npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver || npm rebuild node-sass || npm i",
-    "auto:controls": "node auto/controls.js",
+    "auto:lib": "node auto/lib.js",
+    "auto:types": "node auto/types.js",
     "auto:docs": "node auto/docs.js",
-    "auto": "npm run auto:controls && npm run auto:docs",
+    "auto": "npm run auto:lib && npm run auto:types && npm run auto:docs",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.config.development.js",
     "start": "npm run auto:docs && npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
@@ -39,7 +40,7 @@
     "eslint": "eslint --ext .js src test/unit/specs test/e2e/specs",
     "tslint": "tslint -c tslint.json 'src/**/*.ts'",
     "lint": "npm run eslint && npm run tslint",
-    "build:lib": "npm run auto:controls && node build/build-lib.js",
+    "build:lib": "npm run auto:controls && npm run auto:types && node build/build-lib.js",
     "build:docs": "npm run auto:docs && node build/build-docs.js",
     "build": "npm run build:lib && npm run build:docs"
   },
