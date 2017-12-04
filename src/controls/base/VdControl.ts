@@ -27,19 +27,23 @@ export class VdControl extends Vue {
 }
 
 @Component
+export class Void extends Vue {
+  genre: ControlGenre = 'lite';
+}
+
+@Component
 export class VdStylableControl extends VdControl {
-  // private static globalGenre: ControlGenre = 'lite';
-  // public static get GlobalGenre(): ControlGenre {
-  //   return VdStylableControl.globalGenre;
-  // }
-  // public static set GlobalGenre(value: ControlGenre) {
-  //   VdStylableControl.globalGenre = value;
-  // }
+  private static readonly globalVoid = new Void();
+  get $void(): Void {
+    return VdStylableControl.globalVoid;
+  }
 
   @Prop() genre: ControlGenre;
 
   @Prop({ default: 'primary' })
   theme: ControlTheme;
+
+  @Prop() plain: boolean;
 
   @Prop({ default: 'fill' })
   skin: ControlSkin;
@@ -52,13 +56,21 @@ export class VdStylableControl extends VdControl {
 
   get stylableClasses(): string[] {
     return [
-      // `genre-${this.genre || VdStylableControl.globalGenre}`,
-      `genre-${this.genre}`,
+      `genre-${this.genre || this.$void.genre}`,
       `theme-${this.theme}`,
-      `skin-${this.skin}`,
+      this.plain ? `skin-plain` : `skin-${this.skin}`,
       `size-${this.size}`,
       `shape-${this.shape}`,
     ];
+  }
+
+  private a = '1';
+  private b = '2';
+  private c = '3';
+
+  // 123
+  public get dddd(): string {
+    return this.a + this.b + this.c;
   }
 }
 
