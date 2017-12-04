@@ -36,7 +36,9 @@ export default class MainNav extends Vue {
   }
 
   setLanguage(targetLanguage: string) {
-    if (this.language === targetLanguage) return;
+    if (this.language === targetLanguage) {
+      return;
+    }
     this.$router.push(this.$route.path.replace(this.language, targetLanguage));
   }
 }

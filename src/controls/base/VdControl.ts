@@ -28,13 +28,13 @@ export class VdControl extends Vue {
 
 @Component
 export class VdStylableControl extends VdControl {
-  private static globalGenre: ControlGenre = 'lite';
-  public static get GlobalGenre(): ControlGenre {
-    return VdStylableControl.globalGenre;
-  }
-  public static set GlobalGenre(value: ControlGenre) {
-    VdStylableControl.globalGenre = value;
-  }
+  // private static globalGenre: ControlGenre = 'lite';
+  // public static get GlobalGenre(): ControlGenre {
+  //   return VdStylableControl.globalGenre;
+  // }
+  // public static set GlobalGenre(value: ControlGenre) {
+  //   VdStylableControl.globalGenre = value;
+  // }
 
   @Prop() genre: ControlGenre;
 
@@ -52,7 +52,8 @@ export class VdStylableControl extends VdControl {
 
   get stylableClasses(): string[] {
     return [
-      `genre-${this.genre || VdStylableControl.globalGenre}`,
+      // `genre-${this.genre || VdStylableControl.globalGenre}`,
+      `genre-${this.genre}`,
       `theme-${this.theme}`,
       `skin-${this.skin}`,
       `size-${this.size}`,

@@ -39,7 +39,9 @@ import { DocConfig, enUS, zhCN } from 'docs/articles.config';
 export default class Documentation extends Vue {
   @Prop() language: string;
   get docIndexConfigs(): DocConfig[] {
-    if (this.language === 'zh-CN') return zhCN;
+    if (this.language === 'zh-CN') {
+      return zhCN;
+    }
     return enUS;
   }
 }

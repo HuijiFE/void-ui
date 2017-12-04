@@ -1,6 +1,7 @@
 <template>
   <div class="example-board">
-    <div class="example">
+    <div v-if="component"
+         class="example">
       <component :is="component"></component>
     </div>
     <div v-if="source && showCode"
@@ -38,7 +39,9 @@ export default class DemoBoard extends Vue {
   @Prop() label: string;
   @Prop() description: string;
 
-  @Prop({ default: () => {} })
+  @Prop({
+    default: () => ({}),
+  })
   component: any;
 
   @Prop({ default: 'html' })
