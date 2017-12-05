@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>已选择 {{radioModelBasic}}</p>
-    <DemoBoard v-for="board in 2"
+    <DemoBoard v-for="board in 1"
                :key="board"
                :genre="board%2===1?'lite':'dark'">
       <VdRadio v-for="item in 4"
