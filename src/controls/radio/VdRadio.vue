@@ -56,5 +56,15 @@ export default class VdRadio extends Vue {
   set model(value) {
     this.$emit('input', value);
   }
+  check(){
+    if(this.model!=this.tag){
+    this.model=this.tag;
+    }
+  }
+  created(){
+    if(this.checked){
+  this.check();
+    }
+  }
 }
 </script>
