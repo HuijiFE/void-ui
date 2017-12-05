@@ -1,7 +1,19 @@
 <template>
-
+  <div>
+    <p>已选择 {{radioModelBasic}}</p>
+    <DemoBoard v-for="board in 2"
+               :key="board"
+               :genre="board%2===1?'lite':'dark'">
+      <VdRadio v-for="item in 4"
+               :key="item"
+               :genre="board%2===1?'lite':'dark'"
+               v-model="radioModelBasic"
+               :disabled="item===4"
+               :tag="item">选项{{item}}
+      </VdRadio>
+    </DemoBoard>
+  </div>
 </template>
-
 <script lang="ts">
 import {
   Component,
@@ -13,7 +25,8 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
-
 @Component
-export default class RadioBasic extends Vue {}
+export default class RadioBasic extends Vue {
+  @Provide() radioModelBasic = 3;
+}
 </script>

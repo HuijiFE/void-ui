@@ -6,6 +6,7 @@ import VdButton from 'src/controls/button/VdButton.vue';
 import VdButtonGroup from 'src/controls/button/VdButtonGroup.vue';
 import VdScore from 'src/controls/score/VdScore.vue';
 import VdToggle from 'src/controls/toggle/VdToggle.vue';
+import DemoBoard from 'src/controls/demo/DemoBoard.vue';
 import VdRadio from 'src/controls/radio/VdRadio.vue';
 
 const allControls = {
@@ -14,6 +15,7 @@ const allControls = {
   VdButtonGroup,
   VdScore,
   VdToggle,
+  DemoBoard,
   VdRadio,
 };
 

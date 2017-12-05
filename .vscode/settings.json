@@ -1,6 +1,6 @@
 {
   "terminal.integrated.shell.windows": "C:\\WINDOWS\\Sysnative\\bash.exe",
-  "workbench.colorTheme": "Quiet Light for VSC",
+  // "workbench.colorTheme": "Quiet Light for VSC",
   "workbench.iconTheme": "vscode-icons",
   "highlight-matching-tag.style": {
     "backgroundColor": "#ffff66"
