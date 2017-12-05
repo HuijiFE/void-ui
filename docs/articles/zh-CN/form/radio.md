@@ -2,7 +2,9 @@
 
 ## 基本用法
 
+```html
 <example-board :component="RadioBasic"></example-board>
+```
 
 <script>
 import RadioBasic from 'docs/examples/form/RadioBasic';
