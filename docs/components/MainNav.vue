@@ -5,6 +5,9 @@
 
     <span class="nav-separator"></span>
 
+    <router-link class="nav-item"
+                 :to="`/${language}/test`">Test</router-link>
+
     <genre-switch></genre-switch>
     <router-link class="nav-item"
                  :to="`/${language}/documentation`">Documenation</router-link>
