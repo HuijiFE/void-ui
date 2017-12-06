@@ -7,7 +7,7 @@
                :key="item"
                :genre="item%2===1?'lite':'dark'"
                v-model="radioModelBasic"
-               :checked="checked"
+               :disabled="disabled"
                :tag="item">选项{{item}}
 
       </VdRadio>
@@ -28,7 +28,6 @@ import {
 @Component
 export default class RadioBasic extends Vue {
   @Provide() radioModelBasic = 3;
-  @Provide() checked=true;
+  @Provide() disabled=true;
 }
 </script>
-

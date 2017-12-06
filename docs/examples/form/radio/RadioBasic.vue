@@ -1,15 +1,17 @@
 <template>
    <div>
-    <DemoBoard v-for="board in 1"
+    <!-- <DemoBoard v-for="board in 1"
                :key="board"
-               :genre="board%2===1?'lite':'dark'">
+               :genre="board%2===1?'lite':'dark'"> -->
       <VdRadio v-for="item in 1"
                :key="item"
-               :genre="board%2===1?'lite':'dark'"
+               :genre="item%2===1?'lite':'dark'"
                v-model="radioModelBasic"
+               :checked="checked"
                :tag="item">选项{{item}}
+
       </VdRadio>
-    </DemoBoard>
+    <!-- </DemoBoard> -->
   </div>
 </template>
 <script lang="ts">
@@ -26,6 +28,6 @@ import {
 @Component
 export default class RadioBasic extends Vue {
   @Provide() radioModelBasic = 3;
-
+  @Provide() checked=true;
 }
 </script>
