@@ -19,7 +19,7 @@
 | Property    | Intruction   | Type      | Available Value    |
 | :---------- | :----------- | :-------- | :----------------- |
 | checked     | 单选框的状态 | `boolean` | **false**,**true** |
-| truechecked | 单选框的状态 | `boolean` | **false**,**true** |
+| trueChecked | 单选框的状态 | `boolean` | **false**,**true** |
 
 <script>
 
