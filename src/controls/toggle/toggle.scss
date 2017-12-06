@@ -58,7 +58,7 @@ $toggle-inner-height: (
   circle: 0.12rem
 );
 
-/*----------  定义动画  ----------*/
+/* ----------  定义动画  ---------- */
 
 $transition-duration-base: 0.2s;
 $transition-timing-function-base: ease-in-out;
@@ -73,7 +73,8 @@ $transition-base: all $transition-duration-base $transition-timing-function-base
   transition-timing-function: $transition-timing-function-base;
 }
 
-/*----------  定义mixins  ----------*/
+/* ----------  定义mixins  ---------- */
+
 @mixin flex-row($justify: flex-start, $align: stretch, $wrap: nowrap) {
   @include flex(row, $justify, $align, $wrap);
 }
@@ -81,14 +82,16 @@ $transition-base: all $transition-duration-base $transition-timing-function-base
 @mixin flex-reverse($justify: flex-start, $align: stretch, $wrap: nowrap) {
   @include flex (row-reverse, $justify, $align, $wrap);
 }
-/*----------  组件代码  ----------*/
+
+/* ----------  组件代码  ---------- */
 
 .#{$void}-toggle {
   cursor: pointer;
   user-select: none;
+
   font-size: 0.12rem;
   &.position {
-    @each $position in left, right {
+    @each $position in $const-toggle-shapes {
       &-#{$position} {
         @if $position==left {
           @include flex-reverse(flex-start, center);
@@ -99,6 +102,7 @@ $transition-base: all $transition-duration-base $transition-timing-function-base
       }
     }
   }
+
   &.genre {
     @each $genre in $const-genres {
       &-#{$genre} {
@@ -120,7 +124,8 @@ $transition-base: all $transition-duration-base $transition-timing-function-base
       }
     }
   }
-  @each $shape in rect, circle {
+
+  @each $shape in $const-toggle-shapes {
     &.shape-#{$shape} {
       border: map-get($map: $toggle-outer-border, $key: #{$shape});
       .outer {
@@ -132,11 +137,12 @@ $transition-base: all $transition-duration-base $transition-timing-function-base
       }
     }
   }
+
   .vd-input {
     display: none;
   }
 
-  @each $shape in rect, circle {
+  @each $shape in $const-toggle-shapes {
     &.shape-#{$shape} {
       .outer::after {
         width: map-get($map: $toggle-inner-width, $key: #{$shape});
@@ -154,8 +160,9 @@ $transition-base: all $transition-duration-base $transition-timing-function-base
   &:focus:hover {
     box-shadow: none;
   }
+
   &.checked {
-    @each $shape in rect, circle {
+    @each $shape in $const-toggle-shapes {
       &.shape-#{$shape} {
         .outer {
           border-color: $color-primary;
@@ -168,6 +175,7 @@ $transition-base: all $transition-duration-base $transition-timing-function-base
       }
     }
   }
+
   &.disabled {
     @each $genre in $const-genres {
       &.genre-#{$genre} {
@@ -181,12 +189,14 @@ $transition-base: all $transition-duration-base $transition-timing-function-base
       }
     }
   }
+
   .content {
     @include clear-baseline();
     font-size: $font-size-medium;
   }
+
   .outer {
-    @each $position in left, right {
+    @each $position in $const-toggle-positions {
       &.#{$position} {
         margin-#{$position}: $toggle-gutter;
       }
