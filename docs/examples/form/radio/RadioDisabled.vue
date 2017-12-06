@@ -3,6 +3,7 @@
     <!-- <DemoBoard v-for="board in 1"
                :key="board"
                :genre="board%2===1?'lite':'dark'"> -->
+      <p @click="disabled=!disabled" class="disableButton">禁用</p>
       <VdRadio v-for="item in 1"
                :key="item"
                :genre="item%2===1?'lite':'dark'"
@@ -31,3 +32,8 @@ export default class RadioBasic extends Vue {
   @Provide() disabled=true;
 }
 </script>
+<style>
+.disableButton{
+  cursor:pointer;
+}
+</style>

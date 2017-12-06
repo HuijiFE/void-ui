@@ -9,7 +9,7 @@
 为单选框绑定一个 checked 值
 <example-board :component="RadioBasic" :source="RadioBasicSource"></example-board>
 
-为单选框绑定一个 disabled 值
+`disabled`禁用一个单选框
 <example-board :component="RadioDisabled" :source="RadioDisabledSource"></example-board>
 
 <script>
