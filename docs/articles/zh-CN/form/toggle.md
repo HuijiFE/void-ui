@@ -32,13 +32,13 @@
 
 ## 所有属性
 
-> `*`表示默认值
+> 属性中加粗的值表示默认值
 
 | Property      | Intruction       | Type                    | Available Value  |
 | :------------ | :--------------- | :---------------------- | :--------------- |
 | value         | 开关状态         | `boolean|string|number` | **false**        |
 | trueValue     | 开关打开时绑定值 | `boolean|string|number` | **true**，---    |
-| trueValue     | 开关关闭时绑定值 | `boolean|string|number` | **true**，---    |
+| falseValue    | 开关关闭时绑定值 | `boolean|string|number` | **false**，---   |
 | disabled      | 是否禁用         | `boolean`               | **false**        |
 | shape         | 形状             | `string`                | **circle**, rect |
 | name          | name 属性        | `string`                | ---              |
