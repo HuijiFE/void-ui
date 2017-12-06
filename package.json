@@ -40,8 +40,8 @@
     "eslint": "eslint --ext .js src test/unit/specs test/e2e/specs",
     "tslint": "tslint -c tslint.json 'src/**/*.ts'",
     "lint": "npm run eslint && npm run tslint",
-    "build:lib": "npm run auto:controls && npm run auto:types && node build/build-lib.js",
-    "build:docs": "npm run auto:docs && node build/build-docs.js",
+    "build:lib": "node build/build-lib.js",
+    "build:docs": "node build/build-docs.js",
     "build": "npm run build:lib && npm run build:docs"
   },
   "dependencies": {
