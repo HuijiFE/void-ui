@@ -1,7 +1,9 @@
+
 /* Add padding to the top, force center the text vertically. */
 @mixin clear-baseline($level: 1) {
   padding-top: #{$level}px;
 }
+
 
 /*
 CSS Flexible Box Layout
@@ -22,9 +24,4 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-content
   align-items: $align;
   flex-wrap: $wrap;
   white-space: $wrap;
-}
-@mixin gen-transition-base($properties) {
-  transition-property: $properties;
-  transition-duration: $transition-duration-base;
-  transition-timing-function: $transition-timing-function-base;
 }
