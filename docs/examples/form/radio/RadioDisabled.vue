@@ -34,6 +34,7 @@ export default class RadioBasic extends Vue {
 </script>
 <style>
 .disableButton{
+  user-select: none;
   cursor:pointer;
 }
 </style>
