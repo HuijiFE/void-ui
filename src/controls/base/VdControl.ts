@@ -27,15 +27,15 @@ export class VdControl extends Vue {
 }
 
 @Component
-export class Void extends Vue {
+export class VdHub extends Vue {
   genre: ControlGenre = 'lite';
 }
 
 @Component
 export class VdStylableControl extends VdControl {
-  private static readonly globalVoid = new Void();
-  get $void(): Void {
-    return VdStylableControl.globalVoid;
+  private static readonly hub = new VdHub();
+  get $void(): VdHub {
+    return VdStylableControl.hub;
   }
 
   @Prop() genre: ControlGenre;
