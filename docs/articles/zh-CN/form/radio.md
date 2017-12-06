@@ -16,10 +16,17 @@
 
 ## 所有属性
 
-| Property    | Intruction   | Type      | Available Value    |
-| :---------- | :----------- | :-------- | :----------------- |
-| checked     | 单选框的状态 | `boolean` | **false**,**true** |
-| trueChecked | 单选框的状态 | `boolean` | **false**,**true** |
+| Property      | Intruction   | Type      | Available Value     |
+| :------------ | :----------- | :-------- | :------------------ |
+| checked       | 单选框的状态 | `boolean` | **true**，**false** |
+| trueChecked   | 已点击       | `boolean` | **true**，---       |
+| falseChecked  | 未点击       | `boolean` | **false**，---      |
+| disabled      | 是否禁用     | `boolean` | **true**，**false** |
+| trueDisabled  | 禁用         | `boolean` | **true**，---       |
+| falseDisabled | 不禁用       | `boolean` | **false**，---      |
+| genre         | 肤色         | `string`  | **lite**，**dark**  |
+| genre-lite    | 浅色         | `string`  | **lite**，---       |
+| genre-dark    | 深色         | `string`  | **dark**，---       |
 
 <script>
 
