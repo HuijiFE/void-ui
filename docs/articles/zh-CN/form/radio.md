@@ -3,16 +3,19 @@
 ## 基本用法
 
 ```html
-<example-board :component="RadioBasic"></example-board>
+<example-board :component="RadioBasic" :source="RadioBasicSource"></example-board>
 ```
 
-<script>
-import RadioBasic from 'docs/examples/form/RadioBasic';
+<example-board :component="RadioBasic" :source="RadioBasicSource"></example-board>
 
+<script>
+import RadioBasic from 'docs/examples/form/radio/radioBasic';
+import RadioBasicSource from 'docs/examples/form/radio/RadioBasic.txt';
 export default {
   data() {
     return {
       RadioBasic,
+      RadioBasicSource,
     }
   }
 }

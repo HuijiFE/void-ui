@@ -1,0 +1,31 @@
+<template>
+   <div>
+    <DemoBoard v-for="board in 1"
+               :key="board"
+               :genre="board%2===1?'lite':'dark'">
+      <VdRadio v-for="item in 1"
+               :key="item"
+               :genre="board%2===1?'lite':'dark'"
+               v-model="radioModelBasic"
+               :tag="item">选项{{item}}
+      </VdRadio>
+    </DemoBoard>
+  </div>
+</template>
+<script lang="ts">
+import {
+  Component,
+  Emit,
+  Inject,
+  Model,
+  Prop,
+  Provide,
+  Vue,
+  Watch,
+} from 'vue-property-decorator';
+@Component
+export default class RadioBasic extends Vue {
+  @Provide() radioModelBasic = 3;
+
+}
+</script>

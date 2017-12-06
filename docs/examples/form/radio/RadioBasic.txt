@@ -1,7 +1,7 @@
 <template>
-
+<VdRadio></VdRadio>
 </template>
-<script lang="ts">
+<script>
 import {
   Component,
   Emit,
@@ -10,11 +10,10 @@ import {
   Prop,
   Provide,
   Vue,
-  Watch,
+  Watch
 } from 'vue-property-decorator';
 @Component
-export default class RadioBasic extends Vue {
-
+export default class RadioBasic extents vue{
 
 }
 </script>
