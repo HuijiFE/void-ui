@@ -1,8 +1,155 @@
-.vd-button {
-  height: 32px;
-  padding-left: 16px;
-  padding-right: 16px;
-  color: white;
-  background-color: blue;
-  border: none;
+.#{$void}-button {
+  position: relative;
+  @include flex(row, center, center);
+  display: inline-flex;
+  white-space: nowrap;
+  border: $border-base;
+  border-radius: $border-radius-base;
+  user-select: none;
+  @include clear-baseline;
+
+  cursor: pointer;
+  &.disabled,
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  @each $size in $ss-sizes {
+    &.size-#{$size} {
+      font-size: map-get($map: $button-font-sizes, $key: $size);
+    }
+  }
+
+  .icon {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  &.skin {
+    // skin-fill
+    &-fill {
+      color: $color-white;
+      @each $tone in $ss-tones {
+        &.tone-#{$tone} {
+          background-color: map-get($map: $tone-colors, $key: $tone);
+          &:hover {
+            background-color: map-get($map: $tone-colors, $key: #{$tone}-lighten);
+          }
+          &.active,
+          &:active {
+            background-color: map-get($map: $tone-colors, $key: #{$tone}-darken);
+          }
+          &.disabled,
+          &[disabled] {
+            color: map-get($map: $genre-background-colors, $key: lite-disabled);
+            background-color: map-get(
+              $map: $genre-foreground-colors,
+              $key: lite-disabled
+            );
+          }
+        }
+      }
+    }
+    // skin-flat
+    &-flat {
+      background-color: transparent;
+      @each $tone in $ss-tones {
+        &.tone-#{$tone} {
+          color: map-get($map: $tone-colors, $key: $tone);
+          &:hover,
+          &.active,
+          &:active {
+            color: map-get($map: $tone-colors, $key: #{$tone}-lighten);
+          }
+        }
+      }
+      @each $genre in $ss-genres {
+        &.genre-#{$genre} {
+          &.disabled,
+          &[disabled] {
+            color: map-get($map: $genre-foreground-colors, $key: lite-disabled);
+          }
+        }
+      }
+    }
+    // skin-plain
+    &-plain {
+      @each $tone in $ss-tones {
+        &.tone-#{$tone} {
+          color: map-get($map: $tone-colors, $key: $tone);
+        }
+      }
+      @each $genre in $ss-genres {
+        &.genre-#{$genre} {
+          background-color: map-get($map: $genre-background-colors, $key: #{$genre});
+          &:hover,
+          &.active,
+          &:active {
+            background-color: map-get(
+              $map: $genre-background-colors,
+              $key: #{$genre}-hover
+            );
+          }
+        }
+      }
+      @each $genre in $ss-genres {
+        &.genre-#{$genre} {
+          &.disabled,
+          &[disabled] {
+            color: map-get($map: $genre-foreground-colors, $key: #{$genre}-disabled);
+            background-color: map-get(
+              $map: $genre-background-colors,
+              $key: #{$genre}-disabled
+            );
+          }
+        }
+      }
+    }
+    // skin-silk
+    &-silk {
+      background-color: transparent;
+      @each $tone in $ss-tones {
+        &.tone-#{$tone} {
+          color: map-get($map: $tone-colors, $key: $tone);
+          border-color: map-get($map: $tone-colors, $key: $tone);
+          &:hover,
+          &.active,
+          &:active {
+            color: map-get($map: $tone-colors, $key: #{$tone}-lighten);
+            border-color: map-get($map: $tone-colors, $key: #{tone}-lighten);
+          }
+        }
+      }
+      @each $genre in $ss-genres {
+        &.genre-#{$genre} {
+          &.disabled,
+          &[disabled] {
+            color: map-get($map: $genre-foreground-colors, $key: #{$genre}-disabled);
+            border-color: map-get(
+              $map: $genre-foreground-colors,
+              $key: #{$genre}-disabled
+            );
+          }
+        }
+      }
+    }
+  }
+
+  &.shape-rect {
+    @each $size in $ss-sizes {
+      &.size-#{$size} {
+        height: map-get($map: $button-rect-size, $key: $size);
+        $padding: map-get($map: $button-rect-paddings, $key: $size);
+        padding-left: $padding;
+        padding-right: $padding;
+        .icon::before {
+          width: map-get($map: $button-icon-sizes, $key: $size);
+        }
+        .icon + .content,
+        .content + .icon {
+          margin-left: map-get($map: $button-content-gutter, $key: $size);
+        }
+      }
+    }
+  }
 }

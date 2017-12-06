@@ -10,7 +10,7 @@ import {
 } from 'vue-property-decorator';
 import {
   ControlGenre,
-  ControlTheme,
+  ControlTone,
   ControlSkin,
   ControlSize,
   ControlShape,
@@ -41,9 +41,7 @@ export class VdStylableControl extends VdControl {
   @Prop() genre: ControlGenre;
 
   @Prop({ default: 'primary' })
-  theme: ControlTheme;
-
-  @Prop() plain: boolean;
+  tone: ControlTone;
 
   @Prop({ default: 'fill' })
   skin: ControlSkin;
@@ -57,8 +55,8 @@ export class VdStylableControl extends VdControl {
   get stylableClasses(): string[] {
     return [
       `genre-${this.genre || this.$void.genre}`,
-      `theme-${this.theme}`,
-      this.plain ? `skin-plain` : `skin-${this.skin}`,
+      `tone-${this.tone}`,
+      `skin-${this.skin}`,
       `size-${this.size}`,
       `shape-${this.shape}`,
     ];

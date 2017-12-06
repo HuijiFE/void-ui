@@ -17,11 +17,15 @@
     <i v-if="icon && iconPosition === 'right'"
        class="icon fa"
        :class="`fa-${icon}`"></i>
+    <input type="checkbox"
+           :value="model" />
+    <span>{{value}}</span>
   </a>
 
   <router-link v-else-if="to"
                class="vd-button"
-               :class="classes">
+               :class="classes"
+               :disabled="disabled">
     <i v-if="icon && iconPosition === 'left'"
        class="icon fa"
        :class="`fa-${icon}`"></i>
@@ -80,8 +84,6 @@ export default class VdButton extends VdStylableControl implements VdLoadingCont
 
   @Prop() loading: boolean;
 
-  @Prop() plain: boolean;
-
   @Prop() wide: boolean;
 
   @Prop() icon: string;
@@ -93,16 +95,17 @@ export default class VdButton extends VdStylableControl implements VdLoadingCont
 
   get classes(): ClassNames {
     return [
-      // `genre-${this.genre || VdStylableControl.GlobalGenre}`,
-      // `theme-${this.theme}`,
-      // this.plain ? `skin-plain` : `skin-${this.skin}`,
-      // `size-${this.size}`,
-      // `shape-${this.shape}`,
-      // {
-      //   loading: this.loading,
-      //   wide: this.wide,
-      // },
+      ...this.stylableClasses,
+      {
+        loading: this.loading,
+        wide: this.wide,
+      },
     ];
+  }
+
+  onClick() {
+    console.warn(this.componentName);
+    this.$emit('click');
   }
 }
 </script>

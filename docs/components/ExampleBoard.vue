@@ -10,7 +10,7 @@
     </div>
     <div v-if="source">
       <button class="show-button"
-              @click="showCode = !showCode">&lt;/&gt;</button>
+              @click="showCode = !showCode">查看代码</button>
     </div>
   </div>
 </template>
