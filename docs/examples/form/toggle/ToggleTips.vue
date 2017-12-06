@@ -1,13 +1,13 @@
 <template>
   <div>
-    <VdToggle v-model="toggle"
-              :contentStatus="true"
-              v-for="item in 2"
-              :key="item"
-              :position="item % 2 === 0 ? 'left' : 'right'">
+    <vd-toggle v-model="toggle"
+               :contentStatus="true"
+               v-for="item in 2"
+               :key="item"
+               :position="item % 2 === 0 ? 'left' : 'right'">
       <span slot="open">ON</span>
       <span slot="close">OFF</span>
-    </VdToggle>
+    </vd-toggle>
   </div>
 </template>
 

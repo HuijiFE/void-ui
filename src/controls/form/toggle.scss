@@ -1,0 +1,45 @@
+.#{$void}-toggle {
+  $ss-shapes-toggle: 'circle', 'rect';
+
+  $toggle-outer-width: 0.32rem;
+  $toggle-outer-height: 0.16rem;
+
+  $toggle-middle-height: 0.14rem;
+
+  $toggle-middle-margin: 0.02rem;
+  $toggle-middle-padding: 0.02rem;
+
+  $toggle-inner-width: 0.14rem;
+  $toggle-inner-height: 0.1rem;
+
+  @include flex(row, flex-start, center);
+  display: inline-flex;
+  position: relative;
+  font-size: $font-size-small;
+  user-select: none;
+  cursor: pointer;
+
+  .toggle-outer {
+    @include flex(row, flex-start, stretch);
+    width: $toggle-outer-width;
+    height: $toggle-outer-height;
+  }
+
+  .toggle-middle {
+    width: 100%;
+    background-color: $tone-primary;
+  }
+
+  &.shape {
+    &-rect {
+      .toggle-middle {
+      }
+      .toggle-inner {
+      }
+    }
+  }
+
+  .toggle-input {
+    display: none;
+  }
+}

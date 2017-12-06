@@ -24,13 +24,5 @@ import {
 } from 'vue-property-decorator';
 
 @Component
-export default class vdInput extends Vue {
-  private get classes() {
-    return [];
-  }
-}
+export default class VdInput extends Vue {}
 </script>
-
-<style>
-
-</style>
