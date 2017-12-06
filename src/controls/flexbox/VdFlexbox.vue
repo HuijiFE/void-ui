@@ -26,8 +26,7 @@ import {
 
 @Component
 export default class VdFlexboxbox extends Vue {
-  @Prop({ default: 'auto' })
-  flex: FlexboxFlex;
+  @Prop() flex: FlexboxFlex;
   @Prop() flexXsmall: FlexboxFlex;
   @Prop() flexSmall: FlexboxFlex;
   @Prop() flexMedium: FlexboxFlex;
@@ -51,8 +50,8 @@ export default class VdFlexboxbox extends Vue {
 
   private get classes() {
     return [
-      `flex-${this.flex}`,
       {
+        [`flex-${this.flex}`]: this.flex,
         [`flex-xsmall-${this.flexXsmall}`]: this.flexXsmall,
         [`flex-small-${this.flexSmall}`]: this.flexSmall,
         [`flex-medium-${this.flexMedium}`]: this.flexMedium,

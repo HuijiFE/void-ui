@@ -7,7 +7,7 @@
 .#{$void}-flexbox {
   display: flex;
   position: relative;
-  flex: initial;
+  flex: 1;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-content: flex-start;
@@ -83,12 +83,12 @@
     white-space: nowrap;
   }
 
-  $flexs: auto, initial;
+  $flex-presets: auto, initial, none;
   @mixin gen-flex($media) {
     &.flex {
-      @each $flex in $flexs {
-        &#{$media}-#{$flex} {
-          flex: $flex;
+      @each $preset in $flex-presets {
+        &#{$media}-#{$preset} {
+          flex: $preset;
         }
       }
       &#{$media}-33 {
