@@ -1,9 +1,7 @@
-
 /* Add padding to the top, force center the text vertically. */
 @mixin clear-baseline($level: 1) {
   padding-top: #{$level}px;
 }
-
 
 /*
 CSS Flexible Box Layout

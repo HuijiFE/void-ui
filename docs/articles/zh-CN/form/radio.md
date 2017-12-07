@@ -27,11 +27,11 @@
 | genre         | 肤色         | `string`  | **lite**，**dark**  |
 
 <script>
-
-import RadioBasic from 'docs/examples/form/radio/radioBasic';
+import RadioBasic from 'docs/examples/form/radio/RadioBasic';
 import RadioBasicSource from 'docs/examples/form/radio/RadioBasic.txt';
-import RadioDisabled from 'docs/examples/form/radio/radioDisabled';
+import RadioDisabled from 'docs/examples/form/radio/RadioDisabled';
 import RadioDisabledSource from 'docs/examples/form/radio/RadioDisabled.txt';
+
 export default {
   data() {
     return {

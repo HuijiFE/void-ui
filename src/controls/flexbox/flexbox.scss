@@ -59,7 +59,6 @@
       }
     }
   }
-
   // Align
   $aligns: (
     start: flex-start,
@@ -76,13 +75,11 @@
       }
     }
   }
-
   // Wrapped
   &.wrapped-false {
     flex-wrap: nowrap;
     white-space: nowrap;
   }
-
   $flex-presets: auto, initial, none;
   @mixin gen-flex($media) {
     &.flex {
@@ -93,6 +90,7 @@
       }
       &#{$media}-33 {
         min-width: 33.333333%;
+
         flex: 0 1 33.333333%;
       }
       &#{$media}-66 {
@@ -108,14 +106,12 @@
       }
     }
   }
-
   // Hidden
   @mixin gen-hidden($media) {
     &.hidden#{$media} {
       display: none;
     }
   }
-
   @mixin gen-all($media: '') {
     @if $media != '' {
       $media: -#{$media};
@@ -125,7 +121,6 @@
     @include gen-flex($media);
     @include gen-hidden($media);
   }
-
   @include gen-all();
   @include media-xlarge {
     @include gen-all('xlarge');

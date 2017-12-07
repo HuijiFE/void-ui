@@ -20,8 +20,10 @@ $animation-duration-7: 0.7s;
 $animation-duration-8: 0.8s;
 $animation-duration-9: 0.9s;
 $animation-duration-10: 1s;
+
 /*---------- Gutter ----------*/
 $radio-gutter: 0.04rem;
+
 /*---------- Radio ----------*/
 $button-rect-sizes: (
   small: 0.24rem,
@@ -34,10 +36,10 @@ $radio-inner-background: $color-white;
 $border-width-base: 1px;
 $border-base: $border-width-base solid transparent;
 $radio-margin: 0.16rem;
-
 .#{$void}-radio {
   @include flex(flex-start,center,center);
   display: inline-flex;
+
   height: map-get($map: $button-rect-sizes, $key: medium);
   cursor: pointer;
   user-select: none;
@@ -70,7 +72,6 @@ $radio-margin: 0.16rem;
     right: 0;
     margin: 0;
   }
-
   &.genre {
     @each $genre in $ss-genres {
       &-#{$genre} {

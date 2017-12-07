@@ -35,12 +35,18 @@ import {
 @Component
 export default class VdRadio extends Vue {
   @Prop() genre: string;
+
   @Prop([String, Boolean, Number])
   value: string | boolean | number;
+
   @Prop() tag: string;
+
   @Prop() checked: boolean;
+
   @Prop() disabled: boolean;
+
   @Prop() content: string;
+
   get classes() {
     return [
       `genre-${this.genre}`,
@@ -50,20 +56,24 @@ export default class VdRadio extends Vue {
       },
     ];
   }
+
   get model() {
     return this.value;
   }
+
   set model(value) {
     this.$emit('input', value);
   }
-  check(){
-    if(this.model!=this.tag){
-    this.model=this.tag;
+
+  check() {
+    if (this.model !== this.tag) {
+      this.model = this.tag;
     }
   }
-  created(){
-    if(this.checked){
-  this.check();
+
+  created() {
+    if (this.checked) {
+      this.check();
     }
   }
 }

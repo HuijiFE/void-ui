@@ -78,7 +78,6 @@
         }
       }
     }
-
     // shape-circle
     &-circle {
       .toggle-middle {
@@ -101,7 +100,6 @@
       }
     }
   }
-
   &.genre {
     @each $genre in $ss-genres {
       &-#{$genre} {
