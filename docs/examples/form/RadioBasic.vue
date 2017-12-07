@@ -1,7 +1,6 @@
 <template>
 
 </template>
-
 <script lang="ts">
 import {
   Component,
@@ -13,7 +12,9 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
-
 @Component
-export default class RadioBasic extends Vue {}
+export default class RadioBasic extends Vue {
+
+
+}
 </script>
