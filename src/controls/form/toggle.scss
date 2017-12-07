@@ -2,15 +2,18 @@
   $ss-shapes-toggle: 'circle', 'rect';
 
   $toggle-outer-width: 0.32rem;
-  $toggle-outer-height: 0.16rem;
+  $toggle-outer-height: 0.2rem;
 
-  $toggle-middle-height: 0.14rem;
-
-  $toggle-middle-margin: 0.02rem;
   $toggle-middle-padding: 0.02rem;
 
-  $toggle-inner-width: 0.14rem;
-  $toggle-inner-height: 0.1rem;
+  $toggle-rect-middle-width: 0.28rem;
+  $toggle-rect-middle-height: 0.14rem;
+  $toggle-rect-inner-width: 0.14rem;
+  $toggle-rect-inner-height: 0.1rem;
+
+  $toggle-circle-middle-width: 0.32rem;
+  $toggle-circle-middle-height: 0.16rem;
+  $toggle-circle-inner-size: 0.12rem;
 
   @include flex(row, flex-start, center);
   display: inline-flex;
@@ -19,27 +22,85 @@
   user-select: none;
   cursor: pointer;
 
+  .toggle-input {
+    display: none;
+  }
+
   .toggle-outer {
-    @include flex(row, flex-start, stretch);
+    @include flex(row, center, center);
     width: $toggle-outer-width;
     height: $toggle-outer-height;
   }
 
   .toggle-middle {
-    width: 100%;
+    @include flex(row, flex-start, center);
     background-color: $tone-primary;
+    padding: $toggle-middle-padding;
+  }
+
+  .toggle-inner {
+    @include flex(row, flex-start, center);
   }
 
   &.shape {
+    // shape-rect
     &-rect {
       .toggle-middle {
+        width: $toggle-rect-middle-width;
+        height: $toggle-rect-middle-height;
+        border-radius: $border-radius-base;
       }
       .toggle-inner {
+        width: $toggle-rect-inner-width;
+        height: $toggle-rect-inner-height;
+        border-radius: $border-radius-base;
+      }
+    }
+
+    // shape-circle
+    &-circle {
+      .toggle-middle {
+        width: $toggle-circle-middle-width;
+        height: $toggle-circle-middle-height;
+        border-radius: ($toggle-circle-middle-height / 2);
+      }
+      .toggle-inner {
+        width: $toggle-circle-inner-size;
+        height: $toggle-circle-inner-size;
+        border-radius: 50%;
       }
     }
   }
 
-  .toggle-input {
-    display: none;
+  &.genre {
+    @each $genre in $ss-genres {
+      &-#{$genre} {
+        color: map-get($map: $genre-foreground-colors, $key: $genre);
+        .toggle-middle {
+          background-color: map-get(
+            $map: $genre-foreground-colors,
+            $key: #{$genre}-disabled
+          );
+        }
+        .toggle-inner {
+          background-color: map-get($map: $genre-background-colors, $key: $genre);
+        }
+        &.onned {
+          .toggle-middle {
+            background-color: $tone-primary;
+          }
+        }
+        &.disabled,
+        &[disabled] {
+          color: map-get($map: $genre-foreground-colors, $key: #{$genre}-disabled);
+          .toggle-middle {
+            background-color: map-get(
+              $map: $genre-background-colors,
+              $key: #{$genre}-disabled
+            );
+          }
+        }
+      }
+    }
   }
 }

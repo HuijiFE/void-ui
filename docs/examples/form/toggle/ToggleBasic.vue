@@ -1,34 +1,43 @@
 <template>
   <vd-flexbox gutter="xsmall">
 
-    <vd-flexbox flex="auto">
+    <vd-flexbox gutter="xsmall">
       <vd-flexbox flex="100">
-        <VdToggle v-model="dataBoolean"></VdToggle>
+        <vd-toggle v-model="modelBoolean"></vd-toggle>
       </vd-flexbox>
       <vd-flexbox flex="100">
-        dataBoolean: {{dataBoolean}}
-      </vd-flexbox>
-    </vd-flexbox>
-
-    <vd-flexbox flex="auto">
-      <vd-flexbox flex="100">
-        <VdToggle v-model="dataString"
-                  value-on="on"
-                  value-off="off"></VdToggle>
-      </vd-flexbox>
-      <vd-flexbox flex="100">
-        dataString: {{dataString}}
+        modelBoolean: {{modelBoolean}}
       </vd-flexbox>
     </vd-flexbox>
 
-    <vd-flexbox flex="auto">
+    <vd-flexbox gutter="xsmall">
       <vd-flexbox flex="100">
-        <VdToggle v-model="dataNumber"
-                  :value-on="0"
-                  :value-off="1"></VdToggle>
+        <vd-toggle v-model="modelString"
+                   value-on="on"
+                   value-off="off"></vd-toggle>
       </vd-flexbox>
       <vd-flexbox flex="100">
-        dataNumber: {{dataNumber}}
+        modelString: {{modelString}}
+      </vd-flexbox>
+    </vd-flexbox>
+
+    <vd-flexbox gutter="xsmall">
+      <vd-flexbox flex="100">
+        <vd-toggle v-model="modelNumber"
+                   :value-on="1"
+                   :value-off="0"></vd-toggle>
+      </vd-flexbox>
+      <vd-flexbox flex="100">
+        modelNumber: {{modelNumber}}
+      </vd-flexbox>
+    </vd-flexbox>
+
+    <vd-flexbox gutter="xsmall">
+      <vd-flexbox flex="100">
+        <vd-toggle disabled="true"></vd-toggle>
+      </vd-flexbox>
+      <vd-flexbox flex="100">
+        disabled
       </vd-flexbox>
     </vd-flexbox>
 
@@ -49,8 +58,8 @@ import {
 
 @Component
 export default class ToggleBasic extends Vue {
-  dataBoolean = true;
-  dataString = 'off';
-  dataNumber = 0;
+  modelBoolean = true;
+  modelString = 'on';
+  modelNumber = 1;
 }
 </script>

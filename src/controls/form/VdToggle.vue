@@ -77,6 +77,7 @@ export default class VdToggle extends VdStylableControl {
       this.genre ? `genre-${this.genre}` : `genre-${this.$void.genre}`,
       `shape-${this.shape}`,
       {
+        disabled: this.disabled,
         ['onned']: this.onned,
       },
     ];
