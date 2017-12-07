@@ -1,3 +1,33 @@
 /*----------  定义常量  ----------*/
 
 $const-genres: 'lite', 'dark';
+
+/*----------  定义mixin  ----------*/
+
+@mixin global {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/*----------  组件代码  ----------*/
+
+.#{$void}-message-box {
+  .modal-mask {
+    @include global;
+    z-index: 1001;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .body {
+    width: 400px;
+    height: 300px;
+    background: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1002;
+  }
+}

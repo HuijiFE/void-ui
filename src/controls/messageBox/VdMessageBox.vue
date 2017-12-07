@@ -1,9 +1,11 @@
 <template>
-  <div class="vd-message-box-modal">
-    <div class="vd-message-box">
-      <div class="vd-message-title">{{title}}</div>
-      <div class="vd-message-content">{{content}}</div>
-      <div class="vd-message-btns">
+  <div class="vd-message-box">
+    <div class="modal-mask"
+         @click="maskClick"></div>
+    <div class="body">
+      <div class="title">{{title}}</div>
+      <div class="content">{{content}}</div>
+      <div class="btns">
         取消按钮
       </div>
     </div>
@@ -24,9 +26,22 @@ import {
 // import vdButton from '../button/VdBotton.vue'
 
 @Component
-export default class vdMessageBox extends Vue {
+export default class VdMessageBox extends Vue {
   title = '';
   content = '';
+
+  @Prop({ default: true })
+  maskCloable: boolean;
+
+  maskClick() {
+    if (this.maskCloable) {
+      this.close();
+    }
+  }
+
+  close() {
+    console.log('messagebox已关闭');
+  }
 }
 </script>
 

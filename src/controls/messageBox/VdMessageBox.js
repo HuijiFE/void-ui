@@ -5,7 +5,7 @@ const msgBox = options => {
   const VdMessageBoxConstructor = Vue.extend(VdMessageBox);
 
   const VdMessageBoxComponent = new VdMessageBoxConstructor({
-    el: document.createComment('div'),
+    el: document.createElement('div'),
     data: options,
   });
 

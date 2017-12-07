@@ -64,4 +64,14 @@ export const zhCN: DocConfig[] = [
       },
     ],
   },
+  {
+    name: 'message 消息提示',
+    children: [
+      {
+        name: 'messageBox 弹框',
+        path: 'messagebox',
+        fileName: 'message/messageBox',
+      },
+    ],
+  },
 ];

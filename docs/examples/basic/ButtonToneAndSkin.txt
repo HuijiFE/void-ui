@@ -3,18 +3,14 @@
     <vd-flexbox v-for="skin in ['fill', 'flat', 'plain', 'silk']"
                 :key="skin"
                 gutter="xsmall"
-                flex="25"
-                flex-medium="50"
-                flex-small="100">
-      <vd-flexbox flex="100"
-                  v-for="tone in ['primary', 'secondary', 'success', 'warning', 'danger']"
-                  :key="tone">
+                flex="100">
+      <vd-flexbox justify="around">
+        <vd-button v-for="tone in ['primary', 'secondary', 'success', 'warning', 'danger']"
+                   :key="tone"
+                   :skin="skin"
+                   :tone="tone">{{skin}} {{tone}}</vd-button>
         <vd-button :skin="skin"
-                   :theme="tone">{{skin}} {{tone}}</vd-button>
-      </vd-flexbox>
-      <vd-flexbox flex="100">
-        <vd-button :skin="skin"
-                   :disabled="true">{{skin}} disabled</vd-button>
+                   disabled>{{skin}} disabled</vd-button>
       </vd-flexbox>
     </vd-flexbox>
   </vd-flexbox>
