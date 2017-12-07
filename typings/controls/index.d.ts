@@ -3,3 +3,4 @@
 export * from './base';
 export * from './button';
 export * from './flexbox';
+export * from './form';

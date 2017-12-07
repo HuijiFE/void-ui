@@ -1,10 +1,14 @@
 <template>
-  <div>
-    <VdToggle v-for="i in 4"
-              :key="i"
-              v-model="toggle"
-              :shape="i % 2 === 1 ? 'circle' : 'rect'"></VdToggle>
-  </div>
+  <vd-flexbox gutter="xsmall">
+    <vd-flexbox>
+      <vd-toggle v-model="isOn"
+                 shape="rect"></vd-toggle>
+    </vd-flexbox>
+    <vd-flexbox>
+      <vd-toggle v-model="isOn"
+                 shape="circle"></vd-toggle>
+    </vd-flexbox>
+  </vd-flexbox>
 </template>
 
 <script lang="ts">
@@ -12,6 +16,6 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class ToggleBasic extends Vue {
-  toggle = true;
+  isOn = true;
 }
 </script>

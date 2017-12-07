@@ -8,17 +8,22 @@
 
 ## 基础用法
 
-`flex`属性值设置一个 flexbox 占其父 flexbox 的宽度百分比。
+当不设置 `flex` 属性的值时，元素会平均分配父容器宽度。相当于 `flex: 1 1 0%;`
+
+`flex="auto"` flexbox 会根据自身的宽度与高度来确定尺寸，但是会自行伸长以吸收父容器中额外的
+自由空间，也会缩短至自身最小尺寸以适应父容器。
+
+`flex="initial"` flexbox 会根据自身宽高设置尺寸。它会缩短自身以适应父容器，但不会伸长并吸
+收父容器中的额外自由空间来适应容器。
+
+`flex="none"` flexbox 会根据自身宽高来设置尺寸。它是完全非弹性的：既不会缩短，也不会伸长来
+适应父容器。
+
+<example-board :component="FlexboxPreset" :source="FlexboxPresetSource"></example-board>
+
+`flex` 属性使用具体的值，设置一个 flexbox 占其父 flexbox 的宽度百分比。
 
 <example-board :component="FlexboxBasic" :source="FlexboxBasicSource"></example-board>
-
-`flex="auto"`（默认值）flexbox 会平均分配父 flexbox 的剩余宽度
-
-<example-board :component="FlexboxAuto" :source="FlexboxAutoSource"></example-board>
-
-`flex="initial"` flexbox 的宽度由其内容所撑起。
-
-<example-board :component="FlexboxInitial" :source="FlexboxInitialSource"></example-board>
 
 ## 对齐
 
@@ -61,10 +66,8 @@
 <script>
 import FlexboxBasic from 'docs/examples/layout/FlexboxBasic';
 import FlexboxBasicSource from 'docs/examples/layout/FlexboxBasic.txt';
-import FlexboxAuto from 'docs/examples/layout/FlexboxAuto';
-import FlexboxAutoSource from 'docs/examples/layout/FlexboxAuto.txt';
-import FlexboxInitial from 'docs/examples/layout/FlexboxInitial';
-import FlexboxInitialSource from 'docs/examples/layout/FlexboxInitial.txt';
+import FlexboxPreset from 'docs/examples/layout/FlexboxPreset';
+import FlexboxPresetSource from 'docs/examples/layout/FlexboxPreset.txt';
 import FlexboxJustify from 'docs/examples/layout/FlexboxJustify';
 import FlexboxJustifySource from 'docs/examples/layout/FlexboxJustify.txt';
 import FlexboxAlign from 'docs/examples/layout/FlexboxAlign';
@@ -77,10 +80,8 @@ export default {
     return {
       FlexboxBasic,
       FlexboxBasicSource,
-      FlexboxAuto,
-      FlexboxAutoSource,
-      FlexboxInitial,
-      FlexboxInitialSource,
+      FlexboxPreset,
+      FlexboxPresetSource,
       FlexboxJustify,
       FlexboxJustifySource,
       FlexboxAlign,

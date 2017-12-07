@@ -83,6 +83,10 @@ function genNavRoutes(language: string): RouteConfig[] {
       },
       children: genDocRoutes(language, language === 'zh-CN' ? zhCN : enUS),
     },
+    {
+      path: `/${language}/test`,
+      component: pages.Test,
+    },
   ];
 }
 

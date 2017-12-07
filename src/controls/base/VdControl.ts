@@ -52,8 +52,11 @@ export class VdStylableControl extends VdControl {
   @Prop({ default: 'rect' })
   shape: ControlShape;
 
-  get stylableClasses(): string[] {
+  get stylableClasses(): ClassNames {
     return [
+      {
+        disabled: this.disabled !== undefined,
+      },
       `genre-${this.genre || this.$void.genre}`,
       `tone-${this.tone}`,
       `skin-${this.skin}`,
