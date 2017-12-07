@@ -25,8 +25,6 @@
 | trueDisabled  | 禁用         | `boolean` | **true**，---       |
 | falseDisabled | 不禁用       | `boolean` | **false**，---      |
 | genre         | 肤色         | `string`  | **lite**，**dark**  |
-| genre-lite    | 浅色         | `string`  | **lite**，---       |
-| genre-dark    | 深色         | `string`  | **dark**，---       |
 
 <script>
 
