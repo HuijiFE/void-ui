@@ -42,3 +42,5 @@ declare module '*.styl' {
   const content: any;
   export default content;
 }
+
+declare type ClassNames = Array<string | any>;

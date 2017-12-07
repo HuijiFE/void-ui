@@ -27,9 +27,13 @@
     "url": "https://github.com/HuijiFE/void-ui.git"
   },
   "scripts": {
-    "bootstrap": "npm i || npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver",
+    "bootstrap": "npm i || npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver || npm rebuild node-sass || npm i",
+    "auto:lib": "node auto/lib.js",
+    "auto:types": "node auto/types.js",
+    "auto:docs": "node auto/docs.js",
+    "auto": "npm run auto:lib && npm run auto:types && npm run auto:docs",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.config.development.js",
-    "start": "npm run dev",
+    "start": "npm run auto && npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
@@ -80,6 +84,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
+    "glob": "^7.1.2",
     "highlight.js": "^9.12.0",
     "html-webpack-plugin": "^2.30.1",
     "jest": "^21.2.0",

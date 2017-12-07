@@ -1,4 +1,4 @@
-import { PluginFunction } from 'vue/types/plugin';
+import { PluginFunction, PluginObject } from 'vue/types/plugin';
 import { Vue as _Vue } from 'vue/types/vue';
 
 import VdFlexbox from 'src/controls/flexbox/VdFlexbox.vue';
@@ -20,8 +20,7 @@ const allControls = {
 };
 
 const install: PluginFunction<any> = function(Vue, options = {}) {
-  Object.entries(allControls).map(([name, control]) => {
-    console.warn(`${name}: ${control}`);
+  Object.entries(controls).map(([name, control]) => {
     Vue.component(name, control);
   });
 };
@@ -30,4 +29,8 @@ if (typeof window !== undefined && (window as any).Vue) {
   (window as any).Vue.use({ install });
 }
 
-export default install;
+const VoidUI: PluginObject<any> = {
+  install,
+};
+
+export default VoidUI;

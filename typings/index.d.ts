@@ -1,4 +1,5 @@
-export * from './void-ui';
+import VoidUI from '../src/index';
 
-import * as VoidUi from './void-ui';
-export default VoidUi;
+export * from './controls';
+
+export default VoidUI;

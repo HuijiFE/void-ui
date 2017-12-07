@@ -5,6 +5,7 @@
 
     <span class="nav-separator"></span>
 
+    <genre-switch></genre-switch>
     <router-link class="nav-item"
                  :to="`/${language}/documentation`">Documenation</router-link>
     <router-link class="nav-item"
@@ -28,15 +29,22 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
+import GenreSwitch from './GenreSwitch.vue';
 
-@Component
+@Component({
+  components: {
+    GenreSwitch,
+  },
+})
 export default class MainNav extends Vue {
   get language(): string {
     return this.$route.path.startsWith('/zh-CN') ? 'zh-CN' : 'en-US';
   }
 
   setLanguage(targetLanguage: string) {
-    if (this.language === targetLanguage) return;
+    if (this.language === targetLanguage) {
+      return;
+    }
     this.$router.push(this.$route.path.replace(this.language, targetLanguage));
   }
 }

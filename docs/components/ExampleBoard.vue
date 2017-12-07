@@ -1,6 +1,7 @@
 <template>
-  <div class="demo-board">
-    <div class="demo">
+  <div class="example-board">
+    <div v-if="component"
+         class="example">
       <component :is="component"></component>
     </div>
     <div v-if="source && showCode"
@@ -9,7 +10,7 @@
     </div>
     <div v-if="source">
       <button class="show-button"
-              @click="showCode = !showCode">&lt;/&gt;</button>
+              @click="showCode = !showCode">查看代码</button>
     </div>
   </div>
 </template>
@@ -38,7 +39,9 @@ export default class DemoBoard extends Vue {
   @Prop() label: string;
   @Prop() description: string;
 
-  @Prop({ default: () => {} })
+  @Prop({
+    default: () => ({}),
+  })
   component: any;
 
   @Prop({ default: 'html' })

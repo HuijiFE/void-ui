@@ -26,8 +26,9 @@
     "paths": {
       "src/*": ["./src/*"],
       "docs/*": ["./docs/*"],
+      "typings": ["./typings"],
       "void-ui": ["./src/index"],
-      "void-ui/style": ["./src/index"]
+      "void-ui/style": ["./src/index.scss"]
     }
   },
   "exclude": ["node_modules"]

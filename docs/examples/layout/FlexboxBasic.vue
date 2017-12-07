@@ -1,5 +1,6 @@
 <template>
   <vd-flexbox gutter="xsmall">
+
     <vd-flexbox flex="5">
       <div class="layout-content">5</div>
     </vd-flexbox>
@@ -47,6 +48,7 @@
     <vd-flexbox flex="66">
       <div class="layout-content">66</div>
     </vd-flexbox>
+
   </vd-flexbox>
 </template>
 

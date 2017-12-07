@@ -50,6 +50,7 @@ $gutter-sizes: (
 
 $ss-genres:   'lite', 'dark';
 $ss-themes:   'primary', 'success', 'warning', 'danger', 'secondary';
+$ss-tones:   'primary', 'secondary', 'success', 'warning', 'danger';
 $ss-skins:    'fill', 'flat', 'plain', 'silk';
 $ss-shapes:    'rect', 'square', 'circle';
 $ss-sizes:     'small', 'medium', 'large';
@@ -62,7 +63,7 @@ $lite-foreground-disabled:  #bbb;
 $lite-secondary:            #888;
 $lite-background:           #fff;
 $lite-background-card:      #fff;
-$lite-background-disabled:  transparent;
+$lite-background-disabled:  #eee;
 $lite-background-hover:     #eee;
 $lite-border:               #eee;
 $lite-border-interative:    #888;
@@ -72,7 +73,7 @@ $dark-foreground-disabled:  #777;
 $dark-secondary:            #888;
 $dark-background:           #333;
 $dark-background-card:      #3e3e3e;
-$dark-background-disabled:  transparent;
+$dark-background-disabled:  #4e4e4e;
 $dark-background-hover:     #4e4e4e;
 $dark-border:               #4e4e4e;
 $dark-border-interative:    #ccc;
@@ -120,23 +121,23 @@ $color-primary:             #00abd0;
 $color-primary-lighten:     #00bedb;
 $color-primary-lightener:   #34d2e9;
 
-$color-danger-darkener:     #f16c00;
-$color-danger-darken:       #fc7a00;
-$color-danger:              #ff9100;
-$color-danger-lighten:      #ffaa00;
-$color-danger-lightener:    #ffc017;
+$color-success-darkener:    #1da63d;
+$color-success-darken:      #21bd45;
+$color-success:             #24cf4c;
+$color-success-lighten:     #2cdb55;
+$color-success-lightener:   #46eb6d;
 
-$color-warning-darkener:    #f16c00;
-$color-warning-darken:      #fc7a00;
-$color-warning:             #ff9100;
-$color-warning-lighten:     #ffaa00;
-$color-warning-lightener:   #ffc017;
+$color-warning-darkener:    #ffaa00;
+$color-warning-darken:      #ffbb00;
+$color-warning:             #ffcc00;
+$color-warning-lighten:     #ffdd33;
+$color-warning-lightener:   #ffee44;
 
-$color-success-darkener:    #2a9a2f;
-$color-success-darken:      #42a546;
-$color-success:             #4caf50;
-$color-success-lighten:     #54bf58;
-$color-success-lightener:   #65d669;
+$color-danger-darkener:     #cc2828;
+$color-danger-darken:       #e62d2d;
+$color-danger:              #ff3333;
+$color-danger-lighten:      #ff4d4d;
+$color-danger-lightener:    #ff6666;
 
 $color-secondary-darkener:  #888;
 $color-secondary-darken:    #999;
@@ -174,6 +175,118 @@ $theme-colors: (
   secondary:           $color-secondary,
   secondary-lighten:   $color-secondary-lighten,
   secondary-lightener: $color-secondary-lightener,
+);
+
+$tone-primary-darkener:    #0080b0;
+$tone-primary-darken:      #0098c2;
+$tone-primary:             #00abd0;
+$tone-primary-lighten:     #00bedb;
+$tone-primary-lightener:   #34d2e9;
+
+$tone-success-darkener:    #1da63d;
+$tone-success-darken:      #21bd45;
+$tone-success:             #24cf4c;
+$tone-success-lighten:     #2cdb55;
+$tone-success-lightener:   #46eb6d;
+
+$tone-warning-darkener:    #ffaa00;
+$tone-warning-darken:      #ffbb00;
+$tone-warning:             #ffcc00;
+$tone-warning-lighten:     #ffdd33;
+$tone-warning-lightener:   #ffee44;
+
+$tone-danger-darkener:     #cc2828;
+$tone-danger-darken:       #e62d2d;
+$tone-danger:              #ff3333;
+$tone-danger-lighten:      #ff4d4d;
+$tone-danger-lightener:    #ff6666;
+
+$tone-secondary-darkener:  #888;
+$tone-secondary-darken:    #999;
+$tone-secondary:           #aaa;
+$tone-secondary-lighten:   #bbb;
+$tone-secondary-lightener: #ccc;
+
+$tone-colors: (
+  primary-darkener:    $tone-primary-darkener,
+  primary-darken:      $tone-primary-darken,
+  primary:             $tone-primary,
+  primary-lighten:     $tone-primary-lighten,
+  primary-lightenner:  $tone-primary-lightener,
+
+  success-darkener:    $tone-success-darkener,
+  success-darken:      $tone-success-darken,
+  success:             $tone-success,
+  success-lighten:     $tone-success-lighten,
+  success-lightener:   $tone-success-lightener,
+
+  warning-darkener:    $tone-warning-darkener,
+  warning-darken:      $tone-warning-darken,
+  warning:             $tone-warning,
+  warning-lighten:     $tone-warning-lighten,
+  warning-lightener:   $tone-warning-lightener,
+
+  danger-darkener:    $tone-danger-darkener,
+  danger-darken:      $tone-danger-darken,
+  danger:             $tone-danger,
+  danger-lighten:     $tone-danger-lighten,
+  danger-lightener:   $tone-danger-lightener,
+
+  secondary-darkener:  $tone-secondary-darkener,
+  secondary-darken:    $tone-secondary-darken,
+  secondary:           $tone-secondary,
+  secondary-lighten:   $tone-secondary-lighten,
+  secondary-lightener: $tone-secondary-lightener,
+);
+
+$genre-lite-foreground-emphasize:   #222222;
+$genre-lite-foreground-normal:      #333333;
+$genre-lite-foreground-secondary:   #888888;
+$genre-lite-foreground-placeholder: #999999;
+$genre-lite-foreground-disabled:    #bbbbbb;
+$genre-lite-background:             #ffffff;
+$genre-lite-background-high:        #fafafa;
+$genre-lite-background-higher:      #f5f5f5;
+$genre-lite-background-hover:       #eeeeee;
+$genre-lite-background-disabled:    #efefef;
+
+$genre-dark-foreground-emphasize:   #f5f5f5;
+$genre-dark-foreground-normal:      #eeeeee;
+$genre-dark-foreground-secondary:   #aaaaaa;
+$genre-dark-foreground-placeholder: #999999;
+$genre-dark-foreground-disabled:    #888888;
+$genre-dark-background:             #333333;
+$genre-dark-background-high:        #383838;
+$genre-dark-background-higher:      #3e3e3e;
+$genre-dark-background-hover:       #4e4e4e;
+$genre-dark-background-disabled:    #555555;
+
+$genre-foreground-colors: (
+  lite-emphasize:   $genre-lite-foreground-emphasize,
+  lite-normal:      $genre-lite-foreground-normal,
+  lite-secondary:   $genre-lite-foreground-secondary,
+  lite-placeholder: $genre-lite-foreground-placeholder,
+  lite-disabled:    $genre-lite-foreground-disabled,
+
+  dark-emphasize:   $genre-dark-foreground-emphasize,
+  dark-normal:      $genre-dark-foreground-normal,
+  dark-secondary:   $genre-dark-foreground-secondary,
+  dark-placeholder: $genre-dark-foreground-placeholder,
+  dark-disabled:    $genre-dark-foreground-disabled,
+);
+
+$genre-background-colors: (
+  lite:             $genre-lite-background,
+  lite-high:        $genre-lite-background-high,
+  lite-higher:      $genre-lite-background-higher,
+  lite-hover:       $genre-lite-background-hover,
+  lite-disabled:    $genre-lite-background-disabled,
+
+  dark:             $genre-dark-background,
+  dark-high:        $genre-dark-background-high,
+  dark-higher:      $genre-dark-background-higher,
+  dark-hover:       $genre-dark-background-hover,
+  dark-disabled:    $genre-dark-background-disabled,
 );
 
 
@@ -237,6 +350,45 @@ $article-list-margin: 0.8em 0;
 $article-listitem-margin: 0.5em 0;
 
 
+/*----------  Button  ----------*/
+
+$button-font-sizes: (
+  small:    0.12rem,
+  medium:   0.14rem,
+  large:    0.18rem,
+);
+$button-icon-sizes: (
+  small:    0.10rem,
+  medium:   0.12rem,
+  large:    0.16rem,
+);
+$button-content-gutter: (
+  small:    0.06rem,
+  medium:   0.08rem,
+  large:    0.12rem,
+);
+
+$button-rect-size: (
+  small:    0.24rem,
+  medium:   0.32rem,
+  large:    0.40rem,
+);
+$button-rect-paddings: (
+  small:    0.12rem,
+  medium:   0.16rem,
+  large:    0.24rem,
+);
+
+$button-square-sizes: (
+  small:    0.40rem,
+  medium:   0.48rem,
+  large:    0.56rem,
+);
+$button-circle-sizes: (
+  small:    0.42rem,
+  medium:   0.52rem,
+  large:    0.60rem,
+);
 
 
 /*----------  Score  ----------*/
