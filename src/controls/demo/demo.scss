@@ -1,0 +1,13 @@
+.#{$void}-demo-board {
+  width: 100%;
+  padding: 0.32rem;
+  border-radius: 8px;
+  &.genre {
+    @each $genre in $ss-genres {
+      &-#{$genre} {
+        color: map-get($map: $genre-foreground, $key: $genre);
+        background-color: map-get($map: $genre-background, $key: $genre);
+      }
+    }
+  }
+}
