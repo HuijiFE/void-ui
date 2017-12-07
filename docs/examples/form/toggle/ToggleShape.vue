@@ -2,11 +2,11 @@
   <vd-flexbox gutter="xsmall">
     <vd-flexbox>
       <vd-toggle v-model="isOn"
-                 shape="rect">rect</vd-toggle>
+                 shape="rect"></vd-toggle>
     </vd-flexbox>
     <vd-flexbox>
       <vd-toggle v-model="isOn"
-                 shape="circle">circle</vd-toggle>
+                 shape="circle"></vd-toggle>
     </vd-flexbox>
   </vd-flexbox>
 </template>

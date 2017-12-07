@@ -36,7 +36,11 @@ import {
 import { VdStylableControl } from 'src/controls/base/VdControl';
 import { ToggleValue } from 'typings';
 
-@Component
+@Component({
+  model: {
+    event: 'change',
+  },
+})
 export default class VdToggle extends VdStylableControl {
   @Prop() id: string;
   @Prop() name: string;
@@ -47,7 +51,8 @@ export default class VdToggle extends VdStylableControl {
   @Prop({ default: false })
   valueOff: ToggleValue;
 
-  @Model('change') value: ToggleValue;
+  @Prop({ required: true })
+  value: ToggleValue;
 
   get model(): ToggleValue {
     return this.value;
@@ -61,7 +66,6 @@ export default class VdToggle extends VdStylableControl {
   }
 
   @Prop() contentOn: string;
-
   @Prop() contentOff: string;
 
   get shouldShowContent(): boolean {
