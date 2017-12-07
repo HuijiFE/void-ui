@@ -64,4 +64,14 @@ export const zhCN: DocConfig[] = [
       },
     ],
   },
+  {
+    name: '其他',
+    children: [
+      {
+        name: '分数',
+        path: 'score',
+        fileName: 'other/score',
+      },
+    ],
+  },
 ];
