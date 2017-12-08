@@ -33,6 +33,7 @@ export class VdHub extends Vue {
 
 @Component
 export class VdStylableControl extends VdControl {
+  // single instance for state management
   private static readonly hub = new VdHub();
   get $void(): VdHub {
     return VdStylableControl.hub;
@@ -55,7 +56,7 @@ export class VdStylableControl extends VdControl {
   get stylableClasses(): ClassNames {
     return [
       {
-        disabled: this.disabled !== undefined,
+        disabled: this.disabled,
       },
       `genre-${this.genre || this.$void.genre}`,
       `tone-${this.tone}`,
