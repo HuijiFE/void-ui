@@ -17,26 +17,27 @@ import {
 } from 'typings';
 
 @Component
+export class VdControl extends Vue {
+  get componentName(): string | undefined {
+    return this.$options.name;
+  }
+
+  // !!!Important!!!
+  @Prop() disabled: boolean;
+}
+
+@Component
 export class VdHub extends Vue {
   genre: ControlGenre = 'lite';
 }
 
 @Component
-export class VdControl extends Vue {
-  get componentName(): string | undefined {
-    return this.$options.name;
-  }
+export class VdStylableControl extends VdControl {
   // single instance for state management
   private static readonly hub = new VdHub();
   get $void(): VdHub {
-    return VdControl.hub;
+    return VdStylableControl.hub;
   }
-}
-
-@Component
-export class VdStylableControl extends VdControl {
-  // !!!Important!!!
-  @Prop() disabled: boolean;
 
   @Prop() genre: ControlGenre;
 
