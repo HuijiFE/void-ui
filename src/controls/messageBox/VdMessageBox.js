@@ -1,15 +1,42 @@
-import VdMessageBox from './VdMessageBox.vue';
+import VdMessageBoxConstructor from './VdMessageBox.vue';
 import Vue, { VNode } from 'vue';
 
 const msgBox = options => {
-  const VdMessageBoxConstructor = Vue.extend(VdMessageBox);
+  // const VdMessageBoxComponent = Vue.extend(VdMessageBoxConstructor);
 
-  const VdMessageBoxComponent = new VdMessageBoxConstructor({
-    el: document.createElement('div'),
-    data: options,
+  // const VdMessageBoxVm = new VdMessageBoxComponent({
+  //   el: document.createElement('div'),
+  //   data: options,
+  // });
+
+  // document.body.appendChild(VdMessageBoxVm.$el);
+
+  // // 监听关闭事件
+  // VdMessageBoxVm.$on('close', () => {
+  //   document.body.removeChild(VdMessageBoxVm.$el);
+  // });
+
+  return new Promise((resolve, reject) => {
+    const VdMessageBoxVm = new Vue({
+      // el: document.createElement('div'),
+      render: h => {
+        return h(VdMessageBoxConstructor, {
+          on: {
+            confirm($el, fn) {
+              $el.remove();
+              resolve(fn);
+            },
+            cancel($el, fn) {
+              $el.remove();
+              reject(fn);
+            },
+          },
+        });
+      },
+    }).$mount(document.createElement('div'));
+
+    document.body.appendChild(VdMessageBoxVm.$el);
   });
-
-  document.body.appendChild(VdMessageBoxComponent.$el);
 };
 
 export default msgBox;

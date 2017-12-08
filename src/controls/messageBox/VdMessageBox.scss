@@ -1,33 +1,77 @@
 /*----------  定义常量  ----------*/
 
 $const-genres: 'lite', 'dark';
-
+$msg: 'message-box';
 /*----------  定义mixin  ----------*/
-
-@mixin global {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
 
 /*----------  组件代码  ----------*/
 
 .#{$void}-message-box {
+  $message-box-width: 4.74rem;
+  $message-box-padding: 0.16rem;
+  $message-box-title-font-size: 0.14rem;
+  $message-box-title-font-weight: bold;
+  $message-box-content-font-size: 0.12rem;
+  $message-box-content-padding-top: 0.16rem;
+  $message-box-content-padding-bottom: 0.16rem;
+
+  $message-box-icon-size: 0.24rem;
+
+  $message-box-backgrounds: (
+    dark: #4e4e4e,
+    lite: #ffffff
+  );
+
+  @mixin global {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
   .modal-mask {
     @include global;
     z-index: 1001;
     background-color: rgba(0, 0, 0, 0.5);
   }
 
-  .body {
-    width: 400px;
-    height: 300px;
-    background: #ffffff;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1002;
+  &.genre {
+    @each $genre in $ss-genres {
+      &-#{$genre} {
+        .message-box {
+          background-color: map-get($map: $message-box-backgrounds, $key: $genre);
+          width: $message-box-width;
+          padding: $message-box-padding;
+          border-radius: $border-radius-base;
+          position: fixed;
+          left: 50%;
+          top: 50%;
+          z-index: 1002;
+          transform: translate(-50%, -50%);
+        }
+        .header {
+          font-size: $message-box-title-font-size;
+          font-weight: $message-box-title-font-weight;
+        }
+        .body {
+          font-size: $message-box-content-font-size;
+          padding: $message-box-content-padding-top 0;
+        }
+        .footer {
+          text-align: right;
+        }
+      }
+    }
   }
+
+  // .body {
+  //   width: $message-box-width;
+  //   // height: 300px;
+  //   background: #ffffff;
+  //   position: fixed;
+  //   top: 100px;
+  //   left: 400px;
+  //   z-index: 1002;
+  // }
 }
