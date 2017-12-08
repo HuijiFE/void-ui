@@ -415,19 +415,29 @@ $score-colors: (
   8: $color-score-4,
   9: $color-score-4,
 );
-
+// $score-inner-heights: (
+//   0: $score-height,
+//   1: $score-height - (0.03rem * 1),
+//   2: $score-height - (0.03rem * 2),
+//   3: $score-height - (0.03rem * 3),
+//   4: $score-height - (0.03rem * 4),
+//   5: $score-height - (0.03rem * 5),
+//   6: $score-height - (0.03rem * 6),
+//   7: $score-height - (0.03rem * 7),
+//   8: $score-height - (0.03rem * 8),
+//   9: $score-height - (0.03rem * 9),
+// );
 $score-inner-heights: (
-  0: $score-height,
-  1: $score-height - (0.03rem * 1),
-  2: $score-height - (0.03rem * 2),
-  3: $score-height - (0.03rem * 3),
-  4: $score-height - (0.03rem * 4),
-  5: $score-height - (0.03rem * 5),
-  6: $score-height - (0.03rem * 6),
-  7: $score-height - (0.03rem * 7),
-  8: $score-height - (0.03rem * 8),
-  9: $score-height - (0.03rem * 9),
+  9: $score-height,
+  8: $score-height - (0.03rem * 1),
+  7: $score-height - (0.03rem * 2),
+  6: $score-height - (0.03rem * 3),
+  5: $score-height - (0.03rem * 4),
+  4: $score-height - (0.03rem * 5),
+  3: $score-height - (0.03rem * 6),
+  2: $score-height - (0.03rem * 7),
+  1: $score-height - (0.03rem * 8),
+  0: $score-height - (0.03rem * 9),
 );
-
 $score-inner-padding: 0.04rem;
 
