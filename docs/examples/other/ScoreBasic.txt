@@ -5,18 +5,6 @@
               :value="max+max/10-item*max/10"
               :max="max">
     </vd-score>
-    <vd-score :value="0.8"
-              :max="max">
-    </vd-score>
-    <vd-score :value="1.2"
-              :max="max">
-    </vd-score>
-    <vd-score :value="5.3"
-              :max="max">
-    </vd-score>
-    <vd-score :value="2.65"
-              :max="5">
-    </vd-score>
   </div>
 </template>
 <script lang="ts">
