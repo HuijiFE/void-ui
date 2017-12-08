@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import VdButton from 'src/controls/button/VdButton';
+import VdButton from 'src/controls/button/VdButton.vue';
 
 describe('VdButton.vue', () => {
   it('create', () => {
