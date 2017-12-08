@@ -51,8 +51,7 @@ export default class VdToggle extends VdStylableControl {
   @Prop({ default: false })
   valueOff: ToggleValue;
 
-  @Prop({ required: true })
-  value: ToggleValue;
+  @Prop() value: ToggleValue;
 
   get model(): ToggleValue {
     return this.value;
