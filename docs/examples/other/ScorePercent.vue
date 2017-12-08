@@ -1,10 +1,10 @@
 <template>
   <div>
-    <VdScore v-for="item in 10"
-             :key="item"
-             :value="11-item"
-             :percent="110-item*10">
-    </VdScore>
+    <vd-score v-for="item in 10"
+              :key="item"
+              :value="(max+max/10)-item*max/10"
+              :max="max">
+    </vd-score>
   </div>
 </template>
 <script lang="ts">
@@ -19,5 +19,7 @@ import {
   Watch,
 } from 'vue-property-decorator';
 @Component
-export default class ScoreBasic extends Vue {}
+export default class ScoreBasic extends Vue {
+  max = 100;
+}
 </script>

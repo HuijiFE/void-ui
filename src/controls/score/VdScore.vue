@@ -1,14 +1,8 @@
 <template>
   <div class="vd-score">
-    <div v-if="percent"
-         class="score-inner"
+    <div class="score-inner"
          :class="level">
-      {{percent}}
-    </div>
-    <div v-else
-         class="score-inner"
-         :class="level">
-      {{value>=10?10:value+'.0'}}
+      {{value>=10?value:value.toFixed(1)}}
     </div>
   </div>
 </template>
@@ -29,9 +23,10 @@ import {
 export default class VdScore extends Vue {
   @Prop({ default: 0 })
   value: number;
-  @Prop({ default: 10 })
+  @Prop({
+    default: 100,
+  })
   max: number;
-  @Prop() percent: number;
   get level(): string {
     return `level-${Math.round(this.value / this.max * 10 - 1)}`;
   }

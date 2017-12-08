@@ -1,16 +1,5 @@
 <template>
   <div>
-    <vd-score v-for="item in 10"
-              :key="item"
-              :value="max+max/10-item*max/10"
-              :max="max">
-    </vd-score>
-    <vd-score :value="0.8"
-              :max="max">
-    </vd-score>
-    <vd-score :value="1.2"
-              :max="max">
-    </vd-score>
     <vd-score :value="5.3"
               :max="max">
     </vd-score>
