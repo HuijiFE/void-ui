@@ -2,7 +2,7 @@
   <div class="vd-score">
     <div class="score-inner"
          :class="level">
-      {{value}}
+      {{value>=10?value:value.toFixed(1)}}
     </div>
   </div>
 </template>
@@ -23,10 +23,10 @@ import {
 export default class VdScore extends Vue {
   @Prop({ default: 0 })
   value: number;
-
-  @Prop({ default: 10 })
+  @Prop({
+    default: 100,
+  })
   max: number;
-
   get level(): string {
     return `level-${Math.round(this.value / this.max * 10 - 1)}`;
   }

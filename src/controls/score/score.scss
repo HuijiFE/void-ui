@@ -1,11 +1,13 @@
 .#{$void}-score {
+  // props
+  $score-margin-base: 0.08rem;
+  // Score
   display: inline-flex;
   align-content: flex-end;
   align-items: flex-end;
   width: $score-width;
   height: $score-height;
   font-size: $score-font-size;
-
   .score-inner {
     display: flex;
     justify-content: center;
@@ -15,7 +17,6 @@
     color: $color-white;
     border-radius: $border-radius-base;
     padding-bottom: $score-inner-padding;
-
     @each $level, $color in $score-colors {
       &.level-#{$level} {
         background-color: $color;
@@ -26,5 +27,8 @@
         height: $height;
       }
     }
+  }
+  & + & {
+    margin-left: $score-margin-base;
   }
 }
