@@ -1,0 +1,372 @@
+.#{$void}-article {
+  font-size: $article-font-size;
+  line-height: $article-line-height;
+  width: 100%;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: $article-heading-line-height;
+    margin: $article-heading-margin;
+    font-weight: $article-heading-font-weight-default;
+  }
+
+  @for $heading from 1 through 6 {
+    .h#{$heading} {
+      font-size: map-get($map: $article-heading-font-sizes, $key: $heading);
+      font-weight: map-get($map: $article-heading-font-weights, $key: $heading);
+    }
+  }
+
+  p {
+    font-size: $article-paragraph-font-size;
+    margin: $article-paragraph-margin;
+  }
+
+  blockquote {
+    padding: $article-blockquote-padding;
+    border-left: $border-base;
+    border-left-width: $article-blockquote-border-left;
+    margin: $article-blockquote-margin;
+
+    p {
+      margin: $article-blockquote-paragraph-margin;
+    }
+  }
+
+  a {
+    color: $color-primary;
+    text-decoration: none;
+  }
+  a:visited,
+  a:hover,
+  a:active,
+  a:focus,
+  a:hover {
+    color: $color-primary-lighten;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  li {
+    margin: $article-listitem-margin;
+  }
+
+  ul,
+  ol {
+    padding-left: $article-list-padding-left;
+    margin: $article-list-margin;
+  }
+
+  sub,
+  sup {
+    font-size: 80%;
+  }
+
+  pre,
+  code {
+    font-family: $font-family-code;
+    font-size: 0.9em;
+  }
+
+  code {
+    padding: 0.02rem 0.04rem;
+  }
+
+  pre {
+    display: block;
+    code {
+      font-size: 1em;
+      display: block;
+      padding: $gutter-small $gutter-xsmall;
+    }
+  }
+
+  hr {
+    border-width: 0;
+    border-style: solid;
+    border-bottom-width: 1px;
+    margin: 0.32rem 0;
+  }
+
+  table {
+    width: 100%;
+    padding: 0;
+    border-collapse: collapse;
+  }
+
+  table tr {
+    border-top: $border-base;
+    margin: 0;
+    padding: 0;
+  }
+
+  table tr th,
+  table tr td {
+    border: $border-base;
+  }
+
+  table tr th {
+    font-weight: bold;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+  }
+
+  table tr td {
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+  }
+
+  table tr th :first-child,
+  table tr td :first-child {
+    margin-top: 0;
+  }
+
+  table tr th :last-child,
+  table tr td :last-child {
+    margin-bottom: 0;
+  }
+
+  // tr:hover {
+  //   background-color: $lite-background-hover;
+  // }
+
+  &.genre {
+    @each $genre in $ss-genres {
+      &-#{$genre} {
+        color: map-get($map: $genre-foreground-colors, $key: $genre);
+
+        b,
+        strong {
+          color: map-get($map: $genre-foreground-colors, $key: #{$genre}-emphasize);
+        }
+
+        hr {
+          border-color: map-get($map: $genre-background-colors, $key: #{$genre}-border);
+        }
+
+        blockquote {
+          border-color: map-get($map: $genre-background-colors, $key: #{$genre}-border);
+          background-color: map-get(
+            $map: $genre-background-colors,
+            $key: #{$genre}-higher
+          );
+        }
+
+        table {
+          background-color: map-get($map: $genre-background-colors, $key: #{$genre}-high);
+        }
+        table thead {
+          background-color: map-get(
+            $map: $genre-background-colors,
+            $key: #{$genre}-higher
+          );
+        }
+        table tr th,
+        table tr td {
+          border-color: map-get($map: $genre-background-colors, $key: #{$genre}-border);
+        }
+
+        code {
+          background-color: map-get(
+            $map: $genre-background-colors,
+            $key: #{$genre}-higher
+          );
+        }
+      }
+    }
+  }
+
+  /*----------  highlight.js  ----------*/
+
+  &.genre-lite {
+    /*
+Visual Studio-like style based on original C# coloring by Jason Diamond <jason@diamond.name>
+*/
+    .hljs {
+      display: block;
+      overflow-x: auto;
+      color: $genre-lite-foreground;
+      background: $genre-lite-background-high;
+    }
+
+    .hljs-comment,
+    .hljs-quote,
+    .hljs-variable {
+      color: #008000;
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-built_in,
+    .hljs-name,
+    .hljs-tag {
+      color: #00f;
+    }
+
+    .hljs-string,
+    .hljs-title,
+    .hljs-section,
+    .hljs-attribute,
+    .hljs-literal,
+    .hljs-template-tag,
+    .hljs-template-variable,
+    .hljs-type,
+    .hljs-addition {
+      color: #a31515;
+    }
+
+    .hljs-deletion,
+    .hljs-selector-attr,
+    .hljs-selector-pseudo,
+    .hljs-meta {
+      color: #2b91af;
+    }
+
+    .hljs-doctag {
+      color: #808080;
+    }
+
+    .hljs-attr {
+      color: #f00;
+    }
+
+    .hljs-symbol,
+    .hljs-bullet,
+    .hljs-link {
+      color: #00b0e8;
+    }
+
+    .hljs-emphasis {
+      font-style: italic;
+    }
+
+    .hljs-strong {
+      font-weight: bold;
+    }
+  }
+
+  &.genre-dark {
+    /*
+ * Visual Studio 2015 dark style
+ * Author: Nicolas LLOBERA <nllobera@gmail.com>
+ */
+
+    .hljs {
+      display: block;
+      overflow-x: auto;
+      color: $genre-dark-foreground;
+      background: $genre-dark-background-high;
+    }
+
+    .hljs-keyword,
+    .hljs-literal,
+    .hljs-symbol,
+    .hljs-name {
+      color: #569cd6;
+    }
+    .hljs-link {
+      color: #569cd6;
+      text-decoration: underline;
+    }
+
+    .hljs-built_in,
+    .hljs-type {
+      color: #4ec9b0;
+    }
+
+    .hljs-number,
+    .hljs-class {
+      color: #b8d7a3;
+    }
+
+    .hljs-string,
+    .hljs-meta-string {
+      color: #d69d85;
+    }
+
+    .hljs-regexp,
+    .hljs-template-tag {
+      color: #9a5334;
+    }
+
+    .hljs-subst,
+    .hljs-function,
+    .hljs-title,
+    .hljs-params,
+    .hljs-formula {
+      color: #dcdcdc;
+    }
+
+    .hljs-comment,
+    .hljs-quote {
+      color: #57a64a;
+      font-style: italic;
+    }
+
+    .hljs-doctag {
+      color: #608b4e;
+    }
+
+    .hljs-meta,
+    .hljs-meta-keyword,
+    .hljs-tag {
+      color: #9b9b9b;
+    }
+
+    .hljs-variable,
+    .hljs-template-variable {
+      color: #bd63c5;
+    }
+
+    .hljs-attr,
+    .hljs-attribute,
+    .hljs-builtin-name {
+      color: #9cdcfe;
+    }
+
+    .hljs-section {
+      color: gold;
+    }
+
+    .hljs-emphasis {
+      font-style: italic;
+    }
+
+    .hljs-strong {
+      font-weight: bold;
+    }
+
+    /*.hljs-code {
+  font-family:'Monospace';
+}*/
+
+    .hljs-bullet,
+    .hljs-selector-tag,
+    .hljs-selector-id,
+    .hljs-selector-class,
+    .hljs-selector-attr,
+    .hljs-selector-pseudo {
+      color: #d7ba7d;
+    }
+
+    .hljs-addition {
+      background-color: #144212;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .hljs-deletion {
+      background-color: #600;
+      display: inline-block;
+      width: 100%;
+    }
+  }
+}

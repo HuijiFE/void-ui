@@ -1,15 +1,4 @@
 @import '../src/index';
-@import 'highlight.js/styles/vs.css';
-
-article {
-  h1 {
-    margin-top: 0;
-  }
-
-  table tr td:first-child {
-    white-space: nowrap;
-  }
-}
 
 .main-nav {
   display: flex;
@@ -56,9 +45,20 @@ article {
   }
 }
 
+.documentation {
+  article {
+    h1 {
+      margin-top: 0;
+    }
+
+    table tr td:first-child {
+      white-space: nowrap;
+    }
+  }
+}
+
 .code-board {
   margin: 0.16rem 0;
-  background-color: #d3d6db;
   pre {
     margin: 0;
   }
@@ -69,7 +69,7 @@ article {
 
 .example-board {
   border-radius: $border-radius-base;
-  border: 1px solid #d3d6db;
+  border: $border-base;
   margin-top: 0.16rem;
   margin-bottom: 0.32rem;
 
@@ -77,17 +77,32 @@ article {
     padding: $gutter-medium;
   }
   .code-board {
-    border-top: 1px solid #d3d6db;
+    border: $border-base;
     margin: 0;
   }
   .show-button {
     width: 100%;
     height: 0.4rem;
     color: $color-primary;
-    background-color: rgba($lite-border, 0.2);
-    border-top: 1px solid #d3d6db;
-    &:hover {
-      background-color: #e6e6e6;
+    border-top: $border-base;
+  }
+
+  @each $genre in $ss-genres {
+    &.genre-#{$genre} {
+      &,
+      .code-board,
+      .show-button {
+        border-color: map-get($map: $genre-background-colors, $key: #{$genre}-border);
+      }
+      .show-button {
+        background-color: map-get($map: $genre-background-colors, $key: #{$genre}-high);
+        &:hover {
+          background-color: map-get(
+            $map: $genre-background-colors,
+            $key: #{$genre}-hover
+          );
+        }
+      }
     }
   }
 }

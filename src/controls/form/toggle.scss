@@ -53,6 +53,7 @@
   .toggle-inner {
     @include flex(row, flex-start, center);
     position: absolute;
+    top: $toggle-middle-padding;
     left: $toggle-middle-padding;
     transition-property: left;
   }

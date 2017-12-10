@@ -1,17 +1,19 @@
 <template>
-  <div class="documentation">
+  <div class="vd-section vd-container documentation">
     <vd-flexbox gutter="auto">
       <vd-flexbox flex="30">
         <doc-index :language="language"
                    :configs="docIndexConfigs"></doc-index>
       </vd-flexbox>
       <vd-flexbox flex="70">
-        <transition name="component-fade"
-                    mode="out-in">
-          <keep-alive>
-            <router-view></router-view>
-          </keep-alive>
-        </transition>
+        <vd-article>
+          <transition name="component-fade"
+                      mode="out-in">
+            <keep-alive>
+              <router-view></router-view>
+            </keep-alive>
+          </transition>
+        </vd-article>
       </vd-flexbox>
     </vd-flexbox>
   </div>

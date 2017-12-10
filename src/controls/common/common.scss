@@ -1,4 +1,11 @@
-.#{$void}-wrapper {
+.#{$void}-section {
+  padding-top: $section-padding;
+  padding-bottom: $section-padding;
+}
+
+.#{$void}-container {
+  padding-left: $container-padding;
+  padding-right: $container-padding;
   margin-left: auto;
   margin-right: auto;
   max-width: $wrapper-width-xlarge;
@@ -18,17 +25,4 @@
   @include media-xsmall {
     max-width: $wrapper-width-xsmall;
   }
-}
-
-.#{$void}-section {
-  padding-top: $section-padding;
-  padding-bottom: $section-padding;
-}
-
-.#{$void}-container {
-  padding-left: $container-padding;
-  padding-right: $container-padding;
-}
-
-.#{$void}-article {
 }

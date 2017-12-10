@@ -1,5 +1,6 @@
 <template>
-  <div class="example-board">
+  <div class="example-board"
+       :class="stylableClasses">
     <div v-if="component"
          class="example">
       <component :is="component"></component>
@@ -26,6 +27,7 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
+import { VdStylableControl } from 'void-ui';
 import CodeBoard from './CodeBoard.vue';
 
 @Component({
@@ -33,7 +35,7 @@ import CodeBoard from './CodeBoard.vue';
     CodeBoard,
   },
 })
-export default class DemoBoard extends Vue {
+export default class DemoBoard extends VdStylableControl {
   showCode: boolean = false;
 
   @Prop() label: string;

@@ -1,14 +1,7 @@
 @import 'normalize';
 
-:root {
-  font-size: $font-size-root;
-}
-
-body {
-  font-size: $font-size-base;
-}
-
 html {
+  font-size: $font-size-root;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -24,6 +17,7 @@ body {
   position: relative;
   font-family: $font-family-base;
   font-size: $font-size-base;
+  color: $genre-lite-foreground;
   line-height: $line-height-base;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
@@ -64,142 +58,4 @@ a
 select,
 button {
   cursor: pointer;
-}
-
-article {
-  width: 100%;
-  font-size: $article-font-size;
-  line-height: $article-line-height;
-  color: $article-foreground;
-
-  h1, h2, h3, h4, h5, h6 {
-    line-height: $article-heading-line-height;
-    margin: $article-heading-margin;
-    font-weight: $article-heading-font-weight-default;
-  }
-
-  @for $heading from 1 through 6 {
-    .h#{$heading} {
-      font-size: map-get($map: $article-heading-font-sizes, $key: $heading);
-      font-weight: map-get($map: $article-heading-font-weights, $key: $heading);
-    }
-  }
-
-  p {
-    font-size: $article-paragraph-font-size;
-    margin: $article-paragraph-margin
-  }
-
-  blockquote {
-    color: $article-blockquote-foreground;
-    background-color: $article-blockquote-background;
-    padding: $article-blockquote-padding;
-    border-left: $article-blockquote-border-left;
-    margin: $article-blockquote-margin;
-
-    p {
-      margin: $article-blockquote-paragraph-margin;
-    }
-  }
-
-  a {
-    color: $color-primary;
-    text-decoration: none;
-  }
-  a:visited,
-  a:hover,
-  a:active,
-  a:focus,
-  a:hover, {
-    color: $color-primary-lighten;
-  }
-
-  img {
-    max-width: 100%;
-  }
-
-  li {
-    margin: $article-listitem-margin;
-  }
-
-  ul, ol {
-    padding-left: $article-list-padding-left;
-    margin: $article-list-margin;
-  }
-
-  sub,
-  sup {
-    font-size: 80%;
-  }
-
-  pre,
-  code {
-    font-family: $font-family-code;
-    font-size: 0.9em;
-  }
-
-  code {
-    padding: 0.02rem 0.04rem;
-    background-color: rgba($color-primary-lightener, 0.08);
-  }
-
-  pre {
-    display: block;
-    code {
-      font-size: 1em;
-      display: block;
-      padding: $gutter-small $gutter-xsmall;
-    }
-  }
-
-  hr {
-    border-width: 0;
-    border-style: solid;
-    border-bottom-width: 1px;
-    border-color: $lite-border;
-    margin: 0.32rem 0;
-  }
-
-  table {
-    width: 100%;
-    padding: 0;
-    border-collapse:collapse;
-  }
-  table tr {
-    border-top: 1px solid $lite-border;
-    background-color: $lite-background;
-    margin: 0;
-    padding: 0;
-  }
-
-  // table tr:nth-child(2n) {
-  //   background-color: #f8f8f8;
-  // }
-
-  table tr th {
-    font-weight: bold;
-    border: 1px solid $lite-border;
-    text-align: left;
-    margin: 0;
-    padding: 6px 13px;
-  }
-
-  table tr td {
-    border: 1px solid $lite-border;
-    text-align: left;
-    margin: 0;
-    padding: 6px 13px;
-  }
-
-  table tr th :first-child, table tr td :first-child {
-    margin-top: 0;
-  }
-
-  table tr th :last-child, table tr td :last-child {
-    margin-bottom: 0;
-  }
-
-  // tr:hover {
-  //   background-color: $lite-background-hover;
-  // }
 }

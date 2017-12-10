@@ -3,6 +3,8 @@
 export * from 'src/controls/base/VdControl';
 export { default as VdButton } from 'src/controls/button/VdButton.vue';
 export { default as VdButtonGroup } from 'src/controls/button/VdButtonGroup.vue';
+export { default as VdArticle } from 'src/controls/common/VdArticle.vue';
+export { default as VdMain } from 'src/controls/common/VdMain.vue';
 export { default as DemoBoard } from 'src/controls/demo/DemoBoard.vue';
 export { default as VdFlexbox } from 'src/controls/flexbox/VdFlexbox.vue';
 export { default as VdToggle } from 'src/controls/form/VdToggle.vue';

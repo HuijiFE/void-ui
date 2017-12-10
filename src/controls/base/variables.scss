@@ -239,8 +239,8 @@ $tone-colors: (
   secondary-lightener: $tone-secondary-lightener,
 );
 
+$genre-lite-foreground:             #333333;
 $genre-lite-foreground-emphasize:   #222222;
-$genre-lite-foreground-normal:      #333333;
 $genre-lite-foreground-secondary:   #888888;
 $genre-lite-foreground-placeholder: #999999;
 $genre-lite-foreground-disabled:    #bbbbbb;
@@ -248,10 +248,11 @@ $genre-lite-background:             #ffffff;
 $genre-lite-background-high:        #fafafa;
 $genre-lite-background-higher:      #f5f5f5;
 $genre-lite-background-hover:       #eeeeee;
+$genre-lite-background-border:      #eeeeee;
 $genre-lite-background-disabled:    #efefef;
 
+$genre-dark-foreground:             #eeeeee;
 $genre-dark-foreground-emphasize:   #f5f5f5;
-$genre-dark-foreground-normal:      #eeeeee;
 $genre-dark-foreground-secondary:   #aaaaaa;
 $genre-dark-foreground-placeholder: #999999;
 $genre-dark-foreground-disabled:    #888888;
@@ -259,17 +260,18 @@ $genre-dark-background:             #333333;
 $genre-dark-background-high:        #383838;
 $genre-dark-background-higher:      #3e3e3e;
 $genre-dark-background-hover:       #4e4e4e;
+$genre-dark-background-border:      #4e4e4e;
 $genre-dark-background-disabled:    #555555;
 
 $genre-foreground-colors: (
+  lite:             $genre-lite-foreground,
   lite-emphasize:   $genre-lite-foreground-emphasize,
-  lite-normal:      $genre-lite-foreground-normal,
   lite-secondary:   $genre-lite-foreground-secondary,
   lite-placeholder: $genre-lite-foreground-placeholder,
   lite-disabled:    $genre-lite-foreground-disabled,
 
+  dark:             $genre-dark-foreground,
   dark-emphasize:   $genre-dark-foreground-emphasize,
-  dark-normal:      $genre-dark-foreground-normal,
   dark-secondary:   $genre-dark-foreground-secondary,
   dark-placeholder: $genre-dark-foreground-placeholder,
   dark-disabled:    $genre-dark-foreground-disabled,
@@ -280,12 +282,14 @@ $genre-background-colors: (
   lite-high:        $genre-lite-background-high,
   lite-higher:      $genre-lite-background-higher,
   lite-hover:       $genre-lite-background-hover,
+  lite-border:      $genre-lite-background-border,
   lite-disabled:    $genre-lite-background-disabled,
 
   dark:             $genre-dark-background,
   dark-high:        $genre-dark-background-high,
   dark-higher:      $genre-dark-background-higher,
   dark-hover:       $genre-dark-background-hover,
+  dark-border:      $genre-dark-background-border,
   dark-disabled:    $genre-dark-background-disabled,
 );
 
@@ -341,7 +345,7 @@ $article-paragraph-margin: 0.8em 0;
 $article-blockquote-foreground: #666;
 $article-blockquote-background: #f5f5f5;
 $article-blockquote-padding: 0.5em 1em;
-$article-blockquote-border-left: 3px solid #ddd;
+$article-blockquote-border-left: 3px;
 $article-blockquote-margin: 1em 0;
 $article-blockquote-paragraph-margin: 0.4em 0;
 

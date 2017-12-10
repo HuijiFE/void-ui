@@ -1,13 +1,11 @@
 <template>
   <div id="app">
     <main-nav mode="router"></main-nav>
-    <div class="vd-wrapper">
-      <div class="vd-section vd-container">
-        <keep-alive>
-          <router-view></router-view>
-        </keep-alive>
-      </div>
-    </div>
+    <vd-main>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
+    </vd-main>
   </div>
 </template>
 

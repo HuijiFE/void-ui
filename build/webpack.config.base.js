@@ -112,7 +112,8 @@ module.exports = {
         use: {
           loader: 'vue-markdown-loader',
           options: {
-            wrapper: 'article',
+            xhtmlOut: true,
+            wrapper: 'div',
           },
         },
       },
