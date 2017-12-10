@@ -17,7 +17,18 @@ import {
 } from 'typings';
 
 @Component
+export class VdHub extends Vue {
+  genre: ControlGenre = 'lite';
+}
+
+@Component
 export class VdControl extends Vue {
+  // single instance for state management
+  private static readonly hub = new VdHub();
+  get $void(): VdHub {
+    return VdControl.hub;
+  }
+
   get componentName(): string | undefined {
     return this.$options.name;
   }
@@ -27,18 +38,7 @@ export class VdControl extends Vue {
 }
 
 @Component
-export class VdHub extends Vue {
-  genre: ControlGenre = 'lite';
-}
-
-@Component
 export class VdStylableControl extends VdControl {
-  // single instance for state management
-  private static readonly hub = new VdHub();
-  get $void(): VdHub {
-    return VdStylableControl.hub;
-  }
-
   @Prop() genre: ControlGenre;
 
   @Prop({ default: 'primary' })
