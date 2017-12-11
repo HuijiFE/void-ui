@@ -16,10 +16,16 @@ $msg: 'message-box';
   $message-box-content-padding-bottom: 0.16rem;
 
   $message-box-icon-size: 0.24rem;
+  $message-box-cancel-button: 0.2rem;
 
   $message-box-backgrounds: (
     dark: #4e4e4e,
     lite: #ffffff
+  );
+
+  $message-box-font-color: (
+    dark: #eeeeee,
+    lite: #333333
   );
 
   @mixin global {
@@ -41,6 +47,7 @@ $msg: 'message-box';
       &-#{$genre} {
         .message-box {
           background-color: map-get($map: $message-box-backgrounds, $key: $genre);
+          color: map-get($map: $message-box-font-color, $key: $genre);
           width: $message-box-width;
           padding: $message-box-padding;
           border-radius: $border-radius-base;
@@ -61,17 +68,10 @@ $msg: 'message-box';
         .footer {
           text-align: right;
         }
+        .cancel-button {
+          margin-right: 0.2rem;
+        }
       }
     }
   }
-
-  // .body {
-  //   width: $message-box-width;
-  //   // height: 300px;
-  //   background: #ffffff;
-  //   position: fixed;
-  //   top: 100px;
-  //   left: 400px;
-  //   z-index: 1002;
-  // }
 }

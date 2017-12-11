@@ -3,7 +3,7 @@ import { Vue as _Vue } from 'vue/types/vue';
 
 export * from 'src/controls';
 import * as controls from 'src/controls';
-import msg from 'src/controls/messageBox/VdMessageBox.js';
+import msg from 'src/controls/messageBox/VdMessageBox';
 
 const install: PluginFunction<any> = function(Vue, options = {}) {
   Object.entries(controls).map(([name, control]) => {
