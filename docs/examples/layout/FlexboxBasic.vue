@@ -25,10 +25,10 @@
     </vd-flexbox>
 
     <vd-flexbox flex="40">
-      <div class="layout-content">30</div>
+      <div class="layout-content">40</div>
     </vd-flexbox>
     <vd-flexbox flex="60">
-      <div class="layout-content">70</div>
+      <div class="layout-content">60</div>
     </vd-flexbox>
 
     <vd-flexbox flex="50">

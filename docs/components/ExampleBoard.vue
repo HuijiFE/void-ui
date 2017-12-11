@@ -3,7 +3,9 @@
        :class="stylableClasses">
     <div v-if="component"
          class="example">
-      <component :is="component"></component>
+      <slot>
+        <component :is="component"></component>
+      </slot>
     </div>
     <div v-if="source && showCode"
          class="source">
