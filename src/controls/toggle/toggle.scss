@@ -17,78 +17,63 @@ $toggle-inner-background: (
   lite: $lite-background-card,
   dark: $dark-background-card
 );
-
 $toggle-outer-border: (
   rect: 1px solid transparent,
   circle: 0
 );
-
 $toggle-outer-border-radius: (
   rect: $border-radius-base,
   circle: 0.08rem
 );
-
 $toggle-inner-border-radius: (
   rect: $border-radius-base,
   circle: 0.06rem
 );
-
 $toggle-outer-sizes: (
   rect: 0.14rem,
   circle: 0.16rem
 );
-
 $toggle-outer-width: (
   rect: 0.28rem,
   circle: 0.32rem
 );
-
 $toggle-outer-height: (
   rect: 0.14rem,
   circle: 0.16rem
 );
-
 $toggle-inner-width: (
   rect: 0.14rem,
   circle: 0.12rem
 );
-
 $toggle-inner-height: (
   rect: 0.1rem,
   circle: 0.12rem
 );
-
-/* ----------  定义动画  ---------- */
-
+/*----------  定义动画  ----------*/
 $transition-duration-base: 0.2s;
 $transition-timing-function-base: ease-in-out;
 $transition-base: all $transition-duration-base $transition-timing-function-base;
 @mixin hardware-acceleration() {
   transform: translate3d(0, 0, 0);
 }
-
 @mixin gen-transition-base($properties) {
   transition-property: $properties;
   transition-duration: $transition-duration-base;
   transition-timing-function: $transition-timing-function-base;
 }
 
-/* ----------  定义mixins  ---------- */
-
+/*----------  定义mixins  ----------*/
 @mixin flex-row($justify: flex-start, $align: stretch, $wrap: nowrap) {
   @include flex(row, $justify, $align, $wrap);
 }
-
 @mixin flex-reverse($justify: flex-start, $align: stretch, $wrap: nowrap) {
   @include flex (row-reverse, $justify, $align, $wrap);
 }
 
-/* ----------  组件代码  ---------- */
-
+/*----------  组件代码  ----------*/
 .#{$void}-toggle {
   cursor: pointer;
   user-select: none;
-
   font-size: 0.12rem;
   &.position {
     @each $position in $const-toggle-shapes {
@@ -102,7 +87,6 @@ $transition-base: all $transition-duration-base $transition-timing-function-base
       }
     }
   }
-
   &.genre {
     @each $genre in $const-genres {
       &-#{$genre} {
@@ -124,8 +108,7 @@ $transition-base: all $transition-duration-base $transition-timing-function-base
       }
     }
   }
-
-  @each $shape in $const-toggle-shapes {
+  @each $shape in left, right {
     &.shape-#{$shape} {
       border: map-get($map: $toggle-outer-border, $key: #{$shape});
       .outer {
@@ -137,12 +120,10 @@ $transition-base: all $transition-duration-base $transition-timing-function-base
       }
     }
   }
-
   .vd-input {
     display: none;
   }
-
-  @each $shape in $const-toggle-shapes {
+  @each $shape in left, right {
     &.shape-#{$shape} {
       .outer::after {
         width: map-get($map: $toggle-inner-width, $key: #{$shape});
@@ -152,17 +133,14 @@ $transition-base: all $transition-duration-base $transition-timing-function-base
       }
     }
   }
-
   &:focus {
     outline: 0;
   }
-
   &:focus:hover {
     box-shadow: none;
   }
-
   &.checked {
-    @each $shape in $const-toggle-shapes {
+    @each $shape in $left, right {
       &.shape-#{$shape} {
         .outer {
           border-color: $color-primary;
@@ -175,7 +153,6 @@ $transition-base: all $transition-duration-base $transition-timing-function-base
       }
     }
   }
-
   &.disabled {
     @each $genre in $const-genres {
       &.genre-#{$genre} {
@@ -194,7 +171,6 @@ $transition-base: all $transition-duration-base $transition-timing-function-base
     @include clear-baseline();
     font-size: $font-size-medium;
   }
-
   .outer {
     @each $position in $const-toggle-positions {
       &.#{$position} {
@@ -202,7 +178,6 @@ $transition-base: all $transition-duration-base $transition-timing-function-base
       }
     }
   }
-
   & + & {
     margin-left: $toggle-margin;
   }
