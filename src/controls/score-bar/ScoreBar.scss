@@ -1,0 +1,58 @@
+.#{$void}-score-bar {
+  // Score-bar
+  $score-margin-base: 0.07rem;
+  $score-padding-base: 0.08rem;
+  $score-bar-width: 2rem;
+  $score-bar-height: 0.4rem;
+  $score-bar-font-size: 0.24rem;
+  // Score-bar map
+  $score-bar-inner-widths: (
+    10:$score-bar-width,
+    9:$score-bar-width - (0.14rem*1),
+    8:$score-bar-width - (0.14rem*2),
+    7:$score-bar-width - (0.14rem*3),
+    6:$score-bar-width - (0.14rem*4),
+    5:$score-bar-width - (0.14rem*5),
+    4:$score-bar-width - (0.14rem*6),
+    3:$score-bar-width - (0.14rem*7),
+    2:$score-bar-width - (0.14rem*8),
+    1:$score-bar-width - (0.14rem*9),
+    0:$score-bar-width - (0.14rem*10)
+  );
+  $score-colors: (
+    0: $color-score-0,
+    1: $color-score-0,
+    2: $color-score-0,
+    3: $color-score-1,
+    4: $color-score-1,
+    5: $color-score-2,
+    6: $color-score-2,
+    7: $color-score-3,
+    8: $color-score-3,
+    9: $color-score-4,
+    10:$color-score-4
+  );
+  width: $score-bar-width;
+  height: $score-bar-height;
+  font-size: $score-bar-font-size;
+  .score-bar-inner {
+    display: block;
+    height: 100%;
+    color: $color-white;
+    border-radius: $border-radius-base;
+    padding-left: $score-padding-base;
+    @each $level, $width in $score-bar-inner-widths {
+      &.level-#{$level} {
+        width: $width;
+      }
+    }
+    @each $level, $color in $score-colors {
+      &.level-#{$level} {
+        background-color: $color;
+      }
+    }
+  }
+  & + & {
+    margin-top: $score-margin-base;
+  }
+}
