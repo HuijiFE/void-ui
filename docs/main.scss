@@ -1,6 +1,9 @@
 @import '../src/index';
 
 .main-nav {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
   display: flex;
   flex: 1;
   align-content: stretch;
@@ -43,6 +46,10 @@
       background-color: rgba(0, 0, 0, 0.05);
     }
   }
+}
+
+.docs-main-wrapper {
+  padding-top: 64px;
 }
 
 .documentation {
@@ -118,9 +125,7 @@
 
 .layout-content {
   @include flex(row,center,center,wrap);
-  opacity: 0.5;
   color: $color-primary;
-  background-color: rgba($color-primary, 0.05);
   font-weight: bold;
   width: 100%;
   min-height: 0.32rem;
@@ -128,16 +133,6 @@
   padding: 0.08rem;
   border: 1px solid $color-primary;
   border-radius: $border-radius-base;
-
-  transition: opacity 0.3s ease-in-out;
-
-  &:hover {
-    opacity: 0.9;
-  }
-}
-
-.vd-wrapper {
-  min-height: 100vh;
 }
 
 @font-face {
