@@ -33,6 +33,11 @@ export const zhCN: DocConfig[] = [
     name: '基本',
     children: [
       {
+        name: 'typography 排版',
+        path: 'typography',
+        fileName: 'basic/typography',
+      },
+      {
         name: 'button 按钮',
         path: 'button',
         fileName: 'basic/button',
@@ -42,6 +47,11 @@ export const zhCN: DocConfig[] = [
   {
     name: '布局',
     children: [
+      {
+        name: 'common layout 通用布局',
+        path: 'common',
+        fileName: 'layout/common',
+      },
       {
         name: 'flexbox 弹性盒子',
         path: 'flexbox',

@@ -29,21 +29,6 @@ $line-height-base: 1.6;
 $border-base: 1px solid transparent;
 $border-radius-base: 2px;
 
-// gutter
-$gutter-xsmall:   8px;
-$gutter-small:    16px;
-$gutter-medium:   24px;
-$gutter-large:    32px;
-$gutter-xlarge:   40px;
-
-$gutter-sizes: (
-  xsmall:   $gutter-xsmall,
-  small:    $gutter-small,
-  medium:   $gutter-medium,
-  large:    $gutter-large,
-  xlarge:   $gutter-xlarge,
-);
-
 
 
 /*---------- Style System ----------*/
@@ -296,6 +281,21 @@ $genre-background-colors: (
 
 /*----------  Common  ----------*/
 
+// gutter
+$gutter-xsmall:   8px;
+$gutter-small:    16px;
+$gutter-medium:   24px;
+$gutter-large:    32px;
+$gutter-xlarge:   40px;
+
+$gutter-sizes: (
+  xsmall:   $gutter-xsmall,
+  small:    $gutter-small,
+  medium:   $gutter-medium,
+  large:    $gutter-large,
+  xlarge:   $gutter-xlarge,
+);
+
 $scrollbar-width: 16px;
 
 $breakpoint-xsmall:     320px !default;
@@ -304,11 +304,11 @@ $breakpoint-medium:    1024px !default;
 $breakpoint-large:     1440px !default;
 $breakpoint-xlarge:    1920px !default;
 
-$wrapper-width-xsmall:    100% !default;
-$wrapper-width-small:     100% !default;
-$wrapper-width-medium:   880px !default;
-$wrapper-width-large:   1200px !default;
-$wrapper-width-xlarge:  1200px !default;
+$container-width-xsmall:    100% !default;
+$container-width-small:     100% !default;
+$container-width-medium:   880px !default;
+$container-width-large:   1200px !default;
+$container-width-xlarge:  1200px !default;
 
 $container-padding: 0.24rem;
 $section-padding:   0.40rem;

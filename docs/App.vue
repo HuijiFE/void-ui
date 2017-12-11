@@ -27,6 +27,9 @@ import VoidUI from 'void-ui';
 Vue.use(VoidUI);
 
 import MainNav from 'docs/components/MainNav.vue';
+import ColorCube from 'docs/components/ColorCube.vue';
+
+Vue.component(ColorCube.name, ColorCube);
 
 @Component({
   components: {
