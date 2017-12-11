@@ -81,14 +81,14 @@ $transition-base: all $transition-duration-base $transition-timing-function-base
 @mixin flex-reverse($justify: flex-start, $align: stretch, $wrap: nowrap) {
   @include flex (row-reverse, $justify, $align, $wrap);
 }
-
 /*----------  组件代码  ----------*/
+
 .#{$void}-toggle {
   cursor: pointer;
   user-select: none;
   font-size: 0.12rem;
   &.position {
-    @each $position in $const-toggle-shapes {
+    @each $position in left, right {
       &-#{$position} {
         @if $position==left {
           @include flex-reverse(flex-start, center);
