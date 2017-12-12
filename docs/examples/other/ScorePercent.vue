@@ -19,7 +19,7 @@ import {
   Watch,
 } from 'vue-property-decorator';
 @Component
-export default class ScoreBasic extends Vue {
+export default class ScorePercent extends Vue {
   max = 100;
 }
 </script>

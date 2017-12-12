@@ -26,7 +26,7 @@ import {
   Watch,
 } from 'vue-property-decorator';
 @Component
-export default class ScoreBasic extends Vue {
+export default class ScoreBarCustom extends Vue {
   max = 10;
 }
 </script>

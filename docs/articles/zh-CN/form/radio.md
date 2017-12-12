@@ -13,6 +13,7 @@
 
 `disabled`禁用一个单选框
 <example-board :component="RadioDisabled" :source="RadioDisabledSource"></example-board>
+<example-board :component="ScoreRankBasic" :source="ScoreRankBasicSource"></example-board>
 
 ## 所有属性
 
@@ -31,7 +32,8 @@ import RadioBasic from 'docs/examples/form/radio/RadioBasic';
 import RadioBasicSource from 'docs/examples/form/radio/RadioBasic.txt';
 import RadioDisabled from 'docs/examples/form/radio/RadioDisabled';
 import RadioDisabledSource from 'docs/examples/form/radio/RadioDisabled.txt';
-
+import ScoreRankBasic from 'docs/examples/score-rank/ScoreRankBasic.vue';
+import ScoreRankBasicSource from 'docs/examples/score-rank/ScoreRankBasic.txt';
 export default {
   data() {
     return {
@@ -39,6 +41,8 @@ export default {
       RadioBasicSource,
       RadioDisabled,
       RadioDisabledSource,
+      ScoreRankBasic,
+      ScoreRankBasicSource
     }
   }
 }

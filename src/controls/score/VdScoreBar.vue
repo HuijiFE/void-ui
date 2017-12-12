@@ -21,9 +21,7 @@ import {
 export default class VdScoreBar extends Vue {
   @Prop({ default: 0 })
   value: number;
-  @Prop({
-    default: 10,
-  })
+  @Prop({ default: 10 })
   max: number;
   get level(): string {
     return `level-${Math.round(this.value / this.max * 10)}`;

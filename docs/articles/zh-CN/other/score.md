@@ -3,7 +3,7 @@
 ## 基本用法
 
 ```html
-<example-board :component="ScoreBasic" :source="ScoreBasicSource"></example-board>
+<vd-score :value="5.6"></vd-score>
 ```
 
 `十分制`绑定一个 max 值
@@ -21,11 +21,12 @@
 ## 基本用法
 
 ```html
-<example-board :component="ScoreBarBasic" :source="ScoreBarBasic"></example-board>
+<vd-score-rank :value="20"></vd-score-rank>
 ```
 
 绑定一个 max 值
-<example-board :component="ScoreBarBasic" :source="ScoreBarSource"></example-board>
+<example-board :component="ScoreBarBasic" :source="ScoreBarBasicSource"></example-board>
+
 随意展示不同的 max 值
 <example-board :component="ScoreBarCustom" :source="ScoreBarCustomSource"></example-board>
 
@@ -38,16 +39,22 @@
 | max      | number | **10,100**      |
 
 <script>
+
 import ScoreBasic from 'docs/examples/other/ScoreBasic';
 import ScoreBasicSource from 'docs/examples/other/ScoreBasic.txt';
+
 import ScorePercent from 'docs/examples/other/ScorePercent';
 import ScorePercentSource from 'docs/examples/other/ScorePercent.txt';
+
 import ScoreCustom from 'docs/examples/other/ScoreCustom';
 import ScoreCustomSource from 'docs/examples/other/ScoreCustom.txt';
+
 import ScoreBarBasic from 'docs/examples/other/ScoreBarBasic';
-import ScoreBarSource from 'docs/examples/other/ScoreBarBasic.txt';
+import ScoreBarBasicSource from 'docs/examples/other/ScoreBarBasic.txt';
+
 import ScoreBarCustom from 'docs/examples/other/ScoreBarCustom';
 import ScoreBarCustomSource from 'docs/examples/other/ScoreBarCustom.txt';
+
 export default {
   data() {
     return {
@@ -58,9 +65,9 @@ export default {
       ScoreCustom,
       ScoreCustomSource,
       ScoreBarBasic,
-      ScoreBarSource,
+      ScoreBarBasicSource,
       ScoreBarCustom,
-      ScoreBarCustomSource
+      ScoreBarCustomSource,
     }
   }
 }
