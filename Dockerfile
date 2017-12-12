@@ -1,5 +1,3 @@
 from nginx
-ADD default.conf /etc/nginx/sites-available/
-RUN mkdir /etc/nginx/sites-enabled/ && ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
-ADD . /var/server/
+COPY ./dist-site /usr/share/nginx/html
 CMD /bin/bash -c "nginx, -g, 'daemon off;'"
