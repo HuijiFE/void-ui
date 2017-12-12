@@ -1,4 +1,4 @@
 from nginx
 ADD default.conf /etc/nginx/sites-available/
 ADD . /var/server/
-CMD [nginx, -g, 'daemon off;']
+CMD /bin/bash -c "nginx, -g, 'daemon off;'"
