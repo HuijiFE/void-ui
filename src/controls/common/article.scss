@@ -3,24 +3,6 @@
   line-height: $article-line-height;
   width: 100%;
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    line-height: $article-heading-line-height;
-    margin: $article-heading-margin;
-    font-weight: $article-heading-font-weight-default;
-  }
-
-  @for $heading from 1 through 6 {
-    .h#{$heading} {
-      font-size: map-get($map: $article-heading-font-sizes, $key: $heading);
-      font-weight: map-get($map: $article-heading-font-weights, $key: $heading);
-    }
-  }
-
   p {
     font-size: $article-paragraph-font-size;
     margin: $article-paragraph-margin;

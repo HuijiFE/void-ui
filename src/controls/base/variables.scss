@@ -317,26 +317,26 @@ $article-font-size: 0.16rem;
 $article-line-height: 1.7;
 $article-foreground: $lite-foreground;
 
-$article-heading-line-height: 1.33;
-$article-heading-margin: 1em 0 0.5em 0;
+$heading-line-height: 1.33;
+$heading-margin: 1em 0 0.5em 0;
 
-$article-heading-font-sizes: (
-  1: 0.48rem,
-  2: 0.36rem,
-  3: 0.28rem,
-  4: 0.24rem,
-  5: 0.20rem,
-  6: 0.18rem,
+$heading-font-sizes: (
+  h1: 0.48rem,
+  h2: 0.36rem,
+  h3: 0.28rem,
+  h4: 0.24rem,
+  h5: 0.20rem,
+  h6: 0.18rem,
 );
 
-$article-heading-font-weight-default: bold;
-$article-heading-font-weights: (
-  1: normal,
-  2: normal,
-  3: normal,
-  4: bold,
-  5: bold,
-  6: bold,
+$heading-font-weight-default: bold;
+$heading-font-weights: (
+  h1: normal,
+  h2: normal,
+  h3: normal,
+  h4: bold,
+  h5: bold,
+  h6: bold,
 );
 
 $article-paragraph-font-size: $article-font-size;
