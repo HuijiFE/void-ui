@@ -9,5 +9,8 @@ export { default as DemoBoard } from 'src/controls/demo/DemoBoard.vue';
 export { default as VdFlexbox } from 'src/controls/flexbox/VdFlexbox.vue';
 export { default as VdToggle } from 'src/controls/form/VdToggle.vue';
 export { default as VdInput } from 'src/controls/input/VdInput.vue';
+export { default as VdTabs } from 'src/controls/navigation/tabs/VdTabs.vue';
+export { default as VdTabsHeadItem } from 'src/controls/navigation/tabs/VdTabsHeadItem.vue';
+export { default as VdTabsItem } from 'src/controls/navigation/tabs/VdTabsItem.vue';
 export { default as VdRadio } from 'src/controls/radio/VdRadio.vue';
 export { default as VdScore } from 'src/controls/score/VdScore.vue';

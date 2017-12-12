@@ -1,0 +1,27 @@
+<template>
+  <div>
+    <vd-tabs>
+      <vd-tabs-item label="a"></vd-tabs-item>
+      <vd-tabs-item label="b"></vd-tabs-item>
+      <vd-tabs-item label="c"></vd-tabs-item>
+      <vd-tabs-item label="d"></vd-tabs-item>
+      <vd-tabs-item label="e"></vd-tabs-item>
+    </vd-tabs>
+  </div>
+</template>
+
+<script lang="ts">
+import {
+  Component,
+  Vue,
+  Emit,
+  Inject,
+  Model,
+  Prop,
+  Provide,
+  Watch,
+} from 'vue-property-decorator';
+
+@Component
+export default class TabsBasci extends Vue {}
+</script>
