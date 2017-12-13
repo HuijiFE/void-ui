@@ -1,8 +1,8 @@
 <template>
   <div>
-    <vd-score-bar v-for="item in (max>=10?11:max)"
+    <vd-score-bar v-for="item in (max >= 10 ? 11 : max)"
                   :key="item"
-                  :value="max+max/10-item*max/10"
+                  :value="max + max /10-item * max / 10"
                   :max="max">
     </vd-score-bar>
   </div>
