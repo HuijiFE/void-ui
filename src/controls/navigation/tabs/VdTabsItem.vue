@@ -1,5 +1,6 @@
 <template>
-  <div class="vd-tabs-item">
+  <div class="vd-tabs-item"
+       :class="classes">
     <slot></slot>
   </div>
 </template>
@@ -16,30 +17,24 @@ import {
   Watch,
 } from 'vue-property-decorator';
 import VdTabs from './VdTabs.vue';
+import anime from 'animejs';
 
 @Component
 export default class VdTabsItem extends Vue {
   @Prop({ required: true })
   label: string;
 
-  index: number = -1;
-
-  status: 'left-in' | 'left-out' | 'right-in' | 'right-out';
-
   parent: VdTabs;
 
-  @Watch('parent.selectedItem')
-  onSelectedItemChanged(newItem: VdTabsItem, oldItem: VdTabsItem) {
-    if (newItem === oldItem) {
-      return;
-    }
-    if (this === newItem) {
-    }
-    if (this === oldItem) {
-    }
-  }
+  index: number = -1;
+
+  status: 'selected' | 'hidden' = 'hidden';
 
   @Prop({ default: false })
   selected: boolean;
+
+  get classes(): ClassNames {
+    return [`status-${this.status}`];
+  }
 }
 </script>

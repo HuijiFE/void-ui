@@ -1,0 +1,76 @@
+@keyframes tabs-item-left-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes tabs-item-left-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes tabs-item-right-in {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes tabs-item-right-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.#{$void}-tabs {
+  $tabs-item-status-animations: (
+    left-in: tabs-item-left-in,
+    left-out: tabs-item-left-out,
+    right-in: tabs-item-right-in,
+    right-out:tabs-item-right-out
+  );
+
+  // tabs-head head-item
+  .head-item {
+    padding: 0 0.16rem;
+  }
+
+  // tabs-body
+  .tabs-body {
+    @include flex(row, flex-start, stretch, nowrap);
+    overflow-x: hidden;
+  }
+
+  // tabs-body tabs-item
+  &-item {
+    @include flex(row, flex-start, flex-start, initial);
+    flex: 0 0 100%;
+    width: 100%;
+
+    &.status {
+      &-hidden {
+        display: none;
+      }
+    }
+  }
+}
