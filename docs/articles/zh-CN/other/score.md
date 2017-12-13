@@ -39,8 +39,12 @@
 <vd-score-rank :value="20"></vd-score-rank>
 ```
 
+绑定一个 max 值
+
 <example-board :component="ScoreRankBasic" :source="ScoreRankBasicSource"></example-board>
+
 随意展示不同的 max 值
+
 <example-board :component="ScoreRankCustom" :source="ScoreRankCustomSource"></example-board>
 
 ## 所有属性
