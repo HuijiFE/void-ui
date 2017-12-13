@@ -3,11 +3,10 @@
   $score-rank-height: 0.4rem;
   $score-rank-border: 2px;
   $score-rank-background: #dae1e6;
-  $score-margin-base: 0.07rem;
-  $score-padding-base: 0.08rem;
-  $score-padding-left: 0.04rem;
-  $score-rank-img-width: 0.85rem;
-  $score-rank-img-height: 0.32rem;
+  $score-margin-base: 0.08rem;
+  $score-padding-right: 0.04rem;
+  $score-padding: 0.04rem;
+  $score-rank-img-height: 0.4rem;
   $score-rank-outer-widths: (
     10:$score-rank-width,
     9:$score-rank-width - (0.14rem*1),
@@ -39,12 +38,12 @@
   height: $score-rank-height;
   border-radius: $score-rank-border;
   background-color: $score-rank-background;
+  font: Aldrich;
   font-size: $score-font-size;
   .score-rank-outer {
     display: flex;
     height: 100%;
     justify-content: space-between;
-    align-items: center;
     border-radius: $score-rank-border;
     color: $color-white;
     @each $level, $width in $score-rank-outer-widths {
@@ -59,14 +58,15 @@
     }
   }
   .score-rank-inner {
-    padding-right: $score-padding-base;
+    display: flex;
+    padding-right: $score-padding-right;
+    line-height: $score-rank-height;
   }
   .score-rank-img {
-    width: $score-rank-img-width;
     height: $score-rank-img-height;
-    padding-left: $score-padding-left;
+    padding: $score-padding;
     img {
-      width: 100%;
+      width: auto;
       height: 100%;
     }
   }
