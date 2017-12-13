@@ -1,11 +1,15 @@
 <template>
   <div class="vd-score-rank">
-    <span class="score-rank-outer">
-      <img src="src"
-           alt="">
-      <span class="score-rank-inner">{{value}}</span>
+    <span class="score-rank-outer"
+          :class="level">
+      <span class="score-rank-img">
+        <img :src="src"
+             alt="">
+      </span>
+      <span class="score-rank-inner">{{value >=10 ? value : value.toFixed(1)}}</span>
     </span>
   </div>
+
 </template>
 <script lang="ts">
 import {
@@ -24,8 +28,9 @@ export default class VdScoreRank extends Vue {
   value: number;
   @Prop({ default: 10 })
   max: number;
-  level() {
-    return `level-${this.value / this.max * 10}`;
+  @Prop() src: string;
+  get level() {
+    return `level-${Math.round(this.value / this.max * 10)}`;
   }
 }
 </script>

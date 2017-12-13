@@ -7,6 +7,7 @@
 ```
 
 `十分制`绑定一个 max 值
+
 <example-board :component="ScoreBasic" :source="ScoreBasicSource"></example-board>
 
 `百分制`绑定一个 max 值
@@ -21,7 +22,7 @@
 ## 基本用法
 
 ```html
-<vd-score-rank :value="20"></vd-score-rank>
+<vd-score-bar :value="10"></vd-score-bar>
 ```
 
 绑定一个 max 值
@@ -30,6 +31,18 @@
 随意展示不同的 max 值
 <example-board :component="ScoreBarCustom" :source="ScoreBarCustomSource"></example-board>
 
+# Score-Rank 评分榜
+
+## 基本用法
+
+```html
+<vd-score-rank :value="20"></vd-score-rank>
+```
+
+<example-board :component="ScoreRankBasic" :source="ScoreRankBasicSource"></example-board>
+随意展示不同的 max 值
+<example-board :component="ScoreRankCustom" :source="ScoreRankCustomSource"></example-board>
+
 ## 所有属性
 
 > `*`表示默认值。
@@ -37,6 +50,7 @@
 | Property | Type   | Available Value |
 | :------- | :----- | :-------------- |
 | max      | number | **10,100**      |
+| src      | string | --              |
 
 <script>
 
@@ -55,6 +69,12 @@ import ScoreBarBasicSource from 'docs/examples/other/ScoreBarBasic.txt';
 import ScoreBarCustom from 'docs/examples/other/ScoreBarCustom';
 import ScoreBarCustomSource from 'docs/examples/other/ScoreBarCustom.txt';
 
+import ScoreRankBasic from 'docs/examples/other/ScoreRankBasic.vue';
+import ScoreRankBasicSource from 'docs/examples/other/ScoreRankBasic.txt';
+
+import ScoreRankCustom from 'docs/examples/other/ScoreRankCustom.vue';
+import ScoreRankCustomSource from 'docs/examples/other/ScoreRankCustom.txt';
+
 export default {
   data() {
     return {
@@ -64,10 +84,14 @@ export default {
       ScorePercentSource,
       ScoreCustom,
       ScoreCustomSource,
-      ScoreBarBasic,
-      ScoreBarBasicSource,
       ScoreBarCustom,
       ScoreBarCustomSource,
+      ScoreBarBasic,
+      ScoreBarBasicSource,
+      ScoreRankBasic,
+      ScoreRankBasicSource,
+      ScoreRankCustom,
+      ScoreRankCustomSource
     }
   }
 }
