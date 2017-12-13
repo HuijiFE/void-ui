@@ -9,5 +9,6 @@ export { default as DemoBoard } from 'src/controls/demo/DemoBoard.vue';
 export { default as VdFlexbox } from 'src/controls/flexbox/VdFlexbox.vue';
 export { default as VdToggle } from 'src/controls/form/VdToggle.vue';
 export { default as VdInput } from 'src/controls/input/VdInput.vue';
+export { default as VdProcessBar } from 'src/controls/process/VdProcessBar.vue';
 export { default as VdRadio } from 'src/controls/radio/VdRadio.vue';
 export { default as VdScore } from 'src/controls/score/VdScore.vue';

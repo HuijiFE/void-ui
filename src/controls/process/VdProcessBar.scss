@@ -1,0 +1,54 @@
+.#{$void}-process-bar {
+  $process-border-radius: 0.02rem;
+  $process-height: 0.16rem;
+  $process-text-font-size: 0.12rem;
+  $process-text-font-color: #eeeeee;
+
+  $process-bar-backgroundColor: (
+    loading: #00bedb,
+    success: #54bf58,
+    failure: #ff3333
+  );
+
+  $process-backgrounds: (
+    dark: #4e4e4e,
+    lite: #cccccc
+  );
+
+  width: 100%;
+  @each $genre in $ss-genres {
+    &.genre-#{$genre} {
+      .process-outer {
+        background-color: map-get($map:$process-backgrounds, $key: $genre);
+        border-radius: $process-border-radius;
+        position: relative;
+        height: $process-height;
+        width: 100%;
+      }
+    }
+
+    .process-inner {
+      height: 100%;
+      border-radius: $process-border-radius;
+      transition: background-color ease 0.5s, width ease 0.2s;
+      @each $status, $color in $process-bar-backgroundColor {
+        &.status-#{$status} {
+          background-color: $color;
+        }
+      }
+    }
+
+    .process-text {
+      user-select: none;
+      position: absolute;
+      text-align: center;
+      line-height: $process-height;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      font-size: $process-text-font-size;
+      color: $process-text-font-color;
+    }
+  }
+}
