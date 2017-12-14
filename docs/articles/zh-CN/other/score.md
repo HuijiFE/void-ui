@@ -47,14 +47,25 @@
 
 <example-board :component="ScoreRankCustom" :source="ScoreRankCustomSource"></example-board>
 
+# Score-selector 选择器
+
+## 基本用法
+
+```html
+<vd-score-selector size='large'></vd-score-selector>
+```
+
+<example-board :component="ScoreSelectorBasic" :source="ScoreSelectorBasicSource"></example-board>
+
 ## 所有属性
 
 > `*`表示默认值。
 
-| Property | Type   | Available Value |
-| :------- | :----- | :-------------- |
-| max      | number | **10,100**      |
-| src      | string | --              |
+| Property | Type   | Available Value        |
+| :------- | :----- | :--------------------- |
+| max      | number | **10,100**             |
+| src      | string | --                     |
+| size     | string | **small,medium,large** |
 
 <script>
 
@@ -79,6 +90,8 @@ import ScoreRankBasicSource from 'docs/examples/other/ScoreRankBasic.txt';
 import ScoreRankCustom from 'docs/examples/other/ScoreRankCustom.vue';
 import ScoreRankCustomSource from 'docs/examples/other/ScoreRankCustom.txt';
 
+import ScoreSelectorBasic from 'docs/examples/other/ScoreSelectorBasic.vue';
+import ScoreSelectorBasicSource from 'docs/examples/other/ScoreSelectorBasic.txt';
 export default {
   data() {
     return {
@@ -95,7 +108,9 @@ export default {
       ScoreRankBasic,
       ScoreRankBasicSource,
       ScoreRankCustom,
-      ScoreRankCustomSource
+      ScoreRankCustomSource,
+      ScoreSelectorBasic,
+      ScoreSelectorBasicSource
     }
   }
 }

@@ -13,3 +13,4 @@ export { default as VdRadio } from 'src/controls/radio/VdRadio.vue';
 export { default as VdScore } from 'src/controls/score/VdScore.vue';
 export { default as VdScoreBar } from 'src/controls/score/VdScoreBar.vue';
 export { default as VdScoreRank } from 'src/controls/score/VdScoreRank.vue';
+export { default as VdScoreSelector } from 'src/controls/score/VdScoreSelector.vue';
