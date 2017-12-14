@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <main-nav mode="router"></main-nav>
-    <vd-main>
+    <vd-main class="docs-main-wrapper">
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
@@ -27,6 +27,9 @@ import VoidUI from 'void-ui';
 Vue.use(VoidUI);
 
 import MainNav from 'docs/components/MainNav.vue';
+import ColorCube from 'docs/components/ColorCube.vue';
+
+Vue.component(ColorCube.name, ColorCube);
 
 @Component({
   components: {

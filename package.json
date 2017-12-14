@@ -44,12 +44,13 @@
     "build": "npm run build:lib && npm run build:docs"
   },
   "dependencies": {
-    "@tweenjs/tween.js": "^17.1.1"
+    "animejs": "^2.2.0"
   },
   "peerDependencies": {
     "vue": "^2.5.8"
   },
   "devDependencies": {
+    "@types/animejs": "^2.0.0",
     "@types/highlight.js": "^9.12.2",
     "@types/jest": "^21.1.8",
     "autoprefixer": "^7.1.6",

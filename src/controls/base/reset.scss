@@ -27,6 +27,28 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: $heading-line-height;
+  margin: $heading-margin;
+  font-weight: $heading-font-weight-default;
+}
+
+@each $heading, $font-size in $heading-font-sizes {
+  #{$heading} {
+    font-size: $font-size;
+  }
+}
+@each $heading, $font-weight in $heading-font-weights {
+  #{$heading} {
+    font-weight: $font-weight;
+  }
+}
+
 a {
   color: $color-primary;
   text-decoration: none;

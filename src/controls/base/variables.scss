@@ -29,21 +29,6 @@ $line-height-base: 1.6;
 $border-base: 1px solid transparent;
 $border-radius-base: 2px;
 
-// gutter
-$gutter-xsmall:   8px;
-$gutter-small:    16px;
-$gutter-medium:   24px;
-$gutter-large:    32px;
-$gutter-xlarge:   40px;
-
-$gutter-sizes: (
-  xsmall:   $gutter-xsmall,
-  small:    $gutter-small,
-  medium:   $gutter-medium,
-  large:    $gutter-large,
-  xlarge:   $gutter-xlarge,
-);
-
 
 
 /*---------- Style System ----------*/
@@ -296,6 +281,21 @@ $genre-background-colors: (
 
 /*----------  Common  ----------*/
 
+// gutter
+$gutter-xsmall:   8px;
+$gutter-small:    16px;
+$gutter-medium:   24px;
+$gutter-large:    32px;
+$gutter-xlarge:   40px;
+
+$gutter-sizes: (
+  xsmall:   $gutter-xsmall,
+  small:    $gutter-small,
+  medium:   $gutter-medium,
+  large:    $gutter-large,
+  xlarge:   $gutter-xlarge,
+);
+
 $scrollbar-width: 16px;
 
 $breakpoint-xsmall:     320px !default;
@@ -304,11 +304,11 @@ $breakpoint-medium:    1024px !default;
 $breakpoint-large:     1440px !default;
 $breakpoint-xlarge:    1920px !default;
 
-$wrapper-width-xsmall:    100% !default;
-$wrapper-width-small:     100% !default;
-$wrapper-width-medium:   880px !default;
-$wrapper-width-large:   1200px !default;
-$wrapper-width-xlarge:  1200px !default;
+$container-width-xsmall:    100% !default;
+$container-width-small:     100% !default;
+$container-width-medium:   880px !default;
+$container-width-large:   1200px !default;
+$container-width-xlarge:  1200px !default;
 
 $container-padding: 0.24rem;
 $section-padding:   0.40rem;
@@ -317,26 +317,26 @@ $article-font-size: 0.16rem;
 $article-line-height: 1.7;
 $article-foreground: $lite-foreground;
 
-$article-heading-line-height: 1.33;
-$article-heading-margin: 1em 0 0.5em 0;
+$heading-line-height: 1.33;
+$heading-margin: 1em 0 0.5em 0;
 
-$article-heading-font-sizes: (
-  1: 0.48rem,
-  2: 0.36rem,
-  3: 0.28rem,
-  4: 0.24rem,
-  5: 0.20rem,
-  6: 0.18rem,
+$heading-font-sizes: (
+  h1: 0.48rem,
+  h2: 0.36rem,
+  h3: 0.28rem,
+  h4: 0.24rem,
+  h5: 0.20rem,
+  h6: 0.18rem,
 );
 
-$article-heading-font-weight-default: bold;
-$article-heading-font-weights: (
-  1: normal,
-  2: normal,
-  3: normal,
-  4: bold,
-  5: bold,
-  6: bold,
+$heading-font-weight-default: bold;
+$heading-font-weights: (
+  h1: normal,
+  h2: normal,
+  h3: normal,
+  h4: bold,
+  h5: bold,
+  h6: bold,
 );
 
 $article-paragraph-font-size: $article-font-size;

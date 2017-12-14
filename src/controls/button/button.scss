@@ -134,6 +134,17 @@
       }
     }
   }
+  @each $size in $ss-sizes {
+    &.size-#{$size} {
+      .icon::before {
+        width: map-get($map: $button-icon-sizes, $key: $size);
+      }
+      .icon + .content,
+      .content + .icon {
+        margin-left: map-get($map: $button-content-gutter, $key: $size);
+      }
+    }
+  }
 
   &.shape-rect {
     @each $size in $ss-sizes {
@@ -142,13 +153,25 @@
         $padding: map-get($map: $button-rect-paddings, $key: $size);
         padding-left: $padding;
         padding-right: $padding;
-        .icon::before {
-          width: map-get($map: $button-icon-sizes, $key: $size);
-        }
-        .icon + .content,
-        .content + .icon {
-          margin-left: map-get($map: $button-content-gutter, $key: $size);
-        }
+      }
+    }
+  }
+
+  &.shape-square {
+    @each $size in $ss-sizes {
+      &.size-#{$size} {
+        width: map-get($map: $button-square-sizes, $key: $size);
+        height: map-get($map: $button-square-sizes, $key: $size);
+      }
+    }
+  }
+
+  &.shape-circle {
+    border-radius: 50%;
+    @each $size in $ss-sizes {
+      &.size-#{$size} {
+        width: map-get($map: $button-circle-sizes, $key: $size);
+        height: map-get($map: $button-circle-sizes, $key: $size);
       }
     }
   }
