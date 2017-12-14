@@ -1,0 +1,156 @@
+.#{$void}-tabs {
+  $ss-skins-tabs: 'slik', 'plain', 'fill';
+  $tabs-padding: 0.08rem;
+  $tabs-head-height: 0.4rem;
+
+  border-radius: $border-radius-base;
+  border: $border-base;
+  &.bordered {
+    @each $genre in $ss-genres {
+      &.genre-#{$genre} {
+        border-color: map-get($map: $genre-background-colors, $key: #{$genre}-border);
+      }
+    }
+  }
+
+  @each $genre in $ss-genres {
+    &.genre-#{$genre} {
+      @if $genre == 'lite' {
+        background-color: map-get($map: $genre-background-colors, $key: #{$genre});
+      } @else {
+        background-color: map-get($map: $genre-background-colors, $key: #{$genre}-high);
+      }
+    }
+  }
+
+  &.raised {
+    box-shadow: 0 1px 3px rgba(#000, 0.33);
+  }
+
+  /*----------  tabs-head  ----------*/
+
+  .tabs-head {
+    position: relative;
+    @include flex(row, flex-start, stretch, nowrap);
+    height: $tabs-head-height;
+  }
+
+  &.skin-silk,
+  &.skin-plain {
+    .tabs-head {
+      padding: 0 $tabs-padding;
+    }
+  }
+
+  &.skin-silk {
+    .tabs-head {
+      border-bottom: $border-base;
+    }
+    @each $genre in $ss-genres {
+      &.genre-#{$genre} {
+        .tabs-head {
+          border-bottom-color: map-get(
+            $map: $genre-background-colors,
+            $key: #{$genre}-border
+          );
+        }
+      }
+    }
+  }
+
+  &.skin-plain,
+  &.skin-fill {
+    @each $genre in $ss-genres {
+      &.genre-#{$genre} {
+        .tabs-head {
+          background-color: map-get(
+            $map: $genre-background-colors,
+            $key: #{$genre}-hover
+          );
+        }
+      }
+    }
+  }
+
+  /*----------  tabs-head-item  ----------*/
+
+  .head-item {
+    height: 100%;
+    padding: 0 0.24rem;
+    background-color: transparent;
+    border-top-left-radius: $border-radius-base;
+    border-top-right-radius: $border-radius-base;
+  }
+
+  &.skin-silk,
+  &.skin-plain {
+    .head-item.selected {
+      color: $tone-primary;
+    }
+  }
+
+  &.skin-plain {
+    @each $genre in $ss-genres {
+      &.genre-#{$genre} {
+        .head-item.selected {
+          @if $genre == 'lite' {
+            background-color: map-get($map: $genre-background-colors, $key: #{$genre});
+          } @else {
+            background-color: map-get(
+              $map: $genre-background-colors,
+              $key: #{$genre}-high
+            );
+          }
+        }
+      }
+    }
+  }
+
+  &.skin-fill {
+    .head-item.selected {
+      color: $color-white;
+      background-color: $tone-primary;
+    }
+  }
+
+  /*----------  head-underline  ----------*/
+
+  .head-underline {
+    position: absolute;
+    display: inline-block;
+    width: 0;
+    height: 0.02rem;
+    left: 0;
+    bottom: 0;
+    background-color: $tone-primary;
+  }
+
+  &.skin-plain,
+  &.skin-fill {
+    .head-underline {
+      display: none;
+    }
+  }
+
+  /*----------  tabs-body  ----------*/
+
+  .tabs-body {
+    @include flex(row, flex-start, stretch, nowrap);
+    overflow-x: hidden;
+    margin: $tabs-padding;
+  }
+
+  /*----------  tabs-item  ----------*/
+
+  &-item {
+    @include flex(row, flex-start, flex-start, initial);
+    flex: 0 0 100%;
+    width: 100%;
+
+    &.status {
+      &-hidden {
+        display: none;
+      }
+    }
+  }
+}

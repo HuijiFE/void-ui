@@ -75,6 +75,16 @@ export const zhCN: DocConfig[] = [
     ],
   },
   {
+    name: 'Navigation 导航',
+    children: [
+      {
+        name: 'Tabs 标签页',
+        path: 'tabs',
+        fileName: 'navigation/tabs',
+      },
+    ],
+  },
+  {
     name: '其他',
     children: [
       {
