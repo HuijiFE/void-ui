@@ -92,6 +92,11 @@ export const zhCN: DocConfig[] = [
         path: 'score',
         fileName: 'other/score',
       },
+      {
+        name: 'processBar 进度条',
+        path: 'processBar',
+        fileName: 'other/processBar',
+      },
     ],
   },
 ];

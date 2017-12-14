@@ -1,0 +1,76 @@
+.#{$void}-score-rank {
+  $score-rank-width: 2.82rem;
+  $score-rank-height: 0.4rem;
+  $score-rank-border: 2px;
+  $score-rank-background: #dae1e6;
+  $score-margin-base: 0.08rem;
+  $score-padding-right: 0.04rem;
+  $score-padding: 0.04rem;
+  $score-rank-img-height: 0.4rem;
+  $score-rank-outer-widths: (
+    10:$score-rank-width,
+    9:$score-rank-width - (0.14rem*1),
+    8:$score-rank-width - (0.14rem*2),
+    7:$score-rank-width - (0.14rem*3),
+    6:$score-rank-width - (0.14rem*4),
+    5:$score-rank-width - (0.14rem*5),
+    4:$score-rank-width - (0.14rem*6),
+    3:$score-rank-width - (0.14rem*7),
+    2:$score-rank-width - (0.14rem*8),
+    1:$score-rank-width - (0.14rem*9),
+    0:$score-rank-width - (0.14rem*10)
+  );
+  $score-rank-colors: (
+    0: $color-score-0,
+    1: $color-score-0,
+    2: $color-score-0,
+    3: $color-score-1,
+    4: $color-score-1,
+    5: $color-score-2,
+    6: $color-score-2,
+    7: $color-score-3,
+    8: $color-score-3,
+    9: $color-score-4,
+    10:$color-score-4
+  );
+  // score-rank
+  width: $score-rank-width;
+  height: $score-rank-height;
+  border-radius: $score-rank-border;
+  background-color: $score-rank-background;
+  font: Aldrich;
+  font-size: $score-font-size;
+  .score-rank-outer {
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    border-radius: $score-rank-border;
+    color: $color-white;
+    @each $level, $width in $score-rank-outer-widths {
+      &.level-#{$level} {
+        width: $width;
+      }
+    }
+    @each $level, $color in $score-rank-colors {
+      &.level-#{$level} {
+        background-color: $color;
+      }
+    }
+  }
+  .score-rank-inner {
+    display: flex;
+    padding-right: $score-padding-right;
+    line-height: $score-rank-height;
+  }
+  .score-rank-img {
+    height: $score-rank-img-height;
+    padding: $score-padding;
+    img {
+      width: auto;
+      height: 100%;
+    }
+  }
+  & + & {
+    margin-top: $score-margin-base;
+  }
+}

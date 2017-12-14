@@ -2,7 +2,7 @@
   <div>
     <vd-score v-for="item in 10"
               :key="item"
-              :value="(max+max/10)-item*max/10"
+              :value="( max + max / 10) - item * max / 10"
               :max="max">
     </vd-score>
   </div>
@@ -19,7 +19,7 @@ import {
   Watch,
 } from 'vue-property-decorator';
 @Component
-export default class ScoreBasic extends Vue {
-  max = 100;
+export default class ScorePercent extends Vue {
+  max = 10;
 }
 </script>

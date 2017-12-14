@@ -2,7 +2,7 @@
   <div class="vd-score">
     <div class="score-inner"
          :class="level">
-      {{value>=10?value:value.toFixed(1)}}
+      {{value >= 10 ? value : value.toFixed(1)}}
     </div>
   </div>
 </template>
