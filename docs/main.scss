@@ -183,6 +183,14 @@
   margin: 0 auto;
 }
 
+/*----------  Tabs  ----------*/
+
+.tabs-content {
+  @include flex(row, center, center);
+  width: 100%;
+  height: 512px;
+}
+
 /*----------  highlight.js start  ----------*/
 
 @font-face {

@@ -1,10 +1,14 @@
 <template>
-  <div class="vd-tabs">
+  <div class="vd-tabs"
+       :class="classes">
     <div class="tabs-head">
-      <button class="head-item"
-              v-for="(item, index) in children"
+      <button v-for="(item, index) in children"
               :key="index"
+              class="head-item"
+              :class="{'selected': item.status === 'selected'}"
               @click="select(item)">{{item.label}}</button>
+      <span ref="underline"
+            class="head-underline"></span>
     </div>
     <div class="tabs-body">
       <slot></slot>
@@ -23,6 +27,8 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
+import { VdStylableControl } from 'src/controls/base/VdControl';
+import { ControlSkin } from 'typings';
 import VdTabsHeadItem from './VdTabsHeadItem.vue';
 import VdTabsItem from './VdTabsItem.vue';
 import anime from 'animejs';
@@ -32,13 +38,31 @@ import anime from 'animejs';
  * easeOutQuad easeOutCubic easeOutQuart easeOutQuint easeOutSine easeOutExpo easeOutCirc easeOutBack
  * easeInOutQuad easeInOutCubic easeInOutQuart easeInOutQuint easeInOutSine easeInOutExpo easeInOutCirc easeInOutBack
  */
-const easing = 'easeInOutQuint';
-const duration = 500;
-const opacityOut = [{ value: 1 }, { value: 0.65 }, { value: 0 }];
-const opacityIn = [{ value: 0 }, { value: 0.45 }, { value: 1 }];
+const easing = 'easeInOutCirc';
+const duration = 320;
+const opacityOut = [{ value: 1 }, { value: 0 }];
+const opacityIn = [{ value: 0 }, { value: 1 }];
 
 @Component
-export default class VdTabs extends Vue {
+export default class VdTabs extends VdStylableControl {
+  @Prop({ default: 'silk' })
+  skin: ControlSkin;
+
+  @Prop({ default: true })
+  bordered: boolean;
+
+  @Prop({ default: false })
+  raised: boolean;
+
+  get classes(): ClassNames {
+    return [
+      `genre-${this.genre || this.$void.genre}`,
+      `skin-${this.skin}`,
+      { bordered: this.bordered },
+      { raised: this.raised },
+    ];
+  }
+
   children: VdTabsItem[] = [];
 
   selectedItem: VdTabsItem;
@@ -83,27 +107,47 @@ export default class VdTabs extends Vue {
           newItem.status = 'selected';
         },
       });
+    this.moveUnderline();
+  }
+
+  moveUnderline() {
+    let curHeadItem = this.$el.querySelectorAll('.head-item')[
+      this.selectedItem.index
+    ] as HTMLElement;
+    anime({
+      targets: this.$refs.underline,
+      left: curHeadItem.offsetLeft,
+      width: curHeadItem.offsetWidth,
+      easing,
+      duration,
+    });
   }
 
   mountChildren() {
-    let count = 0;
+    let children: VdTabsItem[] = [];
+    let selectedItem: VdTabsItem | null = null;
+
     for (let i = 0; i < this.$children.length; i++) {
       let item = this.$children[i] as VdTabsItem;
       if (item) {
         item.parent = this;
-        item.index = this.children.push(item) - 1;
+        item.index = children.push(item) - 1;
         if (item.selected) {
-          this.selectedItem = item;
+          selectedItem = item;
         }
       }
     }
-    if (!this.selectedItem) {
-      this.selectedItem = this.children[0];
+    if (!selectedItem) {
+      selectedItem = children[0];
     }
+
+    this.children = children;
+    this.selectedItem = selectedItem;
+
     let timeline = anime.timeline();
     timeline
       .add({
-        targets: this.children.map(child => child.$el),
+        targets: children.map(child => child.$el),
         translateX: '100%',
         opacity: 0,
         duration: 0,
@@ -117,6 +161,7 @@ export default class VdTabs extends Vue {
         begin: () => {
           this.selectedItem.status = 'selected';
         },
+        complete: () => this.moveUnderline(),
       });
   }
 
