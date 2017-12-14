@@ -7,7 +7,7 @@
                    :max="200">
     </vd-score-rank>
     <vd-score-rank :value="5.3"
-                   :max="max">
+                   :max="10">
     </vd-score-rank>
     <vd-score-rank :value="2.65"
                    :max="5">
@@ -26,8 +26,5 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
-
 @Component
-export default class ScoreRankBasic extends Vue {
-  max = 10;
-}
+export default class ScoreRankBasic extends Vue {}

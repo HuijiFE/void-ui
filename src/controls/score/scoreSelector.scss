@@ -1,0 +1,111 @@
+.#{$void}-score-selector {
+  //common
+  $score-font-weight: bold;
+  $score-selector-background: #24cf4c;
+  $score-selector-shape: 'small', 'medium', 'large';
+  $score-border-radius: 1px;
+  // small
+  $score-small-width: 1.38rem;
+  $score-small-height: 0.24rem;
+  $small-block-width: 0.08rem;
+  $small-block-height: 0.12rem;
+  //medium
+  $score-medium-width: 2.02rem;
+  $score-medium-height: 0.32rem;
+  $medium-block-width: 0.12rem;
+  $medium-block-height: 0.18rem;
+  //large
+  $score-large-width: 2.93rem;
+  $score-large-height: 0.4rem;
+  $large-block-width: 0.18rem;
+  $large-block-height: 0.28rem;
+  //map
+  $score-selector-widths: (
+    small:$score-small-width,
+    medium:$score-medium-width,
+    large:$score-large-width
+  );
+  $score-selector-heights: (
+    small:$score-small-height,
+    medium:$score-medium-height,
+    large:$score-large-height
+  );
+  $score-block-widths: (
+    small:$small-block-width,
+    medium:$medium-block-width,
+    large:$large-block-width
+  );
+  $score-block-heights: (
+    small:$small-block-height,
+    medium:$medium-block-height,
+    large:$large-block-height
+  );
+  $score-font-color: (
+    small:#999,
+    medium:#999,
+    large:#888
+  );
+  $score-regular-font-size: (
+    small:0.12rem,
+    medium:0.18rem,
+    large:0.24rem
+  );
+  $score-font-size: (
+    small:0.14rem,
+    medium:0.24rem,
+    large:0.32rem
+  );
+  $score-margin-right: (
+    small:1px,
+    medium:0.02rem,
+    large:0.03rem
+  );
+  $score-border-size: (
+    small:1px,
+    medium:1px,
+    large:2px
+  );
+
+  //score-selector
+  display: inline-flex;
+  align-items: center;
+  @each $shape, $width in $score-selector-widths {
+    &.score-selector-#{$shape} {
+      width: $width;
+      .score-selector-inner {
+        width: map-get($map:$score-block-widths, $key:$shape);
+        height: map-get($map:$score-block-heights, $key:$shape);
+        border: map-get($map:$score-border-size, $key:$shape) solid
+          $score-selector-background;
+        border-radius: $score-border-radius;
+        margin-right: map-get($map:$score-margin-right, $key:$shape);
+        font-size: map-get($map:$score-regular-font-size, $key:$shape);
+        @each $level, $color in $score-colors {
+          &.level-#{$level} {
+            background-color: $color;
+            border: map-get($map:$score-border-size, $key:$shape) solid $color;
+          }
+          &.origin-#{$level} {
+            border: map-get($map:$score-border-size, $key:$shape) solid $color;
+          }
+        }
+      }
+      .score-selector-content {
+        font-size: map-get($map:$score-regular-font-size, $key:$shape);
+        color: map-get($map:$score-font-color, $key:$shape);
+        @each $level, $color in $score-colors {
+          .font-#{$level} {
+            color: $color;
+            font-size: map-get($map:$score-font-size, $key:$shape);
+          }
+        }
+      }
+    }
+  }
+
+  @each $shape, $height in $score-selector-heights {
+    &.score-selector-#{$shape} {
+      height: $height;
+    }
+  }
+}
