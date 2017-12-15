@@ -1,31 +1,29 @@
 <template>
   <div>
-    <vd-tabs skin="silk"
-             :bordered="false"
-             :raised="true">
-      <vd-tabs-item label="tab-a">
+    <vd-tabs>
+      <vd-tabs-item label="Tab A">
         <div class="tabs-content">
-          content
+          Content of Tab A.
         </div>
       </vd-tabs-item>
-      <vd-tabs-item label="tab-b">
+      <vd-tabs-item label="Tab B">
         <div class="tabs-content">
-          content
+          Content of Tab B.
         </div>
       </vd-tabs-item>
-      <vd-tabs-item label="tab-c">
+      <vd-tabs-item label="Tab C">
         <div class="tabs-content">
-          content
+          Content of Tab C.
         </div>
       </vd-tabs-item>
-      <vd-tabs-item label="tab-d">
+      <vd-tabs-item label="Tab D">
         <div class="tabs-content">
-          content
+          Content of Tab D.
         </div>
       </vd-tabs-item>
-      <vd-tabs-item label="tab-e">
+      <vd-tabs-item label="Tab E">
         <div class="tabs-content">
-          content
+          Content of Tab E.
         </div>
       </vd-tabs-item>
     </vd-tabs>

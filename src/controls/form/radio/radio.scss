@@ -36,6 +36,7 @@ $radio-inner-background: $color-white;
 $border-width-base: 1px;
 $border-base: $border-width-base solid transparent;
 $radio-margin: 0.16rem;
+
 .#{$void}-radio {
   @include flex(flex-start,center,center);
   display: inline-flex;
@@ -43,6 +44,19 @@ $radio-margin: 0.16rem;
   height: map-get($map: $button-rect-sizes, $key: medium);
   cursor: pointer;
   user-select: none;
+
+  .radio-input {
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+  }
+
   .radio-outer {
     @include flex(center,center,center);
     position: relative;
@@ -61,17 +75,7 @@ $radio-margin: 0.16rem;
     border-radius: 50%;
     transform: scale(0);
   }
-  .radio-input {
-    opacity: 0;
-    outline: none;
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 0;
-  }
+
   &.genre {
     @each $genre in $ss-genres {
       &-#{$genre} {
@@ -81,17 +85,21 @@ $radio-margin: 0.16rem;
       }
     }
   }
+
   .radio-content {
     @include clear-baseline();
   }
+
   .radio-outer + .radio-content {
     margin-left: $radio-gutter;
   }
+
   &:hover {
     .radio-outer {
       border-color: $color-primary;
     }
   }
+
   &.checked {
     .radio-outer {
       background-color: $color-primary;
@@ -103,6 +111,7 @@ $radio-margin: 0.16rem;
       @include gen-transition-base((opacity, transform));
     }
   }
+
   &.disabled {
     cursor: default;
     &.genre {
@@ -119,6 +128,7 @@ $radio-margin: 0.16rem;
       }
     }
   }
+
   & + & {
     margin-left: $radio-margin;
   }
