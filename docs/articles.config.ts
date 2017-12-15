@@ -97,6 +97,11 @@ export const zhCN: DocConfig[] = [
         path: 'processBar',
         fileName: 'other/processBar',
       },
+      {
+        name: 'note 提示',
+        path: 'note',
+        fileName: 'other/note',
+      },
     ],
   },
 ];
