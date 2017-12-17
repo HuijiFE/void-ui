@@ -8,7 +8,7 @@ $void: 'vd';
 $font-size-root: 100px;
 
 
-/*----------  Base  ----------*/
+/*----------  Typography  ----------*/
 
 // font
 $font-family-base: 'Helvetica Neue', 'Helvetica', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', 'Arial', 'sans-serif';
@@ -24,11 +24,6 @@ $font-size-large:   0.18rem;
 $font-size-article: 0.16rem;
 
 $line-height-base: 1.6;
-
-// border
-$border-base: 1px solid transparent;
-$border-radius-base: 2px;
-
 
 
 /*---------- Style System ----------*/
@@ -279,7 +274,14 @@ $genre-background-colors: (
 );
 
 
-/*----------  Common  ----------*/
+/*----------  Container  ----------*/
+
+// border
+$border-base: 1px solid transparent;
+$border-radius-base: 2px;
+
+// outline
+$outline-base: $tone-primary solid 1px;
 
 // gutter
 $gutter-xsmall:   8px;
@@ -309,6 +311,9 @@ $container-width-small:     100% !default;
 $container-width-medium:   880px !default;
 $container-width-large:   1200px !default;
 $container-width-xlarge:  1200px !default;
+
+
+/*----------  Common  ----------*/
 
 $container-padding: 0.24rem;
 $section-padding:   0.40rem;
@@ -372,7 +377,7 @@ $button-content-gutter: (
   large:    0.12rem,
 );
 
-$button-rect-size: (
+$button-rect-sizes: (
   small:    0.24rem,
   medium:   0.32rem,
   large:    0.40rem,
@@ -393,6 +398,19 @@ $button-circle-sizes: (
   medium:   0.52rem,
   large:    0.60rem,
 );
+
+
+/*----------  Form  ----------*/
+
+$form-wedgit-height: 0.32rem;
+$form-wedgit-font-size: $font-size-base;
+
+$form-wedgit-circlie-size: 0.16rem;
+$form-wedgit-rect-size: 0.14rem;
+
+$form-wedgit-gutter: 0.16rem;
+
+$form-wedgit-transition-duration: 0.2s;
 
 
 /*----------  Score  ----------*/

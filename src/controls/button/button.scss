@@ -149,7 +149,7 @@
   &.shape-rect {
     @each $size in $ss-sizes {
       &.size-#{$size} {
-        height: map-get($map: $button-rect-size, $key: $size);
+        height: map-get($map: $button-rect-sizes, $key: $size);
         $padding: map-get($map: $button-rect-paddings, $key: $size);
         padding-left: $padding;
         padding-right: $padding;

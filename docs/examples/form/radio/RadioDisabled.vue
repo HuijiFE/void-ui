@@ -1,34 +1,19 @@
 <template>
-  <div>
-    <!-- <DemoBoard v-for="board in 1"
-               :key="board"
-               :genre="board%2===1?'lite':'dark'"> -->
-    <vd-radio v-for="item in 1"
-              :key="item"
-              :genre="item%2===1?'lite':'dark'"
-              v-model="radioModelBasic"
-              :disabled="disabled"
-              :tag="item">选项{{item}}
-    </vd-radio>
-    <vd-button @click="disabled = !disabled">禁用</vd-button>
-    <!-- </DemoBoard> -->
-  </div>
+  <vd-flexbox>
+    <vd-radio :value="1"
+              v-model="radioModel"
+              disabled>Option 1</vd-radio>
+    <vd-radio :value="2"
+              v-model="radioModel"
+              disabled>Option 2</vd-radio>
+  </vd-flexbox>
 </template>
+
 <script lang="ts">
-import {
-  Component,
-  Emit,
-  Inject,
-  Model,
-  Prop,
-  Provide,
-  Vue,
-  Watch,
-} from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class RadioBasic extends Vue {
-  radioModelBasic = 3;
-  disabled = true;
+export default class RadioDoisabled extends Vue {
+  radioModel = 1;
 }
 </script>

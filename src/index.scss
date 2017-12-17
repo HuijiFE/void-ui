@@ -8,17 +8,17 @@
 @import 'controls/base/reset';
 
 @import 'controls/button/button';
-@import 'controls/common/article';
-@import 'controls/common/common';
-@import 'controls/common/main';
 @import 'controls/demo/demo';
-@import 'controls/flexbox/flexbox';
-@import 'controls/form/toggle';
-@import 'controls/input/input';
+@import 'controls/form/input/input';
+@import 'controls/form/radio/radio';
+@import 'controls/form/toggle/toggle';
+@import 'controls/layout/common/article';
+@import 'controls/layout/common/common';
+@import 'controls/layout/common/main';
+@import 'controls/layout/flexbox/flexbox';
 @import 'controls/navigation/tabs/tabs';
 @import 'controls/note/note';
 @import 'controls/process/VdProcessBar';
-@import 'controls/radio/radio';
 @import 'controls/score/score';
 @import 'controls/score/scoreBar';
 @import 'controls/score/scoreRank';

@@ -1,5 +1,5 @@
 <template>
-  <vd-flexbox gutter="xsmall">
+  <vd-flexbox gutter="auto">
     <!-- 4 kinds of skins -->
     <vd-flexbox v-for="skin in ['fill', 'flat', 'plain', 'silk']"
                 :key="skin"

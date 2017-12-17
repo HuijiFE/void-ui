@@ -1,33 +1,35 @@
 <template>
-  <div>
-    <!-- <DemoBoard v-for="board in 1"
-               :key="board"
-               :genre="board%2===1?'lite':'dark'"> -->
-    <p @click="checked=!checked">未点击和已点击</p>
-    <VdRadio v-for="item in 2"
-             :key="item"
-             :genre="item%2===1?'lite':'dark'"
-             v-model="radioModelBasic"
-             :checked="item===2"
-             :tag="item">选项{{item}}
-    </VdRadio>
-    <!-- </DemoBoard> -->
-  </div>
+  <vd-flexbox gutter="auto">
+
+    <vd-flexbox flex="100">
+      <vd-radio :value="1"
+                v-model="option">Option 1</vd-radio>
+      <vd-radio :value="2"
+                v-model="option">Option 2</vd-radio>
+      <vd-radio :value="3"
+                v-model="option">Option 3</vd-radio>
+    </vd-flexbox>
+    <vd-flexbox flex="100">You selected option {{option}}.</vd-flexbox>
+
+    <vd-flexbox flex="100">
+      <vd-radio value="red"
+                v-model="color">Red</vd-radio>
+      <vd-radio value="green"
+                v-model="color">Green</vd-radio>
+      <vd-radio value="blue"
+                v-model="color">Blue</vd-radio>
+    </vd-flexbox>
+    <vd-flexbox flex="100">You selected color {{color}}.</vd-flexbox>
+
+  </vd-flexbox>
 </template>
+
 <script lang="ts">
-import {
-  Component,
-  Emit,
-  Inject,
-  Model,
-  Prop,
-  Provide,
-  Vue,
-  Watch,
-} from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
+
 @Component
 export default class RadioBasic extends Vue {
-  @Provide() radioModelBasic = 3;
-  @Provide() checked = false;
+  option = 1;
+  color = 'red';
 }
 </script>

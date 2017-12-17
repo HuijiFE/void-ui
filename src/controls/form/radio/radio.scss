@@ -1,0 +1,120 @@
+.#{$void}-radio {
+  /*----------  vadiables  ----------*/
+  $radio-inner-size: 0.06rem;
+  $radio-content-gutter: 0.04rem;
+
+  /*----------  style  ----------*/
+  @include flex-inline(row,center,center);
+  font-size: $form-wedgit-font-size;
+
+  height: map-get($map: $button-rect-sizes, $key: medium);
+  cursor: pointer;
+  user-select: none;
+
+  .radio-input {
+    display: none;
+  }
+
+  .radio-outer,
+  .radio-border,
+  .radio-inner {
+    position: relative;
+    border-radius: 50%;
+  }
+
+  .radio-outer {
+    @include flex(row, center, center);
+    width: $form-wedgit-circlie-size;
+    height: $form-wedgit-circlie-size;
+  }
+
+  .radio-border {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    border: $border-base;
+  }
+
+  .radio-inner {
+    width: $radio-inner-size;
+    height: $radio-inner-size;
+    background-color: $color-white;
+    transform: scale(0);
+  }
+
+  .radio-label {
+    @include flex(row, center, center);
+  }
+
+  /*----------  gutter  ----------*/
+
+  .radio-outer + .radio-label {
+    margin-left: $radio-content-gutter;
+  }
+
+  & + & {
+    margin-left: $form-wedgit-gutter;
+  }
+
+  /*----------  theme  ----------*/
+
+  @each $genre in $ss-genres {
+    &.genre-#{$genre} {
+      .radio-outer {
+        background-color: map-get($map: $genre-background-colors, $key: $genre);
+      }
+      .radio-border {
+        border-color: map-get($map: $genre-foreground-colors, $key: $genre);
+      }
+    }
+  }
+
+  /*----------  hover & checked  ----------*/
+
+  &:hover,
+  &:focus,
+  &.checked {
+    .radio-border {
+      border-color: $tone-primary;
+    }
+  }
+
+  &.checked {
+    .radio-border,
+    .radio-inner {
+      transition-duration: $form-wedgit-transition-duration / 2;
+      transition-timing-function: ease-in;
+    }
+    .radio-border {
+      border-width: $form-wedgit-circlie-size / 2;
+      transition-property: border-width;
+      transition-delay: 0;
+    }
+    .radio-inner {
+      transform: scale(1);
+      transition-property: transform;
+      transition-delay: $form-wedgit-transition-duration / 2;
+    }
+  }
+
+  /*----------  checked  ----------*/
+
+  @each $genre in $ss-genres {
+    &.disabled.genre-#{$genre} {
+      .radio-border {
+        border-color: map-get($map: $genre-foreground-colors, $key: #{$genre}-disabled);
+      }
+      .radio-inner {
+        background-color: map-get(
+          $map: $genre-background-colors,
+          $key: #{$genre}-disabled
+        );
+      }
+      .radio-label {
+        color: map-get($map: $genre-foreground-colors, $key: #{$genre}-disabled);
+      }
+    }
+  }
+}

@@ -38,7 +38,7 @@ import anime from 'animejs';
  * easeOutQuad easeOutCubic easeOutQuart easeOutQuint easeOutSine easeOutExpo easeOutCirc easeOutBack
  * easeInOutQuad easeInOutCubic easeInOutQuart easeInOutQuint easeInOutSine easeInOutExpo easeInOutCirc easeInOutBack
  */
-const easing = 'easeInOutCirc';
+const easing = 'easeInQuad';
 const duration = 320;
 const opacityOut = [{ value: 1 }, { value: 0 }];
 const opacityIn = [{ value: 0 }, { value: 1 }];
@@ -83,13 +83,8 @@ export default class VdTabs extends VdStylableControl {
     timeline
       .add({
         targets: oldItem.$el,
-        translateX:
-          newItem.index < oldItem.index
-            ? [{ value: 0 }, { value: 100 }]
-            : [{ value: 0 }, { value: -100 }],
-        opacity: opacityOut,
-        easing,
-        duration,
+        opacity: 0,
+        duration: 0,
         complete: () => {
           oldItem.status = 'hidden';
         },
@@ -98,8 +93,8 @@ export default class VdTabs extends VdStylableControl {
         targets: newItem.$el,
         translateX:
           newItem.index < oldItem.index
-            ? [{ value: -100 }, { value: 0 }]
-            : [{ value: 100 }, { value: 0 }],
+            ? [{ value: -20 }, { value: 0 }]
+            : [{ value: 20 }, { value: 0 }],
         opacity: opacityIn,
         easing,
         duration,
@@ -148,13 +143,12 @@ export default class VdTabs extends VdStylableControl {
     timeline
       .add({
         targets: children.map(child => child.$el),
-        translateX: '100%',
         opacity: 0,
         duration: 0,
       })
       .add({
         targets: this.selectedItem.$el,
-        translateX: [{ value: 100 }, { value: 0 }],
+        translateX: [{ value: 20 }, { value: 0 }],
         opacity: opacityIn,
         easing,
         duration,
