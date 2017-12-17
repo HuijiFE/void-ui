@@ -47,7 +47,7 @@
 
 <example-board :component="ScoreRankCustom" :source="ScoreRankCustomSource"></example-board>
 
-# Score-selector 选择器
+# Score-Selector 选择器
 
 ## 基本用法
 
@@ -92,6 +92,7 @@ import ScoreRankCustomSource from 'docs/examples/other/ScoreRankCustom.txt';
 
 import ScoreSelectorBasic from 'docs/examples/other/ScoreSelectorBasic.vue';
 import ScoreSelectorBasicSource from 'docs/examples/other/ScoreSelectorBasic.txt';
+
 export default {
   data() {
     return {

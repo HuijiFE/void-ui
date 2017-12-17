@@ -1,0 +1,59 @@
+.#{$void}-note {
+  $note-width: 3.2rem;
+  $note-tone-width: 0.36rem;
+  $note-tone-height: 0.36rem;
+  $note-height: 0.6rem;
+  $content-font-size: 0.12rem;
+  $title-font-size: 0.14rem;
+  $icon-font-size: 0.3rem;
+  $content-font-color: #333333;
+  $note-border-color: #eeeeee;
+  $note-border-base: 1px solid $note-border-color;
+  $note-margin-base: 0.16rem 0.08rem;
+  $note-padding-base: 0.08rem 0.16rem;
+  $note-tone-color: #ffffff;
+  //map
+  $note-tone-background: (
+    'success':#4caf50,
+    'primary':#aaaaaa,
+    'warning':#ff9100,
+    'danger':#ff5e5e
+  );
+  width: $note-width;
+  height: $note-height;
+  border: $note-border-base;
+  padding: $note-padding-base;
+  margin: $note-margin-base;
+  display: inline-flex;
+  .note-outer {
+    width: $note-tone-height;
+    height: $note-tone-height;
+    border-radius: 50%;
+    color: $note-tone-color;
+    line-height: $note-tone-height;
+    text-align: center;
+    font-size: $icon-font-size;
+    @each $tone, $color in $note-tone-background {
+      &.tone-#{$tone} {
+        background: $color;
+      }
+    }
+    &.tone-origin {
+      display: none;
+    }
+  }
+  .note-content {
+    margin-left: 0.11rem;
+    font-size: $content-font-size;
+    color: $content-font-color;
+    .note-label {
+      font-size: $title-font-size;
+    }
+    &.tone-origin {
+      margin-left: 0;
+    }
+    .note-label + .note-descrip {
+      margin-top: 0.04rem;
+    }
+  }
+}

@@ -14,6 +14,7 @@ export { default as VdFlexbox } from 'src/controls/layout/flexbox/VdFlexbox.vue'
 export { default as VdTabs } from 'src/controls/navigation/tabs/VdTabs.vue';
 export { default as VdTabsHeadItem } from 'src/controls/navigation/tabs/VdTabsHeadItem.vue';
 export { default as VdTabsItem } from 'src/controls/navigation/tabs/VdTabsItem.vue';
+export { default as VdNote } from 'src/controls/note/VdNote.vue';
 export { default as VdProcessBar } from 'src/controls/process/VdProcessBar.vue';
 export { default as VdScore } from 'src/controls/score/VdScore.vue';
 export { default as VdScoreBar } from 'src/controls/score/VdScoreBar.vue';

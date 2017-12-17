@@ -65,7 +65,20 @@
     medium:1px,
     large:2px
   );
-
+  $score-content-widths: (
+    small:0.4rem,
+    medium:0.64rem,
+    large:0.84rem
+  );
+  //transition
+  $transition-duration-base: 0.25s;
+  $transition-timing-function-base: ease-in-out;
+  $transition-base: all $transition-duration-base $transition-timing-function-base;
+  @mixin gen-transition-base($properties) {
+    transition-property: $properties;
+    transition-duration: $transition-duration-base;
+    transition-timing-function: $transition-timing-function-base;
+  }
   //score-selector
   display: inline-flex;
   align-items: center;
@@ -84,6 +97,7 @@
           &.level-#{$level} {
             background-color: $color;
             border: map-get($map:$score-border-size, $key:$shape) solid $color;
+            @include gen-transition-base((background-color,color));
           }
           &.origin-#{$level} {
             border: map-get($map:$score-border-size, $key:$shape) solid $color;
@@ -91,6 +105,8 @@
         }
       }
       .score-selector-content {
+        width: map-get($map:$score-content-widths, $key:$shape);
+        text-align: right;
         font-size: map-get($map:$score-regular-font-size, $key:$shape);
         color: map-get($map:$score-font-color, $key:$shape);
         @each $level, $color in $score-colors {
