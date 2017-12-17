@@ -1,23 +1,33 @@
 <template>
   <label class="vd-radio"
          :class="classes"
-         tabindex="0">
-    <input type="radio"
-           class="radio-input"
+         role="radio"
+         :aria-checked="isChecked"
+         :aria-disabled="isDisabled"
+         tabindex="0"
+         @keydown.space.stop.prevent="check"
+         @keydown.enter.stop.prevent="check">
+
+    <input class="radio-input"
+           type="radio"
            ref="input"
            :value="value"
            v-model="model"
            :disabled="disabled"
            tabindex="-1" />
+
     <span class="radio-outer">
+      <span class="radio-border"></span>
       <span class="radio-inner"></span>
     </span>
-    <span v-if="hasContent"
-          class="radio-content">
+
+    <span v-if="hasLabel"
+          class="radio-label">
       <slot>
-        {{content}}
+        {{label}}
       </slot>
     </span>
+
   </label>
 </template>
 
@@ -32,7 +42,8 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
-import { VdStylableControl, RadioValue, RadioValueSource } from 'src';
+import { VdStylableControl } from 'src/controls/base/VdControl';
+import { RadioValue, RadioValueSource } from 'src/controls/form/VdFormControl';
 
 @Component({
   model: {
@@ -47,31 +58,36 @@ export default class VdRadio extends VdStylableControl {
   @Prop([String, Number])
   valueSource: RadioValueSource;
 
-  get model(): RadioValueSource {
+  @Prop() label: string;
+
+  private get model(): RadioValueSource {
     return this.valueSource;
   }
-  set model(newValue: RadioValueSource) {
+  private set model(newValue: RadioValueSource) {
     this.$emit('change', newValue);
     this.$emit('check', newValue);
   }
 
-  get checked(): boolean {
+  get isChecked(): boolean {
     return this.value === this.valueSource;
   }
 
-  @Prop() content: string;
-
-  get hasContent(): boolean {
-    return !!this.content || !!this.$slots.default;
+  get hasLabel(): boolean {
+    return !!this.label || !!this.$slots.default;
   }
 
   get classes(): ClassNames {
     return [
-      `genre-${this.genre}`,
+      `genre-${this.genre || this.$void.genre}`,
       {
-        checked: this.checked,
+        checked: this.isChecked,
+        disabled: this.isDisabled,
       },
     ];
+  }
+
+  check(): void {
+    (this.$refs.input as HTMLElement).click();
   }
 }
 </script>

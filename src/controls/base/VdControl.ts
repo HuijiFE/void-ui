@@ -38,7 +38,12 @@ export class VdControl extends Vue {
     return this.$options.name;
   }
 
-  @Prop() disabled: boolean | '';
+  @Prop({ default: false })
+  disabled: boolean | '';
+
+  get isDisabled(): boolean {
+    return this.disabled || this.disabled === '';
+  }
 }
 
 /* Stylable Control */
@@ -61,11 +66,15 @@ export class VdStylableControl extends VdControl {
   @Prop({ type: String, default: 'rect' })
   shape: ControlShape;
 
-  @Prop({ type: [Boolean, Number, String], default: false })
+  @Prop({ type: [Boolean, Number, String], default: true })
   raise: ControlRaise;
 
   @Prop({ type: Boolean, default: true })
   bordered: boolean | '';
+
+  get isBordered(): boolean {
+    return this.bordered || this.bordered === '';
+  }
 
   get stylableClasses(): ClassNames {
     return [
@@ -76,8 +85,8 @@ export class VdStylableControl extends VdControl {
       `shape-${this.shape}`,
       `raise-${this.raise}`,
       {
-        disabled: this.disabled || this.disabled === '',
-        bordered: this.bordered || this.bordered === '',
+        disabled: this.isDisabled,
+        bordered: this.isBordered,
       },
     ];
   }

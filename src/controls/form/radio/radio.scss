@@ -1,135 +1,120 @@
-/*----------  transition minxin ----------*/
-@mixin gen-transition-base($properties) {
-  transition-property: $properties;
-  transition-duration: $transition-duration-base;
-  transition-timing-function: $transition-timing-function-base;
-}
-/*----------  Animation & transition  ----------*/
-
-$transition-duration-base: 0.2s;
-$transition-timing-function-base: ease-in-out;
-$transition-base: all $transition-duration-base $transition-timing-function-base;
-
-$animation-duration-1: 0.1s;
-$animation-duration-2: 0.2s;
-$animation-duration-3: 0.3s;
-$animation-duration-4: 0.4s;
-$animation-duration-5: 0.5s;
-$animation-duration-6: 0.6s;
-$animation-duration-7: 0.7s;
-$animation-duration-8: 0.8s;
-$animation-duration-9: 0.9s;
-$animation-duration-10: 1s;
-
-/*---------- Gutter ----------*/
-$radio-gutter: 0.04rem;
-
-/*---------- Radio ----------*/
-$button-rect-sizes: (
-  small: 0.24rem,
-  medium: 0.32rem,
-  large: 0.4rem
-);
-$radio-outter-size: 0.16rem;
-$radio-inner-size: 0.06rem;
-$radio-inner-background: $color-white;
-$border-width-base: 1px;
-$border-base: $border-width-base solid transparent;
-$radio-margin: 0.16rem;
-
 .#{$void}-radio {
-  @include flex(flex-start,center,center);
-  display: inline-flex;
+  /*----------  vadiables  ----------*/
+  $radio-inner-size: 0.06rem;
+  $radio-content-gutter: 0.04rem;
+
+  /*----------  style  ----------*/
+  @include flex-inline(row,center,center);
+  font-size: $form-wedgit-font-size;
 
   height: map-get($map: $button-rect-sizes, $key: medium);
   cursor: pointer;
   user-select: none;
 
   .radio-input {
-    opacity: 0;
-    outline: none;
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 0;
+    display: none;
+  }
+
+  .radio-outer,
+  .radio-border,
+  .radio-inner {
+    position: relative;
+    border-radius: 50%;
   }
 
   .radio-outer {
-    @include flex(center,center,center);
-    position: relative;
-    width: $radio-outter-size;
-    height: $radio-outter-size;
-    border: $border-base;
-    border-radius: 50%;
-    overflow: hidden;
+    @include flex(row, center, center);
+    width: $form-wedgit-circlie-size;
+    height: $form-wedgit-circlie-size;
   }
+
+  .radio-border {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    border: $border-base;
+  }
+
   .radio-inner {
-    opacity: 0;
     width: $radio-inner-size;
     height: $radio-inner-size;
-    background: $radio-inner-background;
-    border: $border-base;
-    border-radius: 50%;
+    background-color: $color-white;
     transform: scale(0);
   }
 
-  &.genre {
-    @each $genre in $ss-genres {
-      &-#{$genre} {
-        .radio-outer {
-          border-color: map-get($map:$genre-border-interative, $key:$genre);
-        }
+  .radio-label {
+    @include flex(row, center, center);
+  }
+
+  /*----------  gutter  ----------*/
+
+  .radio-outer + .radio-label {
+    margin-left: $radio-content-gutter;
+  }
+
+  & + & {
+    margin-left: $form-wedgit-gutter;
+  }
+
+  /*----------  theme  ----------*/
+
+  @each $genre in $ss-genres {
+    &.genre-#{$genre} {
+      .radio-outer {
+        background-color: map-get($map: $genre-background-colors, $key: $genre);
+      }
+      .radio-border {
+        border-color: map-get($map: $genre-foreground-colors, $key: $genre);
       }
     }
   }
 
-  .radio-content {
-    @include clear-baseline();
-  }
+  /*----------  hover & checked  ----------*/
 
-  .radio-outer + .radio-content {
-    margin-left: $radio-gutter;
-  }
-
-  &:hover {
-    .radio-outer {
-      border-color: $color-primary;
+  &:hover,
+  &:focus,
+  &.checked {
+    .radio-border {
+      border-color: $tone-primary;
     }
   }
 
   &.checked {
-    .radio-outer {
-      background-color: $color-primary;
-      border-color: $color-primary;
+    .radio-border,
+    .radio-inner {
+      transition-duration: $form-wedgit-transition-duration / 2;
+      transition-timing-function: ease-in;
+    }
+    .radio-border {
+      border-width: $form-wedgit-circlie-size / 2;
+      transition-property: border-width;
+      transition-delay: 0;
     }
     .radio-inner {
-      opacity: 1;
       transform: scale(1);
-      @include gen-transition-base((opacity, transform));
+      transition-property: transform;
+      transition-delay: $form-wedgit-transition-duration / 2;
     }
   }
 
-  &.disabled {
-    cursor: default;
-    &.genre {
-      @each $genre in $ss-genres {
-        &-#{$genre} {
-          .radio-outer {
-            border-color: map-get($map: $genre-foreground-disabled, $key: $genre);
-            background-color: map-get($map: $genre-background-hover, $key: $genre);
-          }
-          .radio-inner {
-            color: map-get($map: $genre-foreground-disabled, $key: $genre);
-          }
-        }
+  /*----------  checked  ----------*/
+
+  @each $genre in $ss-genres {
+    &.disabled.genre-#{$genre} {
+      .radio-border {
+        border-color: map-get($map: $genre-foreground-colors, $key: #{$genre}-disabled);
+      }
+      .radio-inner {
+        background-color: map-get(
+          $map: $genre-background-colors,
+          $key: #{$genre}-disabled
+        );
+      }
+      .radio-label {
+        color: map-get($map: $genre-foreground-colors, $key: #{$genre}-disabled);
       }
     }
-  }
-
-  & + & {
-    margin-left: $radio-margin;
   }
 }
