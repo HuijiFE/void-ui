@@ -1,5 +1,6 @@
 <template>
-  <div class="vd-note">
+  <div class="vd-note"
+       :class="`genre-${genre}`">
     <span v-if="currentIcon"
           class="note-outer"
           :class="`tone-${currentTone}`">
@@ -25,7 +26,7 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
-import { ControlTone } from 'typings';
+import { ControlTone, ControlGenre } from 'typings';
 import { VdStylableControl } from 'src/controls/base/VdControl';
 
 @Component
@@ -40,6 +41,9 @@ export default class VdNote extends VdStylableControl {
   @Prop() label: string;
 
   @Prop() description: string;
+
+  @Prop({ default: 'lite' })
+  genre: ControlGenre;
 
   get currentIcon(): string {
     switch (this.preset) {
