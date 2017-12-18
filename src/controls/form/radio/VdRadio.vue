@@ -21,10 +21,10 @@
       <span class="radio-inner"></span>
     </span>
 
-    <span v-if="hasLabel"
-          class="radio-label">
+    <span v-if="hasContent"
+          class="radio-content">
       <slot>
-        {{label}}
+        {{content}}
       </slot>
     </span>
 
@@ -58,7 +58,7 @@ export default class VdRadio extends VdStylableControl {
   @Prop([String, Number])
   valueSource: RadioValueSource;
 
-  @Prop() label: string;
+  @Prop() content: string;
 
   private get model(): RadioValueSource {
     return this.valueSource;
@@ -72,8 +72,8 @@ export default class VdRadio extends VdStylableControl {
     return this.value === this.valueSource;
   }
 
-  get hasLabel(): boolean {
-    return !!this.label || !!this.$slots.default;
+  get hasContent(): boolean {
+    return !!this.content || !!this.$slots.default;
   }
 
   get classes(): ClassNames {
