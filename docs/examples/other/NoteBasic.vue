@@ -2,8 +2,8 @@
   <div>
     <vd-note :preset="preset"
              :label="label"
-             :description="description"
-             :genre="genre"></vd-note>
+             :description="description"></vd-note>
+
   </div>
 </template>
 
@@ -21,9 +21,9 @@ import {
 
 @Component
 export default class NoteBasic extends Vue {
-  preset = 'success';
-  label = '成功';
+  preset = '';
+  label = '提示';
   description = '提示内容';
-  genre = 'lite';
+  // genre = 'lite';
 }
 </script>

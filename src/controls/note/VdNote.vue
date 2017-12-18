@@ -1,6 +1,6 @@
 <template>
   <div class="vd-note"
-       :class="`genre-${genre}`">
+       :class="stylableClasses">
     <span v-if="currentIcon"
           class="note-outer"
           :class="`tone-${currentTone}`">
@@ -35,15 +35,13 @@ export default class VdNote extends VdStylableControl {
 
   @Prop() icon: string;
 
-  @Prop({ default: 'origin' })
-  tone: ControlTone;
+  @Prop() tone: ControlTone;
 
   @Prop() label: string;
 
-  @Prop() description: string;
+  @Prop() genre: ControlGenre;
 
-  @Prop({ default: 'lite' })
-  genre: ControlGenre;
+  @Prop() description: string;
 
   get currentIcon(): string {
     switch (this.preset) {
@@ -56,7 +54,7 @@ export default class VdNote extends VdStylableControl {
       case 'error':
         return 'times';
       default:
-        return this.tone;
+        return this.icon;
     }
   }
 
