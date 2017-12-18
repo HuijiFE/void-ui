@@ -43,7 +43,7 @@ import {
   Watch,
 } from 'vue-property-decorator';
 import { VdStylableControl } from 'src/controls/base/VdControl';
-import { RadioValue, RadioValueSource } from 'src/controls/form/VdFormControl';
+import { RadioValue } from 'src/controls/form/VdFormControl';
 
 @Component({
   model: {
@@ -56,14 +56,14 @@ export default class VdRadio extends VdStylableControl {
   value: RadioValue;
 
   @Prop([String, Number])
-  valueSource: RadioValueSource;
+  valueSource: RadioValue;
 
   @Prop() content: string;
 
-  private get model(): RadioValueSource {
+  private get model(): RadioValue {
     return this.valueSource;
   }
-  private set model(newValue: RadioValueSource) {
+  private set model(newValue: RadioValue) {
     this.$emit('change', newValue);
     this.$emit('check', newValue);
   }
