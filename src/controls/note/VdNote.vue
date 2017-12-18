@@ -1,6 +1,6 @@
 <template>
   <div class="vd-note"
-       :class="stylableClasses">
+       :class="classes">
     <span v-if="currentIcon"
           class="note-outer"
           :class="`tone-${currentTone}`">
@@ -43,6 +43,9 @@ export default class VdNote extends VdStylableControl {
 
   @Prop() description: string;
 
+  get classes() {
+    return [`genre-${this.genre || this.$void.genre}`];
+  }
   get currentIcon(): string {
     switch (this.preset) {
       case 'success':
