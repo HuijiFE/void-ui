@@ -11,6 +11,8 @@
     <input class="radio-input"
            type="radio"
            ref="input"
+           :id="id"
+           :name="name"
            :value="value"
            v-model="model"
            :disabled="disabled"
@@ -21,10 +23,10 @@
       <span class="radio-inner"></span>
     </span>
 
-    <span v-if="hasLabel"
-          class="radio-label">
+    <span v-if="hasContent"
+          class="radio-content">
       <slot>
-        {{label}}
+        {{content}}
       </slot>
     </span>
 
@@ -43,7 +45,7 @@ import {
   Watch,
 } from 'vue-property-decorator';
 import { VdStylableControl } from 'src/controls/base/VdControl';
-import { RadioValue, RadioValueSource } from 'src/controls/form/VdFormControl';
+import { RadioValue } from 'src/controls/form/VdFormControl';
 
 @Component({
   model: {
@@ -52,18 +54,21 @@ import { RadioValue, RadioValueSource } from 'src/controls/form/VdFormControl';
   },
 })
 export default class VdRadio extends VdStylableControl {
+  @Prop() id: string;
+  @Prop() name: string;
+
   @Prop([String, Number])
   value: RadioValue;
 
   @Prop([String, Number])
-  valueSource: RadioValueSource;
+  valueSource: RadioValue;
 
-  @Prop() label: string;
+  @Prop() content: string;
 
-  private get model(): RadioValueSource {
+  private get model(): RadioValue {
     return this.valueSource;
   }
-  private set model(newValue: RadioValueSource) {
+  private set model(newValue: RadioValue) {
     this.$emit('change', newValue);
     this.$emit('check', newValue);
   }
@@ -72,8 +77,8 @@ export default class VdRadio extends VdStylableControl {
     return this.value === this.valueSource;
   }
 
-  get hasLabel(): boolean {
-    return !!this.label || !!this.$slots.default;
+  get hasContent(): boolean {
+    return !!this.content || !!this.$slots.default;
   }
 
   get classes(): ClassNames {
