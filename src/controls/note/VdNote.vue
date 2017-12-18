@@ -1,5 +1,6 @@
 <template>
-  <div class="vd-note">
+  <div class="vd-note"
+       :class="classes">
     <span v-if="currentIcon"
           class="note-outer"
           :class="`tone-${currentTone}`">
@@ -25,7 +26,7 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
-import { ControlTone } from 'typings';
+import { ControlTone, ControlGenre } from 'typings';
 import { VdStylableControl } from 'src/controls/base/VdControl';
 
 @Component
@@ -34,13 +35,17 @@ export default class VdNote extends VdStylableControl {
 
   @Prop() icon: string;
 
-  @Prop({ default: 'origin' })
-  tone: ControlTone;
+  @Prop() tone: ControlTone;
 
   @Prop() label: string;
 
+  @Prop() genre: ControlGenre;
+
   @Prop() description: string;
 
+  get classes() {
+    return [`genre-${this.genre || this.$void.genre}`];
+  }
   get currentIcon(): string {
     switch (this.preset) {
       case 'success':
@@ -52,7 +57,7 @@ export default class VdNote extends VdStylableControl {
       case 'error':
         return 'times';
       default:
-        return this.tone;
+        return this.icon;
     }
   }
 

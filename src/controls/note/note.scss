@@ -6,24 +6,38 @@
   $content-font-size: 0.12rem;
   $title-font-size: 0.14rem;
   $icon-font-size: 0.3rem;
-  $content-font-color: #333333;
-  $note-border-color: #eeeeee;
-  $note-border-base: 1px solid $note-border-color;
+  $note-margin-left: 0.16rem;
+  $content-font-lite-color: #333333;
+  $content-font-dark-color: #eeeeee;
   $note-margin-base: 0.16rem 0.08rem;
   $note-padding-base: 0.08rem 0.16rem;
   $note-tone-color: #ffffff;
+  $dark-background: #404040;
+  $lite-background: #ffffff;
   //map
   $note-tone-background: (
-    'success':#4caf50,
-    'primary':#aaaaaa,
-    'warning':#ff9100,
-    'danger':#ff5e5e
+    'success':$color-success,
+    'primary':$color-primary,
+    'warning':$color-warning,
+    'danger':$color-danger
+  );
+  $note-font-color: (
+    'lite':$content-font-lite-color,
+    'dark':$content-font-dark-color
+  );
+  $note-genre-background: (
+    'lite':$genre-lite-background,
+    'dark':$genre-dark-background-higher
+  );
+  $note-genre-border: (
+    'lite':$genre-lite-background-border,
+    'dark':$genre-dark-background-border
   );
   width: $note-width;
   height: $note-height;
-  border: $note-border-base;
   padding: $note-padding-base;
   margin: $note-margin-base;
+  border-radius: 1px;
   display: inline-flex;
   .note-outer {
     width: $note-tone-height;
@@ -43,17 +57,28 @@
     }
   }
   .note-content {
-    margin-left: 0.11rem;
     font-size: $content-font-size;
-    color: $content-font-color;
     .note-label {
       font-size: $title-font-size;
+      font-weight: bold;
     }
     &.tone-origin {
       margin-left: 0;
     }
     .note-label + .note-descrip {
       margin-top: 0.04rem;
+    }
+  }
+  .note-outer + .note-content {
+    margin-left: $note-margin-left;
+  }
+  @each $genre, $color in $note-font-color {
+    &.genre-#{$genre} {
+      border: 1px solid map-get($map:$note-genre-border, $key:$genre);
+      background: map-get($map:$note-genre-background, $key:$genre);
+      .note-content {
+        color: $color;
+      }
     }
   }
 }
