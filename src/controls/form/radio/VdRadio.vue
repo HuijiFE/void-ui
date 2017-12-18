@@ -11,6 +11,8 @@
     <input class="radio-input"
            type="radio"
            ref="input"
+           :id="id"
+           :name="name"
            :value="value"
            v-model="model"
            :disabled="disabled"
@@ -52,6 +54,9 @@ import { RadioValue } from 'src/controls/form/VdFormControl';
   },
 })
 export default class VdRadio extends VdStylableControl {
+  @Prop() id: string;
+  @Prop() name: string;
+
   @Prop([String, Number])
   value: RadioValue;
 
