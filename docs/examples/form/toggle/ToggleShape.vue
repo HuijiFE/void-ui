@@ -1,11 +1,15 @@
 <template>
-  <vd-flexbox gutter="xsmall">
+  <vd-flexbox gutter="auto">
     <vd-flexbox>
-      <vd-toggle v-model="isOn"
+      <vd-toggle v-model="status"
+                 content-off="Status False"
+                 content-on="Status True"
                  shape="rect"></vd-toggle>
     </vd-flexbox>
     <vd-flexbox>
-      <vd-toggle v-model="isOn"
+      <vd-toggle v-model="status"
+                 content-off="Status False"
+                 content-on="Status True"
                  shape="circle"></vd-toggle>
     </vd-flexbox>
   </vd-flexbox>
@@ -15,7 +19,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class ToggleBasic extends Vue {
-  isOn = true;
+export default class ToggleShape extends Vue {
+  status = true;
 }
 </script>

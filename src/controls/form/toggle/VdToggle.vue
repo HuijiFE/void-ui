@@ -1,24 +1,42 @@
 <template>
   <label class="vd-toggle"
          :class="classes"
-         role="switch">
+         role="switch"
+         :aria-checked="isOnned"
+         :aria-disabled="isDisabled"
+         tabindex="0"
+         @keydown.space.stop.prevent="toggle"
+         @keydown.enter.stop.prevent="toggle">
+
     <input class="toggle-input"
            type="checkbox"
-           :disabled="disabled"
+           ref="input"
            :id="id"
            :name="name"
-           :true-value="valueOn"
            :false-value="valueOff"
-           v-model="model" />
+           :true-value="valueOn"
+           v-model="model"
+           :disabled="disabled"
+           tabindex="-1" />
+
     <span class="toggle-outer">
       <span class="toggle-middle">
         <span class="toggle-inner"></span>
       </span>
     </span>
-    <span v-if="shouldShowContent"
+
+    <span v-if="hasContent"
           class="toggle-content">
-      {{content}}
+      <slot v-if="isOnned"
+            name="contentOn">
+        {{contentOn}}
+      </slot>
+      <slot v-else
+            name="contentOff">
+        {{contentOff}}
+      </slot>
     </span>
+
   </label>
 </template>
 
@@ -34,10 +52,11 @@ import {
   Watch,
 } from 'vue-property-decorator';
 import { VdStylableControl } from 'src/controls/base/VdControl';
-import { ToggleValue } from 'typings';
+import { ToggleValue } from 'src/controls/form/VdFormControl';
 
 @Component({
   model: {
+    prop: 'valueSource',
     event: 'change',
   },
 })
@@ -45,46 +64,47 @@ export default class VdToggle extends VdStylableControl {
   @Prop() id: string;
   @Prop() name: string;
 
+  @Prop({ default: false })
+  valueOff: ToggleValue;
   @Prop({ default: true })
   valueOn: ToggleValue;
 
-  @Prop({ default: false })
-  valueOff: ToggleValue;
+  @Prop() valueSource: ToggleValue;
 
-  @Prop({ required: true })
-  value: ToggleValue;
+  @Prop() contentOff: string;
+  @Prop() contentOn: string;
 
-  get model(): ToggleValue {
-    return this.value;
+  private get model(): ToggleValue {
+    return this.valueSource;
   }
-  set model(newValue: ToggleValue) {
+  private set model(newValue: ToggleValue) {
     this.$emit('change', newValue);
   }
 
-  get onned(): boolean {
-    return this.value === this.valueOn;
+  get isOnned(): boolean {
+    return this.valueOn === this.valueSource;
   }
 
-  @Prop() contentOn: string;
-  @Prop() contentOff: string;
-
-  get shouldShowContent(): boolean {
-    return !!this.contentOn && !!this.contentOff;
-  }
-
-  get content(): string {
-    return this.onned ? this.contentOn : this.contentOff;
+  get hasContent(): boolean {
+    return (
+      (!!this.contentOn && !!this.contentOff) ||
+      (!!this.$slots.contentOn && !!this.$slots.contentOff)
+    );
   }
 
   get classes() {
     return [
-      this.genre ? `genre-${this.genre}` : `genre-${this.$void.genre}`,
+      `genre-${this.genre || this.$void.genre}`,
       `shape-${this.shape}`,
       {
-        disabled: this.disabled,
-        ['onned']: this.onned,
+        disabled: this.isDisabled,
+        onned: this.isOnned,
       },
     ];
+  }
+
+  toggle(): void {
+    (this.$refs.input as HTMLElement).click();
   }
 }
 </script>

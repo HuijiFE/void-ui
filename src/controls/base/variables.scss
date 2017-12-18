@@ -405,12 +405,20 @@ $button-circle-sizes: (
 $form-wedgit-height: 0.32rem;
 $form-wedgit-font-size: $font-size-base;
 
-$form-wedgit-circlie-size: 0.16rem;
 $form-wedgit-rect-size: 0.14rem;
+$form-wedgit-circle-size: 0.16rem;
 
+$form-wedgit-content-gutter: 0.04rem;
 $form-wedgit-gutter: 0.16rem;
 
 $form-wedgit-transition-duration: 0.2s;
+
+$radio-inner-size: 0.06rem;
+
+$toggle-outer-width: 0.32rem;
+$toggle-middle-width-rect: 0.28rem;
+$toggle-middle-width-circle: 0.32rem;
+$toggle-inner-width-rect: 0.14rem;
 
 
 /*----------  Score  ----------*/

@@ -1,7 +1,11 @@
 # Radio 单选框
 
+从绑定到同一变量的一组选项中选择单个选项。
+
 ```html
-<example-board :component="RadioBasic" :source="RadioBasicSource"></example-board>
+<vd-radio value="value"
+          v-model="model"
+          content="content"></vd-radio>
 ```
 
 ## 基本用法
@@ -16,11 +20,11 @@
 
 ## API
 
-| Property    | Type              | Available Value | Description |
-| :---------- | :---------------- | :-------------- | :---------- |
-| value       | `string | number` |                 |             |
-| valueSource | `string | number` |                 |             |
-| label       | `string`          |                 |             |
+| Property    | Type              | Available values | Default value | Description |
+| :---------- | :---------------- | :--------------- | :------------ | ----------- |
+| value       | `string | number` |                  |               |             |
+| valueSource | `string | number` |                  |               |             |
+| content     | `string`          |                  |               |             |
 
 <script>
 import RadioBasic from 'docs/examples/form/radio/RadioBasic';

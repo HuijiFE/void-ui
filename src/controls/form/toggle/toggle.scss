@@ -1,26 +1,8 @@
 .#{$void}-toggle {
-  $ss-shapes-toggle: 'circle', 'rect';
+  @include flex-inline(row, center, center);
+  font-size: $form-wedgit-font-size;
 
-  $toggle-outer-width: 0.32rem;
-  $toggle-outer-height: 0.2rem;
-
-  $toggle-middle-padding: 0.02rem;
-
-  $toggle-rect-middle-width: 0.28rem;
-  $toggle-rect-middle-height: 0.14rem;
-  $toggle-rect-inner-width: 0.14rem;
-  $toggle-rect-inner-height: 0.1rem;
-
-  $toggle-circle-middle-width: 0.32rem;
-  $toggle-circle-middle-height: 0.16rem;
-  $toggle-circle-inner-size: 0.12rem;
-
-  $gutter-content: 0.04rem;
-
-  @include flex(row, flex-start, center);
-  display: inline-flex;
-  position: relative;
-  font-size: $font-size-medium;
+  height: $form-wedgit-height;
   user-select: none;
   cursor: pointer;
 
@@ -28,79 +10,89 @@
     display: none;
   }
 
-  .toggle-content {
-    margin-left: $gutter-content;
-  }
-
   .toggle-outer {
+    position: relative;
     @include flex(row, center, center);
     width: $toggle-outer-width;
-    height: $toggle-outer-height;
+    height: $form-wedgit-circle-size;
   }
 
   .toggle-middle,
   .toggle-inner {
-    transition: 0.2s ease-in-out;
+    transition-duration: $form-wedgit-transition-duration;
+    transition-timing-function: ease-in-out;
   }
 
   .toggle-middle {
-    @include flex(row, flex-start, center);
-    background-color: $tone-primary;
     position: relative;
+    @include flex(row, flex-start, center);
     transition-property: background-color;
   }
 
   .toggle-inner {
-    @include flex(row, flex-start, center);
     position: absolute;
-    top: $toggle-middle-padding;
-    left: $toggle-middle-padding;
-    transition-property: left;
+    @include flex(row, flex-start, center);
+    top: 0.02rem;
+    left: 0.02rem;
+    transition-property: transform;
   }
 
-  &.shape {
-    // shape-rect
-    &-rect {
-      .toggle-middle {
-        width: $toggle-rect-middle-width;
-        height: $toggle-rect-middle-height;
-        border-radius: $border-radius-base;
-      }
-      .toggle-inner {
-        width: $toggle-rect-inner-width;
-        height: $toggle-rect-inner-height;
-        border-radius: $border-radius-base;
-      }
-      &.onned {
-        .toggle-inner {
-          left: (
-            $toggle-rect-middle-width - $toggle-rect-inner-width - $toggle-middle-padding
-          );
-        }
-      }
+  .toggle-content {
+    @include flex(row, center, center);
+    margin-left: $form-wedgit-content-gutter;
+  }
+
+  /*----------  gutter  ----------*/
+
+  & + & {
+    margin-left: $form-wedgit-gutter;
+  }
+
+  /*----------  shape  ----------*/
+
+  // shape-rect
+  &.shape-rect {
+    .toggle-middle {
+      width: $toggle-middle-width-rect;
+      height: $form-wedgit-rect-size;
+      border-radius: $border-radius-base;
     }
-    // shape-circle
-    &-circle {
-      .toggle-middle {
-        width: $toggle-circle-middle-width;
-        height: $toggle-circle-middle-height;
-        border-radius: ($toggle-circle-middle-height / 2);
-      }
+    .toggle-inner {
+      width: $toggle-inner-width-rect;
+      height: $form-wedgit-rect-size - 0.04rem;
+      border-radius: $border-radius-base;
+    }
+    &.onned {
       .toggle-inner {
-        width: $toggle-circle-inner-size;
-        height: $toggle-circle-inner-size;
-        border-radius: 50%;
-      }
-      &.onned {
-        .toggle-inner {
-          left: (
-            $toggle-circle-middle-width - $toggle-circle-inner-size -
-              $toggle-middle-padding
-          );
-        }
+        transform: translateX(
+          $toggle-middle-width-rect - 0.04rem - $toggle-inner-width-rect
+        );
       }
     }
   }
+  // shape-circle
+  &.shape-circle {
+    .toggle-middle {
+      width: $toggle-middle-width-circle;
+      height: $form-wedgit-circle-size;
+      border-radius: $form-wedgit-circle-size / 2;
+    }
+    .toggle-inner {
+      width: $form-wedgit-circle-size - 0.04rem;
+      height: $form-wedgit-circle-size - 0.04rem;
+      border-radius: 50%;
+    }
+    &.onned {
+      .toggle-inner {
+        transform: translateX(
+          $toggle-middle-width-circle - 0.04rem - ($form-wedgit-circle-size - 0.04rem)
+        );
+      }
+    }
+  }
+
+  /*----------  theme  ----------*/
+
   &.genre {
     @each $genre in $ss-genres {
       &-#{$genre} {
@@ -126,8 +118,7 @@
             background-color: $tone-primary;
           }
         }
-        &.disabled,
-        &[disabled] {
+        &.disabled {
           color: map-get($map: $genre-foreground-colors, $key: #{$genre}-disabled);
           .toggle-middle {
             background-color: map-get(

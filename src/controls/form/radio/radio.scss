@@ -1,13 +1,8 @@
 .#{$void}-radio {
-  /*----------  vadiables  ----------*/
-  $radio-inner-size: 0.06rem;
-  $radio-content-gutter: 0.04rem;
-
-  /*----------  style  ----------*/
   @include flex-inline(row,center,center);
   font-size: $form-wedgit-font-size;
 
-  height: map-get($map: $button-rect-sizes, $key: medium);
+  height: $form-wedgit-height;
   cursor: pointer;
   user-select: none;
 
@@ -18,14 +13,14 @@
   .radio-outer,
   .radio-border,
   .radio-inner {
-    position: relative;
     border-radius: 50%;
   }
 
   .radio-outer {
+    position: relative;
     @include flex(row, center, center);
-    width: $form-wedgit-circlie-size;
-    height: $form-wedgit-circlie-size;
+    width: $form-wedgit-circle-size;
+    height: $form-wedgit-circle-size;
   }
 
   .radio-border {
@@ -38,6 +33,7 @@
   }
 
   .radio-inner {
+    position: relative;
     width: $radio-inner-size;
     height: $radio-inner-size;
     background-color: $color-white;
@@ -46,13 +42,10 @@
 
   .radio-content {
     @include flex(row, center, center);
+    margin-left: $form-wedgit-content-gutter;
   }
 
   /*----------  gutter  ----------*/
-
-  .radio-outer + .radio-content {
-    margin-left: $radio-content-gutter;
-  }
 
   & + & {
     margin-left: $form-wedgit-gutter;
@@ -88,7 +81,7 @@
       transition-timing-function: ease-in;
     }
     .radio-border {
-      border-width: $form-wedgit-circlie-size / 2;
+      border-width: $form-wedgit-circle-size / 2;
       transition-property: border-width;
       transition-delay: 0;
     }
