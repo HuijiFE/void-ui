@@ -1,5 +1,2 @@
-import VoidUI from '../src/index';
-
-export * from './controls';
-
-export default VoidUI;
+export * from '../src';
+export { default as VoidUI } from '../src';

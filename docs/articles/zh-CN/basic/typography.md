@@ -35,12 +35,12 @@ article {
 ## 文章
 
 ```html
-<vd-article genre="lite">
+<vd-article theme="lite">
   <!-- write article content here. -->
 </vd-article>
 ```
 
-`genre` 属性设置文章控件的明 / 暗主题颜色。
+`theme` 属性设置文章控件的明 / 暗主题颜色。
 
 > 注意：以下样式仅在文章控件中生效。
 

@@ -41,7 +41,7 @@ export default class VdProcessBar extends VdStylableControl {
   }
 
   get classes() {
-    return this.genre ? `genre-${this.genre}` : `genre-${this.$void.genre}`;
+    return this.theme ? `theme-${this.theme}` : `theme-${this.$void.theme}`;
   }
 
   get processStyle() {

@@ -8,7 +8,7 @@
     <router-link class="nav-item"
                  :to="`/${language}/test`">Test</router-link>
 
-    <genre-switch></genre-switch>
+    <theme-switch></theme-switch>
     <router-link class="nav-item"
                  :to="`/${language}/documentation`">Documenation</router-link>
     <router-link class="nav-item"
@@ -32,11 +32,11 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
-import GenreSwitch from './GenreSwitch.vue';
+import ThemeSwitch from './ThemeSwitch.vue';
 
 @Component({
   components: {
-    GenreSwitch,
+    ThemeSwitch,
   },
 })
 export default class MainNav extends Vue {

@@ -1,7 +1,7 @@
 <template>
-  <button class="nav-item genre-switch"
+  <button class="nav-item theme-switch"
           @click="onClick">
-    Switch Genre
+    Switch Theme
   </button>
 </template>
 
@@ -19,12 +19,12 @@ import {
 import { VdStylableControl } from 'void-ui';
 
 @Component
-export default class GenreSwitch extends VdStylableControl {
+export default class ThemeSwitch extends VdStylableControl {
   onClick() {
-    if (this.$void.genre === 'lite') {
-      this.$void.genre = 'dark';
+    if (this.$void.theme === 'lite') {
+      this.$void.theme = 'dark';
     } else {
-      this.$void.genre = 'lite';
+      this.$void.theme = 'lite';
     }
   }
 }

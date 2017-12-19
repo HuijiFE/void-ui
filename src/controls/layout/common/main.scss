@@ -1,10 +1,10 @@
 .#{$void}-main {
   min-height: 100vh;
-  &.genre {
-    @each $genre in $ss-genres {
-      &-#{$genre} {
-        color: map-get($map: $genre-foreground-colors, $key: $genre);
-        background-color: map-get($map: $genre-background-colors, $key: $genre);
+  &.theme {
+    @each $theme in $ss-themes {
+      &-#{$theme} {
+        color: map-get($map: $theme-foreground-colors, $key: $theme);
+        background-color: map-get($map: $theme-background-colors, $key: $theme);
       }
     }
   }

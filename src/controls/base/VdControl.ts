@@ -8,20 +8,20 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
-import {
-  ControlGenre,
-  ControlTone,
-  ControlSkin,
-  ControlSize,
-  ControlShape,
-} from 'typings';
+
+export type ControlTheme = 'lite' | 'dark';
+export type ControlTone = 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+export type ControlSkin = 'fill' | 'flat' | 'plain' | 'silk';
+export type ControlSize = 'small' | 'medium' | 'large';
+export type ControlShape = 'rect' | 'square' | 'circle';
+export type ControlRaise = boolean | number | string;
 
 /* Hub */
 
 @Component
 export class VdHub extends Vue {
   // for global theme
-  genre: ControlGenre = 'lite';
+  theme: ControlTheme = 'lite';
 }
 
 /* Base Control */
@@ -48,11 +48,9 @@ export class VdControl extends Vue {
 
 /* Stylable Control */
 
-export type ControlRaise = boolean | number | string;
-
 @Component
 export class VdStylableControl extends VdControl {
-  @Prop() genre: ControlGenre;
+  @Prop() theme: ControlTheme;
 
   @Prop({ type: String, default: 'primary' })
   tone: ControlTone;
@@ -78,7 +76,7 @@ export class VdStylableControl extends VdControl {
 
   get stylableClasses(): ClassNames {
     return [
-      `genre-${this.genre || this.$void.genre}`,
+      `theme-${this.theme || this.$void.theme}`,
       `tone-${this.tone}`,
       `skin-${this.skin}`,
       `size-${this.size}`,

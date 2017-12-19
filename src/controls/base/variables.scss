@@ -28,8 +28,7 @@ $line-height-base: 1.6;
 
 /*---------- Style System ----------*/
 
-$ss-genres:   'lite', 'dark';
-$ss-themes:   'primary', 'success', 'warning', 'danger', 'secondary';
+$ss-themes:   'lite', 'dark';
 $ss-tones:   'primary', 'secondary', 'success', 'warning', 'danger';
 $ss-skins:    'fill', 'flat', 'plain', 'silk';
 $ss-shapes:    'rect', 'square', 'circle';
@@ -38,123 +37,58 @@ $ss-sizes:     'small', 'medium', 'large';
 $color-white: #fff;
 $color-black: #000;
 
-$lite-foreground:           #333;
-$lite-foreground-disabled:  #bbb;
-$lite-secondary:            #888;
-$lite-background:           #fff;
-$lite-background-card:      #fff;
-$lite-background-disabled:  #eee;
-$lite-background-hover:     #eee;
-$lite-border:               #eee;
-$lite-border-interative:    #888;
+$theme-lite-foreground:             #333333;
+$theme-lite-foreground-emphasize:   #222222;
+$theme-lite-foreground-secondary:   #888888;
+$theme-lite-foreground-placeholder: #999999;
+$theme-lite-foreground-disabled:    #bbbbbb;
+$theme-lite-background:             #ffffff;
+$theme-lite-background-high:        #fafafa;
+$theme-lite-background-higher:      #f5f5f5;
+$theme-lite-background-hover:       #eeeeee;
+$theme-lite-background-border:      #eeeeee;
+$theme-lite-background-disabled:    #efefef;
 
-$dark-foreground:           #eee;
-$dark-foreground-disabled:  #777;
-$dark-secondary:            #888;
-$dark-background:           #333;
-$dark-background-card:      #3e3e3e;
-$dark-background-disabled:  #4e4e4e;
-$dark-background-hover:     #4e4e4e;
-$dark-border:               #4e4e4e;
-$dark-border-interative:    #ccc;
+$theme-dark-foreground:             #eeeeee;
+$theme-dark-foreground-emphasize:   #f5f5f5;
+$theme-dark-foreground-secondary:   #aaaaaa;
+$theme-dark-foreground-placeholder: #999999;
+$theme-dark-foreground-disabled:    #888888;
+$theme-dark-background:             #333333;
+$theme-dark-background-high:        #383838;
+$theme-dark-background-higher:      #3e3e3e;
+$theme-dark-background-hover:       #4e4e4e;
+$theme-dark-background-border:      #4e4e4e;
+$theme-dark-background-disabled:    #555555;
 
-$genre-foreground: (
-  lite:     $lite-foreground,
-  dark:     $dark-foreground,
-);
-$genre-foreground-disabled: (
-  lite:     $lite-foreground-disabled,
-  dark:     $dark-foreground-disabled,
-);
-$genre-secondary: (
-  lite:     $lite-secondary,
-  dark:     $dark-secondary,
-);
-$genre-background: (
-  lite:     $lite-background,
-  dark:     $dark-background,
-);
-$genre-background-card: (
-  lite:     $lite-background-card,
-  dark:     $dark-background-card,
-);
-$genre-background-disabled: (
-  lite:     $lite-background-disabled,
-  dark:     $dark-background-disabled,
-);
-$genre-background-hover: (
-  lite:     $lite-background-hover,
-  dark:     $dark-background-hover,
-);
-$genre-border: (
-  lite:     $lite-border,
-  dark:     $dark-border,
-);
-$genre-border-interative: (
-  lite:     $lite-border-interative,
-  dark:     $dark-border-interative,
+$theme-foreground-colors: (
+  lite:             $theme-lite-foreground,
+  lite-emphasize:   $theme-lite-foreground-emphasize,
+  lite-secondary:   $theme-lite-foreground-secondary,
+  lite-placeholder: $theme-lite-foreground-placeholder,
+  lite-disabled:    $theme-lite-foreground-disabled,
+
+  dark:             $theme-dark-foreground,
+  dark-emphasize:   $theme-dark-foreground-emphasize,
+  dark-secondary:   $theme-dark-foreground-secondary,
+  dark-placeholder: $theme-dark-foreground-placeholder,
+  dark-disabled:    $theme-dark-foreground-disabled,
 );
 
-$color-primary-darkener:    #0080b0;
-$color-primary-darken:      #0098c2;
-$color-primary:             #00abd0;
-$color-primary-lighten:     #00bedb;
-$color-primary-lightener:   #34d2e9;
+$theme-background-colors: (
+  lite:             $theme-lite-background,
+  lite-high:        $theme-lite-background-high,
+  lite-higher:      $theme-lite-background-higher,
+  lite-hover:       $theme-lite-background-hover,
+  lite-border:      $theme-lite-background-border,
+  lite-disabled:    $theme-lite-background-disabled,
 
-$color-success-darkener:    #1da63d;
-$color-success-darken:      #21bd45;
-$color-success:             #24cf4c;
-$color-success-lighten:     #2cdb55;
-$color-success-lightener:   #46eb6d;
-
-$color-warning-darkener:    #ffaa00;
-$color-warning-darken:      #ffbb00;
-$color-warning:             #ffcc00;
-$color-warning-lighten:     #ffdd33;
-$color-warning-lightener:   #ffee44;
-
-$color-danger-darkener:     #cc2828;
-$color-danger-darken:       #e62d2d;
-$color-danger:              #ff3333;
-$color-danger-lighten:      #ff4d4d;
-$color-danger-lightener:    #ff6666;
-
-$color-secondary-darkener:  #888;
-$color-secondary-darken:    #999;
-$color-secondary:           #aaa;
-$color-secondary-lighten:   #bbb;
-$color-secondary-lightener: #ccc;
-
-$theme-colors: (
-  primary-darkener:    $color-primary-darkener,
-  primary-darken:      $color-primary-darken,
-  primary:             $color-primary,
-  primary-lighten:     $color-primary-lighten,
-  primary-lightenner:  $color-primary-lightener,
-
-  danger-darkener:    $color-danger-darkener,
-  danger-darken:      $color-danger-darken,
-  danger:             $color-danger,
-  danger-lighten:     $color-danger-lighten,
-  danger-lightener:   $color-danger-lightener,
-
-  warning-darkener:    $color-warning-darkener,
-  warning-darken:      $color-warning-darken,
-  warning:             $color-warning,
-  warning-lighten:     $color-warning-lighten,
-  warning-lightener:   $color-warning-lightener,
-
-  success-darkener:    $color-success-darkener,
-  success-darken:      $color-success-darken,
-  success:             $color-success,
-  success-lighten:     $color-success-lighten,
-  success-lightener:   $color-success-lightener,
-
-  secondary-darkener:  $color-secondary-darkener,
-  secondary-darken:    $color-secondary-darken,
-  secondary:           $color-secondary,
-  secondary-lighten:   $color-secondary-lighten,
-  secondary-lightener: $color-secondary-lightener,
+  dark:             $theme-dark-background,
+  dark-high:        $theme-dark-background-high,
+  dark-higher:      $theme-dark-background-higher,
+  dark-hover:       $theme-dark-background-hover,
+  dark-border:      $theme-dark-background-border,
+  dark-disabled:    $theme-dark-background-disabled,
 );
 
 $tone-primary-darkener:    #0080b0;
@@ -219,60 +153,6 @@ $tone-colors: (
   secondary-lightener: $tone-secondary-lightener,
 );
 
-$genre-lite-foreground:             #333333;
-$genre-lite-foreground-emphasize:   #222222;
-$genre-lite-foreground-secondary:   #888888;
-$genre-lite-foreground-placeholder: #999999;
-$genre-lite-foreground-disabled:    #bbbbbb;
-$genre-lite-background:             #ffffff;
-$genre-lite-background-high:        #fafafa;
-$genre-lite-background-higher:      #f5f5f5;
-$genre-lite-background-hover:       #eeeeee;
-$genre-lite-background-border:      #eeeeee;
-$genre-lite-background-disabled:    #efefef;
-
-$genre-dark-foreground:             #eeeeee;
-$genre-dark-foreground-emphasize:   #f5f5f5;
-$genre-dark-foreground-secondary:   #aaaaaa;
-$genre-dark-foreground-placeholder: #999999;
-$genre-dark-foreground-disabled:    #888888;
-$genre-dark-background:             #333333;
-$genre-dark-background-high:        #383838;
-$genre-dark-background-higher:      #3e3e3e;
-$genre-dark-background-hover:       #4e4e4e;
-$genre-dark-background-border:      #4e4e4e;
-$genre-dark-background-disabled:    #555555;
-
-$genre-foreground-colors: (
-  lite:             $genre-lite-foreground,
-  lite-emphasize:   $genre-lite-foreground-emphasize,
-  lite-secondary:   $genre-lite-foreground-secondary,
-  lite-placeholder: $genre-lite-foreground-placeholder,
-  lite-disabled:    $genre-lite-foreground-disabled,
-
-  dark:             $genre-dark-foreground,
-  dark-emphasize:   $genre-dark-foreground-emphasize,
-  dark-secondary:   $genre-dark-foreground-secondary,
-  dark-placeholder: $genre-dark-foreground-placeholder,
-  dark-disabled:    $genre-dark-foreground-disabled,
-);
-
-$genre-background-colors: (
-  lite:             $genre-lite-background,
-  lite-high:        $genre-lite-background-high,
-  lite-higher:      $genre-lite-background-higher,
-  lite-hover:       $genre-lite-background-hover,
-  lite-border:      $genre-lite-background-border,
-  lite-disabled:    $genre-lite-background-disabled,
-
-  dark:             $genre-dark-background,
-  dark-high:        $genre-dark-background-high,
-  dark-higher:      $genre-dark-background-higher,
-  dark-hover:       $genre-dark-background-hover,
-  dark-border:      $genre-dark-background-border,
-  dark-disabled:    $genre-dark-background-disabled,
-);
-
 
 /*----------  Container  ----------*/
 
@@ -320,7 +200,6 @@ $section-padding:   0.40rem;
 
 $article-font-size: 0.16rem;
 $article-line-height: 1.7;
-$article-foreground: $lite-foreground;
 
 $heading-line-height: 1.33;
 $heading-margin: 1em 0 0.5em 0;

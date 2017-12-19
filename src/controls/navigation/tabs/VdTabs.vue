@@ -56,7 +56,7 @@ export default class VdTabs extends VdStylableControl {
 
   get classes(): ClassNames {
     return [
-      `genre-${this.genre || this.$void.genre}`,
+      `theme-${this.theme || this.$void.theme}`,
       `skin-${this.skin}`,
       { bordered: this.bordered },
       { raised: this.raised },

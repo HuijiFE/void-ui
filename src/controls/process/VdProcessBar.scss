@@ -16,10 +16,10 @@
   );
 
   width: 100%;
-  @each $genre in $ss-genres {
-    &.genre-#{$genre} {
+  @each $theme in $ss-themes {
+    &.theme-#{$theme} {
       .process-outer {
-        background-color: map-get($map:$process-backgrounds, $key: $genre);
+        background-color: map-get($map:$process-backgrounds, $key: $theme);
         border-radius: $process-border-radius;
         position: relative;
         height: $process-height;

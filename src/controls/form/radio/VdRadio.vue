@@ -83,7 +83,7 @@ export default class VdRadio extends VdStylableControl {
 
   get classes(): ClassNames {
     return [
-      `genre-${this.genre || this.$void.genre}`,
+      `theme-${this.theme || this.$void.theme}`,
       {
         checked: this.isChecked,
         disabled: this.isDisabled,

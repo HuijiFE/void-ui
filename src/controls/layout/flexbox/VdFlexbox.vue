@@ -22,7 +22,7 @@ import {
   FlexboxDirection,
   FlexboxJustify,
   FlexboxAlign,
-} from 'typings';
+} from 'src/controls/layout/flexbox/VdFlexbox';
 
 @Component
 export default class VdFlexboxbox extends Vue {

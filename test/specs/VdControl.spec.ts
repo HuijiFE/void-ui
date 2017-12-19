@@ -2,9 +2,9 @@ import Vue from 'vue';
 import { VdHub, VdControl, VdStylableControl } from 'src/controls/base/VdControl';
 
 describe('VdControl.ts', () => {
-  it('VdHub, verify prop genre', () => {
+  it('VdHub, verify prop theme', () => {
     const vm = new VdHub();
-    expect(vm.genre).toEqual('lite');
+    expect(vm.theme).toEqual('lite');
   });
 
   const vm = new VdControl();
@@ -12,8 +12,8 @@ describe('VdControl.ts', () => {
     expect(vm.componentName).toEqual('VdControl');
   });
   it('VdControl, verify static get prop $void', () => {
-    expect(vm.$void.genre).toEqual('lite');
-    vm.$void.genre = 'dark';
-    expect(vm.$void.genre).toEqual('dark');
+    expect(vm.$void.theme).toEqual('lite');
+    vm.$void.theme = 'dark';
+    expect(vm.$void.theme).toEqual('dark');
   });
 });

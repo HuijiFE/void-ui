@@ -15,6 +15,6 @@ export default class NoteBasic extends Vue {
   preset = '';
   label = '提示';
   description = '提示内容';
-  // genre = 'lite';
+  // theme = 'lite';
 }
 </script>

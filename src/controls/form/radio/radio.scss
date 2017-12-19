@@ -53,13 +53,13 @@
 
   /*----------  theme  ----------*/
 
-  @each $genre in $ss-genres {
-    &.genre-#{$genre} {
+  @each $theme in $ss-themes {
+    &.theme-#{$theme} {
       .radio-outer {
-        background-color: map-get($map: $genre-background-colors, $key: $genre);
+        background-color: map-get($map: $theme-background-colors, $key: $theme);
       }
       .radio-border {
-        border-color: map-get($map: $genre-foreground-colors, $key: $genre);
+        border-color: map-get($map: $theme-foreground-colors, $key: $theme);
       }
     }
   }
@@ -94,19 +94,19 @@
 
   /*----------  checked  ----------*/
 
-  @each $genre in $ss-genres {
-    &.disabled.genre-#{$genre} {
+  @each $theme in $ss-themes {
+    &.disabled.theme-#{$theme} {
       .radio-border {
-        border-color: map-get($map: $genre-foreground-colors, $key: #{$genre}-disabled);
+        border-color: map-get($map: $theme-foreground-colors, $key: #{$theme}-disabled);
       }
       .radio-inner {
         background-color: map-get(
-          $map: $genre-background-colors,
-          $key: #{$genre}-disabled
+          $map: $theme-background-colors,
+          $key: #{$theme}-disabled
         );
       }
       .radio-content {
-        color: map-get($map: $genre-foreground-colors, $key: #{$genre}-disabled);
+        color: map-get($map: $theme-foreground-colors, $key: #{$theme}-disabled);
       }
     }
   }

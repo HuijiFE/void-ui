@@ -16,22 +16,22 @@
   $lite-background: #ffffff;
   //map
   $note-tone-background: (
-    'success':$color-success,
-    'primary':$color-primary,
-    'warning':$color-warning,
-    'danger':$color-danger
+    'success':$tone-success,
+    'primary':$tone-primary,
+    'warning':$tone-warning,
+    'danger':$tone-danger
   );
   $note-font-color: (
     'lite':$content-font-lite-color,
     'dark':$content-font-dark-color
   );
-  $note-genre-background: (
-    'lite':$genre-lite-background,
-    'dark':$genre-dark-background-higher
+  $note-theme-background: (
+    'lite':$theme-lite-background,
+    'dark':$theme-dark-background-higher
   );
-  $note-genre-border: (
-    'lite':$genre-lite-background-border,
-    'dark':$genre-dark-background-border
+  $note-theme-border: (
+    'lite':$theme-lite-background-border,
+    'dark':$theme-dark-background-border
   );
   width: $note-width;
   height: $note-height;
@@ -72,10 +72,10 @@
   .note-outer + .note-content {
     margin-left: $note-margin-left;
   }
-  @each $genre, $color in $note-font-color {
-    &.genre-#{$genre} {
-      border: 1px solid map-get($map:$note-genre-border, $key:$genre);
-      background: map-get($map:$note-genre-background, $key:$genre);
+  @each $theme, $color in $note-font-color {
+    &.theme-#{$theme} {
+      border: 1px solid map-get($map:$note-theme-border, $key:$theme);
+      background: map-get($map:$note-theme-background, $key:$theme);
       .note-content {
         color: $color;
       }

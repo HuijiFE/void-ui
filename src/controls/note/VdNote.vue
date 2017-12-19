@@ -26,8 +26,11 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
-import { ControlTone, ControlGenre } from 'typings';
-import { VdStylableControl } from 'src/controls/base/VdControl';
+import {
+  ControlTone,
+  ControlTheme,
+  VdStylableControl,
+} from 'src/controls/base/VdControl';
 
 @Component
 export default class VdNote extends VdStylableControl {
@@ -39,12 +42,12 @@ export default class VdNote extends VdStylableControl {
 
   @Prop() label: string;
 
-  @Prop() genre: ControlGenre;
+  @Prop() theme: ControlTheme;
 
   @Prop() description: string;
 
   get classes() {
-    return [`genre-${this.genre || this.$void.genre}`];
+    return [`theme-${this.theme || this.$void.theme}`];
   }
   get currentIcon(): string {
     switch (this.preset) {

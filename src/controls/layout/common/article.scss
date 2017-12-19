@@ -20,7 +20,7 @@
   }
 
   a {
-    color: $color-primary;
+    color: $tone-primary;
     text-decoration: none;
   }
   a:visited,
@@ -28,7 +28,7 @@
   a:active,
   a:focus,
   a:hover {
-    color: $color-primary-lighten;
+    color: $tone-primary-lighten;
   }
 
   img {
@@ -121,46 +121,46 @@
   //   background-color: $lite-background-hover;
   // }
 
-  &.genre {
-    @each $genre in $ss-genres {
-      &-#{$genre} {
-        color: map-get($map: $genre-foreground-colors, $key: $genre);
+  &.theme {
+    @each $theme in $ss-themes {
+      &-#{$theme} {
+        color: map-get($map: $theme-foreground-colors, $key: $theme);
 
         b,
         strong {
-          color: map-get($map: $genre-foreground-colors, $key: #{$genre}-emphasize);
+          color: map-get($map: $theme-foreground-colors, $key: #{$theme}-emphasize);
         }
 
         hr {
-          border-color: map-get($map: $genre-background-colors, $key: #{$genre}-border);
+          border-color: map-get($map: $theme-background-colors, $key: #{$theme}-border);
         }
 
         blockquote {
-          border-color: map-get($map: $genre-background-colors, $key: #{$genre}-border);
+          border-color: map-get($map: $theme-background-colors, $key: #{$theme}-border);
           background-color: map-get(
-            $map: $genre-background-colors,
-            $key: #{$genre}-higher
+            $map: $theme-background-colors,
+            $key: #{$theme}-higher
           );
         }
 
         table {
-          background-color: map-get($map: $genre-background-colors, $key: #{$genre}-high);
+          background-color: map-get($map: $theme-background-colors, $key: #{$theme}-high);
         }
         table thead {
           background-color: map-get(
-            $map: $genre-background-colors,
-            $key: #{$genre}-higher
+            $map: $theme-background-colors,
+            $key: #{$theme}-higher
           );
         }
         table tr th,
         table tr td {
-          border-color: map-get($map: $genre-background-colors, $key: #{$genre}-border);
+          border-color: map-get($map: $theme-background-colors, $key: #{$theme}-border);
         }
 
         code {
           background-color: map-get(
-            $map: $genre-background-colors,
-            $key: #{$genre}-higher
+            $map: $theme-background-colors,
+            $key: #{$theme}-higher
           );
         }
       }

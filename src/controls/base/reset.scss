@@ -17,7 +17,7 @@ body {
   position: relative;
   font-family: $font-family-base;
   font-size: $font-size-base;
-  color: $genre-lite-foreground;
+  color: $theme-lite-foreground;
   line-height: $line-height-base;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
@@ -50,11 +50,11 @@ h6 {
 }
 
 a {
-  color: $color-primary;
+  color: $tone-primary;
   text-decoration: none;
 }
 a:hover {
-  color: $color-primary-lighten;
+  color: $tone-primary-lighten;
 }
 
 button,
@@ -65,7 +65,6 @@ textarea {
   line-height: $line-height-base;
 }
 
-label,
 input,
 textarea,
 select,
@@ -74,6 +73,14 @@ button {
   color: inherit;
   padding: 0;
   border: $border-base;
+}
+
+a,
+label,
+input,
+textarea,
+select,
+button {
   outline: none;
 }
 

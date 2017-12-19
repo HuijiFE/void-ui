@@ -17,7 +17,7 @@
   flex: 1;
   align-content: stretch;
   align-items: stretch;
-  background: $color-primary;
+  background: $tone-primary;
   height: 64px;
 
   .nav-separator {
@@ -99,23 +99,23 @@
   .show-button {
     width: 100%;
     height: 0.4rem;
-    color: $color-primary;
+    color: $tone-primary;
     border-top: $border-base;
   }
 
-  @each $genre in $ss-genres {
-    &.genre-#{$genre} {
+  @each $theme in $ss-themes {
+    &.theme-#{$theme} {
       &,
       .code-board,
       .show-button {
-        border-color: map-get($map: $genre-background-colors, $key: #{$genre}-border);
+        border-color: map-get($map: $theme-background-colors, $key: #{$theme}-border);
       }
       .show-button {
-        background-color: map-get($map: $genre-background-colors, $key: #{$genre}-high);
+        background-color: map-get($map: $theme-background-colors, $key: #{$theme}-high);
         &:hover {
           background-color: map-get(
-            $map: $genre-background-colors,
-            $key: #{$genre}-hover
+            $map: $theme-background-colors,
+            $key: #{$theme}-hover
           );
         }
       }
@@ -144,13 +144,13 @@
 
 .layout-content {
   @include flex(row,center,center,wrap);
-  color: $color-primary;
+  color: $tone-primary;
   font-weight: bold;
   width: 100%;
   min-height: 0.32rem;
   height: 100%;
   padding: 0.08rem;
-  border: 1px solid $color-primary;
+  border: 1px solid $tone-primary;
   border-radius: $border-radius-base;
 }
 
@@ -202,15 +202,15 @@
   code {
     font-family: 'Iosevka';
   }
-  &.genre-lite {
+  &.theme-lite {
     /*
 Visual Studio-like style based on original C# coloring by Jason Diamond <jason@diamond.name>
 */
     .hljs {
       display: block;
       overflow-x: auto;
-      color: $genre-lite-foreground;
-      background: $genre-lite-background-high;
+      color: $theme-lite-foreground;
+      background: $theme-lite-background-high;
     }
 
     .hljs-comment,
@@ -269,7 +269,7 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
     }
   }
 
-  &.genre-dark {
+  &.theme-dark {
     /*
  * Visual Studio 2015 dark style
  * Author: Nicolas LLOBERA <nllobera@gmail.com>
@@ -278,8 +278,8 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
     .hljs {
       display: block;
       overflow-x: auto;
-      color: $genre-dark-foreground;
-      background: $genre-dark-background-high;
+      color: $theme-dark-foreground;
+      background: $theme-dark-background-high;
     }
 
     .hljs-keyword,

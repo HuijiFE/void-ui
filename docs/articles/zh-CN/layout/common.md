@@ -5,18 +5,18 @@
 ## 主元素组件
 
 ```html
-<vd-main :genre="lite"></vd-main>
+<vd-main :theme="lite"></vd-main>
 ```
 
 通常作为根组件，渲染后的 html：
 
 ```html
-<main class="vd-main genre-lite"></main>
+<main class="vd-main theme-lite"></main>
 ```
 
-通过 `genre` 属性设置明 / 暗主题
+通过 `theme` 属性设置明 / 暗主题
 
-| genre            | lite                                      | dark                                      |
+| theme            | lite                                      | dark                                      |
 | :--------------- | :---------------------------------------- | :---------------------------------------- |
 | color            | <color-cube color="#333333"></color-cube> | <color-cube color="#ffffff"></color-cube> |
 | background-color | <color-cube color="#ffffff"></color-cube> | <color-cube color="#333333"></color-cube> |

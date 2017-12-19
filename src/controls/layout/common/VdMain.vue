@@ -21,7 +21,7 @@ import { VdStylableControl } from 'src/controls/base/VdControl';
 @Component
 export default class VdMain extends VdStylableControl {
   get classes(): ClassNames {
-    return [`genre-${this.genre || this.$void.genre}`];
+    return [`theme-${this.theme || this.$void.theme}`];
   }
 }
 </script>

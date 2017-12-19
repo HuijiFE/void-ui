@@ -4,7 +4,7 @@
 
 ```html
 <vd-toggle value-on="valueOn"
-           value-off="value-off"
+           value-off="valueOff"
            v-model="model"
            content-on="contentOn"
            content-off="contentOff"></vd-toggle>

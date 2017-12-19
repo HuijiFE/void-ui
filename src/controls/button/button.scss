@@ -41,9 +41,9 @@
           }
           &.disabled,
           &[disabled] {
-            color: map-get($map: $genre-background-colors, $key: lite-disabled);
+            color: map-get($map: $theme-background-colors, $key: lite-disabled);
             background-color: map-get(
-              $map: $genre-foreground-colors,
+              $map: $theme-foreground-colors,
               $key: lite-disabled
             );
           }
@@ -63,11 +63,11 @@
           }
         }
       }
-      @each $genre in $ss-genres {
-        &.genre-#{$genre} {
+      @each $theme in $ss-themes {
+        &.theme-#{$theme} {
           &.disabled,
           &[disabled] {
-            color: map-get($map: $genre-foreground-colors, $key: lite-disabled);
+            color: map-get($map: $theme-foreground-colors, $key: lite-disabled);
           }
         }
       }
@@ -79,27 +79,27 @@
           color: map-get($map: $tone-colors, $key: $tone);
         }
       }
-      @each $genre in $ss-genres {
-        &.genre-#{$genre} {
-          background-color: map-get($map: $genre-background-colors, $key: #{$genre});
+      @each $theme in $ss-themes {
+        &.theme-#{$theme} {
+          background-color: map-get($map: $theme-background-colors, $key: #{$theme});
           &:hover,
           &.active,
           &:active {
             background-color: map-get(
-              $map: $genre-background-colors,
-              $key: #{$genre}-hover
+              $map: $theme-background-colors,
+              $key: #{$theme}-hover
             );
           }
         }
       }
-      @each $genre in $ss-genres {
-        &.genre-#{$genre} {
+      @each $theme in $ss-themes {
+        &.theme-#{$theme} {
           &.disabled,
           &[disabled] {
-            color: map-get($map: $genre-foreground-colors, $key: #{$genre}-disabled);
+            color: map-get($map: $theme-foreground-colors, $key: #{$theme}-disabled);
             background-color: map-get(
-              $map: $genre-background-colors,
-              $key: #{$genre}-disabled
+              $map: $theme-background-colors,
+              $key: #{$theme}-disabled
             );
           }
         }
@@ -120,14 +120,14 @@
           }
         }
       }
-      @each $genre in $ss-genres {
-        &.genre-#{$genre} {
+      @each $theme in $ss-themes {
+        &.theme-#{$theme} {
           &.disabled,
           &[disabled] {
-            color: map-get($map: $genre-foreground-colors, $key: #{$genre}-disabled);
+            color: map-get($map: $theme-foreground-colors, $key: #{$theme}-disabled);
             border-color: map-get(
-              $map: $genre-foreground-colors,
-              $key: #{$genre}-disabled
+              $map: $theme-foreground-colors,
+              $key: #{$theme}-disabled
             );
           }
         }
