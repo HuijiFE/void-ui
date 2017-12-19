@@ -27,7 +27,8 @@
     "url": "https://github.com/HuijiFE/void-ui.git"
   },
   "scripts": {
-    "bootstrap": "npm i || npm rebuild node-sass || npm i",
+    "frame": "npm i",
+    "frame:cn": "npm i --sass-binary-site=https://npm.taobao.org/mirrors/node-sass/",
     "auto:lib": "node auto/lib.js",
     "auto:types": "node auto/types.js",
     "auto:docs": "node auto/docs.js",

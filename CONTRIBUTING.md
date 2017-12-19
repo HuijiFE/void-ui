@@ -2,13 +2,17 @@
 
 ```bash
 # install dependencies
-npm install
+npm run frame
+# or
+npm run frame:cn
 
 # if Failed at the chromedriver@X.XX.X install: `node install.js`, try:
 npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver
 
 # if Failed at node-sass@X.XX.X postinstall: `node scripts/build.js`, try:
 npm rebuild node-sass
+# or
+npm install node-sass --sass-binary-site=https://npm.taobao.org/mirrors/node-sass/
 
 # auto code generating script, it will generate follow files:
 # src/controls/index.ts
