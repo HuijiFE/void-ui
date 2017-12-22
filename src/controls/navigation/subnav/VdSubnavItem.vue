@@ -1,10 +1,7 @@
 <template>
-  <div class="vd-tabs-item"
-       :class="classes">
-    <slot></slot>
+  <div>
   </div>
 </template>
-
 <script lang="ts">
 import {
   Component,
@@ -16,16 +13,14 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-
-import VdTabs from './VdTabs.vue';
-import anime from 'animejs';
+import VdSubnav from './VdSubnav.vue';
 
 @Component
-export default class VdTabsItem extends Vue {
+export default class VdSubnavItem extends Vue {
   @Prop({ required: true })
   label: string;
 
-  parent: VdTabs;
+  parent: VdSubnav;
 
   index: number = -1;
 
@@ -33,9 +28,5 @@ export default class VdTabsItem extends Vue {
 
   @Prop({ default: false })
   selected: boolean;
-
-  get classes(): ClassNames {
-    return [`status-${this.status}`];
-  }
 }
 </script>
