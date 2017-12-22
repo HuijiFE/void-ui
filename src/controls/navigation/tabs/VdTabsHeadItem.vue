@@ -1,3 +1,4 @@
+
 <template>
   <button class="vd-tabs-head-item"
           :class="classes"

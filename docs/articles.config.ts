@@ -82,6 +82,11 @@ export const zhCN: DocConfig[] = [
         path: 'tabs',
         fileName: 'navigation/tabs',
       },
+      {
+        name: 'Subnav 导航',
+        path: 'subnav',
+        fileName: 'navigation/subnav',
+      },
     ],
   },
   {

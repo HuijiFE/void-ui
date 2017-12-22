@@ -1,0 +1,49 @@
+.#{$void}-subnav {
+  $subnav-width: 7.5rem;
+  $subnav-height: 1.13rem;
+  $subnav-border-radius: 0.08rem;
+  $subnav-padding: 0 0.2rem;
+  $nav-content-width: 1.58rem;
+  $nav-content-height: 0.6rem;
+  $nav-font-size: 0.24rem;
+  $nav-font-weight: bold;
+  $nav-font-color: #ffffff;
+
+  $nav-background: (
+    lite:#00abd0,
+    dark:#4e4e4e
+  );
+
+  display: inline-flex;
+  width: $subnav-width;
+  height: $subnav-height;
+  border: $border-base;
+  border-radius: $subnav-border-radius;
+  justify-content: space-between;
+  align-items: center;
+  padding: $subnav-padding;
+  .nav-item {
+    width: $nav-content-width;
+    height: $nav-content-height;
+    background-color: transparent;
+    border: $border-base;
+    border-radius: $border-radius-base;
+    font-size: $nav-font-size;
+    font-weight: $nav-font-weight;
+  }
+
+  @each $theme in $ss-themes {
+    &.theme-#{$theme} {
+      @if $theme == 'lite' {
+        background-color: map-get($map:$theme-background-colors, $key:$theme);
+      } @else {
+        background-color: map-get($map: $theme-background-colors, $key: #{$theme}-high);
+      }
+
+      .selected {
+        background-color: map-get($map:$nav-background, $key:$theme);
+        color: $nav-font-color;
+      }
+    }
+  }
+}
