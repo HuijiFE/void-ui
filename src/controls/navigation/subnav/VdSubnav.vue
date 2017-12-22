@@ -39,7 +39,9 @@ export default class VdSubnav extends VdStylableControl {
     this.selectedItem = newItem;
     oldItem.status = 'hidden';
     newItem.status = 'selected';
+    this.$emit('change', newItem.index);
   }
+
   mountItemsSource() {
     let itemsSource: VdSubnavItem[] = [];
     let selectedItem: VdSubnavItem | null = null;
@@ -61,9 +63,11 @@ export default class VdSubnav extends VdStylableControl {
     this.selectedItem = selectedItem;
     this.selectedItem.status = 'selected';
   }
+
   get classes(): ClassNames {
     return [`theme-${this.theme || this.$void.theme}`];
   }
+  
   mounted() {
     this.mountItemsSource();
   }
