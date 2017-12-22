@@ -5,6 +5,7 @@ export * from 'src/controls/form/VdFormControl';
 export * from 'src/controls/layout/flexbox/VdFlexbox';
 export { default as VdButton } from 'src/controls/button/VdButton.vue';
 export { default as VdButtonGroup } from 'src/controls/button/VdButtonGroup.vue';
+export { default as VdCard } from 'src/controls/card/VdCard.vue';
 export { default as VdInput } from 'src/controls/form/input/VdInput.vue';
 export { default as VdRadio } from 'src/controls/form/radio/VdRadio.vue';
 export { default as VdToggle } from 'src/controls/form/toggle/VdToggle.vue';
