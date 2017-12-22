@@ -2,7 +2,7 @@
   $subnav-width: 7.5rem;
   $subnav-height: 1.13rem;
   $subnav-border-radius: 0.08rem;
-
+  $subnav-padding: 0 0.2rem;
   $nav-content-width: 1.58rem;
   $nav-content-height: 0.6rem;
   $nav-font-size: 0.24rem;
@@ -21,8 +21,7 @@
   border-radius: $subnav-border-radius;
   justify-content: space-between;
   align-items: center;
-  background: red;
-
+  padding: $subnav-padding;
   .nav-item {
     width: $nav-content-width;
     height: $nav-content-height;
