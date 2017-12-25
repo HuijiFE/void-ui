@@ -4,7 +4,7 @@
      :class="classes"
      :href="href"
      :target="target"
-     :ref="target === '_blank' ? 'noopener noreferrer' : ''"
+     :rel="target === '_blank' ? 'noopener noreferrer' : ''"
      :disabled="disabled"
      @click="onClick">
     <i v-if="icon && iconPosition === 'left'"
