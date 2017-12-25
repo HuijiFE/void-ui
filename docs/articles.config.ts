@@ -107,6 +107,11 @@ export const zhCN: DocConfig[] = [
         path: 'note',
         fileName: 'other/note',
       },
+      {
+        name: 'card 卡片',
+        path: 'card',
+        fileName: 'other/card',
+      },
     ],
   },
 ];
