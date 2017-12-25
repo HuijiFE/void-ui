@@ -12,8 +12,9 @@
   );
 
   display: flex;
-
+  flex-wrap: wrap;
   .link-item {
+    flex: none;
     @include flex-inline(row, flex-start, center, nowrap);
     width: $link-width;
     font-size: $link-font-size;
