@@ -36,7 +36,7 @@ import { VdStylableControl } from 'src/controls/base/VdControl';
 
 @Component
 export default class VdCard extends VdStylableControl {
-  @Prop() imageSrc: string;
+  @Prop() imageSource: string;
 
   @Prop() imageTitle: string;
 
@@ -56,7 +56,7 @@ export default class VdCard extends VdStylableControl {
   }
 
   get imageStyle() {
-    return `background-image: url(${this.imageSrc})`;
+    return `background-image: url(${this.imageSource})`;
   }
 }
 </script>

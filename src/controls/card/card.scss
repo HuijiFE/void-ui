@@ -117,6 +117,7 @@
   box-shadow: $card-box-shadow;
   border-radius: $card-border-radius;
   font-size: $card-body-font-size;
+  overflow: hidden;
 
   .card-image {
     background-size: cover;

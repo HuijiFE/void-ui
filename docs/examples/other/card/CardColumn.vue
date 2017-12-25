@@ -6,7 +6,7 @@
       <vd-card :head="head"
                :direction="'column'"
                class="card-item"
-               :image-src="image"
+               :image-source="image"
                :image-title="head"
                :image-alt="alt"
                :content="content"

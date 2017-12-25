@@ -3,7 +3,7 @@
     <vd-card v-for="i in 2"
              :key="i"
              class="card-item"
-             :image-src="image"
+             :image-source="image"
              :image-title="head"
              :image-alt="alt"
              :description="description">
@@ -27,6 +27,7 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class VdCardSlot extends Vue {
+  head: string = '使用弹性盒子进行高级布局';
   alt: string = '使用弹性盒子进行高级布局';
   image: string = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVxO8YLjxo4crPogxEwB4_yjzR8XbUKPbCuLYXYf3wFDkCzvQ-tA';
   description: string = '2017-12-22';
