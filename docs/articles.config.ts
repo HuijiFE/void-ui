@@ -87,6 +87,11 @@ export const zhCN: DocConfig[] = [
         path: 'subnav',
         fileName: 'navigation/subnav',
       },
+      {
+        name: 'Collapse 折叠面板',
+        path: 'collapse',
+        fileName: 'navigation/collapse',
+      },
     ],
   },
   {
