@@ -2,13 +2,22 @@
   <vd-flexbox>
     <vd-card v-for="i in 2"
              :key="i"
-             :head="head"
              class="card-item"
              :image-src="image"
              :image-title="head"
              :image-alt="alt"
-             :content="content"
              :description="description">
+      <div slot="head">
+        这是自定义头部标题
+      </div>
+      <div slot="content">
+        这是自定义内容 这是自定义内容 这是自定义内容 这是自定义内容 这是自定义内容
+      </div>
+      <div slot="card-control">
+        <vd-button>关注</vd-button>
+        <vd-button>点赞</vd-button>
+      </div>
+      自定义其他内容
     </vd-card>
   </vd-flexbox>
 </template>
@@ -17,10 +26,8 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class VdCardBasic extends Vue {
-  head: string = '使用弹性盒子进行高级布局';
+export default class VdCardSlot extends Vue {
   alt: string = '使用弹性盒子进行高级布局';
-  content: string = '使用弹性盒子的意义是在任何尺寸的屏幕上改变其和其子元素的尺寸填充屏幕可用空间。';
   image: string = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVxO8YLjxo4crPogxEwB4_yjzR8XbUKPbCuLYXYf3wFDkCzvQ-tA';
   description: string = '2017-12-22';
 }
@@ -32,4 +39,5 @@ export default class VdCardBasic extends Vue {
   }
 }
 </style>
+
 

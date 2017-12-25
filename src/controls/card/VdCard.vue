@@ -15,9 +15,9 @@
       <slot name="description">
         <div class="body-description">{{description}}</div>
       </slot>
+      <slot name="card-control"></slot>
+      <slot></slot>
     </div>
-    <slot name="card-control"></slot>
-    <slot></slot>
   </div>
 </template>
 
