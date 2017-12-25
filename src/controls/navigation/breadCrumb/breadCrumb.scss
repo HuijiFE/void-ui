@@ -1,0 +1,85 @@
+.#{$void}-bread-crumb {
+  $bread-crumb-height: 0.93rem;
+
+  $bread-crumb-inner-height: 0.52rem;
+
+  $bread-crumb-border-base: 0.08rem;
+  $bread-crumb-padding: 0 0.16rem;
+  $bread-crumb-margin-left: 0.17rem;
+  $bread-crumb-font-size: 0.14rem;
+
+  $bread-crumb-font-color: (
+    'lite':#333333,
+    'dark':#eeeeee
+  );
+
+  display: inline-flex;
+  align-items: center;
+  padding: $bread-crumb-padding;
+  width: 100%;
+  height: $bread-crumb-height;
+  font-size: $bread-crumb-font-size;
+  border: $border-base;
+  border-radius: $bread-crumb-border-base;
+
+  .bread-crumb-inner {
+    width: 100%;
+    height: $bread-crumb-inner-height;
+    display: inline-flex;
+    align-items: center;
+
+    .bread-crumb-item {
+      margin-left: $bread-crumb-margin-left;
+
+      &.fontBold {
+        font-weight: bold;
+      }
+      .bread-crumb-icon {
+        margin-left: $bread-crumb-margin-left;
+      }
+    }
+  }
+
+  &.skin {
+    //skin-fill
+    &-fill {
+      @each $theme in $ss-themes {
+        &.theme-#{$theme} {
+          background-color: map-get($map:$theme-background-colors, $key:$theme);
+
+          .bread-crumb-inner {
+            background-color: map-get(
+              $map: $theme-background-colors,
+              $key:#{$theme}-higher
+            );
+
+            .bread-crumb-item {
+              color: map-get($map:$bread-crumb-font-color, $key:$theme);
+            }
+          }
+        }
+      }
+    }
+  }
+  &.skin {
+    //skin-plain
+    &-plain {
+      @each $theme in $ss-themes {
+        &.theme-#{$theme} {
+          background-color: map-get($map:$theme-background-colors, $key:$theme);
+
+          .bread-crumb-inner {
+            background-color: map-get(
+              $map: $theme-background-colors,
+              $key:#{$theme}-higher
+            );
+
+            .bread-crumb-item {
+              color: map-get($map:$bread-crumb-font-color, $key:$theme);
+            }
+          }
+        }
+      }
+    }
+  }
+}

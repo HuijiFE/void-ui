@@ -87,6 +87,11 @@ export const zhCN: DocConfig[] = [
         path: 'subnav',
         fileName: 'navigation/subnav',
       },
+      {
+        name: 'BreadCrumb 面包屑',
+        path: 'breadCurmb',
+        fileName: 'navigation/breadCrumb',
+      },
     ],
   },
   {
