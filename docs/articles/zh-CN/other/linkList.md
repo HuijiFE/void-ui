@@ -3,7 +3,7 @@
 基本用法
 
 ```html
-<vd-link></vd-link>
+<vd-link-list></vd-link-list>
 ```
 
 例子
@@ -27,8 +27,8 @@
 | icon     | 链接的图标     | `string` |
 
 <script>
-  import LinkBasic from 'docs/examples/other/link/LinkBasic'
-  import LinkBasicSource from 'docs/examples/other/link/LinkBasic.txt'
+  import LinkBasic from 'docs/examples/other/linkList/LinkBasic'
+  import LinkBasicSource from 'docs/examples/other/linkList/LinkBasic.txt'
 
   export default {
     data () {
