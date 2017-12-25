@@ -14,11 +14,17 @@
 
 > `*`表示默认值。
 
-| Property | Description    | Type     | Available Value |
-| :------- | :------------- | :------- | :-------------- |
-| label    | 链接的文字提示 | `string` |                 |
-| href     | 连接的地址     | `string` |                 |
-| icon     | 链接的图标     | `string` |                 |
+| Property | Description        | Type    |
+| :------- | :----------------- | :------ |
+| linkList | 所有外链组成的数组 | `Array` |
+
+> linkList 中的必填属性
+
+| Property | Description    | Type     |
+| :------- | :------------- | :------- |
+| label    | 链接的文字提示 | `string` |
+| href     | 连接的地址     | `string` |
+| icon     | 链接的图标     | `string` |
 
 <script>
   import LinkBasic from 'docs/examples/other/link/LinkBasic'
