@@ -112,6 +112,11 @@ export const zhCN: DocConfig[] = [
         path: 'card',
         fileName: 'other/card',
       },
+      {
+        name: 'link 链接',
+        path: 'link',
+        fileName: 'other/link',
+      },
     ],
   },
 ];
