@@ -1,14 +1,17 @@
 <template>
   <div class="vd-collapse-item">
-    <slot name="head">
-      <div class="item-head">
+    <div class="head"
+         @click="itemClick">
+      <slot name="head">
         {{head}}
-      </div>
-    </slot>
-    <span class="underline"></span>
-    <slot name="body">
-      <div class="item-body">{{body}}</div>
-    </slot>
+      </slot>
+    </div>
+    <div class="item-body"
+         :class="status === 'hidden' ? 'hidden' : ''">
+      <slot name="body">
+        {{body}}
+      </slot>
+    </div>
   </div>
 </template>
 
@@ -25,7 +28,18 @@ import {
 } from 'vue-property-decorator';
 
 @Component
-export default class VdCollaposeItem extends Vue {}
+export default class VdCollapseItem extends Vue {
+  status: 'show' | 'hidden' = 'hidden';
+
+  @Prop() body: string;
+  @Prop() head: string;
+  @Prop({ default: false })
+  expand: boolean;
+
+  itemClick() {
+    this.$parent.$emit('item-click', this);
+  }
+}
 </script>
 
 

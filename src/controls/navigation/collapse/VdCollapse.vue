@@ -1,19 +1,6 @@
 <template>
   <div class="vd-collapse">
-    <template v-for="item in source"
-              :key="item.title">
-      <div class="vd-collapse-item">
-        <slot name="title">
-          <div class="item-title">
-            {{title}}
-          </div>
-        </slot>
-        <span class="underline"></span>
-        <slot name="body">
-          <div class="item-body">{{body}}</div>
-        </slot>
-      </div>
-    </template>
+    <slot></slot>
   </div>
 </template>
 
@@ -28,9 +15,56 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
+import anime from 'animejs';
+import VdCollapseItem from './VdCollapseItem.vue';
 
 @Component
-export default class VdCollapse extends Vue {}
+export default class VdCollapse extends Vue {
+  selectedItem: VdCollapseItem;
+
+  mounted() {
+    this.initState();
+    this.$on('item-click', this.handleItemClick);
+  }
+
+  initState() {
+    let selectedItem: VdCollapseItem | null = null;
+
+    this.$children.forEach(i => {
+      let item = i as VdCollapseItem;
+
+      if (item.expand) {
+        selectedItem = item;
+      }
+    });
+    if (!selectedItem) {
+      selectedItem = this.$children[0] as VdCollapseItem;
+    }
+    this.selectedItem = selectedItem;
+  }
+
+  handleItemClick(newItem: VdCollapseItem) {
+    const itembody = newItem.$el.querySelector('.item-body') as HTMLElement;
+    if (this.selectedItem === newItem) {
+      // 如果是点击的同一个组件
+
+      // anime({
+      //   targets: itembody,
+      //   height: newItem.status === 'show' ? itembody.offsetHeight : 0,
+      //   duration: 500,
+      //   begin: () => {
+      //     newItem.status = newItem.status === 'show' ? 'hidden' : 'show';
+      //   },
+      // });
+      newItem.status = newItem.status === 'show' ? 'hidden' : 'show';
+    } else {
+      this.selectedItem.status = 'hidden';
+      newItem.status = 'show';
+      // 如果是点击的其他的组件
+    }
+    this.selectedItem = newItem;
+  }
+}
 </script>
 
 

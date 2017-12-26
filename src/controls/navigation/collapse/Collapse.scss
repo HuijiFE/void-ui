@@ -1,0 +1,14 @@
+.#{$void}-collapse {
+  &-item {
+    .item-body {
+      overflow: hidden;
+      transition: height ease 10s;
+    }
+    .hidden {
+      height: 0px;
+    }
+    // .show {
+    //   height: auto;
+    // }
+  }
+}

@@ -1,9 +1,9 @@
 ## Collapse 折叠面板
 
-<example-board :component=""></example-board>
+<example-board :component="CollapseBasic"></example-board>
 
-<script lang="ts">
-  import CollapseBasic from 'docs/examples/navigation/CollapseBasic'
+<script>
+  import CollapseBasic from 'docs/examples/navigation/collapse/CollapseBasic'
   export default {
     data() {
       return {

@@ -13,6 +13,8 @@ export { default as VdArticle } from 'src/controls/layout/common/VdArticle.vue';
 export { default as VdMain } from 'src/controls/layout/common/VdMain.vue';
 export { default as VdFlexbox } from 'src/controls/layout/flexbox/VdFlexbox.vue';
 export { default as VdLinkList } from 'src/controls/linkList/VdLinkList.vue';
+export { default as VdCollapse } from 'src/controls/navigation/collapse/VdCollapse.vue';
+export { default as VdCollapseItem } from 'src/controls/navigation/collapse/VdCollapseItem.vue';
 export { default as VdSubnav } from 'src/controls/navigation/subnav/VdSubnav.vue';
 export { default as VdSubnavItem } from 'src/controls/navigation/subnav/VdSubnavItem.vue';
 export { default as VdTabs } from 'src/controls/navigation/tabs/VdTabs.vue';
