@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <vd-flexbox>
     <vd-subnav>
       <vd-subnav-item label="标题一"></vd-subnav-item>
       <vd-subnav-item label="标题二"></vd-subnav-item>
@@ -7,7 +7,7 @@
       <vd-subnav-item label="标题四"></vd-subnav-item>
       <vd-subnav-item label="标题五"></vd-subnav-item>
     </vd-subnav>
-  </div>
+  </vd-flexbox>
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';

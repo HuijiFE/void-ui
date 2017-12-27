@@ -1,5 +1,4 @@
 .#{$void}-note {
-  $note-width: 3.2rem;
   $note-tone-width: 0.36rem;
   $note-tone-height: 0.36rem;
   $note-height: 0.6rem;
@@ -33,14 +32,14 @@
     'lite':$theme-lite-background-border,
     'dark':$theme-dark-background-border
   );
-  width: $note-width;
+  width: 100%;
   height: $note-height;
   padding: $note-padding-base;
   margin: $note-margin-base;
   border-radius: 1px;
   display: inline-flex;
   .note-outer {
-    width: $note-tone-height;
+    width: $note-tone-width;
     height: $note-tone-height;
     border-radius: 50%;
     color: $note-tone-color;

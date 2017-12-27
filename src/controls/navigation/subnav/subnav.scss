@@ -1,9 +1,7 @@
 .#{$void}-subnav {
-  $subnav-width: 7.5rem;
   $subnav-height: 1.13rem;
   $subnav-border-radius: 0.08rem;
   $subnav-padding: 0 0.2rem;
-  $nav-content-width: 1.58rem;
   $nav-content-height: 0.6rem;
   $nav-font-size: 0.24rem;
   $nav-font-weight: bold;
@@ -15,7 +13,7 @@
   );
 
   display: inline-flex;
-  width: $subnav-width;
+  width: 100%;
   height: $subnav-height;
   border: $border-base;
   border-radius: $subnav-border-radius;
@@ -23,7 +21,7 @@
   align-items: center;
   padding: $subnav-padding;
   .nav-item {
-    width: $nav-content-width;
+    width: 100%;
     height: $nav-content-height;
     background-color: transparent;
     border: $border-base;
