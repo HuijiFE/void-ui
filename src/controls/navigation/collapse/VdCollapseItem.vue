@@ -1,16 +1,22 @@
 <template>
   <div class="vd-collapse-item">
-    <div class="head"
+    <div class="item-head"
          @click="itemClick">
-      <slot name="head">
-        {{head}}
-      </slot>
+      <div class="head-content">
+        <slot name="head">
+          {{head}}
+        </slot>
+      </div>
+      <span class="head-arrow"
+            :class="status === 'hidden' ? '' : 'arrow-up'">></span>
     </div>
     <div class="item-body"
          :class="status === 'hidden' ? 'hidden' : ''">
-      <slot name="body">
-        {{body}}
-      </slot>
+      <div class="body-content">
+        <slot name="content">
+          {{content}}
+        </slot>
+      </div>
     </div>
   </div>
 </template>
@@ -31,8 +37,10 @@ import {
 export default class VdCollapseItem extends Vue {
   status: 'show' | 'hidden' = 'hidden';
 
-  @Prop() body: string;
+  @Prop() content: string;
+
   @Prop() head: string;
+
   @Prop({ default: false })
   expand: boolean;
 
