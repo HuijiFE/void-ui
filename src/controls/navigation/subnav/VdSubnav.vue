@@ -67,7 +67,7 @@ export default class VdSubnav extends VdStylableControl {
   get classes(): ClassNames {
     return [`theme-${this.theme || this.$void.theme}`];
   }
-  
+
   mounted() {
     this.mountItemsSource();
   }
