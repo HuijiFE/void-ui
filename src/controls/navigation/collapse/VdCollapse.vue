@@ -33,22 +33,21 @@ export default class VdCollapse extends VdStylableControl {
 
   mounted() {
     this.initState();
-    this.$on('item-click', this.handleItemClick);
   }
 
   initState() {
+    let children: VdCollapseItem[] = [];
     for (let i = 0; i < this.$children.length; i++) {
       let item = this.$children[i] as VdCollapseItem;
-
-      if (item.expand) {
-        this.selectedItem = item;
-        this.selectedItem.status = 'show';
-        break;
-      }
+      item.parent = this;
+      children.push(item);
     }
+
+    this.selectedItem = children.find(i => i.expand) as VdCollapseItem;
+    this.selectedItem.status = 'show';
   }
 
-  handleItemClick(newItem: VdCollapseItem) {
+  select(newItem: VdCollapseItem) {
     if (!this.selectedItem) {
       this.selectedItem = newItem;
     }
@@ -59,7 +58,7 @@ export default class VdCollapse extends VdStylableControl {
     ) as HTMLElement;
 
     let timeline = anime.timeline();
-    let animeOptions = {
+    const animeOptions = {
       duration: 300,
       easing: 'linear',
       offset: 0,

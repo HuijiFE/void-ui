@@ -32,10 +32,13 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
+import VdCollapse from './VdCollapse.vue';
 
 @Component
 export default class VdCollapseItem extends Vue {
   status: 'show' | 'hidden' = 'hidden';
+
+  parent: VdCollapse;
 
   @Prop() content: string;
 
@@ -45,7 +48,7 @@ export default class VdCollapseItem extends Vue {
   expand: boolean;
 
   itemClick() {
-    this.$parent.$emit('item-click', this);
+    this.parent.select(this);
   }
 }
 </script>
