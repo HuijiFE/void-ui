@@ -1,0 +1,59 @@
+.#{$void}-collapse {
+  $collapse-item-head-font-size: $font-size-base;
+  $collapse-item-body-font-size: $font-size-base;
+  $collapse-item-border-bottom-color: $theme-background-colors;
+  $collapse-item-head-padding: 0.08rem 0;
+  $collapse-item-body-content-padding-bottom: 0.14rem;
+
+  @each $theme in $ss-themes {
+    &.theme-#{$theme} {
+      background-color: map-get($map: $theme-background-colors, $key: #{$theme});
+
+      .#{$void}-collapse-item {
+        border-bottom: 1px solid
+          map-get($map: $theme-background-colors, $key: #{$theme}-border);
+
+        &:first-child {
+          border-top: 1px solid
+            map-get($map: $theme-background-colors, $key: #{$theme}-hover);
+        }
+      }
+    }
+  }
+
+  &-item {
+    .item-head {
+      @include flex(row, space-between);
+      padding: $collapse-item-head-padding;
+      font-size: $collapse-item-head-font-size;
+      font-weight: bold;
+      cursor: pointer;
+
+      .head-content {
+        flex-grow: 1;
+      }
+
+      .head-arrow {
+        flex: none;
+
+        &.arrow-up {
+          transform: rotate(-90deg);
+        }
+      }
+    }
+
+    .item-body {
+      will-change: height;
+      overflow: hidden;
+      font-size: $collapse-item-head-font-size;
+
+      &.hidden {
+        height: 0;
+      }
+    }
+
+    .body-content {
+      padding-bottom: $collapse-item-body-content-padding-bottom;
+    }
+  }
+}
