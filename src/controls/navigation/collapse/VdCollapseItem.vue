@@ -8,7 +8,10 @@
         </slot>
       </div>
       <span class="head-arrow"
-            :class="status === 'hidden' ? '' : 'arrow-up'">></span>
+            :class="status === 'hidden' ? '' : 'arrow-up'">
+        <i class="fa fa-chevron-right"
+           aria-hidden="true"></i>
+      </span>
     </div>
     <div class="item-body"
          :class="status === 'hidden' ? 'hidden' : ''">
