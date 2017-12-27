@@ -1,0 +1,148 @@
+.#{$void}-card {
+  /* ------- common -------- */
+  $card-direction: row, column;
+  $card-body-font-size: $font-size-base;
+  $card-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  $card-border-radius: $border-radius-base;
+  $card-background-color: (
+    dark: #3e3e3e,
+    lite: #ffffff
+  );
+
+  $card-body-color: $theme-foreground-colors;
+  $card-body-font-family: 'Microsoft YaHei';
+  $card-body-head-color: $theme-foreground-colors;
+
+  /* ------- row ----------- */
+  $card-row-padding: 0.16rem;
+  $card-row-image-height: 1.38rem;
+  $card-row-image-width: $card-row-image-height * 16 / 9;
+  $card-row-image-border-radius: $border-radius-base;
+  $card-row-body-margin-left: 0.18rem;
+  $card-row-body-head-font-size: 0.18rem;
+  $card-row-body-content-margin-top: 0.12rem;
+
+  /* -------- col -------- */
+  $card-col-image-propertion: 62.5%;
+  $card-col-body-padding: 0.16rem;
+  $card-col-body-head-font-size: 0.2rem;
+  $card-col-body-height: 1.6rem;
+  $card-col-body-content-margin-top: 0.08rem;
+  $card-col-body-description-font-size: 0.12rem;
+  $card-col-body-description-color: #94a3a4;
+
+  /* ------------ card ---------- */
+
+  // 主题
+  @each $theme in $ss-themes {
+    &.theme-#{$theme} {
+      background-color: map-get($map: $card-background-color, $key: $theme);
+      color: map-get($map:$card-body-color, $key:#{$theme}-secondary);
+
+      .body-head {
+        color: map-get($map:$card-body-color, $key:$theme);
+      }
+    }
+  }
+
+  // flex 布局
+  @each $direction in $card-direction {
+    &.flex-#{$direction} {
+      flex-direction: $direction;
+
+      @if $direction == 'row' {
+        & {
+          padding: $card-row-padding;
+
+          .card-image {
+            height: $card-row-image-height;
+            width: $card-row-image-width;
+            border-radius: $card-row-image-border-radius;
+            box-shadow: $card-box-shadow;
+          }
+
+          .card-body {
+            margin-left: $card-row-body-margin-left;
+          }
+
+          .body-content {
+            margin-top: $card-row-body-content-margin-top;
+          }
+
+          .body-head {
+            font-size: $card-row-body-head-font-size;
+            font-weight: bold;
+          }
+
+          .body-description {
+            display: flex;
+            flex-grow: 1;
+            align-items: flex-end;
+          }
+        }
+      } @else {
+        & {
+          .card-image {
+            padding-top: $card-col-image-propertion;
+          }
+
+          .card-body {
+            padding: $card-col-body-padding;
+            height: $card-col-body-height;
+          }
+
+          .body-head {
+            font-size: $card-col-body-head-font-size;
+          }
+
+          .body-content {
+            order: 2;
+            margin-top: $card-col-body-content-margin-top;
+          }
+
+          .body-description {
+            order: 1;
+            font-size: $card-col-body-description-font-size;
+            color: $card-col-body-description-color;
+          }
+        }
+      }
+    }
+  }
+
+  // common
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  box-shadow: $card-box-shadow;
+  border-radius: $card-border-radius;
+  font-size: $card-body-font-size;
+  overflow: hidden;
+
+  .card-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    font-family: $card-body-font-family;
+  }
+
+  .body-head {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .body-content {
+    line-height: 1.8;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; // 三行省略
+  }
+}
