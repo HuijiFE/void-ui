@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vd-score-selector :size="size">
+    <vd-score-selector :size="size" v-model="value">
     </vd-score-selector>
   </div>
 </template>
@@ -19,5 +19,6 @@ import {
 @Component
 export default class ScoreSelectorBasic extends Vue {
   size = 'large';
+  value = 0
 }
 </script>

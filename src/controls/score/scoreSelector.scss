@@ -99,8 +99,8 @@
             border: map-get($map:$score-border-size, $key:$shape) solid $color;
             @include gen-transition-base((background-color,color));
           }
-          &.origin-#{$level} {
-            border: map-get($map:$score-border-size, $key:$shape) solid $color;
+          &.unselected {
+            background-color: #ffffff;
           }
         }
       }
