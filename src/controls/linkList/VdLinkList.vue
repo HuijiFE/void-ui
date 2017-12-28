@@ -28,7 +28,7 @@ import {
 } from 'vue-property-decorator';
 import { VdStylableControl } from 'src/controls/base/VdControl';
 
-interface linkListItem {
+interface LinkListItem {
   icon: string;
   label: string;
   href: string;
@@ -37,7 +37,7 @@ interface linkListItem {
 @Component
 export default class VdLinkList extends VdStylableControl {
   @Prop({ default: [] })
-  linkList: linkListItem[];
+  linkList: LinkListItem[];
 }
 </script>
 
