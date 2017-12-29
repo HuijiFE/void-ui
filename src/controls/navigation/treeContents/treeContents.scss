@@ -1,0 +1,64 @@
+.#{$void}-tree-contents {
+  $tree-contents-font-size: $font-size-base;
+  $tree-contents-indicator-bar-width: 0.04rem;
+  $tree-contents-bar-inner-height: 0.32rem;
+  $tree-contents-content-body-padding-left: 0.08rem;
+  $tree-contents-item-label-height: 0.32rem;
+  $tree-contents-item-child-margin: 0.04rem 0 0 0.06rem;
+
+  @include flex;
+  position: relative;
+  font-size: $tree-contents-font-size;
+
+  @each $theme in $ss-themes {
+    &.theme-#{$theme} {
+      .item-label {
+        color: map-get($map: $theme-foreground-colors, $key: #{$theme}-secondary);
+      }
+
+      .indicator-bar {
+        background-color: map-get($map: $theme-background-colors, $key: #{$theme}-hover);
+      }
+    }
+  }
+  .indicator-bar {
+    position: relative;
+    align-self: stretch;
+    width: $tree-contents-indicator-bar-width;
+    flex: none;
+
+    .bar-inner {
+      position: absolute;
+      top: 0;
+      height: $tree-contents-bar-inner-height;
+      width: 100%;
+      background-color: #0098c2;
+    }
+  }
+
+  .content-body {
+    padding-left: $tree-contents-content-body-padding-left;
+  }
+
+  &-item {
+    .item-label {
+      @include flex-inline;
+
+      height: $tree-contents-item-label-height;
+      line-height: $tree-contents-item-label-height;
+      transition: color ease 0.3s;
+
+      &:hover {
+        color: #00abd0;
+      }
+
+      &.active {
+        color: #00abd0;
+      }
+    }
+
+    .item-child {
+      margin: $tree-contents-item-child-margin;
+    }
+  }
+}
