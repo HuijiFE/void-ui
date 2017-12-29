@@ -30,7 +30,7 @@ import {
 @Component
 export default class VdDataCardItem extends Vue {
   @Prop() label: string;
-  @Prop() data: string;
+  @Prop() data: string | number;
   @Prop() dataSup: string;
 }
 </script>
