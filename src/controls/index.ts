@@ -8,6 +8,8 @@ export { default as VdButtonGroup } from 'src/controls/button/VdButtonGroup.vue'
 export { default as VdCard } from 'src/controls/card/VdCard.vue';
 export { default as VdDefinition } from 'src/controls/definition/VdDefinition.vue';
 export { default as VdDefinitionItem } from 'src/controls/definition/VdDefinitionItem.vue';
+export { default as VdDataCard } from 'src/controls/dataCard/VdDataCard.vue';
+export { default as VdDataCardItem } from 'src/controls/dataCard/VdDataCardItem.vue';
 export { default as VdInput } from 'src/controls/form/input/VdInput.vue';
 export { default as VdRadio } from 'src/controls/form/radio/VdRadio.vue';
 export { default as VdToggle } from 'src/controls/form/toggle/VdToggle.vue';
@@ -23,6 +25,8 @@ export { default as VdSubnavItem } from 'src/controls/navigation/subnav/VdSubnav
 export { default as VdTabs } from 'src/controls/navigation/tabs/VdTabs.vue';
 export { default as VdTabsHeadItem } from 'src/controls/navigation/tabs/VdTabsHeadItem.vue';
 export { default as VdTabsItem } from 'src/controls/navigation/tabs/VdTabsItem.vue';
+export { default as VdTreeContents } from 'src/controls/navigation/treeContents/VdTreeContents.vue';
+export { default as VdTreeContentsItem } from 'src/controls/navigation/treeContents/VdTreeContentsItem.vue';
 export { default as VdNote } from 'src/controls/note/VdNote.vue';
 export { default as VdProcessBar } from 'src/controls/process/VdProcessBar.vue';
 export { default as VdScore } from 'src/controls/score/VdScore.vue';

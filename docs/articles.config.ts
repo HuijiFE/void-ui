@@ -97,6 +97,11 @@ export const zhCN: DocConfig[] = [
         path: 'breadCurmb',
         fileName: 'navigation/breadCrumb',
       },
+      {
+        name: 'tree Contents 树形目录',
+        path: 'treeContents',
+        fileName: 'navigation/treeContents',
+      },
     ],
   },
   {
@@ -131,6 +136,11 @@ export const zhCN: DocConfig[] = [
         name: 'defintion list 定义表',
         path: 'defintion list',
         fileName: 'other/definition',
+      },
+      {
+        name: 'dataCard 数据卡片',
+        path: 'dataCard',
+        fileName: 'other/dataCard',
       },
     ],
   },
