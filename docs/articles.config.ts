@@ -133,6 +133,11 @@ export const zhCN: DocConfig[] = [
         fileName: 'other/linkList',
       },
       {
+        name: 'defintion list 定义表',
+        path: 'defintion list',
+        fileName: 'other/definition',
+      },
+      {
         name: 'dataCard 数据卡片',
         path: 'dataCard',
         fileName: 'other/dataCard',
