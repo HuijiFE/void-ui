@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <vd-flexbox>
     <vd-note :preset="preset"
              :label="label"
              :description="description"></vd-note>
 
-  </div>
+  </vd-flexbox>
 </template>
 
 <script lang="ts">

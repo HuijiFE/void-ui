@@ -1,0 +1,37 @@
+.#{$void}-sidebar {
+  position: fixed;
+  z-index: 998;
+
+  height: 100vh;
+  width: $sidebar-width;
+  &.expanded {
+    width: $sidebar-width-expanded;
+  }
+  transition: width 0.2s ease-in-out;
+
+  &.position-left {
+    left: 0;
+  }
+  &.position-right {
+    right: 0;
+  }
+
+  &_pseudo-dark {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+    background-color: $pseudo-dark-background;
+  }
+
+  &_container {
+    position: relative;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    color: $nav-foreground-color;
+    background-color: $nav-background-color;
+    padding: $sidebar-padding;
+  }
+}

@@ -1,6 +1,7 @@
 <template>
-  <div class="main-nav">
-    <router-link class="nav-item first"
+  <div>
+    <vd-sidebar></vd-sidebar>
+    <!-- <router-link class="nav-item first"
                  :to="`/${language}`">Void-UI</router-link>
 
     <span class="nav-separator"></span>
@@ -12,12 +13,7 @@
     <router-link class="nav-item"
                  :to="`/${language}/documentation`">Documenation</router-link>
     <router-link class="nav-item"
-                 :to="`/${language}/changelog`">ChangeLog</router-link>
-    <!-- <span class="nav-item">
-      <button @click="setLanguage('zh-CN')">中</button>
-      /
-      <button @click="setLanguage('en-US')">En</button>
-    </span> -->
+                 :to="`/${language}/changelog`">ChangeLog</router-link> -->
   </div>
 </template>
 
