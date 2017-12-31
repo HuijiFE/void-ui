@@ -51,6 +51,12 @@ export default class VdTreeContents extends VdStylableControl {
 
   mounted() {
     this.initChildren(this.$children);
+
+    if (!this.activeChild) {
+      this.activeChild = this.children[0];
+      this.activeChild.active = true;
+    }
+
     this.initIndicatorBar();
   }
 
@@ -61,9 +67,8 @@ export default class VdTreeContents extends VdStylableControl {
     for (let i = 0; i < children.length; i++) {
       let child = children[i] as VdTreeContentsItem;
       child.root = this;
-      child.active = false;
 
-      if (hash && `#${child.id}` === hash) {
+      if (hash && `#${child.data.id}` === hash) {
         child.active = true;
         this.activeChild = child;
       }
@@ -76,11 +81,6 @@ export default class VdTreeContents extends VdStylableControl {
     }
 
     this.children = childrenData;
-
-    if (!this.activeChild) {
-      this.activeChild = childrenData[0];
-      this.activeChild.active = true;
-    }
   }
 
   initIndicatorBar() {

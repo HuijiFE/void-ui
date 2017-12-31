@@ -44,10 +44,6 @@ export default class VdTreeContentsItem extends Vue {
 
   @Prop() data: TreeContentData;
 
-  get id() {
-    return this.data.id;
-  }
-
   contentItemClick(event: Event) {
     this.root.treeItemClick(this, event.target as HTMLElement);
   }
