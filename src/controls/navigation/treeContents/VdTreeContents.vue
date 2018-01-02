@@ -88,7 +88,7 @@ export default class VdTreeContents extends VdStylableControl {
     anime({
       targets: this.$refs.indicatorBar,
       top: el.offsetTop,
-      height: el.offsetHeight + 'px',
+      translateY: el.offsetHeight + 'px',
       duration,
       easing,
     });
@@ -101,7 +101,7 @@ export default class VdTreeContents extends VdStylableControl {
     anime({
       targets: this.$refs.indicatorBar,
       top: el.offsetTop,
-      height: el.offsetHeight + 'px',
+      translateY: el.offsetHeight + 'px',
       duration,
       easing,
       begin: () => {
