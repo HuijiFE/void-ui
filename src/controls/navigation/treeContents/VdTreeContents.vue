@@ -45,6 +45,8 @@ export default class VdTreeContents extends VdStylableControl {
 
   @Prop() data: TreeContentData[];
 
+  @Provide() root = this;
+
   get classes(): ClassNames {
     return [`theme-${this.theme || this.$void.theme}`];
   }
@@ -66,7 +68,6 @@ export default class VdTreeContents extends VdStylableControl {
 
     for (let i = 0; i < children.length; i++) {
       let child = children[i] as VdTreeContentsItem;
-      child.root = this;
 
       if (hash && `#${child.data.id}` === hash) {
         child.active = true;
