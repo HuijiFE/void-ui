@@ -3,7 +3,6 @@
     <vd-avatar :src ="src" label="Tony" description="人物介绍"></vd-avatar>
     <vd-avatar :src ="src" label="Tony" description="人物介绍"></vd-avatar>
     <vd-avatar :src ="src" label="Tony" description="人物介绍"></vd-avatar>
-    <vd-avatar :src ="src" label="Tony" description="人物介绍"></vd-avatar>
   </vd-flexbox>
 </template>
 <script lang="ts">
