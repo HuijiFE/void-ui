@@ -3,6 +3,7 @@
 export * from 'src/controls/base/VdControl';
 export * from 'src/controls/form/VdFormControl';
 export * from 'src/controls/layout/flexbox/VdFlexbox';
+export { default as VdAvatar } from 'src/controls/avatar/VdAvatar.vue';
 export { default as VdButton } from 'src/controls/button/VdButton.vue';
 export { default as VdButtonGroup } from 'src/controls/button/VdButtonGroup.vue';
 export { default as VdCard } from 'src/controls/card/VdCard.vue';

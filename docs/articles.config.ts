@@ -142,6 +142,11 @@ export const zhCN: DocConfig[] = [
         path: 'dataCard',
         fileName: 'other/dataCard',
       },
+      {
+        name: 'avatar 头像',
+        path: 'avatar',
+        fileName: 'other/avatar',
+      },
     ],
   },
 ];
