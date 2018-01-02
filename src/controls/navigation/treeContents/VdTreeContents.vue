@@ -87,8 +87,8 @@ export default class VdTreeContents extends VdStylableControl {
     let el = this.activeChild.$el.querySelector('.item-label') as HTMLElement;
     anime({
       targets: this.$refs.indicatorBar,
-      top: el.offsetTop,
-      translateY: el.offsetHeight + 'px',
+      translateY: el.offsetTop,
+      height: el.offsetHeight,
       duration,
       easing,
     });
@@ -100,8 +100,8 @@ export default class VdTreeContents extends VdStylableControl {
 
     anime({
       targets: this.$refs.indicatorBar,
-      top: el.offsetTop,
-      translateY: el.offsetHeight + 'px',
+      translateY: el.offsetTop,
+      height: el.offsetHeight,
       duration,
       easing,
       begin: () => {
