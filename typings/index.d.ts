@@ -1,2 +1,4 @@
 export * from '../src';
-export { default as VoidUI } from '../src';
+import VoidUI from '../src';
+
+export default VoidUI;
