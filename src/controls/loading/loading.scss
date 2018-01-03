@@ -14,8 +14,24 @@
 
   $loading-background-color: (
     'small':preloader,
-    'medium':preloader-blue,
+    'medium':preloader,
     'large':preloader-green
+  );
+
+  $loading-bar-color: (
+    1:$color-score-0,
+    2:$color-score-1,
+    3:$color-score-2,
+    4:$color-score-3,
+    5:$color-score-4
+  );
+
+  $animation-preloader: (
+    1:preloader1,
+    2:preloader2,
+    3:preloader3,
+    4:preloader4,
+    5:preloader5
   );
 
   $loading-margin: 0.02rem;
@@ -27,15 +43,14 @@
       @include flex(row,center);
       height: map-get($map:$size-heights, $key:$size);
 
-      span {
+      .bar {
         width: map-get($map:$size-widths, $key:$size);
         height: map-get($map:$size-heights, $key:$size);
-        background-color: #bbbbbb;
+        background-color: $theme-lite-foreground-disabled;
         border-radius: 1px;
         animation: map-get($map:$loading-background-color, $key:$size) 2s infinite
           ease-in-out;
         margin-right: $loading-margin;
-
         @for $i from 1 through 5 {
           &:nth-child(#{$i + 1}) {
             animation-timing-function: linear;
@@ -45,14 +60,15 @@
       }
     }
 
-    .loading-blue {
-      span {
-        animation: preloader-blue 2s infinite ease-in-out;
-      }
-    }
-    .loading-green {
-      span {
-        animation: preloader-green 2s infinite ease-in-out;
+    .loader-score {
+      .bar {
+        @for $i from 1 through 5 {
+          &:nth-child(#{$i}) {
+            animation: map-get($map:$animation-preloader, $key:$i) 2s infinite ease-in-out;
+            animation-timing-function: linear;
+            animation-delay: (1000 / 5) * $i +ms;
+          }
+        }
       }
     }
   }
@@ -70,32 +86,88 @@
   }
 }
 
-@keyframes preloader-blue {
-  0% {
-    transform: scaleY(1);
-    background-color: #bbbbbb;
-  }
-  25% {
-    transform: scaleY(3);
-    background-color: #00abd0;
-  }
-  50% {
-    transform: scaleY(1);
-    background-color: #bbbbbb;
-  }
-}
-
 @keyframes preloader-green {
   0% {
     transform: scaleY(1);
-    background-color: #bbbbbb;
+    background-color: $theme-lite-foreground-disabled;
   }
   25% {
     transform: scaleY(3);
-    background-color: #58d000;
+    background-color: $tone-primary;
   }
   50% {
     transform: scaleY(1);
-    background-color: #bbbbbb;
+    background-color: $theme-lite-foreground-disabled;
+  }
+}
+
+@keyframes preloader1 {
+  0% {
+    transform: scaleY(1);
+    background-color: $theme-lite-foreground-disabled;
+  }
+  25% {
+    transform: scaleY(3);
+    background-color: $color-score-0;
+  }
+  50% {
+    transform: scaleY(1);
+    background-color: $theme-lite-foreground-disabled;
+  }
+}
+@keyframes preloader2 {
+  0% {
+    transform: scaleY(1);
+    background-color: $theme-lite-foreground-disabled;
+  }
+  25% {
+    transform: scaleY(3);
+    background-color: $color-score-1;
+  }
+  50% {
+    transform: scaleY(1);
+    background-color: $theme-lite-foreground-disabled;
+  }
+}
+@keyframes preloader3 {
+  0% {
+    transform: scaleY(1);
+    background-color: $theme-lite-foreground-disabled;
+  }
+  25% {
+    transform: scaleY(3);
+    background-color: $color-score-2;
+  }
+  50% {
+    transform: scaleY(1);
+    background-color: $theme-lite-foreground-disabled;
+  }
+}
+@keyframes preloader4 {
+  0% {
+    transform: scaleY(1);
+    background-color: $theme-lite-foreground-disabled;
+  }
+  25% {
+    transform: scaleY(3);
+    background-color: $color-score-3;
+  }
+  50% {
+    transform: scaleY(1);
+    background-color: $theme-lite-foreground-disabled;
+  }
+}
+@keyframes preloader5 {
+  0% {
+    transform: scaleY(1);
+    background-color: $theme-lite-foreground-disabled;
+  }
+  25% {
+    transform: scaleY(3);
+    background-color: $color-score-4;
+  }
+  50% {
+    transform: scaleY(1);
+    background-color: $theme-lite-foreground-disabled;
   }
 }

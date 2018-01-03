@@ -2,35 +2,33 @@
 
 <example-board>
 <div class="vd-loading">
-    <div class="loader"
-         :class="`small-size`">
-      <span class="bar1"></span>
-      <span class="bar2"></span>
-      <span class="bar3"></span>
-      <span class="bar4"></span>
-      <span class="bar5"></span>
+    <div :class="`small-size`">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
     </div>
 </div>
 
 <div class="vd-loading">
-    <div class="loader-blue"
+    <div class="loader-score"
          :class="`medium-size`">
-      <span class="bar1"></span>
-      <span class="bar2"></span>
-      <span class="bar3"></span>
-      <span class="bar4"></span>
-      <span class="bar5"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
     </div>
 </div>
 
 <div class="vd-loading">
-    <div class="loader-green"
-         :class="`large-size`">
-      <span class="bar1"></span>
-      <span class="bar2"></span>
-      <span class="bar3"></span>
-      <span class="bar4"></span>
-      <span class="bar5"></span>
+    <div :class="`large-size`">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
     </div>
 </div>
 </example-board>
