@@ -283,10 +283,27 @@ $button-circle-sizes: (
 $nav-foreground-color: $color-white !default;
 $nav-background-color: $tone-primary !default;
 
+$nav-foreground-color-high: $color-white !default;
+$nav-background-color-high: $tone-primary-darken !default;
+
 $sidebar-padding: 0.08rem 0;
 
 $sidebar-width:           0.56rem;
 $sidebar-width-expanded:  2.80rem;
+
+$sidebar-item-heights: (
+  small:    0.40rem,
+  medium:   0.56rem,
+  large:    0.64rem,
+);
+
+$sidebar-item-font-sizes: (
+  small:    0.16rem,
+  medium:   0.16rem,
+  large:    0.18rem,
+);
+
+$sidebar-item-font-size-logo: 0.24rem;
 
 
 /*----------  Form  ----------*/

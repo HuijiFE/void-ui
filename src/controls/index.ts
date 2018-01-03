@@ -17,6 +17,7 @@ export { default as VdBreadCrumb } from 'src/controls/navigation/breadCrumb/VdBr
 export { default as VdCollapse } from 'src/controls/navigation/collapse/VdCollapse.vue';
 export { default as VdCollapseItem } from 'src/controls/navigation/collapse/VdCollapseItem.vue';
 export { default as VdSidebar } from 'src/controls/navigation/sidebar/VdSidebar.vue';
+export { default as VdSidebarItem } from 'src/controls/navigation/sidebar/VdSidebarItem.vue';
 export { default as VdSubnav } from 'src/controls/navigation/subnav/VdSubnav.vue';
 export { default as VdSubnavItem } from 'src/controls/navigation/subnav/VdSubnavItem.vue';
 export { default as VdTabs } from 'src/controls/navigation/tabs/VdTabs.vue';
