@@ -1,5 +1,6 @@
 <template>
-  <div class="vd-made-tabs-item">
+  <div v-show="active"
+       class="vd-made-tabs-item">
     <slot></slot>
   </div>
 </template>
@@ -15,14 +16,20 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
+import VdMadeTabs from './VdMadeTabs.vue';
 
 @Component
 export default class VdMadeTabsItem extends Vue {
   @Prop() label: string;
 
+  @Prop() name: string;
+
+  get active() {
+    return this.name === this.parent.currentTabName;
+  }
+
   get parent() {
-    console.log(this.$parent);
-    return this.$parent;
+    return this.$parent as VdMadeTabs;
   }
 }
 </script>
