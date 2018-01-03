@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <vd-flexbox>
     <vd-bread-crumb :itemsSource="itemsSource"></vd-bread-crumb>
-  </div>
+  </vd-flexbox>
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <vd-flexbox>
     <vd-note :preset="`success`"
              :label="label"
              :description="description"></vd-note>
@@ -12,7 +12,7 @@
     <vd-note :preset="`error`"
              :label="label"
              :description="description"></vd-note>
-  </div>
+  </vd-flexbox>
 </template>
 
 <script lang="ts">
