@@ -1,0 +1,101 @@
+.#{$void}-loading {
+  // map
+  $size-widths: (
+    'small':0.04rem,
+    'medium':0.06rem,
+    'large':0.08rem
+  );
+
+  $size-heights: (
+    'small':0.08rem,
+    'medium':0.13rem,
+    'large':0.2rem
+  );
+
+  $loading-background-color: (
+    'small':preloader,
+    'medium':preloader-blue,
+    'large':preloader-green
+  );
+
+  $loading-margin: 0.02rem;
+  width: 0.5rem;
+  margin: 2rem auto;
+
+  @each $size in $ss-sizes {
+    .#{$size}-size {
+      @include flex(row,center);
+      height: map-get($map:$size-heights, $key:$size);
+
+      span {
+        width: map-get($map:$size-widths, $key:$size);
+        height: map-get($map:$size-heights, $key:$size);
+        background-color: #bbbbbb;
+        border-radius: 1px;
+        animation: map-get($map:$loading-background-color, $key:$size) 2s infinite
+          ease-in-out;
+        margin-right: $loading-margin;
+
+        @for $i from 1 through 5 {
+          &:nth-child(#{$i + 1}) {
+            animation-timing-function: linear;
+            animation-delay: (1000 / 5) * $i +ms;
+          }
+        }
+      }
+    }
+
+    .loading-blue {
+      span {
+        animation: preloader-blue 2s infinite ease-in-out;
+      }
+    }
+    .loading-green {
+      span {
+        animation: preloader-green 2s infinite ease-in-out;
+      }
+    }
+  }
+}
+
+@keyframes preloader {
+  0% {
+    transform: scaleY(1);
+  }
+  25% {
+    transform: scaleY(3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes preloader-blue {
+  0% {
+    transform: scaleY(1);
+    background-color: #bbbbbb;
+  }
+  25% {
+    transform: scaleY(3);
+    background-color: #00abd0;
+  }
+  50% {
+    transform: scaleY(1);
+    background-color: #bbbbbb;
+  }
+}
+
+@keyframes preloader-green {
+  0% {
+    transform: scaleY(1);
+    background-color: #bbbbbb;
+  }
+  25% {
+    transform: scaleY(3);
+    background-color: #58d000;
+  }
+  50% {
+    transform: scaleY(1);
+    background-color: #bbbbbb;
+  }
+}

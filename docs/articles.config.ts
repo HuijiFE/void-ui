@@ -147,6 +147,11 @@ export const zhCN: DocConfig[] = [
         path: 'avatar',
         fileName: 'other/avatar',
       },
+      {
+        name: 'loading 加载',
+        path: 'loading',
+        fileName: 'other/loading',
+      },
     ],
   },
 ];
