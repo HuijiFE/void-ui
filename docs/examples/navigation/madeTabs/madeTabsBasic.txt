@@ -1,0 +1,38 @@
+<template>
+  <div>
+    <vd-made-tabs>
+      <vd-made-tabs-item label="Tab A">
+        <div class="tabs-content">
+          Content of Tab A.
+        </div>
+      </vd-made-tabs-item>
+      <vd-made-tabs-item label="Tab B">
+        <div class="tabs-content">
+          Content of Tab B.
+        </div>
+      </vd-made-tabs-item>
+      <vd-made-tabs-item label="Tab C">
+        <div class="tabs-content">
+          Content of Tab C.
+        </div>
+      </vd-made-tabs-item>
+      <vd-made-tabs-item label="Tab D">
+        <div class="tabs-content">
+          Content of Tab D.
+        </div>
+      </vd-made-tabs-item>
+      <vd-made-tabs-item label="Tab E">
+        <div class="tabs-content">
+          Content of Tab E.
+        </div>
+      </vd-made-tabs-item>
+    </vd-made-tabs>
+  </div>
+</template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+
+@Component
+export default class MadeTabsBasic extends Vue {}
+</script>

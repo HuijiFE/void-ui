@@ -1,0 +1,52 @@
+.#{$void}-nav-tabs {
+  $nav-tabs-backgrounds: (
+    lite:#00abd0,
+    dark:#4e4e4e
+  );
+  $nav-tabs-modes: 'vertical', 'horizontal';
+  $nav-tabs-item-height: 0.64rem;
+  $nav-tabs-item-width: 1.62rem;
+  $nav-tabs-item-font-size: 0.24rem;
+  $nav-tabs-item-padding-left: 0.16rem;
+
+  @each $mode in $nav-tabs-modes {
+    &.mode-#{$mode} {
+      @if $mode == 'vertical' {
+        @include flex-inline(row);
+      } @else {
+        @include flex-inline(column);
+      }
+    }
+  }
+
+  @each $theme in $ss-themes {
+    &.theme-#{$theme} {
+      background-color: map-get($map: $theme-background-colors, $key: $theme);
+      color: map-get($map: $theme-foreground-colors, $key: $theme);
+
+      .#{$void}-nav-tabs-item {
+        &:hover {
+          background-color: map-get(
+            $map: $theme-background-colors,
+            $key: #{$theme}-hover
+          );
+        }
+
+        &.active {
+          background-color: map-get($map: $nav-tabs-backgrounds, $key: #{$theme});
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  &-item {
+    font-size: $nav-tabs-item-font-size;
+    width: $nav-tabs-item-width;
+    height: $nav-tabs-item-height;
+    line-height: $nav-tabs-item-height;
+    padding-left: $nav-tabs-item-padding-left;
+    cursor: pointer;
+    user-select: none;
+  }
+}
