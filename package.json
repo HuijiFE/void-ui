@@ -1,6 +1,6 @@
 {
   "name": "void-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A UI components library base on TypeScript for Vue.js.",
   "author": "HuijiFE",
   "keywords": [
@@ -10,17 +10,18 @@
     "ui",
     "huiji"
   ],
-  "homepage": "huijiwiki.com",
+  "homepage": "http://void.huijiwiki.com",
   "bugs": {
     "url": "https://github.com/HuijiFE/void-ui/issues"
   },
   "license": "MIT",
-  "main": "lib/void-ui.common.js",
   "files": [
-    "lib",
     "src",
+    "dist",
     "typings"
   ],
+  "main": "dist/void-ui.common.js",
+  "module": "dist/void-ui.common.js",
   "typings": "typings/index.d.ts",
   "repository": {
     "type": "git",
