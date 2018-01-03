@@ -11,7 +11,8 @@ glob.sync('src/controls/**/*.ts').forEach(filePath => {
   if (filePath === 'src/controls/index.ts') {
     return;
   }
-  controls += `export * from '${filePath.replace(/\.ts$/, '')}';\n`;
+  // controls += `export * from '${filePath.replace(/\.ts$/, '')}';\n`;
+  controls += `export * from '${filePath}';\n`;
 });
 
 glob.sync('src/controls/**/*.vue').forEach(filePath => {
