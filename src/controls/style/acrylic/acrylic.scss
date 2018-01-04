@@ -1,0 +1,38 @@
+.#{$void}-acrylic {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  overflow: hidden;
+
+  &_background {
+    position: absolute;
+    top: -25%;
+    bottom: -25%;
+    left: -25%;
+    right: -25%;
+
+    background: {
+      position: center;
+      size: cover;
+      repeat: repeat;
+    }
+    filter: blur(24px);
+  }
+
+  &_cover {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0.32;
+    background: {
+      color: $color-black;
+      blend-mode: multiply;
+    }
+  }
+}

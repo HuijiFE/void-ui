@@ -9,7 +9,7 @@
       <vd-radio v-model="position"
                 value="left">left</vd-radio>
       <vd-radio v-model="position"
-                value="right">top</vd-radio>
+                value="right">right</vd-radio>
     </vd-flexbox>
     <vd-made-tabs v-model="activeTab"
                   :tabHeadPosition="position">
@@ -41,6 +41,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class MadeTabsBasic extends Vue {
   activeTab = 'aaa';
-  position = 'top';
+  position = 'left';
 }
 </script>

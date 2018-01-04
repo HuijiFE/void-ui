@@ -1,9 +1,27 @@
+.#{$void}-main {
+  position: relative;
+
+  min-height: 100vh;
+  &.theme {
+    @each $theme in $ss-themes {
+      &-#{$theme} {
+        color: map-get($map: $theme-foreground-colors, $key: $theme);
+        background-color: map-get($map: $theme-background-colors, $key: $theme);
+      }
+    }
+  }
+}
+
 .#{$void}-section {
+  position: relative;
+
   padding-top: $section-padding;
   padding-bottom: $section-padding;
 }
 
 .#{$void}-container {
+  position: relative;
+
   padding-left: $container-padding;
   padding-right: $container-padding;
   margin-left: auto;
