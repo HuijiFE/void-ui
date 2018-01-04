@@ -22,7 +22,7 @@
   ],
   "main": "dist/void-ui.common.js",
   "module": "dist/void-ui.common.js",
-  "types": "dist/typings/src/index.d.ts",
+  "types": "typings/src/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/HuijiFE/void-ui.git"
@@ -42,7 +42,8 @@
     "lint": "npm run eslint && npm run tslint",
     "build:lib": "node build/build-lib.js",
     "build:docs": "node build/build-docs.js",
-    "build": "npm run build:lib && npm run build:docs"
+    "build:post": "node build/build-post.js",
+    "build": "npm run build:lib && npm run build:docs && npm run build:post"
   },
   "dependencies": {
     "animejs": "^2.2.0"
