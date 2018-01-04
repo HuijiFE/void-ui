@@ -27,8 +27,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { VdStylableControl } from 'src/controls/base/VdControl';
-import { ControlSkin } from 'typings';
+import { VdStylableControl, ControlSkin } from 'src/controls/base/VdControl';
 import VdTabsHeadItem from './VdTabsHeadItem.vue';
 import VdTabsItem from './VdTabsItem.vue';
 import anime from 'animejs';
