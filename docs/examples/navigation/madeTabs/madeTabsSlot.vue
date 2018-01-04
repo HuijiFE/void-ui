@@ -1,22 +1,29 @@
 <template>
   <div>
-    <vd-made-tabs v-model="activeTab">
+    <vd-made-tabs v-model="activeTab"
+                  tabHeadPosition="left">
       <vd-made-tabs-item label="Tab A"
                          name="aaa">
+        <span class="slot"
+              slot="label">系列热销</span>
         <div class="tabs-content">
-          Content of Tab A.
+          系列热销商品
         </div>
       </vd-made-tabs-item>
       <vd-made-tabs-item label="Tab B"
                          name="bbb">
+        <span class="slot"
+              slot="label">折扣推荐</span>
         <div class="tabs-content">
-          Content of Tab B.
+          折扣推荐商品.
         </div>
       </vd-made-tabs-item>
       <vd-made-tabs-item label="Tab C"
                          name="ccc">
+        <span class="slot"
+              slot="label">随便什么</span>
         <div class="tabs-content">
-          Content of Tab C.
+          随便什么商品.
         </div>
       </vd-made-tabs-item>
     </vd-made-tabs>
@@ -33,8 +40,11 @@ export default class MadeTabsBasic extends Vue {
 </script>
 <style scoped>
 .slot {
-  display: inline-block;
-  height: 100%;
-  background-color: gray;
+  display: block;
+  font-size: 0.24rem;
+  width: 1.62rem;
+  height: 0.64rem;
+  line-height: 0.64rem;
+  padding-left: 0.16rem;
 }
 </style>

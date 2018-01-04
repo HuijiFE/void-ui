@@ -9,7 +9,6 @@
       </vd-made-tabs-item>
       <vd-made-tabs-item label="Tab B"
                          name="bbb">
-        <span slot="label">这是一个slot</span>
         <div class="tabs-content">
           Content of Tab B.
         </div>
@@ -32,3 +31,10 @@ export default class MadeTabsBasic extends Vue {
   activeTab = 'aaa';
 }
 </script>
+<style scoped>
+.slot {
+  display: inline-block;
+  height: 100%;
+  background-color: gray;
+}
+</style>

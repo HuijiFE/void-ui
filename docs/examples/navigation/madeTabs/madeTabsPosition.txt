@@ -1,6 +1,18 @@
 <template>
   <div>
-    <vd-made-tabs v-model="activeTab">
+    <vd-flexbox flex="100"
+                gutter="xsmall">
+      <vd-radio v-model="position"
+                value="top">top</vd-radio>
+      <vd-radio v-model="position"
+                value="bottom">bottom</vd-radio>
+      <vd-radio v-model="position"
+                value="left">left</vd-radio>
+      <vd-radio v-model="position"
+                value="right">top</vd-radio>
+    </vd-flexbox>
+    <vd-made-tabs v-model="activeTab"
+                  :tabHeadPosition="position">
       <vd-made-tabs-item label="Tab A"
                          name="aaa">
         <div class="tabs-content">
@@ -29,12 +41,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class MadeTabsBasic extends Vue {
   activeTab = 'aaa';
+  position = 'top';
 }
 </script>
-<style scoped>
-.slot {
-  display: inline-block;
-  height: 100%;
-  background-color: gray;
-}
-</style>
