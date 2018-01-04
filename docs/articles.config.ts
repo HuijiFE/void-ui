@@ -60,6 +60,16 @@ export const zhCN: DocConfig[] = [
     ],
   },
   {
+    name: '样式',
+    children: [
+      {
+        name: 'Acrylic 亚克力',
+        path: 'acrylic',
+        fileName: 'style/acrylic',
+      },
+    ],
+  },
+  {
     name: '表单',
     children: [
       {

@@ -44,3 +44,7 @@ declare module '*.styl' {
 }
 
 declare type ClassNames = Array<string | any>;
+
+declare interface StyleObject {
+  [key: string]: string | number;
+}
