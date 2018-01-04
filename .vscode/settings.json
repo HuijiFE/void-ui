@@ -1,17 +1,10 @@
 {
-  "terminal.integrated.shell.windows": "C:\\WINDOWS\\Sysnative\\bash.exe",
-  "workbench.colorTheme": "Quiet Light for VSC",
-  "workbench.iconTheme": "vscode-icons",
-  "highlight-matching-tag.style": {
-    "backgroundColor": "#ffff66"
-  },
   "editor.tabSize": 2,
-  "editor.fontFamily": "'Inziu Iosevka SC', Consolas, 'Courier New', monospace",
-  "editor.fontLigatures": true,
-  "editor.minimap.enabled": false,
   "editor.formatOnSave": true,
   "files.eol": "\n",
-  "auto-comment-blocks.slashStyleBlocks": ["scss"],
+  "auto-comment-blocks.slashStyleBlocks": [
+    "scss"
+  ],
   "css.validate": false,
   "beautify.language": {
     "js": {
@@ -20,7 +13,12 @@
       "ext": []
     },
     "css": [],
-    "html": ["htm", "html", "mustache", "xml"]
+    "html": [
+      "htm",
+      "html",
+      "mustache",
+      "xml"
+    ]
   },
   "beautify.config": {
     "eol": "\n",
@@ -31,7 +29,11 @@
     "preserve_newlines": true,
     "brace_style": "collapse",
     "max_preserve_newlines": 2,
-    "extra_liners": ["head", "body", "/html"],
+    "extra_liners": [
+      "head",
+      "body",
+      "/html"
+    ],
     "indent_body_inner_html": true,
     "indent_inner_html": false,
     "indent_scripts": "separate",
@@ -43,7 +45,11 @@
     "keep_array_indentation": true,
     "space_before_conditional": true
   },
-  "beautify.ignore": ["**/variables.scss", "**/normalize.css", "**/reset.scss"],
+  "beautify.ignore": [
+    "**/variables.scss",
+    "**/normalize.css",
+    "**/reset.scss"
+  ],
   "vetur.format.defaultFormatter.html": "js-beautify-html",
   "vetur.format.defaultFormatterOptions": {
     "js-beautify-html": {
@@ -55,7 +61,11 @@
       "preserve_newlines": true,
       "brace_style": "collapse",
       "max_preserve_newlines": 2,
-      "extra_liners": ["head", "body", "/html"],
+      "extra_liners": [
+        "head",
+        "body",
+        "/html"
+      ],
       "indent_body_inner_html": true,
       "indent_inner_html": false,
       "indent_scripts": "separate",
@@ -91,7 +101,11 @@
     "scss.validate": true
   },
   "eslint.enable": true,
-  "eslint.validate": ["javascript", "javascriptreact", "html"],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "html"
+  ],
   "eslint.options": {
     "configFile": ".eslintrc.js"
   },

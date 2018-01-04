@@ -152,6 +152,16 @@ export const zhCN: DocConfig[] = [
         path: 'dataCard',
         fileName: 'other/dataCard',
       },
+      {
+        name: 'avatar 头像',
+        path: 'avatar',
+        fileName: 'other/avatar',
+      },
+      {
+        name: 'loading 加载',
+        path: 'loading',
+        fileName: 'other/loading',
+      },
     ],
   },
 ];

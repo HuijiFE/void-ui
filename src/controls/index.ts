@@ -3,6 +3,8 @@
 export * from 'src/controls/base/VdControl';
 export * from 'src/controls/form/VdFormControl';
 export * from 'src/controls/layout/flexbox/VdFlexbox';
+export * from 'src/controls/navigation/sidebar/VdSidebar';
+export { default as VdAvatar } from 'src/controls/avatar/VdAvatar.vue';
 export { default as VdButton } from 'src/controls/button/VdButton.vue';
 export { default as VdButtonGroup } from 'src/controls/button/VdButtonGroup.vue';
 export { default as VdCard } from 'src/controls/card/VdCard.vue';
@@ -24,6 +26,8 @@ export { default as VdMadeTabs } from 'src/controls/navigation/madeTabs/VdMadeTa
 export { default as VdMadeTabsItem } from 'src/controls/navigation/madeTabs/VdMadeTabsItem.vue';
 export { default as VdNavTabItem } from 'src/controls/navigation/navTabs/VdNavTabItem.vue';
 export { default as VdNavTabs } from 'src/controls/navigation/navTabs/VdNavTabs.vue';
+export { default as VdSidebar } from 'src/controls/navigation/sidebar/VdSidebar.vue';
+export { default as VdSidebarItem } from 'src/controls/navigation/sidebar/VdSidebarItem.vue';
 export { default as VdSubnav } from 'src/controls/navigation/subnav/VdSubnav.vue';
 export { default as VdSubnavItem } from 'src/controls/navigation/subnav/VdSubnavItem.vue';
 export { default as VdTabs } from 'src/controls/navigation/tabs/VdTabs.vue';

@@ -1,0 +1,52 @@
+.#{$void}-avatar {
+  $avatar-item-width: 1.9rem;
+  $avatar-item-height: 2.2rem;
+  $avatar-item-top-width: 1.2rem;
+  $avatar-item-top-margin: 0 0.35rem 0.08rem;
+  $avatar-item-padding-top: 0.24rem;
+  $avatar-item-bottom-line-height: 0.19rem;
+  $avatar-item-bottom-font-size: 0.14rem;
+  float: left;
+  width: 1.9rem;
+  height: 2.2rem;
+  padding-top: $avatar-item-padding-top;
+  @each $theme in $ss-themes {
+    &.theme-#{$theme} {
+      background-color: map-get($map:$theme-background-colors, $key:#{$theme}-higher);
+
+      .item-top {
+        width: $avatar-item-top-width;
+        height: $avatar-item-top-width;
+        border: $border-base;
+        border-radius: 50%;
+        line-height: $avatar-item-top-width;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: $avatar-item-top-margin;
+      }
+      .item-bottom {
+        width: 100%;
+        line-height: $avatar-item-bottom-line-height;
+        .item-label,
+        .item-description {
+          display: block;
+          width: 100%;
+          line-height: $avatar-item-bottom-line-height;
+          text-align: center;
+          font-size: $avatar-item-bottom-font-size;
+          margin-bottom: 0.04rem;
+        }
+        .item-label {
+          font-weight: bold;
+          color: map-get($map:$theme-foreground-colors, $key:$theme);
+        }
+        .item-description {
+          color: #aaaaaa;
+        }
+      }
+    }
+  }
+  margin: 0 0.24rem 0.24rem 0;
+}

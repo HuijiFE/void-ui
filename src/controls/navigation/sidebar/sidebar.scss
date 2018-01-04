@@ -1,0 +1,110 @@
+/*----------  sidebar  ----------*/
+.#{$void}-sidebar {
+  position: fixed;
+  z-index: 998;
+  overflow: hidden;
+
+  height: 100vh;
+
+  transition: width 0.2s ease-in-out;
+
+  width: $sidebar-width;
+  &.expanded-soft {
+    width: $sidebar-width-expanded;
+  }
+
+  &.position-left {
+    left: 0;
+  }
+  &.position-right {
+    right: 0;
+  }
+
+  @include media-small {
+    &.position-left {
+      left: -$sidebar-width;
+    }
+    &.position-right {
+      right: -$sidebar-width;
+    }
+  }
+
+  &.expanded-hard {
+    width: $sidebar-width-expanded;
+
+    &.position-left {
+      left: 0;
+    }
+    &.position-right {
+      right: 0;
+    }
+  }
+
+  &_pseudo-dark {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+    background-color: $pseudo-dark-background;
+  }
+
+  &_container {
+    @include flex(column, flex-start, stretch);
+    position: relative;
+    z-index: 1000;
+    width: $sidebar-width-expanded;
+    height: 100%;
+    color: $nav-foreground-color;
+    background-color: $nav-background-color;
+    padding: $sidebar-padding;
+  }
+
+  &_divide {
+    width: 100%;
+    margin-top: auto;
+  }
+}
+
+/*----------  sidebar item  ----------*/
+.#{$void}-sidebar-item {
+  cursor: pointer;
+
+  color: $nav-foreground-color;
+  background-color: $nav-background-color;
+
+  &:hover {
+    color: $nav-foreground-color-high;
+    background-color: $nav-background-color-high;
+  }
+
+  @include flex(row, flex-start, stretch);
+  width: 100%;
+  padding-right: 0.24rem;
+
+  &_icon {
+    @include flex(row, center, center);
+    flex: none;
+    width: $sidebar-width;
+    font-size: 0.18rem;
+  }
+
+  &_content {
+    @include flex(row, flex-start, center);
+    flex: 1 1 0%;
+    overflow: hidden;
+  }
+
+  &.size {
+    @each $size in $ss-sizes {
+      &-#{$size} {
+        height: map-get($map: $sidebar-item-heights, $key: $size);
+        font-size: map-get($map: $sidebar-item-font-sizes, $key: $size);
+      }
+    }
+  }
+
+  &.branded {
+    font-size: $sidebar-item-font-size-logo;
+  }
+}

@@ -104,7 +104,6 @@ export default class VdButton extends VdStylableControl implements VdLoadingCont
   }
 
   onClick() {
-    console.warn(this.componentName);
     this.$emit('click');
   }
 }

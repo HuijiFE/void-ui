@@ -1,3 +1,7 @@
+/**
+ * Build documentation for Void-UI
+ */
+
 'use strict';
 require('./check-versions')();
 

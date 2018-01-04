@@ -7,6 +7,7 @@
 @import 'controls/base/media';
 @import 'controls/base/reset';
 
+@import 'controls/avatar/avatar';
 @import 'controls/button/button';
 @import 'controls/card/card';
 @import 'controls/dataCard/VdDataCard';
@@ -19,10 +20,12 @@
 @import 'controls/layout/common/main';
 @import 'controls/layout/flexbox/flexbox';
 @import 'controls/linkList/linklist';
+@import 'controls/loading/loading';
 @import 'controls/navigation/breadCrumb/breadCrumb';
 @import 'controls/navigation/collapse/Collapse';
 @import 'controls/navigation/madeTabs/madeTabs';
 @import 'controls/navigation/navTabs/navTabs';
+@import 'controls/navigation/sidebar/sidebar';
 @import 'controls/navigation/subnav/subnav';
 @import 'controls/navigation/tabs/tabs';
 @import 'controls/navigation/treeContents/treeContents';
