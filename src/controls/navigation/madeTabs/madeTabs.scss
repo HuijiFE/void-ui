@@ -1,0 +1,128 @@
+.#{$void}-made-tabs {
+  display: flex;
+  border-radius: $border-radius-base;
+  border: $border-base;
+
+  &.bordered {
+    @each $theme in $ss-themes {
+      &.theme-#{$theme} {
+        border-color: map-get($map: $theme-background-colors, $key: #{$theme}-border);
+      }
+    }
+  }
+
+  .tabs-head {
+    display: flex;
+    position: relative;
+  }
+  .tabs-body {
+    padding: 0.08rem;
+    flex-grow: 1;
+  }
+
+  @each $theme in $ss-themes {
+    &.theme-#{$theme} {
+      .tabs-head {
+        border: 1px solid map-get($map: $theme-background-colors, $key: #{$theme}-border);
+      }
+    }
+  }
+
+  /* --------positions ---------- */
+  &.position-top {
+    flex-direction: column;
+
+    .tabs-head {
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+
+    .indicatorBar {
+      bottom: 0;
+      left: 0;
+      height: 0.02rem;
+      width: 30px;
+    }
+  }
+
+  &.position-bottom {
+    flex-direction: column-reverse;
+
+    .tabs-head {
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+
+    .indicatorBar {
+      bottom: 0;
+      left: 0;
+      height: 0.02rem;
+      width: 30px;
+    }
+  }
+
+  &.position-left {
+    flex-direction: row;
+
+    .tabs-head {
+      flex-direction: column;
+      border-top: none;
+      border-left: none;
+      border-bottom: none;
+    }
+
+    .indicatorBar {
+      right: 0;
+      top: 0;
+      width: 0.02rem;
+      height: 30px;
+    }
+  }
+
+  &.position-right {
+    flex-direction: row-reverse;
+    .tabs-head {
+      flex-direction: column;
+      border-top: none;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .indicatorBar {
+      left: 0;
+      top: 0;
+      width: 0.02rem;
+      height: 30px;
+    }
+  }
+
+  .head-item {
+    cursor: pointer;
+    user-select: none;
+
+    & > div {
+      height: 100%;
+      width: 100%;
+    }
+
+    &.active {
+      color: $tone-primary;
+    }
+  }
+
+  .item-inner {
+    height: 0.4rem;
+    line-height: 0.4rem;
+    text-align: center;
+    padding: 0 0.24rem;
+  }
+
+  .indicatorBar {
+    position: absolute;
+    background-color: #00abd0;
+    width: 0;
+    height: 0;
+  }
+}
