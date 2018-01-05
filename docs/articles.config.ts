@@ -60,6 +60,16 @@ export const zhCN: DocConfig[] = [
     ],
   },
   {
+    name: '样式',
+    children: [
+      {
+        name: 'Acrylic 亚克力',
+        path: 'acrylic',
+        fileName: 'style/acrylic',
+      },
+    ],
+  },
+  {
     name: '表单',
     children: [
       {
@@ -81,6 +91,16 @@ export const zhCN: DocConfig[] = [
         name: 'Tabs 标签页',
         path: 'tabs',
         fileName: 'navigation/tabs',
+      },
+      {
+        name: 'NavTabs 标签页',
+        path: 'navTabs',
+        fileName: 'navigation/navTabs',
+      },
+      {
+        name: 'MadeTabs 定制标签页',
+        path: 'madeTabs',
+        fileName: 'navigation/madeTabs',
       },
       {
         name: 'Subnav 导航',

@@ -20,16 +20,27 @@
     "module": "esnext",
     "moduleResolution": "node",
     "target": "es5",
-    "outDir": "./dist/",
+    "outDir": "./dist",
     "sourceMap": true,
+    "declaration": true,
+    "declarationDir": "./typings",
     "baseUrl": ".",
     "paths": {
-      "src/*": ["./src/*"],
-      "docs/*": ["./docs/*"],
-      "typings": ["./typings"],
-      "void-ui": ["./src/index"],
-      "void-ui/style": ["./src/index.scss"]
-    }
+      "src/*": [
+        "src/*"
+      ],
+      "docs/*": [
+        "docs/*"
+      ],
+      "void-ui": [
+        "src/index"
+      ],
+      "void-ui/style": [
+        "src/index.scss"
+      ]
+    },
   },
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

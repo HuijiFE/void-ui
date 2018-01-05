@@ -26,13 +26,9 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
-import { VdStylableControl } from 'src/controls/base/VdControl';
 
-interface LinkListItem {
-  icon: string;
-  label: string;
-  href: string;
-}
+import { VdStylableControl } from 'src/controls/base/VdControl';
+import { LinkListItem } from './VdLinkList';
 
 @Component
 export default class VdLinkList extends VdStylableControl {

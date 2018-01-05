@@ -1,3 +1,7 @@
+/**
+ * Build Void-UI library only.
+ */
+
 'use strict';
 require('./check-versions')();
 

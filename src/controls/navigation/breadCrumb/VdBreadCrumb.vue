@@ -36,15 +36,11 @@ import {
 } from 'vue-property-decorator';
 
 import { VdStylableControl } from 'src/controls/base/VdControl';
-interface ItemsSource {
-  to?: string;
-  label: string;
-  href?: string;
-}
+import { BreadCrumbItem } from './VdBreadCrumb';
 
 @Component
 export default class VdBreadCrumb extends VdStylableControl {
-  @Prop() itemsSource: ItemsSource[];
+  @Prop() itemsSource: BreadCrumbItem[];
   get classes(): ClassNames {
     return [`theme-${this.theme || this.$void.theme}`, `skin-${this.skin}`];
   }
