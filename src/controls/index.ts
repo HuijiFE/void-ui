@@ -6,6 +6,7 @@ export * from 'src/controls/layout/flexbox/VdFlexbox';
 export * from 'src/controls/linkList/VdLinkList';
 export * from 'src/controls/navigation/breadCrumb/VdBreadCrumb';
 export * from 'src/controls/navigation/sidebar/VdSidebar';
+export { default as VdAlert } from 'src/controls/alert/VdAlert.vue';
 export { default as VdAvatar } from 'src/controls/avatar/VdAvatar.vue';
 export { default as VdButton } from 'src/controls/button/VdButton.vue';
 export { default as VdButtonGroup } from 'src/controls/button/VdButtonGroup.vue';

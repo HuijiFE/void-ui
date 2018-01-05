@@ -172,6 +172,11 @@ export const zhCN: DocConfig[] = [
         path: 'loading',
         fileName: 'other/loading',
       },
+      {
+        name: 'alert 弹出框',
+        path: 'alert',
+        fileName: 'other/alert',
+      },
     ],
   },
 ];
