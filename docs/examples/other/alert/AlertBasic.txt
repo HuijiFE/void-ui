@@ -1,0 +1,13 @@
+<template>
+  <div>
+    <vd-alert></vd-alert>
+  </div>
+</template>
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator';
+import VdAlert from './src/controls/alert/VdAlert.vue';
+let Alert = new VdAlert();
+Alert.show();
+@Component
+export default class AlertBasic extends Vue {}
+</script>
