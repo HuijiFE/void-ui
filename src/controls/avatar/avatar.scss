@@ -20,23 +20,21 @@
   justify-content: center;
   background-color: transparent;
   // border-radius: 50%;
-  @each $theme in $ss-themes {
-    &.theme-#{$theme} {
-      @each $size, $side in $avatar-size-side {
-        &.size-#{$size} {
-          width: $side;
-          height: $side;
-          border: $border-base;
-          border-radius: 50%;
-          line-height: $avatar-avatar-top-width;
-          overflow: hidden;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          &.bordered {
-            border: map-get($map:$avatar-border, $key:$size) solid
-              map-get($map:$theme-foreground-colors, $key:$theme);
-          }
+  @each $size, $side in $avatar-size-side {
+    &.size-#{$size} {
+      width: $side;
+      height: $side;
+      border: $border-base;
+      border-radius: 50%;
+      line-height: $avatar-avatar-top-width;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @each $theme in $ss-themes {
+        &.bordered.theme-#{$theme} {
+          border: map-get($map:$avatar-border, $key:$size) solid
+            map-get($map:$theme-background-colors, $key:$theme);
         }
       }
     }
