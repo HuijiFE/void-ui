@@ -1,0 +1,27 @@
+.#{$void}-score-square {
+  $score-margin-base: 0.08rem;
+  // Score
+  display: inline-flex;
+  align-content: center;
+  align-items: center;
+  width: $score-width;
+  height: $score-height;
+  font-size: $score-font-size;
+  .score-square-inner {
+    line-height: $score-width;
+    text-align: center;
+    width: $score-width;
+    height: $score-width;
+    color: $color-white;
+    border-radius: $border-radius-base;
+    padding-bottom: $score-inner-padding;
+    @each $level, $color in $score-colors {
+      &.level-#{$level} {
+        background-color: $color;
+      }
+    }
+  }
+  & + & {
+    margin-left: $score-margin-base;
+  }
+}

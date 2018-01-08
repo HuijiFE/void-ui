@@ -57,6 +57,16 @@
 
 <example-board :component="ScoreSelectorBasic" :source="ScoreSelectorBasicSource"></example-board>
 
+# Score-Square
+
+## 基本用法
+
+```html
+<vd-score-square></vd-score-square>
+```
+
+<example-board :component="ScoreSquareBasic" :source="ScoreSquareBasicSource"></example-board>
+
 ## 所有属性
 
 > `*`表示默认值。
@@ -93,6 +103,9 @@ import ScoreRankCustomSource from 'docs/examples/other/score/ScoreRankCustom.txt
 import ScoreSelectorBasic from 'docs/examples/other/score/ScoreSelectorBasic.vue';
 import ScoreSelectorBasicSource from 'docs/examples/other/score/ScoreSelectorBasic.txt';
 
+import ScoreSquareBasic from 'docs/examples/other/score/ScoreSquareBasic.vue';
+import ScoreSquareBasicSource from 'docs/examples/other/score/ScoreSquareBasic.txt';
+
 export default {
   data() {
     return {
@@ -111,7 +124,9 @@ export default {
       ScoreRankCustom,
       ScoreRankCustomSource,
       ScoreSelectorBasic,
-      ScoreSelectorBasicSource
+      ScoreSelectorBasicSource,
+      ScoreSquareBasic,
+      ScoreSquareBasicSource
     }
   }
 }
