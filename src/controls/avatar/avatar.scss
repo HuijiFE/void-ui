@@ -8,9 +8,13 @@
   $avatar-size-side: (
     'small':0.24rem,
     'medium':0.32rem,
-    'large':1.2rem
+    'large':0.8rem
   );
-
+  $avatar-border: (
+    'small':1px,
+    'medium':1px,
+    'large':0.04rem
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,20 +22,20 @@
   // border-radius: 50%;
   @each $size, $side in $avatar-size-side {
     &.size-#{$size} {
-      &.avatar-top {
-        width: $side;
-        height: $side;
+      width: $side;
+      height: $side;
+      border: $border-base;
+      border-radius: 50%;
+      line-height: $avatar-avatar-top-width;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &.bordered {
+        border: map-get($map:$avatar-border, $key:$size) solid $tone-primary;
       }
     }
   }
-  &.avatar-top {
-    border: $border-base;
-    border-radius: 50%;
-    line-height: $avatar-avatar-top-width;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+
   margin: 0 0.24rem 0.24rem 0;
 }

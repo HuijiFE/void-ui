@@ -42,8 +42,14 @@ export default class VdAvatar extends VdStylableControl {
   @Prop() src: string;
   @Prop() href: string;
   @Prop() to: string;
+
   get classes(): ClassNames {
-    return [`size-${this.size}`];
+    return [
+      `size-${this.size}`,
+      {
+        bordered: this.isBordered,
+      },
+      ];
   }
   onClick() {
     this.$emit('click');
