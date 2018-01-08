@@ -1,6 +1,6 @@
 <template>
   <a v-if="href"
-     class="vd-avatar  avatar-top"
+     class="vd-avatar"
      :href="href"
      :class="classes">
 
@@ -10,13 +10,13 @@
   <router-link v-else-if="to"
                :to="to"
                :class="classes"
-               class="vd-avatar avatar-top">
+               class="vd-avatar">
 
     <img :src="src">
 
   </router-link>
   <button v-else
-          class="vd-avatar  avatar-top"
+          class="vd-avatar"
           :class="classes"
           @click="onClick">
 
@@ -35,7 +35,7 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
-import { VdStylableControl, ControlSize } from 'src/controls/base/VdControl';
+import { VdStylableControl, ControlSize,ControlTheme } from 'src/controls/base/VdControl';
 
 @Component
 export default class VdAvatar extends VdStylableControl {
@@ -45,6 +45,7 @@ export default class VdAvatar extends VdStylableControl {
 
   get classes(): ClassNames {
     return [
+      `theme-${this.theme || this.$void.theme}`,
       `size-${this.size}`,
       {
         bordered: this.isBordered,
