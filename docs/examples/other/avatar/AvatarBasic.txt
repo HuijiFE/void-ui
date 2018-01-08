@@ -1,8 +1,11 @@
 <template>
   <vd-flexbox>
-    <vd-avatar :src ="src" label="Tony" description="人物介绍"></vd-avatar>
-    <vd-avatar :src ="src" label="Tony" description="人物介绍"></vd-avatar>
-    <vd-avatar :src ="src" label="Tony" description="人物介绍"></vd-avatar>
+    <vd-avatar :src="src"
+               size="small"></vd-avatar>
+    <vd-avatar :src="src"
+               size="medium"></vd-avatar>
+    <vd-avatar :src="src"
+               size="large"></vd-avatar>
   </vd-flexbox>
 </template>
 <script lang="ts">

@@ -69,29 +69,29 @@
 
 <script>
 
-import ScoreBasic from 'docs/examples/other/ScoreBasic';
-import ScoreBasicSource from 'docs/examples/other/ScoreBasic.txt';
+import ScoreBasic from 'docs/examples/other/score/ScoreBasic';
+import ScoreBasicSource from 'docs/examples/other/score/ScoreBasic.txt';
 
-import ScorePercent from 'docs/examples/other/ScorePercent';
-import ScorePercentSource from 'docs/examples/other/ScorePercent.txt';
+import ScorePercent from 'docs/examples/other/score/ScorePercent';
+import ScorePercentSource from 'docs/examples/other/score/ScorePercent.txt';
 
-import ScoreCustom from 'docs/examples/other/ScoreCustom';
-import ScoreCustomSource from 'docs/examples/other/ScoreCustom.txt';
+import ScoreCustom from 'docs/examples/other/score/ScoreCustom';
+import ScoreCustomSource from 'docs/examples/other/score/ScoreCustom.txt';
 
-import ScoreBarBasic from 'docs/examples/other/ScoreBarBasic';
-import ScoreBarBasicSource from 'docs/examples/other/ScoreBarBasic.txt';
+import ScoreBarBasic from 'docs/examples/other/score/ScoreBarBasic';
+import ScoreBarBasicSource from 'docs/examples/other/score/ScoreBarBasic.txt';
 
-import ScoreBarCustom from 'docs/examples/other/ScoreBarCustom';
-import ScoreBarCustomSource from 'docs/examples/other/ScoreBarCustom.txt';
+import ScoreBarCustom from 'docs/examples/other/score/ScoreBarCustom';
+import ScoreBarCustomSource from 'docs/examples/other/score/ScoreBarCustom.txt';
 
-import ScoreRankBasic from 'docs/examples/other/ScoreRankBasic.vue';
-import ScoreRankBasicSource from 'docs/examples/other/ScoreRankBasic.txt';
+import ScoreRankBasic from 'docs/examples/other/score/ScoreRankBasic.vue';
+import ScoreRankBasicSource from 'docs/examples/other/score/ScoreRankBasic.txt';
 
-import ScoreRankCustom from 'docs/examples/other/ScoreRankCustom.vue';
-import ScoreRankCustomSource from 'docs/examples/other/ScoreRankCustom.txt';
+import ScoreRankCustom from 'docs/examples/other/score/ScoreRankCustom.vue';
+import ScoreRankCustomSource from 'docs/examples/other/score/ScoreRankCustom.txt';
 
-import ScoreSelectorBasic from 'docs/examples/other/ScoreSelectorBasic.vue';
-import ScoreSelectorBasicSource from 'docs/examples/other/ScoreSelectorBasic.txt';
+import ScoreSelectorBasic from 'docs/examples/other/score/ScoreSelectorBasic.vue';
+import ScoreSelectorBasicSource from 'docs/examples/other/score/ScoreSelectorBasic.txt';
 
 export default {
   data() {

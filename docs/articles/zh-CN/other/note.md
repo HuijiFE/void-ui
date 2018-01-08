@@ -21,11 +21,11 @@ preset 的值为空时
 | description | string | **自定义**                           |
 
 <script>
-import NoteBasic from 'docs/examples/other/NoteBasic.vue';
-import NoteBasicSource from 'docs/examples/other/NoteBasic.txt';
+import NoteBasic from 'docs/examples/other/note/NoteBasic.vue';
+import NoteBasicSource from 'docs/examples/other/note/NoteBasic.txt';
 
-import NoteAll from 'docs/examples/other/NoteAll.vue';
-import NoteAllSource from 'docs/examples/other/NoteAll.txt';
+import NoteAll from 'docs/examples/other/note/NoteAll.vue';
+import NoteAllSource from 'docs/examples/other/note/NoteAll.txt';
 
 export default {
   data(){
