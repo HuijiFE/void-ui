@@ -17,6 +17,7 @@ export { default as VdDefinition } from 'src/controls/definition/VdDefinition.vu
 export { default as VdDefinitionItem } from 'src/controls/definition/VdDefinitionItem.vue';
 export { default as VdInput } from 'src/controls/form/input/VdInput.vue';
 export { default as VdRadio } from 'src/controls/form/radio/VdRadio.vue';
+export { default as VdRadioGroup } from 'src/controls/form/radio/VdRadioGroup.vue';
 export { default as VdToggle } from 'src/controls/form/toggle/VdToggle.vue';
 export { default as VdArticle } from 'src/controls/layout/common/VdArticle.vue';
 export { default as VdContainer } from 'src/controls/layout/common/VdContainer.vue';

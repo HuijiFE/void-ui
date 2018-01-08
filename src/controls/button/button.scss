@@ -77,11 +77,18 @@
       @each $tone in $ss-tones {
         &.tone-#{$tone} {
           color: map-get($map: $tone-colors, $key: $tone);
+          border-color: map-get($map: $tone-colors, $key: $tone);
+
+          &.active,
+          &:active {
+            color: map-get($map:$tone-colors, $key:#{$tone}-lighten);
+          }
         }
       }
       @each $theme in $ss-themes {
         &.theme-#{$theme} {
           background-color: map-get($map: $theme-background-colors, $key: #{$theme});
+
           &:hover,
           &.active,
           &:active {
@@ -90,13 +97,14 @@
               $key: #{$theme}-hover
             );
           }
-        }
-      }
-      @each $theme in $ss-themes {
-        &.theme-#{$theme} {
+
           &.disabled,
           &[disabled] {
             color: map-get($map: $theme-foreground-colors, $key: #{$theme}-disabled);
+            border-color: map-get(
+              $map: $theme-foreground-colors,
+              $key: #{$theme}-disabled
+            );
             background-color: map-get(
               $map: $theme-background-colors,
               $key: #{$theme}-disabled
