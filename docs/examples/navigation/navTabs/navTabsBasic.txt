@@ -13,7 +13,7 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class VdNavTabsBasic extends Vue {
   select(index: string) {
-    console.log(index);
+    // do something
   }
 }
 </script>

@@ -111,3 +111,109 @@
     }
   }
 }
+
+// button形式
+.#{$void}-radio-group {
+  @include flex-inline;
+
+  &.type-button {
+    .#{$void}-radio {
+      border: $border-base;
+      border-left: 0;
+
+      @each $size in $ss-sizes {
+        &.size-#{$size} {
+          font-size: map-get($map: $button-font-sizes, $key: $size);
+          height: map-get($map: $button-rect-sizes, $key: $size);
+          $padding: map-get($map: $button-rect-paddings, $key: $size);
+          padding-left: $padding;
+          padding-right: $padding;
+        }
+      }
+
+      .radio-outer {
+        display: none;
+      }
+
+      @each $tone in $ss-tones {
+        &.tone-#{$tone} {
+          color: map-get($map: $tone-colors, $key: $tone);
+          border-color: map-get($map: $tone-colors, $key: $tone);
+
+          &.active,
+          &:active {
+            color: map-get($map:$tone-colors, $key:#{$tone}-lighten);
+          }
+
+          &:first-child {
+            border-color: map-get($map: $tone-colors, $key: $tone);
+          }
+        }
+      }
+
+      @each $theme in $ss-themes {
+        &.theme-#{$theme} {
+          background-color: map-get($map: $theme-background-colors, $key: #{$theme});
+
+          &:hover,
+          &.active,
+          &:active {
+            background-color: map-get(
+              $map: $theme-background-colors,
+              $key: #{$theme}-hover
+            );
+          }
+
+          &.disabled,
+          &[disabled] {
+            color: map-get($map: $theme-foreground-colors, $key: #{$theme}-disabled);
+            border-color: map-get(
+              $map: $theme-foreground-colors,
+              $key: #{$theme}-disabled
+            );
+            background-color: map-get(
+              $map: $theme-background-colors,
+              $key: #{$theme}-disabled
+            );
+          }
+        }
+      }
+
+      &.checked {
+        color: $color-white;
+        @each $tone in $ss-tones {
+          &.tone-#{$tone} {
+            background-color: map-get($map: $tone-colors, $key: $tone);
+            &:hover {
+              background-color: map-get($map: $tone-colors, $key: #{$tone}-lighten);
+            }
+            &.active,
+            &:active {
+              background-color: map-get($map: $tone-colors, $key: #{$tone}-darken);
+            }
+            &.disabled,
+            &[disabled] {
+              color: map-get($map: $theme-background-colors, $key: lite-disabled);
+              background-color: map-get(
+                $map: $theme-foreground-colors,
+                $key: lite-disabled
+              );
+            }
+          }
+        }
+      }
+
+      &:first-child {
+        border-radius: #{$border-radius-base} 0 0 #{$border-radius-base};
+        border-left: $border-base;
+      }
+      &:last-child {
+        border-radius: 0 0 #{$border-radius-base} #{$border-radius-base};
+      }
+    }
+
+    .#{$void}-radio + .#{$void}-radio {
+      margin-left: 0;
+    }
+  }
+}

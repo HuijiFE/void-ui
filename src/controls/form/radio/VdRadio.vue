@@ -46,6 +46,8 @@ import {
 } from 'vue-property-decorator';
 import { VdStylableControl } from 'src/controls/base/VdControl';
 import { RadioValue } from 'src/controls/form/VdFormControl';
+import VdRadioGroup from 'src/controls/form/radio/VdRadioGroup.vue';
+import { findParentComponent } from 'src/utils/util';
 
 @Component({
   model: {
@@ -65,16 +67,26 @@ export default class VdRadio extends VdStylableControl {
 
   @Prop() content: string;
 
+  radioGroup: VdRadioGroup | undefined = findParentComponent<VdRadioGroup>(
+    this,
+    'VdRadioGroup',
+  );
+
   private get model(): RadioValue {
-    return this.valueSource;
+    return this.radioGroup ? this.radioGroup.valueSource : this.valueSource;
   }
+
   private set model(newValue: RadioValue) {
-    this.$emit('change', newValue);
     this.$emit('check', newValue);
+    if (this.radioGroup) {
+      this.radioGroup.$emit('input', newValue);
+    } else {
+      this.$emit('change', newValue);
+    }
   }
 
   get isChecked(): boolean {
-    return this.value === this.valueSource;
+    return this.value === this.model;
   }
 
   get hasContent(): boolean {
@@ -82,8 +94,14 @@ export default class VdRadio extends VdStylableControl {
   }
 
   get classes(): ClassNames {
+    let theme = this.radioGroup ? this.radioGroup.theme : this.theme;
+    let tone = this.radioGroup ? this.radioGroup.tone : this.tone;
+    let size = this.radioGroup ? this.radioGroup.size : this.size;
+
     return [
-      `theme-${this.theme || this.$void.theme}`,
+      `theme-${theme || this.$void.theme}`,
+      `tone-${tone}`,
+      `size-${size}`,
       {
         checked: this.isChecked,
         disabled: this.isDisabled,
