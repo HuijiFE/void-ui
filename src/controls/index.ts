@@ -46,4 +46,5 @@ export { default as VdScore } from 'src/controls/score/VdScore.vue';
 export { default as VdScoreBar } from 'src/controls/score/VdScoreBar.vue';
 export { default as VdScoreRank } from 'src/controls/score/VdScoreRank.vue';
 export { default as VdScoreSelector } from 'src/controls/score/VdScoreSelector.vue';
+export { default as VdScoreSquare } from 'src/controls/score/VdScoreSquare.vue';
 export { default as VdAcrylic } from 'src/controls/style/acrylic/VdAcrylic.vue';
