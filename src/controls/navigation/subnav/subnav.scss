@@ -14,12 +14,10 @@
 
   display: inline-flex;
   width: 100%;
-  height: $subnav-height;
   border: $border-base;
   border-radius: $subnav-border-radius;
   justify-content: space-between;
   align-items: center;
-  padding: $subnav-padding;
   .nav-item {
     width: 100%;
     height: $nav-content-height;
