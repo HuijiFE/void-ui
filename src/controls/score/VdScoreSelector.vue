@@ -23,15 +23,17 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
+import {
+  VdStylableControl,
+  ControlTheme,
+  ControlSize,
+} from 'src/controls/base/VdControl';
 @Component
-export default class VdScoreSelector extends Vue {
+export default class VdScoreSelector extends VdStylableControl {
   @Prop() value: number;
 
-  @Prop({ default: 'large' })
-  size: string;
-
   get classes() {
-    return [`score-selector-${this.size}`];
+    return [`theme-${this.theme || this.$void.theme}`, `size-${this.size}`];
   }
 
   isActive(item: number) {
