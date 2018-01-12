@@ -82,45 +82,49 @@
   //score-selector
   display: inline-flex;
   align-items: center;
-  @each $shape, $width in $score-selector-widths {
-    &.score-selector-#{$shape} {
-      width: $width;
-      .score-selector-inner {
-        width: map-get($map:$score-block-widths, $key:$shape);
-        height: map-get($map:$score-block-heights, $key:$shape);
-        border: map-get($map:$score-border-size, $key:$shape) solid
-          $score-selector-background;
-        border-radius: $score-border-radius;
-        margin-right: map-get($map:$score-margin-right, $key:$shape);
-        font-size: map-get($map:$score-regular-font-size, $key:$shape);
-        @each $level, $color in $score-colors {
-          &.level-#{$level} {
-            background-color: $color;
-            border: map-get($map:$score-border-size, $key:$shape) solid $color;
-            @include gen-transition-base((background-color,color));
+  @each $theme in $ss-themes {
+    &.theme-#{$theme} {
+      @each $size, $width in $score-selector-widths {
+        &.size-#{$size} {
+          width: $width;
+          .score-selector-inner {
+            width: map-get($map:$score-block-widths, $key:$size);
+            height: map-get($map:$score-block-heights, $key:$size);
+            border: map-get($map:$score-border-size, $key:$size) solid
+              $score-selector-background;
+            border-radius: $score-border-radius;
+            margin-right: map-get($map:$score-margin-right, $key:$size);
+            font-size: map-get($map:$score-regular-font-size, $key:$size);
+            @each $level, $color in $score-colors {
+              &.level-#{$level} {
+                background-color: $color;
+                border: map-get($map:$score-border-size, $key:$size) solid $color;
+                @include gen-transition-base((background-color,color));
+              }
+              &.unselected {
+                background-color: map-get($map:$theme-background-colors, $key:$theme);
+              }
+            }
           }
-          &.unselected {
-            background-color: #ffffff;
-          }
-        }
-      }
-      .score-selector-content {
-        width: map-get($map:$score-content-widths, $key:$shape);
-        text-align: right;
-        font-size: map-get($map:$score-regular-font-size, $key:$shape);
-        color: map-get($map:$score-font-color, $key:$shape);
-        @each $level, $color in $score-colors {
-          .font-#{$level} {
-            color: $color;
-            font-size: map-get($map:$score-font-size, $key:$shape);
+          .score-selector-content {
+            width: map-get($map:$score-content-widths, $key:$size);
+            text-align: right;
+            font-size: map-get($map:$score-regular-font-size, $key:$size);
+            color: map-get($map:$score-font-color, $key:$size);
+            @each $level, $color in $score-colors {
+              .font-#{$level} {
+                color: $color;
+                font-size: map-get($map:$score-font-size, $key:$size);
+              }
+            }
           }
         }
       }
     }
   }
 
-  @each $shape, $height in $score-selector-heights {
-    &.score-selector-#{$shape} {
+  @each $size, $height in $score-selector-heights {
+    &.score-selector-#{$size} {
       height: $height;
     }
   }
