@@ -122,8 +122,8 @@ export default class VdTabs extends VdStylableControl {
     let selectedItem: VdTabsItem | null = null;
 
     for (let i = 0; i < this.$children.length; i++) {
-      let item = this.$children[i] as VdTabsItem;
-      if (item) {
+      let item = this.$children[i];
+      if (item instanceof VdTabsItem) {
         item.parent = this;
         item.index = children.push(item) - 1;
         if (item.selected) {
