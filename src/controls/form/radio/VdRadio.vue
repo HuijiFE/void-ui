@@ -67,16 +67,16 @@ export default class VdRadio extends VdStylableControl {
 
   @Prop() content: string;
 
-  radioGroup: VdRadioGroup | undefined;
+  parent: VdRadioGroup | undefined;
 
   private get model(): RadioValue {
-    return this.radioGroup ? this.radioGroup.valueSource : this.valueSource;
+    return this.parent ? this.parent.valueSource : this.valueSource;
   }
 
   private set model(newValue: RadioValue) {
     this.$emit('check', newValue);
-    if (this.radioGroup) {
-      this.radioGroup.$emit('change', newValue);
+    if (this.parent) {
+      this.parent.$emit('change', newValue);
     } else {
       this.$emit('change', newValue);
     }
@@ -91,9 +91,9 @@ export default class VdRadio extends VdStylableControl {
   }
 
   get classes(): ClassNames {
-    let theme = this.radioGroup ? this.radioGroup.theme : this.theme;
-    let tone = this.radioGroup ? this.radioGroup.tone : this.tone;
-    let size = this.radioGroup ? this.radioGroup.size : this.size;
+    let theme = this.parent ? this.parent.theme : this.theme;
+    let tone = this.parent ? this.parent.tone : this.tone;
+    let size = this.parent ? this.parent.size : this.size;
 
     return [
       `theme-${theme || this.$void.theme}`,
@@ -111,7 +111,7 @@ export default class VdRadio extends VdStylableControl {
   }
 
   beforeMount() {
-    this.radioGroup = findParentComponent(this, VdRadioGroup);
+    this.parent = findParentComponent(this, VdRadioGroup);
   }
 }
 </script>
