@@ -1,24 +1,30 @@
 <template>
-  <div>
-  </div>
+  <router-link v-if="to"
+               class="vd-subnav-item"
+               :class="classes"
+               :to="to"
+               role="tab">
+    <slot>{{content}}</slot>
+  </router-link>
+  <label v-else
+         class="vd-subnav-item"
+         :class="classes"
+         role="tab">
+    <slot>{{content}}</slot>
+  </label>
 </template>
+
 <script lang="ts">
-import {
-  Component,
-  Vue,
-  Emit,
-  Inject,
-  Model,
-  Prop,
-  Provide,
-  Watch,
-} from 'vue-property-decorator';
+import { Vue, Component, Prop } from 'vue-property-decorator';
 import VdSubnav from './VdSubnav.vue';
 
 @Component
 export default class VdSubnavItem extends Vue {
-  @Prop({ required: true })
-  label: string;
+  @Prop() to: string;
+
+  @Prop() value: string;
+
+  @Prop() content: string;
 
   parent: VdSubnav;
 
@@ -28,5 +34,9 @@ export default class VdSubnavItem extends Vue {
 
   @Prop({ default: false })
   selected: boolean;
+
+  get classes(): ClassNames {
+    return [`status-${this.status}`];
+  }
 }
 </script>

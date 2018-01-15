@@ -1,15 +1,11 @@
 <template>
   <div class="vd-subnav"
-       :class="classes">
-    <button v-for="(item,index) in itemsSource"
-            :key="index"
-            class="nav-item"
-            @click="select(item)"
-            :class="{'selected':item.status === 'selected'}">{{item.label}}
-    </button>
+       :class="classes"
+       role="tablist">
     <slot></slot>
   </div>
 </template>
+
 <script lang="ts">
 import {
   Component,
@@ -21,13 +17,18 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
-
 import { VdStylableControl } from 'src/controls/base/VdControl';
 import VdSubnavItem from './VdSubnavItem.vue';
+import { SubnavItem } from './VdSubnav';
 
-@Component
+@Component({
+  model: {
+    prop: 'valueSource',
+    event: 'change',
+  },
+})
 export default class VdSubnav extends VdStylableControl {
-  itemsSource: VdSubnavItem[] = [];
+  @Prop() itemsSource: SubnavItem[] = [];
 
   selectedItem: VdSubnavItem;
 
@@ -42,7 +43,7 @@ export default class VdSubnav extends VdStylableControl {
     this.$emit('change', newItem.index);
   }
 
-  mountItemsSource() {
+  mountItems() {
     let itemsSource: VdSubnavItem[] = [];
     let selectedItem: VdSubnavItem | null = null;
 
@@ -59,7 +60,7 @@ export default class VdSubnav extends VdStylableControl {
     if (!selectedItem) {
       selectedItem = itemsSource[0];
     }
-    this.itemsSource = itemsSource;
+    // this.itemsSource = itemsSource;
     this.selectedItem = selectedItem;
     this.selectedItem.status = 'selected';
   }
@@ -69,7 +70,7 @@ export default class VdSubnav extends VdStylableControl {
   }
 
   mounted() {
-    this.mountItemsSource();
+    this.mountItems();
   }
 }
 </script>
