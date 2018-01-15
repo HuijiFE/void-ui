@@ -22,6 +22,7 @@ import { VdStylableControl } from 'src/controls/base/VdControl';
 @Component({
   model: {
     prop: 'valueSource',
+    event: 'change',
   },
 })
 export default class VdRadioGroup extends VdStylableControl {

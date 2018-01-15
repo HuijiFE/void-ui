@@ -47,7 +47,7 @@ import {
 import { VdStylableControl } from 'src/controls/base/VdControl';
 import { RadioValue } from 'src/controls/form/VdFormControl';
 import VdRadioGroup from 'src/controls/form/radio/VdRadioGroup.vue';
-import { findParentComponent } from 'src/utils/util';
+import findParentComponent from 'src/utils/findParentComponent';
 
 @Component({
   model: {
@@ -67,10 +67,7 @@ export default class VdRadio extends VdStylableControl {
 
   @Prop() content: string;
 
-  radioGroup: VdRadioGroup | undefined = findParentComponent<VdRadioGroup>(
-    this,
-    'VdRadioGroup',
-  );
+  radioGroup: VdRadioGroup | undefined;
 
   private get model(): RadioValue {
     return this.radioGroup ? this.radioGroup.valueSource : this.valueSource;
@@ -79,7 +76,7 @@ export default class VdRadio extends VdStylableControl {
   private set model(newValue: RadioValue) {
     this.$emit('check', newValue);
     if (this.radioGroup) {
-      this.radioGroup.$emit('input', newValue);
+      this.radioGroup.$emit('change', newValue);
     } else {
       this.$emit('change', newValue);
     }
@@ -111,6 +108,10 @@ export default class VdRadio extends VdStylableControl {
 
   check(): void {
     (this.$refs.input as HTMLElement).click();
+  }
+
+  beforeMount() {
+    this.radioGroup = findParentComponent(this, VdRadioGroup);
   }
 }
 </script>
