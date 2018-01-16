@@ -1,45 +1,50 @@
 .#{$void}-subnav {
-  $subnav-height: 1.13rem;
+  $subnav-height: 0.6rem;
   $subnav-border-radius: 0.08rem;
   $subnav-padding: 0 0.2rem;
-  $nav-content-height: 0.6rem;
-  $nav-font-size: 0.24rem;
-  $nav-font-weight: bold;
-  $nav-font-color: #ffffff;
+  $subnav-content-height: 0.6rem;
+  $subnav-font-size: 0.24rem;
+  $subnav-font-weight: bold;
+  $subnav-font-color: #ffffff;
 
-  $nav-background: (
-    lite:#00abd0,
-    dark:#4e4e4e
+  $subnav-background: (
+    lite: $tone-primary,
+    dark: $theme-dark-background-higher
   );
 
-  display: inline-flex;
+  @include flex(row, flex-start, stretch, nowrap);
   width: 100%;
-  border: $border-base;
-  border-radius: $subnav-border-radius;
-  justify-content: space-between;
-  align-items: center;
-  .nav-item {
-    width: 100%;
-    height: $nav-content-height;
-    background-color: transparent;
-    border: $border-base;
-    border-radius: $border-radius-base;
-    font-size: $nav-font-size;
-    font-weight: $nav-font-weight;
-  }
+  height: $subnav-height;
+
+  font-size: $subnav-font-size;
+  font-weight: $subnav-font-weight;
+  user-select: none;
+  cursor: pointer;
 
   @each $theme in $ss-themes {
     &.theme-#{$theme} {
-      @if $theme == 'lite' {
-        background-color: map-get($map:$theme-background-colors, $key:$theme);
-      } @else {
-        background-color: map-get($map: $theme-background-colors, $key: #{$theme}-high);
-      }
-
-      .selected {
-        background-color: map-get($map:$nav-background, $key:$theme);
-        color: $nav-font-color;
+      .#{$void}-subnav-item {
+        color: map-get($map: $theme-foreground-colors, $key: $theme);
+        background-color: map-get($map: $theme-background-colors, $key: $theme);
+        &.selected {
+          color: $color-white;
+          background-color: map-get($map: $subnav-background, $key: $theme);
+        }
       }
     }
   }
+
+  // .#{$void}-subnav-item:first-child {
+  //   border-top-left-radius: $border-radius-base;
+  //   border-bottom-left-radius: $border-radius-base;
+  // }
+  // .#{$void}-subnav-item:last-child {
+  //   border-top-right-radius: $border-radius-base;
+  //   border-bottom-right-radius: $border-radius-base;
+  // }
+}
+
+.#{$void}-subnav-item {
+  @include flex(row, center, center, nowrap);
+  flex: 1 1 0%;
 }
