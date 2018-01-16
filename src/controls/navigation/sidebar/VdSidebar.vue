@@ -55,10 +55,10 @@ export default class VdSidebar extends VdControl {
     ];
   }
 
-  private toggleSoft() {
+  toggleSoft() {
     this.expandedSoft = !this.expandedSoft;
   }
-  public toggleHard() {
+  toggleHard() {
     this.expandedHard = !this.expandedHard;
   }
 }

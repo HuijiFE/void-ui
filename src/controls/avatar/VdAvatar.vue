@@ -35,7 +35,11 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
-import { VdStylableControl, ControlSize,ControlTheme } from 'src/controls/base/VdControl';
+import {
+  VdStylableControl,
+  ControlSize,
+  ControlTheme,
+} from 'src/controls/base/VdControl';
 
 @Component
 export default class VdAvatar extends VdStylableControl {
@@ -50,7 +54,7 @@ export default class VdAvatar extends VdStylableControl {
       {
         bordered: this.isBordered,
       },
-      ];
+    ];
   }
   onClick() {
     this.$emit('click');

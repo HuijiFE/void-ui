@@ -1,32 +1,61 @@
 <template>
-  <div>
-  </div>
+  <router-link v-if="to"
+               class="vd-subnav-item"
+               exact
+               exact-active-class="selected"
+               :to="to"
+               role="tab"
+               @click="onClick">
+    <slot>{{content}}</slot>
+  </router-link>
+  <button v-else
+          class="vd-subnav-item"
+          :class="classes"
+          role="tab"
+          @click="onClick">
+    <slot>{{content}}</slot>
+  </button>
 </template>
+
 <script lang="ts">
-import {
-  Component,
-  Vue,
-  Emit,
-  Inject,
-  Model,
-  Prop,
-  Provide,
-  Watch,
-} from 'vue-property-decorator';
+import { Vue, Component, Prop } from 'vue-property-decorator';
+import { findParentComponent } from 'src/utils/componentUtils';
 import VdSubnav from './VdSubnav.vue';
 
 @Component
 export default class VdSubnavItem extends Vue {
+  get classes(): ClassNames {
+    return [{ selected: this.isSelected }];
+  }
+
+  @Prop() content: string;
+
+  @Prop() to: string | Location;
+
   @Prop({ required: true })
-  label: string;
+  value: string;
 
-  parent: VdSubnav;
+  parent: VdSubnav | undefined;
 
-  index: number = -1;
+  get isSelected(): boolean {
+    if (this.parent) {
+      return this.parent.valueSource === this.value;
+    }
+    return false;
+  }
 
-  status: 'selected' | 'hidden' = 'hidden';
+  onClick() {
+    if (this.parent) {
+      this.parent.select(this);
+    }
+    this.$emit('click');
+  }
 
-  @Prop({ default: false })
-  selected: boolean;
+  beforeMount() {
+    this.parent = findParentComponent(this, VdSubnav);
+    if (this.parent) {
+      this.parent.addChild(this);
+    }
+  }
 }
 </script>
