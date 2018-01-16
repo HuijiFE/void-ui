@@ -1,6 +1,11 @@
 import Vue from 'vue';
 
-export default function findParentComponent<TParent extends Vue>(
+/**
+ * Find the parent component by parent type
+ * @param context the child instance component that need to find parent
+ * @param tParent the type of parent component (constructor function)
+ */
+export function findParentComponent<TParent extends Vue>(
   context: Vue,
   tParent: new () => TParent,
 ): TParent | undefined {

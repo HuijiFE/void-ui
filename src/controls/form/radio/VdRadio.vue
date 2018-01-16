@@ -44,10 +44,10 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
+import { findParentComponent } from 'src/utils/componentUtils';
 import { VdStylableControl } from 'src/controls/base/VdControl';
 import { RadioValue } from 'src/controls/form/VdFormControl';
 import VdRadioGroup from 'src/controls/form/radio/VdRadioGroup.vue';
-import findParentComponent from 'src/utils/findParentComponent';
 
 @Component({
   model: {
