@@ -1,0 +1,67 @@
+.#{$void}-content-table {
+  $content-table-font-size: $font-size-base;
+  $content-table-indicator-bar-width: 0.04rem;
+  $content-table-bar-inner-height: 0.32rem;
+  $content-table-content-body-padding-left: 0.08rem;
+  $content-table-item-label-height: 0.32rem;
+  $content-table-item-child-margin: 0.04rem 0 0 0.06rem;
+
+  @include flex;
+  width: 100%;
+  position: relative;
+  font-size: $content-table-font-size;
+
+  @each $theme in $ss-themes {
+    &.theme-#{$theme} {
+      .item-label {
+        color: map-get($map: $theme-foreground-colors, $key: #{$theme}-secondary);
+      }
+
+      .indicator-bar {
+        background-color: map-get($map: $theme-background-colors, $key: #{$theme}-hover);
+      }
+    }
+  }
+
+  .indicator-bar {
+    position: relative;
+    align-self: stretch;
+    width: $content-table-indicator-bar-width;
+    flex: none;
+
+    .bar-inner {
+      position: absolute;
+      top: 0;
+      height: $content-table-bar-inner-height;
+      width: 100%;
+      background-color: $tone-primary;
+    }
+  }
+
+  .content-body {
+    width: 100%;
+    padding-left: $content-table-content-body-padding-left;
+  }
+
+  &-item {
+    .item-label {
+      @include flex(row, flex-start, center, wrap);
+
+      width: 100%;
+      min-height: $content-table-item-label-height;
+      white-space: pre-wrap;
+
+      color: inherit;
+      transition: color ease 0.3s;
+
+      &:hover,
+      &.active {
+        color: $tone-primary;
+      }
+    }
+
+    .item-child {
+      margin: $content-table-item-child-margin;
+    }
+  }
+}
