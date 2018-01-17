@@ -1,31 +1,29 @@
 .#{$void}-definition {
-  $definition-padding: 0.28rem 0.22rem;
-  $definition-font-line-height: 0.22rem;
-  $definition-label-color: #888888;
-  $definition-border-radius: 0.08rem;
-  $definition-label-font-size: 0.14rem;
+  $definition-font-size: 0.14rem;
+  $definition-line-height: 0.22rem;
+
   $definition-item-margin: 0.16rem;
   $definition-label-width: 0.56rem;
 
   width: 100%;
-  padding: $definition-padding;
-  border-radius: $definition-border-radius;
-  font-size: $definition-label-font-size;
+  font-size: $definition-font-size;
+
+  .definition-item {
+    display: flex;
+    .definition-label {
+      width: $definition-label-width;
+      font-weight: bold;
+      line-height: $definition-line-height;
+      margin-right: $definition-item-margin;
+    }
+  }
+
   @each $theme in $ss-themes {
     &.theme-#{$theme} {
-      @if $theme == 'lite' {
-        background-color: map-get($map:$theme-background-colors, $key:$theme);
-      } @else {
-        background-color: map-get($map:$theme-background-colors, $key:#{$theme}-higher);
-      }
       .definition-item {
         display: flex;
         .definition-label {
-          width: $definition-label-width;
-          font-weight: bold;
           color: map-get($map:$theme-foreground-colors, $key:#{$theme}-secondary);
-          line-height: $definition-font-line-height;
-          margin-right: $definition-item-margin;
         }
         .definition-content {
           color: map-get($map:$theme-foreground-colors, $key:$theme);
