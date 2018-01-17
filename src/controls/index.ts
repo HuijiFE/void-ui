@@ -9,6 +9,7 @@ export * from 'src/controls/navigation/contentTable/VdContentTable';
 export * from 'src/controls/navigation/sidebar/VdSidebar';
 export * from 'src/controls/navigation/subnav/VdSubnav';
 export { default as VdAlert } from 'src/controls/alert/VdAlert.vue';
+export { default as VdArticle } from 'src/controls/article/VdArticle.vue';
 export { default as VdAvatar } from 'src/controls/avatar/VdAvatar.vue';
 export { default as VdButton } from 'src/controls/button/VdButton.vue';
 export { default as VdButtonGroup } from 'src/controls/button/VdButtonGroup.vue';
@@ -20,8 +21,9 @@ export { default as VdDefinitionItem } from 'src/controls/definition/VdDefinitio
 export { default as VdInput } from 'src/controls/form/input/VdInput.vue';
 export { default as VdRadio } from 'src/controls/form/radio/VdRadio.vue';
 export { default as VdRadioGroup } from 'src/controls/form/radio/VdRadioGroup.vue';
+export { default as VdTag } from 'src/controls/form/tag/VdTag.vue';
+export { default as VdTagWrapper } from 'src/controls/form/tag/VdTagWrapper.vue';
 export { default as VdToggle } from 'src/controls/form/toggle/VdToggle.vue';
-export { default as VdArticle } from 'src/controls/layout/common/VdArticle.vue';
 export { default as VdContainer } from 'src/controls/layout/common/VdContainer.vue';
 export { default as VdMain } from 'src/controls/layout/common/VdMain.vue';
 export { default as VdSection } from 'src/controls/layout/common/VdSection.vue';

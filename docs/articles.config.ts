@@ -82,6 +82,11 @@ export const zhCN: DocConfig[] = [
         path: 'toggle',
         fileName: 'form/radio',
       },
+      {
+        name: 'Tag 标签',
+        path: 'tag',
+        fileName: 'form/tag',
+      },
     ],
   },
   {
