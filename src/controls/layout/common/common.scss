@@ -1,7 +1,7 @@
-.#{$void}-main {
+.#{$void}-main,
+.#{$void}-section,
+.#{$void}-container {
   position: relative;
-
-  min-height: 100vh;
   &.theme {
     @each $theme in $ss-themes {
       &-#{$theme} {
@@ -12,16 +12,16 @@
   }
 }
 
-.#{$void}-section {
-  position: relative;
+.#{$void}-main {
+  min-height: 100vh;
+}
 
+.#{$void}-section {
   padding-top: $section-padding;
   padding-bottom: $section-padding;
 }
 
 .#{$void}-container {
-  position: relative;
-
   padding-left: $container-padding;
   padding-right: $container-padding;
   margin-left: auto;

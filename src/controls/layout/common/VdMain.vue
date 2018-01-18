@@ -6,16 +6,7 @@
 </template>
 
 <script lang="ts">
-import {
-  Component,
-  Vue,
-  Emit,
-  Inject,
-  Model,
-  Prop,
-  Provide,
-  Watch,
-} from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 import { VdStylableControl } from 'src/controls/base/VdControl';
 
 @Component
