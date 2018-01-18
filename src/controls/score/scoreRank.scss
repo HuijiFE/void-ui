@@ -21,17 +21,17 @@
     0:$score-rank-width - (0.14rem*10)
   );
   $score-rank-colors: (
-    0: $color-score-0,
-    1: $color-score-0,
-    2: $color-score-0,
-    3: $color-score-1,
-    4: $color-score-1,
-    5: $color-score-2,
-    6: $color-score-2,
-    7: $color-score-3,
-    8: $color-score-3,
-    9: $color-score-4,
-    10:$color-score-4
+    0: $grade-0,
+    1: $grade-0,
+    2: $grade-0,
+    3: $grade-1,
+    4: $grade-1,
+    5: $grade-2,
+    6: $grade-2,
+    7: $grade-3,
+    8: $grade-3,
+    9: $grade-4,
+    10:$grade-4
   );
   // score-rank
   width: $score-rank-width;
@@ -46,13 +46,13 @@
     justify-content: space-between;
     border-radius: $score-rank-border;
     color: $color-white;
-    @each $level, $width in $score-rank-outer-widths {
-      &.level-#{$level} {
+    @each $grade, $width in $score-rank-outer-widths {
+      &.grade-#{$grade} {
         width: $width;
       }
     }
-    @each $level, $color in $score-rank-colors {
-      &.level-#{$level} {
+    @each $grade, $color in $score-rank-colors {
+      &.grade-#{$grade} {
         background-color: $color;
       }
     }

@@ -5,7 +5,7 @@
           v-for="item in 10"
           :key="item"
           @click="isActive(item)"
-          :class="[item <= value ? '' : `unselected`,`level-${value - 1}`]">
+          :class="[item <= value ? '' : `unselected`,`grade-${value - 1}`]">
     </span>
     <span class="score-selector-content">
       <span :class="`font-${value - 1}`">{{value}}</span>/10
