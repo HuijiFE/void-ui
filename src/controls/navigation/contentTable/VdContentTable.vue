@@ -1,16 +1,15 @@
 <template>
-  <div role="tree-content"
-       class="vd-tree-contents"
+  <div class="vd-content-table"
        :class="classes">
     <div class="indicator-bar">
       <span ref="indicatorBar"
             class="bar-inner"></span>
     </div>
     <div class="content-body">
-      <vd-tree-contents-item v-for="item in data"
+      <vd-content-table-item v-for="item in data"
                              :key="item.id"
                              :data="item">
-      </vd-tree-contents-item>
+      </vd-content-table-item>
     </div>
   </div>
 </template>
@@ -26,24 +25,21 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
-import { VdStylableControl } from 'src/controls/base/VdControl';
-import VdTreeContentsItem from './VdTreeContentsItem.vue';
 import anime from 'animejs';
 
-const duration = 300;
-const easing = 'linear';
-export interface TreeContentData {
-  id: string;
-  label: string;
-  children?: TreeContentData[];
-}
+import { VdStylableControl } from 'src/controls/base/VdControl';
+import VdContentTableItem from './VdContentTableItem.vue';
+import { ContentTableItem } from './VdContentTable';
+
+const duration = 200;
+const easing = 'easeInQuad';
 
 @Component
-export default class VdTreeContents extends VdStylableControl {
-  children: VdTreeContentsItem[] = [];
-  activeChild: VdTreeContentsItem;
+export default class VdContentTable extends VdStylableControl {
+  children: VdContentTableItem[] = [];
+  activeChild: VdContentTableItem;
 
-  @Prop() data: TreeContentData[];
+  @Prop() data: ContentTableItem[];
 
   @Provide() root = this;
 
@@ -60,14 +56,15 @@ export default class VdTreeContents extends VdStylableControl {
     }
 
     this.initIndicatorBar();
+    window.addEventListener('resize', this.initIndicatorBar);
   }
 
   initChildren(children: Vue[]) {
-    let childrenData: VdTreeContentsItem[] = [];
+    let childrenData: VdContentTableItem[] = [];
     let hash = this.$route.hash;
 
     for (let i = 0; i < children.length; i++) {
-      let child = children[i] as VdTreeContentsItem;
+      let child = children[i] as VdContentTableItem;
 
       if (hash && `#${child.data.id}` === hash) {
         child.active = true;
@@ -95,7 +92,7 @@ export default class VdTreeContents extends VdStylableControl {
     });
   }
 
-  treeItemClick(treeItem: VdTreeContentsItem, el: HTMLElement) {
+  itemClick(treeItem: VdContentTableItem, el: HTMLElement) {
     let oldChild = this.activeChild;
     this.activeChild = treeItem;
 
@@ -113,5 +110,3 @@ export default class VdTreeContents extends VdStylableControl {
   }
 }
 </script>
-
-

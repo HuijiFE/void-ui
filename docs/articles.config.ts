@@ -82,6 +82,11 @@ export const zhCN: DocConfig[] = [
         path: 'toggle',
         fileName: 'form/radio',
       },
+      {
+        name: 'Tag 标签',
+        path: 'tag',
+        fileName: 'form/tag',
+      },
     ],
   },
   {
@@ -113,14 +118,14 @@ export const zhCN: DocConfig[] = [
         fileName: 'navigation/collapse',
       },
       {
-        name: 'BreadCrumb 面包屑',
+        name: 'Bread Crumb 面包屑',
         path: 'breadCurmb',
         fileName: 'navigation/breadCrumb',
       },
       {
-        name: 'tree Contents 树形目录',
-        path: 'treeContents',
-        fileName: 'navigation/treeContents',
+        name: 'Content Table 内容目录',
+        path: 'contentTable',
+        fileName: 'navigation/contentTable',
       },
     ],
   },

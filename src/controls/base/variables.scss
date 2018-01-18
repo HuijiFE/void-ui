@@ -332,6 +332,23 @@ $toggle-middle-width-rect: 0.28rem;
 $toggle-middle-width-circle: 0.32rem;
 $toggle-inner-width-rect: 0.14rem;
 
+// Tag
+$tag-font-size: $font-size-small;
+$tag-gutter: $gutter-xsmall;
+
+$tag-heights: (
+  small:    0.16rem,
+  medium:   0.20rem,
+  large:    0.24rem,
+);
+
+$tag-paddings: (
+  small:    0.06rem,
+  medium:   0.08rem,
+  large:    0.12rem,
+);
+
+
 
 /*----------  Score  ----------*/
 

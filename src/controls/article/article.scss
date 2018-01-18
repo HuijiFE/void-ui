@@ -19,18 +19,6 @@
     }
   }
 
-  a {
-    color: $tone-primary;
-    text-decoration: none;
-  }
-  a:visited,
-  a:hover,
-  a:active,
-  a:focus,
-  a:hover {
-    color: $tone-primary-lighten;
-  }
-
   img {
     max-width: 100%;
   }

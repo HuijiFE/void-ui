@@ -1,15 +1,14 @@
 <template>
-  <div role="tree-contents-item"
-       class="vd-tree-contents-item">
+  <div class="vd-content-table-item">
     <a :href="`#${data.id}`"
        @click.self.stop="contentItemClick($event)"
        class="item-label"
        :class="active ? 'active' : ''">{{data.label}}</a>
     <div class="item-child"
          v-if="data.children">
-      <vd-tree-contents-item v-for="child in data.children"
+      <vd-content-table-item v-for="child in data.children"
                              :data="child"
-                             :key="child.id"></vd-tree-contents-item>
+                             :key="child.id"></vd-content-table-item>
     </div>
   </div>
 </template>
@@ -26,7 +25,7 @@ import {
   Watch,
 } from 'vue-property-decorator';
 import { VdStylableControl } from 'src/controls/base/VdControl';
-import VdTreeContents from './VdTreeContents.vue';
+import VdContentTable from './VdContentTable.vue';
 
 export interface TreeContentData {
   id: string;
@@ -35,16 +34,16 @@ export interface TreeContentData {
 }
 
 @Component
-export default class VdTreeContentsItem extends Vue {
+export default class VdContentTableItem extends Vue {
   active: boolean = false;
 
-  children: VdTreeContentsItem[] = [];
+  children: VdContentTableItem[] = [];
 
   @Prop() data: TreeContentData;
-  @Inject() root: VdTreeContents;
+  @Inject() root: VdContentTable;
 
   contentItemClick(event: Event) {
-    this.root.treeItemClick(this, event.target as HTMLElement);
+    this.root.itemClick(this, event.target as HTMLElement);
   }
 }
 </script>

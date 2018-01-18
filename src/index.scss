@@ -8,6 +8,7 @@
 @import 'controls/base/reset';
 
 @import 'controls/alert/alert';
+@import 'controls/article/article';
 @import 'controls/avatar/avatar';
 @import 'controls/button/button';
 @import 'controls/card/card';
@@ -15,20 +16,20 @@
 @import 'controls/definition/definition';
 @import 'controls/form/input/input';
 @import 'controls/form/radio/radio';
+@import 'controls/form/tag/tag';
 @import 'controls/form/toggle/toggle';
-@import 'controls/layout/common/article';
 @import 'controls/layout/common/common';
 @import 'controls/layout/flexbox/flexbox';
 @import 'controls/linkList/linklist';
 @import 'controls/loading/loading';
 @import 'controls/navigation/breadCrumb/breadCrumb';
 @import 'controls/navigation/collapse/Collapse';
+@import 'controls/navigation/contentTable/content-table';
 @import 'controls/navigation/madeTabs/madeTabs';
 @import 'controls/navigation/navTabs/navTabs';
 @import 'controls/navigation/sidebar/sidebar';
 @import 'controls/navigation/subnav/subnav';
 @import 'controls/navigation/tabs/tabs';
-@import 'controls/navigation/treeContents/treeContents';
 @import 'controls/note/note';
 @import 'controls/process/VdProcessBar';
 @import 'controls/score/score';

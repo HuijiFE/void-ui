@@ -1,0 +1,106 @@
+.#{$void}-tag {
+  $ctrl: #{&};
+
+  @include flex-inline(row, center, center);
+
+  user-select: none;
+  cursor: pointer;
+
+  font-size: $tag-font-size;
+
+  border: $border-base;
+  border-radius: $border-radius-base;
+
+  @each $size in $ss-sizes {
+    &.size-#{$size} {
+      height: map-get($map: $tag-heights, $key: $size);
+      padding: 0 map-get($map: $tag-paddings, $key: $size);
+    }
+  }
+
+  &.skin {
+    &-fill {
+      color: $color-white;
+      background-color: $tone-primary;
+      &:hover {
+        background-color: $tone-primary-lighten;
+      }
+      &:active {
+        background-color: $tone-primary-darken;
+      }
+    }
+    &-flat {
+      color: $tone-primary;
+      &:hover,
+      &:active {
+        color: $tone-primary-lighten;
+      }
+      &.disabled {
+        @each $theme in $ss-themes {
+          &.theme-#{$theme} {
+            color: map-get($map: $theme-foreground-colors, $key: #{$theme}-disabled);
+          }
+        }
+      }
+    }
+    &-plain {
+      color: $tone-primary;
+      border-color: $tone-primary;
+      @each $theme in $ss-themes {
+        &.theme-#{$theme} {
+          background-color: map-get($map: $theme-background-colors, $key: $theme);
+        }
+      }
+      &:active {
+        color: $tone-primary-lighten;
+      }
+      &:hover,
+      &:active {
+        @each $theme in $ss-themes {
+          &.theme-#{$theme} {
+            background-color: map-get(
+              $map: $theme-background-colors,
+              $key: #{$theme}-hover
+            );
+          }
+        }
+      }
+    }
+    &-silk {
+      color: $tone-primary;
+      border-color: $tone-primary;
+      &:hover {
+        color: $tone-primary-lighten;
+        border-color: $tone-primary-lighten;
+      }
+      &:active {
+        @each $theme in $ss-themes {
+          &.theme-#{$theme} {
+            background-color: map-get(
+              $map: $theme-background-colors,
+              $key: #{$theme}-hover
+            );
+          }
+        }
+      }
+    }
+  }
+
+  & &_content {
+    color: inherit;
+  }
+
+  & &_closs-button {
+    margin-left: $tag-gutter;
+  }
+}
+
+.#{$void}-tag-wrapper {
+  @include flex(row, flex-start, baseline, wrap);
+
+  margin: - $tag-gutter / 2;
+
+  .#{$void}-tag {
+    margin: $tag-gutter / 2;
+  }
+}

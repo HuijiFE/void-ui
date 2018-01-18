@@ -1,13 +1,14 @@
 <template>
-  <vd-tree-contents :data="data"></vd-tree-contents>
+  <vd-content-table :data="data"></vd-content-table>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { ContentTableItem } from 'void-ui';
 
 @Component
 export default class TreeContentBasic extends Vue {
-  data = [
+  data: ContentTableItem[] = [
     {
       label: '历史',
       id: 'head1',
@@ -49,4 +50,3 @@ export default class TreeContentBasic extends Vue {
   ];
 }
 </script>
-
