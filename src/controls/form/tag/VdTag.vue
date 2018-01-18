@@ -9,7 +9,10 @@
        :href="href"><slot>{{content}}</slot></a>
     <span v-else
           class="vd-tag_content"><slot>{{content}}</slot></span>
-    <span v-if="closable" class="vd-tag_closs-button">
+    <span v-if="closable"
+          class="vd-tag_closs-button"
+          aria-label="close"
+          @click.stop="close">
       <i class="fa fa-times"></i>
     </span>
   </span>
@@ -40,5 +43,9 @@ export default class VdTag extends VdStylableControl {
   @Prop() to: string | Location;
 
   @Prop() closable: boolean;
+
+  close() {
+    this.$emit('close');
+  }
 }
 </script>

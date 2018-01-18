@@ -68,7 +68,21 @@
     }
     &-silk {
       color: $tone-primary;
-      background-color: $tone-primary;
+      border-color: $tone-primary;
+      &:hover {
+        color: $tone-primary-lighten;
+        border-color: $tone-primary-lighten;
+      }
+      &:active {
+        @each $theme in $ss-themes {
+          &.theme-#{$theme} {
+            background-color: map-get(
+              $map: $theme-background-colors,
+              $key: #{$theme}-hover
+            );
+          }
+        }
+      }
     }
   }
 
@@ -82,6 +96,10 @@
 }
 
 .#{$void}-tag-wrapper {
+  @include flex(row, flex-start, baseline, wrap);
+
+  margin: - $tag-gutter / 2;
+
   .#{$void}-tag {
     margin: $tag-gutter / 2;
   }
