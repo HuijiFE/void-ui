@@ -125,6 +125,17 @@ export const zhCN: DocConfig[] = [
     ],
   },
   {
+    name: '数据集',
+    path: 'data',
+    children: [
+      {
+        name: 'table 表格',
+        path: 'table',
+        fileName: 'data/dataTable',
+      },
+    ],
+  },
+  {
     name: '其他',
     children: [
       {

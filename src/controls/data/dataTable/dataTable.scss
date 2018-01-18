@@ -1,0 +1,22 @@
+.vd-data-table {
+  .table-item {
+    border-bottom: 1px solid #ccc;
+    display: flex;
+  }
+  .table-head {
+    display: flex;
+  }
+  .table-body {
+    // display: flex;
+    .body-item {
+      display: flex;
+    }
+  }
+  .cell {
+    flex: auto;
+    padding: 0.08rem;
+    height: 0.3rem;
+    line-height: 0.3rem;
+    text-align: center;
+  }
+}
