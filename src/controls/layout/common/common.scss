@@ -2,6 +2,7 @@
 .#{$void}-section,
 .#{$void}-container {
   position: relative;
+
   &.theme {
     @each $theme in $ss-themes {
       &-#{$theme} {
@@ -9,6 +10,10 @@
         background-color: map-get($map: $theme-background-colors, $key: $theme);
       }
     }
+  }
+
+  &.transparent {
+    background-color: transparent;
   }
 }
 
