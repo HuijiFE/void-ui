@@ -1,6 +1,6 @@
 {
   "name": "void-ui",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "A UI components library base on TypeScript for Vue.js.",
   "author": "HuijiFE",
   "keywords": [
