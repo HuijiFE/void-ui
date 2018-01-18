@@ -17,13 +17,13 @@
     color: $color-white;
     border-radius: $border-radius-base;
     padding-bottom: $score-inner-padding;
-    @each $level, $color in $score-colors {
-      &.level-#{$level} {
+    @each $grade, $color in $grade-colors {
+      &.grade-#{$grade} {
         background-color: $color;
       }
     }
-    @each $level, $height in $score-inner-heights {
-      &.level-#{$level} {
+    @each $grade, $height in $score-inner-heights {
+      &.grade-#{$grade} {
         height: $height;
       }
     }

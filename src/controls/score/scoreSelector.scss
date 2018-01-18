@@ -95,8 +95,8 @@
             border-radius: $score-border-radius;
             margin-right: map-get($map:$score-margin-right, $key:$size);
             font-size: map-get($map:$score-regular-font-size, $key:$size);
-            @each $level, $color in $score-colors {
-              &.level-#{$level} {
+            @each $grade, $color in $grade-colors {
+              &.grade-#{$grade} {
                 background-color: $color;
                 border: map-get($map:$score-border-size, $key:$size) solid $color;
                 @include gen-transition-base((background-color,color));
@@ -111,8 +111,8 @@
             text-align: right;
             font-size: map-get($map:$score-regular-font-size, $key:$size);
             color: map-get($map:$score-font-color, $key:$size);
-            @each $level, $color in $score-colors {
-              .font-#{$level} {
+            @each $grade, $color in $grade-colors {
+              .font-#{$grade} {
                 color: $color;
                 font-size: map-get($map:$score-font-size, $key:$size);
               }

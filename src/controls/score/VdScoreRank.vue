@@ -1,7 +1,7 @@
 <template>
   <div class="vd-score-rank">
     <span class="score-rank-outer"
-          :class="level">
+          :class="grade">
       <span class="score-rank-img">
         <img :src="src"
              alt="">
@@ -29,8 +29,8 @@ export default class VdScoreRank extends Vue {
   @Prop({ default: 10 })
   max: number;
   @Prop() src: string;
-  get level() {
-    return `level-${Math.round(this.value / this.max * 10)}`;
+  get grade() {
+    return `grade-${Math.round(this.value / this.max * 10)}`;
   }
 }
 </script>

@@ -356,23 +356,23 @@ $score-width: 0.48rem;
 $score-height: 0.75rem;
 $score-font-size: 0.24rem;
 
-$color-score-0: #ff3333;
-$color-score-1: #ff7e34;
-$color-score-2: #ffcc00;
-$color-score-3: #58d000;
-$color-score-4: #24cf4c;
+$grade-0: #ff3333;
+$grade-1: #ff7e34;
+$grade-2: #ffcc00;
+$grade-3: #58d000;
+$grade-4: #24cf4c;
 
-$score-colors: (
-  0: $color-score-0,
-  1: $color-score-0,
-  2: $color-score-1,
-  3: $color-score-1,
-  4: $color-score-2,
-  5: $color-score-2,
-  6: $color-score-3,
-  7: $color-score-3,
-  8: $color-score-4,
-  9: $color-score-4,
+$grade-colors: (
+  0: $grade-0,
+  1: $grade-0,
+  2: $grade-1,
+  3: $grade-1,
+  4: $grade-2,
+  5: $grade-2,
+  6: $grade-3,
+  7: $grade-3,
+  8: $grade-4,
+  9: $grade-4,
 );
 // $score-inner-heights: (
 //   0: $score-height,
