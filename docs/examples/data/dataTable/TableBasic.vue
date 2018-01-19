@@ -34,6 +34,7 @@ export default class VdDataTableBasic extends Vue {
   }
   getScoreData() {
     let names = '红橙黄绿青蓝紫黑白灰';
+    // let names = 'ABCDEFGHIGKLMN';
     let randomScore = () => Math.ceil(Math.random() * (100 - 60) + 60);
 
     let tableData = names.split('').map(v => {
@@ -47,7 +48,6 @@ export default class VdDataTableBasic extends Vue {
         Chemistry: randomScore(),
       };
     });
-console.log(tableData)
     return tableData;
   }
 }

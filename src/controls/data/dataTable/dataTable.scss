@@ -5,6 +5,9 @@
   }
   .table-head {
     display: flex;
+    .head-item {
+      display: flex;
+    }
   }
   .table-body {
     // display: flex;
