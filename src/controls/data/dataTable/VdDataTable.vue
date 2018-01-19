@@ -6,7 +6,7 @@
         <slot :name="`head-row-${hItem.key}`" :headItem="hItem">
             <span class="item-text">{{hItem.content}}</span>
         </slot>
-        <div class="arrow-control">
+        <div v-if="sortable || item.sortable" class="arrow-control">
           <i class="fa fa-sort-asc" :class="{active: hItem.vd_selfSortStatus === 1}" aria-hidden="true"></i>
           <i class="fa fa-sort-desc" :class="{active: hItem.vd_selfSortStatus === 2}" aria-hidden="true"></i>
         </div>
@@ -67,23 +67,25 @@ sortMap.set('desc', (a: number, b: number) => b < a);
 
 @Component
 export default class VdDataTable extends VdStylableControl {
+  // todo 检查headData的值和bodyData的值是否完全匹配
   @Prop({ default: () => [], type: Array })
   headData: object[];
-
-  // todo 检查headData的值和bodyData的值是否完全匹配
 
   @Prop({ default: () => [], type: Array })
   bodyData: object[];
 
   @Prop({ default: true, type: Boolean })
   striped: boolean;
+
   @Prop({ default: false, type: Boolean })
   useCellSlot: boolean;
+
+  @Prop({ default: true, type: Boolean })
+  sortable: boolean;
 
   // 不改动原始值
   cloneBodyData = this.makeBodyData(this.bodyData);
   cloneHeadData = this.makeHeadData(this.headData);
-
   sortFunctionMap = [this.getOriginSortData, this.getAscSortData, this.getDescSortData];
 
   get classes(): ClassNames {
@@ -130,6 +132,7 @@ export default class VdDataTable extends VdStylableControl {
   }
 
   headItemClick(item: any): void {
+    if (!this.sortable || !item.sortable) return;
     let status = item.vd_selfSortStatus;
     item.vd_selfSortStatus = status === 2 ? 0 : status + 1;
     this.sortFunctionMap[item.vd_selfSortStatus](item.key);
