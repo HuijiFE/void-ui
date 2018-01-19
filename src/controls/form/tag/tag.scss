@@ -7,6 +7,7 @@
   cursor: pointer;
 
   font-size: $tag-font-size;
+  line-height: 1;
 
   border: $border-base;
   border-radius: $border-radius-base;
@@ -31,6 +32,7 @@
     }
     &-flat {
       color: $tone-primary;
+      background-color: transparent;
       &:hover,
       &:active {
         color: $tone-primary-lighten;
@@ -69,6 +71,7 @@
     &-silk {
       color: $tone-primary;
       border-color: $tone-primary;
+      background-color: transparent;
       &:hover {
         color: $tone-primary-lighten;
         border-color: $tone-primary-lighten;

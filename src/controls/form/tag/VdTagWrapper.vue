@@ -1,5 +1,6 @@
 <template>
-  <div class="vd-tag-wrapper">
+  <div class="vd-tag-wrapper"
+       :class="classes">
     <slot></slot>
   </div>
 </template>
