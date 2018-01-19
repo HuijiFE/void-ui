@@ -11,7 +11,7 @@ export { default as VdAvatar } from 'src/controls/avatar/VdAvatar.vue';
 export { default as VdButton } from 'src/controls/button/VdButton.vue';
 export { default as VdButtonGroup } from 'src/controls/button/VdButtonGroup.vue';
 export { default as VdCard } from 'src/controls/card/VdCard.vue';
-export { default as vdDataTable } from 'src/controls/data/dataTable/vdDataTable.vue';
+export { default as VdDataTable } from 'src/controls/data/dataTable/VdDataTable.vue';
 export { default as VdDataCard } from 'src/controls/dataCard/VdDataCard.vue';
 export { default as VdDataCardItem } from 'src/controls/dataCard/VdDataCardItem.vue';
 export { default as VdDefinition } from 'src/controls/definition/VdDefinition.vue';

@@ -1,7 +1,6 @@
 <template>
 <div>
 <vd-data-table :body-data="scoreData" :head-data="HeadData">
-  <span slot="header"></span>
 </vd-data-table>
 </div>
 </template>
@@ -26,15 +25,22 @@ export default class VdDataTableBasic extends Vue {
     return Object.keys(this.scoreData[0]).map(k => {
       return {
         // 表头显示的值
-        text: k.toUpperCase(),
+        content: k.toUpperCase(),
         // 对应的字段名
-        value: k,
+        key: k,
+        /**
+         * 格式化表格数据
+         * @augments cell 单元格数据
+         */
+        formatter(cell: any) {
+          return cell;
+        },
       };
     });
   }
+
   getScoreData() {
     let names = '红橙黄绿青蓝紫黑白灰';
-    // let names = 'ABCDEFGHIGKLMN';
     let randomScore = () => Math.ceil(Math.random() * (100 - 60) + 60);
 
     let tableData = names.split('').map(v => {
@@ -48,6 +54,7 @@ export default class VdDataTableBasic extends Vue {
         Chemistry: randomScore(),
       };
     });
+    console.log(tableData);
     return tableData;
   }
 }
