@@ -10,9 +10,10 @@
         background-color: map-get($map: $theme-background-colors, $key: #{$theme}-hover);
         color: map-get($map: $theme-foreground-colors, $key: #{$theme}-secondary);
 
-        .fa:hover,
-        .fa:active {
-          color: map-get($map: $theme-foreground-colors, $key: $theme);
+        .fa {
+          &.active {
+            color: map-get($map: $theme-foreground-colors, $key: $theme);
+          }
         }
       }
 
@@ -47,6 +48,7 @@
   .head-item {
     display: flex;
     align-items: center;
+    cursor: pointer;
     flex: auto;
   }
 
@@ -61,7 +63,6 @@
     flex-direction: column;
     position: relative;
     .fa {
-      cursor: pointer;
       position: absolute;
     }
     .fa-sort-asc {
@@ -83,9 +84,5 @@
 
   .cell {
     flex: auto;
-    // padding: 0.08rem;
-    // height: 0.3rem;
-    // line-height: 0.3rem;
-    // text-align: center;
   }
 }

@@ -54,7 +54,6 @@ export default class VdDataTableBasic extends Vue {
         Chemistry: randomScore(),
       };
     });
-    console.log(tableData);
     return tableData;
   }
 }
