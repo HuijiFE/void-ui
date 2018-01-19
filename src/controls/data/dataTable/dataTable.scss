@@ -1,25 +1,91 @@
 .vd-data-table {
+  $table-head-padding: 0.1rem 0.16rem;
+  $table-head-height: 0.32rem;
+
+  @each $theme in $ss-themes {
+    &.theme-#{$theme} {
+      background-color: map-get($map: $theme-background-colors, $key: $theme);
+
+      .table-head {
+        background-color: map-get($map: $theme-background-colors, $key: #{$theme}-hover);
+        color: map-get($map: $theme-foreground-colors, $key: #{$theme}-secondary);
+
+        .fa:hover,
+        .fa:active {
+          color: map-get($map: $theme-foreground-colors, $key: $theme);
+        }
+      }
+
+      .table-body {
+        &.striped {
+          .body-item:nth-child(even) {
+            background-color: map-get(
+              $map: $theme-background-colors,
+              $key: #{$theme}-high
+            );
+          }
+        }
+      }
+      .body-item {
+        border-bottom: 1px solid
+          map-get($map: $theme-background-colors, $key: #{$theme}-hover);
+      }
+    }
+  }
+
   .table-item {
     border-bottom: 1px solid #ccc;
     display: flex;
   }
+
   .table-head {
     display: flex;
-    .head-item {
-      display: flex;
+    font-size: 0.12rem;
+    padding: $table-head-padding;
+  }
+
+  .head-item {
+    display: flex;
+    align-items: center;
+    flex: auto;
+  }
+
+  .item-text {
+    cursor: pointer;
+  }
+
+  .arrow-control {
+    margin-left: 0.08rem;
+    height: 0.12rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    .fa {
+      cursor: pointer;
+      position: absolute;
+    }
+    .fa-sort-asc {
+      top: 0;
+    }
+    .fa-sort-desc {
+      bottom: 0;
     }
   }
+
   .table-body {
-    // display: flex;
-    .body-item {
-      display: flex;
-    }
+    font-size: 0.14rem;
   }
+
+  .body-item {
+    padding: 0.1rem 0.16rem;
+    display: flex;
+  }
+
   .cell {
     flex: auto;
-    padding: 0.08rem;
-    height: 0.3rem;
-    line-height: 0.3rem;
-    text-align: center;
+    // padding: 0.08rem;
+    // height: 0.3rem;
+    // line-height: 0.3rem;
+    // text-align: center;
   }
 }
