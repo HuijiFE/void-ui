@@ -130,7 +130,7 @@ export default class VdDataTable extends VdStylableControl {
 
   // 排序
   sort(rule: string, key: string): void {
-    this.cloneBodyData.sort((a: any, b: any) => {
+    this.cloneBodyData = this.cloneBodyData.sort((a: any, b: any) => {
       // todo 判断排序值的类型
       return a[key] === b[key] ? 0 : sortMap.get(rule)(a[key], b[key]) ? -1 : 1;
     });
