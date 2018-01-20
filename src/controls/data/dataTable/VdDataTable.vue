@@ -1,27 +1,44 @@
 <template>
-  <div class="vd-data-table" :class="classes">
-  <!-- 表格头部 -->
+  <div class="vd-data-table"
+       :class="classes">
+    <!-- 表格头部 -->
     <div class="table-head">
-      <div class="head-item" v-for="(hItem, index) in cloneHeadData" :key="index" @click="headItemClick(hItem)">
-        <slot :name="`head-row-${hItem.key}`" :headItem="hItem">
-            <span class="item-text">{{hItem.content}}</span>
+      <div class="head-item"
+           v-for="(hItem, index) in cloneHeadData"
+           :key="index"
+           @click="headItemClick(hItem)">
+        <slot :name="`head-row-${hItem.key}`"
+              :headItem="hItem">
+          <span class="item-text">{{hItem.content}}</span>
         </slot>
-        <div v-if="sortable || item.sortable" class="arrow-control">
-          <i class="fa fa-sort-asc" :class="{active: hItem.vd_selfSortStatus === 1}" aria-hidden="true"></i>
-          <i class="fa fa-sort-desc" :class="{active: hItem.vd_selfSortStatus === 2}" aria-hidden="true"></i>
+        <div v-if="sortable && hItem.sortable"
+             class="arrow-control">
+          <i class="fa fa-sort-asc"
+             :class="{active: hItem.vd_selfSortStatus === 1}"
+             aria-hidden="true"></i>
+          <i class="fa fa-sort-desc"
+             :class="{active: hItem.vd_selfSortStatus === 2}"
+             aria-hidden="true"></i>
         </div>
       </div>
     </div>
 
     <!-- 表格主体 -->
-    <div class="table-body" :class="{striped: striped}">
-      <div class="body-item" v-for="(row, index) in cloneBodyData" :key="index">
-        <div class="item-content cell" v-for="(hItem, index) in headData" :key="index">
-          <slot :name="useCellSlot ? `body-${row.vd_index}-${hItem.key}` : `body-row-${hItem.key}`" :bodyItem="row" :bodyCell="row[hItem.key]">
+    <div class="table-body"
+         :class="{striped: striped}">
+      <div class="body-item"
+           v-for="(row, index) in cloneBodyData"
+           :key="index">
+        <div class="item-content cell"
+             v-for="(hItem, index) in headData"
+             :key="index">
+          <slot :name="useCellSlot ? `body-${row.vd_index}-${hItem.key}` : `body-row-${hItem.key}`"
+                :bodyItem="row"
+                :bodyCell="row[hItem.key]">
             <div v-if="hItem.formatter && typeof hItem.formatter === 'function'">
               {{hItem.formatter(row[hItem.key])}}
             </div>
-            <div v-else >{{row[hItem.key]}}</div>
+            <div v-else>{{row[hItem.key]}}</div>
           </slot>
         </div>
       </div>
@@ -96,6 +113,7 @@ export default class VdDataTable extends VdStylableControl {
   makeHeadData(data: object[]) {
     return data.map((el: any) => {
       el.vd_selfSortStatus = 0;
+      el.sortable = el.sortable === false ? false : true;
       return el;
     });
   }

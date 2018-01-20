@@ -1,8 +1,9 @@
 <template>
-<div>
-<vd-data-table :body-data="scoreData" :head-data="HeadData">
-</vd-data-table>
-</div>
+  <div>
+    <vd-data-table :body-data="scoreData"
+                   :head-data="HeadData">
+    </vd-data-table>
+  </div>
 </template>
 
 <script lang="ts">
@@ -35,6 +36,7 @@ export default class VdDataTableBasic extends Vue {
         formatter(cell: any) {
           return cell;
         },
+        sortable: false,
       };
     });
   }
