@@ -4,8 +4,8 @@
     <!-- 表格头部 -->
     <div class="table-head">
       <div class="head-item"
-           v-for="(hItem, index) in cloneHeadData"
-           :key="index"
+           v-for="hItem in cloneHeadData"
+           :key="hItem.key"
            @click="headItemClick(hItem)">
         <slot :name="`head-row-${hItem.key}`"
               :headItem="hItem">
@@ -27,11 +27,11 @@
     <div class="table-body"
          :class="{striped: striped}">
       <div class="body-item"
-           v-for="(row, index) in cloneBodyData"
-           :key="index">
+           v-for="row in cloneBodyData"
+           :key="row.vd_index">
         <div class="item-content cell"
-             v-for="(hItem, index) in headData"
-             :key="index">
+             v-for="hItem in headData"
+             :key="hItem.key">
           <slot :name="useCellSlot ? `body-${row.vd_index}-${hItem.key}` : `body-row-${hItem.key}`"
                 :bodyItem="row"
                 :bodyCell="row[hItem.key]">
@@ -58,19 +58,6 @@ import {
   Watch,
 } from 'vue-property-decorator';
 import { VdStylableControl } from 'src/controls/base/VdControl';
-
-let sortMap = new Map();
-sortMap.set('asc', (a: number, b: number) => a < b);
-sortMap.set('desc', (a: number, b: number) => b < a);
-
-// interface Dict {
-//   [key: string]: (a: number, b: number) => boolean;
-// }
-// let map: Dict = {
-//   asc: (a: number, b: number) => a < b,
-//   desc: (a: number, b: number) => b < a,
-// };
-// let test = map['rule'];
 
 // interface TableRow {
 //   [column: string]: string | number | boolean;
@@ -129,24 +116,30 @@ export default class VdDataTable extends VdStylableControl {
   }
 
   // 排序
-  sort(rule: string, key: string): void {
-    this.cloneBodyData = this.cloneBodyData.sort((a: any, b: any) => {
-      // todo 判断排序值的类型
-      return a[key] === b[key] ? 0 : sortMap.get(rule)(a[key], b[key]) ? -1 : 1;
-    });
+  sort(a: any, b: any, key: string): void | number {
+    let aValue = a[key];
+    let bValue = b[key];
+    if (isNaN(Number(aValue)) || isNaN(Number(bValue))) {
+      return aValue.localeCompare(bValue, 'zh-Hans-CN', { sensitivity: 'accent' });
+    } else {
+      return aValue === bValue ? 0 : aValue > bValue ? 1 : -1;
+    }
   }
 
   // 原始顺序
   getOriginSortData(): void {
+    this.cloneHeadData.forEach((el: any) => (el.vd_selfSortStatus = 0));
     this.cloneBodyData.sort((a: any, b: any) => a.vd_index - b.vd_index);
   }
   // 升序
   getAscSortData(key: any): void {
-    this.sort('asc', key);
+    let vd_this = this;
+    this.cloneBodyData.sort((a: any, b: any) => this.sort.call(vd_this, a, b, key));
   }
   // 降序
   getDescSortData(key: any): void {
-    this.sort('desc', key);
+    let vd_this = this;
+    this.cloneBodyData.sort((a: any, b: any) => this.sort.call(vd_this, b, a, key));
   }
 
   headItemClick(item: any): void {
@@ -156,6 +149,4 @@ export default class VdDataTable extends VdStylableControl {
     this.sortFunctionMap[item.vd_selfSortStatus](item.key);
   }
 }
-
-// todo 把绑定的key值在梳理一下
 </script>

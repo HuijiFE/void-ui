@@ -1,8 +1,12 @@
 <template>
-  <vd-data-table use-cell-slot :body-data="scoreData" :head-data="HeadData">
-  <!-- <div slot="body-row-name" slot-scope="{bodyItem, bodyCell}">自定义 {{bodyCell}}</div> -->
-  <div class="highlight" slot="body-2-zhihu" slot-scope="{bodyItem, bodyCell}">高亮 {{bodyCell}}</div>
-</vd-data-table>
+  <vd-data-table use-cell-slot
+                 :body-data="scoreData"
+                 :head-data="HeadData">
+    <!-- <div slot="body-row-name" slot-scope="{bodyItem, bodyCell}">自定义 {{bodyCell}}</div> -->
+    <div class="highlight"
+         slot="body-2-zhihu"
+         slot-scope="{bodyItem, bodyCell}">高亮 {{bodyCell}}</div>
+  </vd-data-table>
 </template>
 
 <script lang="ts">
@@ -32,7 +36,7 @@ export default class VdTableProps extends Vue {
 
   getScoreData() {
     let names = '赵钱孙李周吴郑王';
-    let randomScore = () => Math.ceil(Math.random() * 1000000);
+    let randomScore = () => Math.ceil(Math.random() * 100000);
 
     let tableData = names.split('').map(v => {
       return {
