@@ -9,7 +9,7 @@
            @click="headItemClick(hItem)">
         <slot :name="`head-row-${hItem.key}`"
               :headItem="hItem">
-          <span class="item-text">{{hItem.content}}</span>
+          <span class="item-text">{{hItem.content | aaa}}</span>
         </slot>
         <div v-if="sortable && hItem.sortable"
              class="arrow-control">
