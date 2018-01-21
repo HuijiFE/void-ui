@@ -120,9 +120,12 @@ export default class VdDataTable extends VdStylableControl {
     let aValue = a[key];
     let bValue = b[key];
     if (isNaN(Number(aValue)) || isNaN(Number(bValue))) {
-      return aValue.localeCompare(bValue, 'zh-Hans-CN', { sensitivity: 'accent' });
+      return (
+        aValue.localeCompare(bValue, 'zh-Hans-CN', { sensitivity: 'accent' }) ||
+        a.vd_index - b.vd_index
+      );
     } else {
-      return aValue === bValue ? 0 : aValue > bValue ? 1 : -1;
+      return aValue - bValue || a.vd_index - b.vd_index;
     }
   }
 
