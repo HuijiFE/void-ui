@@ -1,6 +1,7 @@
-.vd-data-table {
+table.vd-data-table {
   $table-head-padding: 0.1rem 0.16rem;
   $table-head-height: 0.32rem;
+  $table-aligns: left, center, right;
 
   @each $theme in $ss-themes {
     &.theme-#{$theme} {
@@ -19,7 +20,7 @@
 
       .table-body {
         &.striped {
-          .body-item:nth-child(even) {
+          .body-tr:nth-child(even) {
             background-color: map-get(
               $map: $theme-background-colors,
               $key: #{$theme}-high
@@ -27,62 +28,88 @@
           }
         }
       }
-      .body-item {
+      .body-tr {
         border-bottom: 1px solid
           map-get($map: $theme-background-colors, $key: #{$theme}-hover);
       }
     }
   }
+  /* ---- init table style ---- */
+  border-collapse: collapse;
+  // border: 1px solid black;
+  // border-spacing: 1;
+  // table-layout: fixed;
+  width: 100%; // 待定
 
-  .table-item {
-    border-bottom: 1px solid #ccc;
-    display: flex;
-  }
+  /* ----- 表格头部 ------ */
 
-  .table-head {
-    display: flex;
+  thead.table-head {
+    vertical-align: middle;
     font-size: 0.12rem;
-    padding: $table-head-padding;
-  }
+    font-weight: bold;
 
-  .head-item {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    flex: auto;
-  }
-
-  .item-text {
-    cursor: pointer;
-  }
-
-  .arrow-control {
-    margin-left: 0.08rem;
-    height: 0.12rem;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    .fa {
-      position: absolute;
+    tr {
+      height: 0.32rem;
     }
-    .fa-sort-asc {
-      top: 0;
+
+    .head-index {
+      width: 0.4rem;
+      text-align: center;
     }
-    .fa-sort-desc {
-      bottom: 0;
+
+    .head-item {
+      padding: 0 0.12rem;
+      align-items: center;
+      cursor: pointer;
+
+      @each $align in $table-aligns {
+        &.align-#{$align} {
+          text-align: $align;
+        }
+      }
+    }
+    .item-text {
+      display: inline-flex;
+    }
+
+    /* ---- 箭头 ---- */
+    .arrow-control {
+      margin-left: 0.04rem;
+      display: inline-flex;
+      flex-direction: column;
+
+      .fa {
+        height: 0rem;
+      }
     }
   }
 
-  .table-body {
+  /* ----- 表格主体 ---- */
+  tbody.table-body {
     font-size: 0.14rem;
-  }
+    vertical-align: middle;
 
-  .body-item {
-    padding: 0.1rem 0.16rem;
-    display: flex;
-  }
+    tr.body-tr {
+      height: 0.4rem;
+    }
 
-  .cell {
-    flex: auto;
+    .body-index {
+      text-align: center;
+      padding: 0 0.12rem;
+    }
+
+    td.td-item {
+      height: 0.4rem;
+      padding-right: 0.12rem;
+      @each $align in $table-aligns {
+        &.align-#{$align} {
+          text-align: $align;
+        }
+      }
+    }
+
+    .item-content {
+      // text-overflow: ellipsis;
+    }
   }
 }

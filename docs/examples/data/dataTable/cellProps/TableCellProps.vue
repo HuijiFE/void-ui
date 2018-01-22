@@ -1,5 +1,6 @@
 <template>
   <vd-data-table use-cell-slot
+                 show-index
                  :body-data="scoreData"
                  :head-data="HeadData">
     <div class="highlight"

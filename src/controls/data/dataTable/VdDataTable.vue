@@ -1,17 +1,21 @@
 <template>
-  <div class="vd-data-table"
+  <table class="vd-data-table"
        :class="classes">
     <!-- 表格头部 -->
-    <div class="table-head">
-      <div class="head-item"
+    <thead class="table-head">
+      <tr>
+      <th class="head-item head-index" v-if="showIndex">#</th>
+      <th class="head-item"
+          :class="handleAlign(hItem.align)"
            v-for="hItem in cloneHeadData"
            :key="hItem.key"
            @click="headItemClick(hItem)">
         <slot :name="`head-row-${hItem.key}`"
               :headItem="hItem">
-          <span class="item-text">{{hItem.content}}</span>
+          <div class="item-text">{{hItem.content}}</div>
         </slot>
-        <div v-if="sortable && hItem.sortable"
+
+        <div v-if="defaultSortable || hItem.sortable"
              class="arrow-control">
           <i class="fa fa-sort-asc"
              :class="{active: hItem.vd_selfSortStatus === 1}"
@@ -20,30 +24,33 @@
              :class="{active: hItem.vd_selfSortStatus === 2}"
              aria-hidden="true"></i>
         </div>
-      </div>
-    </div>
+      </th>
+      </tr>
+    </thead>
     <!-- 表格主体 -->
-    <div class="table-body"
+    <tbody class="table-body"
          :class="{striped: striped}">
-      <div class="body-item"
-           v-for="row in cloneBodyData"
+      <tr class="body-tr"
+           v-for="(row, index) in cloneBodyData"
            :key="row.vd_index">
-        <div class="item-content cell"
+        <td class="td-item body-index" v-if="showIndex">{{index}}</td>
+        <td class="td-item"
+             :class="handleAlign(hItem.align)"
              v-for="hItem in headData"
              :key="hItem.key">
           <slot :name="useCellSlot ? `body-${row.vd_index}-${hItem.key}` : `body-row-${hItem.key}`"
                 :bodyItem="row"
                 :headItem="hItem"
                 :bodyCell="row[hItem.key]">
-            <div v-if="hItem.formatter && typeof hItem.formatter === 'function'">
+            <div v-if="hItem.formatter && typeof hItem.formatter === 'function'" class="item-content">
               {{hItem.formatter(row[hItem.key], row, hItem)}}
             </div>
-            <div v-else>{{row[hItem.key]}}</div>
+            <div v-else class="item-content">{{row[hItem.key]}}</div>
           </slot>
-        </div>
-      </div>
-    </div>
-  </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 
 <script lang="ts">
@@ -69,6 +76,8 @@ import { VdStylableControl } from 'src/controls/base/VdControl';
 //   jianshu: false,
 // };
 
+export type TextAlign = 'left' | 'center' | 'rigght';
+
 @Component
 export default class VdDataTable extends VdStylableControl {
   // todo 检查headData的值和bodyData的值是否完全匹配
@@ -85,7 +94,13 @@ export default class VdDataTable extends VdStylableControl {
   useCellSlot: boolean;
 
   @Prop({ default: true, type: Boolean })
-  sortable: boolean;
+  defaultSortable: boolean;
+
+  @Prop({ default: false, type: Boolean })
+  showIndex: boolean;
+
+  @Prop({ default: 'right', type: String })
+  defaultAlign: TextAlign;
 
   // 不改动原始值
   cloneBodyData = this.makeBodyData(this.bodyData);
@@ -105,7 +120,7 @@ export default class VdDataTable extends VdStylableControl {
     });
   }
 
-  // 他有时候会把Vd_index也循环出来，禁止枚举之后看看效果
+  // 制作主体数据
   makeBodyData(data: object[]) {
     return data.map((el: any, index: number) => {
       // 禁止枚举
@@ -146,10 +161,18 @@ export default class VdDataTable extends VdStylableControl {
   }
 
   headItemClick(item: any): void {
-    if (!this.sortable || !item.sortable) return;
+    if (!this.defaultSortable || !item.sortable) return;
     let status = item.vd_selfSortStatus;
     item.vd_selfSortStatus = status === 2 ? 0 : status + 1;
     this.sortFunctionMap[item.vd_selfSortStatus](item.key);
+  }
+
+  handleAlign(align: TextAlign): string {
+    if (align && typeof align === 'string') {
+      return `align-${align}`;
+    } else {
+      return `align-${this.defaultAlign}`;
+    }
   }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
   <vd-data-table :body-data="scoreData"
                  :head-data="HeadData">
-    <div slot="body-row-zhihu" slot-scope="{bodyItem, bodyCell}"> {{bodyCell | toCurrency}}</div>
-    <div slot="body-row-wangyi" slot-scope="{bodyItem, bodyCell}"> {{bodyCell | toCurrency('￥')}}</div>
+    <div slot="body-row-zhihu" slot-scope="{bodyItem, bodyCell, headItem}"> {{bodyCell | minute2hour}}</div>
+    <div slot="body-row-wangyi" slot-scope="{bodyItem, bodyCell, headItem}"> {{bodyCell | toCurrency('￥')}}</div>
   </vd-data-table>
 </template>
 
@@ -27,7 +27,7 @@ export default class VdTableFormatter extends Vue {
         content: k.toUpperCase(),
         // 对应的字段名
         key: k,
-        formatter(cell: any) {
+        formatter(cell: any, bodyItem: any, headItem: any) {
           if (k === 'douban') {
             return `${cell}€`;
           } else {
@@ -54,8 +54,3 @@ export default class VdTableFormatter extends Vue {
   }
 }
 </script>
-<style lang="scss" scoped>
-.highlight {
-  color: red;
-}
-</style>
