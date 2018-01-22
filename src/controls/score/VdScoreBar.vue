@@ -2,7 +2,7 @@
   <div class="vd-score-bar">
     <span class="score-bar-inner"
           :class="grade">
-      {{value >= 10 || value === 0 ? value : value.toFixed(1)}}
+      {{value === 10 || value === 0 ? value : value.toFixed(1)}}
     </span>
   </div>
 </template>
