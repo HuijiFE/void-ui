@@ -9,7 +9,7 @@
            @click="headItemClick(hItem)">
         <slot :name="`head-row-${hItem.key}`"
               :headItem="hItem">
-          <span class="item-text">{{hItem.content | aaa}}</span>
+          <span class="item-text">{{hItem.content}}</span>
         </slot>
         <div v-if="sortable && hItem.sortable"
              class="arrow-control">
@@ -22,7 +22,6 @@
         </div>
       </div>
     </div>
-
     <!-- 表格主体 -->
     <div class="table-body"
          :class="{striped: striped}">
@@ -34,9 +33,10 @@
              :key="hItem.key">
           <slot :name="useCellSlot ? `body-${row.vd_index}-${hItem.key}` : `body-row-${hItem.key}`"
                 :bodyItem="row"
+                :headItem="hItem"
                 :bodyCell="row[hItem.key]">
             <div v-if="hItem.formatter && typeof hItem.formatter === 'function'">
-              {{hItem.formatter(row[hItem.key])}}
+              {{hItem.formatter(row[hItem.key], row, hItem)}}
             </div>
             <div v-else>{{row[hItem.key]}}</div>
           </slot>

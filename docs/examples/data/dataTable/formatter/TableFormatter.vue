@@ -1,11 +1,8 @@
 <template>
-  <vd-data-table use-cell-slot
-                 :body-data="scoreData"
+  <vd-data-table :body-data="scoreData"
                  :head-data="HeadData">
-    <!-- <div slot="body-row-name" slot-scope="{bodyItem, bodyCell}">自定义 {{bodyCell}}</div> -->
-    <div class="highlight"
-         slot="body-2-zhihu"
-         slot-scope="{bodyItem, bodyCell}">高亮 {{bodyCell}}</div>
+    <div slot="body-row-zhihu" slot-scope="{bodyItem, bodyCell, headItem}"> {{bodyCell | minute2hour}}</div>
+    <div slot="body-row-wangyi" slot-scope="{bodyItem, bodyCell, headItem}"> {{bodyCell | toCurrency('￥')}}</div>
   </vd-data-table>
 </template>
 
@@ -20,7 +17,7 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
-export default class VdTableProps extends Vue {
+export default class VdTableFormatter extends Vue {
   scoreData = this.getScoreData();
 
   get HeadData() {
@@ -30,6 +27,13 @@ export default class VdTableProps extends Vue {
         content: k.toUpperCase(),
         // 对应的字段名
         key: k,
+        formatter(cell: any, bodyItem: any, headItem: any) {
+          if (k === 'douban') {
+            return `${cell}€`;
+          } else {
+            return cell;
+          }
+        },
       };
     });
   }
@@ -50,8 +54,3 @@ export default class VdTableProps extends Vue {
   }
 }
 </script>
-<style lang="scss" scoped>
-.highlight {
-  color: red;
-}
-</style>

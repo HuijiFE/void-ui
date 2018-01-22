@@ -1,10 +1,8 @@
 <template>
-  <div>
-  <vd-data-table :body-data="scoreData" :head-data="HeadData">
-  <div class="a" slot="body-row-name" slot-scope="{bodyItem, bodyCell}">自定义 {{bodyCell}}</div>
-  <div class="a" slot="body-row-zhihu" slot-scope="{bodyItem, bodyCell}">5555 </div>
-</vd-data-table>
-  </div>
+  <vd-data-table :body-data="scoreData"
+                 :head-data="HeadData">
+    <div slot="body-row-name" slot-scope="{bodyItem, bodyCell}">自定义 {{bodyCell}}</div>
+  </vd-data-table>
 </template>
 
 <script lang="ts">
@@ -25,16 +23,16 @@ export default class VdTableProps extends Vue {
     return Object.keys(this.scoreData[0]).map(k => {
       return {
         // 表头显示的值
-        text: k.toUpperCase(),
+        content: k.toUpperCase(),
         // 对应的字段名
-        value: k,
+        key: k,
       };
     });
   }
 
   getScoreData() {
     let names = '赵钱孙李周吴郑王';
-    let randomScore = () => Math.ceil(Math.random() * 1000000);
+    let randomScore = () => Math.ceil(Math.random() * 100000);
 
     let tableData = names.split('').map(v => {
       return {

@@ -1,9 +1,9 @@
 <template>
-<div>
-<vd-data-table :body-data="scoreData" :head-data="HeadData">
-
-</vd-data-table>
-</div>
+  <div>
+    <vd-data-table :body-data="scoreData"
+                   :head-data="HeadData">
+    </vd-data-table>
+  </div>
 </template>
 
 <script lang="ts">
@@ -26,15 +26,17 @@ export default class VdDataTableBasic extends Vue {
     return Object.keys(this.scoreData[0]).map(k => {
       return {
         // 表头显示的值
-        text: k.toUpperCase(),
+        content: k.toUpperCase(),
         // 对应的字段名
-        value: k,
+        key: k,
         /**
+         * 格式化表格数据
          * @augments cell 单元格数据
          */
         formatter(cell: any) {
           return cell;
         },
+        sortable: false,
       };
     });
   }
@@ -54,7 +56,6 @@ export default class VdDataTableBasic extends Vue {
         Chemistry: randomScore(),
       };
     });
-    console.log(tableData)
     return tableData;
   }
 }
