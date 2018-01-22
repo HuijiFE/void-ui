@@ -80,8 +80,8 @@
     transition-timing-function: $transition-timing-function-base;
   }
   //score-selector
-  display: inline-flex;
-  align-items: center;
+  @include flex-inline(row, flex-start, baseline);
+
   @each $theme in $ss-themes {
     &.theme-#{$theme} {
       @each $size, $width in $score-selector-widths {
@@ -99,10 +99,10 @@
               &.grade-#{$grade} {
                 background-color: $color;
                 border: map-get($map:$score-border-size, $key:$size) solid $color;
-                @include gen-transition-base((background-color,color));
+                @include gen-transition-base((color,background-color,border-color));
               }
               &.unselected {
-                background-color: map-get($map:$theme-background-colors, $key:$theme);
+                background-color: transparent;
               }
             }
           }
