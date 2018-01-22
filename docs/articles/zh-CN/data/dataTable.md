@@ -6,7 +6,7 @@
 
 ### 基本用法
 
-<example-board :component="TableBasic" :source="TableBasicSource"></example-board>
+<!-- <example-board :component="TableBasic" :source="TableBasicSource"></example-board> -->
 
 ### 自定义指定列内容
 

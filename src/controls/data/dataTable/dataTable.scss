@@ -36,8 +36,6 @@ table.vd-data-table {
   }
   /* ---- init table style ---- */
   border-collapse: collapse;
-  // border: 1px solid black;
-  // border-spacing: 1;
   // table-layout: fixed;
   width: 100%; // 待定
 
@@ -58,7 +56,6 @@ table.vd-data-table {
     }
 
     .head-item {
-      padding: 0 0.12rem;
       align-items: center;
       cursor: pointer;
 
@@ -91,16 +88,20 @@ table.vd-data-table {
 
     tr.body-tr {
       height: 0.4rem;
+
+      &.img-no-padding-left {
+        td:first-child {
+          padding-left: 0;
+        }
+      }
     }
 
     .body-index {
       text-align: center;
-      padding: 0 0.12rem;
     }
 
     td.td-item {
       height: 0.4rem;
-      padding-right: 0.12rem;
       @each $align in $table-aligns {
         &.align-#{$align} {
           text-align: $align;
@@ -111,5 +112,9 @@ table.vd-data-table {
     .item-content {
       // text-overflow: ellipsis;
     }
+  }
+
+  .cell {
+    padding: 0 0.12rem;
   }
 }

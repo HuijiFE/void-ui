@@ -1,51 +1,56 @@
 <template>
   <table class="vd-data-table"
-       :class="classes">
+         :class="classes">
     <!-- 表格头部 -->
     <thead class="table-head">
       <tr>
-      <th class="head-item head-index" v-if="showIndex">#</th>
-      <th class="head-item"
-          :class="handleAlign(hItem.align)"
-           v-for="hItem in cloneHeadData"
-           :key="hItem.key"
-           @click="headItemClick(hItem)">
-        <slot :name="`head-row-${hItem.key}`"
-              :headItem="hItem">
-          <div class="item-text">{{hItem.content}}</div>
-        </slot>
+        <th class="head-item cell head-index"
+            v-if="showIndex">#</th>
+        <th class="head-item cell"
+            :class="handleClass(hItem.align)"
+            v-for="hItem in cloneHeadData"
+            :key="hItem.key"
+            @click="headItemClick(hItem)">
+          <slot :name="`head-row-${hItem.key}`"
+                :headItem="hItem">
+            <div class="item-text">{{hItem.content}}</div>
+          </slot>
 
-        <div v-if="defaultSortable || hItem.sortable"
-             class="arrow-control">
-          <i class="fa fa-sort-asc"
-             :class="{active: hItem.vd_selfSortStatus === 1}"
-             aria-hidden="true"></i>
-          <i class="fa fa-sort-desc"
-             :class="{active: hItem.vd_selfSortStatus === 2}"
-             aria-hidden="true"></i>
-        </div>
-      </th>
+          <div v-if="shouldSort(hItem)"
+               class="arrow-control">
+            <i class="fa fa-sort-asc"
+               :class="{active: hItem.vd_selfSortStatus === 1}"
+               aria-hidden="true"></i>
+            <i class="fa fa-sort-desc"
+               :class="{active: hItem.vd_selfSortStatus === 2}"
+               aria-hidden="true"></i>
+          </div>
+        </th>
       </tr>
     </thead>
     <!-- 表格主体 -->
     <tbody class="table-body"
-         :class="{striped: striped}">
+           :class="{striped: striped}">
       <tr class="body-tr"
-           v-for="(row, index) in cloneBodyData"
-           :key="row.vd_index">
-        <td class="td-item body-index" v-if="showIndex">{{index}}</td>
-        <td class="td-item"
-             :class="handleAlign(hItem.align)"
-             v-for="hItem in headData"
-             :key="hItem.key">
+          :class="imgNoPaddingLeft && !showIndex ? 'img-no-padding-left' : ''"
+          v-for="(row, index) in cloneBodyData"
+          :key="row.vd_index">
+        <td class="td-item cell body-index"
+            v-if="showIndex">{{index}}</td>
+        <td class="td-item cell"
+            :class="handleClass(hItem.align)"
+            v-for="hItem in headData"
+            :key="hItem.key">
           <slot :name="useCellSlot ? `body-${row.vd_index}-${hItem.key}` : `body-row-${hItem.key}`"
                 :bodyItem="row"
                 :headItem="hItem"
                 :bodyCell="row[hItem.key]">
-            <div v-if="hItem.formatter && typeof hItem.formatter === 'function'" class="item-content">
+            <div v-if="hItem.formatter && typeof hItem.formatter === 'function'"
+                 class="item-content cell">
               {{hItem.formatter(row[hItem.key], row, hItem)}}
             </div>
-            <div v-else class="item-content">{{row[hItem.key]}}</div>
+            <div v-else
+                 class="item-content cell">{{row[hItem.key]}}</div>
           </slot>
         </td>
       </tr>
@@ -102,6 +107,9 @@ export default class VdDataTable extends VdStylableControl {
   @Prop({ default: 'right', type: String })
   defaultAlign: TextAlign;
 
+  @Prop({ default: true, type: Boolean })
+  imgNoPaddingLeft: boolean;
+
   // 不改动原始值
   cloneBodyData = this.makeBodyData(this.bodyData);
   cloneHeadData = this.makeHeadData(this.headData);
@@ -115,7 +123,6 @@ export default class VdDataTable extends VdStylableControl {
   makeHeadData(data: object[]) {
     return data.map((el: any) => {
       el.vd_selfSortStatus = 0;
-      el.sortable = el.sortable === false ? false : true;
       return el;
     });
   }
@@ -161,18 +168,25 @@ export default class VdDataTable extends VdStylableControl {
   }
 
   headItemClick(item: any): void {
-    if (!this.defaultSortable || !item.sortable) return;
+    if (!this.shouldSort(item)) return;
     let status = item.vd_selfSortStatus;
     item.vd_selfSortStatus = status === 2 ? 0 : status + 1;
     this.sortFunctionMap[item.vd_selfSortStatus](item.key);
   }
 
-  handleAlign(align: TextAlign): string {
-    if (align && typeof align === 'string') {
-      return `align-${align}`;
-    } else {
-      return `align-${this.defaultAlign}`;
-    }
+  // 是否应该展示排序
+  shouldSort(item: any): boolean {
+    return this.defaultSortable
+      ? item.sortable === false ? false : true
+      : item.sortable === true ? true : false;
+  }
+
+  handleClass(align: TextAlign): string[] {
+    return [
+      align && typeof align === 'string'
+        ? `align-${align}`
+        : `align-${this.defaultAlign}`,
+    ];
   }
 }
 </script>

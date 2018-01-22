@@ -1,10 +1,12 @@
 <template>
   <vd-data-table :body-data="scoreData"
                  :head-data="HeadData">
-    <div class="self-control" slot="body-row-name" slot-scope="{bodyItem, bodyCell}">
+    <div class="self-control"
+         slot="body-row-name"
+         slot-scope="{bodyItem, bodyCell}">
       <img :src="jihuangImgSrc">
-       <span>{{bodyCell}}</span>
-       </div>
+      <span>{{bodyCell}}</span>
+    </div>
   </vd-data-table>
 </template>
 
@@ -31,7 +33,7 @@ export default class VdTableProps extends Vue {
         content: k.toUpperCase(),
         // 对应的字段名
         key: k,
-        align: (() => {
+        align: (_ => {
           if (k === 'name') {
             return 'left';
           }

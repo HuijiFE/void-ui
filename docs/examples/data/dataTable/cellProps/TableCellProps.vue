@@ -35,7 +35,7 @@ export default class VdTableCellProps extends Vue {
   }
 
   getScoreData() {
-    let names = '赵钱孙李周吴郑王';
+    let names = '赵钱孙李周';
     let randomScore = () => Math.ceil(Math.random() * 100000);
 
     let tableData = names.split('').map(v => {

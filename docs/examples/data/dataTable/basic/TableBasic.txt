@@ -1,7 +1,8 @@
 <template>
   <div>
     <vd-data-table :body-data="scoreData"
-                   :head-data="HeadData">
+                   :head-data="HeadData"
+                   :default-sortable="false">
     </vd-data-table>
   </div>
 </template>
@@ -36,13 +37,17 @@ export default class VdDataTableBasic extends Vue {
         formatter(cell: any) {
           return cell;
         },
-        sortable: false,
+        sortable: (_ => {
+          if (k === 'math') {
+            return true;
+          }
+        })(),
       };
     });
   }
 
   getScoreData() {
-    let names = '红橙黄绿青蓝紫黑白灰';
+    let names = '红橙黄绿青';
     let randomScore = () => Math.ceil(Math.random() * (100 - 60) + 60);
 
     let tableData = names.split('').map(v => {

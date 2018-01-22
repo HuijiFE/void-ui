@@ -37,7 +37,7 @@ export default class VdDataTableAlign extends Vue {
           return cell;
         },
         sortable: false,
-        align: (() => {
+        align: (_ => {
           if (k === 'name') {
             return 'left';
           } else if (k === 'english') {

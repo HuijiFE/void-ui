@@ -1,8 +1,10 @@
 <template>
   <vd-data-table :body-data="scoreData"
                  :head-data="HeadData">
-    <div slot="body-row-zhihu" slot-scope="{bodyItem, bodyCell, headItem}"> {{bodyCell | minute2hour}}</div>
-    <div slot="body-row-wangyi" slot-scope="{bodyItem, bodyCell, headItem}"> {{bodyCell | toCurrency('￥')}}</div>
+    <div slot="body-row-zhihu"
+         slot-scope="{bodyItem, bodyCell, headItem}"> {{bodyCell | minute2hour}}</div>
+    <div slot="body-row-wangyi"
+         slot-scope="{bodyItem, bodyCell, headItem}"> {{bodyCell | toCurrency('￥')}}</div>
   </vd-data-table>
 </template>
 
@@ -39,7 +41,7 @@ export default class VdTableFormatter extends Vue {
   }
 
   getScoreData() {
-    let names = '赵钱孙李周吴郑王';
+    let names = '赵钱孙李';
     let randomScore = () => Math.ceil(Math.random() * 100000);
 
     let tableData = names.split('').map(v => {
