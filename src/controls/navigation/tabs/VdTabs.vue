@@ -47,19 +47,8 @@ export default class VdTabs extends VdStylableControl {
   @Prop({ default: 'silk' })
   skin: ControlSkin;
 
-  @Prop({ default: true })
-  bordered: boolean;
-
-  @Prop({ default: false })
-  raised: boolean;
-
   get classes(): ClassNames {
-    return [
-      `theme-${this.theme || this.$void.theme}`,
-      `skin-${this.skin}`,
-      { bordered: this.bordered },
-      { raised: this.raised },
-    ];
+    return [`theme-${this.theme || this.$void.theme}`, `skin-${this.skin}`];
   }
 
   children: VdTabsItem[] = [];
