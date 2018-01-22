@@ -9,10 +9,10 @@
 
   &_background {
     position: absolute;
-    top: -25%;
-    bottom: -25%;
-    left: -25%;
-    right: -25%;
+    top: $acrylic-background-blur * -1;
+    bottom: $acrylic-background-blur * -1;
+    left: $acrylic-background-blur * -1;
+    right: $acrylic-background-blur * -1;
 
     background: {
       position: center;
