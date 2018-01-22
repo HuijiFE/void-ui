@@ -49,15 +49,14 @@ h6 {
   }
 }
 
-a {
+a,
+a:focus,
+a:visited {
   color: $tone-primary;
   text-decoration: none;
 }
-a:visited,
 a:hover,
-a:active,
-a:focus,
-a:hover {
+a:active {
   color: $tone-primary-lighten;
 }
 

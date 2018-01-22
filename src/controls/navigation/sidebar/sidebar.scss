@@ -70,10 +70,15 @@
 .#{$void}-sidebar-item {
   cursor: pointer;
 
-  color: $nav-foreground-color;
-  background-color: $nav-background-color;
+  &,
+  &:focus,
+  &:visited {
+    color: $nav-foreground-color;
+    background-color: $nav-background-color;
+  }
 
-  &:hover {
+  &:hover,
+  a:active {
     color: $nav-foreground-color-high;
     background-color: $nav-background-color-high;
   }
