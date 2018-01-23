@@ -5,7 +5,7 @@
                  :head-data="HeadData">
     <div class="highlight"
          slot="body-2-zhihu"
-         slot-scope="{bodyItem, bodyCell}">高亮 {{bodyCell}}</div>
+         slot-scope="{rowItem, cellItem, headItem}">高亮 {{cellItem}}</div>
   </vd-data-table>
 </template>
 

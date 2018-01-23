@@ -8,27 +8,22 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { TableRow, TableHeaderItem, TableCell } from 'void-ui';
 
 @Component
 export default class VdDataTableAlign extends Vue {
-  scoreData = this.getScoreData();
+  scoreData: TableRow[] = this.getScoreData();
 
   get HeadData() {
     return Object.keys(this.scoreData[0]).map(k => {
       return {
-        // 表头显示的值
         content: k.toUpperCase(),
-        // 对应的字段名
         key: k,
-        /**
-         * 格式化表格数据
-         * @augments cell 单元格数据
-         */
         formatter(cell: any) {
           return cell;
         },
-        sortable: false,
-        align: (_ => {
+        sortable: (() => (k === 'math' ? true : false))(),
+        align: (() => {
           if (k === 'name') {
             return 'left';
           } else if (k === 'english') {
@@ -36,7 +31,21 @@ export default class VdDataTableAlign extends Vue {
           }
           return 'right';
         })(),
-      };
+        sort: (() => {
+          if (k === 'math') {
+            return [
+              false,
+              function a(a: TableRow, b: TableRow, key: string) {
+                return (a[key] as number) - (b.math as number);
+              },
+              function c(a: TableRow, b: TableRow, key: string) {
+                return (a.math as number) * 2 - (b.math as number);
+              },
+            ];
+          }
+          return;
+        })(),
+      } as TableHeaderItem;
     });
   }
 
@@ -53,7 +62,7 @@ export default class VdDataTableAlign extends Vue {
         physical: randomScore(),
         biological: randomScore(),
         Chemistry: randomScore(),
-      };
+      } as TableRow;
     });
     return tableData;
   }

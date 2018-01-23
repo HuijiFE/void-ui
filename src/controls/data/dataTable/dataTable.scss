@@ -36,7 +36,7 @@ table.vd-data-table {
   }
   /* ---- init table style ---- */
   border-collapse: collapse;
-  // table-layout: fixed;
+  table-layout: fixed;
   width: 100%; // 待定
 
   /* ----- 表格头部 ------ */
@@ -57,7 +57,10 @@ table.vd-data-table {
 
     .head-item {
       align-items: center;
-      cursor: pointer;
+
+      &.cursor {
+        cursor: pointer;
+      }
 
       @each $align in $table-aligns {
         &.align-#{$align} {

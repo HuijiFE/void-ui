@@ -7,11 +7,11 @@
         <th class="head-item cell head-index"
             v-if="showIndex">#</th>
         <th class="head-item cell"
-            :class="handleClass(hItem.align)"
+            :class="handleHeadClass(hItem)"
             v-for="hItem in cloneHeadData"
             :key="hItem.key"
             @click="headItemClick(hItem)">
-          <slot :name="`head-row-${hItem.key}`"
+          <slot :name="`head-column-${hItem.key}`"
                 :headItem="hItem">
             <div class="item-text">{{hItem.content}}</div>
           </slot>
@@ -38,19 +38,19 @@
         <td class="td-item cell body-index"
             v-if="showIndex">{{index}}</td>
         <td class="td-item cell"
-            :class="handleClass(hItem.align)"
+            :class="handleAlignClass(hItem)"
             v-for="hItem in headData"
             :key="hItem.key">
-          <slot :name="useCellSlot ? `body-${row.vd_index}-${hItem.key}` : `body-row-${hItem.key}`"
-                :bodyItem="row"
+          <slot :name="useCellSlot ? `body-${row.vd_index}-${hItem.key}` : `body-column-${hItem.key}`"
+                :rowItem="row"
                 :headItem="hItem"
-                :bodyCell="row[hItem.key]">
+                :cellItem="row[hItem.key]">
             <div v-if="hItem.formatter && typeof hItem.formatter === 'function'"
-                 class="item-content cell">
+                 class="item-content">
               {{hItem.formatter(row[hItem.key], row, hItem)}}
             </div>
             <div v-else
-                 class="item-content cell">{{row[hItem.key]}}</div>
+                 class="item-content">{{row[hItem.key]}}</div>
           </slot>
         </td>
       </tr>
@@ -70,27 +70,22 @@ import {
   Watch,
 } from 'vue-property-decorator';
 import { VdStylableControl } from 'src/controls/base/VdControl';
-
-// interface TableRow {
-//   [column: string]: string | number | boolean;
-// }
-
-// let aRow: TableRow = {
-//   zhihu: 1,
-//   douban: 2,
-//   jianshu: false,
-// };
-
-export type TextAlign = 'left' | 'center' | 'rigght';
+import {
+  TableCell,
+  TextAlign,
+  TableRow,
+  TableHeaderItem,
+  SortEventName,
+} from './VdDataTable';
 
 @Component
 export default class VdDataTable extends VdStylableControl {
   // todo 检查headData的值和bodyData的值是否完全匹配
   @Prop({ default: () => [], type: Array })
-  headData: object[];
+  headData: TableHeaderItem[];
 
   @Prop({ default: () => [], type: Array })
-  bodyData: object[];
+  bodyData: TableRow[];
 
   @Prop({ default: true, type: Boolean })
   striped: boolean;
@@ -107,86 +102,125 @@ export default class VdDataTable extends VdStylableControl {
   @Prop({ default: 'right', type: String })
   defaultAlign: TextAlign;
 
-  @Prop({ default: true, type: Boolean })
+  @Prop({ default: false, type: Boolean })
   imgNoPaddingLeft: boolean;
 
   // 不改动原始值
-  cloneBodyData = this.makeBodyData(this.bodyData);
-  cloneHeadData = this.makeHeadData(this.headData);
+  cloneBodyData = this.makeBodyData<TableRow>(this.bodyData);
+  cloneHeadData = this.makeHeadData<TableHeaderItem>(this.headData);
+  // todo 把SortName 和 sortFunctionMap 关联起来，目前做的还不行
   sortFunctionMap = [this.getOriginSortData, this.getAscSortData, this.getDescSortData];
+  mergeSortMap: Function[] = [];
+  currentSortItem = {};
 
   get classes(): ClassNames {
     return [`theme-${this.theme || this.$void.theme}`];
   }
 
   // 制作头部数据
-  makeHeadData(data: object[]) {
-    return data.map((el: any) => {
+  makeHeadData<T extends TableHeaderItem>(data: T[]): T[] {
+    return data.map((el: T) => {
       el.vd_selfSortStatus = 0;
       return el;
     });
   }
 
   // 制作主体数据
-  makeBodyData(data: object[]) {
-    return data.map((el: any, index: number) => {
-      // 禁止枚举
-      return Object.defineProperty(el, 'vd_index', {
-        value: index,
-      });
+  makeBodyData<T extends TableRow>(data: T[]): T[] {
+    return data.map((el: T, index: number) => {
+      el.vd_index = index;
+      return el;
     });
   }
 
-  // 排序
-  sort(a: any, b: any, key: string): void | number {
-    let aValue = a[key];
-    let bValue = b[key];
-    if (isNaN(Number(aValue)) || isNaN(Number(bValue))) {
+  // 默认排序
+  sort(a: TableRow, b: TableRow, key: string): number {
+    if (isNaN(Number(a[key])) || isNaN(Number(b[key]))) {
+      let aValue = a[key] as string;
+      let bValue = b[key] as string;
       return (
         aValue.localeCompare(bValue, 'zh-Hans-CN', { sensitivity: 'accent' }) ||
-        a.vd_index - b.vd_index
+        (a.vd_index as number) - (b.vd_index as number)
       );
     } else {
-      return aValue - bValue || a.vd_index - b.vd_index;
+      return (
+        (a[key] as number) - (b[key] as number) ||
+        (a.vd_index as number) - (b.vd_index as number)
+      );
     }
   }
 
   // 原始顺序
-  getOriginSortData(): void {
-    this.cloneHeadData.forEach((el: any) => (el.vd_selfSortStatus = 0));
-    this.cloneBodyData.sort((a: any, b: any) => a.vd_index - b.vd_index);
-  }
-  // 升序
-  getAscSortData(key: any): void {
-    let vd_this = this;
-    this.cloneBodyData.sort((a: any, b: any) => this.sort.call(vd_this, a, b, key));
-  }
-  // 降序
-  getDescSortData(key: any): void {
-    let vd_this = this;
-    this.cloneBodyData.sort((a: any, b: any) => this.sort.call(vd_this, b, a, key));
+  getOriginSortData<T extends TableRow>(a: T, b: T): number {
+    return (a.vd_index as number) - (b.vd_index as number);
   }
 
-  headItemClick(item: any): void {
+  // 升序
+  getAscSortData<T extends TableRow>(a: T, b: T, key: string): number {
+    return this.sort(a, b, key);
+  }
+
+  // 降序
+  getDescSortData<T extends TableRow>(a: T, b: T, key: string): number {
+    return this.sort(b, a, key);
+  }
+
+  headItemClick(item: TableHeaderItem): void {
     if (!this.shouldSort(item)) return;
+    this.currentSortItem = item;
+
     let status = item.vd_selfSortStatus;
     item.vd_selfSortStatus = status === 2 ? 0 : status + 1;
-    this.sortFunctionMap[item.vd_selfSortStatus](item.key);
+
+    if (item.sort && Array.isArray(item.sort)) {
+      let userSortMap = item.sort;
+      let defaultSortMap = this.sortFunctionMap;
+
+      this.mergeSortMap = this.mergeSortFunc<Function>(defaultSortMap, userSortMap);
+    } else {
+      this.mergeSortMap = this.sortFunctionMap;
+    }
+
+    this.doSort(item, item.key, item.vd_selfSortStatus);
+    this.$emit('table-sort', item.key, SortEventName[item.vd_selfSortStatus]);
+  }
+
+  doSort(item: TableRow, key: string, status: number) {
+    let vd_this = this;
+    this.cloneBodyData.sort((a: any, b: any) => {
+      return this.mergeSortMap[status].call(vd_this, a, b, key);
+    });
   }
 
   // 是否应该展示排序
-  shouldSort(item: any): boolean {
+  shouldSort(item: TableHeaderItem): boolean {
     return this.defaultSortable
       ? item.sortable === false ? false : true
       : item.sortable === true ? true : false;
   }
 
-  handleClass(align: TextAlign): string[] {
-    return [
-      align && typeof align === 'string'
-        ? `align-${align}`
-        : `align-${this.defaultAlign}`,
-    ];
+  handleHeadClass(Item: TableHeaderItem) {
+    return [this.handleAlignClass(Item), { cursor: this.shouldSort(Item) }];
+  }
+
+  handleAlignClass(hItem: TableHeaderItem): string {
+    let align = hItem.align;
+    return align && typeof align === 'string'
+      ? `align-${align}`
+      : `align-${this.defaultAlign}`;
+  }
+
+  mergeSortFunc<T>(defaultMap: T[], userMap: T[]): T[] {
+    return defaultMap.map((func, index) => {
+      return typeof userMap[index] === 'function' ? userMap[index] : func;
+    });
+  }
+
+  @Watch('currentSortItem')
+  handleSortItemChange(newVal: TableHeaderItem, oldVal: TableHeaderItem) {
+    if (newVal.key !== oldVal.key) {
+      oldVal.vd_selfSortStatus = 0;
+    }
   }
 }
 </script>
