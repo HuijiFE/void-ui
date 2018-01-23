@@ -30,6 +30,8 @@ export default class VdLoading extends VdStylableControl {
 
   @Prop() covered: boolean | '';
 
+  @Prop() gray: boolean | '';
+
   get isMultiColor(): boolean {
     return this.multiColor || this.multiColor === '';
   }
@@ -45,6 +47,7 @@ export default class VdLoading extends VdStylableControl {
       {
         'multi-color': this.isMultiColor,
         covered: this.isCovered,
+        gray: this.gray,
       },
     ];
   }
