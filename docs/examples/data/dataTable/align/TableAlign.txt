@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <vd-data-table :body-data="scoreData"
-                   :head-data="HeadData">
-    </vd-data-table>
-  </div>
+  <vd-data-table :body-data="scoreData"
+                 :head-data="HeadData">
+  </vd-data-table>
 </template>
 
 <script lang="ts">
@@ -19,18 +17,20 @@ export default class VdDataTableAlign extends Vue {
       return {
         content: k.toUpperCase(),
         key: k,
-        formatter(cell: any) {
+        formatter(cell: TableCell, row: TableRow, head: TableHeaderItem) {
           return cell;
         },
-        sortable: (() => (k === 'math' ? true : false))(),
         align: (() => {
-          if (k === 'name') {
-            return 'left';
-          } else if (k === 'english') {
-            return 'center';
+          switch (k) {
+            case 'name':
+              return 'left';
+            case 'english':
+              return 'right';
+            default:
+              return 'center';
           }
-          return 'right';
         })(),
+        sortable: (() => (k === 'math' ? true : false))(),
         sort: (() => {
           if (k === 'math') {
             return [
@@ -43,7 +43,6 @@ export default class VdDataTableAlign extends Vue {
               },
             ];
           }
-          return;
         })(),
       } as TableHeaderItem;
     });

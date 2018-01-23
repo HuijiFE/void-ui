@@ -32,12 +32,15 @@ eg: `body-row-${该单元格对应列的表头的key}`
 
 <example-board :component="TableFormatter" :source="TableFormatterSource"></example-board>
 
-### 自定义对齐方式
+### 自定义对齐方式与排序函数
 
 默认对齐方式为向右对齐，索引对齐方式为居中对齐， 可以向 headdata 里面传递 align 属性来指定当前列的对齐方式
 
-也可以传递`default-align`prop 来修改默认对齐方式
+也可以传递`default-align`prop 来修改所有列默认对齐方式
 
+在headData里设置`sort`属性即刻自定义排序函数
+
+该属性值为一个数组,
 <example-board :component="TableAlign" :source="TableAlignSource"></example-board>
 
 ## 所有属性

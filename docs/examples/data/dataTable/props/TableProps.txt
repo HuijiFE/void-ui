@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { TableRow, TableHeaderItem, TableCell, VdAlert } from 'void-ui';
+import { TableRow, TableHeaderItem, TableCell, VdAlert, Params } from 'void-ui';
 
 let imgs: string[] = [
   'http://cdn.steamstatic.com.8686c.com/steam/apps/578080/capsule_sm_120.jpg?t=1516298199',
@@ -29,24 +29,20 @@ let imgs: string[] = [
 export default class VdTableProps extends Vue {
   scoreData: TableRow[] = this.getScoreData();
 
-  get HeadData() {
-    if (this.scoreData && this.scoreData.length) {
-      return Object.keys(this.scoreData[0])
-        .filter(el => el !== 'imgSrc')
-        .map(k => {
-          return {
-            // 表头显示的值
-            content: k.toUpperCase(),
-            // 对应的字段名
-            key: k,
-            align: (() => {
-              if (k === 'name') {
-                return 'left';
-              }
-            })(),
-          } as TableHeaderItem;
-        });
-    }
+  get HeadData(): TableHeaderItem[] {
+    return Object.keys(this.scoreData[0])
+      .filter(el => el !== 'imgSrc')
+      .map(k => {
+        return {
+          content: k.toUpperCase(),
+          key: k,
+          align: (() => {
+            if (k === 'name') {
+              return 'left';
+            }
+          })(),
+        } as TableHeaderItem;
+      });
   }
 
   getScoreData() {
@@ -65,13 +61,13 @@ export default class VdTableProps extends Vue {
     return tableData as TableRow[];
   }
 
-  tableSort() {
+  tableSort(key: string, sortType: string) {
     let alert = new VdAlert();
-    console.log('aa');
-    // alert.show({
-    //   preset: 'warning',
-    //   label: '排序事件！',
-    // });
+    alert.show({
+      preset: 'warning',
+      label: '排序事件触发！',
+      description: `排序列：${key}，排序类型：${sortType}`,
+    } as Params);
   }
 }
 </script>

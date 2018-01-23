@@ -186,10 +186,7 @@ export default class VdDataTable extends VdStylableControl {
   }
 
   doSort(item: TableRow, key: string, status: number) {
-    let vd_this = this;
-    this.cloneBodyData.sort((a: any, b: any) => {
-      return this.mergeSortMap[status].call(vd_this, a, b, key);
-    });
+    this.cloneBodyData.sort((a: any, b: any) => this.mergeSortMap[status](a, b, key));
   }
 
   // 是否应该展示排序

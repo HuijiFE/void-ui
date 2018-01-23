@@ -1,39 +1,35 @@
 <template>
-  <div>
-    <vd-data-table :body-data="scoreData"
-                   :head-data="HeadData"
-                   :default-sortable="false">
-    </vd-data-table>
-  </div>
+  <vd-data-table :body-data="scoreData"
+                 :head-data="HeadData"
+                 :default-sortable="false"
+                 default-align="center">
+  </vd-data-table>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { TableRow, TableHeaderItem, TableCell } from 'void-ui';
 
 @Component
 export default class VdDataTableBasic extends Vue {
-  scoreData = this.getScoreData();
+  scoreData: TableRow[] = this.getScoreData();
 
-  get HeadData() {
+  get HeadData(): TableRow[] {
     return Object.keys(this.scoreData[0]).map(k => {
       return {
-        // 表头显示的值
         content: k.toUpperCase(),
-        // 对应的字段名
         key: k,
-        /**
-         * 格式化表格数据
-         * @augments cell 单元格数据
-         */
-        formatter(cell: any) {
-          return cell;
-        },
-        sortable: (_ => {
+        align: (() => {
+          if (k === 'chinese') {
+            return 'left';
+          }
+        })(),
+        sortable: (() => {
           if (k === 'math') {
             return true;
           }
         })(),
-      };
+      } as TableHeaderItem;
     });
   }
 
@@ -50,7 +46,7 @@ export default class VdDataTableBasic extends Vue {
         physical: randomScore(),
         biological: randomScore(),
         Chemistry: randomScore(),
-      };
+      } as TableRow;
     });
     return tableData;
   }

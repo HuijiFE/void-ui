@@ -11,17 +11,16 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { TableRow, TableHeaderItem, TableCell } from 'void-ui';
 export default class VdTableCellProps extends Vue {
-  scoreData = this.getScoreData();
+  scoreData: TableRow[] = this.getScoreData();
 
-  get HeadData() {
+  get HeadData(): TableHeaderItem[] {
     return Object.keys(this.scoreData[0]).map(k => {
       return {
-        // 表头显示的值
         content: k.toUpperCase(),
-        // 对应的字段名
         key: k,
-      };
+      } as TableHeaderItem;
     });
   }
 
@@ -35,7 +34,7 @@ export default class VdTableCellProps extends Vue {
         zhihu: randomScore(),
         douban: randomScore(),
         wangyi: randomScore(),
-      };
+      } as TableRow;
     });
     return tableData;
   }

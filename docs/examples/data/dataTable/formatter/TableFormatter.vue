@@ -1,39 +1,36 @@
 <template>
   <vd-data-table :body-data="scoreData"
                  :head-data="HeadData">
-    <div slot="body-row-zhihu"
-         slot-scope="{bodyItem, bodyCell, headItem}"> {{bodyCell | minute2hour}}</div>
-    <div slot="body-row-wangyi"
-         slot-scope="{bodyItem, bodyCell, headItem}"> {{bodyCell | toCurrency('￥')}}</div>
+    <div slot="body-column-zhihu"
+         slot-scope="{rowItem, cellItem, headItem}"> {{cellItem | minute2hour}}</div>
+    <div slot="body-column-wangyi"
+         slot-scope="{rowItem, cellItem, headItem}"> {{cellItem | toCurrency('￥')}}</div>
   </vd-data-table>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { TableRow, TableHeaderItem, TableCell } from 'void-ui';
 export default class VdTableFormatter extends Vue {
-  scoreData = this.getScoreData();
+  scoreData: TableRow[] = this.getScoreData();
 
-  get HeadData() {
+  get HeadData(): TableHeaderItem[] {
     return Object.keys(this.scoreData[0]).map(k => {
       return {
-        // 表头显示的值
         content: k.toUpperCase(),
-        // 对应的字段名
         key: k,
-        formatter(cell: any, bodyItem: any, headItem: any) {
+        formatter: (() => {
           if (k === 'douban') {
-            return `${cell}€`;
-          } else {
-            return cell;
+            return (cell: TableCell, row: TableRow, head: TableHeaderItem) => `${cell}€`;
           }
-        },
-      };
+        })(),
+      } as TableHeaderItem;
     });
   }
 
   getScoreData() {
     let names = '赵钱孙李';
-    let randomScore = () => Math.ceil(Math.random() * 100000);
+    let randomScore = () => Math.ceil(Math.random() * 1000000);
 
     let tableData = names.split('').map(v => {
       return {
@@ -41,7 +38,7 @@ export default class VdTableFormatter extends Vue {
         zhihu: randomScore(),
         douban: randomScore(),
         wangyi: randomScore(),
-      };
+      } as TableRow;
     });
     return tableData;
   }
