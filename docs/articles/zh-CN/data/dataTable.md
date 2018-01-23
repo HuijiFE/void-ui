@@ -12,7 +12,7 @@
 
 使用具名 slot 可以自定义某一列的内容， `slot`的`name`值与该列表头的`head 值相同`
 
-eg: `body-row-${该单元格对应列的表头的key}`
+eg: `body-row-${headkey}`
 
 <example-board :component="TableProps" :source="TablePropsSource"></example-board>
 
@@ -38,9 +38,17 @@ eg: `body-row-${该单元格对应列的表头的key}`
 
 也可以传递`default-align`prop 来修改所有列默认对齐方式
 
-在headData里设置`sort`属性即刻自定义排序函数
+在headData里设置`sort`属性即可自定义排序函数
 
-该属性值为一个数组,
+该属性值为一个函数数组, 当排序事件发生时，会按照当前事件执行对应的自定义排序方法,
+
+如果数组中某项缺省 会执行内置方法
+```javascript
+[事件`asc`的方法 || 内置方法，
+ 事件`desc`的方法 || 内置方法,
+ 事件`normal`的方法 || 内置方法] 
+```
+
 <example-board :component="TableAlign" :source="TableAlignSource"></example-board>
 
 ## 所有属性
@@ -71,16 +79,25 @@ eg: `body-row-${该单元格对应列的表头的key}`
 
 > `*`表示必填属性。
 
-| Property      | Description            | Type              | Available Value     | parameter                                                             |
+| Property      | Description            | Type              | Available Value     | Parameter                                                             |
 | :------------ | :--------------------- | :---------------- | :------------------ | :-------------------------------------------------------------------- |
 | **content\*** | 当前表头显示内容       | `string`          | -                   |                                                                       |
 | **key\***     | 对应 bodyData 中的键值 | `string`          | -                   |                                                                       |
 | formatter     | 自定义格式化该列内容   | `Function`        | -                   | cell(当前单元格原始值)，当前行的所有值，<br>当前 headData 的值        |
-| sort          | 自定义排序方式         | `Array<Function>` | -                   | 第一第二个参数为 sort 方法的两个默认参数 a，b，key(当前排序的 key 值) |
+| sort          | 自定义排序方式         | `Array<Function>` | -                   | 前两个参数为 sort 方法的两个默认参数 a、b，<br> 第三个参数key(当前排序的 key 值) |
 | sortable      | 自定义该列是否可排序   | `Boolean`         | -                   | -                                                                     |
 | align         | 自定义该列对齐方式     | `String`          | right, left, center | -                                                                     |
 
-> sort 方法接受一个数组， 数组成员是自定义排序函数， 执行顺序按照默认 asc、desc、normal 执行当使用 slot 时，也可以使用`void-ui`内置的一些过滤器过滤
+> **sort 方法接受一个函数数组， 数组成员是自定义排序方法， 执行顺序按照 asc、desc、normal 执行**
+
+> 当使用 slot 时，也可以使用`void-ui`内置的一些过滤器过滤
+
+
+### table 事件
+
+| Name       | Description         | Parameter                                       |
+| :--------- | :------------------ | :----------------------------------------------- |
+| table-sort | 排序事件发生时触发  | key(排序列对应表头的key值)， sortType（排序类型  |
 
 <script>
 import TableBasic from 'docs/examples/data/dataTable/basic/TableBasic';
