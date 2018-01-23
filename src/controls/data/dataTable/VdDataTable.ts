@@ -1,5 +1,5 @@
 export type TableCell = string | number;
-export type TextAlign = 'left' | 'center' | 'rigght';
+export type TextAlign = 'left' | 'center' | 'right';
 export type sortFunction = (a: TableCell, b: TableCell) => number;
 export interface TableRow {
   [key: string]: TableCell;
