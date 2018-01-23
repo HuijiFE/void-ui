@@ -181,11 +181,11 @@ export default class VdDataTable extends VdStylableControl {
       this.mergeSortMap = this.sortFunctionMap;
     }
 
-    this.doSort(item, item.key, item.vd_selfSortStatus);
+    this.doSort(item.key, item.vd_selfSortStatus);
     this.$emit('table-sort', item.key, SortEventName[item.vd_selfSortStatus]);
   }
 
-  doSort(item: TableRow, key: string, status: number) {
+  doSort(key: string, status: number) {
     this.cloneBodyData.sort((a: any, b: any) => this.mergeSortMap[status](a, b, key));
   }
 
@@ -208,9 +208,9 @@ export default class VdDataTable extends VdStylableControl {
   }
 
   mergeSortFunc<T>(defaultMap: T[], userMap: T[]): T[] {
-    return defaultMap.map((func, index) => {
-      return typeof userMap[index] === 'function' ? userMap[index] : func;
-    });
+    return defaultMap.map(
+      (func, index) => (typeof userMap[index] === 'function' ? userMap[index] : func),
+    );
   }
 
   @Watch('currentSortItem')

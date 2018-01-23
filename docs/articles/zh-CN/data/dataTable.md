@@ -6,7 +6,7 @@
 
 ### 基本用法
 
-<example-board :component="TableBasic" :source="TableBasicSource"></example-board>
+<!-- <example-board :component="TableBasic" :source="TableBasicSource"></example-board> -->
 
 ### 自定义指定列内容
 
@@ -14,7 +14,7 @@
 
 eg: `body-row-${headkey}`
 
-<example-board :component="TableProps" :source="TablePropsSource"></example-board>
+<!-- <example-board :component="TableProps" :source="TablePropsSource"></example-board> -->
 
 ### 自定义单元格内容
 
@@ -22,7 +22,7 @@ eg: `body-row-${headkey}`
 
 `slot` 的 `name` 值为 `body-${rowIndex}-${headKey}`
 
-<example-board :component="TableCellProps" :source="TableCellPropsSource"></example-board>
+<!-- <example-board :component="TableCellProps" :source="TableCellPropsSource"></example-board> -->
 
 ### 设置格式化后的内容
 
@@ -30,7 +30,7 @@ eg: `body-row-${headkey}`
 
 也可以使用`slot`配合`void-ui`的内置的 filter 来格式化输出内容
 
-<example-board :component="TableFormatter" :source="TableFormatterSource"></example-board>
+<!-- <example-board :component="TableFormatter" :source="TableFormatterSource"></example-board> -->
 
 ### 自定义对齐方式与排序函数
 
@@ -44,9 +44,9 @@ eg: `body-row-${headkey}`
 
 如果数组中某项缺省 会执行内置方法
 ```javascript
-[事件`asc`的方法 || 内置方法，
- 事件`desc`的方法 || 内置方法,
- 事件`normal`的方法 || 内置方法] 
+[事件`normal`的方法 || 内置方法，
+ 事件`asc`的方法 || 内置方法,
+ 事件`desc`的方法 || 内置方法] 
 ```
 
 <example-board :component="TableAlign" :source="TableAlignSource"></example-board>
@@ -100,14 +100,14 @@ eg: `body-row-${headkey}`
 | table-sort | 排序事件发生时触发  | key(排序列对应表头的key值)， sortType（排序类型  |
 
 <script>
-import TableBasic from 'docs/examples/data/dataTable/basic/TableBasic';
-import TableBasicSource from 'docs/examples/data/dataTable/basic/TableBasic.txt';
-import TableProps from 'docs/examples/data/dataTable/props/TableProps';
-import TablePropsSource from 'docs/examples/data/dataTable/props/TableProps.txt';
-import TableCellProps from 'docs/examples/data/dataTable/cellProps/TableCellProps';
-import TableCellPropsSource from 'docs/examples/data/dataTable/cellProps/TableCellProps.txt';
-import TableFormatter from 'docs/examples/data/dataTable/formatter/TableFormatter';
-import TableFormatterSource from 'docs/examples/data/dataTable/formatter/TableFormatter.txt';
+// import TableBasic from 'docs/examples/data/dataTable/basic/TableBasic';
+// import TableBasicSource from 'docs/examples/data/dataTable/basic/TableBasic.txt';
+// import TableProps from 'docs/examples/data/dataTable/props/TableProps';
+// import TablePropsSource from 'docs/examples/data/dataTable/props/TableProps.txt';
+// import TableCellProps from 'docs/examples/data/dataTable/cellProps/TableCellProps';
+// import TableCellPropsSource from 'docs/examples/data/dataTable/cellProps/TableCellProps.txt';
+// import TableFormatter from 'docs/examples/data/dataTable/formatter/TableFormatter';
+// import TableFormatterSource from 'docs/examples/data/dataTable/formatter/TableFormatter.txt';
 import TableAlign from 'docs/examples/data/dataTable/align/TableAlign';
 import TableAlignSource from 'docs/examples/data/dataTable/align/TableAlign.txt';
 
@@ -115,14 +115,14 @@ import TableAlignSource from 'docs/examples/data/dataTable/align/TableAlign.txt'
 export default {
   data() {
     return {
-      TableBasic,
-      TableBasicSource,
-      TableProps,
-      TablePropsSource,
-      TableCellProps,
-      TableCellPropsSource,
-      TableFormatter,
-      TableFormatterSource,
+      // TableBasic,
+      // TableBasicSource,
+      // TableProps,
+      // TablePropsSource,
+      // TableCellProps,
+      // TableCellPropsSource,
+      // TableFormatter,
+      // TableFormatterSource,
       TableAlign,
       TableAlignSource
     }
