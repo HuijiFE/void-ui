@@ -6,7 +6,7 @@
 
 ### 基本用法
 
-<!-- <example-board :component="TableBasic" :source="TableBasicSource"></example-board> -->
+<example-board :component="TableBasic" :source="TableBasicSource"></example-board>
 
 ### 自定义指定列内容
 
@@ -20,7 +20,7 @@ eg: `body-row-${该单元格对应列的表头的key}`
 
 添加 `use-cell-slot` 属性位`true` 可自定义某一单元格的样式， 使用具名 slot
 
-`slot` 的 `name` 值为 `body-${该单元格的行}-${该单元格对应列的表头的key}`
+`slot` 的 `name` 值为 `body-${该单元格的行的初始索引}-${该单元格对应列的表头的key}`
 
 <example-board :component="TableCellProps" :source="TableCellPropsSource"></example-board>
 
@@ -39,6 +39,42 @@ eg: `body-row-${该单元格对应列的表头的key}`
 也可以传递`default-align`prop 来修改默认对齐方式
 
 <example-board :component="TableAlign" :source="TableAlignSource"></example-board>
+
+## 所有属性
+
+> `*`表示默认值。
+
+| Property            | Description                                                  | Type      | Available Value           |
+| :------------------ | :----------------------------------------------------------- | :-------- | :------------------------ |
+| head-data           | 表头数据                                                     | `Array`   | []                        |
+| body-data           | 表格主体数据                                                 | `Array`   | []                        |
+| striped             | 是否展示相间条纹                                             | `Boolean` | **true\***, false         |
+| use-cell-slot       | 是否使用单元格 slot                                          | `Boolean` | **false\***, true         |
+| default-sortable    | 默认每列是否可排序                                           | `Boolean` | **true\***, false         |
+| default-align       | 默认每列对齐方式                                             | `String`  | **right\***, center, left |
+| show-index          | 是否展示索引                                                 | `Boolean` | **false\***, true         |
+| img-no-padding-left | 当第一列需要展示图片时,<br>是否去掉 padding-left（项目需要） | `Boolean` | **false\***, true         |
+
+> 排序时会尝试转换为数字进行排序， 如果不能转换（例如汉字）则按照汉字拼音的吮吸进行排序
+
+### slot 插槽
+
+| Name                                                             | Description                                                | Type                   | parameter                                                                              |
+| :--------------------------------------------------------------- | :--------------------------------------------------------- | :--------------------- | :------------------------------------------------------------------------------------- |
+| body-row-${head-data 中的 key 值}                                | 自定义该列内容                                             | scope-slot、named-slot | bodyItem(该行的数据), bodyCell(当前单元格的数据)，<br>headItem(当前单元格对应表头数据) |
+| body-${该单元格的行的初始索引}<br>-${该单元格对应列的表头的 key} | 自定义该单元格内容，<br>需设置 `use-cell-slot`属性为`true` | scope-slot、named-slot | bodyItem(该行的数据), bodyCell(当前单元格的数据)，<br>headItem(当前单元格对应表头数据) |
+
+### headData 可使用属性
+
+| Property  | Description                  | Type       | Available Value     | parameter                                                      |
+| :-------- | :--------------------------- | :--------- | :------------------ | :------------------------------------------------------------- |
+| content   | (必填)当前表头显示内容       | `string`   | -                   |                                                                |
+| key       | (必填)对应 bodyData 中的键值 | `string`   | -                   |                                                                |
+| formatter | 自定义格式化该列内容         | `Function` | -                   | cell(当前单元格原始值)，当前行的所有值，<br>当前 headData 的值 |
+| sortable  | 自定义该列是否可排序         | `Boolean`  | -                   | -                                                              |
+| align     | 自定义该列对齐方式           | `String`   | right, left, center | -                                                              |
+
+> 当使用 slot 时，也可以使用`void-ui`内置的一些过滤器过滤
 
 <script>
 import TableBasic from 'docs/examples/data/dataTable/basic/TableBasic';

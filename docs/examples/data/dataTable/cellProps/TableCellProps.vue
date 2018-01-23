@@ -10,16 +10,7 @@
 </template>
 
 <script lang="ts">
-import {
-  Component,
-  Emit,
-  Inject,
-  Model,
-  Prop,
-  Provide,
-  Vue,
-  Watch,
-} from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 export default class VdTableCellProps extends Vue {
   scoreData = this.getScoreData();
 

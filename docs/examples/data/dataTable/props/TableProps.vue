@@ -4,27 +4,18 @@
     <div class="self-control"
          slot="body-row-name"
          slot-scope="{bodyItem, bodyCell}">
-      <img :src="jihuangImgSrc">
+      <img :src="doNotStarveImgSrc">
       <span>{{bodyCell}}</span>
     </div>
   </vd-data-table>
 </template>
 
 <script lang="ts">
-import {
-  Component,
-  Emit,
-  Inject,
-  Model,
-  Prop,
-  Provide,
-  Vue,
-  Watch,
-} from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 export default class VdTableProps extends Vue {
   scoreData = this.getScoreData();
 
-  jihuangImgSrc = 'http://www.duotegame.com/picfile/glt/2015/12/21/89-83-99-32-60.jpg';
+  doNotStarveImgSrc = 'http://www.duotegame.com/picfile/glt/2015/12/21/89-83-99-32-60.jpg';
 
   get HeadData() {
     return Object.keys(this.scoreData[0]).map(k => {
