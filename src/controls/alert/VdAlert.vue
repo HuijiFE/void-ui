@@ -36,12 +36,7 @@ import {
   Watch,
 } from 'vue-property-decorator';
 import { VdStylableControl, ControlTone } from 'src/controls/base/VdControl';
-export interface Params {
-  label?: string;
-  preset: string;
-  description: string;
-  autoClose: boolean;
-}
+import { Params } from './VdAlert';
 @Component
 export default class VdAlert extends VdStylableControl {
   label?: string;
