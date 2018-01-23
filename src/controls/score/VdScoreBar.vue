@@ -2,7 +2,7 @@
   <div class="vd-score-bar">
     <span class="score-bar-inner"
           :class="grade">
-      {{value === 10 || value === 0 ? value : value.toFixed(1)}}
+      {{displayValue}}
     </span>
   </div>
 </template>
@@ -23,6 +23,9 @@ export default class VdScoreBar extends Vue {
   value: number;
   @Prop({ default: 10 })
   max: number;
+  get displayValue(): string {
+    return this.value === this.max ? this.value.toString() : this.value.toFixed(1);
+  }
   get grade(): string {
     return `grade-${Math.round(this.value / this.max * 10)}`;
   }

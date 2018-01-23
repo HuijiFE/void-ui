@@ -20,6 +20,6 @@ import {
 } from 'vue-property-decorator';
 @Component
 export default class ScorePercent extends Vue {
-  max = 10;
+  max = 100;
 }
 </script>

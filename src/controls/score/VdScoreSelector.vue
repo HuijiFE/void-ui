@@ -8,7 +8,7 @@
           :class="[item <= value ? '' : `unselected`,`grade-${value - 1}`]">
     </span>
     <span class="score-selector-content">
-      <span :class="`font-${value - 1}`">{{value}}</span>/10
+      <span :class="`font-${value - 1}`" class="variable">{{value}}</span>/10
     </span>
   </div>
 </template>
