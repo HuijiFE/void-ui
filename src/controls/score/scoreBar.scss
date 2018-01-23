@@ -36,7 +36,9 @@
   height: $score-bar-height;
   font-size: $score-bar-font-size;
   .score-bar-inner {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
     height: 100%;
     color: $color-white;
     border-radius: $border-radius-base;

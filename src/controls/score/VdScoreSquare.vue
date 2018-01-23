@@ -2,7 +2,7 @@
   <div class="vd-score-square">
     <div class="score-square-inner"
          :class="grade">
-      {{value >= 10 ? value : value.toFixed(1)}}
+      {{displayValue}}
     </div>
   </div>
 </template>
@@ -27,6 +27,9 @@ export default class VdScoreSquare extends Vue {
     default: 100,
   })
   max: number;
+  get displayValue(): string {
+    return this.value === this.max ? this.value.toString() : this.value.toFixed(1);
+  }
   get grade(): string {
     return `grade-${Math.round(this.value / this.max * 10 - 1)}`;
   }

@@ -6,7 +6,7 @@
         <img :src="src"
              alt="">
       </span>
-      <span class="score-rank-inner">{{value >=10 ? value : value.toFixed(1)}}</span>
+      <span class="score-rank-inner">{{displayValue}}</span>
     </span>
   </div>
 
@@ -29,6 +29,9 @@ export default class VdScoreRank extends Vue {
   @Prop({ default: 10 })
   max: number;
   @Prop() src: string;
+  get displayValue(): string {
+    return this.value === this.max ? this.value.toString() : this.value.toFixed(1);
+  }
   get grade() {
     return `grade-${Math.round(this.value / this.max * 10)}`;
   }

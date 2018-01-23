@@ -1,6 +1,7 @@
 .#{$void}-score-rank {
   $score-rank-width: 2.82rem;
   $score-rank-height: 0.4rem;
+  $score-rank-inner-line-height: 1;
   $score-rank-border: 2px;
   $score-rank-background: #dae1e6;
   $score-margin-base: 0.08rem;
@@ -60,7 +61,8 @@
   .score-rank-inner {
     display: flex;
     padding-right: $score-padding-right;
-    line-height: $score-rank-height;
+    align-items: center;
+    line-height: $score-rank-inner-line-height;
   }
   .score-rank-img {
     height: $score-rank-img-height;

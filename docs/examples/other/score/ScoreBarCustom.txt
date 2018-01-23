@@ -9,7 +9,7 @@
     <vd-score-bar :value="10"
                   :max="100">
     </vd-score-bar>
-    <vd-score-bar :value="20"
+    <vd-score-bar :value="20.00"
                   :max="200">
     </vd-score-bar>
   </div>

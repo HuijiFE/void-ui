@@ -114,6 +114,8 @@
             @each $grade, $color in $grade-colors {
               .font-#{$grade} {
                 color: $color;
+              }
+              .variable {
                 font-size: map-get($map:$score-font-size, $key:$size);
               }
             }
