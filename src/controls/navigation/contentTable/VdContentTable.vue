@@ -39,10 +39,10 @@ export default class VdContentTable extends VdStylableControl {
   @Prop({ default: () => [], type: Array })
   data: ContentTableItem[];
 
+  @Provide() root = this;
+
   children: VdContentTableItem[] = [];
   activeChild: VdContentTableItem;
-
-  @Provide() root = this;
 
   get classes(): ClassNames {
     return [`theme-${this.theme || this.$void.theme}`];

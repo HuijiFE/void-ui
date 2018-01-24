@@ -75,9 +75,7 @@ export default class VdMadeTabs extends VdStylableControl {
   showTipBar: boolean;
 
   tabList: VdMadeTabsItem[] = [];
-
   currentTabName: string = this.activeTab;
-
   activeTabIndex: number;
 
   get classes() {

@@ -163,7 +163,9 @@ export default class VdDataTable extends VdStylableControl {
   }
 
   headItemClick(item: TableHeaderItem): void {
-    if (!this.shouldSort(item)) return;
+    if (!this.shouldSort(item)) {
+      return;
+    }
     this.currentSortItem = item;
 
     let status = item.vd_selfSortStatus;

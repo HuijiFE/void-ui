@@ -38,10 +38,10 @@ export default class VdSidebar extends VdControl {
   @Prop({ default: 'left' })
   position: 'left' | 'right';
 
-  @Prop({ default: () => {}, type: Array })
+  @Prop({ default: () => [], type: Array })
   itemsSource: SidebarItem[];
 
-  @Prop({ default: () => {}, type: Array })
+  @Prop({ default: () => [], type: Array })
   menusSource: SidebarMenu[];
 
   expandedSoft: boolean = false;
@@ -60,6 +60,7 @@ export default class VdSidebar extends VdControl {
   toggleSoft() {
     this.expandedSoft = !this.expandedSoft;
   }
+
   toggleHard() {
     this.expandedHard = !this.expandedHard;
   }

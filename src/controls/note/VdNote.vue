@@ -55,6 +55,7 @@ export default class VdNote extends VdStylableControl {
   get classes() {
     return [`theme-${this.theme || this.$void.theme}`];
   }
+
   get currentIcon(): string {
     switch (this.preset) {
       case 'success':

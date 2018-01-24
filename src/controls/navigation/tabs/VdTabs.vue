@@ -48,7 +48,6 @@ export default class VdTabs extends VdStylableControl {
   skin: ControlSkin;
 
   children: VdTabsItem[] = [];
-
   selectedItem: VdTabsItem;
 
   get classes(): ClassNames {

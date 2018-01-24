@@ -30,7 +30,6 @@ export default class VdSubnav extends VdStylableControl {
   itemsSource: SubnavItem[];
 
   children: VdSubnavItem[] = [];
-
   selectedItem: VdSubnavItem;
 
   get classes(): ClassNames {

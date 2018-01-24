@@ -36,6 +36,7 @@ export default class VdScoreRank extends Vue {
   get displayValue(): string {
     return this.value === this.max ? this.value.toString() : this.value.toFixed(1);
   }
+
   get grade() {
     return `grade-${Math.round(this.value / this.max * 10)}`;
   }
