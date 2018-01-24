@@ -9,7 +9,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import { TableRow, TableHeaderItem, TableCell } from 'void-ui';
 
 @Component
-export default class VdDataTableAlign extends Vue {
+export default class TableAlign extends Vue {
   scoreData: TableRow[] = this.getScoreData();
 
   get HeadData() {
@@ -30,15 +30,16 @@ export default class VdDataTableAlign extends Vue {
               return 'center';
           }
         })(),
-        sortable: (() => (k === 'math' || k === 'english' ? true : false))(),
+        sortable: (() =>
+          k === 'math' || k === 'english' || k === 'name' ? true : false)(),
         sort: (() => {
           if (k === 'math') {
             return [
-              function a(a: TableRow, b: TableRow, key: string) {
+              function normal(a: TableRow, b: TableRow, key: string) {
                 return (a[key] as number) - (b.math as number);
               },
               false,
-              function c(a: TableRow, b: TableRow, key: string) {
+              function desc(a: TableRow, b: TableRow, key: string) {
                 return (a.math as number) * 2 - (b.math as number);
               },
             ];

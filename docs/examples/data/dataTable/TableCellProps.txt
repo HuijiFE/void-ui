@@ -12,7 +12,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { TableRow, TableHeaderItem, TableCell } from 'void-ui';
-export default class VdTableCellProps extends Vue {
+export default class TableCellProps extends Vue {
   scoreData: TableRow[] = this.getScoreData();
 
   get HeadData(): TableHeaderItem[] {

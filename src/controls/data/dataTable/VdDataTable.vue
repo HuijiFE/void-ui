@@ -1,7 +1,7 @@
 <template>
   <table class="vd-data-table"
          :class="classes">
-    <!-- 表格头部 -->
+    <!-- table-head -->
     <thead class="table-head">
       <tr>
         <th class="head-item cell head-index"
@@ -27,7 +27,7 @@
         </th>
       </tr>
     </thead>
-    <!-- 表格主体 -->
+    <!-- table-body -->
     <tbody class="table-body"
            :class="{striped: striped}">
       <tr class="body-tr"
@@ -79,7 +79,7 @@ import {
 
 @Component
 export default class VdDataTable extends VdStylableControl {
-  // todo 检查headData的值和bodyData的值是否完全匹配
+  // todo Check that the value of headData exactly matches the value of bodyData
   @Prop({ default: () => [], type: Array })
   headData: TableHeaderItem[];
 
@@ -104,10 +104,9 @@ export default class VdDataTable extends VdStylableControl {
   @Prop({ default: false, type: Boolean })
   imgNoPaddingLeft: boolean;
 
-  // 不改动原始值
   cloneBodyData = this.makeBodyData<TableRow>(this.bodyData);
   cloneHeadData = this.makeHeadData<TableHeaderItem>(this.headData);
-  // todo 把SortName 和 sortFunctionMap 关联起来，目前做的还不行
+  // todo Associate SortName and sortFunctionMap
   sortFunctionMap = [this.getOriginSortData, this.getAscSortData, this.getDescSortData];
   mergeSortMap: Function[] = [];
   currentSortItem = {};
@@ -116,7 +115,7 @@ export default class VdDataTable extends VdStylableControl {
     return [`theme-${this.theme || this.$void.theme}`];
   }
 
-  // 制作头部数据
+  // make head data
   makeHeadData<T extends TableHeaderItem>(data: T[]): T[] {
     return data.map((el: T) => {
       el.vd_selfSortStatus = 0;
@@ -124,7 +123,7 @@ export default class VdDataTable extends VdStylableControl {
     });
   }
 
-  // 制作主体数据
+  // make body data
   makeBodyData<T extends TableRow>(data: T[]): T[] {
     return data.map((el: T, index: number) => {
       el.vd_index = index;
@@ -132,14 +131,13 @@ export default class VdDataTable extends VdStylableControl {
     });
   }
 
-  // 默认排序
+  // default sort
   sort(a: TableRow, b: TableRow, key: string): number {
     if (isNaN(Number(a[key])) || isNaN(Number(b[key]))) {
       let aValue = a[key] as string;
       let bValue = b[key] as string;
       return (
-        aValue.localeCompare(bValue, 'zh-Hans-CN', { sensitivity: 'accent' }) ||
-        (a.vd_index as number) - (b.vd_index as number)
+        aValue.localeCompare(bValue) || (a.vd_index as number) - (b.vd_index as number)
       );
     } else {
       return (
@@ -149,17 +147,17 @@ export default class VdDataTable extends VdStylableControl {
     }
   }
 
-  // 原始顺序
+  // original order
   getOriginSortData<T extends TableRow>(a: T, b: T): number {
     return (a.vd_index as number) - (b.vd_index as number);
   }
 
-  // 升序
+  // asc
   getAscSortData<T extends TableRow>(a: T, b: T, key: string): number {
     return this.sort(a, b, key);
   }
 
-  // 降序
+  // desc
   getDescSortData<T extends TableRow>(a: T, b: T, key: string): number {
     return this.sort(b, a, key);
   }
@@ -185,10 +183,12 @@ export default class VdDataTable extends VdStylableControl {
   }
 
   doSort(key: string, status: number) {
-    this.cloneBodyData.sort((a: any, b: any) => this.mergeSortMap[status](a, b, key));
+    this.cloneBodyData.sort((a: TableRow, b: TableRow) =>
+      this.mergeSortMap[status](a, b, key),
+    );
   }
 
-  // 是否应该展示排序
+  // should sort
   shouldSort(item: TableHeaderItem): boolean {
     return this.defaultSortable
       ? item.sortable === false ? false : true

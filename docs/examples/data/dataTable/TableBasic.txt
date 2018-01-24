@@ -11,7 +11,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import { TableRow, TableHeaderItem, TableCell } from 'void-ui';
 
 @Component
-export default class VdDataTableBasic extends Vue {
+export default class TableBasic extends Vue {
   scoreData: TableRow[] = this.getScoreData();
 
   get HeadData(): TableRow[] {

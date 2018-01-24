@@ -39,7 +39,7 @@ table.vd-data-table {
   table-layout: fixed;
   width: 100%; // 待定
 
-  /* ----- 表格头部 ------ */
+  /* ----- table-head ------ */
 
   thead.table-head {
     vertical-align: middle;
@@ -72,7 +72,7 @@ table.vd-data-table {
       display: inline-flex;
     }
 
-    /* ---- 箭头 ---- */
+    /* ---- arrow ---- */
     .arrow-control {
       margin-left: 0.04rem;
       display: inline-flex;
@@ -84,7 +84,7 @@ table.vd-data-table {
     }
   }
 
-  /* ----- 表格主体 ---- */
+  /* ----- table-body ---- */
   tbody.table-body {
     font-size: 0.14rem;
     vertical-align: middle;
