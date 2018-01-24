@@ -17,9 +17,6 @@ export default class TableAlign extends Vue {
       return {
         content: k.toUpperCase(),
         key: k,
-        formatter(cell: TableCell, row: TableRow, head: TableHeaderItem) {
-          return cell;
-        },
         align: (() => {
           switch (k) {
             case 'name':
@@ -30,8 +27,7 @@ export default class TableAlign extends Vue {
               return 'center';
           }
         })(),
-        sortable: (() =>
-          k === 'math' || k === 'english' || k === 'name' ? true : false)(),
+        sortable: (() => (k === 'math' || k === 'english' ? true : false))(),
         sort: (() => {
           if (k === 'math') {
             return [

@@ -1,4 +1,4 @@
-table.vd-data-table {
+.vd-data-table {
   $table-head-padding: 0.1rem 0.16rem;
   $table-head-height: 0.32rem;
   $table-aligns: left, center, right;
@@ -41,12 +41,12 @@ table.vd-data-table {
 
   /* ----- table-head ------ */
 
-  thead.table-head {
+  .table-head {
     vertical-align: middle;
     font-size: 0.12rem;
     font-weight: bold;
 
-    tr {
+    .head-tr {
       height: 0.32rem;
     }
 
@@ -85,11 +85,11 @@ table.vd-data-table {
   }
 
   /* ----- table-body ---- */
-  tbody.table-body {
+  .table-body {
     font-size: 0.14rem;
     vertical-align: middle;
 
-    tr.body-tr {
+    .body-tr {
       height: 0.4rem;
 
       &.img-no-padding-left {
@@ -103,7 +103,7 @@ table.vd-data-table {
       text-align: center;
     }
 
-    td.td-item {
+    .td-item {
       height: 0.4rem;
       @each $align in $table-aligns {
         &.align-#{$align} {

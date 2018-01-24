@@ -3,7 +3,7 @@
          :class="classes">
     <!-- table-head -->
     <thead class="table-head">
-      <tr>
+      <tr class="head-tr">
         <th class="head-item cell head-index"
             v-if="showIndex">#</th>
         <th class="head-item cell"
