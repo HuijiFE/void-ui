@@ -15,7 +15,6 @@
                 :headItem="hItem">
             <div class="item-text">{{hItem.content}}</div>
           </slot>
-
           <div v-if="shouldSort(hItem)"
                class="arrow-control">
             <i class="fa fa-sort-asc"

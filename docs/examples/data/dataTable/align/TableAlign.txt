@@ -30,14 +30,14 @@ export default class VdDataTableAlign extends Vue {
               return 'center';
           }
         })(),
-        sortable: (() => (k === 'math' ? true : false))(),
+        sortable: (() => (k === 'math' || k === 'english' ? true : false))(),
         sort: (() => {
           if (k === 'math') {
             return [
-              false,
               function a(a: TableRow, b: TableRow, key: string) {
                 return (a[key] as number) - (b.math as number);
               },
+              false,
               function c(a: TableRow, b: TableRow, key: string) {
                 return (a.math as number) * 2 - (b.math as number);
               },
