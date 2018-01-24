@@ -26,13 +26,13 @@ import { VdStylableControl } from 'src/controls/base/VdControl';
 
 @Component
 export default class VdLoading extends VdStylableControl {
-  @Prop({ type: Boolean })
+  @Prop({ default: false, type: Boolean })
   multiColor: boolean;
 
-  @Prop({ type: Boolean })
+  @Prop({ default: false, type: Boolean })
   covered: boolean;
 
-  @Prop({ type: Boolean })
+  @Prop({ default: false, type: Boolean })
   gray: boolean;
 
   get classes(): ClassNames {

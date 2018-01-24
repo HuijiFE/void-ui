@@ -86,14 +86,10 @@ export default class VdFlexboxbox extends Vue {
         [`flex-medium-${this.flexMedium}`]: this.flexMedium,
         [`flex-large-${this.flexLarge}`]: this.flexLarge,
         [`flex-xlarge-${this.flexXlarge}`]: this.flexXlarge,
-      },
-
-      `gutter-${this.gutter}`,
-      `direction-${this.direction}`,
-      `justify-${this.justify}`,
-      `align-${this.align}`,
-
-      {
+        [`gutter-${this.gutter}`]: this.gutter,
+        [`direction-${this.direction}`]: this.direction,
+        [`justify-${this.justify}`]: this.justify,
+        [`align-${this.align}`]: this.align,
         'wrapped-false': !this.wrapped,
         hidden: this.hidden,
         'hidden-xsmall': this.hiddenXsmall,
