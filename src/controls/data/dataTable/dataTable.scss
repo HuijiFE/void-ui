@@ -1,0 +1,123 @@
+.vd-data-table {
+  $table-head-padding: 0.1rem 0.16rem;
+  $table-head-height: 0.32rem;
+  $table-aligns: left, center, right;
+
+  @each $theme in $ss-themes {
+    &.theme-#{$theme} {
+      background-color: map-get($map: $theme-background-colors, $key: $theme);
+
+      .table-head {
+        background-color: map-get($map: $theme-background-colors, $key: #{$theme}-hover);
+        color: map-get($map: $theme-foreground-colors, $key: #{$theme}-secondary);
+
+        .fa {
+          &.active {
+            color: map-get($map: $theme-foreground-colors, $key: $theme);
+          }
+        }
+      }
+
+      .table-body {
+        &.striped {
+          .body-tr:nth-child(even) {
+            background-color: map-get(
+              $map: $theme-background-colors,
+              $key: #{$theme}-high
+            );
+          }
+        }
+      }
+      .body-tr {
+        border-bottom: 1px solid
+          map-get($map: $theme-background-colors, $key: #{$theme}-hover);
+      }
+    }
+  }
+  /* ---- init table style ---- */
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%; // 待定
+
+  /* ----- table-head ------ */
+
+  .table-head {
+    vertical-align: middle;
+    font-size: 0.12rem;
+    font-weight: bold;
+
+    .head-tr {
+      height: 0.32rem;
+    }
+
+    .head-index {
+      width: 0.4rem;
+      text-align: center;
+    }
+
+    .head-item {
+      align-items: center;
+
+      &.cursor {
+        cursor: pointer;
+      }
+
+      @each $align in $table-aligns {
+        &.align-#{$align} {
+          text-align: $align;
+        }
+      }
+    }
+    .item-text {
+      display: inline-flex;
+    }
+
+    /* ---- arrow ---- */
+    .arrow-control {
+      margin-left: 0.04rem;
+      display: inline-flex;
+      flex-direction: column;
+
+      .fa {
+        height: 0rem;
+      }
+    }
+  }
+
+  /* ----- table-body ---- */
+  .table-body {
+    font-size: 0.14rem;
+    vertical-align: middle;
+
+    .body-tr {
+      height: 0.4rem;
+
+      &.img-no-padding-left {
+        td:first-child {
+          padding-left: 0;
+        }
+      }
+    }
+
+    .body-index {
+      text-align: center;
+    }
+
+    .td-item {
+      height: 0.4rem;
+      @each $align in $table-aligns {
+        &.align-#{$align} {
+          text-align: $align;
+        }
+      }
+    }
+
+    .item-content {
+      // text-overflow: ellipsis;
+    }
+  }
+
+  .cell {
+    padding: 0 0.12rem;
+  }
+}

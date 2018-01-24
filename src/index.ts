@@ -3,10 +3,15 @@ import { Vue as _Vue } from 'vue/types/vue';
 
 export * from './controls';
 import * as controls from './controls';
+import * as filters from './filters';
 
 const install: PluginFunction<any> = function(Vue, options = {}) {
   Object.entries(controls).map(([name, control]) => {
     Vue.component(name, control);
+  });
+
+  Object.entries(filters).forEach(([name, filter]) => {
+    Vue.filter(name, filter);
   });
 };
 
