@@ -43,11 +43,13 @@ export default class VdCollapseItem extends Vue {
 
   parent: VdCollapse;
 
-  @Prop() content: string;
+  @Prop({ type: String })
+  content: string;
 
-  @Prop() head: string;
+  @Prop({ type: String })
+  head: string;
 
-  @Prop({ default: false })
+  @Prop({ default: false, type: Boolean })
   expand: boolean;
 
   itemClick() {
@@ -55,5 +57,3 @@ export default class VdCollapseItem extends Vue {
   }
 }
 </script>
-
-

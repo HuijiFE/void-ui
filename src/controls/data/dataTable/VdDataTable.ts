@@ -22,3 +22,10 @@ export enum SortEventName {
   asc,
   desc,
 }
+
+// VdButton loaction
+// checkbox 组件怎么没了
+// flexbox 组件类型的null要不要去掉
+// vdLoading 组件这里要改一下
+
+// 更新readme 文档 https://github.com/weexteam/weex-toolkit/blob/master/README-zh.md

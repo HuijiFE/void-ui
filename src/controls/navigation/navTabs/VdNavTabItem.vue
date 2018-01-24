@@ -21,7 +21,7 @@ import VdNavTabs from './VdNavTabs.vue';
 
 @Component
 export default class VdNavTabsItem extends Vue {
-  @Prop({ required: true })
+  @Prop({ required: true, type: String })
   index: string;
 
   get active() {

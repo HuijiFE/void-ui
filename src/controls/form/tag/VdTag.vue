@@ -57,15 +57,20 @@ export default class VdTag extends VdStylableControl {
     ];
   }
 
-  @Prop() value: TagValue;
+  @Prop({ type: [String, Number] })
+  value: TagValue;
 
-  @Prop() content: string;
+  @Prop({ type: String })
+  content: string;
 
-  @Prop() href: string;
+  @Prop({ type: String })
+  href: string;
 
-  @Prop() to: string | Location;
+  @Prop({ type: [String, Location] })
+  to: string | Location;
 
-  @Prop() closable: boolean;
+  @Prop({ type: Boolean })
+  closable: boolean;
 
   onClick() {
     this.$emit('click');

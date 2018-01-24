@@ -19,10 +19,12 @@ import {
 } from 'vue-property-decorator';
 @Component
 export default class VdScoreBar extends Vue {
-  @Prop({ default: 0 })
+  @Prop({ default: 0, type: Number })
   value: number;
-  @Prop({ default: 10 })
+
+  @Prop({ default: 10, type: Number })
   max: number;
+
   get displayValue(): string {
     return this.value === this.max ? this.value.toString() : this.value.toFixed(1);
   }

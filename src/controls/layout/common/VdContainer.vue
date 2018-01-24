@@ -11,7 +11,7 @@ import { VdStylableControl } from 'src/controls/base/VdControl';
 
 @Component
 export default class VdContainer extends VdStylableControl {
-  @Prop({ default: true })
+  @Prop({ default: true, type: Boolean })
   transparent: boolean;
 
   get classes(): ClassNames {

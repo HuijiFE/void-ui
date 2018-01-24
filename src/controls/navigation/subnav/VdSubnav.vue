@@ -23,19 +23,19 @@ import { SubnavItem } from './VdSubnav';
   },
 })
 export default class VdSubnav extends VdStylableControl {
-  get classes(): ClassNames {
-    return [`theme-${this.theme || this.$void.theme}`];
-  }
-
-  @Prop({ required: true })
+  @Prop({ required: true, type: String })
   valueSource: string;
 
-  @Prop({ default: () => [] })
+  @Prop({ default: () => [], type: Array })
   itemsSource: SubnavItem[];
 
   children: VdSubnavItem[] = [];
 
   selectedItem: VdSubnavItem;
+
+  get classes(): ClassNames {
+    return [`theme-${this.theme || this.$void.theme}`];
+  }
 
   select(newItem: VdSubnavItem) {
     if (this.selectedItem === newItem) {

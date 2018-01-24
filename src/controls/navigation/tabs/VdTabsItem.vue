@@ -22,17 +22,15 @@ import anime from 'animejs';
 
 @Component
 export default class VdTabsItem extends Vue {
-  @Prop({ required: true })
+  @Prop({ required: true, type: String })
   label: string;
 
-  parent: VdTabs;
-
-  index: number = -1;
-
-  status: 'selected' | 'hidden' = 'hidden';
-
-  @Prop({ default: false })
+  @Prop({ default: false, type: Boolean })
   selected: boolean;
+
+  parent: VdTabs;
+  index: number = -1;
+  status: 'selected' | 'hidden' = 'hidden';
 
   get classes(): ClassNames {
     return [`status-${this.status}`];

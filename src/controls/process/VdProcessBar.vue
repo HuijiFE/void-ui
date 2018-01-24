@@ -27,13 +27,13 @@ import { VdStylableControl } from 'src/controls/base/VdControl';
 
 @Component
 export default class VdProcessBar extends VdStylableControl {
-  @Prop({ default: 0 })
+  @Prop({ default: 0, type: Number })
   value: number;
 
-  @Prop({ default: false })
+  @Prop({ default: false, type: Boolean })
   failure: boolean;
 
-  @Prop({ default: true })
+  @Prop({ default: true, type: Boolean })
   showText: boolean;
 
   get status(): 'loading' | 'success' | 'failure' {
@@ -55,4 +55,3 @@ export default class VdProcessBar extends VdStylableControl {
   }
 }
 </script>
-

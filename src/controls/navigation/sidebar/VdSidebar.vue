@@ -38,12 +38,14 @@ export default class VdSidebar extends VdControl {
   @Prop({ default: 'left' })
   position: 'left' | 'right';
 
+  @Prop({ default: () => {}, type: Array })
+  itemsSource: SidebarItem[];
+
+  @Prop({ default: () => {}, type: Array })
+  menusSource: SidebarMenu[];
+
   expandedSoft: boolean = false;
   expandedHard: boolean = false;
-
-  @Prop() itemsSource: SidebarItem[];
-
-  @Prop() menusSource: SidebarMenu[];
 
   get classes(): ClassNames {
     return [

@@ -29,9 +29,13 @@ import {
 
 @Component
 export default class VdDataCardItem extends Vue {
-  @Prop() label: string;
-  @Prop() data: string | number;
-  @Prop() dataSup: string;
+  @Prop({ type: String })
+  label: string;
+
+  @Prop({ type: String })
+  data: string | number;
+
+  @Prop({ type: String })
+  dataSup: string;
 }
 </script>
-

@@ -37,6 +37,7 @@ import {
 } from 'vue-property-decorator';
 import { VdStylableControl, ControlTone } from 'src/controls/base/VdControl';
 import { Params } from './VdAlert';
+
 @Component
 export default class VdAlert extends VdStylableControl {
   label?: string;

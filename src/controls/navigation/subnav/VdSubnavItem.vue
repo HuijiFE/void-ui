@@ -24,18 +24,20 @@ import VdSubnav from './VdSubnav.vue';
 
 @Component
 export default class VdSubnavItem extends Vue {
-  get classes(): ClassNames {
-    return [{ selected: this.isSelected }];
-  }
+  @Prop({ type: String })
+  content: string;
 
-  @Prop() content: string;
+  @Prop({ type: [String, Location] })
+  to: string | Location;
 
-  @Prop() to: string | Location;
-
-  @Prop({ required: true })
+  @Prop({ required: true, type: String })
   value: string;
 
   parent: VdSubnav | undefined;
+
+  get classes(): ClassNames {
+    return [{ selected: this.isSelected }];
+  }
 
   get isSelected(): boolean {
     if (this.parent) {

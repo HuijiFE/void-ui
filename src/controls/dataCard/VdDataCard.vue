@@ -28,11 +28,11 @@ import { VdStylableControl } from 'src/controls/base/VdControl';
 
 @Component
 export default class VdDataCard extends VdStylableControl {
-  @Prop() icon: string;
+  @Prop({ type: String })
+  icon: string;
 
   get classes(): ClassNames {
     return [`theme-${this.theme || this.$void.theme}`];
   }
 }
 </script>
-

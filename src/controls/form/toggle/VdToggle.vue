@@ -61,18 +61,26 @@ import { ToggleValue } from 'src/controls/form/VdFormControl';
   },
 })
 export default class VdToggle extends VdStylableControl {
-  @Prop() id: string;
-  @Prop() name: string;
+  @Prop({ type: String })
+  id: string;
 
-  @Prop({ default: false })
+  @Prop({ type: String })
+  name: string;
+
+  @Prop({ default: false, type: [Boolean, String, Number] })
   valueOff: ToggleValue;
-  @Prop({ default: true })
+
+  @Prop({ default: true, type: [Boolean, String, Number] })
   valueOn: ToggleValue;
 
-  @Prop() valueSource: ToggleValue;
+  @Prop({ type: [Boolean, String, Number] })
+  valueSource: ToggleValue;
 
-  @Prop() contentOff: string;
-  @Prop() contentOn: string;
+  @Prop({ type: String })
+  contentOff: string;
+
+  @Prop({ type: String })
+  contentOn: string;
 
   private get model(): ToggleValue {
     return this.valueSource;

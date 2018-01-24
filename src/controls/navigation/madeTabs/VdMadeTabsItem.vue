@@ -20,9 +20,11 @@ import VdMadeTabs from './VdMadeTabs.vue';
 
 @Component
 export default class VdMadeTabsItem extends Vue {
-  @Prop() label: string;
+  @Prop({ type: String })
+  label: string;
 
-  @Prop() name: string;
+  @Prop({ type: String })
+  name: string;
 
   get active() {
     return this.name === this.parent.currentTabName;
@@ -33,4 +35,3 @@ export default class VdMadeTabsItem extends Vue {
   }
 }
 </script>
-

@@ -26,30 +26,23 @@ import { VdStylableControl } from 'src/controls/base/VdControl';
 
 @Component
 export default class VdLoading extends VdStylableControl {
-  @Prop() multiColor: boolean | '';
+  @Prop({ type: Boolean })
+  multiColor: boolean;
 
-  @Prop() covered: boolean | '';
+  @Prop({ type: Boolean })
+  covered: boolean;
 
-  @Prop() gray: boolean | '';
+  @Prop({ type: Boolean })
+  gray: boolean;
 
-  get isMultiColor(): boolean {
-    return this.multiColor || this.multiColor === '';
-  }
-
-  get isCovered(): boolean {
-    return this.covered || this.covered === '';
-  }
-  get isGray(): boolean {
-    return this.gray || this.gray === '';
-  }
   get classes(): ClassNames {
     return [
       `theme-${this.theme || this.$void.theme}`,
       `size-${this.size}`,
       {
-        'multi-color': this.isMultiColor,
-        covered: this.isCovered,
-        gray: this.isGray,
+        'multi-color': this.multiColor,
+        covered: this.covered,
+        gray: this.gray,
       },
     ];
   }

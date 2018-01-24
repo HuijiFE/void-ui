@@ -21,12 +21,12 @@ import {
 
 @Component
 export default class VdScore extends Vue {
-  @Prop({ default: 0 })
+  @Prop({ default: 0, type: Number })
   value: number;
-  @Prop({
-    default: 100,
-  })
+
+  @Prop({ default: 100, type: Number })
   max: number;
+
   get grade(): string {
     return `grade-${Math.round(this.value / this.max * 10 - 1)}`;
   }

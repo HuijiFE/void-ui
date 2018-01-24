@@ -21,6 +21,7 @@ import {
 
 @Component
 export default class VdDefinitionItem extends Vue {
-  @Prop() label: string;
+  @Prop({ type: String })
+  label: string;
 }
 </script>

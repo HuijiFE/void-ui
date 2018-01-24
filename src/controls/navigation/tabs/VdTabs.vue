@@ -44,16 +44,16 @@ const opacityIn = [{ value: 0 }, { value: 1 }];
 
 @Component
 export default class VdTabs extends VdStylableControl {
-  @Prop({ default: 'silk' })
+  @Prop({ default: 'silk', type: String })
   skin: ControlSkin;
-
-  get classes(): ClassNames {
-    return [`theme-${this.theme || this.$void.theme}`, `skin-${this.skin}`];
-  }
 
   children: VdTabsItem[] = [];
 
   selectedItem: VdTabsItem;
+
+  get classes(): ClassNames {
+    return [`theme-${this.theme || this.$void.theme}`, `skin-${this.skin}`];
+  }
 
   get selectedIndex(): number {
     return this.selectedItem.index;

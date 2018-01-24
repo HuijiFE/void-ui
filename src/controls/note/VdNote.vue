@@ -34,17 +34,23 @@ import {
 
 @Component
 export default class VdNote extends VdStylableControl {
-  @Prop() preset: string;
+  @Prop({ type: String })
+  preset: string;
 
-  @Prop() icon: string;
+  @Prop({ type: String })
+  icon: string;
 
-  @Prop() tone: ControlTone;
+  @Prop({ type: String })
+  tone: ControlTone;
 
-  @Prop() label: string;
+  @Prop({ type: String })
+  label: string;
 
-  @Prop() theme: ControlTheme;
+  @Prop({ type: String })
+  theme: ControlTheme;
 
-  @Prop() description: string;
+  @Prop({ type: String })
+  description: string;
 
   get classes() {
     return [`theme-${this.theme || this.$void.theme}`];
@@ -80,4 +86,3 @@ export default class VdNote extends VdStylableControl {
   }
 }
 </script>
-
