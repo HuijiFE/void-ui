@@ -62,13 +62,29 @@
         height: map-get($map:$size-heights, $key:$size);
         background-color: $theme-lite-foreground-disabled;
         border-radius: 1px;
-        animation: map-get($map:$loading-background-colors, $key:$size) 2s infinite
-          ease-in-out;
+        animation: preloader 2s infinite ease-in-out;
         margin-right: $loading-margin;
         @for $i from 1 through 5 {
           &:nth-child(#{$i + 1}) {
             animation-timing-function: linear;
             animation-delay: (1000 / 5) * $i +ms;
+          }
+        }
+      }
+
+      &.gray {
+        .#{$void}-loading_bar {
+          width: map-get($map:$size-widths, $key:$size);
+          height: map-get($map:$size-heights, $key:$size);
+          background-color: $theme-lite-foreground-disabled;
+          border-radius: 1px;
+          animation: default-preloader 2s infinite ease-in-out;
+          margin-right: $loading-margin;
+          @for $i from 1 through 5 {
+            &:nth-child(#{$i + 1}) {
+              animation-timing-function: linear;
+              animation-delay: (1000 / 5) * $i +ms;
+            }
           }
         }
       }
@@ -100,18 +116,6 @@
 @keyframes preloader {
   0% {
     transform: scaleY(1);
-  }
-  25% {
-    transform: scaleY(3);
-  }
-  50% {
-    transform: scaleY(1);
-  }
-}
-
-@keyframes preloader-green {
-  0% {
-    transform: scaleY(1);
     background-color: $theme-lite-foreground-disabled;
   }
   25% {
@@ -121,6 +125,18 @@
   50% {
     transform: scaleY(1);
     background-color: $theme-lite-foreground-disabled;
+  }
+}
+
+@keyframes default-preloader {
+  0% {
+    transform: scaleY(1);
+  }
+  25% {
+    transform: scaleY(3);
+  }
+  50% {
+    transform: scaleY(1);
   }
 }
 
