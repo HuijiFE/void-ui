@@ -67,7 +67,7 @@ eg: `body-row-${headkey}`
 | show-index          | 是否展示索引                                                 | `Boolean` | **false\***, true         |
 | img-no-padding-left | 当第一列需要展示图片时,<br>是否去掉 padding-left（项目需要） | `Boolean` | **false\***, true         |
 
-> 排序时会尝试转换为数字进行排序， 如果不能转换（例如汉字）则按照汉字拼音的顺序进行排序
+> 排序时会尝试转换为数字进行排序， 如果不能转换（例如汉字）则按照unicode的顺序进行排序
 
 ### slot 插槽
 
@@ -97,7 +97,8 @@ eg: `body-row-${headkey}`
 
 | Name       | Description        | Parameter                                         |
 | :--------- | :----------------- | :------------------------------------------------ |
-| table-sort | 排序事件发生时触发 | key(排序列对应表头的 key 值)， sortType（排序类型 |
+| table-sort | 排序事件发生时触发 | key(排序列对应表头的 key 值)， sortType(排序类型) |
+
 
 <script>
 import TableBasic from 'docs/examples/data/dataTable/TableBasic';
@@ -110,7 +111,6 @@ import TableFormatter from 'docs/examples/data/dataTable/TableFormatter';
 import TableFormatterSource from 'docs/examples/data/dataTable/TableFormatter.txt';
 import TableAlign from 'docs/examples/data/dataTable/TableAlign';
 import TableAlignSource from 'docs/examples/data/dataTable/TableAlign.txt';
-
 
 export default {
   data() {

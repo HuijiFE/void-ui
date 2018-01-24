@@ -28,10 +28,10 @@ progressBar 进度条 用于展示操作进度
 
 <script>
 
- import ProcessBarBasic from 'docs/examples/other/processBar/basic/ProcessBarBasic';
- import ProcessBarBasicSource from 'docs/examples/other/processBar/basic/ProcessBarBasic.txt';
- import ProcessBarDynamic from 'docs/examples/other/processBar/dynamic/ProcessBarDynamic';
- import ProcessBarDynamicSource from 'docs/examples/other/processBar/dynamic/ProcessBarDynamic.txt';
+ import ProcessBarBasic from 'docs/examples/other/processBar/ProcessBarBasic';
+ import ProcessBarBasicSource from 'docs/examples/other/processBar/ProcessBarBasic.txt';
+ import ProcessBarDynamic from 'docs/examples/other/processBar/ProcessBarDynamic';
+ import ProcessBarDynamicSource from 'docs/examples/other/processBar/ProcessBarDynamic.txt';
 
  export default {
    data () {
@@ -40,7 +40,7 @@ progressBar 进度条 用于展示操作进度
        ProcessBarBasicSource,
        ProcessBarDynamic,
        ProcessBarDynamicSource
-   }
- }
+    }
+  }
  }
  </script>

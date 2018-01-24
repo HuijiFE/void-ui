@@ -26,6 +26,8 @@ let imgs: string[] = [
   'http://cdn.steamstatic.com.8686c.com/steam/apps/376210/capsule_sm_120.jpg?t=1516565495',
   'http://cdn.steamstatic.com.8686c.com/steam/apps/678950/capsule_sm_120.jpg?t=1516297486',
 ];
+
+@Component
 export default class TableProps extends Vue {
   scoreData: TableRow[] = this.getScoreData();
 

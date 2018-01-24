@@ -12,6 +12,8 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { TableRow, TableHeaderItem, TableCell } from 'void-ui';
+
+@Component
 export default class TableCellProps extends Vue {
   scoreData: TableRow[] = this.getScoreData();
 
