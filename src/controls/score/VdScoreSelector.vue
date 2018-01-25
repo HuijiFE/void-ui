@@ -30,7 +30,8 @@ import {
 } from 'src/controls/base/VdControl';
 @Component
 export default class VdScoreSelector extends VdStylableControl {
-  @Prop() value: number;
+  @Prop({ type: Number })
+  value: number;
 
   get classes() {
     return [`theme-${this.theme || this.$void.theme}`, `size-${this.size}`];

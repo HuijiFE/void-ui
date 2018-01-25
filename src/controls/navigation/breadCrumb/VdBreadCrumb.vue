@@ -40,7 +40,9 @@ import { BreadCrumbItem } from './VdBreadCrumb';
 
 @Component
 export default class VdBreadCrumb extends VdStylableControl {
-  @Prop() itemsSource: BreadCrumbItem[];
+  @Prop({ type: Array })
+  itemsSource: BreadCrumbItem[];
+
   get classes(): ClassNames {
     return [`theme-${this.theme || this.$void.theme}`, `skin-${this.skin}`];
   }

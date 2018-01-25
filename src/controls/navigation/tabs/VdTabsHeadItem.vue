@@ -22,7 +22,8 @@ import VdTabsItem from './VdTabsItem.vue';
 
 @Component
 export default class VdTabsHeadItem extends Vue {
-  @Prop() item: VdTabsItem;
+  @Prop({ type: Object })
+  item: VdTabsItem;
 
   get classes(): ClassNames {
     return [{ 'status-selected': this.item.status === 'selected' }];

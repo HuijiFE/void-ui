@@ -21,9 +21,10 @@ import { VdStylableControl } from 'src/controls/base/VdControl';
 
 @Component
 export default class VdNavTabs extends VdStylableControl {
-  @Prop() defaultActive: string;
+  @Prop({ type: String })
+  defaultActive: string;
 
-  @Prop({ default: 'horizontal' })
+  @Prop({ default: 'horizontal', type: String })
   mode: 'vertical' | 'horizontal';
 
   activeIndex: string = this.defaultActive;
@@ -38,5 +39,3 @@ export default class VdNavTabs extends VdStylableControl {
   }
 }
 </script>
-
-

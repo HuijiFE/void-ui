@@ -39,21 +39,20 @@ import VdCollapse from './VdCollapse.vue';
 
 @Component
 export default class VdCollapseItem extends Vue {
-  status: 'show' | 'hidden' = 'hidden';
+  @Prop({ type: String })
+  content: string;
 
-  parent: VdCollapse;
+  @Prop({ type: String })
+  head: string;
 
-  @Prop() content: string;
-
-  @Prop() head: string;
-
-  @Prop({ default: false })
+  @Prop({ default: false, type: Boolean })
   expand: boolean;
+
+  status: 'show' | 'hidden' = 'hidden';
+  parent: VdCollapse;
 
   itemClick() {
     this.parent.select(this);
   }
 }
 </script>
-
-

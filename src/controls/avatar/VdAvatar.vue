@@ -43,9 +43,14 @@ import {
 
 @Component
 export default class VdAvatar extends VdStylableControl {
-  @Prop() src: string;
-  @Prop() href: string;
-  @Prop() to: string;
+  @Prop({ type: String })
+  src: string;
+
+  @Prop({ type: String })
+  href: string;
+
+  @Prop({ type: String })
+  to: string;
 
   get classes(): ClassNames {
     return [

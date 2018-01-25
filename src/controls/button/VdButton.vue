@@ -72,23 +72,28 @@ import { VdStylableControl, VdLoadingControl } from 'src/controls/base/VdControl
 
 @Component
 export default class VdButton extends VdStylableControl implements VdLoadingControl {
-  @Prop({ default: 'button' })
+  @Prop({ default: 'button', type: String })
   type: string;
 
-  @Prop() href: string;
+  @Prop({ type: String })
+  href: string;
 
-  @Prop({ default: '_blank' })
+  @Prop({ default: '_blank', type: String })
   target: string;
 
-  @Prop() to: string | Location;
+  @Prop({ type: [String, Location] })
+  to: string | Location;
 
-  @Prop() loading: boolean;
+  @Prop({ type: String })
+  loading: boolean;
 
-  @Prop() wide: boolean;
+  @Prop({ type: String })
+  wide: boolean;
 
-  @Prop() icon: string;
+  @Prop({ type: String })
+  icon: string;
 
-  @Prop({ default: 'left' })
+  @Prop({ default: 'left', type: String })
   iconPosition: 'left' | 'right';
 
   @Prop() iconOnly: boolean;
@@ -108,4 +113,3 @@ export default class VdButton extends VdStylableControl implements VdLoadingCont
   }
 }
 </script>
-

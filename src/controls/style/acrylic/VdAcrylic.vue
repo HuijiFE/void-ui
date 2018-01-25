@@ -21,7 +21,8 @@ import { VdStylableControl } from 'src/controls/base/VdControl';
 
 @Component
 export default class VdAcrylic extends VdStylableControl {
-  @Prop() backgroundImage: string;
+  @Prop({ type: String })
+  backgroundImage: string;
 
   get backgroundStyle() {
     return {

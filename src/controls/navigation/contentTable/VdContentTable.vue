@@ -36,12 +36,13 @@ const easing = 'easeInQuad';
 
 @Component
 export default class VdContentTable extends VdStylableControl {
-  children: VdContentTableItem[] = [];
-  activeChild: VdContentTableItem;
-
-  @Prop() data: ContentTableItem[];
+  @Prop({ default: () => [], type: Array })
+  data: ContentTableItem[];
 
   @Provide() root = this;
+
+  children: VdContentTableItem[] = [];
+  activeChild: VdContentTableItem;
 
   get classes(): ClassNames {
     return [`theme-${this.theme || this.$void.theme}`];

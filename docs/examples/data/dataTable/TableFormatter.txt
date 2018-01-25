@@ -2,7 +2,7 @@
   <vd-data-table :body-data="scoreData"
                  :head-data="HeadData">
     <div slot="body-column-zhihu"
-         slot-scope="{rowItem, cellItem, headItem}"> {{cellItem | minute2hour}}</div>
+         slot-scope="{rowItem, cellItem, headItem}"> {{cellItem | doubleTime | minute2hour}}</div>
     <div slot="body-column-wangyi"
          slot-scope="{rowItem, cellItem, headItem}"> {{cellItem | toCurrency('￥')}}</div>
   </vd-data-table>
@@ -11,6 +11,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { TableRow, TableHeaderItem, TableCell } from 'void-ui';
+
+@Component({
+  filters: {
+    doubleTime: (time: number) => time * 2,
+  },
+})
 export default class TableFormatter extends Vue {
   scoreData: TableRow[] = this.getScoreData();
 

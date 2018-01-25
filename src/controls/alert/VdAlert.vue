@@ -1,7 +1,6 @@
 <template>
   <div class="vd-alert"
        :class="`alert-${currentTone}`">
-
     <span class="icon-outer"
           :class="label ? 'larger-alert': '' ">
       <span class="alert-icon">
@@ -37,6 +36,7 @@ import {
 } from 'vue-property-decorator';
 import { VdStylableControl, ControlTone } from 'src/controls/base/VdControl';
 import { Params } from './VdAlert';
+
 @Component
 export default class VdAlert extends VdStylableControl {
   label?: string;
@@ -48,7 +48,7 @@ export default class VdAlert extends VdStylableControl {
     this.label = options.label;
     this.preset = options.preset;
     this.description = options.description;
-    this.autoClose = options.autoClose;
+    this.autoClose = options.autoClose === false ? false : true;
 
     let el = document.createElement('div');
     el.id = 'vd-alert';
@@ -94,4 +94,3 @@ export default class VdAlert extends VdStylableControl {
   }
 }
 </script>
-

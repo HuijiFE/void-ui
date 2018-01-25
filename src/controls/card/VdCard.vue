@@ -36,19 +36,25 @@ import { VdStylableControl } from 'src/controls/base/VdControl';
 
 @Component
 export default class VdCard extends VdStylableControl {
-  @Prop() imageSource: string;
+  @Prop({ type: String })
+  imageSource: string;
 
-  @Prop() imageTitle: string;
+  @Prop({ type: String })
+  imageTitle: string;
 
-  @Prop() imageAlt: string;
+  @Prop({ type: String })
+  imageAlt: string;
 
-  @Prop() content: string;
+  @Prop({ type: String })
+  content: string;
 
-  @Prop() description: string;
+  @Prop({ type: String })
+  description: string;
 
-  @Prop() head: string;
+  @Prop({ type: String })
+  head: string;
 
-  @Prop({ default: 'row' })
+  @Prop({ default: 'row', type: String })
   direction: 'column' | 'row';
 
   get classes() {
@@ -60,4 +66,3 @@ export default class VdCard extends VdStylableControl {
   }
 }
 </script>
-

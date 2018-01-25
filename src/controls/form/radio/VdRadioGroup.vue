@@ -26,10 +26,10 @@ import { VdStylableControl } from 'src/controls/base/VdControl';
   },
 })
 export default class VdRadioGroup extends VdStylableControl {
-  @Prop([String, Number])
+  @Prop({ type: [String, Number] })
   valueSource: RadioValue;
 
-  @Prop({ default: 'radio' })
+  @Prop({ default: 'radio', type: String })
   radioType: 'radio' | 'button';
 
   get classes() {

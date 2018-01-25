@@ -12,7 +12,8 @@
             :key="hItem.key"
             @click="headItemClick(hItem)">
           <slot :name="`head-column-${hItem.key}`"
-                :headItem="hItem">
+                :headItem="hItem"
+                :headCell="hItem.content">
             <div class="item-text">{{hItem.content}}</div>
           </slot>
           <div v-if="shouldSort(hItem)"
@@ -40,16 +41,21 @@
             :class="handleAlignClass(hItem)"
             v-for="hItem in headData"
             :key="hItem.key">
-          <slot :name="useCellSlot ? `body-${row.vd_index}-${hItem.key}` : `body-column-${hItem.key}`"
+          <slot :name="`body-column-${hItem.key}`"
                 :rowItem="row"
                 :headItem="hItem"
                 :cellItem="row[hItem.key]">
-            <div v-if="hItem.formatter && typeof hItem.formatter === 'function'"
-                 class="item-content">
-              {{hItem.formatter(row[hItem.key], row, hItem)}}
-            </div>
-            <div v-else
+            <slot :name="`body-${row.vd_index}-${hItem.key}`"
+                  :rowItem="row"
+                  :headItem="hItem"
+                  :cellItem="row[hItem.key]">
+              <div v-if="hItem.formatter && typeof hItem.formatter === 'function'"
+                  class="item-content">
+                {{hItem.formatter(row[hItem.key], row, hItem)}}
+              </div>
+              <div v-else
                  class="item-content">{{row[hItem.key]}}</div>
+            </slot>
           </slot>
         </td>
       </tr>
@@ -88,9 +94,6 @@ export default class VdDataTable extends VdStylableControl {
 
   @Prop({ default: true, type: Boolean })
   striped: boolean;
-
-  @Prop({ default: false, type: Boolean })
-  useCellSlot: boolean;
 
   @Prop({ default: true, type: Boolean })
   defaultSortable: boolean;
@@ -163,14 +166,16 @@ export default class VdDataTable extends VdStylableControl {
   }
 
   headItemClick(item: TableHeaderItem): void {
-    if (!this.shouldSort(item)) return;
+    if (!this.shouldSort(item)) {
+      return;
+    }
     this.currentSortItem = item;
 
     let status = item.vd_selfSortStatus;
     item.vd_selfSortStatus = status === 2 ? 0 : status + 1;
 
-    if (item.sort && Array.isArray(item.sort)) {
-      let userSortMap = item.sort;
+    if (item.sorter && Array.isArray(item.sorter)) {
+      let userSortMap = item.sorter;
       let defaultSortMap = this.sortFunctionMap;
 
       this.mergeSortMap = this.mergeSortFunc<Function>(defaultSortMap, userSortMap);

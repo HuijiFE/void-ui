@@ -61,17 +61,24 @@ import { VdStylableControl } from 'src/controls/base/VdControl';
 
 @Component
 export default class VdSidebarItem extends VdStylableControl {
-  @Prop() icon: string;
-  @Prop() content: string;
+  @Prop({ type: String })
+  icon: string;
 
-  @Prop() href: string;
+  @Prop({ type: String })
+  content: string;
 
-  @Prop({ default: '_blank' })
+  @Prop({ type: String })
+  href: string;
+
+  @Prop({ default: '_blank', type: String })
   target: string;
 
-  @Prop() to: string | Location;
+  @Prop({ type: [String, Location] })
+  to: string | Location;
 
-  @Prop() branded: boolean | '';
+  @Prop({ type: Boolean })
+  branded: boolean | '';
+
   get isBranded(): boolean {
     return this.branded || this.branded === '';
   }

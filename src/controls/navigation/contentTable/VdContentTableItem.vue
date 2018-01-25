@@ -35,12 +35,13 @@ export interface TreeContentData {
 
 @Component
 export default class VdContentTableItem extends Vue {
-  active: boolean = false;
+  @Prop({ default: () => ({}), type: Object })
+  data: TreeContentData;
 
-  children: VdContentTableItem[] = [];
-
-  @Prop() data: TreeContentData;
   @Inject() root: VdContentTable;
+
+  active: boolean = false;
+  children: VdContentTableItem[] = [];
 
   contentItemClick(event: Event) {
     this.root.itemClick(this, event.target as HTMLElement);

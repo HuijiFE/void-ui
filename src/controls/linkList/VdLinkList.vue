@@ -32,9 +32,7 @@ import { LinkListItem } from './VdLinkList';
 
 @Component
 export default class VdLinkList extends VdStylableControl {
-  @Prop({ default: [] })
+  @Prop({ default: () => [], type: Array })
   linkList: LinkListItem[];
 }
 </script>
-
-

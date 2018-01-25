@@ -22,10 +22,10 @@ import { VdStylableControl } from 'src/controls/base/VdControl';
 
 @Component
 export default class VdCollapse extends VdStylableControl {
-  selectedItem: VdCollapseItem;
-
-  @Prop({ default: true })
+  @Prop({ default: true, type: Boolean })
   accordion: boolean;
+
+  selectedItem: VdCollapseItem;
 
   get classes() {
     return `theme-${this.theme || this.$void.theme}`;
@@ -104,5 +104,3 @@ export default class VdCollapse extends VdStylableControl {
   }
 }
 </script>
-
-

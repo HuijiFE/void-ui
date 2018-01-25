@@ -1,6 +1,5 @@
-export type FlexboxFlex = null | string | number;
+export type FlexboxFlex = string | number;
 export type FlexboxGutter =
-  | null
   | 'uniform'
   | 'auto'
   | 'initial'
@@ -10,6 +9,6 @@ export type FlexboxGutter =
   | 'medium'
   | 'large'
   | 'xlarge';
-export type FlexboxDirection = null | 'row' | 'col';
-export type FlexboxJustify = null | 'start' | 'end' | 'center' | 'between' | 'around';
-export type FlexboxAlign = null | 'start' | 'end' | 'center' | 'stretch' | 'baseline';
+export type FlexboxDirection = 'row' | 'col';
+export type FlexboxJustify = 'start' | 'end' | 'center' | 'between' | 'around';
+export type FlexboxAlign = 'start' | 'end' | 'center' | 'stretch' | 'baseline';

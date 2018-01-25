@@ -62,21 +62,20 @@ import anime from 'animejs';
   },
 })
 export default class VdMadeTabs extends VdStylableControl {
-  @Prop() activeTab: string;
+  @Prop({ type: String })
+  activeTab: string;
 
-  @Prop({ default: 'top' })
+  @Prop({ default: 'top', type: String })
   tabHeadPosition: 'left' | 'right' | 'top' | 'bottom';
 
-  @Prop({ default: true })
+  @Prop({ default: true, type: Boolean })
   bordered: boolean;
 
-  @Prop({ default: true })
+  @Prop({ default: true, type: Boolean })
   showTipBar: boolean;
 
   tabList: VdMadeTabsItem[] = [];
-
   currentTabName: string = this.activeTab;
-
   activeTabIndex: number;
 
   get classes() {

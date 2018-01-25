@@ -25,7 +25,7 @@
   $vd-alert-width: 6.32rem;
   $vd-alert-icon-font-size: 0.12rem;
 
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 50%;
   margin-left: - $vd-alert-width / 2;

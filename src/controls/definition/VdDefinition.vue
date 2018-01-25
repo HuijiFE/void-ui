@@ -20,11 +20,11 @@ import { VdStylableControl } from 'src/controls/base/VdControl';
 
 @Component
 export default class VdDefinition extends VdStylableControl {
-  @Prop() label: string;
+  @Prop({ type: String })
+  label: string;
 
   get classes(): ClassNames {
     return [`theme-${this.theme || this.$void.theme}`];
   }
 }
 </script>
-

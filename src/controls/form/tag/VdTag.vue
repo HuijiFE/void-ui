@@ -49,6 +49,21 @@ import { Location } from 'vue-router/types/router';
 
 @Component
 export default class VdTag extends VdStylableControl {
+  @Prop({ type: [String, Number] })
+  value: TagValue;
+
+  @Prop({ type: String })
+  content: string;
+
+  @Prop({ type: String })
+  href: string;
+
+  @Prop({ type: [String, Location] })
+  to: string | Location;
+
+  @Prop({ type: Boolean })
+  closable: boolean;
+
   get classes(): ClassNames {
     return [
       `theme-${this.theme || this.$void.theme}`,
@@ -56,16 +71,6 @@ export default class VdTag extends VdStylableControl {
       `size-${this.size}`,
     ];
   }
-
-  @Prop() value: TagValue;
-
-  @Prop() content: string;
-
-  @Prop() href: string;
-
-  @Prop() to: string | Location;
-
-  @Prop() closable: boolean;
 
   onClick() {
     this.$emit('click');

@@ -24,14 +24,19 @@ import {
 } from 'vue-property-decorator';
 @Component
 export default class VdScoreRank extends Vue {
-  @Prop({ default: 0 })
+  @Prop({ default: 0, type: Number })
   value: number;
-  @Prop({ default: 10 })
+
+  @Prop({ default: 10, type: Number })
   max: number;
-  @Prop() src: string;
+
+  @Prop({ type: String })
+  src: string;
+
   get displayValue(): string {
     return this.value === this.max ? this.value.toString() : this.value.toFixed(1);
   }
+
   get grade() {
     return `grade-${Math.round(this.value / this.max * 10)}`;
   }

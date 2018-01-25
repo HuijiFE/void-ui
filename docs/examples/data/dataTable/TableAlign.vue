@@ -28,7 +28,7 @@ export default class TableAlign extends Vue {
           }
         })(),
         sortable: (() => (k === 'math' || k === 'english' ? true : false))(),
-        sort: (() => {
+        sorter: (() => {
           if (k === 'math') {
             return [
               function normal(a: TableRow, b: TableRow, key: string) {
@@ -54,7 +54,7 @@ export default class TableAlign extends Vue {
         name: `小${v}`,
         math: randomScore(),
         english: randomScore(),
-        chiniese: randomScore(),
+        chinese: randomScore(),
         physical: randomScore(),
         biological: randomScore(),
         Chemistry: randomScore(),

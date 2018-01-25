@@ -56,16 +56,20 @@ import VdRadioGroup from 'src/controls/form/radio/VdRadioGroup.vue';
   },
 })
 export default class VdRadio extends VdStylableControl {
-  @Prop() id: string;
-  @Prop() name: string;
+  @Prop({ type: String })
+  id: string;
 
-  @Prop([String, Number])
+  @Prop({ type: String })
+  name: string;
+
+  @Prop({ type: [String, Number] })
   value: RadioValue;
 
-  @Prop([String, Number])
+  @Prop({ type: [String, Number] })
   valueSource: RadioValue;
 
-  @Prop() content: string;
+  @Prop({ type: String })
+  content: string;
 
   parent: VdRadioGroup | undefined;
 

@@ -26,27 +26,56 @@ import {
 
 @Component
 export default class VdFlexboxbox extends Vue {
-  @Prop() flex: FlexboxFlex;
-  @Prop() flexXsmall: FlexboxFlex;
-  @Prop() flexSmall: FlexboxFlex;
-  @Prop() flexMedium: FlexboxFlex;
-  @Prop() flexLarge: FlexboxFlex;
-  @Prop() flexXlarge: FlexboxFlex;
+  @Prop({ type: [String, Number] })
+  flex: FlexboxFlex;
 
-  @Prop() gutter: FlexboxGutter;
-  @Prop() direction: FlexboxDirection;
-  @Prop() justify: FlexboxJustify;
-  @Prop() align: FlexboxAlign;
+  @Prop({ type: [String, Number] })
+  flexXsmall: FlexboxFlex;
 
-  @Prop({ default: true })
+  @Prop({ type: [String, Number] })
+  flexSmall: FlexboxFlex;
+
+  @Prop({ type: [String, Number] })
+  flexMedium: FlexboxFlex;
+
+  @Prop({ type: [String, Number] })
+  flexLarge: FlexboxFlex;
+
+  @Prop({ type: [String, Number] })
+  flexXlarge: FlexboxFlex;
+
+  @Prop({ type: String })
+  gutter: FlexboxGutter;
+
+  @Prop({ type: String })
+  direction: FlexboxDirection;
+
+  @Prop({ type: String })
+  justify: FlexboxJustify;
+
+  @Prop({ type: String })
+  align: FlexboxAlign;
+
+  @Prop({ default: true, type: Boolean })
   wrapped: boolean;
 
-  @Prop() hidden: boolean;
-  @Prop() hiddenXsmall: boolean;
-  @Prop() hiddenSmall: boolean;
-  @Prop() hiddenMedium: boolean;
-  @Prop() hiddenLarge: boolean;
-  @Prop() hiddenXlarge: boolean;
+  @Prop({ type: Boolean })
+  hidden: boolean;
+
+  @Prop({ type: Boolean })
+  hiddenXsmall: boolean;
+
+  @Prop({ type: Boolean })
+  hiddenSmall: boolean;
+
+  @Prop({ type: Boolean })
+  hiddenMedium: boolean;
+
+  @Prop({ type: Boolean })
+  hiddenLarge: boolean;
+
+  @Prop({ type: Boolean })
+  hiddenXlarge: boolean;
 
   private get classes() {
     return [
@@ -57,14 +86,10 @@ export default class VdFlexboxbox extends Vue {
         [`flex-medium-${this.flexMedium}`]: this.flexMedium,
         [`flex-large-${this.flexLarge}`]: this.flexLarge,
         [`flex-xlarge-${this.flexXlarge}`]: this.flexXlarge,
-      },
-
-      `gutter-${this.gutter}`,
-      `direction-${this.direction}`,
-      `justify-${this.justify}`,
-      `align-${this.align}`,
-
-      {
+        [`gutter-${this.gutter}`]: this.gutter,
+        [`direction-${this.direction}`]: this.direction,
+        [`justify-${this.justify}`]: this.justify,
+        [`align-${this.align}`]: this.align,
         'wrapped-false': !this.wrapped,
         hidden: this.hidden,
         'hidden-xsmall': this.hiddenXsmall,
