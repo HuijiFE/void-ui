@@ -12,7 +12,8 @@
             :key="hItem.key"
             @click="headItemClick(hItem)">
           <slot :name="`head-column-${hItem.key}`"
-                :headItem="hItem">
+                :headItem="hItem"
+                :headCell="hItem.content">
             <div class="item-text">{{hItem.content}}</div>
           </slot>
           <div v-if="shouldSort(hItem)"
