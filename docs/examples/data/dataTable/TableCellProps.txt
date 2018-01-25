@@ -1,8 +1,10 @@
 <template>
-  <vd-data-table use-cell-slot
-                 show-index
+  <vd-data-table show-index
                  :body-data="scoreData"
                  :head-data="HeadData">
+    <div class="highlight-blue"
+         slot="body-column-douban"
+         slot-scope="{rowItem, cellItem, headItem}">高亮 {{cellItem}}</div>
     <div class="highlight"
          slot="body-2-zhihu"
          slot-scope="{rowItem, cellItem, headItem}">高亮 {{cellItem}}</div>
@@ -43,6 +45,10 @@ export default class TableCellProps extends Vue {
 }
 </script>
 <style lang="scss" scoped>
+.highlight-blue {
+  color: blue;
+}
+
 .highlight {
   color: red;
 }

@@ -18,8 +18,6 @@ eg: `body-row-${headkey}`
 
 ### 自定义单元格内容
 
-添加 `use-cell-slot` 属性位`true` 可自定义某一单元格的样式， 使用具名 slot
-
 `slot` 的 `name` 值为 `body-${rowIndex}-${headKey}`
 
 <example-board :component="TableCellProps" :source="TableCellPropsSource"></example-board>
@@ -61,13 +59,12 @@ eg: `body-row-${headkey}`
 | head-data           | 表头数据                                                     | `Array`   | []                        |
 | body-data           | 表格主体数据                                                 | `Array`   | []                        |
 | striped             | 是否展示相间条纹                                             | `Boolean` | **true\***, false         |
-| use-cell-slot       | 是否使用单元格 slot                                          | `Boolean` | **false\***, true         |
 | default-sortable    | 默认每列是否可排序                                           | `Boolean` | **true\***, false         |
 | default-align       | 默认每列对齐方式                                             | `String`  | **right\***, center, left |
 | show-index          | 是否展示索引                                                 | `Boolean` | **false\***, true         |
 | img-no-padding-left | 当第一列需要展示图片时,<br>是否去掉 padding-left（项目需要） | `Boolean` | **false\***, true         |
 
-> 排序时会尝试转换为数字进行排序， 如果不能转换（例如汉字）则按照unicode的顺序进行排序
+> 排序时会尝试转换为数字进行排序， 如果不能转换（例如汉字）则按照 unicode 的顺序进行排序
 
 ### slot 插槽
 
@@ -98,7 +95,6 @@ eg: `body-row-${headkey}`
 | Name       | Description        | Parameter                                         |
 | :--------- | :----------------- | :------------------------------------------------ |
 | table-sort | 排序事件发生时触发 | key(排序列对应表头的 key 值)， sortType(排序类型) |
-
 
 <script>
 import TableBasic from 'docs/examples/data/dataTable/TableBasic';

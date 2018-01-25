@@ -40,16 +40,21 @@
             :class="handleAlignClass(hItem)"
             v-for="hItem in headData"
             :key="hItem.key">
-          <slot :name="useCellSlot ? `body-${row.vd_index}-${hItem.key}` : `body-column-${hItem.key}`"
+          <slot :name="`body-column-${hItem.key}`"
                 :rowItem="row"
                 :headItem="hItem"
                 :cellItem="row[hItem.key]">
-            <div v-if="hItem.formatter && typeof hItem.formatter === 'function'"
-                 class="item-content">
-              {{hItem.formatter(row[hItem.key], row, hItem)}}
-            </div>
-            <div v-else
+            <slot :name="`body-${row.vd_index}-${hItem.key}`"
+                  :rowItem="row"
+                  :headItem="hItem"
+                  :cellItem="row[hItem.key]">
+              <div v-if="hItem.formatter && typeof hItem.formatter === 'function'"
+                  class="item-content">
+                {{hItem.formatter(row[hItem.key], row, hItem)}}
+              </div>
+              <div v-else
                  class="item-content">{{row[hItem.key]}}</div>
+            </slot>
           </slot>
         </td>
       </tr>
@@ -88,9 +93,6 @@ export default class VdDataTable extends VdStylableControl {
 
   @Prop({ default: true, type: Boolean })
   striped: boolean;
-
-  @Prop({ default: false, type: Boolean })
-  useCellSlot: boolean;
 
   @Prop({ default: true, type: Boolean })
   defaultSortable: boolean;
