@@ -20,7 +20,7 @@ export default class TableBasic extends Vue {
         content: k.toUpperCase(),
         key: k,
         align: (() => {
-          if (k === 'chiniese') {
+          if (k === 'chinese') {
             return 'left';
           }
         })(),
@@ -42,7 +42,7 @@ export default class TableBasic extends Vue {
         name: `小${v}`,
         math: randomScore(),
         english: randomScore(),
-        chiniese: randomScore(),
+        chinese: randomScore(),
         physical: randomScore(),
         biological: randomScore(),
         Chemistry: randomScore(),

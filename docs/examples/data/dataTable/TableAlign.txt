@@ -54,7 +54,7 @@ export default class TableAlign extends Vue {
         name: `小${v}`,
         math: randomScore(),
         english: randomScore(),
-        chiniese: randomScore(),
+        chinese: randomScore(),
         physical: randomScore(),
         biological: randomScore(),
         Chemistry: randomScore(),
