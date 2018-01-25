@@ -28,7 +28,7 @@ export default class TableAlign extends Vue {
           }
         })(),
         sortable: (() => (k === 'math' || k === 'english' ? true : false))(),
-        sort: (() => {
+        sorter: (() => {
           if (k === 'math') {
             return [
               function normal(a: TableRow, b: TableRow, key: string) {

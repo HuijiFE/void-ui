@@ -173,8 +173,8 @@ export default class VdDataTable extends VdStylableControl {
     let status = item.vd_selfSortStatus;
     item.vd_selfSortStatus = status === 2 ? 0 : status + 1;
 
-    if (item.sort && Array.isArray(item.sort)) {
-      let userSortMap = item.sort;
+    if (item.sorter && Array.isArray(item.sorter)) {
+      let userSortMap = item.sorter;
       let defaultSortMap = this.sortFunctionMap;
 
       this.mergeSortMap = this.mergeSortFunc<Function>(defaultSortMap, userSortMap);
