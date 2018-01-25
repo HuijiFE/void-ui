@@ -20,7 +20,7 @@ export default class TableBasic extends Vue {
         content: k.toUpperCase(),
         key: k,
         align: (() => {
-          if (k === 'chinese') {
+          if (k === 'chiniese') {
             return 'left';
           }
         })(),
