@@ -1,9 +1,13 @@
 <template>
   <div class="definition-item">
     <span class="definition-label">{{label}}</span>
-    <span class="definition-content">
+    <span v-if="$slots.default"
+          class="definition-content">
       <slot></slot>
     </span>
+    <span v-else
+          class="definition-content"
+          v-html="content"></span>
   </div>
 </template>
 
@@ -23,5 +27,8 @@ import {
 export default class VdDefinitionItem extends Vue {
   @Prop({ type: String })
   label: string;
+
+  @Prop({ type: String })
+  content: string;
 }
 </script>
