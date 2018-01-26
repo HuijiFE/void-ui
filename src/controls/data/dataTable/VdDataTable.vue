@@ -42,20 +42,21 @@
             v-for="hItem in headData"
             :key="hItem.key">
           <slot :name="`body-column-${hItem.key}`"
+                v-if="!hasSameSlot(row.vd_index, hItem.key)"
                 :rowItem="row"
                 :headItem="hItem"
                 :cellItem="row[hItem.key]">
-            <slot :name="`body-${row.vd_index}-${hItem.key}`"
-                  :rowItem="row"
-                  :headItem="hItem"
-                  :cellItem="row[hItem.key]">
-              <div v-if="hItem.formatter && typeof hItem.formatter === 'function'"
-                  class="item-content">
+            <div v-if="hItem.formatter && typeof hItem.formatter === 'function'"
+                 class="item-content">
                 {{hItem.formatter(row[hItem.key], row, hItem)}}
-              </div>
-              <div v-else
+            </div>
+            <div v-else
                  class="item-content">{{row[hItem.key]}}</div>
-            </slot>
+          </slot>
+          <slot :name="`body-${row.vd_index}-${hItem.key}`"
+                :rowItem="row"
+                :headItem="hItem"
+                :cellItem="row[hItem.key]">
           </slot>
         </td>
       </tr>
@@ -215,6 +216,10 @@ export default class VdDataTable extends VdStylableControl {
     return defaultMap.map(
       (func, index) => (typeof userMap[index] === 'function' ? userMap[index] : func),
     );
+  }
+
+  hasSameSlot(index: number, key: string): boolean {
+    return this.$scopedSlots.hasOwnProperty(`body-${index}-${key}`);
   }
 
   @Watch('currentSortItem')
