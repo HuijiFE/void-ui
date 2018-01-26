@@ -6,7 +6,10 @@
          slot="body-column-douban"
          slot-scope="{rowItem, cellItem, headItem}">高亮 {{cellItem}}</div>
     <div class="highlight"
-         slot="body-2-zhihu"
+         slot="body-2-douban"
+         slot-scope="{rowItem, cellItem, headItem}">高亮 {{cellItem}}</div>
+    <div class="highlight"
+         slot="body-1-zhihu"
          slot-scope="{rowItem, cellItem, headItem}">高亮 {{cellItem}}</div>
   </vd-data-table>
 </template>
