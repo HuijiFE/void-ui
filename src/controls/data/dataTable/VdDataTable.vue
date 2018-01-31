@@ -82,6 +82,7 @@ import {
   TableRow,
   TableHeaderItem,
   SortEventName,
+  SorterFunction,
 } from './VdDataTable';
 
 @Component
@@ -111,8 +112,12 @@ export default class VdDataTable extends VdStylableControl {
   cloneBodyData = this.makeBodyData<TableRow>(this.bodyData);
   cloneHeadData = this.makeHeadData<TableHeaderItem>(this.headData);
   // todo Associate SortName and sortFunctionMap
-  sortFunctionMap = [this.getOriginSortData, this.getAscSortData, this.getDescSortData];
-  mergeSortMap: Function[] = [];
+  sortFunctionMap: SorterFunction[] = [
+    this.getOriginSortData,
+    this.getAscSortData,
+    this.getDescSortData,
+  ];
+  mergeSortMap: SorterFunction[] = [];
   currentSortItem = {};
 
   get classes(): ClassNames {
@@ -179,7 +184,7 @@ export default class VdDataTable extends VdStylableControl {
       let userSortMap = item.sorter;
       let defaultSortMap = this.sortFunctionMap;
 
-      this.mergeSortMap = this.mergeSortFunc<Function>(defaultSortMap, userSortMap);
+      this.mergeSortMap = this.mergeSortFunc(defaultSortMap, userSortMap);
     } else {
       this.mergeSortMap = this.sortFunctionMap;
     }
@@ -212,7 +217,7 @@ export default class VdDataTable extends VdStylableControl {
       : `align-${this.defaultAlign}`;
   }
 
-  mergeSortFunc<T>(defaultMap: T[], userMap: T[]): T[] {
+  mergeSortFunc<T extends SorterFunction>(defaultMap: T[], userMap: T[]): T[] {
     return defaultMap.map(
       (func, index) => (typeof userMap[index] === 'function' ? userMap[index] : func),
     );

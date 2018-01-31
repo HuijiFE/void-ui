@@ -1,6 +1,6 @@
 export type TableCell = string | number;
 export type TextAlign = 'left' | 'center' | 'right';
-export type sortFunction = (a: TableCell, b: TableCell) => number;
+export type SorterFunction = (a: TableRow, b: TableRow, c?: string) => number;
 export interface TableRow {
   [key: string]: TableCell;
 }
@@ -10,7 +10,7 @@ export interface TableHeaderItem {
   key: string;
   sortable?: boolean;
   formatter?: (cell: TableCell, row?: TableRow, headerItem?: TableHeaderItem) => string;
-  sort?: sortFunction[];
+  sorter?: SorterFunction[];
   // compareLocales?: string | string[];
   // compareOptions?: Intl.CollatorOptions;
 
