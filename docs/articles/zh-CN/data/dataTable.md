@@ -12,7 +12,7 @@
 
 使用具名 slot 可以自定义某一列的内容， `slot`的`name`值与该列表头的`head 值相同`
 
-eg: `body-row-${headkey}`
+eg: `body-column-${headkey}`
 
 <example-board :component="TableProps" :source="TablePropsSource"></example-board>
 
