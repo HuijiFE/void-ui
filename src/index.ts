@@ -4,14 +4,19 @@ import { Vue as _Vue } from 'vue/types/vue';
 export * from './controls';
 import * as controls from './controls';
 import * as filters from './filters';
+import * as directives from './directives';
 
 const install: PluginFunction<any> = function(Vue, options = {}) {
-  Object.entries(controls).map(([name, control]) => {
+  Object.entries(controls).forEach(([name, control]) => {
     Vue.component(name, control);
   });
 
   Object.entries(filters).forEach(([name, filter]) => {
     Vue.filter(name, filter);
+  });
+
+  Object.entries(directives).forEach(([name, directive]) => {
+    Vue.directive(name, directive);
   });
 };
 

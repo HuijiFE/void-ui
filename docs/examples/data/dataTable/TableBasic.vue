@@ -1,5 +1,6 @@
 <template>
-  <vd-data-table :body-data="scoreData"
+  <vd-data-table v-loading
+                 :body-data="scoreData"
                  :head-data="HeadData"
                  :default-sortable="false"
                  default-align="center">
@@ -49,6 +50,10 @@ export default class TableBasic extends Vue {
       } as TableRow;
     });
     return tableData;
+  }
+
+  beforeCreate () {
+    this.
   }
 }
 </script>
