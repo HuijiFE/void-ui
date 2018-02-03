@@ -81,6 +81,7 @@ import {
   TextAlign,
   TableRow,
   TableHeaderItem,
+  Sorter,
   SortEventName,
   SorterFunction,
 } from './VdDataTable';
@@ -109,16 +110,15 @@ export default class VdDataTable extends VdStylableControl {
   @Prop({ default: false, type: Boolean })
   imgNoPaddingLeft: boolean;
 
-  cloneBodyData = this.makeBodyData<TableRow>(this.bodyData);
-  cloneHeadData = this.makeHeadData<TableHeaderItem>(this.headData);
-  // todo Associate SortName and sortFunctionMap
-  sortFunctionMap: SorterFunction[] = [
-    this.getOriginSortData,
-    this.getAscSortData,
-    this.getDescSortData,
-  ];
-  mergeSortMap: SorterFunction[] = [];
-  currentSortItem = {};
+  cloneBodyData: TableRow[] = this.makeBodyData(this.bodyData);
+  cloneHeadData: TableHeaderItem[] = this.makeHeadData(this.headData);
+  currentSortItem: TableHeaderItem;
+  baseSorter: Sorter = {
+    asc: this.getAscSortData,
+    desc: this.getDescSortData,
+    normal: this.getOriginSortData,
+  };
+  mergeSorter: Sorter;
 
   get classes(): ClassNames {
     return [`theme-${this.theme || this.$void.theme}`];
@@ -127,6 +127,7 @@ export default class VdDataTable extends VdStylableControl {
   // make head data
   makeHeadData<T extends TableHeaderItem>(data: T[]): T[] {
     return data.map((el: T) => {
+      // 我在这里纠结的问题是要在开始的时候合并sorter还是点击的时候合并sorter
       el.vd_selfSortStatus = 0;
       return el;
     });
@@ -180,22 +181,17 @@ export default class VdDataTable extends VdStylableControl {
     let status = item.vd_selfSortStatus;
     item.vd_selfSortStatus = status === 2 ? 0 : status + 1;
 
-    if (item.sorter && Array.isArray(item.sorter)) {
-      let userSortMap = item.sorter;
-      let defaultSortMap = this.sortFunctionMap;
+    this.mergeSorter = item.sorter
+      ? { ...this.baseSorter, ...item.sorter }
+      : this.baseSorter;
 
-      this.mergeSortMap = this.mergeSortFunc(defaultSortMap, userSortMap);
-    } else {
-      this.mergeSortMap = this.sortFunctionMap;
-    }
-
-    this.doSort(item.key, item.vd_selfSortStatus);
+    this.doSort(item.key, SortEventName[item.vd_selfSortStatus]);
     this.$emit('table-sort', item.key, SortEventName[item.vd_selfSortStatus]);
   }
 
-  doSort(key: string, status: number) {
+  doSort(key: string, sorterKey: string): void {
     this.cloneBodyData.sort((a: TableRow, b: TableRow) =>
-      this.mergeSortMap[status](a, b, key),
+      this.mergeSorter[sorterKey](a, b, key),
     );
   }
 
@@ -206,7 +202,7 @@ export default class VdDataTable extends VdStylableControl {
       : item.sortable === true ? true : false;
   }
 
-  handleHeadClass(Item: TableHeaderItem) {
+  handleHeadClass(Item: TableHeaderItem): ClassNames {
     return [this.handleAlignClass(Item), { cursor: this.shouldSort(Item) }];
   }
 
@@ -228,7 +224,7 @@ export default class VdDataTable extends VdStylableControl {
   }
 
   @Watch('currentSortItem')
-  handleSortItemChange(newVal: TableHeaderItem, oldVal: TableHeaderItem) {
+  handleSortItemChange(newVal: TableHeaderItem, oldVal: TableHeaderItem): void {
     if (newVal.key !== oldVal.key) {
       oldVal.vd_selfSortStatus = 0;
     }

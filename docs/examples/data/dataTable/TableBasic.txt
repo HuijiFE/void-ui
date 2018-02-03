@@ -1,5 +1,6 @@
 <template>
-  <vd-data-table :body-data="scoreData"
+  <vd-data-table v-loading
+                 :body-data="scoreData"
                  :head-data="HeadData"
                  :default-sortable="false"
                  default-align="center">
@@ -34,8 +35,8 @@ export default class TableBasic extends Vue {
   }
 
   getScoreData() {
-    let names = '红橙黄绿青';
-    let randomScore = () => Math.ceil(Math.random() * (100 - 60) + 60);
+    let names: string = '红橙黄绿青';
+    let randomScore: () => number = () => Math.ceil(Math.random() * (100 - 60) + 60);
 
     let tableData = names.split('').map(v => {
       return {

@@ -35,8 +35,8 @@ export default class TableBasic extends Vue {
   }
 
   getScoreData() {
-    let names = '红橙黄绿青';
-    let randomScore = () => Math.ceil(Math.random() * (100 - 60) + 60);
+    let names: string = '红橙黄绿青';
+    let randomScore: () => number = () => Math.ceil(Math.random() * (100 - 60) + 60);
 
     let tableData = names.split('').map(v => {
       return {
@@ -50,10 +50,6 @@ export default class TableBasic extends Vue {
       } as TableRow;
     });
     return tableData;
-  }
-
-  beforeCreate () {
-    this.
   }
 }
 </script>

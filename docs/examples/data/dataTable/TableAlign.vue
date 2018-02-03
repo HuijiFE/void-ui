@@ -30,15 +30,14 @@ export default class TableAlign extends Vue {
         sortable: (() => (k === 'math' || k === 'english' ? true : false))(),
         sorter: (() => {
           if (k === 'math') {
-            return [
-              function normal(a: TableRow, b: TableRow, key: string) {
+            return {
+              normal(a: TableRow, b: TableRow, key: string) {
                 return (a[key] as number) - (b.math as number);
               },
-              false,
-              function desc(a: TableRow, b: TableRow, key: string) {
+              desc(a: TableRow, b: TableRow, key: string) {
                 return (a.math as number) * 2 - (b.math as number);
               },
-            ];
+            };
           }
         })(),
       } as TableHeaderItem;

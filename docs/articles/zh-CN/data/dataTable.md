@@ -78,16 +78,16 @@ eg: `body-column-${headkey}`
 
 > `*`表示必填属性。
 
-| Property      | Description            | Type              | Available Value     | Parameter                                                                               |
-| :------------ | :--------------------- | :---------------- | :------------------ | :-------------------------------------------------------------------------------------- |
-| **content\*** | 当前表头显示内容       | `string`          | -                   |                                                                                         |
-| **key\***     | 对应 bodyData 中的键值 | `string`          | -                   |                                                                                         |
-| formatter     | 自定义格式化该列内容   | `Function`        | -                   | cell(当前单元格原始值)，当前行的所有值，<br>当前 headData 的值                          |
-| sorter        | 自定义排序方式         | `Array<Function>` | -                   | 前两个参数为 Array.sort 方法的两个默认参数 a、b，<br> 第三个参数 key(当前排序的 key 值) |
-| sortable      | 自定义该列是否可排序   | `Boolean`         | -                   | -                                                                                       |
-| align         | 自定义该列对齐方式     | `String`          | right, left, center | -                                                                                       |
+| Property      | Description            | Type       | Available Value     | Parameter                                                                                         |
+| :------------ | :--------------------- | :--------- | :------------------ | :------------------------------------------------------------------------------------------------ |
+| **content\*** | 当前表头显示内容       | `string`   | -                   |                                                                                                   |
+| **key\***     | 对应 bodyData 中的键值 | `string`   | -                   |                                                                                                   |
+| formatter     | 自定义格式化该列内容   | `Function` | -                   | cell(当前单元格原始值)，当前行的所有值，<br>当前 headData 的值                                    |
+| sorter        | 自定义排序方式         | `Object`   | -                   | 属性方法的前两个参数为 Array.sort 方法的两个默认参数 a、b，<br> 第三个参数 key(当前排序的 key 值) |
+| sortable      | 自定义该列是否可排序   | `Boolean`  | -                   | -                                                                                                 |
+| align         | 自定义该列对齐方式     | `String`   | right, left, center | -                                                                                                 |
 
-> **sorter 属性是一个函数数组， 数组成员是自定义排序方法， 执行顺序按照 asc、desc、normal 执行**
+> sorter 自定义属性会覆盖内置属性
 
 > 当使用 slot 时，也可以使用`void-ui`内置的一些过滤器过滤
 
