@@ -54,12 +54,12 @@
   @each $size in $ss-sizes {
     &.size-#{$size} {
       .#{$void}-loading_container {
-        height: map-get($map:$size-heights, $key:$size);
+        height: map-get($map: $size-heights, $key: $size);
       }
 
       .#{$void}-loading_bar {
-        width: map-get($map:$size-widths, $key:$size);
-        height: map-get($map:$size-heights, $key:$size);
+        width: map-get($map: $size-widths, $key: $size);
+        height: map-get($map: $size-heights, $key: $size);
         background-color: $theme-lite-foreground-disabled;
         border-radius: 1px;
         animation: preloader 2s infinite ease-in-out;
@@ -67,15 +67,15 @@
         @for $i from 1 through 5 {
           &:nth-child(#{$i + 1}) {
             animation-timing-function: linear;
-            animation-delay: (1000 / 5) * $i +ms;
+            animation-delay: (1000 / 5) * $i + ms;
           }
         }
       }
 
       &.gray {
         .#{$void}-loading_bar {
-          width: map-get($map:$size-widths, $key:$size);
-          height: map-get($map:$size-heights, $key:$size);
+          width: map-get($map: $size-widths, $key: $size);
+          height: map-get($map: $size-heights, $key: $size);
           background-color: $theme-lite-foreground-disabled;
           border-radius: 1px;
           animation: default-preloader 2s infinite ease-in-out;
@@ -83,7 +83,7 @@
           @for $i from 1 through 5 {
             &:nth-child(#{$i + 1}) {
               animation-timing-function: linear;
-              animation-delay: (1000 / 5) * $i +ms;
+              animation-delay: (1000 / 5) * $i + ms;
             }
           }
         }
@@ -95,9 +95,12 @@
     .#{$void}-loading_bar {
       @for $i from 1 through 5 {
         &:nth-child(#{$i}) {
-          animation: map-get($map:$animation-preloaders, $key:$i) 2s infinite ease-in-out;
+          animation: map-get($map: $animation-preloaders, $key: $i)
+            2s
+            infinite
+            ease-in-out;
           animation-timing-function: linear;
-          animation-delay: (1000 / 5) * $i +ms;
+          animation-delay: (1000 / 5) * $i + ms;
         }
       }
     }

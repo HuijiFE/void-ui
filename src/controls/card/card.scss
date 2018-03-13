@@ -37,10 +37,10 @@
   @each $theme in $ss-themes {
     &.theme-#{$theme} {
       background-color: map-get($map: $card-background-color, $key: $theme);
-      color: map-get($map:$card-body-color, $key:#{$theme}-secondary);
+      color: map-get($map: $card-body-color, $key: #{$theme}-secondary);
 
-      .body-head {
-        color: map-get($map:$card-body-color, $key:$theme);
+      .#{$void}-card_body-head {
+        color: map-get($map: $card-body-color, $key: $theme);
       }
     }
   }
@@ -54,27 +54,27 @@
         & {
           padding: $card-row-padding;
 
-          .card-image {
+          .#{$void}-card_card-image {
             height: $card-row-image-height;
             width: $card-row-image-width;
             border-radius: $card-row-image-border-radius;
             box-shadow: $card-box-shadow;
           }
 
-          .card-body {
+          .#{$void}-card_card-body {
             margin-left: $card-row-body-margin-left;
           }
 
-          .body-content {
+          .#{$void}-card_body-content {
             margin-top: $card-row-body-content-margin-top;
           }
 
-          .body-head {
+          .#{$void}-card_body-head {
             font-size: $card-row-body-head-font-size;
             font-weight: bold;
           }
 
-          .body-description {
+          .#{$void}-card_body-description {
             display: flex;
             flex-grow: 1;
             align-items: flex-end;
@@ -82,25 +82,25 @@
         }
       } @else {
         & {
-          .card-image {
+          .#{$void}-card_card-image {
             padding-top: $card-col-image-propertion;
           }
 
-          .card-body {
+          .#{$void}-card_card-body {
             padding: $card-col-body-padding;
             height: $card-col-body-height;
           }
 
-          .body-head {
+          .#{$void}-card_body-head {
             font-size: $card-col-body-head-font-size;
           }
 
-          .body-content {
+          .#{$void}-card_body-content {
             order: 2;
             margin-top: $card-col-body-content-margin-top;
           }
 
-          .body-description {
+          .#{$void}-card_body-description {
             order: 1;
             font-size: $card-col-body-description-font-size;
             color: $card-col-body-description-color;
@@ -119,30 +119,35 @@
   font-size: $card-body-font-size;
   overflow: hidden;
 
-  .card-image {
+  & &_card-image {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
   }
 
-  .card-body {
+  & &_card-body {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     font-family: $card-body-font-family;
   }
 
-  .body-head {
+  & &_body-head {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
   }
 
-  .body-content {
+  & &_body-content {
     line-height: 1.8;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3; // 三行省略
   }
+  // & &_card-item {
+  //   & + & {
+  //     margin-top: 0.16rem;
+  //   }
+  // }
 }

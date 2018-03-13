@@ -1,13 +1,13 @@
 <template>
   <div class="vd-data-card"
        :class="classes">
-    <div class="card-icon"
+    <div class="vd-data-card_icon"
          :class="`tone-${tone}`">
       <i class="fa"
          :class="`fa-${icon}`"
          aria-hidden="true"></i>
     </div>
-    <div class="card-body">
+    <div class="vd-data-card_body">
       <slot></slot>
     </div>
   </div>
@@ -35,4 +35,3 @@ export default class VdDataCard extends VdStylableControl {
   }
 }
 </script>
-

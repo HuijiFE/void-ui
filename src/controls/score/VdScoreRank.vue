@@ -1,12 +1,13 @@
 <template>
   <div class="vd-score-rank">
-    <span class="score-rank-outer"
+    <span class="vd-score-rank_outer"
           :class="grade">
-      <span class="score-rank-img">
+      <span class="vd-score-rank_image-container">
         <img :src="src"
-             alt="">
+             alt=""
+             class="vd-score-rank_image">
       </span>
-      <span class="score-rank-inner">{{value >=10 ? value : value.toFixed(1)}}</span>
+      <span class="vd-score-rank_inner">{{value >=10 ? value : value.toFixed(1)}}</span>
     </span>
   </div>
 

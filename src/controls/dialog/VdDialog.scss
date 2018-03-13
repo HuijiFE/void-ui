@@ -1,0 +1,154 @@
+//map
+
+$vd-dialog-font-lite-color: #333333;
+$vd-dialog-font-dark-color: #eeeeee;
+$vd-dialog_theme-background: (
+  'lite': $theme-lite-background,
+  'dark': $theme-dark-background-higher
+);
+
+$vd-dialog-font-color: (
+  'lite': $vd-dialog-font-lite-color,
+  'dark': $vd-dialog-font-dark-color
+);
+
+.#{$void}-dialog {
+  $vd-dialog-width: 4.74rem;
+  $vd-dialog-height: 1.37rem;
+  $vd-dialog-padding: 0.15rem;
+  $vd-dialog_label-font-size: 0.14rem;
+  $vd-dialog_label-margin-bottom: 0.08rem;
+  $vd-dialog_content-message: 0.29rem;
+  $vd-dialog_icon-outer-width: 0.29rem;
+  $vd-dialog_icon-font-size: 0.24rem;
+  $vd-dialog_description-font-size: 0.12rem;
+
+  //map
+  $vd-dialog_icon-outer-background: (
+    'success': $tone-success,
+    'primary': $tone-primary,
+    'warning': $tone-warning,
+    'danger': $tone-danger
+  );
+
+  $vd-dialog_theme-background: (
+    'lite': $theme-lite-background,
+    'dark': $theme-dark-background-higher
+  );
+
+  $vd-dialog-font-color: (
+    'lite': $vd-dialog-font-lite-color,
+    'dark': $vd-dialog-font-dark-color
+  );
+
+  width: $vd-dialog-width;
+  // height: $vd-dialog-height;
+  padding: $vd-dialog-padding;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -$vd-dialog-width / 2;
+  box-shadow: 0.02rem 0.02rem 0.02rem 0.02rem rgba(0, 0, 0, 0.16);
+  & &_label {
+    display: block;
+    font-weight: bold;
+    font-size: $vd-dialog_label-font-size;
+    margin-bottom: $vd-dialog_label-margin-bottom;
+  }
+
+  & &_content-message {
+    display: inline-flex;
+    height: $vd-dialog_content-message;
+    margin-bottom: 0.4rem;
+  }
+
+  &_icon-outer {
+    flex: none;
+    width: $vd-dialog_icon-outer-width;
+    height: $vd-dialog_icon-outer-width;
+    line-height: $vd-dialog_icon-outer-width;
+    border-radius: 50%;
+    color: #ffffff;
+    text-align: center;
+    font-size: $vd-dialog_icon-font-size;
+
+    @each $tone, $color in $vd-dialog_icon-outer-background {
+      &.#{$void}-dialog_tone-#{$tone} {
+        background-color: $color;
+      }
+    }
+  }
+
+  & &_description {
+    font-size: $vd-dialog_description-font-size;
+    line-height: $vd-dialog_content-message;
+  }
+
+  &_icon-outer + &_description {
+    margin-left: 0.08rem;
+  }
+
+  & &_judge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0.1rem;
+  }
+
+  &_judge-common {
+    width: 0.79rem;
+    height: 0.32rem;
+    border: 1px solid $tone-primary;
+    color: $tone-primary;
+    font-size: 0.14rem;
+    background-color: rgba(0, 0, 0, 0);
+
+    & + & {
+      margin-left: 0.1rem;
+    }
+  }
+
+  & &_confirm {
+    background-color: $tone-primary;
+    color: #ffffff;
+  }
+
+  @each $theme, $color in $vd-dialog_theme-background {
+    &.theme-#{$theme} {
+      background-color: map-get($map: $vd-dialog_theme-background, $key: $theme);
+      .#{$void}-dialog_label,
+      .#{$void}-dialog_description {
+        color: map-get($map: $vd-dialog-font-color, $key: $theme);
+      }
+    }
+  }
+}
+
+.#{$void}-dialog-input {
+  & &_content {
+    margin-bottom: 0.5rem;
+    font-size: 0.12rem;
+  }
+
+  & &_content-input {
+    width: 100%;
+    height: 0.32rem;
+    border: 1px solid #888888;
+    border-radius: 1px;
+    margin: 0.02rem 0;
+    padding: 0 0.05rem;
+    font-size: 0.14rem;
+  }
+
+  @each $theme, $color in $vd-dialog_theme-background {
+    &.theme-#{$theme} {
+      background-color: map-get($map: $vd-dialog_theme-background, $key: $theme);
+
+      .#{$void}-dialog_label,
+      .#{$void}-dialog-input_content-label,
+      .#{$void}-dialog-input_content-description {
+        color: map-get($map: $vd-dialog-font-color, $key: $theme);
+      }
+    }
+  }
+}

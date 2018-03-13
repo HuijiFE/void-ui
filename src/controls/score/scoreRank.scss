@@ -8,17 +8,17 @@
   $score-padding: 0.04rem;
   $score-rank-img-height: 0.4rem;
   $score-rank-outer-widths: (
-    10:$score-rank-width,
-    9:$score-rank-width - (0.14rem*1),
-    8:$score-rank-width - (0.14rem*2),
-    7:$score-rank-width - (0.14rem*3),
-    6:$score-rank-width - (0.14rem*4),
-    5:$score-rank-width - (0.14rem*5),
-    4:$score-rank-width - (0.14rem*6),
-    3:$score-rank-width - (0.14rem*7),
-    2:$score-rank-width - (0.14rem*8),
-    1:$score-rank-width - (0.14rem*9),
-    0:$score-rank-width - (0.14rem*10)
+    10: $score-rank-width,
+    9: $score-rank-width - (0.14rem * 1),
+    8: $score-rank-width - (0.14rem * 2),
+    7: $score-rank-width - (0.14rem * 3),
+    6: $score-rank-width - (0.14rem * 4),
+    5: $score-rank-width - (0.14rem * 5),
+    4: $score-rank-width - (0.14rem * 6),
+    3: $score-rank-width - (0.14rem * 7),
+    2: $score-rank-width - (0.14rem * 8),
+    1: $score-rank-width - (0.14rem * 9),
+    0: $score-rank-width - (0.14rem * 10)
   );
   $score-rank-colors: (
     0: $grade-0,
@@ -31,7 +31,7 @@
     7: $grade-3,
     8: $grade-3,
     9: $grade-4,
-    10:$grade-4
+    10: $grade-4
   );
   // score-rank
   width: $score-rank-width;
@@ -40,7 +40,7 @@
   background-color: $score-rank-background;
   font: Aldrich;
   font-size: $score-font-size;
-  .score-rank-outer {
+  & &_outer {
     display: flex;
     height: 100%;
     justify-content: space-between;
@@ -57,18 +57,18 @@
       }
     }
   }
-  .score-rank-inner {
+  & &_inner {
     display: flex;
     padding-right: $score-padding-right;
     line-height: $score-rank-height;
   }
-  .score-rank-img {
+  & &_image-container {
     height: $score-rank-img-height;
     padding: $score-padding;
-    img {
-      width: auto;
-      height: 100%;
-    }
+  }
+  & &_image {
+    width: auto;
+    height: 100%;
   }
   & + & {
     margin-top: $score-margin-base;

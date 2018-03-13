@@ -1,6 +1,6 @@
 <template>
   <div class="vd-score-square">
-    <div class="score-square-inner"
+    <div class="vd-score-square_inner"
          :class="grade">
       {{value >= 10 ? value : value.toFixed(1)}}
     </div>

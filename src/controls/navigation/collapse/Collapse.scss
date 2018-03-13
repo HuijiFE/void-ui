@@ -9,51 +9,49 @@
     &.theme-#{$theme} {
       background-color: map-get($map: $theme-background-colors, $key: #{$theme});
 
-      .#{$void}-collapse-item {
-        border-bottom: 1px solid
+      .#{$void}-collapse_item {
+        border-bottom: 1px
+          solid
           map-get($map: $theme-background-colors, $key: #{$theme}-border);
 
         &:first-child {
-          border-top: 1px solid
+          border-top: 1px
+            solid
             map-get($map: $theme-background-colors, $key: #{$theme}-hover);
         }
       }
     }
   }
 
-  &-item {
-    .item-head {
-      @include flex(row, space-between);
-      padding: $collapse-item-head-padding;
-      font-size: $collapse-item-head-font-size;
-      font-weight: bold;
-      cursor: pointer;
+  & &_item-head {
+    @include flex(row, space-between);
+    padding: $collapse-item-head-padding;
+    font-size: $collapse-item-head-font-size;
+    font-weight: bold;
+    cursor: pointer;
+  }
 
-      .head-content {
-        flex-grow: 1;
-      }
+  & &_head-content {
+    flex-grow: 1;
+  }
 
-      .head-arrow {
-        flex: none;
-
-        &.arrow-up {
-          transform: rotate(-90deg);
-        }
-      }
+  &_head-arrow {
+    flex: none;
+    &.arrow-up {
+      transform: rotate(-90deg);
     }
+  }
 
-    .item-body {
-      will-change: height;
-      overflow: hidden;
-      font-size: $collapse-item-head-font-size;
-
-      &.hidden {
-        height: 0;
-      }
+  &_item-body {
+    will-change: height;
+    overflow: hidden;
+    font-size: $collapse-item-head-font-size;
+    &.hidden {
+      height: 0;
     }
+  }
 
-    .body-content {
-      padding-bottom: $collapse-item-body-content-padding-bottom;
-    }
+  & &_body-content {
+    padding-bottom: $collapse-item-body-content-padding-bottom;
   }
 }

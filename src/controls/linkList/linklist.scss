@@ -13,7 +13,7 @@
 
   display: flex;
   flex-wrap: wrap;
-  .link-item {
+  & &_item {
     flex: none;
     @include flex-inline(row, flex-start, center, nowrap);
     width: $link-width;
@@ -32,20 +32,19 @@
       cursor: pointer;
       color: $link-color-hover;
     }
+  }
+  & &_label {
+    color: inherit;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
 
-    .link-label {
-      color: inherit;
-      overflow-x: hidden;
-      text-overflow: ellipsis;
-    }
+  & &_icon {
+    color: inherit;
+    font-size: $link-icon-font-size;
+  }
 
-    .link-icon {
-      color: inherit;
-      font-size: $link-icon-font-size;
-    }
-
-    .link-label {
-      margin-left: $link-label-margin-left;
-    }
+  & &_label {
+    margin-left: $link-label-margin-left;
   }
 }

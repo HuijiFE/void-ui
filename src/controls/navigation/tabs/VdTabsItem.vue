@@ -1,5 +1,5 @@
 <template>
-  <div class="vd-tabs-item"
+  <div class="vd-tabs_item"
        :class="classes">
     <slot></slot>
   </div>

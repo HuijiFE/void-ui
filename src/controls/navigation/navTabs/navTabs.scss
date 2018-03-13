@@ -1,7 +1,7 @@
 .#{$void}-nav-tabs {
   $nav-tabs-backgrounds: (
-    lite:#00abd0,
-    dark:#4e4e4e
+    lite: #00abd0,
+    dark: #4e4e4e
   );
   $nav-tabs-modes: 'vertical', 'horizontal';
   $nav-tabs-item-height: 0.64rem;
@@ -40,7 +40,7 @@
     }
   }
 
-  &-item {
+  & &_item {
     font-size: $nav-tabs-item-font-size;
     width: $nav-tabs-item-width;
     height: $nav-tabs-item-height;

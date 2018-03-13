@@ -1,29 +1,29 @@
 .#{$void}-radio {
-  @include flex-inline(row,center,center);
+  @include flex-inline(row, center, center);
   font-size: $form-wedgit-font-size;
 
   height: $form-wedgit-height;
   cursor: pointer;
   user-select: none;
 
-  .radio-input {
+  & &_input {
     display: none;
   }
 
-  .radio-outer,
-  .radio-border,
-  .radio-inner {
+  & &_outer,
+  & &_border,
+  & &_inner {
     border-radius: 50%;
   }
 
-  .radio-outer {
+  & &_outer {
     position: relative;
     @include flex(row, center, center);
     width: $form-wedgit-circle-size;
     height: $form-wedgit-circle-size;
   }
 
-  .radio-border {
+  & &_border {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -32,7 +32,7 @@
     border: $border-base;
   }
 
-  .radio-inner {
+  & &_inner {
     position: relative;
     width: $radio-inner-size;
     height: $radio-inner-size;
@@ -40,7 +40,7 @@
     transform: scale(0);
   }
 
-  .radio-content {
+  & &_content {
     @include flex(row, center, center);
     margin-left: $form-wedgit-content-gutter;
   }
@@ -55,10 +55,10 @@
 
   @each $theme in $ss-themes {
     &.theme-#{$theme} {
-      .radio-outer {
+      .#{$void}-radio_outer {
         background-color: map-get($map: $theme-background-colors, $key: $theme);
       }
-      .radio-border {
+      .#{$void}-radio_border {
         border-color: map-get($map: $theme-foreground-colors, $key: $theme);
       }
     }
@@ -69,23 +69,23 @@
   &:hover,
   &:focus,
   &.checked {
-    .radio-border {
+    .vd-radio_border {
       border-color: $tone-primary;
     }
   }
 
   &.checked {
-    .radio-border,
-    .radio-inner {
+    .#{$void}-radio_border,
+    .#{$void}-radio_inner {
       transition-duration: $form-wedgit-transition-duration / 2;
       transition-timing-function: ease-in;
     }
-    .radio-border {
+    .#{$void}-radio_border {
       border-width: $form-wedgit-circle-size / 2;
       transition-property: border-width;
       transition-delay: 0;
     }
-    .radio-inner {
+    .#{$void}-radio_inner {
       transform: scale(1);
       transition-property: transform;
       transition-delay: $form-wedgit-transition-duration / 2;
@@ -96,16 +96,16 @@
 
   @each $theme in $ss-themes {
     &.disabled.theme-#{$theme} {
-      .radio-border {
+      .#{$void}-radio_border {
         border-color: map-get($map: $theme-foreground-colors, $key: #{$theme}-disabled);
       }
-      .radio-inner {
+      .#{$void}-radio_inner {
         background-color: map-get(
           $map: $theme-background-colors,
           $key: #{$theme}-disabled
         );
       }
-      .radio-content {
+      .#{$void}-radio_content {
         color: map-get($map: $theme-foreground-colors, $key: #{$theme}-disabled);
       }
     }
@@ -131,7 +131,7 @@
         }
       }
 
-      .radio-outer {
+      .#{$void}-radio-outer {
         display: none;
       }
 
@@ -142,7 +142,7 @@
 
           &.active,
           &:active {
-            color: map-get($map:$tone-colors, $key:#{$tone}-lighten);
+            color: map-get($map: $tone-colors, $key: #{$tone}-lighten);
           }
 
           &:first-child {

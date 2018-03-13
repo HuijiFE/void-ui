@@ -127,6 +127,11 @@ export const zhCN: DocConfig[] = [
         path: 'contentTable',
         fileName: 'navigation/contentTable',
       },
+      {
+        name: 'Gallery',
+        path: 'gallery',
+        fileName: 'navigation/gallery',
+      },
     ],
   },
   {
@@ -181,6 +186,11 @@ export const zhCN: DocConfig[] = [
         name: 'alert 弹出框',
         path: 'alert',
         fileName: 'other/alert',
+      },
+      {
+        name: 'dialog 信息框',
+        path: 'dialog',
+        fileName: 'other/dialog',
       },
     ],
   },

@@ -8,25 +8,26 @@
   width: 100%;
   font-size: $definition-font-size;
 
-  .definition-item {
+  & &_item {
     display: flex;
-    .definition-label {
-      width: $definition-label-width;
-      font-weight: bold;
-      line-height: $definition-line-height;
-      margin-right: $definition-item-margin;
-    }
+  }
+
+  & &_label {
+    width: $definition-label-width;
+    font-weight: bold;
+    line-height: $definition-line-height;
+    margin-right: $definition-item-margin;
   }
 
   @each $theme in $ss-themes {
     &.theme-#{$theme} {
-      .definition-item {
+      .#{$void}-definition_item {
         display: flex;
-        .definition-label {
-          color: map-get($map:$theme-foreground-colors, $key:#{$theme}-secondary);
+        .#{$void}-definition_label {
+          color: map-get($map: $theme-foreground-colors, $key: #{$theme}-secondary);
         }
-        .definition-content {
-          color: map-get($map:$theme-foreground-colors, $key:$theme);
+        .#{$void}-definition_content {
+          color: map-get($map: $theme-foreground-colors, $key: $theme);
         }
       }
     }

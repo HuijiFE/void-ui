@@ -8,7 +8,7 @@
          @keydown.space.stop.prevent="toggle"
          @keydown.enter.stop.prevent="toggle">
 
-    <input class="toggle-input"
+    <input class="vd-toggle_input"
            type="checkbox"
            ref="input"
            :id="id"
@@ -19,14 +19,14 @@
            :disabled="disabled"
            tabindex="-1" />
 
-    <span class="toggle-outer">
-      <span class="toggle-middle">
-        <span class="toggle-inner"></span>
+    <span class="vd-toggle_outer">
+      <span class="vd-toggle_middle">
+        <span class="vd-toggle_inner"></span>
       </span>
     </span>
 
     <span v-if="hasContent"
-          class="toggle-content">
+          class="vd-toggle_content">
       <slot v-if="isOnned"
             name="contentOn">
         {{contentOn}}

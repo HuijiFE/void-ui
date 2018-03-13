@@ -15,22 +15,22 @@
   $lite-background: #ffffff;
   //map
   $note-tone-background: (
-    'success':$tone-success,
-    'primary':$tone-primary,
-    'warning':$tone-warning,
-    'danger':$tone-danger
+    'success': $tone-success,
+    'primary': $tone-primary,
+    'warning': $tone-warning,
+    'danger': $tone-danger
   );
   $note-font-color: (
-    'lite':$content-font-lite-color,
-    'dark':$content-font-dark-color
+    'lite': $content-font-lite-color,
+    'dark': $content-font-dark-color
   );
   $note-theme-background: (
-    'lite':$theme-lite-background,
-    'dark':$theme-dark-background-higher
+    'lite': $theme-lite-background,
+    'dark': $theme-dark-background-higher
   );
   $note-theme-border: (
-    'lite':$theme-lite-background-border,
-    'dark':$theme-dark-background-border
+    'lite': $theme-lite-background-border,
+    'dark': $theme-dark-background-border
   );
   width: 100%;
   height: $note-height;
@@ -38,7 +38,7 @@
   margin: $note-margin-base;
   border-radius: 1px;
   display: inline-flex;
-  .note-outer {
+  & &_outer {
     width: $note-tone-width;
     height: $note-tone-height;
     border-radius: 50%;
@@ -55,27 +55,32 @@
       display: none;
     }
   }
-  .note-content {
+
+  & &_content {
     font-size: $content-font-size;
-    .note-label {
-      font-size: $title-font-size;
-      font-weight: bold;
-    }
+
     &.tone-origin {
       margin-left: 0;
     }
-    .note-label + .note-descrip {
-      margin-top: 0.04rem;
-    }
   }
-  .note-outer + .note-content {
+
+  & &_label + & &_description {
+    margin-top: 0.04rem;
+  }
+
+  & &_label {
+    font-size: $title-font-size;
+    font-weight: bold;
+  }
+
+  &_outer + &_content {
     margin-left: $note-margin-left;
   }
   @each $theme, $color in $note-font-color {
     &.theme-#{$theme} {
-      border: 1px solid map-get($map:$note-theme-border, $key:$theme);
-      background: map-get($map:$note-theme-background, $key:$theme);
-      .note-content {
+      border: 1px solid map-get($map: $note-theme-border, $key: $theme);
+      background: map-get($map: $note-theme-background, $key: $theme);
+      .#{$void}-note_content {
         color: $color;
       }
     }

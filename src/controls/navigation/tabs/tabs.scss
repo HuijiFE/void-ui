@@ -8,7 +8,7 @@
 
   /*----------  tabs-head  ----------*/
 
-  .tabs-head {
+  .#{$void}-tabs_head {
     position: relative;
     @include flex(row, flex-start, stretch, nowrap);
     height: $tabs-head-height;
@@ -16,18 +16,18 @@
 
   &.skin-silk,
   &.skin-plain {
-    .tabs-head {
+    .#{$void}-tabs_head {
       padding: 0 $tabs-padding;
     }
   }
 
   &.skin-silk {
-    .tabs-head {
+    .#{$void}-tabs_head {
       border-bottom: $border-base;
     }
     @each $theme in $ss-themes {
       &.theme-#{$theme} {
-        .tabs-head {
+        .#{$void}-tabs_head {
           border-bottom-color: map-get(
             $map: $theme-background-colors,
             $key: #{$theme}-border
@@ -41,7 +41,7 @@
   &.skin-fill {
     @each $theme in $ss-themes {
       &.theme-#{$theme} {
-        .tabs-head {
+        .#{$void}-tabs_head {
           background-color: map-get(
             $map: $theme-background-colors,
             $key: #{$theme}-hover
@@ -53,7 +53,7 @@
 
   /*----------  tabs-head-item  ----------*/
 
-  .head-item {
+  .#{$void}-tabs_head-item {
     height: 100%;
     padding: 0 0.24rem;
     background-color: transparent;
@@ -63,7 +63,7 @@
 
   &.skin-silk,
   &.skin-plain {
-    .head-item.selected {
+    .#{$void}-tabs_head-item.selected {
       color: $tone-primary;
     }
   }
@@ -71,7 +71,7 @@
   &.skin-plain {
     @each $theme in $ss-themes {
       &.theme-#{$theme} {
-        .head-item.selected {
+        .#{$void}-tabs_head-item.selected {
           @if $theme == 'lite' {
             background-color: map-get($map: $theme-background-colors, $key: #{$theme});
           } @else {
@@ -86,7 +86,7 @@
   }
 
   &.skin-fill {
-    .head-item.selected {
+    .#{$void}-tabs_head-item.selected {
       color: $color-white;
       background-color: $tone-primary;
     }
@@ -94,7 +94,7 @@
 
   /*----------  head-underline  ----------*/
 
-  .head-underline {
+  .#{$void}-tabs_head-underline {
     position: absolute;
     display: inline-block;
     width: 0;
@@ -106,14 +106,14 @@
 
   &.skin-plain,
   &.skin-fill {
-    .head-underline {
+    .#{$void}-tabs_head-underline {
       display: none;
     }
   }
 
   /*----------  tabs-body  ----------*/
 
-  .tabs-body {
+  .#{$void}-tabs_tabs-body {
     @include flex(row, flex-start, stretch, nowrap);
     overflow-x: hidden;
     margin: ($tabs-padding * 2) $tabs-padding;
@@ -121,7 +121,7 @@
 
   /*----------  tabs-item  ----------*/
 
-  &-item {
+  & &_item {
     @include flex(row, flex-start, flex-start, initial);
     flex: 0 0 100%;
     width: 100%;

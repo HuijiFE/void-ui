@@ -9,8 +9,8 @@
   $bread-crumb-font-size: 0.14rem;
 
   $bread-crumb-font-color: (
-    'lite':#333333,
-    'dark':#eeeeee
+    'lite': #333333,
+    'dark': #eeeeee
   );
 
   display: inline-flex;
@@ -22,22 +22,22 @@
   border: $border-base;
   border-radius: $bread-crumb-border-base;
 
-  .bread-crumb-inner {
+  & &_inner {
     width: 100%;
     height: $bread-crumb-inner-height;
     display: inline-flex;
     align-items: center;
+  }
 
-    .bread-crumb-item {
-      margin-left: $bread-crumb-margin-left;
-
-      &.fontBold {
-        font-weight: bold;
-      }
-      .bread-crumb-icon {
-        margin-left: $bread-crumb-margin-left;
-      }
+  & &_item {
+    margin-left: $bread-crumb-margin-left;
+    &.fontBold {
+      font-weight: bold;
     }
+  }
+
+  & &_icon {
+    margin-left: $bread-crumb-margin-left;
   }
 
   &.skin {
@@ -45,16 +45,16 @@
     &-fill {
       @each $theme in $ss-themes {
         &.theme-#{$theme} {
-          background-color: map-get($map:$theme-background-colors, $key:$theme);
+          background-color: map-get($map: $theme-background-colors, $key: $theme);
 
-          .bread-crumb-inner {
+          .#{$void}-bread-crumb_inner {
             background-color: map-get(
               $map: $theme-background-colors,
-              $key:#{$theme}-higher
+              $key: #{$theme}-higher
             );
 
-            .bread-crumb-item {
-              color: map-get($map:$bread-crumb-font-color, $key:$theme);
+            .#{$void}-bread-crumb_item {
+              color: map-get($map: $bread-crumb-font-color, $key: $theme);
             }
           }
         }
@@ -66,16 +66,16 @@
     &-plain {
       @each $theme in $ss-themes {
         &.theme-#{$theme} {
-          background-color: map-get($map:$theme-background-colors, $key:$theme);
+          background-color: map-get($map: $theme-background-colors, $key: $theme);
 
-          .bread-crumb-inner {
+          .#{$void}-bread-crumb_inner {
             background-color: map-get(
               $map: $theme-background-colors,
-              $key:#{$theme}-higher
+              $key: #{$theme}-higher
             );
 
-            .bread-crumb-item {
-              color: map-get($map:$bread-crumb-font-color, $key:$theme);
+            .#{$void}-bread-crumb_item {
+              color: map-get($map: $bread-crumb-font-color, $key: $theme);
             }
           }
         }

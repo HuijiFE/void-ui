@@ -1,11 +1,11 @@
 <template>
   <div class="vd-content-table"
        :class="classes">
-    <div class="indicator-bar">
+    <div class="vd-content-table_indicator-bar">
       <span ref="indicatorBar"
-            class="bar-inner"></span>
+            class="vd-content-table_bar-inner"></span>
     </div>
-    <div class="content-body">
+    <div class="vd-content-table_content-body">
       <vd-content-table-item v-for="item in data"
                              :key="item.id"
                              :data="item">

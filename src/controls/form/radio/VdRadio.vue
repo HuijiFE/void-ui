@@ -8,7 +8,7 @@
          @keydown.space.stop.prevent="check"
          @keydown.enter.stop.prevent="check">
 
-    <input class="radio-input"
+    <input class="vd-radio_input"
            type="radio"
            ref="input"
            :id="id"
@@ -18,13 +18,13 @@
            :disabled="disabled"
            tabindex="-1" />
 
-    <span class="radio-outer">
-      <span class="radio-border"></span>
-      <span class="radio-inner"></span>
+    <span class="vd-radio_outer">
+      <span class="vd-radio_border"></span>
+      <span class="vd-radio_inner"></span>
     </span>
 
     <span v-if="hasContent"
-          class="radio-content">
+          class="vd-radio_content">
       <slot>
         {{content}}
       </slot>

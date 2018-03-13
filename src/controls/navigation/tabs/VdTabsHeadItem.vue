@@ -1,6 +1,6 @@
 
 <template>
-  <button class="vd-tabs-head-item"
+  <button class="vd-tabs-head_item"
           :class="classes"
           @click="select">
     {{item.label}}

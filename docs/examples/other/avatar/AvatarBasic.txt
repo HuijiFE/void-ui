@@ -12,6 +12,6 @@
 import { Vue, Component } from 'vue-property-decorator';
 @Component
 export default class VdAvatarBasic extends Vue {
-  src = 'http://imgs7.iaweg.com/pic/HTTP2ltZzAwMS5nbG9iYWxidXkuY2MvMjAxNjAxLzAxLzA5MDcwODcxMTAuanBn.jpg';
+  src = 'http://www.qqzhi.com/uploadpic/2014-08-31/072639668.jpg';
 }
 </script>

@@ -2,15 +2,15 @@
   <div class="vd-link-list">
     <a v-for="item in linkList"
        :key="item.href"
-       class="link-item"
+       class="vd-link-list_item"
        :class="stylableClasses"
        :href="item.href"
        target="_blank"
        rel="noopener noreferrer">
-      <i class="link-icon fa"
+      <i class="vd-link-list_icon fa"
          :class="'fa-' + item.icon"
          aria-hidden="true"></i>
-      <span class="link-label">{{item.label}}</span>
+      <span class="vd-link-list_label">{{item.label}}</span>
     </a>
   </div>
 </template>
@@ -36,5 +36,3 @@ export default class VdLinkList extends VdStylableControl {
   linkList: LinkListItem[];
 }
 </script>
-
-

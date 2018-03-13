@@ -1,12 +1,12 @@
 <template>
-  <div class="vd-data-card-item">
-    <div class="item-label">{{label}}</div>
-    <div class="item-data">
+  <div class="vd-data-card_item">
+    <div class="vd-data-card_item-label">{{label}}</div>
+    <div class="vd-data-card_item-data">
       <slot name="item-data">
-        <div class="data-main">
+        <div class="vd-data-card_item-main">
           {{data}}
         </div>
-        <div class="data-sup">
+        <div class="vd-data-card_item-data-sup">
           <slot name="data-sup">{{dataSup}}</slot>
         </div>
       </slot>
@@ -34,4 +34,3 @@ export default class VdDataCardItem extends Vue {
   @Prop() dataSup: string;
 }
 </script>
-

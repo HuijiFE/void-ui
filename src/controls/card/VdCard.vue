@@ -1,19 +1,19 @@
 <template>
   <div class="vd-card"
        :class="classes">
-    <div class="card-image"
+    <div class="vd-card_card-image"
          :style="imageStyle"
          :title="imageTitle"
          :alt="imageAlt"></div>
-    <div class="card-body">
+    <div class="vd-card_card-body">
       <slot name="head">
-        <div class="body-head">{{head}}</div>
+        <div class="vd-card_body-head">{{head}}</div>
       </slot>
       <slot name="content">
-        <div class="body-content">{{content}}</div>
+        <div class="vd-card_body-content">{{content}}</div>
       </slot>
       <slot name="description">
-        <div class="body-description">{{description}}</div>
+        <div class="vd-card_body-description">{{description}}</div>
       </slot>
       <slot name="card-control"></slot>
       <slot></slot>
@@ -60,4 +60,3 @@ export default class VdCard extends VdStylableControl {
   }
 }
 </script>
-

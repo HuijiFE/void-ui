@@ -1,7 +1,7 @@
 <template>
-  <div class="definition-item">
-    <span class="definition-label">{{label}}</span>
-    <span class="definition-content">
+  <div class="vd-definition_item">
+    <span class="vd-definition_label">{{label}}</span>
+    <span class="vd-definition_content">
       <slot></slot>
     </span>
   </div>

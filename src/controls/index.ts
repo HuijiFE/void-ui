@@ -18,6 +18,8 @@ export { default as VdDataCard } from 'src/controls/dataCard/VdDataCard.vue';
 export { default as VdDataCardItem } from 'src/controls/dataCard/VdDataCardItem.vue';
 export { default as VdDefinition } from 'src/controls/definition/VdDefinition.vue';
 export { default as VdDefinitionItem } from 'src/controls/definition/VdDefinitionItem.vue';
+export { default as VdDialog } from 'src/controls/dialog/VdDialog.vue';
+export { default as VdDialogInput } from 'src/controls/dialog/VdDialogInput.vue';
 export { default as VdInput } from 'src/controls/form/input/VdInput.vue';
 export { default as VdRadio } from 'src/controls/form/radio/VdRadio.vue';
 export { default as VdRadioGroup } from 'src/controls/form/radio/VdRadioGroup.vue';
@@ -35,6 +37,7 @@ export { default as VdCollapse } from 'src/controls/navigation/collapse/VdCollap
 export { default as VdCollapseItem } from 'src/controls/navigation/collapse/VdCollapseItem.vue';
 export { default as VdContentTable } from 'src/controls/navigation/contentTable/VdContentTable.vue';
 export { default as VdContentTableItem } from 'src/controls/navigation/contentTable/VdContentTableItem.vue';
+export { default as VdGallery } from 'src/controls/navigation/gallery/VdGallery.vue';
 export { default as VdMadeTabs } from 'src/controls/navigation/madeTabs/VdMadeTabs.vue';
 export { default as VdMadeTabsItem } from 'src/controls/navigation/madeTabs/VdMadeTabsItem.vue';
 export { default as VdNavTabItem } from 'src/controls/navigation/navTabs/VdNavTabItem.vue';

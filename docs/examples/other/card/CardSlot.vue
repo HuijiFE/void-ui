@@ -29,7 +29,7 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class VdCardSlot extends Vue {
   head: string = '使用弹性盒子进行高级布局';
   alt: string = '使用弹性盒子进行高级布局';
-  image: string = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVxO8YLjxo4crPogxEwB4_yjzR8XbUKPbCuLYXYf3wFDkCzvQ-tA';
+  image: string = 'https://tse3-mm.cn.bing.net/th?id=OIP.mq2raMvUuYWixcraMSo4dwHaEo&w=263&h=164&c=7&o=5&pid=1.7';
   description: string = '2017-12-22';
 }
 </script>
@@ -40,5 +40,3 @@ export default class VdCardSlot extends Vue {
   }
 }
 </style>
-
-

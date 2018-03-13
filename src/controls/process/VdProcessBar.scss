@@ -16,39 +16,43 @@
   );
 
   width: 100%;
+  & &_process-outer {
+    border-radius: $process-border-radius;
+    position: relative;
+    height: $process-height;
+    width: 100%;
+  }
+
+  & &_process-text {
+    user-select: none;
+    position: absolute;
+    text-align: center;
+    line-height: $process-height;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: $process-text-font-size;
+    color: $process-text-font-color;
+  }
+
+  & &_process-inner {
+    height: 100%;
+    border-radius: $process-border-radius;
+    transition: background-color ease 0.5s, width ease 0.2s;
+
+    @each $status, $color in $process-bar-backgroundColor {
+      &.status-#{$status} {
+        background-color: $color;
+      }
+    }
+  }
+
   @each $theme in $ss-themes {
     &.theme-#{$theme} {
-      .process-outer {
-        background-color: map-get($map:$process-backgrounds, $key: $theme);
-        border-radius: $process-border-radius;
-        position: relative;
-        height: $process-height;
-        width: 100%;
+      .#{$void}-process-bar_process-outer {
+        background-color: map-get($map: $process-backgrounds, $key: $theme);
       }
-    }
-
-    .process-inner {
-      height: 100%;
-      border-radius: $process-border-radius;
-      transition: background-color ease 0.5s, width ease 0.2s;
-      @each $status, $color in $process-bar-backgroundColor {
-        &.status-#{$status} {
-          background-color: $color;
-        }
-      }
-    }
-
-    .process-text {
-      user-select: none;
-      position: absolute;
-      text-align: center;
-      line-height: $process-height;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      font-size: $process-text-font-size;
-      color: $process-text-font-color;
     }
   }
 }

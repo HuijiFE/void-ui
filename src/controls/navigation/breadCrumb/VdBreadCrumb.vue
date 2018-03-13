@@ -1,20 +1,20 @@
 <template>
   <div class="vd-bread-crumb"
        :class="classes">
-    <div class="bread-crumb-inner">
+    <div class="vd-bread-crumb_inner">
       <template v-for="(item,index) in itemsSource">
-        <router-link class="bread-crumb-item"
+        <router-link class="vd-bread-crumb_item"
                      :class="{'fontBold':index < itemsSource.length - 1}"
                      :key="item.label"
                      v-if="item.to"
                      :to="item.to">{{item.label}}
           <i v-show="index < itemsSource.length - 1"
              :key="index"
-             class="icon fa fa-angle-right bread-crumb-icon"></i>
+             class="icon fa fa-angle-right vd-bread-crumb_icon"></i>
         </router-link>
 
         <a v-else
-           class="bread-crumb-item"
+           class="vd-bread-crumb_item"
            :key="item.label"
            :href="item.href">{{item.label}}</a>
       </template>

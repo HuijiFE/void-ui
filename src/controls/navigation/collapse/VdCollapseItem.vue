@@ -1,21 +1,21 @@
 <template>
-  <div class="vd-collapse-item">
-    <div class="item-head"
+  <div class="vd-collapse_item">
+    <div class="vd-collapse_item-head"
          @click="itemClick">
-      <div class="head-content">
+      <div class="vd-collapse_head-content">
         <slot name="head">
           {{head}}
         </slot>
       </div>
-      <span class="head-arrow"
+      <span class="vd-collapse_head-arrow"
             :class="status === 'hidden' ? '' : 'arrow-up'">
         <i class="fa fa-chevron-right"
            aria-hidden="true"></i>
       </span>
     </div>
-    <div class="item-body"
+    <div class="vd-collapse_item-body"
          :class="status === 'hidden' ? 'hidden' : ''">
-      <div class="body-content">
+      <div class="vd-collapse_body-content">
         <slot name="content">
           {{content}}
         </slot>
@@ -55,5 +55,3 @@ export default class VdCollapseItem extends Vue {
   }
 }
 </script>
-
-

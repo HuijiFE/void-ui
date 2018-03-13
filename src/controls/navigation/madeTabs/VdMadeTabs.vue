@@ -1,19 +1,19 @@
 <template>
   <div class="vd-made-tabs"
        :class="classes">
-    <div class="tabs-head">
+    <div class="vd-made-tabs_tabs-head">
       <div v-for="(item, index) in tabList"
            :key="index"
            @click="select(item, index)"
-           class="head-item"
+           class="vd-made-tabs_head-item"
            :class="{active: item.active}">
         <slot-comp :item="item"></slot-comp>
       </div>
       <span v-if="showTipBar"
-            class="indicatorBar"
+            class="vd-made-tabs_indicatorBar"
             ref="indicatorBar"></span>
     </div>
-    <div class="tabs-body">
+    <div class="vd-made-tabs_tabs-body">
       <slot></slot>
     </div>
   </div>
@@ -121,7 +121,7 @@ export default class VdMadeTabs extends VdStylableControl {
   }
 
   moveIndicatorBar() {
-    let activeItem = this.$el.querySelectorAll('.head-item')[
+    let activeItem = this.$el.querySelectorAll('.vd-made-tabs_head-item')[
       this.activeTabIndex
     ] as HTMLElement;
 

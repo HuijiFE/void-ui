@@ -1,6 +1,6 @@
 <template>
   <div @click="itemClick"
-       class="vd-nav-tabs-item"
+       class="vd-nav-tabs_item"
        :class="classes">
     <slot></slot>
   </div>

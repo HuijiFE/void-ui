@@ -1,0 +1,93 @@
+.#{$void}-gallery {
+  $vd-gallery_screen-container-height: 4.14rem;
+  $vd-gallery_gallery-height: 1.19rem;
+  $vd-gallery_gallery-container-height: 1.1rem;
+
+  width: 100%;
+
+  &_screen-container {
+    width: 100%;
+    height: $vd-gallery_screen-container-height;
+    background-color: #000;
+  }
+
+  &_screen {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  & &_content {
+    height: $vd-gallery_gallery-height;
+    overflow: hidden;
+    padding-top: 0.09rem;
+  }
+
+  & &_gallery {
+    width: 100%;
+    height: $vd-gallery_gallery-container-height;
+    position: relative;
+  }
+
+  & &_gallery-container {
+    width: 100%;
+    height: 100%;
+    @include flex(row, flex-start, stretch, nowrap);
+  }
+
+  & &_thumbnail-container {
+    flex: 0 0 25%;
+    background-color: #000;
+    opacity: 0.4;
+    position: relative;
+  }
+
+  & &_thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  & &_select {
+    opacity: 1;
+    .#{$void}-gallery_sort-up {
+      opacity: 1;
+    }
+  }
+
+  & &_sort-up {
+    display: block;
+    width: 0.2rem;
+    height: 0.09rem;
+    opacity: 0;
+    position: absolute;
+    top: -0.18rem;
+    left: 50%;
+    margin-left: -0.1rem;
+    color: #bbbbbb;
+    font-size: 0.24rem;
+  }
+
+  & &_angle {
+    height: 0.96rem;
+    width: 0.48rem;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.48rem;
+    color: #4e4e4e;
+    background-color: rgba(0, 0, 93, 0.4);
+    position: absolute;
+    bottom: 0.08rem;
+    cursor: pointer;
+  }
+
+  & &_angle-left {
+    left: 0rem;
+  }
+
+  & &_angle-right {
+    right: 0rem;
+  }
+}

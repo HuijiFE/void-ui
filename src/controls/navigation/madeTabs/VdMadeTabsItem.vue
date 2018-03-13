@@ -1,6 +1,6 @@
 <template>
   <div v-show="active"
-       class="vd-made-tabs-item">
+       class="vd-made-tabs_item">
     <slot></slot>
   </div>
 </template>
@@ -33,4 +33,3 @@ export default class VdMadeTabsItem extends Vue {
   }
 }
 </script>
-

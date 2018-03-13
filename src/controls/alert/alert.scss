@@ -1,23 +1,23 @@
 .#{$void}-alert {
   $alert-background: (
-    'success':$tone-success,
-    'primary':#fafafa,
-    'warning':$tone-warning,
-    'danger':$tone-danger
+    'success': $tone-success,
+    'primary': #fafafa,
+    'warning': $tone-warning,
+    'danger': $tone-danger
   );
 
   $alert-border-color: (
-    'success':#21bd45,
-    'primary':#eeeeee,
-    'warning':#ffbb00,
-    'danger':#e62d2d
+    'success': #21bd45,
+    'primary': #eeeeee,
+    'warning': #ffbb00,
+    'danger': #e62d2d
   );
 
   $alert-tone-background: (
-    'success':#ffffff,
-    'primary':#333333,
-    'warning':#333333,
-    'danger':#ffffff
+    'success': #ffffff,
+    'primary': #333333,
+    'warning': #333333,
+    'danger': #ffffff
   );
   $alert-border-radius: 0.02rem;
   $alert-icon-outer-radius: 0.14rem;
@@ -28,7 +28,7 @@
   position: absolute;
   top: 0;
   left: 50%;
-  margin-left: - $vd-alert-width / 2;
+  margin-left: -$vd-alert-width / 2;
   display: flex;
   align-items: center;
   width: $vd-alert-width;
@@ -37,58 +37,55 @@
   border: $border-base;
   border-radius: $alert-border-radius;
   display: inline-flex;
-  animation: alert 0.5s ease-in-out;
+
   @each $preset, $color in $alert-background {
-    &.alert-#{$preset} {
+    &.#{$void}-alert_#{$preset} {
       background-color: $color;
-      border-color: map-get($map: $alert-border-color, $key:$preset);
-      .icon-outer {
-        width: $alert-icon-outer-radius;
-        height: $alert-icon-outer-radius;
-        background-color: map-get($map: $alert-tone-background, $key:$preset);
-        border-radius: 50%;
-        color: $color;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 0.18rem;
-        font-size: $vd-alert-icon-font-size;
+      border-color: map-get($map: $alert-border-color, $key: $preset);
+      color: $color;
+      .#{$void}-alert_icon-outer {
+        background-color: map-get($map: $alert-tone-background, $key: $preset);
       }
-      .larger-alert {
-        &.icon-outer {
-          width: $alert-icon-outer-larger-radius;
-          height: $alert-icon-outer-larger-radius;
-          .alert-icon {
-            font-size: 0.36rem;
-          }
-        }
-      }
-      .alert-content {
-        color: map-get($map: $alert-tone-background, $key:$preset);
-        .alert-label {
-          font-weight: bold;
-        }
-        .alert-label + .alert-description {
-          margin-bottom: 0.12rem;
-        }
-      }
-      .alert-remove {
-        color: #eeeeee;
-        font-size: $vd-alert-icon-font-size;
-        position: absolute;
-        top: 0.1rem;
-        right: 0.25rem;
+
+      .#{$void}-alert_alert-content {
+        color: map-get($map: $alert-tone-background, $key: $preset);
       }
     }
   }
-}
-@keyframes alert {
-  0% {
-    opacity: 0;
-    transform: translateY(-3rem);
+
+  & &_icon-outer {
+    width: $alert-icon-outer-radius;
+    height: $alert-icon-outer-radius;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.18rem;
+    font-size: $vd-alert-icon-font-size;
   }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
+
+  & &_larger-alert {
+    &.#{$void}-alert_icon-outer {
+      width: $alert-icon-outer-larger-radius;
+      height: $alert-icon-outer-larger-radius;
+      font-size: 0.36rem;
+    }
+  }
+
+  & &_alert-label {
+    font-weight: bold;
+  }
+
+  & &_alert-label + & &_alert-description {
+    margin-bottom: 0.12rem;
+  }
+
+  & &_alert-remove {
+    color: #eeeeee;
+    font-size: $vd-alert-icon-font-size;
+    position: absolute;
+    top: 0.1rem;
+    right: 0.25rem;
+    cursor: pointer;
   }
 }

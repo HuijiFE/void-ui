@@ -8,7 +8,7 @@
   width: $score-width;
   height: $score-height;
   font-size: $score-font-size;
-  .score-inner {
+  & &_inner {
     display: flex;
     justify-content: center;
     align-content: flex-end;

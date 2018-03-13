@@ -7,7 +7,7 @@
   width: $score-width;
   height: $score-height;
   font-size: $score-font-size;
-  .score-square-inner {
+  & &_inner {
     line-height: $score-width;
     text-align: center;
     width: $score-width;

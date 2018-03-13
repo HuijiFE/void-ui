@@ -11,18 +11,19 @@
     }
   }
 
-  .tabs-head {
+  & &_tabs-head {
     display: flex;
     position: relative;
   }
-  .tabs-body {
+
+  & &_tabs-body {
     padding: 0.08rem;
     flex-grow: 1;
   }
 
   @each $theme in $ss-themes {
     &.theme-#{$theme} {
-      .tabs-head {
+      .#{$void}-made-tabs_tabs-head {
         border: 1px solid map-get($map: $theme-background-colors, $key: #{$theme}-border);
       }
     }
@@ -32,13 +33,13 @@
   &.position-top {
     flex-direction: column;
 
-    .tabs-head {
+    .#{$void}-made-tabs_tabs-head {
       border-top: none;
       border-left: none;
       border-right: none;
     }
 
-    .indicatorBar {
+    .#{$void}-made-tabs_indicatorBar {
       bottom: 0;
       left: 0;
       height: 0.02rem;
@@ -49,13 +50,13 @@
   &.position-bottom {
     flex-direction: column-reverse;
 
-    .tabs-head {
+    .#{$void}-made-tabs_tabs-head {
       border-top: none;
       border-left: none;
       border-right: none;
     }
 
-    .indicatorBar {
+    .#{$void}-made-tabs_indicatorBar {
       bottom: 0;
       left: 0;
       height: 0.02rem;
@@ -66,14 +67,14 @@
   &.position-left {
     flex-direction: row;
 
-    .tabs-head {
+    .#{$void}-made-tabs_tabs-head {
       flex-direction: column;
       border-top: none;
       border-left: none;
       border-bottom: none;
     }
 
-    .indicatorBar {
+    .#{$void}-made-tabs_indicatorBar {
       right: 0;
       top: 0;
       width: 0.02rem;
@@ -83,14 +84,14 @@
 
   &.position-right {
     flex-direction: row-reverse;
-    .tabs-head {
+    .#{$void}-made-tabs_tabs-head {
       flex-direction: column;
       border-top: none;
       border-right: none;
       border-bottom: none;
     }
 
-    .indicatorBar {
+    .#{$void}-made-tabs_indicatorBar {
       left: 0;
       top: 0;
       width: 0.02rem;
@@ -98,7 +99,7 @@
     }
   }
 
-  .head-item {
+  & &_head-item {
     cursor: pointer;
     user-select: none;
 
@@ -119,7 +120,7 @@
     padding: 0 0.24rem;
   }
 
-  .indicatorBar {
+  & &_indicatorBar {
     position: absolute;
     background-color: #00abd0;
     width: 0;

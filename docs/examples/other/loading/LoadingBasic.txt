@@ -3,7 +3,7 @@
     <vd-flexbox flex="100">
       <div style="height: 512px; width: 100%;">
         <vd-loading :size="size"
-                    :multi-color="multiColor"></vd-loading>
+                    :multi-color="multiColor" :gray="gray"></vd-loading>
       </div>
     </vd-flexbox>
     <vd-flexbox flex="100"
@@ -20,6 +20,11 @@
       <vd-toggle v-model="multiColor"
                  content-on="multi color on"
                  content-off="multi color off"></vd-toggle>
+    </vd-flexbox>
+    <vd-flexbox flex="100" justify="center">
+      <vd-toggle v-model="gray"
+                 content-on="gray on"
+                 content-off="gray off"></vd-toggle>
     </vd-flexbox>
   </vd-flexbox>
 </template>
@@ -41,5 +46,6 @@ import { ControlSize } from 'void-ui';
 export default class LoadingBasic extends Vue {
   size: ControlSize = 'large';
   multiColor: boolean = false;
+  gray: boolean = false;
 }
 </script>

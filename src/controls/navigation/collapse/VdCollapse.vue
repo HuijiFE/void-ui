@@ -52,9 +52,11 @@ export default class VdCollapse extends VdStylableControl {
       this.selectedItem = newItem;
     }
     let oldItem = this.selectedItem;
-    const oldItemBody = this.selectedItem.$el.querySelector('.item-body') as HTMLElement;
+    const oldItemBody = this.selectedItem.$el.querySelector(
+      '.vd-collapse_item-body',
+    ) as HTMLElement;
     const bodyContent = newItem.$el.querySelector(
-      '.item-body .body-content',
+      '.vd-collapse_item-body .vd-collapse_body-content',
     ) as HTMLElement;
 
     let timeline = anime.timeline();
@@ -67,7 +69,7 @@ export default class VdCollapse extends VdStylableControl {
     let ItemAnime = () => {
       return timeline
         .add({
-          targets: newItem.$el.querySelector('.item-body'),
+          targets: newItem.$el.querySelector('.vd-collapse_item-body'),
           height: newItem.status === 'show' ? 0 : bodyContent.offsetHeight,
           ...animeOptions,
           complete: () => {
@@ -75,7 +77,7 @@ export default class VdCollapse extends VdStylableControl {
           },
         })
         .add({
-          targets: newItem.$el.querySelector('.head-arrow'),
+          targets: newItem.$el.querySelector('.vd-collapse_head-arrow'),
           rotate: newItem.status === 'show' ? 0 : '-90',
           ...animeOptions,
         });
@@ -92,7 +94,7 @@ export default class VdCollapse extends VdStylableControl {
           },
         })
         .add({
-          targets: oldItem.$el.querySelector('.head-arrow'),
+          targets: oldItem.$el.querySelector('.vd-collapse_head-arrow'),
           rotate: 0,
           ...animeOptions,
         });
@@ -104,5 +106,3 @@ export default class VdCollapse extends VdStylableControl {
   }
 }
 </script>
-
-

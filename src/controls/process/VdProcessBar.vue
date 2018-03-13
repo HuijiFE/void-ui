@@ -2,12 +2,12 @@
   <div role="process-bar"
        class="vd-process-bar"
        :class="classes">
-    <div class="process-outer">
-      <div class="process-inner"
+    <div class="vd-process-bar_process-outer">
+      <div class="vd-process-bar_process-inner"
            :class="innerClasses"
            :style="processStyle"></div>
       <span v-if="showText"
-            class="process-text">{{value}}%</span>
+            class="vd-process-bar_process-text">{{value}}%</span>
     </div>
   </div>
 </template>
@@ -55,4 +55,3 @@ export default class VdProcessBar extends VdStylableControl {
   }
 }
 </script>
-

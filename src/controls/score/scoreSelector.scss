@@ -21,54 +21,54 @@
   $large-block-height: 0.28rem;
   //map
   $score-selector-widths: (
-    small:$score-small-width,
-    medium:$score-medium-width,
-    large:$score-large-width
+    small: $score-small-width,
+    medium: $score-medium-width,
+    large: $score-large-width
   );
   $score-selector-heights: (
-    small:$score-small-height,
-    medium:$score-medium-height,
-    large:$score-large-height
+    small: $score-small-height,
+    medium: $score-medium-height,
+    large: $score-large-height
   );
   $score-block-widths: (
-    small:$small-block-width,
-    medium:$medium-block-width,
-    large:$large-block-width
+    small: $small-block-width,
+    medium: $medium-block-width,
+    large: $large-block-width
   );
   $score-block-heights: (
-    small:$small-block-height,
-    medium:$medium-block-height,
-    large:$large-block-height
+    small: $small-block-height,
+    medium: $medium-block-height,
+    large: $large-block-height
   );
   $score-font-color: (
-    small:#999,
-    medium:#999,
-    large:#888
+    small: #999,
+    medium: #999,
+    large: #888
   );
   $score-regular-font-size: (
-    small:0.12rem,
-    medium:0.18rem,
-    large:0.24rem
+    small: 0.12rem,
+    medium: 0.18rem,
+    large: 0.24rem
   );
   $score-font-size: (
-    small:0.14rem,
-    medium:0.24rem,
-    large:0.32rem
+    small: 0.14rem,
+    medium: 0.24rem,
+    large: 0.32rem
   );
   $score-margin-right: (
-    small:1px,
-    medium:0.02rem,
-    large:0.03rem
+    small: 1px,
+    medium: 0.02rem,
+    large: 0.03rem
   );
   $score-border-size: (
-    small:1px,
-    medium:1px,
-    large:2px
+    small: 1px,
+    medium: 1px,
+    large: 2px
   );
   $score-content-widths: (
-    small:0.4rem,
-    medium:0.64rem,
-    large:0.84rem
+    small: 0.4rem,
+    medium: 0.64rem,
+    large: 0.84rem
   );
   //transition
   $transition-duration-base: 0.25s;
@@ -81,40 +81,44 @@
   }
   //score-selector
   @include flex-inline(row, flex-start, baseline);
-
+  & &_font-default {
+    font-size: 0.32rem;
+  }
   @each $theme in $ss-themes {
     &.theme-#{$theme} {
       @each $size, $width in $score-selector-widths {
         &.size-#{$size} {
           width: $width;
-          .score-selector-inner {
-            width: map-get($map:$score-block-widths, $key:$size);
-            height: map-get($map:$score-block-heights, $key:$size);
-            border: map-get($map:$score-border-size, $key:$size) solid
+          .#{$void}-score-selector_inner {
+            width: map-get($map: $score-block-widths, $key: $size);
+            height: map-get($map: $score-block-heights, $key: $size);
+            border: map-get($map: $score-border-size, $key: $size)
+              solid
               $score-selector-background;
             border-radius: $score-border-radius;
-            margin-right: map-get($map:$score-margin-right, $key:$size);
-            font-size: map-get($map:$score-regular-font-size, $key:$size);
+            margin-right: map-get($map: $score-margin-right, $key: $size);
+            font-size: map-get($map: $score-regular-font-size, $key: $size);
             @each $grade, $color in $grade-colors {
               &.grade-#{$grade} {
                 background-color: $color;
-                border: map-get($map:$score-border-size, $key:$size) solid $color;
-                @include gen-transition-base((color,background-color,border-color));
+                border: map-get($map: $score-border-size, $key: $size) solid $color;
+                @include gen-transition-base((color, background-color, border-color));
               }
               &.unselected {
                 background-color: transparent;
               }
             }
           }
-          .score-selector-content {
-            width: map-get($map:$score-content-widths, $key:$size);
+          .#{$void}-score-selector_content {
+            width: map-get($map: $score-content-widths, $key: $size);
             text-align: right;
-            font-size: map-get($map:$score-regular-font-size, $key:$size);
-            color: map-get($map:$score-font-color, $key:$size);
+            font-size: map-get($map: $score-regular-font-size, $key: $size);
+            color: map-get($map: $score-font-color, $key: $size);
             @each $grade, $color in $grade-colors {
               .font-#{$grade} {
+                font-size: 0.32rem;
                 color: $color;
-                font-size: map-get($map:$score-font-size, $key:$size);
+                font-size: map-get($map: $score-font-size, $key: $size);
               }
             }
           }

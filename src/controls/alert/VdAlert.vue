@@ -1,27 +1,26 @@
 <template>
   <div class="vd-alert"
-       :class="`alert-${currentTone}`">
+       :class="`vd-alert_${currentTone}`">
 
-    <span class="icon-outer"
-          :class="label ? 'larger-alert': '' ">
-      <span class="alert-icon">
+    <span class="vd-alert_icon-outer"
+          :class="label ? 'vd-alert_larger-alert': '' ">
         <i class="icon fa"
            :class="`fa-${currentIcon}`"></i>
-      </span>
     </span>
-    <div class="alert-content">
+
+    <div class="vd-alert_alert-content">
       <template v-if="label">
-        <span class="alert-label">{{label}}</span>
+        <span class="vd-alert_alert-label">{{label}}</span>
         <br/>
       </template>
-
-      <span class="alert-description">{{description}}</span>
+      <span class="vd-alert_alert-description">{{description}}</span>
     </div>
 
-    <span class="alert-remove"
+    <span class="vd-alert_alert-remove"
           @click="close">
       <i class="icon fa fa-remove"></i>
     </span>
+
   </div>
 </template>
 <script lang="ts">
@@ -35,7 +34,12 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
+
 import { VdStylableControl, ControlTone } from 'src/controls/base/VdControl';
+import anime from 'animejs';
+const easing = 'easeInOutQuad';
+const duration = 500;
+
 export interface Params {
   label?: string;
   preset: string;
@@ -58,14 +62,30 @@ export default class VdAlert extends VdStylableControl {
     let el = document.createElement('div');
     el.id = 'vd-alert';
     document.body.appendChild(el);
-    this.$mount('#vd-alert');
+    anime({
+      targets: this.$el,
+      opacity: 1,
+      easing,
+      duration,
+      complete: () => {
+        this.$mount('#vd-alert');
+      },
+    });
     if (this.autoClose) {
       setTimeout(this.close, 3000);
     }
   }
 
   close() {
-    document.body.removeChild(this.$el);
+    anime({
+      targets: this.$el,
+      tanslateY: '-3rem',
+      easing,
+      duration,
+      complete: () => {
+        document.body.removeChild(this.$el);
+      },
+    });
   }
 
   get currentIcon(): string {
@@ -99,4 +119,3 @@ export default class VdAlert extends VdStylableControl {
   }
 }
 </script>
-

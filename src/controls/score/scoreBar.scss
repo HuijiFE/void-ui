@@ -7,17 +7,17 @@
   $score-bar-font-size: 0.24rem;
   // Score-bar map
   $score-bar-inner-widths: (
-    10:$score-bar-width,
-    9:$score-bar-width - (0.14rem*1),
-    8:$score-bar-width - (0.14rem*2),
-    7:$score-bar-width - (0.14rem*3),
-    6:$score-bar-width - (0.14rem*4),
-    5:$score-bar-width - (0.14rem*5),
-    4:$score-bar-width - (0.14rem*6),
-    3:$score-bar-width - (0.14rem*7),
-    2:$score-bar-width - (0.14rem*8),
-    1:$score-bar-width - (0.14rem*9),
-    0:$score-bar-width - (0.14rem*10)
+    10: $score-bar-width,
+    9: $score-bar-width - (0.14rem * 1),
+    8: $score-bar-width - (0.14rem * 2),
+    7: $score-bar-width - (0.14rem * 3),
+    6: $score-bar-width - (0.14rem * 4),
+    5: $score-bar-width - (0.14rem * 5),
+    4: $score-bar-width - (0.14rem * 6),
+    3: $score-bar-width - (0.14rem * 7),
+    2: $score-bar-width - (0.14rem * 8),
+    1: $score-bar-width - (0.14rem * 9),
+    0: $score-bar-width - (0.14rem * 10)
   );
   $score-colors: (
     0: $grade-0,
@@ -30,12 +30,12 @@
     7: $grade-3,
     8: $grade-3,
     9: $grade-4,
-    10:$grade-4
+    10: $grade-4
   );
   width: $score-bar-width;
   height: $score-bar-height;
   font-size: $score-bar-font-size;
-  .score-bar-inner {
+  & &_inner {
     display: block;
     height: 100%;
     color: $color-white;

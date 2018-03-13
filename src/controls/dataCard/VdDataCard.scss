@@ -10,7 +10,7 @@
       background-color: map-get($map: $theme-background-colors, $key: $theme);
       color: map-get($map: $theme-foreground-colors, $key: #{$theme}-secondary);
 
-      .data-main {
+      .#{$void}-data-card_data-main {
         color: map-get($map: $theme-foreground-colors, $key: $theme);
       }
     }
@@ -19,42 +19,41 @@
   @include flex-inline(row, flex-start, flex-start);
   font-size: $data-card-font-size;
 
-  .card-icon {
+  .#{$void}-data-card_icon {
     align-self: stretch;
     font-size: $data-card-icon-font-size;
 
     @each $tone in $ss-tones {
       &.tone-#{$tone} {
-        color: map-get($map:$tone-colors, $key: $tone);
+        color: map-get($map: $tone-colors, $key: $tone);
       }
     }
-
     .fa {
       display: flex;
     }
   }
 
-  .card-body {
+  & &_body {
     margin-left: $data-card-body-margin-left;
   }
 
-  &-item {
-    .item-label {
-      font-weight: bold;
-    }
+  & &_item-label {
+    font-weight: bold;
+  }
 
-    .item-data {
-      @include flex-inline(row, flex-start, flex-end);
+  & &_item-data {
+    @include flex-inline(row, flex-start, flex-end);
+  }
 
-      .data-main {
-        font-size: $data-card-main-data-font-size;
-      }
+  & &_data-main {
+    font-size: $data-card-main-data-font-size;
+  }
 
-      .data-sup {
-        margin-left: $data-card-data-sup-margin-left;
-      }
-    }
+  & &_item-data-sup {
+    margin-left: $data-card-data-sup-margin-left;
+  }
 
+  &_item {
     & + & {
       margin-top: 0.1rem;
     }

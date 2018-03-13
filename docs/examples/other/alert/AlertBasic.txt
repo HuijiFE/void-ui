@@ -21,4 +21,3 @@ export default class AlertBasic extends Vue {
   }
 }
 </script>
-

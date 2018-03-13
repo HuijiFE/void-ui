@@ -1,16 +1,16 @@
 <template>
   <div class="vd-tabs"
        :class="classes">
-    <div class="tabs-head">
+    <div class="vd-tabs_head">
       <button v-for="(item, index) in children"
               :key="index"
-              class="head-item"
+              class="vd-tabs_head-item"
               :class="{'selected': item.status === 'selected'}"
               @click="select(item)">{{item.label}}</button>
       <span ref="underline"
-            class="head-underline"></span>
+            class="vd-tabs_head-underline"></span>
     </div>
-    <div class="tabs-body">
+    <div class="vd-tabs_tabs-body">
       <slot></slot>
     </div>
   </div>
@@ -94,7 +94,7 @@ export default class VdTabs extends VdStylableControl {
   }
 
   moveUnderline() {
-    let curHeadItem = this.$el.querySelectorAll('.head-item')[
+    let curHeadItem = this.$el.querySelectorAll('.vd-tabs_head-item')[
       this.selectedItem.index
     ] as HTMLElement;
     anime({

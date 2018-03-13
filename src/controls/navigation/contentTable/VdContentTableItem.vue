@@ -1,10 +1,10 @@
 <template>
-  <div class="vd-content-table-item">
+  <div class="vd-content-table_item">
     <a :href="`#${data.id}`"
        @click.self.stop="contentItemClick($event)"
-       class="item-label"
+       class="vd-content-table_item-label"
        :class="active ? 'active' : ''">{{data.label}}</a>
-    <div class="item-child"
+    <div class="vd-content-table_item-child"
          v-if="data.children">
       <vd-content-table-item v-for="child in data.children"
                              :data="child"

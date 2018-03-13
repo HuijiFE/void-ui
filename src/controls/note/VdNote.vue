@@ -2,16 +2,16 @@
   <div class="vd-note"
        :class="classes">
     <span v-if="currentIcon"
-          class="note-outer"
+          class="vd-note_outer"
           :class="`tone-${currentTone}`">
       <i class="icon fa"
          :class="`fa-${currentIcon}`"></i>
     </span>
-    <span class="note-content"
+    <span class="vd-note_content"
           :class="`tone-${currentTone}`">
-      <span class="note-label">{{label}}</span>
-      </br>
-      <span calss="note-descrip">{{description}}</span>
+      <span class="vd-note_label">{{label}}</span>
+      <br/>
+      <span class="vd-note_descrip">{{description}}</span>
     </span>
   </div>
 </template>
@@ -80,4 +80,3 @@ export default class VdNote extends VdStylableControl {
   }
 }
 </script>
-
