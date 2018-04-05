@@ -1,5 +1,5 @@
 // tslint:disable-next-line:no-import-side-effect
-import '@void/void.scss';
+// import '@void/void.scss';
 
 import { PluginFunction, PluginObject } from 'vue';
 
