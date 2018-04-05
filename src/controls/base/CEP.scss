@@ -1,0 +1,164 @@
+/**
+ * 
+ * CEP
+ * The css class naming rule based on component, something like BEM.
+ * 
+ */
+
+/**----------  Component  ----------
+ * e.g.
+ * @include comp(button) {
+ *   ...
+ * }
+ * =>
+ * .vd-button {
+ *   ...
+ * }
+ */
+
+@function class-comp($component) {
+  @return $namespace + '-' + $component;
+}
+
+@mixin comp($component) {
+  $C: class-comp($component) !global;
+
+  .#{$C} {
+    @content;
+  }
+}
+
+/**----------  Element  ----------
+ * e.g.
+ * @include prop(( skin: plain, theme: dark, )) {
+ *   @include elem(content) {
+ *     ...
+ *   }
+ * }
+ * =>
+ * .vd-button.vdp-skin-plain.vdp-theme-dark .vd-button_content {
+ *   ...
+ * }
+ */
+
+@function class-elem($element) {
+  @return $C + '_' + $element;
+}
+
+@mixin elem($element) {
+  $E: $element !global;
+  $selector: &;
+
+  @at-root {
+    #{$selector} {
+      .#{class-elem($element)} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin elem-adjacent($element-former, $element-target: null) {
+  @if not $element-target {
+    $element-target: $element-former;
+  }
+  $selector: &;
+
+  @at-root {
+    #{$selector} {
+      .#{class-elem($element-former)} + .#{class-elem($element-target)} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin elem-general($element-former, $element-target: null) {
+  @if not $element-target {
+    $element-target: $element-former;
+  }
+  $selector: &;
+
+  @at-root {
+    #{$selector} {
+      .#{class-elem($element-former)} ~ .#{class-elem($element-target)} {
+        @content;
+      }
+    }
+  }
+}
+
+/**----------  Property  ----------
+ * e.g.
+ * @include prop(( skin: plain, theme: dark, )) {
+ *   ...
+ * }
+ * =>
+ * .vd-button.vdp-skin-plain.vdp-theme-dark {
+ *   ...
+ * }
+ */
+
+@function class-prop($property, $key) {
+  @return $namespace + 'p-' + $property + '-' + $key;
+}
+
+@mixin prop($properties-map) {
+  $props-selector: '';
+  @each $property, $key in $properties-map {
+    $props-selector: $props-selector + '.' + #{class-prop($property, $key)};
+  }
+
+  @at-root {
+    .#{$C}#{$props-selector} {
+      @content;
+    }
+  }
+}
+
+/**----------  Status  ----------
+ * e.g.
+ * @include elem(header-item) {
+ *   @include when(selected) {
+ *     ...
+ *   }
+ * }
+ * =>
+ * .vd-tabs vd-tabs_header-item.selected {
+ *   ...
+ * }
+ * ----
+ * Note: The status must be a adjective.
+ */
+@mixin when($status) {
+  $selector: &;
+
+  @at-root {
+    #{$selector}.#{$status} {
+      @content;
+    }
+  }
+}
+
+/**----------  Atomic  ----------
+ * .e.g
+ * .bg-white {
+ *   ...
+ * }
+ * %atomic-bg-white {
+ *   ...
+ * }
+ */
+// Define a atomic rule.
+@mixin define-atom($name) {
+  @at-root {
+    .#{$namespace}a-#{$name},
+    %atomic-#{$name} {
+      @content;
+    }
+  }
+}
+// Extend a atomic rule.
+@mixin extend-atom($name) {
+  @extend %atomic-#{$name};
+}

@@ -1,0 +1,45 @@
+$background: #fff;
+
+$theme-backgrounds: (
+  dark: #000,
+  lite: #fff
+);
+
+$tone-colors: (
+  primary: blue,
+  success: green,
+  warning: orange,
+  danger: red
+);
+
+@include comp(button) {
+  @include elem(icon) {
+    // a
+  }
+
+  background: #fff;
+
+  @each $theme-key, $theme-value in $theme-backgrounds {
+    @include prop-external(theme, $theme-key) {
+      background-color: $theme-value;
+    }
+  }
+}
+
+.vdp-theme-dark {
+  .vd-button {
+    background-color: #000;
+  }
+}
+.vd-button.vdp-theme-dark {
+  background-color: #000;
+}
+
+.vdp-theme-lite {
+  .vd-button {
+    background-color: #fff;
+  }
+}
+.vd-button.vdp-theme-lite {
+  background-color: #fff;
+}

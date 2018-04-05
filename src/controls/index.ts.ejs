@@ -1,0 +1,17 @@
+/**
+ * All controls and types for Void-UI.
+ */
+
+export * from '@void/controls/base/VdControl';
+<%- 
+globby
+  .sync(['src/controls/*/**/*.ts', 'src/controls/*/**/*.vue'])
+  .filter(file => !/\/base\//.test(file))
+  .map(
+    file =>
+      path.extname(file) === '.vue'
+        ? `export { default as ${path.basename(file, '.vue')} } from '${toAlias(file)}';`
+        : `export * from '${toAlias(file.replace(/\.ts$/, ''))}';`
+  )
+  .join('\n');
+%>

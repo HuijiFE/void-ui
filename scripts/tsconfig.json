@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2015",
-    "module": "es2015",
+    "module": "CommonJS",
     "lib": ["dom", "scripthost", "es5", "es2015", "es2016", "es2017", "es2018", "esnext"],
     "strict": true,
     "strictPropertyInitialization": false,
@@ -11,23 +11,14 @@
     "emitDecoratorMetadata": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "declaration": true,
-    "declarationDir": "types",
     "baseUrl": ".",
+    "types": ["node", "jest"],
     "paths": {
       "@/*": ["src/*"],
       "@void/*": ["src/*"],
       "@docs/*": ["docs/*"]
     }
   },
-  "include": [
-    "docs/**/*.ts",
-    "docs/**/*.vue",
-    "src/**/*.ts",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "typings/*.d.ts",
-    "scripts/**/*.ts"
-  ],
+  "include": ["scripts/**/*.ts"],
   "exclude": ["node_modules"]
 }

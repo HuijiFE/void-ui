@@ -1,14 +1,69 @@
 {
-  "defaultSeverity": "warning",
-  "extends": [
-    "tslint:recommended"
-  ],
+  "defaultSeverity": "error",
+  "extends": "tslint-microsoft-contrib",
   "rules": {
-    "quotemark": [true, "single"],
-    "indent": [true, "spaces", 2],
+    "class-name": true,
     "interface-name": false,
+    "prefer-const": true,
+    "no-var-keyword": true,
+    "no-null-keyword": true,
+    "typedef": [
+      true,
+      "call-signature",
+      "parameter",
+      "property-declaration",
+      "variable-declaration",
+      "member-variable-declaration"
+    ],
+    "member-ordering": false,
+    "binary-expression-operand-order": false,
+    "no-increment-decrement": false,
+    "indent": [true, "spaces"],
+    "align": false,
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-catch",
+      "check-else",
+      "check-whitespace"
+    ],
+    "quotemark": [true, "single", "avoid-escape"],
+    "trailing-comma": [true, "all"],
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type"
+    ],
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      },
+      {
+        "call-signature": "onespace",
+        "index-signature": "onespace",
+        "parameter": "onespace",
+        "property-declaration": "onespace",
+        "variable-declaration": "onespace"
+      }
+    ],
+    "no-trailing-whitespace": true,
+    "comment-format": [true, "check-space"],
+    "jsdoc-format": true,
+    "no-internal-module": true,
+    "no-submodule-imports": false,
+    "no-implicit-dependencies": false,
+    "import-name": false,
+    "export-name": false,
     "ordered-imports": false,
-    "object-literal-sort-keys": false,
-    "no-consecutive-blank-lines": false
+    "no-default-export": false
   }
 }

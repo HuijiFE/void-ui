@@ -1,0 +1,12 @@
+/**
+ *
+ * Atomic css rules
+ *
+ */
+
+@include define-atom(bg-white) {
+  background-color: #fff;
+}
+@include define-atom(bg-black) {
+  background-color: #000;
+}

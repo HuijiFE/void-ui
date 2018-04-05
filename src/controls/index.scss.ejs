@@ -1,0 +1,12 @@
+/**
+ * All controls style for Void-UI.
+ */
+
+@import '~@void/controls/base/VdControl';
+<%-
+globby
+  .sync(['src/controls/*/**/*.scss'])
+  .filter(file => !/\/base\//.test(file))
+  .map(file => `@import '~${toAlias(file.replace(/\.scss$/, ''))}';`)
+  .join('\n');
+%>
