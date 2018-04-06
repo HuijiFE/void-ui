@@ -20,7 +20,7 @@ $tone-colors: (
   background: #fff;
 
   @each $theme-key, $theme-value in $theme-backgrounds {
-    @include prop-external(theme, $theme-key) {
+    @include prop(theme, $theme-key) {
       background-color: $theme-value;
     }
   }

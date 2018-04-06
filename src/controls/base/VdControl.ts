@@ -39,8 +39,8 @@ export type Size = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
  */
 @Component
 export class Void extends Vue {
-  @Prop({ type: String })
-  public theme: Theme = 'lite';
+  @Prop({ type: String, default: 'lite' })
+  public theme: Theme;
 }
 
 /**
@@ -65,26 +65,26 @@ export class VdControl extends Vue {
     return this.theme || (this.$vdParent ? this.$vdParent.$theme : VdControl.$void.theme);
   }
 
-  @Prop({ type: String })
-  public tone: Tone = 'primary';
+  @Prop({ type: String, default: 'primary' })
+  public tone: Tone;
 
-  @Prop({ type: String })
-  public skin: Skin = 'fill';
+  @Prop({ type: String, default: 'fill' })
+  public skin: Skin;
 
-  @Prop({ type: String })
-  public shape: Shape = 'rect';
+  @Prop({ type: String, default: 'rect' })
+  public shape: Shape;
 
-  @Prop({ type: String })
-  public size: Size = 'medium';
-
-  @Prop({ type: Boolean, default: false })
-  public disabled: boolean = false;
+  @Prop({ type: String, default: 'medium' })
+  public size: Size;
 
   @Prop({ type: Boolean, default: false })
-  public bordered: boolean = false;
+  public disabled: boolean;
+
+  @Prop({ type: Boolean, default: false })
+  public bordered: boolean;
 
   @Prop({ type: [Number, String], default: 0 })
-  public raise: number | string = 0;
+  public raise: number | string;
 
   constructor() {
     super();
