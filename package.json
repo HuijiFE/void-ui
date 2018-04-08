@@ -6,7 +6,7 @@
     "gen-files": "ts-node -P scripts/tsconfig.json scripts/gen-files.ts",
     "serve": "vue-cli-service serve docs/main.ts",
     "build:void": "vue-cli-service build src/void.ts --dest dist --target lib",
-    "build:docs": "vue-cli-service build docs/main.ts --dest dist_docs",
+    "build:docs": "vue-cli-service build docs/main.ts --dest www",
     "build": "vue-cli-service build",
     "test": "vue-cli-service test",
     "lint": "vue-cli-service lint",
