@@ -1,36 +1,162 @@
 html {
-  // primary
-  --primary-darkener: #0080b0;
-  --primary-darken: #0098c2;
-  --primary-standard: #00abd0;
-  --primary-lighten: #00bedb;
-  --primary-lightener: #34d2e9;
 
-  // secondary
-  --primary-darkener: #0080b0;
-  --primary-darkener: #0098c2;
-  --primary-darkener: #00abd0;
-  --primary-darkener: #00bedb;
-  --primary-darkener: #34d2e9;
+  /*-------- theme --------*/
 
-  // success
-  --primary-darkener: #1da63d;
-  --primary-darkener: #21bd45;
-  --primary-darkener: #24cf4c;
-  --primary-darkener: #2cdb55;
-  --primary-darkener: #46eb6d;
+  --vd-theme-lite-fg-emphasize:     #222222;
+  --vd-theme-lite-fg-normal:        #333333;
+  --vd-theme-lite-fg-sub:           #888888;
+  --vd-theme-lite-fg-placeholder:   #999999;
+  --vd-theme-lite-fg-disabled:      #bbbbbb;
 
-  // warning
-  --primary-darkener: #ffaa00;
-  --primary-darkener: #ffbb00;
-  --primary-darkener: #ffcc00;
-  --primary-darkener: #ffdd33;
-  --primary-darkener: #ffee44;
+  --vd-theme-lite-bg-higher:        #f5f5f5;
+  --vd-theme-lite-bg-high:          #fafafa;
+  --vd-theme-lite-bg-normal:        #ffffff;
+  --vd-theme-lite-bg-low:           #fafafa;
+  --vd-theme-lite-bg-lower:         #f5f5f5;
+  --vd-theme-lite-bg-hover:         #eeeeee;
+  --vd-theme-lite-bg-disabled:      #efefef;
 
-  // danger
-  --primary-darkener: #cc2828;
-  --primary-darkener: #e62d2d;
-  --primary-darkener: #ff3333;
-  --primary-darkener: #ff4d4d;
-  --primary-darkener: #ff6666;
+  --vd-theme-lite-bd-normal:        #efefef;
+  --vd-theme-lite-bd-disabled:      #bbbbbb;
+  --vd-theme-lite-bd-focus:         #888888;
+
+  --vd-theme-dark-fg-emphasize:     #f5f5f5;
+  --vd-theme-dark-fg-normal:        #eeeeee;
+  --vd-theme-dark-fg-sub:           #aaaaaa;
+  --vd-theme-dark-fg-placeholder:   #999999;
+  --vd-theme-dark-fg-disabled:      #777777;
+
+  --vd-theme-dark-bg-higher:        #494949;
+  --vd-theme-dark-bg-high:          #444444;
+  --vd-theme-dark-bg-normal:        #3e3e3e;
+  --vd-theme-dark-bg-low:           #383838;
+  --vd-theme-dark-bg-lower:         #333333;
+  --vd-theme-dark-bg-hover:         #4e4e4e;
+  --vd-theme-dark-bg-disabled:      #555555;
+
+  --vd-theme-dark-bd-normal:        #4e4e4e;
+  --vd-theme-dark-bd-disabled:      #777777;
+  --vd-theme-dark-bd-focus:         #aaaaaa;
+
+  /*-------- tone --------*/
+
+  --vd-tone-primary-darkener:       #0080b0;
+  --vd-tone-primary-darken:         #0098c2;
+  --vd-tone-primary-standard:       #00abd0;
+  --vd-tone-primary-lighten:        #00bedb;
+  --vd-tone-primary-lightener:      #34d2e9;
+
+  --vd-tone-secondary-darkener:     #0080b0;
+  --vd-tone-secondary-darken:       #0098c2;
+  --vd-tone-secondary-standard:     #00abd0;
+  --vd-tone-secondary-lighten:      #00bedb;
+  --vd-tone-secondary-lightener:    #34d2e9;
+
+  --vd-tone-success-darkener:       #1da63d;
+  --vd-tone-success-darken:         #21bd45;
+  --vd-tone-success-standard:       #24cf4c;
+  --vd-tone-success-lighten:        #2cdb55;
+  --vd-tone-success-lightener:      #46eb6d;
+
+  --vd-tone-warning-darkener:       #ffaa00;
+  --vd-tone-warning-darken:         #ffbb00;
+  --vd-tone-warning-standard:       #ffcc00;
+  --vd-tone-warning-lighten:        #ffdd33;
+  --vd-tone-warning-darkener:       #ffee44;
+
+  --vd-tone-danger-darkener:        #cc2828;
+  --vd-tone-danger-darken:          #e62d2d;
+  --vd-tone-danger-standard:        #ff3333;
+  --vd-tone-danger-lighten:         #ff4d4d;
+  --vd-tone-danger-lightener:       #ff6666;
+
+  /*-------- grade --------*/
+
+  --vd-grade-1:     #ff3333;
+  --vd-grade-2:     #ff7e34;
+  --vd-grade-3:     #ffcc00;
+  --vd-grade-4:     #58d000;
+  --vd-grade-5:     #24cf4c;
+
 }
+
+/*-------- theme --------*/
+$theme: (
+  lite-fg-emphasize:    var(--vd-theme-lite-fg-emphasize),
+  lite-fg-normal:       var(--vd-theme-lite-fg-normal),
+  lite-fg-sub:          var(--vd-theme-lite-fg-sub),
+  lite-fg-placeholder:  var(--vd-theme-lite-fg-placeholder),
+  lite-fg-disabled:     var(--vd-theme-lite-fg-disabled),
+  
+  lite-bg-higher:       var(--vd-theme-lite-bg-higher),
+  lite-bg-high:         var(--vd-theme-lite-bg-high),
+  lite-bg-normal:       var(--vd-theme-lite-bg-normal),
+  lite-bg-low:          var(--vd-theme-lite-bg-low),
+  lite-bg-lower:        var(--vd-theme-lite-bg-lower),
+  lite-bg-hover:        var(--vd-theme-lite-bg-hover),
+  lite-bg-disabled:     var(--vd-theme-lite-bg-disabled),
+  
+  lite-bd-normal:       var(--vd-theme-lite-bd-normal),
+  lite-bd-disabled:     var(--vd-theme-lite-bd-disabled),
+  lite-bd-focus:        var(--vd-theme-lite-bd-focus),
+  
+  dark-fg-emphasize:    var(--vd-theme-dark-fg-emphasize),
+  dark-fg-normal:       var(--vd-theme-dark-fg-normal),
+  dark-fg-sub:          var(--vd-theme-dark-fg-sub),
+  dark-fg-placeholder:  var(--vd-theme-dark-fg-placeholder),
+  dark-fg-disabled:     var(--vd-theme-dark-fg-disabled),
+  
+  dark-bg-higher:       var(--vd-theme-dark-bg-higher),
+  dark-bg-high:         var(--vd-theme-dark-bg-high),
+  dark-bg-normal:       var(--vd-theme-dark-bg-normal),
+  dark-bg-low:          var(--vd-theme-dark-bg-low),
+  dark-bg-lower:        var(--vd-theme-dark-bg-lower),
+  dark-bg-hover:        var(--vd-theme-dark-bg-hover),
+  dark-bg-disabled:     var(--vd-theme-dark-bg-disabled),
+  
+  dark-bd-normal:       var(--vd-theme-dark-bd-normal),
+  dark-bd-disabled:     var(--vd-theme-dark-bd-disabled),
+  dark-bd-focus:        var(--vd-theme-dark-bd-focus),
+);
+
+/*-------- tone -------*/
+$tone: (
+  primary-darkener:     var(--vd-tone-primary-darkener),
+  primary-darken:       var(--vd-tone-primary-darken),
+  primary-standard:     var(--vd-tone-primary-standard),
+  primary-lighten:      var(--vd-tone-primary-lighten),
+  primary-lightener:    var(--vd-tone-primary-lightener),
+
+  secondary-darkener:   var(--vd-tone-secondary-darkener),
+  secondary-darken:     var(--vd-tone-secondary-darken),
+  secondary-standard:   var(--vd-tone-secondary-standard),
+  secondary-lighten:    var(--vd-tone-secondary-lighten),
+  secondary-lightener:  var(--vd-tone-secondary-lightener),
+
+  success-darkener:     var(--vd-tone-success-darkener),
+  success-darken:       var(--vd-tone-success-darken),
+  success-standard:     var(--vd-tone-success-standard),
+  success-lighten:      var(--vd-tone-success-lighten),
+  success-lightener:    var(--vd-tone-success-lightener),
+
+  warning-darkener:     var(--vd-tone-warning-darkener),
+  warning-darken:       var(--vd-tone-warning-darken),
+  warning-standard:     var(--vd-tone-warning-standard),
+  warning-lighten:      var(--vd-tone-warning-lighten),
+  warning-lightener:    var(--vd-tone-warning-lightener),
+
+  danger-darkener:      var(--vd-tone-danger-darkener),
+  danger-darken:        var(--vd-tone-danger-darken),
+  danger-standard:      var(--vd-tone-danger-standard),
+  danger-lighten:       var(--vd-tone-danger-lighten),
+  danger-lightener:     var(--vd-tone-danger-lightener),
+);
+
+/*-------- grade --------*/
+$grade: (
+  1:    var(--vd-grade-1),
+  2:    var(--vd-grade-2),
+  3:    var(--vd-grade-3),
+  4:    var(--vd-grade-4),
+  5:    var(--vd-grade-5),
+);

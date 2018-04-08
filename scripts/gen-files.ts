@@ -1,5 +1,6 @@
 // tslint:disable:no-console
 // tslint:disable:no-relative-imports
+// tslint:disable:missing-jsdoc
 
 import * as fs from 'fs';
 import * as path from 'path';
@@ -9,10 +10,6 @@ import chalk from 'chalk';
 
 import { toAlias } from './utils';
 
-/**
- * Render a template to target file.
- * @param template path to template
- */
 function genFile(template: string): void {
   ejs.renderFile(template, { globby, path, toAlias }, (error, str) => {
     const file: string = template.replace(/\.ejs$/, '');
@@ -27,7 +24,4 @@ function genFile(template: string): void {
   });
 }
 
-/**
- * Auto generate index files.
- */
 globby.sync('src/**/*.ejs').forEach(genFile);

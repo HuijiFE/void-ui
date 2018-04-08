@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "ts": "ts-node -P scripts/tsconfig.json",
-    "gen": "yarn ts scripts/gen-files.ts",
+    "gen-fles": "yarn ts scripts/gen-files.ts",
+    "gen-variables": "yarn ts scripts/gen-variables.ts",
     "serve": "vue-cli-service serve docs/main.ts",
     "build:void": "vue-cli-service build src/void.ts --dest dist --target lib",
     "build:docs": "vue-cli-service build docs/main.ts --dest www",
