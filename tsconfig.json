@@ -15,7 +15,7 @@
     "declarationDir": "./types",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
+      // "@/*": ["src/*"],
       "@void/*": ["src/*"],
       "@docs/*": ["docs/*"]
     }
