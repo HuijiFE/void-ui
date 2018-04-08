@@ -1,0 +1,4 @@
+/**
+ * Locale
+ */
+export default 'locales';

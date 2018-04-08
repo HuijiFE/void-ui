@@ -5,6 +5,7 @@ import { PluginFunction, PluginObject } from 'vue';
 
 export * from '@void/controls';
 import * as controls from '@void/controls';
+import { inherits } from 'util';
 
 export interface VoidPluginOption {
   locale?: string;

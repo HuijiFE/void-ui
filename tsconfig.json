@@ -25,7 +25,7 @@
     "docs/**/*.vue",
     "src/**/*.ts",
     "src/**/*.vue",
-    "tests/**/*.ts",
+    // "tests/**/*.ts",
     "typings/*.d.ts",
     "scripts/**/*.ts"
   ],
