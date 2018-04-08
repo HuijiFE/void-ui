@@ -24,4 +24,4 @@ function genFile(template: string): void {
   });
 }
 
-globby.sync('src/**/*.ejs').forEach(genFile);
+globby.sync(['src/**/*.ejs', 'docs/**/*.ejs']).forEach(genFile);

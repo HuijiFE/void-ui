@@ -42,10 +42,6 @@ export default new Router({
           path: 'tools',
           component: Tools,
         },
-        // {
-        //   path: 'demos',
-        //   component: Demos,
-        // },
       ],
     },
     {

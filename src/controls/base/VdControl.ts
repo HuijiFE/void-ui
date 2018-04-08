@@ -38,7 +38,7 @@ export type Size = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
  * Static hub for Void-UI.
  */
 @Component
-export class Void extends Vue {
+export class VoidHub extends Vue {
   @Prop({ type: String, default: 'lite' })
   public theme: Theme;
 }
@@ -51,8 +51,8 @@ export class VdControl extends Vue {
   /**
    * Static hub for Void-UI.
    */
-  public static readonly $void: VdControl = new VdControl();
-  public get $void(): VdControl {
+  public static readonly $void: VoidHub = new VoidHub();
+  public get $void(): VoidHub {
     return VdControl.$void;
   }
 
