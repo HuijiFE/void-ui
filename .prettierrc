@@ -5,7 +5,6 @@
   "eslintIntegration": false,
   "ignorePath": ".prettierignore",
   "jsxBracketSameLine": false,
-  "parser": "babylon",
   "printWidth": 140,
   "proseWrap": "preserve",
   "requireConfig": false,
