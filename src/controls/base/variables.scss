@@ -81,6 +81,7 @@ html {
 }
 
 /*-------- theme --------*/
+$enum-theme: 'lite', 'dark';
 $theme: (
   lite-fg-emphasize:    var(--vd-theme-lite-fg-emphasize),
   lite-fg-normal:       var(--vd-theme-lite-fg-normal),

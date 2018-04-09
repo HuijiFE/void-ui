@@ -6,7 +6,7 @@
   "ignorePath": ".prettierignore",
   "jsxBracketSameLine": false,
   "parser": "babylon",
-  "printWidth": 90,
+  "printWidth": 140,
   "proseWrap": "preserve",
   "requireConfig": false,
   "semi": true,

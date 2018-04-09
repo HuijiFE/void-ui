@@ -39,6 +39,8 @@ export type Size = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
  */
 @Component
 export class VoidHub extends Vue {
+  public static readonly $void: VoidHub = new VoidHub();
+
   @Prop({ type: String, default: 'lite' })
   public theme: Theme;
 }
@@ -48,13 +50,6 @@ export class VoidHub extends Vue {
  */
 @Component
 export class VdControl extends Vue {
-  /**
-   * Static hub for Void-UI.
-   */
-  public static readonly $void: VoidHub = new VoidHub();
-  public get $void(): VoidHub {
-    return VdControl.$void;
-  }
 
   private $vdParent?: VdControl;
 
@@ -62,7 +57,7 @@ export class VdControl extends Vue {
   public theme: Theme;
 
   public get $theme(): Theme {
-    return this.theme || (this.$vdParent ? this.$vdParent.$theme : VdControl.$void.theme);
+    return this.theme || (this.$vdParent ? this.$vdParent.$theme : VoidHub.$void.theme);
   }
 
   @Prop({ type: String, default: 'primary' })

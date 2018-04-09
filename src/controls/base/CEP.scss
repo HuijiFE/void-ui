@@ -17,7 +17,7 @@
  */
 
 @function class-comp($component) {
-  @return $namespace + '-' + $component;
+  @return '#{$namespace}-#{$component}';
 }
 
 @mixin comp($component) {
@@ -42,7 +42,7 @@
  */
 
 @function class-elem($element) {
-  @return $C + '_' + $element;
+  @return '#{$C}_#{$element}';
 }
 
 @mixin elem($element) {
@@ -100,13 +100,13 @@
  */
 
 @function class-prop($property, $key) {
-  @return $namespace + 'p-' + $property + '-' + $key;
+  @return '#{$namespace}p-#{$property}-#{$key}';
 }
 
 @mixin prop($properties-map) {
   $props-selector: '';
   @each $property, $key in $properties-map {
-    $props-selector: $props-selector + '.' + #{class-prop($property, $key)};
+    $props-selector: '#{$props-selector}.#{class-prop($property, $key)}';
   }
 
   @at-root {

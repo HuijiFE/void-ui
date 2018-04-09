@@ -1,5 +1,8 @@
-// tslint:disable-next-line:no-import-side-effect
-// import '@void/void.scss';
+// tslint:disable:no-import-side-effect
+// tslint:disable:variable-name
+// tslint:disable:no-any
+// tslint:disable:no-reserved-keywords
+import '@void/VoidUI.scss';
 
 import { PluginFunction, PluginObject } from 'vue';
 
@@ -19,7 +22,6 @@ export interface VoidUIPlugin extends PluginObject<VoidPluginOption> {
 /**
  * Void-UI
  */
-// tslint:disable:variable-name
 const VoidUI: VoidUIPlugin = {
   version: process.env.VOID_VERSION,
   installed: false,
@@ -29,12 +31,17 @@ const VoidUI: VoidUIPlugin = {
     }
     VoidUI.installed = true;
 
+    Object.defineProperty(Vue.prototype, '$void', {
+      get(): controls.VoidHub {
+        return controls.VoidHub.$void;
+      }
+    });
+
     Object.entries(controls).forEach(([name, ctrl]) => Vue.component(name, ctrl));
   },
   controls,
 };
 
-// tslint:disable:no-any
 if (window !== undefined && (<any>window).Vue) {
   VoidUI.install((<any>window).Vue);
 }
