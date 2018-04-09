@@ -1,0 +1,90 @@
+{
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "files.eol": "\n",
+  "files.associations": {
+    "*.json": "jsonc"
+  },
+  "emmet.includeLanguages": {
+    "vue-html": "html"
+  },
+  "css.validate": true,
+  "less.validate": true,
+  "scss.validate": true,
+  "css.lint.universalSelector": "warning",
+  "css.lint.important": "warning",
+  "css.lint.float": "warning",
+  "css.lint.idSelector": "warning",
+  "scss.lint.important": "warning",
+  "scss.lint.float": "warning",
+  "scss.lint.idSelector": "warning",
+  "less.lint.important": "warning",
+  "less.lint.float": "warning",
+
+  "tslint.enable": true,
+  "tslint.run": "onSave",
+  "tslint.configFile": "tslint.json",
+  "beautify.language": {
+    "js": {
+      "type": [],
+      "filename": [],
+      "ext": []
+    },
+    "css": [],
+    "html": ["htm", "html", "mustache", "xml"]
+  },
+  "beautify.config": {
+    "eol": "\n",
+    "end_with_newline": true,
+    "indent_char": " ",
+    "indent_size": 2,
+    "indent_with_tabs": false,
+    "preserve_newlines": true,
+    "brace_style": "collapse",
+    "max_preserve_newlines": 2,
+    "extra_liners": ["head", "body", "/html"],
+    "indent_body_inner_html": true,
+    "indent_inner_html": false,
+    "indent_scripts": "separate",
+    "wrap_attributes": "force-aligned",
+    "newline_between_rules": false,
+    "selector_separator_newline": false,
+    "space_around_combinator": true,
+    "space_around_selector_separator": true,
+    "keep_array_indentation": true,
+    "space_before_conditional": true
+  },
+  "beautify.ignore": ["**/extends.scss", "**/extends/*.scss", "**/mixins.scss", "**/normalize.css", "**/reset.scss", "**/variables.scss"],
+  "vetur.validation.template": true,
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "vetur.format.defaultFormatter.css": "prettier",
+  "vetur.format.defaultFormatter.postcss": "prettier",
+  "vetur.format.defaultFormatter.scss": "prettier",
+  "vetur.format.defaultFormatter.less": "prettier",
+  "vetur.format.defaultFormatter.stylus": "stylus-supremacy",
+  "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.format.defaultFormatter.ts": "prettier",
+  "vetur.format.defaultFormatterOptions": {
+    "js-beautify-html": {
+      "eol": "\n",
+      "end_with_newline": true,
+      "indent_char": " ",
+      "indent_size": 2,
+      "indent_with_tabs": false,
+      "preserve_newlines": true,
+      "brace_style": "collapse",
+      "max_preserve_newlines": 2,
+      "extra_liners": ["head", "body", "/html"],
+      "indent_body_inner_html": true,
+      "indent_inner_html": false,
+      "indent_scripts": "separate",
+      "wrap_attributes": "force-aligned",
+      "newline_between_rules": false,
+      "selector_separator_newline": false,
+      "space_around_combinator": true,
+      "space_around_selector_separator": true,
+      "keep_array_indentation": true,
+      "space_before_conditional": true
+    }
+  }
+}
