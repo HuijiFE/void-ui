@@ -3,3 +3,29 @@
  * Mixins
  *
  */
+
+@mixin media-xsmall {
+  @media only screen and (max-width: $breakpoint-xsmall) {
+    @content;
+  }
+}
+@mixin media-small {
+  @media only screen and (max-width: $breakpoint-small) {
+    @content;
+  }
+}
+@mixin media-medium {
+  @media only screen and (max-width: $breakpoint-medium) {
+    @content;
+  }
+}
+@mixin media-large {
+  @media only screen and (max-width: $breakpoint-large) {
+    @content;
+  }
+}
+@mixin media-xlarge {
+  @media only screen and (min-width: $breakpoint-large + 1px) {
+    @content;
+  }
+}

@@ -17,6 +17,9 @@
  */
 
 @function class-comp($component) {
+  @if $component != to-lower-case($component) {
+    @error 'Must use lower case class name for a component. "#{$component}"';
+  }
   @return '#{$namespace}-#{$component}';
 }
 

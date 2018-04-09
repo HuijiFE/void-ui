@@ -161,3 +161,22 @@ $grade: (
   4:    var(--vd-grade-4),
   5:    var(--vd-grade-5),
 );
+
+/**-------- layout --------*/
+
+$breakpoint-xsmall:     768px;
+$breakpoint-small:      1024px;
+$breakpoint-medium:     1440px;
+$breakpoint-large:      1920px;
+$breakpoint-xlarge:     2560px;
+
+$clamp: (
+  xsmall:     100%,
+  small:      100%,
+  medium:     880px,
+  large:      1200px,
+  xlarge:     1920px,
+);
+
+
+

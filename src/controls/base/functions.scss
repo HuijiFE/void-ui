@@ -1,1 +1,5 @@
 @import './config';
+
+@function theme($key) {
+  @return map-get($theme, $key);
+}

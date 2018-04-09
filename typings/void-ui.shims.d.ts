@@ -1,4 +1,4 @@
-import Vue from "vue";
+import Vue from 'vue';
 import { VoidHub } from '../src/controls/base/VdControl';
 
 declare module 'vue/types/vue' {

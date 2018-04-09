@@ -3,24 +3,15 @@ import { CreateElement, VNode } from 'vue';
 import { VdControl } from '@void/controls/base/VdControl';
 
 /**
- * Control Swimlane
+ * Control Clamp
  */
 @Component
-export class VdSwimlane extends VdControl {
-  @Prop({ type: Boolean, default: false })
-  public oddeven: boolean;
-
+export class VdClamp extends VdControl {
   private render(h: CreateElement): VNode {
     return h(
       'div',
       {
-        class: [
-          'vd-swimlane',
-          `vdp-theme-${this.$theme}`,
-          {
-            oddeven: this.oddeven,
-          },
-        ],
+        class: ['vd-clamp'],
       },
       [this.$slots.default],
     );

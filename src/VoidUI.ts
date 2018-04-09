@@ -2,6 +2,7 @@
 // tslint:disable:variable-name
 // tslint:disable:no-any
 // tslint:disable:no-reserved-keywords
+import 'normalize.css';
 import '@void/VoidUI.scss';
 
 import { PluginFunction, PluginObject } from 'vue';
@@ -34,7 +35,7 @@ const VoidUI: VoidUIPlugin = {
     Object.defineProperty(Vue.prototype, '$void', {
       get(): controls.VoidHub {
         return controls.VoidHub.$void;
-      }
+      },
     });
 
     Object.entries(controls).forEach(([name, ctrl]) => Vue.component(name, ctrl));

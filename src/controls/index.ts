@@ -6,5 +6,6 @@
  */
 
 export * from '@void/controls/base/VdControl';
+export * from '@void/controls/layout/flow/VdClamp';
 export * from '@void/controls/layout/flow/VdSwimlane';
 export { default as VdButton } from '@void/controls/basic/button/VdButton.vue';

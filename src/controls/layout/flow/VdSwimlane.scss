@@ -1,0 +1,18 @@
+@include comp('swimlane') {
+  position: relative;
+  width: 100%;
+  padding: 0.6rem 0;
+
+  @each $theme-key in $enum-theme {
+    @include prop((theme: $theme-key)) {
+      @include when('oddeven') {
+        &:nth-child(odd) {
+          background-color: theme(#{$theme-key}-bg-high);
+        }
+        &:nth-child(even) {
+          background-color: theme(#{$theme-key}-bg-normal);
+        }
+      }
+    }
+  }
+}

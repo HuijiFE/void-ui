@@ -1,13 +1,4 @@
-import {
-  Component,
-  Vue,
-  Prop,
-  Emit,
-  Inject,
-  Model,
-  Provide,
-  Watch,
-} from 'vue-property-decorator';
+import { Component, Vue, Prop, Emit, Inject, Model, Provide, Watch } from 'vue-property-decorator';
 
 /**
  * Available values for control property theme.
@@ -41,8 +32,7 @@ export type Size = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
 export class VoidHub extends Vue {
   public static readonly $void: VoidHub = new VoidHub();
 
-  @Prop({ type: String, default: 'lite' })
-  public theme: Theme;
+  public theme: Theme = 'lite';
 }
 
 /**
@@ -50,14 +40,13 @@ export class VoidHub extends Vue {
  */
 @Component
 export class VdControl extends Vue {
-
-  private $vdParent?: VdControl;
+  private $vdParent: VdControl;
 
   @Prop({ type: String })
   public theme: Theme;
 
   public get $theme(): Theme {
-    return this.theme || (this.$vdParent ? this.$vdParent.$theme : VoidHub.$void.theme);
+    return this.theme || this.$vdParent ? this.$vdParent.$theme : VoidHub.$void.theme;
   }
 
   @Prop({ type: String, default: 'primary' })
@@ -83,7 +72,6 @@ export class VdControl extends Vue {
 
   constructor() {
     super();
-
     let parent: Vue = this.$parent;
     while (parent) {
       if (parent instanceof VdControl) {
