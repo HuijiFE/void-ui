@@ -24,6 +24,16 @@ a {
   text-decoration: none;
 }
 
+// firefox focus dashed line
+a,
+label,
+input,
+textarea,
+select,
+button {
+  outline: none;
+}
+
 /*-------- typographic --------*/
 
 p,

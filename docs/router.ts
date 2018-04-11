@@ -42,11 +42,11 @@ export default new Router({
           path: 'tools',
           component: Tools,
         },
+        {
+          path: 'demos',
+          component: Demos,
+        },
       ],
-    },
-    {
-      path: '/:locale/demos',
-      component: Demos,
     },
   ],
 });

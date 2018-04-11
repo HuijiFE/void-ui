@@ -58,11 +58,11 @@ $menu-item-padding: 1.2rem;
 
     @include elem('end') {
       @include extend-atom('menu-flex-none-align-center');
+      margin-left: auto;
     }
 
     @include elem('item-wrapper') {
       @include extend-atom('menu-flex-none-align-center');
-      flex: 1;
     }
   }
 
@@ -89,6 +89,7 @@ $menu-item-padding: 1.2rem;
   }
 
   @include elem('icon') {
+    font-size: 110%;
     margin-right: $menu-item-padding / 2;
   }
 

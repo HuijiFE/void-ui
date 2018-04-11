@@ -4,17 +4,15 @@
       <vd-clamp>
         <vd-menu :brand-to="`/${$route.params.locale}`"
                  brand-label="Void-UI"
-                 size="large">
+                 size="large"
+                 :items-source="navItems">
           <void-brand slot="brandImage"
                       color-left="lite"
                       color-right="lite"></void-brand>
-          <vd-menu-item :to="`/${$route.params.locale}`">Home</vd-menu-item>
-          <vd-menu-item :to="`/${$route.params.locale}/guidelines`">Guideline</vd-menu-item>
-          <vd-menu-item :to="`/${$route.params.locale}/controls`">Controls</vd-menu-item>
-          <vd-menu-item href="https://google.com"
-                        target="_blank">Test</vd-menu-item>
-          <vd-menu-item :href="`/${$route.params.locale}/controls`">Test</vd-menu-item>
-          <vd-menu-item>Test</vd-menu-item>
+          <vd-menu-item slot="end"
+                        fa="github"
+                        href="https://github.com/huijife"
+                        target="_blank">GitHub</vd-menu-item>
         </vd-menu>
       </vd-clamp>
     </div>
@@ -25,8 +23,45 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Emit, Inject, Model, Provide, Watch } from 'vue-property-decorator';
+import {
+  Component,
+  Vue,
+  Prop,
+  Emit,
+  Inject,
+  Model,
+  Provide,
+  Watch,
+} from 'vue-property-decorator';
+import { MenuItem } from '@void/VoidUI';
 
 @Component
-export default class Index extends Vue {}
+export default class Index extends Vue {
+  private navItems: MenuItem[] = [];
+
+  private mounted(): void {
+    this.navItems = [
+      {
+        label: 'Home',
+        to: `${this.$route.params.locale}`,
+      },
+      {
+        label: 'Guidelines',
+        to: `${this.$route.params.locale}/guidelines`,
+      },
+      {
+        label: 'Controls',
+        to: `${this.$route.params.locale}/controls`,
+      },
+      {
+        label: 'Demos',
+        to: `${this.$route.params.locale}/demos`,
+      },
+      {
+        label: 'Tools',
+        to: `${this.$route.params.locale}/tools`,
+      },
+    ];
+  }
+}
 </script>

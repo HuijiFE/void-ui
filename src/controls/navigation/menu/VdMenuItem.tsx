@@ -1,8 +1,27 @@
-import { Vue, Component, Emit, Inject, Model, Prop, Provide, Watch } from 'vue-property-decorator';
+import {
+  Vue,
+  Component,
+  Emit,
+  Inject,
+  Model,
+  Prop,
+  Provide,
+  Watch,
+} from 'vue-property-decorator';
 import { VNode, CreateElement, VNodeChildrenArrayContents } from 'vue';
 import { Location } from 'vue-router/types/router';
 import { VdControl } from '@void/controls/base/VdControl';
 import { VdMenu } from '@void/controls/navigation/menu/VdMenu';
+
+export interface MenuItem {
+  icon?: string;
+  fa?: string;
+  label: string;
+  to?: string | Location;
+  href?: string;
+  target?: string;
+  itemsSource?: MenuItem[];
+}
 
 /**
  * Control NavbarItem
@@ -31,7 +50,7 @@ export class VdMenuItem extends VdControl {
   private target: string;
 
   @Prop({ type: Array })
-  private menu: string[];
+  private itemsSource: MenuItem[];
 
   public get isActive(): boolean {
     return window.location.href === this.href || window.location.pathname === this.href;
@@ -48,7 +67,12 @@ export class VdMenuItem extends VdControl {
     };
 
     const inner: JSX.Element = (
-      <a class="vd-menu-item_inner" href={this.href} target={this.target}>
+      <a
+        class="vd-menu-item_inner"
+        href={this.href}
+        target={this.target}
+        ref="noopener noreferrer"
+      >
         <vd-icon class="vd-menu-item_icon" icon={this.icon} fa={this.fa} />
         <span className="vd-menu-item_label">{this.label || this.$slots.default}</span>
       </a>
@@ -66,7 +90,11 @@ export class VdMenuItem extends VdControl {
         {inner}
       </router-link>
     ) : (
-      <li class={['vd-menu-item', ...(this.parent ? this.parent.classes : [])]} role="menuitem" onClick={this.handlerClick}>
+      <li
+        class={['vd-menu-item', ...(this.parent ? this.parent.classes : [])]}
+        role="menuitem"
+        onClick={this.handlerClick}
+      >
         {inner}
       </li>
     );
