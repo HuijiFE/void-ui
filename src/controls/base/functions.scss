@@ -1,5 +1,15 @@
-@import './config';
+/**
+ * Functions
+ */
 
-@function theme($key) {
-  @return map-get($theme, $key);
+/*-------- list functions --------*/
+
+@function list-reverse($list) {
+  $result: ();
+
+  @for $i from length($list) through 1 {
+    $result: append($result, nth($list, $i));
+  }
+
+  @return $result;
 }

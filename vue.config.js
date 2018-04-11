@@ -5,11 +5,6 @@ const hashFunction = 'sha256';
 const hashDigest = 'hex';
 const hashDigestLength = 64;
 
-process.env.VOID_VERSION = package.version;
-
-console.log('Void-UI', process.env.VOID_VERSION);
-console.log('Solution', process.env.VOID_SOLUTION);
-
 module.exports = {
   // Project deployment base
   // By default we assume your app will be deployed at the root of a domain,

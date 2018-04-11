@@ -1,3 +1,13 @@
 @include comp('clamp') {
+  padding: 0 $clamp-padding;
   margin: 0 auto;
+  max-width: clamp('large');
+
+  @each $size in list-reverse($enum-size) {
+    @if $size != 'xlarge' {
+      @include media($size) {
+        max-width: clamp($size);
+      }
+    }
+  }
 }

@@ -1,8 +1,5 @@
 <template>
-  <div id="app"
-       class="app">
-    <router-view></router-view>
-  </div>
+  <router-view id="app"></router-view>
 </template>
 
 <script lang="ts">
@@ -19,3 +16,10 @@ export default class App extends Vue {
   }
 }
 </script>
+
+<style lang="scss">
+body {
+  overflow-y: scroll;
+}
+</style>
+

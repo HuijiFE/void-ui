@@ -6,6 +6,7 @@
     "strict": true,
     "strictPropertyInitialization": false,
     "jsx": "preserve",
+    "jsxFactory": "h",
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
@@ -17,13 +18,16 @@
     "paths": {
       // "@/*": ["src/*"],
       "@void/*": ["src/*"],
-      "@docs/*": ["docs/*"]
+      "@docs/*": ["docs/*"],
+      "@typings": ["typings/*"]
     }
   },
   "include": [
     "docs/**/*.ts",
+    "docs/**/*.tsx",
     "docs/**/*.vue",
     "src/**/*.ts",
+    "src/**/*.tsx",
     "src/**/*.vue",
     // "tests/**/*.ts",
     "typings/*.d.ts",

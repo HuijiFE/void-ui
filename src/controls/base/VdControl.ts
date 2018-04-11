@@ -43,32 +43,32 @@ export class VdControl extends Vue {
   private $vdParent: VdControl;
 
   @Prop({ type: String })
-  public theme: Theme;
+  protected theme: Theme;
 
   public get $theme(): Theme {
     return this.theme || this.$vdParent ? this.$vdParent.$theme : VoidHub.$void.theme;
   }
 
   @Prop({ type: String, default: 'primary' })
-  public tone: Tone;
+  protected tone: Tone;
 
   @Prop({ type: String, default: 'fill' })
-  public skin: Skin;
+  protected skin: Skin;
 
   @Prop({ type: String, default: 'rect' })
-  public shape: Shape;
+  protected shape: Shape;
 
   @Prop({ type: String, default: 'medium' })
-  public size: Size;
+  protected size: Size;
 
   @Prop({ type: Boolean, default: false })
-  public disabled: boolean;
+  protected disabled: boolean;
 
   @Prop({ type: Boolean, default: false })
-  public bordered: boolean;
+  protected bordered: boolean;
 
   @Prop({ type: [Number, String], default: 0 })
-  public raise: number | string;
+  protected raise: number | string;
 
   constructor() {
     super();

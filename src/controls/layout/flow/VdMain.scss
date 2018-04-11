@@ -1,10 +1,7 @@
-@include comp(button) {
-  @include elem(icon) {
-    // a
-  }
-
+@include comp('main') {
   @each $theme-key in $enum-theme {
     @include prop((theme: $theme-key)) {
+      color: theme(#{$theme-key}-fg-normal);
       background-color: theme(#{$theme-key}-bg-normal);
     }
   }

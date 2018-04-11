@@ -1,3 +1,43 @@
 html {
-  font-size: 100px;
+  font-family: $font-family-base;
+  font-size: $root-font-size;
+  line-height: 1;
+
+  box-sizing: border-box;
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+}
+
+body {
+  font-size: $font-base;
+}
+
+a {
+  cursor: pointer;
+}
+
+a {
+  color: tone(primary-standard);
+  text-decoration: none;
+}
+
+/*-------- typographic --------*/
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: $line-height-base;
+}
+
+article,
+p {
+  font-size: $font-base;
+  line-height: $line-height-base;
 }

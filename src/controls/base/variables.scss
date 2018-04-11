@@ -1,3 +1,5 @@
+$root-font-size: 10px;
+
 html {
 
   /*-------- theme --------*/
@@ -78,11 +80,26 @@ html {
   --vd-grade-4:     #58d000;
   --vd-grade-5:     #24cf4c;
 
+  /*-------- typographic --------*/
+
+  --vd-font-size-base:    1.6rem;
+  --vd-line-height-base:  3.2rem;
 }
 
+/*-------- enum  --------*/
+
+$enum-theme:    'lite', 'dark';
+$enum-tone:     'primary', 'secondary', 'success', 'warning', 'danger';
+$enum-skin:     'fill', 'flat', 'plain', 'silk';
+$enum-shape:    'rect', 'pill', 'square', 'circle';
+$enum-size:     'xsmall', 'small', 'medium', 'large', 'xlarge';
+
 /*-------- theme --------*/
-$enum-theme: 'lite', 'dark';
-$theme: (
+
+$color-white: #fff;
+$color-black: #000;
+
+$theme-map: (
   lite-fg-emphasize:    var(--vd-theme-lite-fg-emphasize),
   lite-fg-normal:       var(--vd-theme-lite-fg-normal),
   lite-fg-sub:          var(--vd-theme-lite-fg-sub),
@@ -120,8 +137,13 @@ $theme: (
   dark-bd-focus:        var(--vd-theme-dark-bd-focus),
 );
 
+@function theme($key) {
+  @return map-get($theme-map, $key);
+}
+
 /*-------- tone -------*/
-$tone: (
+
+$tone-map: (
   primary-darkener:     var(--vd-tone-primary-darkener),
   primary-darken:       var(--vd-tone-primary-darken),
   primary-standard:     var(--vd-tone-primary-standard),
@@ -153,8 +175,13 @@ $tone: (
   danger-lightener:     var(--vd-tone-danger-lightener),
 );
 
+@function tone($key) {
+  @return map-get($tone-map, $key);
+}
+
 /*-------- grade --------*/
-$grade: (
+
+$grade-map: (
   1:    var(--vd-grade-1),
   2:    var(--vd-grade-2),
   3:    var(--vd-grade-3),
@@ -162,21 +189,41 @@ $grade: (
   5:    var(--vd-grade-5),
 );
 
+/*-------- size --------*/
+
+
+/*-------- typographic --------*/
+
+$font-family-base: 'Helvetica Neue', 'Helvetica', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', 'Arial', 'sans-serif';
+$font-family-code: 'Source Sans Pro', 'Helvetica Neue', 'Arial', 'sans-serif';
+
+$font-base:         var(--vd-font-size-base);
+$line-height-base:  var(--vd-line-height-base);
+
 /**-------- layout --------*/
 
-$breakpoint-xsmall:     768px;
-$breakpoint-small:      1024px;
-$breakpoint-medium:     1440px;
-$breakpoint-large:      1920px;
-$breakpoint-xlarge:     2560px;
+$breakpoint-map: (
+  xsmall:     768px,
+  small:      1024px,
+  medium:     1440px,
+  large:      1920px,
+  xlarge:     2560px,
+);
 
-$clamp: (
+@function breakpoint($key) {
+  @return map-get($breakpoint-map, $key);
+}
+
+$clamp-map: (
   xsmall:     100%,
-  small:      100%,
-  medium:     880px,
+  small:      880px,
+  medium:     1200px,
   large:      1200px,
   xlarge:     1920px,
 );
 
+@function clamp($key) {
+  @return map-get($clamp-map, $key);
+}
 
-
+$clamp-padding: 1.6rem;

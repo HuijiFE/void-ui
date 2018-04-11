@@ -8,36 +8,28 @@
     "no-var-keyword": true,
     "no-null-keyword": true,
     "strict-boolean-expressions": false,
-    "typedef": [
-      true,
-      "call-signature",
-      "parameter",
-      "property-declaration",
-      "variable-declaration",
-      "member-variable-declaration"
-    ],
+    "typedef": [true, "call-signature", "parameter", "property-declaration", "variable-declaration", "member-variable-declaration"],
     "member-ordering": false,
     "binary-expression-operand-order": false,
     "no-increment-decrement": false,
     "indent": [true, "spaces"],
     "align": false,
-    "one-line": [
-      true,
-      "check-open-brace",
-      "check-catch",
-      "check-else",
-      "check-whitespace"
-    ],
-    "quotemark": [true, "single", "avoid-escape"],
+    "one-line": [true, "check-open-brace", "check-catch", "check-else", "check-whitespace"],
+    "quotemark": [true, "single", "jsx-double", "avoid-escape", "avoid-template"],
     "trailing-comma": [true, "all"],
     "semicolon": [true, "always", "ignore-bound-class-methods"],
     "whitespace": [
-      true,
+      false,
       "check-branch",
       "check-decl",
       "check-operator",
+      "check-module",
       "check-separator",
-      "check-type"
+      "check-rest-spread",
+      "check-type",
+      "check-typecast",
+      "check-type-operator",
+      "check-preblock"
     ],
     "typedef-whitespace": [
       true,
@@ -66,6 +58,7 @@
     "import-name": false,
     "export-name": false,
     "ordered-imports": false,
-    "no-default-export": false
+    "no-default-export": false,
+    "react-this-binding-issue": false
   }
 }

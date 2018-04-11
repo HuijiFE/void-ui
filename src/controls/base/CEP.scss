@@ -127,7 +127,7 @@
  *   }
  * }
  * =>
- * .vd-tabs vd-tabs_header-item.selected {
+ * .vd-tabs vd-tabs_header-item.is-selected {
  *   ...
  * }
  * ----
@@ -137,7 +137,7 @@
   $selector: &;
 
   @at-root {
-    #{$selector}.#{$status} {
+    #{$selector}.is-#{$status} {
       @content;
     }
   }
@@ -156,12 +156,24 @@
 @mixin define-atom($name) {
   @at-root {
     .#{$namespace}a-#{$name},
-    %atomic-#{$name} {
+    %#{$namespace}a-#{$name} {
       @content;
     }
   }
 }
 // Extend a atomic rule.
 @mixin extend-atom($name) {
-  @extend %atomic-#{$name};
+  @extend .#{$namespace}a-#{$name};
+}
+// Define a abstract atomic rule.
+@mixin abstract-atom($name) {
+  @at-root {
+    %#{$namespace}a-#{$name} {
+      @content;
+    }
+  }
+}
+// Inherit a atomic rule.
+@mixin inherit-atom($name) {
+  @extend %#{$namespace}a-#{$name};
 }

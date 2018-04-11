@@ -7,5 +7,9 @@
 
 export * from '@void/controls/base/VdControl';
 export * from '@void/controls/layout/flow/VdClamp';
+export * from '@void/controls/layout/flow/VdMain';
 export * from '@void/controls/layout/flow/VdSwimlane';
+export * from '@void/controls/navigation/menu/VdMenu.tsx';
+export * from '@void/controls/navigation/menu/VdMenuItem.tsx';
 export { default as VdButton } from '@void/controls/basic/button/VdButton.vue';
+export { default as VdIcon } from '@void/controls/basic/icon/VdIcon.vue';

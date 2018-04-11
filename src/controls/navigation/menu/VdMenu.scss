@@ -1,0 +1,100 @@
+$menu-size-map: (
+  xsmall: 4rem,
+  small: 4rem,
+  medium: 5.6rem,
+  large: 6.4rem,
+  xlarge: 6.4rem
+);
+
+$menu-font-size-map: (
+  xsmall: 1.6rem,
+  small: 1.6rem,
+  medium: 1.6rem,
+  large: 1.8rem,
+  xlarge: 1.8rem
+);
+
+$menu-brand-font-size: 2.4rem;
+
+$menu-item-padding: 1.2rem;
+
+@include define-atom('menu-flex-none-align-center') {
+  height: 100%;
+  display: flex;
+  flex: none;
+  align-content: center;
+  align-items: center;
+}
+
+/*---- menu ----*/
+
+@include comp('menu') {
+  color: $color-white;
+  background-color: tone(primary-standard);
+
+  display: flex;
+  flex: 0 0 100%;
+
+  @include prop((direction: 'horizontal')) {
+    @each $size-key, $size-value in $menu-size-map {
+      @include prop((size: $size-key)) {
+        height: $size-value;
+      }
+    }
+
+    @include elem('brand') {
+      color: $color-white;
+      font-size: $menu-brand-font-size;
+      @include extend-atom('menu-flex-none-align-center');
+    }
+
+    @include elem('brand-label') {
+      padding: $menu-item-padding;
+    }
+
+    @include elem('start') {
+      @include extend-atom('menu-flex-none-align-center');
+    }
+
+    @include elem('end') {
+      @include extend-atom('menu-flex-none-align-center');
+    }
+
+    @include elem('item-wrapper') {
+      @include extend-atom('menu-flex-none-align-center');
+      flex: 1;
+    }
+  }
+
+  @include elem('brand') {
+    color: $color-white;
+    font-size: $menu-brand-font-size;
+  }
+
+  @include elem('item-wrapper') {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+/*---- item ----*/
+
+@include comp('menu-item') {
+  cursor: pointer;
+  @include extend-atom('menu-flex-none-align-center');
+  padding: $menu-item-padding;
+
+  @include elem('inner') {
+    color: $color-white;
+  }
+
+  @include elem('icon') {
+    margin-right: $menu-item-padding / 2;
+  }
+
+  @each $size-key, $size-value in $menu-font-size-map {
+    @include prop((size: $size-key)) {
+      font-size: $size-value;
+    }
+  }
+}
