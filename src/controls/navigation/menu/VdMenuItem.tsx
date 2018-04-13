@@ -97,7 +97,7 @@ export class VdMenuItem extends VdControl {
         rel="noopener noreferrer"
       >
         <span class="vd-menu-item_icon-container">
-          <vd-icon class="vd-menu-item_icon" />
+          <vd-icon class="vd-menu-item_icon" icon={this.icon} fa={this.fa} />
         </span>
         <span class="vd-menu-item_label">{this.$slots.default || this.label}</span>
       </a>

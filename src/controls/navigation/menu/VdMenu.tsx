@@ -25,10 +25,31 @@ import {
 @Component
 export class VdMenu extends VdControl {
   private items: VdMenuItem[] = [];
+  public addItem(item: VdMenuItem): VdMenu {
+    this.items.push(item);
+
+    return this;
+  }
+
   private subMenus: VdSubMenu[] = [];
+  public addSubMenu(subMenu: VdSubMenu): VdMenu {
+    this.subMenus.push(subMenu);
+
+    return this;
+  }
 
   // tslint:disable-next-line:no-null-keyword
   public selectedItem: VdMenuItem | null = null;
+
+  // tslint:disable-next-line:no-null-keyword
+  public selectedSubMenu: VdSubMenu | null = null;
+
+  @Watch('selectedSubMenu')
+  private onSelectedSubMenuChange(newSubMenu: VdSubMenu, oldSubMenu: VdSubMenu): void {
+    if (this.autoCollapse && newSubMenu !== oldSubMenu && oldSubMenu) {
+      oldSubMenu.isExpanded = false;
+    }
+  }
 
   /**
    * Items model for the menu,
@@ -39,10 +60,13 @@ export class VdMenu extends VdControl {
   public itemsSource: (MenuItem | MenuItemGroup | SubMenu)[];
 
   @Prop({ type: String, default: 'vertical' })
-  public direction: 'horizontal' | 'vertical';
+  public direction: 'vertical' | 'horizontal';
 
   @Prop({ type: String, default: 'left' })
   public position: 'left' | 'right';
+
+  @Prop({ type: Boolean, default: true })
+  public autoCollapse: boolean;
 
   /**
    * Shared CSS class names for the menu and its items.

@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    <vd-main>
+    <div class="main-menu">
       <vd-menu :brand-to="`/${$route.params.locale}`"
                brand-label="Void-UI"
                size="large"
@@ -10,6 +10,8 @@
                       href="https://github.com/huijife"
                       target="_blank">GitHub</vd-menu-item>
       </vd-menu>
+    </div>
+    <vd-main>
       <router-view></router-view>
     </vd-main>
   </div>
@@ -124,3 +126,9 @@ export default class Index extends Vue {
   }
 }
 </script>
+
+<style lang="scss">
+.main-menu {
+  width: 256px;
+}
+</style>

@@ -34,13 +34,42 @@ export class VdSubMenu extends VdControl {
   @Prop({ type: Array, default: () => [] })
   public itemsSource: (MenuItem | MenuItemGroup)[];
 
+  public isExpanded: boolean = false;
+
+  @Watch('isExpanded')
+  private onIsExpandedChange(value: boolean): void {
+    if (value) {
+      this.expand();
+    } else {
+      this.collapse();
+    }
+  }
+
   public get classes(): ClassName {
-    return ['vd-sub-menu', ...(this.menu ? this.menu.sharedClasses : [])];
+    return [
+      'vd-sub-menu',
+      ...(this.menu ? this.menu.sharedClasses : []),
+      {
+        'is-expanded': this.isExpanded,
+      },
+    ];
+  }
+
+  private collapse(): void {}
+
+  private expand(): void {}
+
+  private onClick(): void {
+    if (this.menu) {
+      this.menu.selectedSubMenu = this;
+    }
+    this.isExpanded = !this.isExpanded;
   }
 
   private beforeMount(): void {
     if (this.$parent instanceof VdMenu) {
       this.menu = this.$parent;
+      this.menu.addSubMenu(this);
     }
     if (!this.menu) {
       throw new Error('VdSubMenu must be placed in VdMenu.');
@@ -50,12 +79,12 @@ export class VdSubMenu extends VdControl {
   private render(h: CreateElement): VNode {
     return (
       <li class={this.classes}>
-        <div class="vd-sub-menu_header">
+        <div class="vd-sub-menu_header" role="menu" onClick={this.onClick}>
           <span class="vd-sub-menu_icon-container">
             <vd-icon class="vd-sub-menu_icon" icon={this.icon} fa={this.fa} />
           </span>
-          <span className="vd-sub-menu_label">{this.subMenuLabel}</span>
-          <span class="vd-sub-menu_icon-container">
+          <span class="vd-sub-menu_label">{this.subMenuLabel}</span>
+          <span class="vd-sub-menu_icon-container vd-sub-menu_indicator" ref="indicator">
             <vd-icon class="vd-sub-menu_icon" fa="chevron-down" />
           </span>
         </div>

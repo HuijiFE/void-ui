@@ -1,7 +1,7 @@
 $menu-font-size: 1.6rem;
 $menu-padding: 0.4rem;
 
-$menu-icon-size: 2rem;
+$menu-icon-size: 2.4rem;
 $menu-item-height: 4rem;
 $menu-item-padding: 1.6rem;
 
@@ -20,6 +20,7 @@ $menu-item-padding: 1.6rem;
 @include define-atom('menu-item-icon') {
   width: $menu-icon-size;
   height: $menu-icon-size;
+  line-height: 1;
   display: flex;
   flex: none;
   justify-content: center;

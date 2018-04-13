@@ -8,13 +8,26 @@
     "no-var-keyword": true,
     "no-null-keyword": true,
     "strict-boolean-expressions": false,
-    "typedef": [true, "call-signature", "parameter", "property-declaration", "variable-declaration", "member-variable-declaration"],
+    "typedef": [
+      true,
+      "call-signature",
+      "parameter",
+      "property-declaration",
+      "variable-declaration",
+      "member-variable-declaration"
+    ],
     "member-ordering": false,
     "binary-expression-operand-order": false,
     "no-increment-decrement": false,
     "indent": [true, "spaces"],
     "align": false,
-    "one-line": [true, "check-open-brace", "check-catch", "check-else", "check-whitespace"],
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-catch",
+      "check-else",
+      "check-whitespace"
+    ],
     "quotemark": [true, "single", "jsx-double", "avoid-escape", "avoid-template"],
     "trailing-comma": [true, "all"],
     "semicolon": [true, "always", "ignore-bound-class-methods"],

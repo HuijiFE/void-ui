@@ -6,6 +6,8 @@
     cursor: pointer;
   }
 
+  // vertical
+
   @include prop((direction: 'vertical')) {
     @include elem('header') {
       @include extend-atom('menu-item-inner-v');
@@ -22,6 +24,17 @@
     @include elem('item-wrapper') {
       @include extend-atom('menu-reset');
       @include extend-atom('menu-part-v');
+      overflow: hidden;
+
+      height: 0;
+      opacity: 0;
+    }
+
+    @include when('expanded') {
+      @include elem('item-wrapper') {
+        height: initial;
+        opacity: 1;
+      }
     }
   }
 }
