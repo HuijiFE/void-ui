@@ -24,7 +24,7 @@ export interface VoidUIPlugin extends PluginObject<VoidPluginOption> {
  * Void-UI
  */
 const VoidUI: VoidUIPlugin = {
-  version: process.env.VOID_VERSION,
+  version: process.env.VOID_UI_VERSION,
   installed: false,
   install: (Vue, options = {}) => {
     if (VoidUI.installed) {
@@ -39,6 +39,7 @@ const VoidUI: VoidUIPlugin = {
     });
 
     Object.entries(controls).forEach(([name, ctrl]) => Vue.component(name, ctrl));
+    // console.log(VoidUI.version);
   },
   controls,
 };

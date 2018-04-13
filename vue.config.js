@@ -1,9 +1,11 @@
 const path = require('path');
 const package = require('./package.json');
 
-const hashFunction = 'sha256';
-const hashDigest = 'hex';
-const hashDigestLength = 64;
+const HASH_FUNCTION = 'sha256';
+const HASH_DIGEST = 'hex';
+const HASH_DIGEST_LENGTH = 64;
+
+const SOLUTION = process.env.VUE_SOLUTION;
 
 module.exports = {
   // Project deployment base
@@ -30,24 +32,37 @@ module.exports = {
   // tweak internal webpack configuration.
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
   chainWebpack: config => {
-    // customize alias
     const context = config.store.get('context');
     const resolve = _path => path.resolve(context, _path);
-    config.resolve.alias.set('@void', resolve('src')).set('@docs', resolve('docs'));
+
+    // hacking entry for docs
+    if (SOLUTION === 'docs') {
+      config
+        .entry('app')
+        .clear()
+        .add(resolve('docs/main.ts'));
+    }
+
+    // customize alias
+
+    config.resolve.alias
+      .delete('@')
+      .set('@void', resolve('src'))
+      .set('@docs', resolve('docs'));
 
     if (process.env.NODE_ENV === 'production') {
       // customize js output file name
       config.output
         .filename(`js/[name].[chunkhash].js`)
         .chunkFilename(`js/[id].[chunkhash].js`)
-        .hashFunction(hashFunction)
-        .hashDigest(hashDigest)
-        .hashDigestLength(hashDigestLength);
+        .hashFunction(HASH_FUNCTION)
+        .hashDigest(HASH_DIGEST)
+        .hashDigestLength(HASH_DIGEST_LENGTH);
 
       // customize css output file name
       config.plugin('extract-css').tap(args => [
         Object.assign(args[0], {
-          filename: `css/[name].[${hashFunction}:contenthash:${hashDigest}:${hashDigestLength}].css`,
+          filename: `css/[name].[${HASH_FUNCTION}:contenthash:${HASH_DIGEST}:${HASH_DIGEST_LENGTH}].css`,
         }),
       ]);
     }

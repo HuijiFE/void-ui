@@ -1,0 +1,25 @@
+@include comp('menu-item-group') {
+  @include extend-atom('menu-reset');
+  @include extend-atom('menu-part-v');
+
+  @include elem('inner') {
+    cursor: pointer;
+  }
+
+  @include prop((direction: 'vertical')) {
+    @include elem('label') {
+      @include extend-atom('menu-item-inner-v');
+    }
+
+    @include elem('item-wrapper') {
+      @include extend-atom('menu-reset');
+      @include extend-atom('menu-part-v');
+    }
+
+    @include when('subitem') {
+      @include elem('label') {
+        padding-left: ($menu-item-padding * 2 + $menu-icon-size);
+      }
+    }
+  }
+}

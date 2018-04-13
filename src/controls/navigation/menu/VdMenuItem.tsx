@@ -12,16 +12,8 @@ import { VNode, CreateElement, VNodeChildrenArrayContents } from 'vue';
 import { Location } from 'vue-router/types/router';
 import { VdControl } from '@void/controls/base/VdControl';
 import { VdMenu } from '@void/controls/navigation/menu/VdMenu';
-
-export interface MenuItem {
-  icon?: string;
-  fa?: string;
-  label: string;
-  to?: string | Location;
-  href?: string;
-  target?: string;
-  itemsSource?: MenuItem[];
-}
+import { VdMenuItemGroup } from '@void/controls/navigation/menu/VdMenuItemGroup';
+import { VdSubMenu } from '@void/controls/navigation/menu/VdSubMenu';
 
 /**
  * Control NavbarItem
@@ -29,80 +21,102 @@ export interface MenuItem {
 @Component
 export class VdMenuItem extends VdControl {
   // tslint:disable-next-line:no-null-keyword
-  private parent: VdMenu | null = null;
+  private menu: VdMenu | null = null;
 
   @Prop({ type: String })
-  private icon: string;
+  public label: string;
 
   @Prop({ type: String })
-  private fa: string;
+  public icon: string;
 
   @Prop({ type: String })
-  private label: string;
+  public fa: string;
 
   @Prop({ type: [String, Object] })
-  private to: string | Location;
+  public to: string | Location;
 
   @Prop({ type: String })
-  private href: string;
+  public href: string;
 
   @Prop({ type: String })
-  private target: string;
+  public target: string;
 
-  @Prop({ type: Array })
-  private itemsSource: MenuItem[];
+  private isSubItem: boolean = false;
+  private isGroupItem: boolean = false;
 
-  public get isActive(): boolean {
-    return window.location.href === this.href || window.location.pathname === this.href;
+  public get isSelected(): boolean {
+    return !!(this.menu && this.menu.selectedItem === this);
   }
 
-  private handlerClick(event: MouseEvent): void {
-    this.$emit('click', event);
+  public get classes(): ClassName {
+    return [
+      'vd-menu-item',
+      ...(this.menu ? this.menu.sharedClasses : []),
+      {
+        'is-subitem': this.isSubItem,
+        'is-groupitem': this.isGroupItem,
+        'is-selected': this.isSelected,
+      },
+    ];
+  }
+
+  private onClick(): void {
+    if (this.menu) {
+      this.menu.selectedItem = this;
+    }
+    this.$emit('click');
+  }
+
+  private beforeMount(): void {
+    let parent: Vue = this.$parent;
+    for (let i: number = 0; i < 3; i++) {
+      if (!parent) {
+        break;
+      }
+      if (parent instanceof VdMenuItemGroup) {
+        this.isGroupItem = true;
+      } else if (parent instanceof VdSubMenu) {
+        this.isSubItem = true;
+      } else if (parent instanceof VdMenu) {
+        this.menu = parent;
+        break;
+      }
+      parent = parent.$parent;
+    }
+    if (!this.menu) {
+      throw new Error('VdMenuItem must be placed in VdMenu.');
+    }
   }
 
   private render(h: CreateElement): VNode {
-    const data: object = {
-      onClick: this.handlerClick,
-      onNativeClick: this.handlerClick,
-    };
-
     const inner: JSX.Element = (
       <a
         class="vd-menu-item_inner"
         href={this.href}
         target={this.target}
-        ref="noopener noreferrer"
+        rel="noopener noreferrer"
       >
-        <vd-icon class="vd-menu-item_icon" icon={this.icon} fa={this.fa} />
-        <span className="vd-menu-item_label">{this.label || this.$slots.default}</span>
+        <span class="vd-menu-item_icon-container">
+          <vd-icon class="vd-menu-item_icon" />
+        </span>
+        <span class="vd-menu-item_label">{this.$slots.default || this.label}</span>
       </a>
     );
 
     return this.to ? (
       <router-link
-        class={['vd-menu-item', ...(this.parent ? this.parent.classes : [])]}
+        class={this.classes}
         role="menuitem"
         tag="li"
         to={this.to}
-        exact-active-class="is-active"
-        nativeOnClick={this.handlerClick}
+        nativeOnClick={this.onClick}
       >
         {inner}
       </router-link>
     ) : (
-      <li
-        class={['vd-menu-item', ...(this.parent ? this.parent.classes : [])]}
-        role="menuitem"
-        onClick={this.handlerClick}
-      >
+      <li class={this.classes} role="menuitem" onClick={this.onClick}>
         {inner}
       </li>
     );
-  }
-
-  private mounted(): void {
-    if (this.$parent instanceof VdMenu) {
-      this.parent = this.$parent;
-    }
   }
 }

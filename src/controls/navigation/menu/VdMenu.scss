@@ -1,101 +1,70 @@
-$menu-size-map: (
-  xsmall: 4rem,
-  small: 4rem,
-  medium: 5.6rem,
-  large: 6.4rem,
-  xlarge: 6.4rem
-);
+$menu-font-size: 1.6rem;
+$menu-padding: 0.4rem;
 
-$menu-font-size-map: (
-  xsmall: 1.6rem,
-  small: 1.6rem,
-  medium: 1.6rem,
-  large: 1.8rem,
-  xlarge: 1.8rem
-);
+$menu-icon-size: 2rem;
+$menu-item-height: 4rem;
+$menu-item-padding: 1.6rem;
 
-$menu-brand-font-size: 2.4rem;
+@include define-atom('menu-reset') {
+  padding: 0;
+  margin: 0;
+}
 
-$menu-item-padding: 1.2rem;
+@include define-atom('menu-part-v') {
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: stretch;
+}
 
-@include define-atom('menu-flex-none-align-center') {
-  height: 100%;
+@include define-atom('menu-item-icon') {
+  width: $menu-icon-size;
+  height: $menu-icon-size;
   display: flex;
   flex: none;
+  justify-content: center;
   align-content: center;
   align-items: center;
 }
 
-/*---- menu ----*/
-
-@include comp('menu') {
-  color: $color-white;
-  background-color: tone(primary-standard);
-
+@include define-atom('menu-item-inner-v') {
+  width: 100%;
+  height: $menu-item-height;
   display: flex;
-  flex: 0 0 100%;
-
-  @include prop((direction: 'horizontal')) {
-    @each $size-key, $size-value in $menu-size-map {
-      @include prop((size: $size-key)) {
-        height: $size-value;
-      }
-    }
-
-    @include elem('brand') {
-      color: $color-white;
-      font-size: $menu-brand-font-size;
-      @include extend-atom('menu-flex-none-align-center');
-    }
-
-    @include elem('brand-label') {
-      padding: $menu-item-padding;
-    }
-
-    @include elem('start') {
-      @include extend-atom('menu-flex-none-align-center');
-    }
-
-    @include elem('end') {
-      @include extend-atom('menu-flex-none-align-center');
-      margin-left: auto;
-    }
-
-    @include elem('item-wrapper') {
-      @include extend-atom('menu-flex-none-align-center');
-    }
-  }
-
-  @include elem('brand') {
-    color: $color-white;
-    font-size: $menu-brand-font-size;
-  }
-
-  @include elem('item-wrapper') {
-    padding: 0;
-    margin: 0;
-  }
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  align-content: center;
+  align-items: center;
+  padding: 0 $menu-item-padding;
 }
 
-/*---- item ----*/
+@include define-atom('menu-item-label-v') {
+  flex: 1;
+}
 
-@include comp('menu-item') {
-  cursor: pointer;
-  @include extend-atom('menu-flex-none-align-center');
-  padding: $menu-item-padding;
+@include comp('menu') {
+  @include extend-atom('menu-reset');
+  @include extend-atom('menu-part-v');
 
-  @include elem('inner') {
-    color: $color-white;
-  }
+  height: 100%;
 
-  @include elem('icon') {
-    font-size: 110%;
-    margin-right: $menu-item-padding / 2;
-  }
+  font-size: $menu-font-size;
 
-  @each $size-key, $size-value in $menu-font-size-map {
-    @include prop((size: $size-key)) {
-      font-size: $size-value;
+  padding: $menu-padding 0;
+
+  @include prop((direction: 'vertical')) {
+    @include elem('start') {
+      @include extend-atom('menu-reset');
+      @include extend-atom('menu-part-v');
+    }
+    @include elem('center') {
+      @include extend-atom('menu-reset');
+      @include extend-atom('menu-part-v');
+    }
+    @include elem('end') {
+      @include extend-atom('menu-reset');
+      @include extend-atom('menu-part-v');
+      margin-top: auto;
     }
   }
 }

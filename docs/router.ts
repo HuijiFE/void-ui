@@ -14,6 +14,7 @@ Vue.use(Router);
  * Router for Void-UI site.
  */
 export default new Router({
+  base: '/void-ui/',
   mode: 'history',
   routes: [
     {

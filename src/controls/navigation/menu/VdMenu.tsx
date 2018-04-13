@@ -11,95 +11,95 @@ import {
 import { VdControl } from '@void/controls/base/VdControl';
 import { CreateElement, VNode } from 'vue';
 import { Location } from 'vue-router/types/router';
-import { MenuItem } from '@void/controls/navigation/menu/VdMenuItem';
-
-/**
- * Direction for menu
- */
-export type MenuDirection = 'horizontal' | 'vertical';
-
-/**
- * Position for menu
- */
-export type MenuPosition = 'left' | 'right';
+import { VdMenuItem } from '@void/controls/navigation/menu/VdMenuItem';
+import { VdSubMenu } from '@void/controls/navigation/menu/VdSubMenu';
+import {
+  MenuItem,
+  MenuItemGroup,
+  SubMenu,
+} from '@void/controls/navigation/menu/VdMenuModels';
 
 /**
  * Control Navbar
  */
 @Component
 export class VdMenu extends VdControl {
-  @Prop({ type: String })
-  private brandImage: string;
+  private items: VdMenuItem[] = [];
+  private subMenus: VdSubMenu[] = [];
 
-  @Prop({ type: String })
-  private brandLabel: string;
+  // tslint:disable-next-line:no-null-keyword
+  public selectedItem: VdMenuItem | null = null;
 
-  @Prop({ type: Boolean, default: false })
-  private brandLabelHidden: boolean;
+  /**
+   * Items model for the menu,
+   * it will detect the type of items by properties
+   * 'label', 'groupLabel' and 'subMenuLabel'
+   */
+  @Prop({ type: Array, default: () => [] })
+  public itemsSource: (MenuItem | MenuItemGroup | SubMenu)[];
 
-  @Prop({ type: [String, Object] })
-  private brandTo: string | Location;
-
-  @Prop({ type: String, default: 'horizontal' })
-  private direction: MenuDirection;
+  @Prop({ type: String, default: 'vertical' })
+  public direction: 'horizontal' | 'vertical';
 
   @Prop({ type: String, default: 'left' })
-  private position: MenuPosition;
+  public position: 'left' | 'right';
 
-  @Prop({ type: Array })
-  private itemsSource: MenuItem[];
-
-  public get classes(): ClassName {
+  /**
+   * Shared CSS class names for the menu and its items.
+   */
+  public get sharedClasses(): ClassName {
     return [
-      `vdp-size-${this.size}`,
-      `vdp-direction-${this.direction}`,
+      `vdp-theme-${this.$theme}`,
       `vdp-skin-${this.skin}`,
+      `vdp-direction-${this.direction}`,
       `vdp-position-${this.position}`,
     ];
   }
 
+  public get classes(): ClassName {
+    return ['vd-menu', ...this.sharedClasses];
+  }
+
   private render(h: CreateElement): VNode {
     return (
-      <nav class={['vd-menu', ...this.classes]} role="navigation">
-        <router-link class="vd-menu_brand" to={this.brandTo}>
-          {this.$slots.brandImage ? (
-            this.$slots.brandImage
-          ) : (
-            <img
-              class="vd-menu_brand-image"
-              v-show={this.brandImage}
-              src={this.brandImage}
-              alt={this.brandLabel}
-            />
-          )}
-          <span
-            class="vd-menu_brand-label"
-            v-show={!this.brandLabelHidden && this.brandLabel}
-          >
-            {this.brandLabel}
-          </span>
-        </router-link>
-        <div class="vd-menu_start" role="menu">
-          {this.$slots.start}
-        </div>
-        <ul class="vd-menu_item-wrapper" role="menu">
-          {(this.itemsSource || []).map(item => (
-            <vd-menu-item
-              icon={item.icon}
-              fa={item.fa}
-              label={item.label}
-              to={item.to}
-              href={item.href}
-              target={item.target}
-              itemsSource={item.itemsSource}
-            />
-          ))}
+      <div class={this.classes} role="menu">
+        <ul class="vd-menu_start">{this.$slots.start}</ul>
+        <ul class="vd-menu_center">
+          {this.itemsSource.map(model => {
+            if ((model as MenuItemGroup).groupLabel) {
+              return (
+                <vd-menu-item-group
+                  groupLabel={(model as MenuItemGroup).groupLabel}
+                  itemsSource={(model as MenuItemGroup).itemsSource}
+                />
+              );
+            } else if ((model as SubMenu).subMenuLabel) {
+              return (
+                <vd-sub-menu
+                  subMenuLabel={(model as SubMenu).subMenuLabel}
+                  icon={(model as SubMenu).icon}
+                  fa={(model as SubMenu).fa}
+                  itemsSource={(model as SubMenu).itemsSource}
+                />
+              );
+            } else if ((model as MenuItem).label) {
+              return (
+                <vd-menu-item
+                  label={(model as MenuItem).label}
+                  icon={(model as MenuItem).icon}
+                  fa={(model as MenuItem).fa}
+                  to={(model as MenuItem).to}
+                  href={(model as MenuItem).href}
+                  target={(model as MenuItem).target}
+                  onClick={(model as MenuItem).onClick || (() => undefined)}
+                />
+              );
+            }
+          })}
           {this.$slots.default}
         </ul>
-        <div class="vd-menu_end" role="menu">
-          {this.$slots.end}
-        </div>
-      </nav>
+        <ul class="vd-menu_end">{this.$slots.end}</ul>
+      </div>
     );
   }
 }

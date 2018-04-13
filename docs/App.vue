@@ -1,9 +1,19 @@
 <template>
-  <router-view id="app"></router-view>
+  <router-view id="app"
+               class="page-wrapper"></router-view>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Emit, Inject, Model, Provide, Watch } from 'vue-property-decorator';
+import {
+  Component,
+  Vue,
+  Prop,
+  Emit,
+  Inject,
+  Model,
+  Provide,
+  Watch,
+} from 'vue-property-decorator';
 
 @Component
 export default class App extends Vue {
@@ -20,6 +30,10 @@ export default class App extends Vue {
 <style lang="scss">
 body {
   overflow-y: scroll;
+}
+
+.page-wrapper {
+  min-height: 100%;
 }
 </style>
 

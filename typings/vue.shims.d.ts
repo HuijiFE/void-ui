@@ -3,4 +3,4 @@ declare module '*.vue' {
   export default Vue;
 }
 
-declare type ClassName = (string | any)[] | any;
+declare type ClassName = (string | object)[];

@@ -1,4 +1,13 @@
-import { Component, Vue, Prop, Emit, Inject, Model, Provide, Watch } from 'vue-property-decorator';
+import {
+  Component,
+  Vue,
+  Prop,
+  Emit,
+  Inject,
+  Model,
+  Provide,
+  Watch,
+} from 'vue-property-decorator';
 
 /**
  * Available values for control property theme.
@@ -40,35 +49,36 @@ export class VoidHub extends Vue {
  */
 @Component
 export class VdControl extends Vue {
-  private $vdParent: VdControl;
+  // tslint:disable-next-line:no-null-keyword
+  private $vdParent: VdControl | null = null;
 
   @Prop({ type: String })
-  protected theme: Theme;
+  public theme: Theme;
 
   public get $theme(): Theme {
-    return this.theme || this.$vdParent ? this.$vdParent.$theme : VoidHub.$void.theme;
+    return this.theme || (this.$vdParent ? this.$vdParent.$theme : VoidHub.$void.theme);
   }
 
   @Prop({ type: String, default: 'primary' })
-  protected tone: Tone;
+  public tone: Tone;
 
   @Prop({ type: String, default: 'fill' })
-  protected skin: Skin;
+  public skin: Skin;
 
   @Prop({ type: String, default: 'rect' })
-  protected shape: Shape;
+  public shape: Shape;
 
   @Prop({ type: String, default: 'medium' })
-  protected size: Size;
+  public size: Size;
 
   @Prop({ type: Boolean, default: false })
-  protected disabled: boolean;
+  public disabled: boolean;
 
   @Prop({ type: Boolean, default: false })
-  protected bordered: boolean;
+  public bordered: boolean;
 
   @Prop({ type: [Number, String], default: 0 })
-  protected raise: number | string;
+  public raise: number | string;
 
   constructor() {
     super();

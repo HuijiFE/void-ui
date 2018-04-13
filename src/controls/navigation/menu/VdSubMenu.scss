@@ -1,0 +1,27 @@
+@include comp('sub-menu') {
+  @include extend-atom('menu-reset');
+  @include extend-atom('menu-part-v');
+
+  @include elem('header') {
+    cursor: pointer;
+  }
+
+  @include prop((direction: 'vertical')) {
+    @include elem('header') {
+      @include extend-atom('menu-item-inner-v');
+    }
+
+    @include elem('icon-container') {
+      @include extend-atom('menu-item-icon');
+    }
+
+    @include elem('label') {
+      @include extend-atom('menu-item-label-v');
+    }
+
+    @include elem('item-wrapper') {
+      @include extend-atom('menu-reset');
+      @include extend-atom('menu-part-v');
+    }
+  }
+}

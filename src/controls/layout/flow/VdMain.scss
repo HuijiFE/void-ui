@@ -1,4 +1,6 @@
 @include comp('main') {
+  min-height: 100%;
+
   @each $theme-key in $enum-theme {
     @include prop((theme: $theme-key)) {
       color: theme(#{$theme-key}-fg-normal);

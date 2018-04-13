@@ -1,0 +1,30 @@
+@include comp('menu-item') {
+  @include extend-atom('menu-reset');
+  @include extend-atom('menu-part-v');
+
+  @include prop((direction: 'vertical')) {
+    @include elem('inner') {
+      @include extend-atom('menu-item-inner-v');
+    }
+
+    @include elem('icon-container') {
+      @include extend-atom('menu-item-icon');
+    }
+
+    @include elem('label') {
+      @include extend-atom('menu-item-label-v');
+    }
+
+    @include when('subitem') {
+      @include elem('inner') {
+        padding-left: ($menu-item-padding + $menu-icon-size);
+      }
+    }
+
+    @include when('subitem', 'groupitem') {
+      @include elem('inner') {
+        padding-left: ($menu-item-padding * 2 + $menu-icon-size);
+      }
+    }
+  }
+}

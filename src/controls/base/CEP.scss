@@ -133,11 +133,15 @@
  * ----
  * Note: The status must be a adjective.
  */
-@mixin when($status) {
+@mixin when($status-list...) {
   $selector: &;
+  $status-selector: '';
+  @each $status in $status-list {
+    $status-selector: '#{$status-selector}.is-#{$status}';
+  }
 
   @at-root {
-    #{$selector}.is-#{$status} {
+    #{$selector}#{$status-selector} {
       @content;
     }
   }
