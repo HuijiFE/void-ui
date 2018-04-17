@@ -6,7 +6,8 @@ import VoidBrand from '@docs/components/VoidBrand.vue';
 
 import router from '@docs/router';
 
-Vue.use(VoidUI);
+// Vue.use(VoidUI, { theme: 'dark' });
+Vue.use(VoidUI, { theme: 'lite' });
 Vue.component(VoidBrand.name, VoidBrand);
 
 Vue.config.productionTip = false;

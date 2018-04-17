@@ -11,11 +11,12 @@ export * from '@void/controls';
 import * as controls from '@void/controls';
 import { inherits } from 'util';
 
-export interface VoidPluginOption {
+export interface VoidUIPluginOption {
   locale?: string;
+  theme?: controls.Theme;
 }
 
-export interface VoidUIPlugin extends PluginObject<VoidPluginOption> {
+export interface VoidUIPlugin extends PluginObject<VoidUIPluginOption> {
   readonly version?: string;
   installed: boolean;
 }
@@ -31,6 +32,10 @@ const VoidUI: VoidUIPlugin = {
       return;
     }
     VoidUI.installed = true;
+
+    const { locale = 'zh-CN', theme = 'lite' } = options;
+
+    controls.VoidHub.$void.theme = theme;
 
     Object.defineProperty(Vue.prototype, '$void', {
       get(): controls.VoidHub {

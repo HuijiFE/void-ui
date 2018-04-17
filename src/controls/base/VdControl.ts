@@ -49,14 +49,11 @@ export class VoidHub extends Vue {
  */
 @Component
 export class VdControl extends Vue {
-  // tslint:disable-next-line:no-null-keyword
-  protected $vdParent: VdControl | null = null;
-
   @Prop({ type: String })
   public theme: Theme;
 
   public get $theme(): Theme {
-    return this.theme || (this.$vdParent && this.$vdParent.$theme) || this.$void.theme;
+    return this.theme || VoidHub.$void.theme;
   }
 
   @Prop({ type: String, default: 'primary' })
@@ -79,18 +76,4 @@ export class VdControl extends Vue {
 
   @Prop({ type: [Number, String], default: 0 })
   public raise: number | string;
-
-  constructor() {
-    super();
-    this.$nextTick(() => {
-      let parent: Vue = this.$parent;
-      while (parent) {
-        if (parent instanceof VdControl) {
-          this.$vdParent = parent;
-          break;
-        }
-        parent = <VdControl>parent.$parent;
-      }
-    });
-  }
 }
