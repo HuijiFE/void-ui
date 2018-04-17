@@ -23,6 +23,10 @@ export class VdMenuItem extends VdControl {
   // tslint:disable-next-line:no-null-keyword
   private menu: VdMenu | null = null;
 
+  // NOTE: non-reactive, do not initial
+  private subMenu?: VdSubMenu;
+  private group?: VdMenuItemGroup;
+
   @Prop({ type: String })
   public label: string;
 
@@ -53,15 +57,15 @@ export class VdMenuItem extends VdControl {
       'vd-menu-item',
       ...(this.menu ? this.menu.sharedClasses : []),
       {
-        'is-subitem': this.isSubItem,
-        'is-groupitem': this.isGroupItem,
+        'is-sub-item': this.isSubItem,
+        'is-group-item': this.isGroupItem,
         'is-selected': this.isSelected,
       },
     ];
   }
 
   private onClick(): void {
-    if (this.menu) {
+    if (this.menu && (this.to || this.target !== '_blank')) {
       this.menu.selectedItem = this;
     }
     this.$emit('click');
@@ -73,11 +77,13 @@ export class VdMenuItem extends VdControl {
       if (!parent) {
         break;
       }
-      if (parent instanceof VdMenuItemGroup) {
+      if (!this.group && parent instanceof VdMenuItemGroup) {
+        this.group = parent;
         this.isGroupItem = true;
-      } else if (parent instanceof VdSubMenu) {
+      } else if (!this.subMenu && parent instanceof VdSubMenu) {
+        this.subMenu = parent;
         this.isSubItem = true;
-      } else if (parent instanceof VdMenu) {
+      } else if (!this.menu && parent instanceof VdMenu) {
         this.menu = parent;
         break;
       }
@@ -88,6 +94,26 @@ export class VdMenuItem extends VdControl {
     }
   }
 
+  // HACK: to make sure is selected
+  private mounted(): void {
+    if (this.menu) {
+      if (this.to && this.$el.classList.contains('is-route-matched')) {
+        this.menu.selectedItem = this;
+        if (this.subMenu) {
+          this.subMenu.isExpanded = true;
+        }
+      } else if (
+        this.href &&
+        (this.$refs.inner as HTMLAnchorElement).href === window.location.href
+      ) {
+        this.menu.selectedItem = this;
+        if (this.subMenu) {
+          this.subMenu.isExpanded = true;
+        }
+      }
+    }
+  }
+
   private render(h: CreateElement): VNode {
     const inner: JSX.Element = (
       <a
@@ -95,6 +121,7 @@ export class VdMenuItem extends VdControl {
         href={this.href}
         target={this.target}
         rel="noopener noreferrer"
+        ref="inner"
       >
         <span class="vd-menu-item_icon-container">
           <vd-icon class="vd-menu-item_icon" icon={this.icon} fa={this.fa} />
@@ -106,6 +133,7 @@ export class VdMenuItem extends VdControl {
     return this.to ? (
       <router-link
         class={this.classes}
+        exactActiveClass="is-route-matched"
         role="menuitem"
         tag="li"
         to={this.to}

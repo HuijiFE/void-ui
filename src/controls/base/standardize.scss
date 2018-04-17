@@ -3,6 +3,10 @@ html {
   font-size: $root-font-size;
   line-height: 1;
 
+  /**
+   * Set all elements' box-sizing as border-box:
+   * height and width include border-width.
+   */
   box-sizing: border-box;
   *,
   *::before,
@@ -29,7 +33,9 @@ a {
   text-decoration: none;
 }
 
-// firefox focus dashed line
+/**
+ * Remove focus dashed line for Firefox
+ */
 a,
 label,
 input,

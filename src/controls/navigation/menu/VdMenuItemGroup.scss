@@ -6,6 +6,8 @@
     cursor: pointer;
   }
 
+  // LAYOUT direction vertical
+
   @include prop((direction: 'vertical')) {
     @include elem('label') {
       @include extend-atom('menu-item-inner-v');
@@ -16,10 +18,26 @@
       @include extend-atom('menu-part-v');
     }
 
-    @include when('subitem') {
+    @include when('sub-item') {
       @include elem('label') {
-        padding-left: ($menu-item-padding * 2 + $menu-icon-size);
+        padding-left: ($menu-item-padding * 1.5 + $menu-icon-size);
       }
     }
   }
+
+  // LAYOUT direction horizontal
+  // TODO
+
+  // STYLE skin plain
+
+  @each $theme-key in $enum-theme {
+    @include prop((skin: 'plain', theme: $theme-key)) {
+      @include elem('label') {
+        color: theme(#{$theme-key}-fg-sub);
+      }
+    }
+  }
+
+  // STYLE skin fill
+  // TODO
 }

@@ -37,7 +37,7 @@ export class VdMenuItemGroup extends VdControl {
       ...(this.menu ? this.menu.sharedClasses : []),
 
       {
-        'is-subitem': this.isSubItem,
+        'is-sub-item': this.isSubItem,
       },
     ];
   }

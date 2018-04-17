@@ -1,6 +1,9 @@
 @include comp('main') {
   min-height: 100%;
 
+  // HACK
+  min-height: 100vh;
+
   @each $theme-key in $enum-theme {
     @include prop((theme: $theme-key)) {
       color: theme(#{$theme-key}-fg-normal);

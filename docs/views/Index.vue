@@ -1,17 +1,16 @@
 <template>
   <div class="index">
-    <div class="main-menu">
-      <vd-menu :brand-to="`/${$route.params.locale}`"
-               brand-label="Void-UI"
-               size="large"
-               :items-source="navItems">
-        <vd-menu-item slot="end"
-                      fa="github"
-                      href="https://github.com/huijife"
-                      target="_blank">GitHub</vd-menu-item>
-      </vd-menu>
-    </div>
     <vd-main>
+      <div class="main-menu">
+        <vd-menu :brand-to="`/${$route.params.locale}`"
+                 position="left"
+                 :items-source="navItems">
+          <vd-menu-item slot="end"
+                        fa="github"
+                        href="https://github.com/huijife"
+                        target="_blank">GitHub</vd-menu-item>
+        </vd-menu>
+      </div>
       <router-view></router-view>
     </vd-main>
   </div>
@@ -130,5 +129,6 @@ export default class Index extends Vue {
 <style lang="scss">
 .main-menu {
   width: 256px;
+  margin: 0 auto;
 }
 </style>

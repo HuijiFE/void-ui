@@ -1,4 +1,5 @@
 $root-font-size: 10px;
+$root-font-size-scale-xlarge: 1.6;
 
 html {
 
@@ -80,9 +81,17 @@ html {
   --vd-grade-4:     #58d000;
   --vd-grade-5:     #24cf4c;
 
+  /*-------- acrylic --------*/
+
+  /*-------- skin --------*/
+
+  /*-------- shape --------*/
+
+  /*-------- size --------*/  
+
   /*-------- typographic --------*/
 
-  --vd-font-size-base:    1.6rem;
+  --vd-font-size-base:    1.4rem;
   --vd-line-height-base:  3.2rem;
 }
 
@@ -189,7 +198,15 @@ $grade-map: (
   5:    var(--vd-grade-5),
 );
 
-/*-------- size --------*/
+/*-------- acrylic --------*/
+
+/*-------- skin --------*/
+
+/*-------- shape --------*/
+$border-radius-base:      0.2rem;
+$border-width-base:       1px;
+
+/*-------- size --------*/  
 
 
 /*-------- typographic --------*/
@@ -227,3 +244,11 @@ $clamp-map: (
 }
 
 $clamp-padding: 1.6rem;
+
+/*-------- anime --------*/
+
+$transition-base: all ease-in-out 0.2s;
+
+@function transition($duration: 200ms) {
+  @return all ease-in-out $duration;
+}

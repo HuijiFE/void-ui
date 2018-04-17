@@ -63,6 +63,7 @@
     ],
     "no-trailing-whitespace": true,
     "comment-format": [true, "check-space"],
+    "no-suspicious-comment": false,
     "jsdoc-format": true,
     "no-internal-module": true,
     "no-submodule-imports": false,
@@ -72,6 +73,7 @@
     "export-name": false,
     "ordered-imports": false,
     "no-default-export": false,
-    "react-this-binding-issue": false
+    "react-this-binding-issue": false,
+    "no-backbone-get-set-outside-model": false
   }
 }

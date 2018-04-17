@@ -50,13 +50,13 @@ export class VoidHub extends Vue {
 @Component
 export class VdControl extends Vue {
   // tslint:disable-next-line:no-null-keyword
-  private $vdParent: VdControl | null = null;
+  protected $vdParent: VdControl | null = null;
 
   @Prop({ type: String })
   public theme: Theme;
 
   public get $theme(): Theme {
-    return this.theme || (this.$vdParent ? this.$vdParent.$theme : VoidHub.$void.theme);
+    return this.theme || (this.$vdParent && this.$vdParent.$theme) || this.$void.theme;
   }
 
   @Prop({ type: String, default: 'primary' })
@@ -82,13 +82,15 @@ export class VdControl extends Vue {
 
   constructor() {
     super();
-    let parent: Vue = this.$parent;
-    while (parent) {
-      if (parent instanceof VdControl) {
-        this.$vdParent = parent;
-        break;
+    this.$nextTick(() => {
+      let parent: Vue = this.$parent;
+      while (parent) {
+        if (parent instanceof VdControl) {
+          this.$vdParent = parent;
+          break;
+        }
+        parent = <VdControl>parent.$parent;
       }
-      parent = <VdControl>parent.$parent;
-    }
+    });
   }
 }

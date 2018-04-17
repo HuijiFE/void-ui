@@ -8,7 +8,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { VdControl } from '@void/controls/base/VdControl';
+import { Skin, VdControl } from '@void/controls/base/VdControl';
 import { CreateElement, VNode } from 'vue';
 import { Location } from 'vue-router/types/router';
 import { VdMenuItem } from '@void/controls/navigation/menu/VdMenuItem';
@@ -58,6 +58,9 @@ export class VdMenu extends VdControl {
    */
   @Prop({ type: Array, default: () => [] })
   public itemsSource: (MenuItem | MenuItemGroup | SubMenu)[];
+
+  @Prop({ type: String, default: 'plain' })
+  public skin: Skin;
 
   @Prop({ type: String, default: 'vertical' })
   public direction: 'vertical' | 'horizontal';

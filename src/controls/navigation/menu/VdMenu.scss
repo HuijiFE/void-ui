@@ -1,9 +1,14 @@
-$menu-font-size: 1.6rem;
+$menu-font-size: 1.4rem;
 $menu-padding: 0.4rem;
 
-$menu-icon-size: 2.4rem;
-$menu-item-height: 4rem;
+$menu-indicator-width: 0.3rem;
+
+$menu-icon-size: 2rem;
+$menu-item-height: 3.2rem;
 $menu-item-padding: 1.6rem;
+
+$menu-anime-timing-function: ease-in-out;
+$menu-anime-duration: 300ms;
 
 @include define-atom('menu-reset') {
   padding: 0;
@@ -11,6 +16,7 @@ $menu-item-padding: 1.6rem;
 }
 
 @include define-atom('menu-part-v') {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-content: stretch;
@@ -51,9 +57,12 @@ $menu-item-padding: 1.6rem;
 
   font-size: $menu-font-size;
 
-  padding: $menu-padding 0;
+  // LAYOUT direction vertical
 
   @include prop((direction: 'vertical')) {
+    position: relative;
+    padding: $menu-padding 0;
+
     @include elem('start') {
       @include extend-atom('menu-reset');
       @include extend-atom('menu-part-v');
@@ -68,4 +77,51 @@ $menu-item-padding: 1.6rem;
       margin-top: auto;
     }
   }
+
+  // LAYOUT direction horizontal
+  // TODO
+
+  // STYLE skin plain
+
+  @include prop((skin: 'plain')) {
+    &::before {
+      content: ' ';
+      display: block;
+      position: absolute;
+    }
+  }
+
+  @include prop((skin: 'plain', direction: 'vertical')) {
+    &::before {
+      top: 0;
+      bottom: 0;
+      width: $border-width-base;
+      height: 100%;
+    }
+  }
+
+  @include prop((skin: 'plain', direction: 'vertical', position: 'left')) {
+    &::before {
+      right: 0;
+    }
+  }
+  @include prop((skin: 'plain', direction: 'vertical', position: 'right')) {
+    &::before {
+      left: 0;
+    }
+  }
+
+  @each $theme-key in $enum-theme {
+    @include prop((skin: 'plain', theme: $theme-key)) {
+      color: theme(#{$theme-key}-fg-normal);
+      background-color: theme(#{$theme-key}-bg-normal);
+
+      &::before {
+        background-color: theme(#{$theme-key}-bd-normal);
+      }
+    }
+  }
+
+  // STYLE skin fill
+  // TODO
 }

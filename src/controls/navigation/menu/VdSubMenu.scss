@@ -6,7 +6,11 @@
     cursor: pointer;
   }
 
-  // vertical
+  @include elem('indicator') {
+    transform-style: preserve-3d;
+  }
+
+  // LAYOUT direction vertical
 
   @include prop((direction: 'vertical')) {
     @include elem('header') {
@@ -28,6 +32,8 @@
 
       height: 0;
       opacity: 0;
+
+      transition: opacity $menu-anime-timing-function $menu-anime-duration;
     }
 
     @include when('expanded') {
@@ -37,4 +43,28 @@
       }
     }
   }
+
+  // LAYOUT direction horizontal
+  // TODO
+
+  // STYLE skin plain
+
+  @include prop((skin: 'plain')) {
+    @include elem('header') {
+      &:hover {
+        color: tone(primary-standard);
+      }
+    }
+  }
+
+  @each $theme-key in $enum-theme {
+    @include prop((skin: 'plain', theme: $theme-key)) {
+      @include elem('indicator') {
+        // color: theme(#{$theme-key}-fg-sub);
+      }
+    }
+  }
+
+  // STYLE skin fill
+  // TODO
 }
