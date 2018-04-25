@@ -21,8 +21,20 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Emit, Inject, Model, Prop, Provide, Watch } from 'vue-property-decorator';
+import {
+  Vue,
+  Component,
+  Emit,
+  Inject,
+  Model,
+  Prop,
+  Provide,
+  Watch,
+} from 'vue-property-decorator';
 
+/**
+ * The logo for void-ui
+ */
 @Component
 export default class VoidBrand extends Vue {
   @Prop({ type: String, default: 'lite' })

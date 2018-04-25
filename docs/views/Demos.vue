@@ -16,6 +16,9 @@ import {
   Watch,
 } from 'vue-property-decorator';
 
+/**
+ * Demos subfield
+ */
 @Component
 export default class Demos extends Vue {}
 </script>

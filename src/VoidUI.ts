@@ -1,6 +1,7 @@
 // tslint:disable:no-import-side-effect
 // tslint:disable:variable-name
 // tslint:disable:no-any
+// tslint:disable:no-unsafe-any
 // tslint:disable:no-reserved-keywords
 import 'normalize.css';
 import '@void/VoidUI.scss';

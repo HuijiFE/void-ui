@@ -18,14 +18,17 @@ import {
   Watch,
 } from 'vue-property-decorator';
 
+/**
+ * Control Button
+ */
 @Component
 export default class VdButton extends Vue {
   @Prop({ default: '' })
-  theme: string;
+  public theme: string;
 
-  @Prop() tone: string;
+  @Prop() public tone: string;
 
-  get classes(): any[] {
+  get classes(): ClassName {
     return [
       `vdp-tone-${this.tone}`,
       {

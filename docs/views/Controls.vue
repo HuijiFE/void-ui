@@ -16,6 +16,9 @@ import {
   Watch,
 } from 'vue-property-decorator';
 
+/**
+ * Controls subfield
+ */
 @Component
 export default class Controls extends Vue {}
 </script>

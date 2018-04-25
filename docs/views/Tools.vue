@@ -16,6 +16,9 @@ import {
   Watch,
 } from 'vue-property-decorator';
 
+/**
+ * Tools subfield
+ */
 @Component
 export default class Tools extends Vue {}
 </script>

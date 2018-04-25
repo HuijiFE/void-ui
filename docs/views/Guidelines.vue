@@ -16,6 +16,9 @@ import {
   Watch,
 } from 'vue-property-decorator';
 
+/**
+ * Guidelines subfield
+ */
 @Component
 export default class Guidlines extends Vue {}
 </script>

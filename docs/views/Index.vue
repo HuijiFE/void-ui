@@ -29,6 +29,9 @@ import {
 } from 'vue-property-decorator';
 import { MenuItem, MenuItemGroup, SubMenu } from '@void/VoidUI';
 
+/**
+ * Index subfield
+ */
 @Component
 export default class Index extends Vue {
   private navItems: (MenuItem | MenuItemGroup | SubMenu)[] = [];

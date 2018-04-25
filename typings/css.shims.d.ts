@@ -22,3 +22,5 @@ declare module '*.styl' {
   const content: any;
   export default content;
 }
+
+declare type ClassName = (string | any)[];

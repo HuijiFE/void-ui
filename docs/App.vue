@@ -15,6 +15,9 @@ import {
   Watch,
 } from 'vue-property-decorator';
 
+/**
+ * Void-UI document web site app
+ */
 @Component
 export default class App extends Vue {
   public changeLocale(locale: string): void {
