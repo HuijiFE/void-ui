@@ -5,16 +5,7 @@
  * 
  */
 
-/**----------  Component  ----------
- * e.g.
- * @include comp(button) {
- *   ...
- * }
- * =>
- * .vd-button {
- *   ...
- * }
- */
+/*----------  Component  ----------*/
 
 @function class-comp($component) {
   @if $component != to-lower-case($component) {
@@ -23,6 +14,11 @@
   @return '#{$namespace}-#{$component}';
 }
 
+/**
+ * @include comp('button') {}
+ * 
+ * .vd-button {}
+ */
 @mixin comp($component) {
   $C: class-comp($component) !global;
 
@@ -31,23 +27,21 @@
   }
 }
 
-/**----------  Element  ----------
- * e.g.
- * @include prop(( skin: plain, theme: dark, )) {
- *   @include elem(content) {
- *     ...
- *   }
- * }
- * =>
- * .vd-button.vdp-skin-plain.vdp-theme-dark .vd-button_content {
- *   ...
- * }
- */
+/*----------  Element  ----------*/
 
 @function class-elem($element) {
   @return '#{$C}_#{$element}';
 }
 
+/**
+ * @include comp('button') {
+ *   @include elem('icon') {}
+ * }
+ * 
+ * .vd-button {
+ *   .vd-button_icon {}
+ * }
+ */
 @mixin elem($element) {
   $E: $element !global;
   $selector: &;
@@ -61,6 +55,15 @@
   }
 }
 
+/**
+ * @include comp('list') {
+ *   @include elem-adjacent('item') {}
+ * }
+ * 
+ * .vd-list {
+ *   .vd-list_item + .vd-list_item {}
+ * }
+ */
 @mixin elem-adjacent($element-former, $element-target: null) {
   @if not $element-target {
     $element-target: $element-former;
@@ -76,6 +79,15 @@
   }
 }
 
+/**
+ * @include comp('list') {
+ *   @include elem-general('item') {}
+ * }
+ * 
+ * .vd-list {
+ *   .vd-list_item ~ .vd-list_item {}
+ * }
+ */
 @mixin elem-general($element-former, $element-target: null) {
   @if not $element-target {
     $element-target: $element-former;
@@ -91,21 +103,21 @@
   }
 }
 
-/**----------  Property  ----------
- * e.g.
- * @include prop(( skin: plain, theme: dark, )) {
- *   ...
- * }
- * =>
- * .vd-button.vdp-skin-plain.vdp-theme-dark {
- *   ...
- * }
- */
+/*----------  Property  ----------*/
 
 @function class-prop($property, $key) {
   @return '#{$namespace}p-#{$property}-#{$key}';
 }
 
+/**
+ * @include comp('button') {
+ *   @include prop(( skin: 'plain', theme: 'dark', )) {}
+ * }
+ * 
+ * .vd-button.vdp-skin-plain.vdp-theme-dark {}
+ * 
+ * NOTE: The prop mixin is only for components, not for elements
+ */
 @mixin prop($properties-map) {
   $props-selector: '';
   @each $property, $key in $properties-map {
@@ -119,19 +131,26 @@
   }
 }
 
-/**----------  Status  ----------
- * e.g.
- * @include elem(header-item) {
- *   @include when(selected) {
- *     ...
+/*----------  Status  ----------*/
+
+/**
+ * @include comp('menu-item') {
+ *   @include when('selected') {}
+ * }
+ * 
+ * .menu-item.is-selected {}
+ * 
+ * ----
+ * 
+ * @include comp('list') {
+ *   @include elem('item') {
+ *     @include when('selected', 'raised') {}
  *   }
  * }
- * =>
- * .vd-tabs vd-tabs_header-item.is-selected {
- *   ...
+ * 
+ * .vd-list {
+ *   .vd-list_item.is-selected.is-raised {}
  * }
- * ----
- * Note: The status must be a adjective.
  */
 @mixin when($status-list...) {
   $selector: &;
@@ -147,15 +166,8 @@
   }
 }
 
-/**----------  Atomic  ----------
- * .e.g
- * .bg-white {
- *   ...
- * }
- * %atomic-bg-white {
- *   ...
- * }
- */
+/*----------  Atomic  ----------*/
+
 // Define a atomic rule.
 @mixin define-atom($name) {
   @at-root {
