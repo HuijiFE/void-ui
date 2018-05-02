@@ -10,7 +10,6 @@ import { PluginFunction, PluginObject } from 'vue';
 
 export * from '@void/controls';
 import * as controls from '@void/controls';
-import { inherits } from 'util';
 
 export interface VoidUIPluginOption {
   locale?: string;
@@ -51,8 +50,8 @@ const VoidUI: VoidUIPlugin = {
 };
 
 if (window !== undefined) {
-  (<any>window).Vue = VoidUI;
-  if ((<any>window).Vue) {
+  (<any>window).VoidUI = VoidUI;
+  if ((<any>window).Vue !== undefined) {
     VoidUI.install((<any>window).Vue);
   }
 }
