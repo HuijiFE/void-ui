@@ -5,6 +5,10 @@ const HASH_FUNCTION = 'sha256';
 const HASH_DIGEST = 'hex';
 const HASH_DIGEST_LENGTH = 64;
 
+const solutionsAll = {
+  docs: 'docs',
+  void: 'void',
+};
 const SOLUTION = process.env.VUE_SOLUTION;
 
 module.exports = {
@@ -15,10 +19,15 @@ module.exports = {
   // sub-path here. For example, if your app is deployed at
   // https://www.foobar.com/my-app/
   // then change this to '/my-app/'
-  baseUrl: '//cdn.duduluu.com/',
+  baseUrl: '/void',
 
   // where to output built files
-  // outputDir: 'dist',
+  outputDir:
+    SOLUTION === solutionsAll.docs
+      ? 'www'
+      : SOLUTION === solutionsAll.void
+        ? 'dist'
+        : 'dist',
 
   // whether to use eslint-loader for lint on save.
   // valid values: true | false | 'error'
@@ -36,7 +45,7 @@ module.exports = {
     const resolve = _path => path.resolve(context, _path);
 
     // hacking entry for docs
-    if (SOLUTION === 'docs') {
+    if (SOLUTION === solutionsAll.docs) {
       config
         .entry('app')
         .clear()
