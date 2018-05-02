@@ -19,6 +19,7 @@ export interface VoidUIPluginOption {
 export interface VoidUIPlugin extends PluginObject<VoidUIPluginOption> {
   readonly version?: string;
   installed: boolean;
+  controls: typeof controls;
 }
 
 /**
