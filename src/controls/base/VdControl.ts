@@ -12,27 +12,52 @@ import {
 /**
  * Available values for control property theme.
  */
-export type Theme = 'lite' | 'dark';
+export enum Theme {
+  lite = 'lite',
+  dark = 'dark',
+}
 
 /**
  * Available values for control property tone.
  */
-export type Tone = 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+export enum Tone {
+  primary = 'primary',
+  secondary = 'secondary',
+  success = 'success',
+  warning = 'warning',
+  danger = 'danger',
+}
 
 /**
  * Available values for control property skin.
  */
-export type Skin = 'fill' | 'flat' | 'plain' | 'silk';
+export enum Skin {
+  fill = 'fill',
+  flat = 'flat',
+  plain = 'plain',
+  silk = 'silk',
+}
 
 /**
  * Available values for control property shape.
  */
-export type Shape = 'rect' | 'pill' | 'square' | 'circle';
+export enum Shape {
+  rect = 'rect',
+  pill = 'pill',
+  square = 'square',
+  circle = 'circle',
+}
 
 /**
  * Available values for control property size.
  */
-export type Size = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+export enum Size {
+  xsmall = 'xsmall',
+  small = 'small',
+  medium = 'medium',
+  large = 'large',
+  xlarge = 'xlarge',
+}
 
 /**
  * Static hub for Void-UI.
@@ -41,7 +66,7 @@ export type Size = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
 export class VoidHub extends Vue {
   public static readonly $void: VoidHub = new VoidHub();
 
-  public theme: Theme = 'lite';
+  public theme: Theme = Theme.lite;
 }
 
 /**

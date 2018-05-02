@@ -34,7 +34,7 @@ const VoidUI: VoidUIPlugin = {
     }
     VoidUI.installed = true;
 
-    const { locale = 'zh-CN', theme = 'lite' } = options;
+    const { locale = 'zh-CN', theme = controls.Theme.lite } = options;
 
     controls.VoidHub.$void.theme = theme;
 
@@ -50,8 +50,11 @@ const VoidUI: VoidUIPlugin = {
   controls,
 };
 
-if (window !== undefined && (<any>window).Vue) {
-  VoidUI.install((<any>window).Vue);
+if (window !== undefined) {
+  (<any>window).Vue = VoidUI;
+  if ((<any>window).Vue) {
+    VoidUI.install((<any>window).Vue);
+  }
 }
 
 export default VoidUI;
