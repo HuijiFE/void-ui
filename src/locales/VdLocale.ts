@@ -1,4 +1,6 @@
 /**
  * Locale
  */
-export default 'locales';
+export default {
+  name: 'locales',
+};
