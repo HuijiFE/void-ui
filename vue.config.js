@@ -1,5 +1,6 @@
 const path = require('path');
 const package = require('./package.json');
+const Config = require('webpack-chain');
 
 const HASH_FUNCTION = 'sha256';
 const HASH_DIGEST = 'hex';
@@ -40,7 +41,10 @@ module.exports = {
 
   // tweak internal webpack configuration.
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
-  chainWebpack: config => {
+  /**
+   * @param {Config} config
+   */
+  chainWebpack(config) {
     const context = config.store.get('context');
     const resolve = _path => path.resolve(context, _path);
 
@@ -74,6 +78,16 @@ module.exports = {
           filename: `css/[name].[${HASH_FUNCTION}:contenthash:${HASH_DIGEST}:${HASH_DIGEST_LENGTH}].css`,
         }),
       ]);
+
+      config.module
+        .rule('ts')
+        .use('ts-loader')
+        .loader('ts-loader')
+        .tap(option => {
+          option.transpileOnly = false;
+          option.happyPackMode = false;
+          return option;
+        });
     }
   },
   configureWebpack: () => {},

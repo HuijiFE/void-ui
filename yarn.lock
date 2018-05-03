@@ -709,6 +709,31 @@
   version "0.0.30"
   resolved "http://registry.npm.taobao.org/@types/strip-json-comments/download/@types/strip-json-comments-0.0.30.tgz#9aa30c04db212a9a0649d6ae6fd50accc40748a1"
 
+"@types/tapable@*":
+  version "1.0.2"
+  resolved "http://registry.npm.taobao.org/@types/tapable/download/@types/tapable-1.0.2.tgz#e13182e1b69871a422d7863e11a4a6f5b814a4bd"
+
+"@types/uglify-js@*":
+  version "3.0.2"
+  resolved "http://registry.npm.taobao.org/@types/uglify-js/download/@types/uglify-js-3.0.2.tgz#f30c75458d18e8ee885c792c04adcb78a13bc286"
+  dependencies:
+    source-map "^0.6.1"
+
+"@types/webpack-chain@^4.0.2":
+  version "4.0.2"
+  resolved "http://registry.npm.taobao.org/@types/webpack-chain/download/@types/webpack-chain-4.0.2.tgz#f7e91b0bb37ed3f4cf3b092f6733bcb1d60931ed"
+  dependencies:
+    "@types/webpack" "*"
+
+"@types/webpack@*":
+  version "4.1.4"
+  resolved "http://registry.npm.taobao.org/@types/webpack/download/@types/webpack-4.1.4.tgz#553fe3f7ac1d8b403ebb01f25b31272b234d5ef6"
+  dependencies:
+    "@types/node" "*"
+    "@types/tapable" "*"
+    "@types/uglify-js" "*"
+    source-map "^0.6.0"
+
 "@vue/babel-preset-app@^3.0.0-beta.9":
   version "3.0.0-beta.9"
   resolved "http://registry.npm.taobao.org/@vue/babel-preset-app/download/@vue/babel-preset-app-3.0.0-beta.9.tgz#ab525f526e8f0e131e727cd81cc55a534c8e35b0"
