@@ -7,7 +7,7 @@
     $prop: 'flex-#{$size}';
   }
 
-  @include prop(('#{$prop}': 'default')) {
+  @include prop(('#{$prop}': 'average')) {
     flex: 1;
   }
 
