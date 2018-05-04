@@ -1,0 +1,92 @@
+/**
+ * Control: Flexbox
+ */
+@mixin gen-flex($size: undefined) {
+  $prop: 'flex';
+  @if $size {
+    $prop: 'flex-#{$size}';
+  }
+
+  @include prop(('#{$prop}': 'default')) {
+    flex: 1;
+  }
+
+  $flex-presets: auto, initial, none;
+  @each $preset in $flex-presets {
+    @include prop(('#{$prop}': $preset)) {
+      flex: $preset;
+    }
+  }
+
+  @include prop(('#{$prop}': 33)) {
+    min-width: 33.33333%;
+    flex: 0 1 33.33333%;
+  }
+  @include prop(('#{$prop}': 66)) {
+    min-width: 33.33333%;
+    flex: 0 1 66.66666%;
+  }
+
+  @for $i from 1 through 20 {
+    $ratio: $i * 5;
+    @include prop(('#{$prop}': $ratio)) {
+      min-width: $ratio * 1%;
+      flex: 0 1 ($ratio * 1%);
+    }
+  }
+}
+
+@include comp('flexbox') {
+  position: relative;
+  display: flex;
+
+  flex: 1;
+  @include gen-flex();
+  @include when('hidden') {
+    display: none;
+  }
+  // Responsive flexibility and visibility for screen width.
+  @each $size in list-reverse($enum-size) {
+    @include media($size) {
+      @include gen-flex($size);
+      @include when('hidden-#{$size}') {
+        display: none;
+      }
+    }
+  }
+
+  flex-direction: row;
+  $flex-directions: row, row-reverse, column, column-reverse;
+  @each $direction in $flex-directions {
+    @include prop(('direction': $direction)) {
+      flex-direction: $direction;
+    }
+  }
+
+  flex-wrap: wrap;
+  $flex-wraps: nowrap, wrap, wrap-reverse;
+  @each $wrap in $flex-wraps {
+    @include prop(('wrap': $wrap)) {
+      flex-wrap: $wrap;
+    }
+  }
+
+  justify-content: flex-start;
+  $flex-justifies: flex-start, flex-end, center, space-between, space-around;
+  @each $justify in $flex-justifies {
+    @include prop(('justify': $justify)) {
+      justify-content: $justify;
+    }
+  }
+
+  align-items: flex-start;
+  $flex-aligns: flex-start, flex-end, center, baseline, stretch;
+  @each $align in $flex-aligns {
+    @include prop(('align': $align)) {
+      align-items: $align;
+    }
+    @include prop(('align-self': $align)) {
+      align-self: $align;
+    }
+  }
+}

@@ -6,6 +6,7 @@
  */
 
 export * from '@void/controls/base/VdControl';
+export * from '@void/controls/layout/flexbox/VdFlexbox';
 export * from '@void/controls/layout/flow/VdClamp';
 export * from '@void/controls/layout/flow/VdMain';
 export * from '@void/controls/layout/flow/VdSwimlane';

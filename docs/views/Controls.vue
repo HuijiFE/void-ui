@@ -1,6 +1,10 @@
 <template>
   <div class="controls">
-
+    <vd-flexbox>
+      <vd-flexbox></vd-flexbox>
+      <vd-flexbox></vd-flexbox>
+      <vd-flexbox></vd-flexbox>
+    </vd-flexbox>
   </div>
 </template>
 

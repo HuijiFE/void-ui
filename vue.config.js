@@ -20,7 +20,7 @@ module.exports = {
   // sub-path here. For example, if your app is deployed at
   // https://www.foobar.com/my-app/
   // then change this to '/my-app/'
-  baseUrl: '/void',
+  baseUrl: '/void-ui/',
 
   // where to output built files
   outputDir:
@@ -138,7 +138,7 @@ module.exports = {
     open: true,
     host: '0.0.0.0',
     port: 8080,
-    https: true,
+    https: false,
     hotOnly: false,
     // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#configuring-proxy
     proxy: null, // string | Object
