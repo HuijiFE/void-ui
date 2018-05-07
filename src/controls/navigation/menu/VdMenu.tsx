@@ -47,7 +47,7 @@ export class VdMenu extends VdControl {
   @Watch('selectedSubMenu')
   private onSelectedSubMenuChange(newSubMenu: VdSubMenu, oldSubMenu: VdSubMenu): void {
     if (this.autoCollapse && newSubMenu !== oldSubMenu && oldSubMenu) {
-      oldSubMenu.isExpanded = false;
+      oldSubMenu.expanded = false;
     }
   }
 
@@ -76,10 +76,10 @@ export class VdMenu extends VdControl {
    */
   public get sharedClasses(): ClassName {
     return [
-      `vdp-theme-${this.$theme}`,
-      `vdp-skin-${this.skin}`,
-      `vdp-direction-${this.direction}`,
-      `vdp-position-${this.position}`,
+      `vdp-theme_${this.$theme}`,
+      `vdp-skin_${this.skin}`,
+      `vdp-direction_${this.direction}`,
+      `vdp-position_${this.position}`,
     ];
   }
 

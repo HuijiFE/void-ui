@@ -100,7 +100,7 @@ export class VdMenuItem extends VdControl {
       if (this.to && this.$el.classList.contains('is-route-matched')) {
         this.menu.selectedItem = this;
         if (this.subMenu) {
-          this.subMenu.isExpanded = true;
+          this.subMenu.expanded = true;
         }
       } else if (
         this.href &&
@@ -108,7 +108,7 @@ export class VdMenuItem extends VdControl {
       ) {
         this.menu.selectedItem = this;
         if (this.subMenu) {
-          this.subMenu.isExpanded = true;
+          this.subMenu.expanded = true;
         }
       }
     }

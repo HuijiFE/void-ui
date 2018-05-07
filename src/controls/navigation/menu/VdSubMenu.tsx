@@ -42,9 +42,9 @@ export class VdSubMenu extends VdControl {
   @Prop({ type: Array, default: () => [] })
   public itemsSource: (MenuItem | MenuItemGroup)[];
 
-  public isExpanded: boolean = false;
+  public expanded: boolean = false;
 
-  @Watch('isExpanded')
+  @Watch('expanded')
   private onIsExpandedChange(value: boolean): void {
     if (value) {
       this.expand();
@@ -58,7 +58,7 @@ export class VdSubMenu extends VdControl {
       'vd-sub-menu',
       ...(this.menu ? this.menu.sharedClasses : []),
       {
-        'is-expanded': this.isExpanded,
+        'is-expanded': this.expanded,
       },
     ];
   }
@@ -117,7 +117,7 @@ export class VdSubMenu extends VdControl {
     if (this.menu) {
       this.menu.selectedSubMenu = this;
     }
-    this.isExpanded = !this.isExpanded;
+    this.expanded = !this.expanded;
   }
 
   private beforeMount(): void {

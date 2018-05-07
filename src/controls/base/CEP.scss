@@ -105,8 +105,8 @@
 
 /*----------  Property  ----------*/
 
-@function class-prop($property, $key) {
-  @return '#{$namespace}p-#{$property}-#{$key}';
+@function class-prop($property, $value) {
+  @return '#{$namespace}p-#{$property}_#{$value}';
 }
 
 /**
@@ -120,8 +120,8 @@
  */
 @mixin prop($properties-map) {
   $props-selector: '';
-  @each $property, $key in $properties-map {
-    $props-selector: '#{$props-selector}.#{class-prop($property, $key)}';
+  @each $property, $value in $properties-map {
+    $props-selector: '#{$props-selector}.#{class-prop($property, $value)}';
   }
 
   @at-root {
