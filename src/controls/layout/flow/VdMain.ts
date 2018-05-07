@@ -1,4 +1,13 @@
-import { Vue, Component, Emit, Inject, Model, Prop, Provide, Watch } from 'vue-property-decorator';
+import {
+  Vue,
+  Component,
+  Emit,
+  Inject,
+  Model,
+  Prop,
+  Provide,
+  Watch,
+} from 'vue-property-decorator';
 import { CreateElement, VNode } from 'vue';
 import { VdControl } from '@void/controls/base/VdControl';
 
@@ -11,7 +20,7 @@ export class VdMain extends VdControl {
     return h(
       'main',
       {
-        class: ['vd-main', `vdp-theme-${this.$theme}`],
+        class: ['vd-main', `vdp-theme_${this.$theme}`],
       },
       [this.$slots.default],
     );
