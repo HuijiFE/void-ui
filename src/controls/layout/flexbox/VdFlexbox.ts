@@ -167,19 +167,22 @@ export class VdFlexbox extends Vue {
   @Prop({ type: Boolean, default: false })
   public hiddenXlarge: boolean;
 
+  /**
+   * Gutter between sub flexbox content.
+   */
   @Prop({ type: String })
   public gutter: FlexGutter;
 
   /**
    * Flex flow direction.
    */
-  @Prop({ type: String, default: 'row' })
+  @Prop({ type: String })
   public direction: FlexDirection;
 
   /**
    * Flex line wrapping.
    */
-  @Prop({ type: String, default: 'wrap' })
+  @Prop({ type: String })
   public wrap: FlexWrap;
 
   // @Prop({ type: Number })
@@ -188,13 +191,13 @@ export class VdFlexbox extends Vue {
   /**
    * Axis alignment.
    */
-  @Prop({ type: String, default: 'flex-start' })
+  @Prop({ type: String })
   public justify: FlexJustify;
 
   /**
    * Cross alignment.
    */
-  @Prop({ type: String, default: 'flex-start' })
+  @Prop({ type: String })
   public align: FlexAlign;
 
   /**
@@ -209,26 +212,26 @@ export class VdFlexbox extends Vue {
       {
         class: [
           'vd-flexbox',
-          `vdp-flex-${this.flex}`,
           {
-            [`vdp-flex-xsmall-${this.flexXsmall}`]: this.flexXsmall,
-            [`vdp-flex-small-${this.flexSmall}`]: this.flexSmall,
-            [`vdp-flex-medium-${this.flexMedium}`]: this.flexMedium,
-            [`vdp-flex-large-${this.flexLarge}`]: this.flexLarge,
-            [`vdp-flex-xlarge-${this.flexXlarge}`]: this.flexXlarge,
+            [`vdp-flex_${this.flex}`]: this.flex,
+            [`vdp-flex-xsmall_${this.flexXsmall}`]: this.flexXsmall,
+            [`vdp-flex-small_${this.flexSmall}`]: this.flexSmall,
+            [`vdp-flex-medium_${this.flexMedium}`]: this.flexMedium,
+            [`vdp-flex-large_${this.flexLarge}`]: this.flexLarge,
+            [`vdp-flex-xlarge_${this.flexXlarge}`]: this.flexXlarge,
             'is-hidden': this.hidden,
             'is-hidden-xsmall': this.hiddenXsmall,
             'is-hidden-small': this.hiddenSmall,
             'is-hidden-medium': this.hiddenMedium,
             'is-hidden-large': this.hiddenLarge,
             'is-hidden-xlarge': this.hiddenXlarge,
-            [`vdp-gutter-${this.gutter}`]: this.gutter,
+            [`vdp-gutter_${this.gutter}`]: this.gutter,
+            [`vdp-direction_${this.direction}`]: this.direction,
+            [`vdp-wrap_${this.wrap}`]: this.wrap,
+            [`vdp-justify_${this.justify}`]: this.justify,
+            [`vdp-align_${this.align}`]: this.align,
+            [`vdp-align-self_${this.alignSelf}`]: this.alignSelf,
           },
-          `vdp-direction-${this.direction}`,
-          `vdp-wrap-${this.wrap}`,
-          `vdp-justify-${this.justify}`,
-          `vdp-align-${this.align}`,
-          `vdp-align-self-${this.alignSelf}`,
         ],
       },
       [this.$slots.default],

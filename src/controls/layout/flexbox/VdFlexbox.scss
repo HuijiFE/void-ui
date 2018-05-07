@@ -1,9 +1,10 @@
 /**
  * Control: Flexbox
  */
+
 @mixin gen-flex($size: undefined) {
   $prop: 'flex';
-  @if $size {
+  @if $size != undefined {
     $prop: 'flex-#{$size}';
   }
 
@@ -36,10 +37,20 @@
   }
 }
 
+@mixin gen-gutter($size, $value) {
+  @include prop(('gutter': $size)) {
+    margin: -$value / 2;
+    > .#{class-comp('flexbox')} {
+      padding: $value / 2;
+    }
+  }
+}
+
 @include comp('flexbox') {
   position: relative;
   display: flex;
 
+  // flexibility and visibility
   flex: 1;
   @include gen-flex();
   @include when('hidden') {
@@ -55,6 +66,19 @@
     }
   }
 
+  // gutter
+  @each $size, $value in $flexbox-gutter-map {
+    @include gen-gutter($size, $value);
+  }
+  @include gen-gutter('auto', map-get($map: $flexbox-gutter-map, $key: 'medium'));
+  @include media-small {
+    @include gen-gutter('auto', map-get($map: $flexbox-gutter-map, $key: 'small'));
+  }
+  @include media-xsmall {
+    @include gen-gutter('auto', map-get($map: $flexbox-gutter-map, $key: 'xsmall'));
+  }
+
+  // direction
   flex-direction: row;
   $flex-directions: row, row-reverse, column, column-reverse;
   @each $direction in $flex-directions {
@@ -63,6 +87,7 @@
     }
   }
 
+  // wrap
   flex-wrap: wrap;
   $flex-wraps: nowrap, wrap, wrap-reverse;
   @each $wrap in $flex-wraps {
@@ -71,6 +96,7 @@
     }
   }
 
+  // justify
   justify-content: flex-start;
   $flex-justifies: flex-start, flex-end, center, space-between, space-around;
   @each $justify in $flex-justifies {
@@ -79,6 +105,7 @@
     }
   }
 
+  // align
   align-items: flex-start;
   $flex-aligns: flex-start, flex-end, center, baseline, stretch;
   @each $align in $flex-aligns {

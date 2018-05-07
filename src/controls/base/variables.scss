@@ -245,6 +245,14 @@ $clamp-map: (
 
 $clamp-padding: 1.6rem;
 
+$flexbox-gutter-map: (
+  xsmall:     8px,
+  small:      16px,
+  medium:     24px,
+  large:      32px,
+  xlarge:     40px,
+);
+
 /*-------- anime --------*/
 
 $transition-base: all ease-in-out 0.2s;
