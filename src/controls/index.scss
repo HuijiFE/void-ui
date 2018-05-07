@@ -6,6 +6,19 @@
  */
 
 @import '~@void/controls/base/VdControl';
+@import '~@void/controls/form/VdCheckbox';
+@import '~@void/controls/form/VdColorPicker';
+@import '~@void/controls/form/VdCombo';
+@import '~@void/controls/form/VdDateTime';
+@import '~@void/controls/form/VdFile';
+@import '~@void/controls/form/VdForm';
+@import '~@void/controls/form/VdFormItem';
+@import '~@void/controls/form/VdInput';
+@import '~@void/controls/form/VdNumberInput';
+@import '~@void/controls/form/VdRadio';
+@import '~@void/controls/form/VdTags';
+@import '~@void/controls/form/VdTextArea';
+@import '~@void/controls/form/VdToggle';
 @import '~@void/controls/basic/button/VdButton';
 @import '~@void/controls/layout/flexbox/VdFlexbox';
 @import '~@void/controls/layout/flow/VdClamp';
