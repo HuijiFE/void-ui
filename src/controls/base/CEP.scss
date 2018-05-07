@@ -15,6 +15,8 @@
 }
 
 /**
+ * Generate root selector for a component/control.
+ * 
  * @include comp('button') {}
  * 
  * .vd-button {}
@@ -34,6 +36,8 @@
 }
 
 /**
+ * Generate selector for elements, support multi elements.
+ * 
  * @include comp('button') {
  *   @include elem('icon') {}
  * }
@@ -42,13 +46,19 @@
  *   .vd-button_icon {}
  * }
  */
-@mixin elem($element) {
-  $E: $element !global;
+@mixin elem($element-list...) {
   $selector: &;
+  $elements-selector: '';
+  @each $element in $element-list {
+    @if $elements-selector != '' {
+      $elements-selector: '#{$elements-selector}, ';
+    }
+    $elements-selector: '#{$elements-selector}.#{class-elem($element)}';
+  }
 
   @at-root {
     #{$selector} {
-      .#{class-elem($element)} {
+      #{$elements-selector} {
         @content;
       }
     }
@@ -56,6 +66,8 @@
 }
 
 /**
+ * Generate adjacent sibling combinator for elements.
+ * 
  * @include comp('list') {
  *   @include elem-adjacent('item') {}
  * }
@@ -80,6 +92,8 @@
 }
 
 /**
+ * Generate general sibling combinator for elements.
+ * 
  * @include comp('list') {
  *   @include elem-general('item') {}
  * }
@@ -110,6 +124,8 @@
 }
 
 /**
+ * Generate selector for properties of a component/control.
+ * 
  * @include comp('button') {
  *   @include prop(( skin: 'plain', theme: 'dark', )) {}
  * }
@@ -118,9 +134,9 @@
  * 
  * NOTE: The prop mixin is only for components, not for elements
  */
-@mixin prop($properties-map) {
+@mixin prop($property-map) {
   $props-selector: '';
-  @each $property, $value in $properties-map {
+  @each $property, $value in $property-map {
     $props-selector: '#{$props-selector}.#{class-prop($property, $value)}';
   }
 
@@ -134,6 +150,8 @@
 /*----------  Status  ----------*/
 
 /**
+ * Generate selector for boolean properties of a component/control.
+ * 
  * @include comp('menu-item') {
  *   @include when('selected') {}
  * }
