@@ -68,7 +68,7 @@ export class VdMenu extends VdControl {
   @Prop({ type: String, default: 'left' })
   public position: 'left' | 'right';
 
-  @Prop({ type: Boolean, default: true })
+  @Prop({ type: Boolean, default: false })
   public autoCollapse: boolean;
 
   /**

@@ -4,7 +4,8 @@
       <div class="main-menu">
         <vd-menu :brand-to="`/${$route.params.locale}`"
                  position="left"
-                 :items-source="navItems">
+                 :items-source="navItems"
+                 auto-collapse>
           <vd-menu-item slot="end"
                         href="https://github.com/huijife"
                         target="_blank">GitHub</vd-menu-item>

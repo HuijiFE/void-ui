@@ -1,4 +1,5 @@
 import { FontAwesomeIconProps } from '@void/controls/basic/icon/VdIcon';
+import { VdMenuItem } from '@void/controls/navigation/menu/VdMenuItem';
 /**
  * Model for menu item.
  */
@@ -9,7 +10,7 @@ export interface MenuItem {
   to?: string | Location;
   href?: string;
   target?: string;
-  onClick?(event: MouseEvent): void;
+  onClick?(event?: MouseEvent, sender?: VdMenuItem): void;
 }
 
 /**
