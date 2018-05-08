@@ -74,6 +74,10 @@ export class VdButton extends VdControl
     ];
   }
 
+  private onClick(event: MouseEvent): void {
+    this.$emit('click', event);
+  }
+
   private render(h: CreateElement): VNode {
     const icon: VNode | string =
       this.shape === Shape.rect || this.shape === Shape.pill ? (
@@ -106,7 +110,7 @@ export class VdButton extends VdControl
     return this.to ? (
       <router-link
         class={this.classes}
-        nativeOnClick={this.$emit('click')}
+        nativeOnClick={this.onClick}
         disabled={this.disabled}
       >
         {inner}
@@ -117,7 +121,7 @@ export class VdButton extends VdControl
         href={this.href}
         target={this.target}
         rel="noopener noreferrer"
-        onClick={this.$emit('click')}
+        onClick={this.onClick}
         disabled={this.disabled}
       >
         {inner}
@@ -126,7 +130,7 @@ export class VdButton extends VdControl
       <button
         class={this.classes}
         type={this.type}
-        onClick={this.$emit('click')}
+        onClick={this.onClick}
         disabled={this.disabled}
       >
         {inner}

@@ -10,7 +10,8 @@
                    :skin="skin"
                    :shape="shape"
                    :size="size"
-                   :fa="['fab', 'github']">按钮</vd-button>
+                   :fa="['fab', 'github']"
+                   @click="onClick">按钮</vd-button>
         <vd-button tone="primary"
                    :skin="skin"
                    :shape="shape"
@@ -75,5 +76,9 @@ export default class Controls extends Vue {
   public skin: Skin = Skin.silk;
   public shape: Shape = Shape.square;
   public size: Size = Size.medium;
+
+  private onClick(...args: any[]) {
+    args.forEach(a => console.log(a.constructor.name, a));
+  }
 }
 </script>
