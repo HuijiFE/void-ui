@@ -88,7 +88,7 @@
 
   // STYLE
   transition: $transition-1;
-  transition-property: color, background-color;
+  transition-property: all, background-color;
 
   // skin fill
   @include prop((skin: 'fill')) {
