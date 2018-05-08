@@ -66,11 +66,11 @@ export class VdMenuItem extends VdControl implements IconControl, RouterControl 
     ];
   }
 
-  private onClick(): void {
+  private onClick(event: MouseEvent): void {
     if (this.menu && (this.to || this.target !== '_blank')) {
       this.menu.selectedItem = this;
     }
-    this.$emit('click');
+    this.$emit('click', event, this);
   }
 
   private beforeMount(): void {
@@ -125,7 +125,14 @@ export class VdMenuItem extends VdControl implements IconControl, RouterControl 
         rel="noopener noreferrer"
         ref="inner"
       >
-        <span class="vd-menu-item_icon-container">
+        <span
+          class={[
+            'vd-menu-item_icon-container',
+            {
+              'is-used': this.fa || this.icon,
+            },
+          ]}
+        >
           <vd-icon class="vd-menu-item_icon" icon={this.icon} fa={this.fa} />
         </span>
         <span class="vd-menu-item_label">{this.$slots.default || this.label}</span>

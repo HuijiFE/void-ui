@@ -256,7 +256,7 @@ $flexbox-gutter-map: (
 
 /*-------- transition and anime --------*/
 
-$transition-base: all ease-in-out 0.1s;
+$transition-1: all ease-in-out 0.1s;
 
 @function transition($duration: 200ms) {
   @return all ease-in-out $duration;

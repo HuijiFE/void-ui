@@ -46,7 +46,11 @@ export class VdMenu extends VdControl {
 
   @Watch('selectedSubMenu')
   private onSelectedSubMenuChange(newSubMenu: VdSubMenu, oldSubMenu: VdSubMenu): void {
-    if (this.autoCollapse && newSubMenu !== oldSubMenu && oldSubMenu) {
+    if (
+      (this.autoCollapse || this.direction === 'horizontal') &&
+      newSubMenu !== oldSubMenu &&
+      oldSubMenu
+    ) {
       oldSubMenu.expanded = false;
     }
   }
@@ -65,6 +69,9 @@ export class VdMenu extends VdControl {
   @Prop({ type: String, default: 'vertical' })
   public direction: 'vertical' | 'horizontal';
 
+  /**
+   * The position of the menu, only enable when the direction is vertical
+   */
   @Prop({ type: String, default: 'left' })
   public position: 'left' | 'right';
 

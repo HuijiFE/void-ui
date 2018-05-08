@@ -1,16 +1,35 @@
 <template>
   <div class="index">
     <vd-main>
-      <div class="main-menu">
-        <vd-menu :brand-to="`/${$route.params.locale}`"
-                 position="left"
-                 :items-source="navItems"
-                 auto-collapse>
-          <vd-menu-item slot="end"
-                        href="https://github.com/huijife"
-                        target="_blank">GitHub</vd-menu-item>
-        </vd-menu>
-      </div>
+      <vd-flexbox gutter="auto">
+        <vd-flexbox flex="100">
+          <div class="main-menu">
+            <vd-menu :brand-to="`/${$route.params.locale}`"
+                     position="left"
+                     :items-source="navItems"
+                     auto-collapse>
+              <vd-menu-item slot="end"
+                            :fa="['fab', 'github']"
+                            href="https://github.com/huijife"
+                            target="_blank">GitHub</vd-menu-item>
+            </vd-menu>
+          </div>
+        </vd-flexbox>
+
+        <vd-flexbox flex="100">
+          <div style="width:100%">
+            <vd-menu :brand-to="`/${$route.params.locale}`"
+                     direction="horizontal"
+                     position="left"
+                     :items-source="navItems">
+              <vd-menu-item slot="end"
+                            :fa="['fab', 'github']"
+                            href="https://github.com/huijife"
+                            target="_blank">GitHub</vd-menu-item>
+            </vd-menu>
+          </div>
+        </vd-flexbox>
+      </vd-flexbox>
       <router-view></router-view>
     </vd-main>
   </div>
@@ -67,11 +86,11 @@ export default class Index extends Vue {
         groupLabel: 'Test',
         itemsSource: [
           {
-            // fa: 'paper-plane',
+            fa: 'paper-plane',
             label: 'option 1',
           },
           {
-            // fa: 'paper-plane',
+            fa: 'paper-plane',
             label: 'option 2',
           },
         ],
@@ -80,31 +99,30 @@ export default class Index extends Vue {
         subMenuLabel: 'Test',
         itemsSource: [
           {
-            // fa: 'paper-plane',
+            fa: 'paper-plane',
             label: 'option 1',
           },
           {
-            // fa: 'paper-plane',
             label: 'option 2',
           },
           {
-            // fa: 'paper-plane',
+            fa: 'paper-plane',
             label: 'option 3',
           },
         ],
       },
       {
         subMenuLabel: 'Test',
+        fa: 'paper-plane',
         itemsSource: [
           {
             groupLabel: 'Test',
             itemsSource: [
               {
-                // fa: 'paper-plane',
                 label: 'option 1',
               },
               {
-                // fa: 'paper-plane',
+                fa: 'paper-plane',
                 label: 'option 2',
               },
             ],
@@ -113,11 +131,11 @@ export default class Index extends Vue {
             groupLabel: 'Test',
             itemsSource: [
               {
-                // fa: 'paper-plane',
+                fa: 'paper-plane',
                 label: 'option 1',
               },
               {
-                // fa: 'paper-plane',
+                fa: 'paper-plane',
                 label: 'option 2',
               },
             ],

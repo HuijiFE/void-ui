@@ -3,22 +3,21 @@
   @include extend-atom('menu-reset');
   @include extend-atom('menu-part-v');
 
-  transition: $transition-base;
-
   @include elem('inner') {
     color: inherit;
   }
 
+  @include elem('icon-container') {
+    @include extend-atom('menu-item-icon');
+  }
+
+  @include extend-atom('menu-item-transition');
+
   // LAYOUT direction vertical
 
   @include prop((direction: 'vertical')) {
-    right: 0;
     @include elem('inner') {
       @include extend-atom('menu-item-inner-v');
-    }
-
-    @include elem('icon-container') {
-      @include extend-atom('menu-item-icon');
     }
 
     @include elem('label') {
@@ -39,33 +38,83 @@
   }
 
   // LAYOUT direction horizontal
-  // TODO
+
+  @include prop((direction: 'horizontal')) {
+    @include elem('inner') {
+      @include extend-atom('menu-item-inner-h');
+    }
+
+    @include elem('icon-container') {
+      display: none;
+      @include when('used') {
+        display: flex;
+      }
+    }
+
+    @include when('sub-item') {
+      @include elem('label') {
+        @include extend-atom('menu-item-label-v');
+      }
+      @include elem('icon-container') {
+        display: flex;
+      }
+    }
+  }
 
   // STYLE skin plain
 
   @include prop((skin: 'plain')) {
-    @include when('selected') {
-      color: tone(primary-standard);
-    }
     &:hover {
-      color: tone(primary-standard);
+      color: tone('primary-standard');
+    }
+    @include when('selected') {
+      color: tone('primary-standard');
     }
   }
 
   @include prop((skin: 'plain', direction: 'vertical', position: 'left')) {
     border-right: $menu-indicator-width solid transparent;
     @include when('selected') {
-      border-right-color: tone(primary-standard);
+      border-right-color: tone('primary-standard');
     }
   }
 
   @include prop((skin: 'plain', direction: 'vertical', position: 'right')) {
     border-left: $menu-indicator-width solid transparent;
     @include when('selected') {
-      border-left-color: tone(primary-standard);
+      border-left-color: tone('primary-standard');
     }
   }
 
+  @include prop((skin: 'plain', direction: 'horizontal')) {
+    border-bottom: $menu-indicator-width solid transparent;
+    @include when('selected') {
+      border-bottom-color: tone('primary-standard');
+    }
+
+    @include when('sub-item') {
+      border-bottom: none;
+    }
+  }
+
+  @each $theme in $enum-theme {
+    @include prop((skin: 'plain', direction: 'horizontal', theme: $theme)) {
+      @include when('sub-item') {
+        @include when('selected') {
+          background-color: theme('#{$theme}-bg-higher');
+        }
+        &:hover {
+          background-color: theme('#{$theme}-bg-hover');
+        }
+      }
+    }
+  }
+
+  // STYLE skin flat
+  // TODO
+
   // STYLE skin fill
   // TODO
+
+  // STYLE sub menu
 }

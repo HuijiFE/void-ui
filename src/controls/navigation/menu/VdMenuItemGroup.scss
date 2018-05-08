@@ -26,7 +26,26 @@
   }
 
   // LAYOUT direction horizontal
-  // TODO
+
+  @include prop((direction: 'horizontal')) {
+    @include elem('label') {
+      display: none;
+    }
+
+    @include elem('item-wrapper') {
+      @include extend-atom('menu-reset');
+      @include extend-atom('menu-part-h');
+    }
+
+    @include when('sub-item') {
+      @include elem('label') {
+        @include extend-atom('menu-item-inner-v');
+      }
+      @include elem('item-wrapper') {
+        @include extend-atom('menu-part-v');
+      }
+    }
+  }
 
   // STYLE skin plain
 

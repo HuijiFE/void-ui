@@ -45,8 +45,8 @@ export class VdSubMenu extends VdControl implements IconControl {
   public expanded: boolean = false;
 
   @Watch('expanded')
-  private onIsExpandedChange(value: boolean): void {
-    if (value) {
+  private onIsExpandedChange(newValue: boolean, oldValue: boolean): void {
+    if (newValue) {
       this.expand();
     } else {
       this.collapse();
@@ -65,6 +65,7 @@ export class VdSubMenu extends VdControl implements IconControl {
 
   private itemWrapper: Styler;
   private indicator: Styler;
+  private timeout: number;
 
   private collapse(): void {
     tween({
@@ -89,6 +90,10 @@ export class VdSubMenu extends VdControl implements IconControl {
   }
 
   private expand(): void {
+    if (this.menu) {
+      this.menu.selectedSubMenu = this;
+    }
+
     tween({
       from: 0,
       to: {
@@ -114,10 +119,19 @@ export class VdSubMenu extends VdControl implements IconControl {
   }
 
   private onClick(): void {
-    if (this.menu) {
-      this.menu.selectedSubMenu = this;
-    }
     this.expanded = !this.expanded;
+  }
+
+  private onMouseenter(): void {
+    window.clearTimeout(this.timeout);
+    if (this.menu && this.menu.direction === 'horizontal') {
+      this.expanded = true;
+    }
+  }
+  private onMouseleave(): void {
+    if (this.menu && this.menu.direction === 'horizontal') {
+      this.timeout = window.setTimeout(() => (this.expanded = false), 300);
+    }
   }
 
   private beforeMount(): void {
@@ -137,9 +151,20 @@ export class VdSubMenu extends VdControl implements IconControl {
 
   private render(h: CreateElement): VNode {
     return (
-      <li class={this.classes}>
+      <li
+        class={this.classes}
+        onMouseenter={this.onMouseenter}
+        onMouseleave={this.onMouseleave}
+      >
         <div class="vd-sub-menu_header" role="menu" onClick={this.onClick}>
-          <span class="vd-sub-menu_icon-container">
+          <span
+            class={[
+              'vd-sub-menu_icon-container',
+              {
+                'is-used': this.fa || this.icon,
+              },
+            ]}
+          >
             <vd-icon class="vd-sub-menu_icon" icon={this.icon} fa={this.fa} />
           </span>
           <span class="vd-sub-menu_label">{this.subMenuLabel}</span>

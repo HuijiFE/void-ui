@@ -1,7 +1,7 @@
 $menu-font-size: 1.4rem;
 $menu-padding: 0.4rem;
 
-$menu-indicator-width: 0.3rem;
+$menu-indicator-width: 0.2rem;
 
 $menu-icon-size: 2rem;
 $menu-item-height: 3.2rem;
@@ -9,6 +9,9 @@ $menu-item-padding: 1.6rem;
 
 $menu-anime-timing-function: ease-in-out;
 $menu-anime-duration: 300ms;
+
+$menu-sub-wrapper-min-width: 12.8rem;
+$menu-sub-wrapper-padding: 0.8rem;
 
 @include define-atom('menu-reset') {
   padding: 0;
@@ -19,8 +22,14 @@ $menu-anime-duration: 300ms;
   position: relative;
   display: flex;
   flex-direction: column;
-  align-content: stretch;
   align-items: stretch;
+}
+
+@include define-atom('menu-part-h') {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 @include define-atom('menu-item-icon') {
@@ -30,7 +39,6 @@ $menu-anime-duration: 300ms;
   display: flex;
   flex: none;
   justify-content: center;
-  align-content: center;
   align-items: center;
 }
 
@@ -40,7 +48,6 @@ $menu-anime-duration: 300ms;
   display: flex;
   flex-wrap: nowrap;
   white-space: nowrap;
-  align-content: center;
   align-items: center;
   padding: 0 $menu-item-padding;
 }
@@ -49,9 +56,33 @@ $menu-anime-duration: 300ms;
   flex: 1;
 }
 
+@include define-atom('menu-item-inner-h') {
+  height: $menu-item-height;
+  display: flex;
+  flex: none;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  align-items: center;
+  padding: 0 $menu-item-padding;
+}
+
+@include define-atom('menu-item-transition') {
+  transition: $transition-1;
+  transition-property: all background-color;
+}
+
 @include comp('menu') {
+  // initial
   @include extend-atom('menu-reset');
-  @include extend-atom('menu-part-v');
+  @include elem('start') {
+    @include extend-atom('menu-reset');
+  }
+  @include elem('center') {
+    @include extend-atom('menu-reset');
+  }
+  @include elem('end') {
+    @include extend-atom('menu-reset');
+  }
 
   height: 100%;
 
@@ -60,26 +91,37 @@ $menu-anime-duration: 300ms;
   // LAYOUT direction vertical
 
   @include prop((direction: 'vertical')) {
-    position: relative;
+    @include extend-atom('menu-part-v');
     padding: $menu-padding 0;
 
     @include elem('start') {
-      @include extend-atom('menu-reset');
       @include extend-atom('menu-part-v');
     }
     @include elem('center') {
-      @include extend-atom('menu-reset');
       @include extend-atom('menu-part-v');
     }
     @include elem('end') {
-      @include extend-atom('menu-reset');
       @include extend-atom('menu-part-v');
       margin-top: auto;
     }
   }
 
   // LAYOUT direction horizontal
-  // TODO
+
+  @include prop((direction: 'horizontal')) {
+    @include extend-atom('menu-part-h');
+
+    @include elem('start') {
+      @include extend-atom('menu-part-h');
+    }
+    @include elem('center') {
+      @include extend-atom('menu-part-h');
+    }
+    @include elem('end') {
+      @include extend-atom('menu-part-h');
+      margin-left: auto;
+    }
+  }
 
   // STYLE skin plain
 
@@ -121,6 +163,9 @@ $menu-anime-duration: 300ms;
       }
     }
   }
+
+  // STYLE skin flat
+  // TODO
 
   // STYLE skin fill
   // TODO

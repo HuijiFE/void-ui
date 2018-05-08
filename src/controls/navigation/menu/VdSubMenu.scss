@@ -1,5 +1,9 @@
 @include comp('sub-menu') {
   @include extend-atom('menu-reset');
+  @include elem('item-wrapper') {
+    @include extend-atom('menu-reset');
+  }
+
   @include extend-atom('menu-part-v');
 
   @include elem('header') {
@@ -10,6 +14,30 @@
     transform-style: preserve-3d;
   }
 
+  @include extend-atom('menu-item-transition');
+
+  // LAYOUT
+
+  @include elem('icon-container') {
+    @include extend-atom('menu-item-icon');
+  }
+
+  @include elem('item-wrapper') {
+    @include extend-atom('menu-part-v');
+    overflow: hidden;
+
+    height: 0;
+    opacity: 0;
+
+    transition: opacity $menu-anime-timing-function $menu-anime-duration;
+  }
+  @include when('expanded') {
+    @include elem('item-wrapper') {
+      height: initial;
+      opacity: 1;
+    }
+  }
+
   // LAYOUT direction vertical
 
   @include prop((direction: 'vertical')) {
@@ -17,35 +45,49 @@
       @include extend-atom('menu-item-inner-v');
     }
 
-    @include elem('icon-container') {
-      @include extend-atom('menu-item-icon');
-    }
-
     @include elem('label') {
       @include extend-atom('menu-item-label-v');
-    }
-
-    @include elem('item-wrapper') {
-      @include extend-atom('menu-reset');
-      @include extend-atom('menu-part-v');
-      overflow: hidden;
-
-      height: 0;
-      opacity: 0;
-
-      transition: opacity $menu-anime-timing-function $menu-anime-duration;
-    }
-
-    @include when('expanded') {
-      @include elem('item-wrapper') {
-        height: initial;
-        opacity: 1;
-      }
     }
   }
 
   // LAYOUT direction horizontal
-  // TODO
+
+  @include prop((direction: 'horizontal')) {
+    @include elem('header') {
+      @include extend-atom('menu-item-inner-h');
+    }
+
+    @include elem('icon-container') {
+      display: none;
+      @include when('used') {
+        display: flex;
+      }
+    }
+    @include elem('indicator') {
+      display: flex;
+    }
+
+    @include elem('item-wrapper') {
+      position: absolute;
+      z-index: 99;
+      top: $menu-item-height;
+      min-width: $menu-sub-wrapper-min-width;
+
+      padding: $menu-sub-wrapper-padding 0;
+
+      @include extend-atom('raise-1');
+    }
+  }
+
+  // STYLE
+
+  @each $theme in $enum-theme {
+    @include prop((direction: 'horizontal', theme: $theme)) {
+      @include elem('item-wrapper') {
+        background-color: theme('#{$theme}-bg-normal');
+      }
+    }
+  }
 
   // STYLE skin plain
 
@@ -53,14 +95,6 @@
     @include elem('header') {
       &:hover {
         color: tone(primary-standard);
-      }
-    }
-  }
-
-  @each $theme-key in $enum-theme {
-    @include prop((skin: 'plain', theme: $theme-key)) {
-      @include elem('indicator') {
-        // color: theme(#{$theme-key}-fg-sub);
       }
     }
   }
