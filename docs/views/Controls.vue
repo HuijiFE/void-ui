@@ -72,8 +72,8 @@ import { Tone, Skin, Shape, Size } from '@void/VoidUI';
 @Component
 export default class Controls extends Vue {
   public tone: Tone = Tone.primary;
-  public skin: Skin = Skin.plain;
-  public shape: Shape = Shape.pill;
+  public skin: Skin = Skin.silk;
+  public shape: Shape = Shape.square;
   public size: Size = Size.medium;
 }
 </script>

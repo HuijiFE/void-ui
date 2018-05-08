@@ -13,6 +13,7 @@ import { Location } from 'vue-router/types/router';
 import { FontAwesomeIconProps } from '@void/controls/basic/icon/VdIcon';
 
 import {
+  Shape,
   VdControl,
   RouterControl,
   IconControl,
@@ -74,9 +75,9 @@ export class VdButton extends VdControl
   }
 
   private render(h: CreateElement): VNode {
-    const inner: VNode = (
-      <span class="vd-button_inner">
-        {this.loading ? (
+    const icon: VNode | string =
+      this.shape === Shape.rect || this.shape === Shape.pill ? (
+        this.loading ? (
           <vd-icon
             class="vd-button_icon"
             fa={{ icon: ['far', 'spinner'], pulse: true }}
@@ -85,10 +86,22 @@ export class VdButton extends VdControl
           <vd-icon class="vd-button_icon" icon={this.icon} fa={this.fa} />
         ) : (
           ''
-        )}
-        <span class="vd-button_content">{this.$slots.default || this.content}</span>
-      </span>
-    );
+        )
+      ) : (
+        ''
+      );
+    const inner: VNode =
+      this.iconPosition === 'left' ? (
+        <span class="vd-button_inner">
+          {icon}
+          <span class="vd-button_content">{this.$slots.default || this.content}</span>
+        </span>
+      ) : (
+        <span class="vd-button_inner">
+          <span class="vd-button_content">{this.$slots.default || this.content}</span>
+          {icon}
+        </span>
+      );
 
     return this.to ? (
       <router-link

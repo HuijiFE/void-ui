@@ -108,11 +108,8 @@
   @each $theme in $enum-theme {
     @include prop(('skin': 'fill', 'theme': $theme)) {
       @include when('disabled') {
-        &,
-        &:hover {
-          color: theme('#{$theme}-fg-disabled');
-          background-color: theme('#{$theme}-bg-disabled');
-        }
+        color: theme('#{$theme}-fg-disabled');
+        background-color: theme('#{$theme}-bg-disabled');
       }
     }
   }
@@ -133,10 +130,7 @@
   @each $theme in $enum-theme {
     @include prop(('skin': 'flat', 'theme': $theme)) {
       @include when('disabled') {
-        &,
-        &:hover {
-          color: theme('#{$theme}-fg-disabled');
-        }
+        color: theme('#{$theme}-fg-disabled');
       }
     }
   }
@@ -169,24 +163,23 @@
   @include prop(('skin': 'silk')) {
     background-color: transparent;
   }
-
-  // in block
-  $foo-map: (
-    key1: 1,
-    key2: '2'
-  );
-  @function bar($arg-map) {
-    // do something
-  }
-
   @each $tone in $enum-tone {
-    @include prop((skin: 'silk', tone: $tone)) {
-      color: test((key: 'value'));
+    @include prop(('skin': 'silk', 'tone': $tone)) {
+      color: tone('#{$tone}-standard');
+      border-color: tone('#{$tone}-standard');
+      &:hover,
+      &:active {
+        color: tone('#{$tone}-lighten');
+        border-color: tone('#{$tone}-lighten');
+      }
+    }
+  }
+  @each $theme in $enum-theme {
+    @include prop(('skin': 'silk', 'theme': $theme)) {
+      @include when('disabled') {
+        color: theme('#{$theme}-fg-disabled');
+        border-color: theme('#{$theme}-fg-disabled');
+      }
     }
   }
 }
-
-$foo-map: (
-  key1: 1,
-  key2: '2'
-);
