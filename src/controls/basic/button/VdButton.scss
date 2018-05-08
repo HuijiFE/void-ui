@@ -40,29 +40,29 @@
 
   // font-size
   @each $size, $value in $button-font-size-map {
-    @include prop(('size': $size)) {
+    @include prop((size: $size)) {
       font-size: $value;
     }
   }
 
-  @include prop(('shape': 'rect')) {
+  @include prop((shape: 'rect')) {
     border-radius: $border-radius-base;
   }
-  @include prop(('shape': 'square')) {
+  @include prop((shape: 'square')) {
     border-radius: $border-radius-base;
   }
-  @include prop(('shape': 'circle')) {
+  @include prop((shape: 'circle')) {
     border-radius: 50%;
   }
 
   // size for rect and pill
   @each $size, $value in $button-height-map {
-    @include prop(('size': $size, 'shape': 'rect')) {
+    @include prop((size: $size, shape: 'rect')) {
       min-width: $value * 2.5;
       height: $value;
       padding: 0 ($value * 0.5);
     }
-    @include prop(('size': $size, 'shape': 'pill')) {
+    @include prop((size: $size, shape: 'pill')) {
       min-width: $value * 2.5;
       height: $value;
       padding: 0 ($value * 0.5);
@@ -72,7 +72,7 @@
 
   // size for square
   @each $size, $value in $button-size-map-square {
-    @include prop(('size': $size, 'shape': 'square')) {
+    @include prop((size: $size, shape: 'square')) {
       width: $value;
       height: $value;
     }
@@ -80,7 +80,7 @@
 
   // size for circle
   @each $size, $value in $button-size-map-circle {
-    @include prop(('size': $size, 'shape': 'circle')) {
+    @include prop((size: $size, shape: 'circle')) {
       width: $value;
       height: $value;
     }
@@ -91,11 +91,11 @@
   transition-property: color, background-color;
 
   // skin fill
-  @include prop(('skin': 'fill')) {
+  @include prop((skin: 'fill')) {
     color: $color-white;
   }
   @each $tone in $enum-tone {
-    @include prop(('skin': 'fill', 'tone': $tone)) {
+    @include prop((skin: 'fill', tone: $tone)) {
       background-color: tone('#{$tone}-standard');
       &:hover {
         background-color: tone('#{$tone}-lighten');
@@ -106,7 +106,7 @@
     }
   }
   @each $theme in $enum-theme {
-    @include prop(('skin': 'fill', 'theme': $theme)) {
+    @include prop((skin: 'fill', theme: $theme)) {
       @include when('disabled') {
         color: theme('#{$theme}-fg-disabled');
         background-color: theme('#{$theme}-bg-disabled');
@@ -115,11 +115,11 @@
   }
 
   // skin flat
-  @include prop(('skin': 'flat')) {
+  @include prop((skin: 'flat')) {
     background-color: transparent;
   }
   @each $tone in $enum-tone {
-    @include prop(('skin': 'flat', 'tone': $tone)) {
+    @include prop((skin: 'flat', tone: $tone)) {
       color: tone('#{$tone}-standard');
       &:hover,
       &:active {
@@ -128,7 +128,7 @@
     }
   }
   @each $theme in $enum-theme {
-    @include prop(('skin': 'flat', 'theme': $theme)) {
+    @include prop((skin: 'flat', theme: $theme)) {
       @include when('disabled') {
         color: theme('#{$theme}-fg-disabled');
       }
@@ -137,7 +137,7 @@
 
   // skin plain
   @each $tone in $enum-tone {
-    @include prop(('skin': 'plain', 'tone': $tone)) {
+    @include prop((skin: 'plain', tone: $tone)) {
       color: tone('#{$tone}-standard');
       border-color: tone('#{$tone}-standard');
       &:active {
@@ -146,7 +146,7 @@
     }
   }
   @each $theme in $enum-theme {
-    @include prop(('skin': 'plain', 'theme': $theme)) {
+    @include prop((skin: 'plain', theme: $theme)) {
       &:hover,
       &:active {
         background-color: theme('#{$theme}-bg-hover');
@@ -160,11 +160,11 @@
   }
 
   // skin silk
-  @include prop(('skin': 'silk')) {
+  @include prop((skin: 'silk')) {
     background-color: transparent;
   }
   @each $tone in $enum-tone {
-    @include prop(('skin': 'silk', 'tone': $tone)) {
+    @include prop((skin: 'silk', tone: $tone)) {
       color: tone('#{$tone}-standard');
       border-color: tone('#{$tone}-standard');
       &:hover,
@@ -175,7 +175,7 @@
     }
   }
   @each $theme in $enum-theme {
-    @include prop(('skin': 'silk', 'theme': $theme)) {
+    @include prop((skin: 'silk', theme: $theme)) {
       @include when('disabled') {
         color: theme('#{$theme}-fg-disabled');
         border-color: theme('#{$theme}-fg-disabled');
