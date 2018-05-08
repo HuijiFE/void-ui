@@ -1,10 +1,11 @@
+import { FontAwesomeIconProps } from '@void/controls/basic/icon/VdIcon';
 /**
  * Model for menu item.
  */
 export interface MenuItem {
   label: string;
   icon?: string;
-  fa?: string;
+  fa?: string | string[] | FontAwesomeIconProps;
   to?: string | Location;
   href?: string;
   target?: string;
