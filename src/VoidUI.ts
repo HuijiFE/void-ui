@@ -10,6 +10,7 @@ import { PluginFunction, PluginObject } from 'vue';
 
 export * from '@void/controls';
 import * as controls from '@void/controls';
+import VdIcon from '@void/controls/basic/icon/VdIcon';
 
 export interface VoidUIPluginOption {
   locale?: string;
@@ -44,6 +45,7 @@ const VoidUI: VoidUIPlugin = {
       },
     });
 
+    Vue.component('VdIcon', VdIcon);
     Object.entries(controls).forEach(([name, ctrl]) => Vue.component(name, ctrl));
     // console.log(VoidUI.version);
   },

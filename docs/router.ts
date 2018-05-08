@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Router from 'vue-router';
+import VueRouter from 'vue-router';
 
 import Index from '@docs/views/Index.vue';
 import Home from '@docs/views/Home.vue';
@@ -8,12 +8,12 @@ import Controls from '@docs/views/Controls.vue';
 import Tools from '@docs/views/Tools.vue';
 import Demos from '@docs/views/Demos.vue';
 
-Vue.use(Router);
+Vue.use(VueRouter);
 
 /**
  * Router for Void-UI site.
  */
-export default new Router({
+export default new VueRouter({
   base: '/void-ui/',
   mode: 'history',
   routes: [

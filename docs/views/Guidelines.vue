@@ -20,5 +20,5 @@ import {
  * Guidelines subfield
  */
 @Component
-export default class Guidlines extends Vue {}
+export default class Guidelines extends Vue {}
 </script>

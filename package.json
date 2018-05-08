@@ -22,6 +22,11 @@
     "vue-property-decorator": "^6.0.0"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome": "^1.1.7",
+    "@fortawesome/fontawesome-free-brands": "^5.0.12",
+    "@fortawesome/fontawesome-free-regular": "^5.0.12",
+    "@fortawesome/fontawesome-free-solid": "^5.0.12",
+    "@fortawesome/vue-fontawesome": "^0.0.22",
     "@types/ejs": "^2.5.1",
     "@types/globby": "^6.1.0",
     "@types/jest": "^22.2.3",

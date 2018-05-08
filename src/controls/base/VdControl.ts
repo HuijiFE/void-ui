@@ -1,3 +1,5 @@
+import { Location } from 'vue-router/types/router';
+import { FontAwesomeIconProps } from '@void/controls/basic/icon/VdIcon';
 import {
   Component,
   Vue,
@@ -93,12 +95,50 @@ export class VdControl extends Vue {
   @Prop({ type: String, default: 'medium' })
   public size: Size;
 
+  @Prop({ type: [Number, String], default: 0 })
+  public raise: number | string;
+
   @Prop({ type: Boolean, default: false })
   public disabled: boolean;
 
   @Prop({ type: Boolean, default: false })
   public bordered: boolean;
 
-  @Prop({ type: [Number, String], default: 0 })
-  public raise: number | string;
+  // public get classes(): ClassName {
+  //   return [
+  //     `vdp-theme_${this.$theme}`,
+  //     `vdp-tone_${this.tone}`,
+  //     `vdp-skin_${this.skin}`,
+  //     `vdp-shape_${this.shape}`,
+  //     `vdp-size_${this.size}`,
+  //     {
+  //       'is-disabled': this.disabled,
+  //       'is-bordered': this.disabled,
+  //     },
+  //   ];
+  // }
+}
+
+/**
+ * Restriction for controls based on router-link or anchor element.
+ */
+export interface RouterControl {
+  to: string | Location;
+  href: string;
+  target: string;
+}
+
+/**
+ * Restriction for controls those include icons.
+ */
+export interface IconControl {
+  icon: string;
+  fa: string | string[] | FontAwesomeIconProps;
+}
+
+/**
+ * Restriction for controls those support loading status.
+ */
+export interface LoadingControl {
+  loading: boolean;
 }

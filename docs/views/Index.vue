@@ -6,7 +6,6 @@
                  position="left"
                  :items-source="navItems">
           <vd-menu-item slot="end"
-                        fa="github"
                         href="https://github.com/huijife"
                         target="_blank">GitHub</vd-menu-item>
         </vd-menu>
@@ -67,11 +66,11 @@ export default class Index extends Vue {
         groupLabel: 'Test',
         itemsSource: [
           {
-            fa: 'paper-plane',
+            // fa: 'paper-plane',
             label: 'option 1',
           },
           {
-            fa: 'paper-plane',
+            // fa: 'paper-plane',
             label: 'option 2',
           },
         ],
@@ -80,15 +79,15 @@ export default class Index extends Vue {
         subMenuLabel: 'Test',
         itemsSource: [
           {
-            fa: 'paper-plane',
+            // fa: 'paper-plane',
             label: 'option 1',
           },
           {
-            fa: 'paper-plane',
+            // fa: 'paper-plane',
             label: 'option 2',
           },
           {
-            fa: 'paper-plane',
+            // fa: 'paper-plane',
             label: 'option 3',
           },
         ],
@@ -100,11 +99,11 @@ export default class Index extends Vue {
             groupLabel: 'Test',
             itemsSource: [
               {
-                fa: 'paper-plane',
+                // fa: 'paper-plane',
                 label: 'option 1',
               },
               {
-                fa: 'paper-plane',
+                // fa: 'paper-plane',
                 label: 'option 2',
               },
             ],
@@ -113,11 +112,11 @@ export default class Index extends Vue {
             groupLabel: 'Test',
             itemsSource: [
               {
-                fa: 'paper-plane',
+                // fa: 'paper-plane',
                 label: 'option 1',
               },
               {
-                fa: 'paper-plane',
+                // fa: 'paper-plane',
                 label: 'option 2',
               },
             ],

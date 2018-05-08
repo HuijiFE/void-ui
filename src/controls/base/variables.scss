@@ -203,8 +203,9 @@ $grade-map: (
 /*-------- skin --------*/
 
 /*-------- shape --------*/
-$border-radius-base:      0.2rem;
-$border-width-base:       1px;
+$border-radius-base:    0.2rem;
+$border-width-base:     1px;
+$border-initial:           $border-width-base solid transparent;
 
 /*-------- size --------*/  
 
@@ -253,10 +254,44 @@ $flexbox-gutter-map: (
   xlarge:     40px,
 );
 
-/*-------- anime --------*/
+/*-------- transition and anime --------*/
 
-$transition-base: all ease-in-out 0.2s;
+$transition-base: all ease-in-out 0.1s;
 
 @function transition($duration: 200ms) {
   @return all ease-in-out $duration;
 }
+
+/*-------- button --------*/
+
+$button-font-size-map: (
+  xsmall:     1.2rem,
+  small:      1.2rem,
+  medium:     1.4rem,
+  large:      1.8rem,
+  xlarge:     2.4rem,
+);
+
+$button-height-map: (
+  xsmall:     1.6rem,
+  small:      2.4rem,
+  medium:     3.2rem,
+  large:      4.0rem,
+  xlarge:     4.8rem,
+);
+
+$button-size-map-square: (
+  xsmall:     3.2rem,
+  small:      4.0rem,
+  medium:     4.8rem,
+  large:      5.6rem,
+  xlarge:     6.4rem,
+);
+
+$button-size-map-circle: (
+  xsmall:     3.2rem,
+  small:      4.0rem,
+  medium:     4.8rem,
+  large:      5.6rem,
+  xlarge:     6.4rem,
+)

@@ -8,18 +8,20 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { VNode, CreateElement, VNodeChildrenArrayContents } from 'vue';
+import { CreateElement, VNode } from 'vue';
 import { Location } from 'vue-router/types/router';
-import { VdControl } from '@void/controls/base/VdControl';
+
+import { VdControl, IconControl, RouterControl } from '@void/controls/base/VdControl';
 import { VdMenu } from '@void/controls/navigation/menu/VdMenu';
 import { VdMenuItemGroup } from '@void/controls/navigation/menu/VdMenuItemGroup';
 import { VdSubMenu } from '@void/controls/navigation/menu/VdSubMenu';
+import { FontAwesomeIconProps } from '@void/controls/basic/icon/VdIcon';
 
 /**
  * Control NavbarItem
  */
 @Component
-export class VdMenuItem extends VdControl {
+export class VdMenuItem extends VdControl implements IconControl, RouterControl {
   // tslint:disable-next-line:no-null-keyword
   private menu: VdMenu | null = null;
 
@@ -33,8 +35,8 @@ export class VdMenuItem extends VdControl {
   @Prop({ type: String })
   public icon: string;
 
-  @Prop({ type: String })
-  public fa: string;
+  @Prop({ type: [String, Array, Object] })
+  public fa: string | string[] | FontAwesomeIconProps;
 
   @Prop({ type: [String, Object] })
   public to: string | Location;
