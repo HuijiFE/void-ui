@@ -75,7 +75,7 @@ export class VdButton extends VdControl
   }
 
   private onClick(event: MouseEvent): void {
-    this.$emit('click', event);
+    this.$emit('click', event, this);
   }
 
   private render(h: CreateElement): VNode {
@@ -94,6 +94,7 @@ export class VdButton extends VdControl
       ) : (
         ''
       );
+
     const inner: VNode =
       this.iconPosition === 'left' ? (
         <span class="vd-button_inner">

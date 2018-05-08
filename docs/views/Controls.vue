@@ -77,6 +77,7 @@ export default class Controls extends Vue {
   public shape: Shape = Shape.square;
   public size: Size = Size.medium;
 
+  // tslint:disable
   private onClick(...args: any[]) {
     args.forEach(a => console.log(a.constructor.name, a));
   }
