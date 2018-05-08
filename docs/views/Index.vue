@@ -7,7 +7,8 @@
             <vd-menu :brand-to="`/${$route.params.locale}`"
                      position="left"
                      :items-source="navItems"
-                     auto-collapse>
+                     auto-collapse
+                     bordered>
               <vd-menu-item slot="end"
                             :fa="['fab', 'github']"
                             href="https://github.com/huijife"
@@ -21,7 +22,8 @@
             <vd-menu :brand-to="`/${$route.params.locale}`"
                      direction="horizontal"
                      position="left"
-                     :items-source="navItems">
+                     :items-source="navItems"
+                     bordered>
               <vd-menu-item slot="end"
                             :fa="['fab', 'github']"
                             href="https://github.com/huijife"

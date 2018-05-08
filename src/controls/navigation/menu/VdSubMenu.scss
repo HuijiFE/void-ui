@@ -70,10 +70,10 @@
     @include elem('item-wrapper') {
       position: absolute;
       z-index: 99;
-      top: $menu-item-height;
+      top: $menu-item-height + $menu-indicator-width + $menu-padding;
       min-width: $menu-sub-wrapper-min-width;
 
-      padding: $menu-sub-wrapper-padding 0;
+      padding: $menu-padding 0;
 
       @include extend-atom('raise-1');
     }

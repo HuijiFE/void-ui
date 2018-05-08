@@ -91,7 +91,13 @@ export class VdMenu extends VdControl {
   }
 
   public get classes(): ClassName {
-    return ['vd-menu', ...this.sharedClasses];
+    return [
+      'vd-menu',
+      ...this.sharedClasses,
+      {
+        'is-bordered': this.bordered,
+      },
+    ];
   }
 
   private render(h: CreateElement): VNode {

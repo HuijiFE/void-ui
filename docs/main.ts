@@ -18,7 +18,7 @@ import router from '@docs/router';
 import App from '@docs/App.vue';
 
 Vue.use(VoidUI, {
-  theme: VoidUI.controls.Theme.lite,
+  theme: VoidUI.controls.Theme.dark,
 });
 Vue.component(VoidBrand.name, VoidBrand);
 
