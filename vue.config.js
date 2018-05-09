@@ -79,15 +79,18 @@ module.exports = {
         }),
       ]);
 
-      config.module
-        .rule('ts')
-        .use('ts-loader')
-        .loader('ts-loader')
-        .tap(option => {
-          option.transpileOnly = false;
-          option.happyPackMode = false;
-          return option;
-        });
+      if (SOLUTION === solutionsAll.void) {
+        config.module
+          .rule('ts')
+          .use('ts-loader')
+          .loader('ts-loader')
+          .tap(option => {
+            option.transpileOnly = false;
+            option.happyPackMode = false;
+            return option;
+          });
+        console.log('======== Void-UI ========');
+      }
     }
   },
   configureWebpack: () => {},

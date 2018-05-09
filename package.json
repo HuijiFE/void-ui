@@ -1,7 +1,7 @@
 {
-  "name": "@huiji/void-ui",
+  "name": "void-ui",
   "description": "A UI toolkit for Vue.js.",
-  "version": "1.0.0-alpha.1",
+  "version": "0.1.0-alpha.1",
   "keywords": [
     "vue",
     "typescript",
