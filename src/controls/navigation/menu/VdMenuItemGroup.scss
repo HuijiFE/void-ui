@@ -1,6 +1,5 @@
 @include comp('menu-item-group') {
   @include extend-atom('menu-reset');
-  @include extend-atom('menu-part-v');
 
   @include elem('inner') {
     cursor: pointer;

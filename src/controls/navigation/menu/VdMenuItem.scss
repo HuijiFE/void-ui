@@ -1,7 +1,6 @@
 @include comp('menu-item') {
   position: relative;
   @include extend-atom('menu-reset');
-  @include extend-atom('menu-part-v');
 
   @include elem('inner') {
     color: inherit;

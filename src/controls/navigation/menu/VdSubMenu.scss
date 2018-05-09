@@ -33,7 +33,6 @@
   }
   @include when('expanded') {
     @include elem('item-wrapper') {
-      height: initial;
       opacity: 1;
     }
   }

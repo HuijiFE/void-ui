@@ -67,13 +67,17 @@ export class VdSubMenu extends VdControl implements IconControl {
   private itemWrapper!: Styler;
   private indicator!: Styler;
   private timeout!: number;
+  private itemWrapperHeight!: number;
 
   private collapse(): void {
     tween({
       from: {
-        height: (this.$refs.itemWrapper as HTMLElement).offsetHeight,
+        // height: (this.$refs.itemWrapper as HTMLElement).offsetHeight,
+        height: this.itemWrapperHeight,
       },
-      to: 0,
+      to: {
+        height: 0,
+      },
       ease,
       duration,
     }).start({
@@ -96,17 +100,17 @@ export class VdSubMenu extends VdControl implements IconControl {
     }
 
     tween({
-      from: 0,
+      from: {
+        height: 0,
+      },
       to: {
-        height: this.$children
-          .filter(c => c instanceof VdMenuItem || c instanceof VdMenuItemGroup)
-          .reduce((acc, cur) => acc + cur.$el.offsetHeight, 0),
+        height: this.itemWrapperHeight,
       },
       ease,
       duration,
     }).start({
       update: this.itemWrapper.set,
-      complete: () => this.itemWrapper.set('height', 'initial'),
+      // complete: () => this.itemWrapper.set('height', 'initial'),
     });
 
     tween({
@@ -148,6 +152,11 @@ export class VdSubMenu extends VdControl implements IconControl {
   private mounted(): void {
     this.itemWrapper = styler(this.$refs.itemWrapper as Element, {});
     this.indicator = styler(this.$refs.indicator as Element, {});
+    this.itemWrapperHeight =
+      this.$children
+        .filter(c => c instanceof VdMenuItem || c instanceof VdMenuItemGroup)
+        .reduce((acc, cur) => acc + cur.$el.offsetHeight, 0) +
+      (this.$refs.itemWrapper as HTMLElement).clientHeight;
   }
 
   private render(h: CreateElement): VNode {
