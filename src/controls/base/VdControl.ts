@@ -112,6 +112,7 @@ export class VdControl extends Vue {
   //     `vdp-shape_${this.shape}`,
   //     `vdp-size_${this.size}`,
   //     {
+  //       [`vda-raise-${this.raise}`]: this.raise,
   //       'is-disabled': this.disabled,
   //       'is-bordered': this.disabled,
   //     },

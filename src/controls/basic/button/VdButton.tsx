@@ -66,6 +66,7 @@ export class VdButton extends VdControl
       `vdp-shape_${this.shape}`,
       `vdp-size_${this.size}`,
       {
+        [`vda-raise-${this.raise}`]: this.raise,
         'is-disabled': this.disabled,
         'is-bordered': this.disabled,
         'is-wide': this.wide,
