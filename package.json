@@ -9,6 +9,7 @@
     "ui",
     "huiji"
   ],
+  "private": false,
   "license": "MIT",
   "homepage": "http://void.huijiwiki.com",
   "repository": {
