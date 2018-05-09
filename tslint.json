@@ -68,7 +68,7 @@
     "no-internal-module": true,
     "no-submodule-imports": false,
     "no-implicit-dependencies": false,
-    // "match-default-export-name": false,
+    "match-default-export-name": false,
     "import-name": false,
     "export-name": false,
     "ordered-imports": false,
