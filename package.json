@@ -1,7 +1,32 @@
 {
-  "name": "void-ui",
+  "name": "@huiji/void-ui",
+  "description": "A UI toolkit for Vue.js.",
   "version": "0.1.0-alpha.1",
-  "private": true,
+  "keywords": [
+    "vue",
+    "typescript",
+    "components",
+    "ui",
+    "huiji"
+  ],
+  "license": "MIT",
+  "homepage": "http://void.huijiwiki.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HuijiFE/void-ui"
+  },
+  "bugs": {
+    "url": "https://github.com/HuijiFE/void-ui/issues"
+  },
+  "files": [
+    "dist",
+    "public",
+    "src",
+    "types"
+  ],
+  "main": "dist/void-ui.common.js",
+  "module": "dist/void-ui.common.js",
+  "types": "typings/src/index.d.ts",
   "scripts": {
     "ts": "ts-node -P scripts/tsconfig.json",
     "gen-files": "yarn ts scripts/gen-files.ts",
@@ -17,9 +42,11 @@
   "dependencies": {
     "normalize.css": "^8.0.0",
     "popmotion": "^8.1.22",
-    "vue": "^2.5.16",
     "vue-class-component": "^6.2.0",
     "vue-property-decorator": "^6.0.0"
+  },
+  "peerDependencies": {
+    "vue": "^2.5.16",
   },
   "devDependencies": {
     "@fortawesome/fontawesome": "^1.1.7",
