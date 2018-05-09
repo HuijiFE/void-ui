@@ -46,7 +46,7 @@
     "vue-property-decorator": "^6.0.0"
   },
   "peerDependencies": {
-    "vue": "^2.5.16",
+    "vue": "^2.5.16"
   },
   "devDependencies": {
     "@fortawesome/fontawesome": "^1.1.7",
