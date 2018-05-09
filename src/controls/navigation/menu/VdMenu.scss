@@ -76,17 +76,9 @@ $menu-sub-wrapper-min-width: 12.8rem;
 @include comp('menu') {
   // initial
   @include extend-atom('menu-reset');
-  @include elem('start') {
+  @include elem('start', 'center', 'end') {
     @include extend-atom('menu-reset');
   }
-  @include elem('center') {
-    @include extend-atom('menu-reset');
-  }
-  @include elem('end') {
-    @include extend-atom('menu-reset');
-  }
-
-  height: 100%;
 
   font-size: $menu-font-size;
 
@@ -94,16 +86,13 @@ $menu-sub-wrapper-min-width: 12.8rem;
 
   @include prop((direction: 'vertical')) {
     @include extend-atom('menu-part-v');
+    height: 100%;
     padding: $menu-padding 0;
 
-    @include elem('start') {
-      @include extend-atom('menu-part-v');
-    }
-    @include elem('center') {
+    @include elem('start', 'center', 'end') {
       @include extend-atom('menu-part-v');
     }
     @include elem('end') {
-      @include extend-atom('menu-part-v');
       margin-top: auto;
     }
   }
@@ -113,14 +102,11 @@ $menu-sub-wrapper-min-width: 12.8rem;
   @include prop((direction: 'horizontal')) {
     @include extend-atom('menu-part-h');
 
-    @include elem('start') {
+    @include elem('start', 'center', 'end') {
       @include extend-atom('menu-part-h');
-    }
-    @include elem('center') {
-      @include extend-atom('menu-part-h');
+      min-height: $menu-item-height;
     }
     @include elem('end') {
-      @include extend-atom('menu-part-h');
       margin-left: auto;
     }
   }
