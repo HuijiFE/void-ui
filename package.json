@@ -29,7 +29,7 @@
   ],
   "main": "dist/void-ui.common.js",
   "module": "dist/void-ui.common.js",
-  "types": "typings/src/index.d.ts",
+  "types": "typings/index.d.ts",
   "scripts": {
     "ts": "ts-node -P scripts/tsconfig.json",
     "gen-files": "yarn ts scripts/gen-files.ts",
