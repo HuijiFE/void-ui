@@ -10,7 +10,7 @@ import {
 } from 'vue-property-decorator';
 import { VNode, CreateElement, VNodeChildrenArrayContents } from 'vue';
 import { Location } from 'vue-router/types/router';
-import { VdControl } from '@void/controls/base/VdControl';
+
 import { VdMenu } from '@void/controls/navigation/menu/VdMenu';
 import { VdSubMenu } from '@void/controls/navigation/menu/VdSubMenu';
 import { MenuItem } from '@void/controls/navigation/menu/VdMenuModels';
@@ -19,7 +19,7 @@ import { MenuItem } from '@void/controls/navigation/menu/VdMenuModels';
  * Control MenuItemGroup
  */
 @Component
-export class VdMenuItemGroup extends VdControl {
+export class VdMenuItemGroup extends Vue {
   // tslint:disable-next-line:no-null-keyword
   private menu: VdMenu | null = null;
 

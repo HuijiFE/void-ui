@@ -11,7 +11,8 @@ import {
 import { VNode, CreateElement, VNodeChildrenArrayContents } from 'vue';
 import { Location } from 'vue-router/types/router';
 
-import { VdControl, IconControl } from '@void/controls/base/VdControl';
+import { IconControl } from '@void/controls/base/VdControl';
+
 import { VdMenu } from '@void/controls/navigation/menu/VdMenu';
 import { VdMenuItem } from '@void/controls/navigation/menu/VdMenuItem';
 import { VdMenuItemGroup } from '@void/controls/navigation/menu/VdMenuItemGroup';
@@ -27,7 +28,7 @@ const duration: number = 300;
  * Control SubMenu
  */
 @Component
-export class VdSubMenu extends VdControl implements IconControl {
+export class VdSubMenu extends Vue implements IconControl {
   // tslint:disable-next-line:no-null-keyword
   private menu: VdMenu | null = null;
 

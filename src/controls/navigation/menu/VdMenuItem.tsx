@@ -21,7 +21,7 @@ import { FontAwesomeIconProps } from '@void/controls/basic/icon/VdIcon';
  * Control NavbarItem
  */
 @Component
-export class VdMenuItem extends VdControl implements IconControl, RouterControl {
+export class VdMenuItem extends Vue implements IconControl, RouterControl {
   // tslint:disable-next-line:no-null-keyword
   private menu: VdMenu | null = null;
 

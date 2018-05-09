@@ -8,9 +8,11 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { Skin, VdControl } from '@void/controls/base/VdControl';
 import { CreateElement, VNode } from 'vue';
 import { Location } from 'vue-router/types/router';
+
+import { Skin, VdControl } from '@void/controls/base/VdControl';
+
 import { VdMenuItem } from '@void/controls/navigation/menu/VdMenuItem';
 import { VdSubMenu } from '@void/controls/navigation/menu/VdSubMenu';
 import {
