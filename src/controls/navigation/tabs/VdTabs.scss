@@ -23,4 +23,11 @@
       padding: 0 $tab-padding;
     }
   }
+
+  @each $theme in $enum-theme {
+    @include prop((theme: $theme)) {
+      color: theme('#{$theme}-fg-normal');
+      background-color: theme('#{$theme}-bg-normal');
+    }
+  }
 }
