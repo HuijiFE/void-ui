@@ -24,10 +24,10 @@ export class VdMenuItemGroup extends VdControl {
   private menu: VdMenu | null = null;
 
   @Prop({ type: String, required: true })
-  public groupLabel: string;
+  public groupLabel!: string;
 
   @Prop({ type: Array, default: () => [] })
-  public itemsSource: MenuItem[];
+  public itemsSource!: MenuItem[];
 
   private isSubItem: boolean = false;
 

@@ -102,7 +102,12 @@ module.exports = {
   // CSS related options
   css: {
     // extract CSS in components into a single CSS file (only in production)
+    // can also be an object of options to pass to extract-text-webpack-plugin
     extract: true,
+
+    // Enable CSS modules for all css / pre-processor files.
+    // This option does not affect *.vue files.
+    modules: false,
 
     // enable CSS source maps?
     sourceMap: false,
@@ -110,10 +115,6 @@ module.exports = {
     // pass custom options to pre-processor loaders. e.g. to pass options to
     // sass-loader, use { sass: { ... } }
     loaderOptions: {},
-
-    // Enable CSS modules for all css / pre-processor files.
-    // This option does not affect *.vue files.
-    modules: false,
   },
 
   // use thread-loader for babel & TS in production build
@@ -123,7 +124,7 @@ module.exports = {
   // split vendors using autoDLLPlugin?
   // can also be an explicit Array of dependencies to include in the DLL chunk.
   // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#dll-mode
-  dll: true,
+  dll: false,
 
   // options for the PWA plugin.
   // see https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa

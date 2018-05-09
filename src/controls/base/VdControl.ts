@@ -77,32 +77,32 @@ export class VoidHub extends Vue {
 @Component
 export class VdControl extends Vue {
   @Prop({ type: String })
-  public theme: Theme;
+  public theme!: Theme;
 
   public get $theme(): Theme {
     return this.theme || VoidHub.$void.theme;
   }
 
   @Prop({ type: String, default: 'primary' })
-  public tone: Tone;
+  public tone!: Tone;
 
   @Prop({ type: String, default: 'fill' })
-  public skin: Skin;
+  public skin!: Skin;
 
   @Prop({ type: String, default: 'rect' })
-  public shape: Shape;
+  public shape!: Shape;
 
   @Prop({ type: String, default: 'medium' })
-  public size: Size;
+  public size!: Size;
 
   @Prop({ type: [Number, String], default: 0 })
-  public raise: number | string;
+  public raise!: number | string;
 
   @Prop({ type: Boolean, default: false })
-  public disabled: boolean;
+  public disabled!: boolean;
 
   @Prop({ type: Boolean, default: false })
-  public bordered: boolean;
+  public bordered!: boolean;
 
   // public get classes(): ClassName {
   //   return [

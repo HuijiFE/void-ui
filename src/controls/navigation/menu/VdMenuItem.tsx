@@ -30,22 +30,22 @@ export class VdMenuItem extends VdControl implements IconControl, RouterControl 
   private group?: VdMenuItemGroup;
 
   @Prop({ type: String })
-  public label: string;
+  public label!: string;
 
   @Prop({ type: String })
-  public icon: string;
+  public icon!: string;
 
   @Prop({ type: [String, Array, Object] })
-  public fa: string | string[] | FontAwesomeIconProps;
+  public fa!: string | string[] | FontAwesomeIconProps;
 
   @Prop({ type: [String, Object] })
-  public to: string | Location;
+  public to!: string | Location;
 
   @Prop({ type: String })
-  public href: string;
+  public href!: string;
 
   @Prop({ type: String })
-  public target: string;
+  public target!: string;
 
   private isSubItem: boolean = false;
   private isGroupItem: boolean = false;

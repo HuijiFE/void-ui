@@ -28,34 +28,34 @@ export class VdButton extends VdControl
   implements IconControl, RouterControl, LoadingControl {
   @Prop({ type: String, default: 'button' })
   // tslint:disable-next-line:no-reserved-keywords
-  public type: string;
+  public type!: string;
 
   @Prop({ type: String })
-  public content: string;
+  public content!: string;
 
   @Prop({ type: Boolean, default: false })
-  public wide: boolean;
+  public wide!: boolean;
 
   @Prop({ type: String })
-  public icon: string;
+  public icon!: string;
 
   @Prop({ type: [String, Array, Object] })
-  public fa: string | string[] | FontAwesomeIconProps;
+  public fa!: string | string[] | FontAwesomeIconProps;
 
   @Prop({ type: String, default: 'left' })
-  public iconPosition: 'left' | 'right';
+  public iconPosition!: 'left' | 'right';
 
   @Prop({ type: [String, Object] })
-  public to: string | Location;
+  public to!: string | Location;
 
   @Prop({ type: String })
-  public href: string;
+  public href!: string;
 
   @Prop({ type: String })
-  public target: string;
+  public target!: string;
 
   @Prop({ type: Boolean, default: false })
-  public loading: boolean;
+  public loading!: boolean;
 
   public get classes(): ClassName {
     return [

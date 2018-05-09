@@ -38,10 +38,10 @@ import {
 @Component
 export default class VoidBrand extends Vue {
   @Prop({ type: String, default: 'lite' })
-  private colorLeft: string;
+  private colorLeft!: string;
 
   @Prop({ type: String, default: 'dark' })
-  private colorRight: string;
+  private colorRight!: string;
 }
 </script>
 

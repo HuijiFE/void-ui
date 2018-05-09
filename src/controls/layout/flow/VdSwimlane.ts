@@ -17,7 +17,7 @@ import { VdControl } from '@void/controls/base/VdControl';
 @Component
 export class VdSwimlane extends VdControl {
   @Prop({ type: Boolean, default: false })
-  private oddeven: boolean;
+  private oddeven!: boolean;
 
   private render(h: CreateElement): VNode {
     return h(

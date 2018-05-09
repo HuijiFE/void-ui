@@ -31,16 +31,16 @@ export class VdSubMenu extends VdControl implements IconControl {
   private menu: VdMenu | null = null;
 
   @Prop({ type: String, required: true })
-  public subMenuLabel: string;
+  public subMenuLabel!: string;
 
   @Prop({ type: String })
-  public icon: string;
+  public icon!: string;
 
   @Prop({ type: String })
-  public fa: string;
+  public fa!: string;
 
   @Prop({ type: Array, default: () => [] })
-  public itemsSource: (MenuItem | MenuItemGroup)[];
+  public itemsSource!: (MenuItem | MenuItemGroup)[];
 
   public expanded: boolean = false;
 
@@ -63,9 +63,10 @@ export class VdSubMenu extends VdControl implements IconControl {
     ];
   }
 
-  private itemWrapper: Styler;
-  private indicator: Styler;
-  private timeout: number;
+  // no reactive, do not init
+  private itemWrapper!: Styler;
+  private indicator!: Styler;
+  private timeout!: number;
 
   private collapse(): void {
     tween({

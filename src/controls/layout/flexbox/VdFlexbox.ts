@@ -129,61 +129,61 @@ export class VdFlexbox extends Vue {
    * Flexibility.
    */
   @Prop({ type: [String, Number] })
-  public flex: Flex;
+  public flex!: Flex;
 
   @Prop({ type: [String, Number] })
-  public flexXsmall: Flex;
+  public flexXsmall!: Flex;
 
   @Prop({ type: [String, Number] })
-  public flexSmall: Flex;
+  public flexSmall!: Flex;
 
   @Prop({ type: [String, Number] })
-  public flexMedium: Flex;
+  public flexMedium!: Flex;
 
   @Prop({ type: [String, Number] })
-  public flexLarge: Flex;
+  public flexLarge!: Flex;
 
   @Prop({ type: [String, Number] })
-  public flexXlarge: Flex;
+  public flexXlarge!: Flex;
 
   /**
    * Visibility.
    */
   @Prop({ type: Boolean, default: false })
-  public hidden: boolean;
+  public hidden!: boolean;
 
   @Prop({ type: Boolean, default: false })
-  public hiddenXsmall: boolean;
+  public hiddenXsmall!: boolean;
 
   @Prop({ type: Boolean, default: false })
-  public hiddenSmall: boolean;
+  public hiddenSmall!: boolean;
 
   @Prop({ type: Boolean, default: false })
-  public hiddenMedium: boolean;
+  public hiddenMedium!: boolean;
 
   @Prop({ type: Boolean, default: false })
-  public hiddenLarge: boolean;
+  public hiddenLarge!: boolean;
 
   @Prop({ type: Boolean, default: false })
-  public hiddenXlarge: boolean;
+  public hiddenXlarge!: boolean;
 
   /**
    * Gutter between sub flexbox content.
    */
   @Prop({ type: String })
-  public gutter: FlexGutter;
+  public gutter!: FlexGutter;
 
   /**
    * Flex flow direction.
    */
   @Prop({ type: String })
-  public direction: FlexDirection;
+  public direction!: FlexDirection;
 
   /**
    * Flex line wrapping.
    */
   @Prop({ type: String })
-  public wrap: FlexWrap;
+  public wrap!: FlexWrap;
 
   // @Prop({ type: Number })
   // public order: number;
@@ -192,19 +192,19 @@ export class VdFlexbox extends Vue {
    * Axis alignment.
    */
   @Prop({ type: String })
-  public justify: FlexJustify;
+  public justify!: FlexJustify;
 
   /**
    * Cross alignment.
    */
   @Prop({ type: String })
-  public align: FlexAlign;
+  public align!: FlexAlign;
 
   /**
    * Cross alignment for itself.
    */
   @Prop({ type: String })
-  public alignSelf: FlexAlign;
+  public alignSelf!: FlexAlign;
 
   private render(h: CreateElement): VNode {
     return h(
