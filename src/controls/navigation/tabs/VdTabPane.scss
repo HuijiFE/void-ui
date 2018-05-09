@@ -1,0 +1,17 @@
+$tab-padding: 0.8rem;
+
+$tab-transition-duration: 0.2s;
+
+@include comp('tab-pane') {
+  position: relative;
+
+  min-width: 100%;
+  flex: 0 1 100%;
+
+  opacity: 0;
+  @include when('selected') {
+    opacity: 1;
+  }
+  transition: opacity ease-in-out $tab-transition-duration;
+  transform: translate3d(0);
+}

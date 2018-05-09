@@ -1,56 +1,13 @@
 <template>
   <div class="controls">
-    <vd-flexbox gutter="auto"
-                align="stretch">
-      <vd-flexbox style="height: 256px">
-      </vd-flexbox>
-      <vd-flexbox justify="center"
-                  align="center">
-        <vd-button :tone="tone"
-                   :skin="skin"
-                   :shape="shape"
-                   :size="size"
-                   :fa="['fab', 'github']"
-                   @click="onClick">按钮</vd-button>
-        <vd-button tone="primary"
-                   :skin="skin"
-                   :shape="shape"
-                   :size="size"
-                   :fa="['fab', 'firefox']">按钮</vd-button>
-        <vd-button tone="secondary"
-                   :skin="skin"
-                   :shape="shape"
-                   :size="size"
-                   :fa="['fab', 'chrome']">按钮</vd-button>
-        <vd-button tone="success"
-                   :skin="skin"
-                   :shape="shape"
-                   :size="size"
-                   :fa="['fab', 'safari']">按钮</vd-button>
-        <vd-button tone="warning"
-                   :skin="skin"
-                   :shape="shape"
-                   :size="size"
-                   :fa="['fab', 'opera']">按钮</vd-button>
-        <vd-button tone="danger"
-                   :skin="skin"
-                   :shape="shape"
-                   :size="size"
-                   :fa="['fab', 'internet-explorer']">按钮</vd-button>
-        <vd-button :tone="tone"
-                   :skin="skin"
-                   :shape="shape"
-                   :size="size"
-                   :fa="['fab', 'edge']">按钮</vd-button>
-        <vd-button :tone="tone"
-                   :skin="skin"
-                   :shape="shape"
-                   :size="size"
-                   :fa="['fas', 'ban']"
-                   disabled>按钮</vd-button>
-      </vd-flexbox>
-      <vd-flexbox></vd-flexbox>
-    </vd-flexbox>
+    <vd-swimlane>
+      <vd-clamp>
+        <vd-tabs>
+          <vd-tab-pane label="123">据卡普空财报显示，截至2018年3月31日，《怪物猎人：世界》总销量过790万，公司也借此游戏获得历史最高净利润，约6.39亿元。<br />报告显示，2017年4月1日至2018年3月31日间，卡普空的总销售额约945.15亿日元，约合人民币55.21亿元，同比增长8.4%；净利润约109.37亿日元，约合人民6.39亿元，同比增长23.2%。业绩增长主要受《怪物猎人：世界》的良好表现。<br />20180508c1.jpg<br />产品方面，《怪物猎人：世界》在2018年1月发售，覆盖PS4、Xbox<br />One等平台，截止到3月31日全球销量已过790万，成为卡普空历史上最畅销的游戏产品。财报称，该怪物猎人系列新品在满足老玩家同时，还吸引了一大批新玩家，同时带动了PS4、XboxOne的销售。<br />此外，《生化危机7》以及Switch版《怪物猎人XX》等依旧保持着强劲的收益率，Switch版《终极街头霸王2》也有着较好的销售成绩，面向欧美市场发售的游戏作品《漫画英雄VS卡普空无限》销售成绩不佳。主机平台之外，手游《怪物猎人：探险》收入稳定。（完）<br /></vd-tab-pane>
+          <vd-tab-pane label="456">据卡普空财报显示，截至2018年3月31日，《怪物猎人：世界》总销量过790万，公司也借此游戏获得历史最高净利润，约6.39亿元。<br />报告显示，2017年4月1日至2018年3月31日间，卡普空的总销售额约945.15亿日元，约合人民币55.21亿元，同比增长8.4%；净利润约109.37亿日元，约合人民6.39亿元，同比增长23.2%。业绩增长主要受《怪物猎人：世界》的良好表现。<br />20180508c1.jpg<br />产品方面，《怪物猎人：世界》在2018年1月发售，覆盖PS4、Xbox<br />One等平台，截止到3月31日全球销量已过790万，成为卡普空历史上最畅销的游戏产品。财报称，该怪物猎人系列新品在满足老玩家同时，还吸引了一大批新玩家，同时带动了PS4、XboxOne的销售。<br />此外，《生化危机7》以及Switch版《怪物猎人XX》等依旧保持着强劲的收益率，Switch版《终极街头霸王2》也有着较好的销售成绩，面向欧美市场发售的游戏作品《漫画英雄VS卡普空无限》销售成绩不佳。主机平台之外，手游《怪物猎人：探险》收入稳定。（完）<br /></vd-tab-pane>
+        </vd-tabs>
+      </vd-clamp>
+    </vd-swimlane>
   </div>
 </template>
 

@@ -1,4 +1,9 @@
+/**
+ * Control: MenuItem
+ */
 @include comp('menu-item') {
+  cursor: pointer;
+
   position: relative;
   @include extend-atom('menu-reset');
 

@@ -50,7 +50,7 @@ export class VdMenuItem extends VdControl implements IconControl, RouterControl 
   private isSubItem: boolean = false;
   private isGroupItem: boolean = false;
 
-  public get isSelected(): boolean {
+  public get selected(): boolean {
     return !!(this.menu && this.menu.selectedItem === this);
   }
 
@@ -61,7 +61,7 @@ export class VdMenuItem extends VdControl implements IconControl, RouterControl 
       {
         'is-sub-item': this.isSubItem,
         'is-group-item': this.isGroupItem,
-        'is-selected': this.isSelected,
+        'is-selected': this.selected,
       },
     ];
   }
@@ -117,7 +117,7 @@ export class VdMenuItem extends VdControl implements IconControl, RouterControl 
   }
 
   private render(h: CreateElement): VNode {
-    const inner: JSX.Element = (
+    const inner: VNode = (
       <a
         class="vd-menu-item_inner"
         href={this.href}

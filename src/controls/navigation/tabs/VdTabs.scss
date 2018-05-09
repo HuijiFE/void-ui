@@ -1,0 +1,26 @@
+/**
+ * Control: Tabs
+ */
+@include comp('tabs') {
+  position: relative;
+
+  @include elem('body') {
+    padding: $tab-padding;
+  }
+
+  @include elem('pane-wrapper') {
+    width: 100%;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: nowrap;
+  }
+
+  @include prop((skin: 'plain')) {
+    @include elem('header') {
+      padding: 0 $tab-padding;
+    }
+  }
+}

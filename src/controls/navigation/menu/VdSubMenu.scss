@@ -1,3 +1,6 @@
+/**
+ * Control: SubMenu
+ */
 @include comp('sub-menu') {
   @include extend-atom('menu-reset');
   @include elem('item-wrapper') {
@@ -30,6 +33,7 @@
     opacity: 0;
 
     transition: opacity $menu-anime-timing-function $menu-anime-duration;
+    transform: translate3d(0);
   }
   @include when('expanded') {
     @include elem('item-wrapper') {

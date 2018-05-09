@@ -10,14 +10,15 @@ import {
 } from 'vue-property-decorator';
 import { VNode, CreateElement, VNodeChildrenArrayContents } from 'vue';
 import { Location } from 'vue-router/types/router';
+
 import { VdControl, IconControl } from '@void/controls/base/VdControl';
 import { VdMenu } from '@void/controls/navigation/menu/VdMenu';
 import { VdMenuItem } from '@void/controls/navigation/menu/VdMenuItem';
+import { VdMenuItemGroup } from '@void/controls/navigation/menu/VdMenuItemGroup';
 import { MenuItem, MenuItemGroup } from '@void/controls/navigation/menu/VdMenuModels';
 
 import { easing, styler, tween } from 'popmotion';
 import { Styler } from 'stylefire';
-import { VdMenuItemGroup } from '@void/controls/navigation/menu/VdMenuItemGroup';
 
 const ease: easing.Easing = easing.easeInOut;
 const duration: number = 300;

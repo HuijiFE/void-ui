@@ -73,7 +73,12 @@ $menu-sub-wrapper-min-width: 12.8rem;
   transition-property: all background-color;
 }
 
+/**
+ * Control: Menu
+ */
 @include comp('menu') {
+  user-select: none;
+
   // initial
   @include extend-atom('menu-reset');
   @include elem('start', 'center', 'end') {
@@ -126,7 +131,6 @@ $menu-sub-wrapper-min-width: 12.8rem;
       top: 0;
       bottom: 0;
       width: $border-width-base;
-      height: 100%;
     }
   }
 
@@ -144,7 +148,8 @@ $menu-sub-wrapper-min-width: 12.8rem;
   @include prop((skin: 'plain', direction: 'horizontal')) {
     &::before {
       bottom: 0;
-      width: 100%;
+      left: 0;
+      right: 0;
       height: $border-width-base;
     }
   }
