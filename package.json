@@ -1,7 +1,7 @@
 {
   "name": "void-ui",
   "description": "A UI toolkit for Vue.js.",
-  "version": "0.1.1-alpha.1",
+  "version": "0.1.2-alpha.1",
   "keywords": [
     "vue",
     "typescript",
@@ -29,7 +29,7 @@
   ],
   "main": "dist/void-ui.common.js",
   "module": "dist/void-ui.common.js",
-  "types": "typings/index.d.ts",
+  "types": "types/index.d.ts",
   "scripts": {
     "ts": "ts-node -P scripts/tsconfig.json",
     "gen-files": "yarn ts scripts/gen-files.ts",
