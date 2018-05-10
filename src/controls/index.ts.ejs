@@ -5,7 +5,7 @@
 export * from '@void/controls/base/VdControl';
 <%- 
 globby
-  .sync(['src/controls/*/**/*.ts', 'src/controls/*/**/*.tsx', 'src/controls/*/**/*.vue'])
+  .sync(['ts', 'tsx', 'vue'].map(ext => `src/controls/*/**/*.${ext}`))
   .filter(file => !/\/base\//.test(file))
   .map(
     file =>
