@@ -21,15 +21,15 @@
     }
   },
   "include": [
-    "docs/**/*.ts",
-    "docs/**/*.tsx",
-    "docs/**/*.vue",
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
+    "docs/**/*.ts",
+    "docs/**/*.tsx",
+    "docs/**/*.vue",
     // "tests/**/*.ts",
-    "typings/*.d.ts",
-    "scripts/**/*.ts"
+    "scripts/**/*.ts",
+    "typings/*.d.ts"
   ],
   "exclude": ["node_modules"]
 }

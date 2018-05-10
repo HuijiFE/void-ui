@@ -10,3 +10,9 @@ export function toAlias(path: string): string {
 
   return path;
 }
+
+export function getArgv(): string[] {
+  return process.argv
+    .filter(arg => arg.startsWith('--'))
+    .map(arg => arg.replace(/^--/, ''));
+}

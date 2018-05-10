@@ -6,6 +6,7 @@ node_modules
 /types/controls
 /types/locales
 /types/VoidUI.d.ts
+tsconfig.json
 
 # local env files
 .env.local

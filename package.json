@@ -1,7 +1,7 @@
 {
   "name": "void-ui",
   "description": "A UI toolkit for Vue.js.",
-  "version": "0.1.3-alpha.1",
+  "version": "0.1.4-alpha.1",
   "keywords": [
     "vue",
     "typescript",
@@ -31,10 +31,11 @@
   "module": "dist/void-ui.common.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "ts": "ts-node -P scripts/tsconfig.json",
+    "ts": "ts-node -P scripts/tsconfig.script.json",
+    "switch-config": "yarn ts scripts/switch-config.ts",
     "gen-files": "yarn ts scripts/gen-files.ts",
     "gen-variables": "yarn ts scripts/gen-variables.ts",
-    "gen-types": "yarn ts scripts/gen-types.ts --pre && tsc -p types/tsconfig.json --emitDeclarationOnly",
+    "gen-types": "yarn ts scripts/gen-types.ts --pre && tsc -p types/tsconfig.json --emitDeclarationOnly && yarn ts scripts/gen-types.ts --post",
     "serve": "VUE_SOLUTION=docs vue-cli-service serve docs/main.ts",
     "build:void": "VUE_SOLUTION=void vue-cli-service build src/VoidUI.ts --target lib",
     "build:docs": "VUE_SOLUTION=docs vue-cli-service build docs/main.ts",
@@ -48,6 +49,9 @@
     "popmotion": "^8.1.22",
     "vue-class-component": "^6.2.0",
     "vue-property-decorator": "^6.0.0"
+  },
+  "peerDependencies": {
+    "vue": "^2.5.16"
   },
   "devDependencies": {
     "@fortawesome/fontawesome": "^1.1.7",

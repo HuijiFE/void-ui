@@ -1,1 +1,4 @@
-declare type ClassName = (string | any)[];
+/**
+ * Type of css class name in vue.
+ */
+declare type ClassName = (string | { [x: string]: any })[];
