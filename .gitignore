@@ -1,8 +1,11 @@
 .DS_Store
 node_modules
+/temp
 /dist
-/types/src
 /www
+/types/controls
+/types/locales
+/types/VoidUI.d.ts
 
 # local env files
 .env.local

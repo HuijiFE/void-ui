@@ -1,16 +1,5 @@
-import { PluginFunction, PluginObject } from 'vue';
+import './shims';
+import './vue';
 
-export interface VoidUIPluginOption {
-  locale?: string;
-  theme?: controls.Theme;
-}
-
-export interface VoidUIPlugin extends PluginObject<VoidUIPluginOption> {
-  readonly version?: string;
-  installed: boolean;
-  controls: typeof controls;
-}
-
-const VoidUI: VoidUIPlugin;
-
-export default VoidUI;
+export * from './VoidUI';
+export { default as VoidUI } from './VoidUI';

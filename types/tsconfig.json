@@ -12,24 +12,8 @@
     "emitDecoratorMetadata": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "outDir": "dist",
-    "baseUrl": ".",
-    "paths": {
-      // "@/*": ["src/*"],
-      "@void/*": ["src/*"],
-      "@docs/*": ["docs/*"]
-    }
+    "declaration": true,
+    "outDir": "."
   },
-  "include": [
-    "docs/**/*.ts",
-    "docs/**/*.tsx",
-    "docs/**/*.vue",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    // "tests/**/*.ts",
-    "typings/*.d.ts",
-    "scripts/**/*.ts"
-  ],
-  "exclude": ["node_modules"]
+  "include": ["../temp/"]
 }

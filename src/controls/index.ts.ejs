@@ -11,7 +11,7 @@ globby
     file =>
       path.extname(file) === '.vue'
         ? `export { default as ${path.basename(file, '.vue')} } from '${toAlias(file)}';`
-        : `export * from '${toAlias(file.replace(/.ts$/, ''))}';`
+        : `export * from '${toAlias(file.replace(/.tsx?$/, ''))}';`
   )
   .join('\n');
 %>
