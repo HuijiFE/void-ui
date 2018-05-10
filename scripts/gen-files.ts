@@ -24,4 +24,14 @@ function genFile(template: string): void {
   });
 }
 
-globby.sync(['src/**/*.ejs', 'docs/**/*.ejs']).forEach(genFile);
+const patterns: string[] = fs
+  .readdirSync('.')
+  .filter(
+    name =>
+      name !== 'node_modules' &&
+      !name.startsWith('.') &&
+      fs.lstatSync(name).isDirectory(),
+  )
+  .map(dir => `${dir}/**/*.ejs`);
+
+globby.sync(patterns).forEach(genFile);
