@@ -142,4 +142,6 @@ function postProcess(): void {
       });
     }),
   );
+
+  rimraf('temp', {}, () => undefined);
 }
