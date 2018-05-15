@@ -81,13 +81,13 @@ html {
   --vd-grade-4:     #58d000;
   --vd-grade-5:     #24cf4c;
 
-  /*-------- acrylic --------*/
+  /*-------- shape --------*/
+
+  /*-------- size --------*/
 
   /*-------- skin --------*/
 
-  /*-------- shape --------*/
-
-  /*-------- size --------*/  
+  /*-------- acrylic --------*/
 
   /*-------- typographic --------*/
 
@@ -199,17 +199,25 @@ $grade-map: (
   5:    var(--vd-grade-5),
 );
 
-/*-------- acrylic --------*/
-
-/*-------- skin --------*/
-
 /*-------- shape --------*/
 $border-radius-base:    0.2rem;
 $border-width-base:     0.1rem;
 $border-initial:        $border-width-base solid transparent;
 
-/*-------- size --------*/  
+/*-------- size --------*/
 
+$gutter-base: 1.6rem;
+
+/*-------- skin --------*/
+
+/*-------- acrylic --------*/
+
+$acrylic-expand:    ($gutter-base * 4);
+$acrylic-blur:      32px;
+$acrylic-brightness-map: (
+  lite:     85%,
+  dark:     115%,
+);
 
 /*-------- typographic --------*/
 
@@ -221,8 +229,6 @@ $line-height-normal:  var(--vd-line-height-normal);
 $line-height-base:    var(--vd-line-height-base);
 
 /**-------- layout --------*/
-
-$gutter-base: 1.6rem;
 
 $breakpoint-map: (
   xsmall:     768px,
@@ -298,13 +304,4 @@ $button-size-map-circle: (
   medium:     4.8rem,
   large:      5.6rem,
   xlarge:     6.4rem,
-);
-
-/*-------- acrylic --------*/
-
-$acrylic-expand:    ($gutter-base * 4);
-$acrylic-blur:      32px;
-$acrylic-brightness-map: (
-  lite:     85%,
-  dark:     115%,
 );
