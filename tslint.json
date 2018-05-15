@@ -69,6 +69,7 @@
     "no-submodule-imports": false,
     "no-implicit-dependencies": false,
     "match-default-export-name": false,
+    "max-classes-per-file": false,
     "import-name": false,
     "export-name": false,
     "ordered-imports": false,

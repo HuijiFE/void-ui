@@ -38,12 +38,13 @@ export class VdTabPane extends VdControl {
       'vd-tab-pane',
       {
         'is-selected': this.selected,
+        'is-hidden': !this.selected,
       },
     ];
   }
 
   public select(): void {
-    this.tabs.selectedPane = this;
+    this.tabs.select(this);
   }
 
   private beforeMount(): void {

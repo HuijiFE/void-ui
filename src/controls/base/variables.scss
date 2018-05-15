@@ -91,8 +91,9 @@ html {
 
   /*-------- typographic --------*/
 
-  --vd-font-size-base:    1.4rem;
-  --vd-line-height-base:  3.2rem;
+  --vd-font-size-base:      1.4rem;
+  --vd-line-height-normal:  1.571432;
+  --vd-line-height-base:    3.2rem;
 }
 
 /*-------- enum  --------*/
@@ -204,7 +205,7 @@ $grade-map: (
 
 /*-------- shape --------*/
 $border-radius-base:    0.2rem;
-$border-width-base:     1px;
+$border-width-base:     0.1rem;
 $border-initial:        $border-width-base solid transparent;
 
 /*-------- size --------*/  
@@ -215,10 +216,13 @@ $border-initial:        $border-width-base solid transparent;
 $font-family-base: 'Helvetica Neue', 'Helvetica', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', 'Arial', 'sans-serif';
 $font-family-code: 'Source Sans Pro', 'Helvetica Neue', 'Arial', 'sans-serif';
 
-$font-base:         var(--vd-font-size-base);
-$line-height-base:  var(--vd-line-height-base);
+$font-size-base:      var(--vd-font-size-base);
+$line-height-normal:  var(--vd-line-height-normal);
+$line-height-base:    var(--vd-line-height-base);
 
 /**-------- layout --------*/
+
+$gutter-base: 1.6rem;
 
 $breakpoint-map: (
   xsmall:     768px,
@@ -294,4 +298,13 @@ $button-size-map-circle: (
   medium:     4.8rem,
   large:      5.6rem,
   xlarge:     6.4rem,
-)
+);
+
+/*-------- acrylic --------*/
+
+$acrylic-expand:    ($gutter-base * 4);
+$acrylic-blur:      32px;
+$acrylic-brightness-map: (
+  lite:     85%,
+  dark:     115%,
+);

@@ -14,7 +14,7 @@ import { VdTabPane } from '@void/controls/navigation/tabs/VdTabPane';
 import { MenuItem } from '@void/controls/navigation/menu/VdMenuModels';
 
 import { easing, tween } from 'popmotion';
-const duration: number = 400;
+const duration: number = 300;
 
 /**
  * Control Tabs
@@ -29,9 +29,21 @@ export class VdTabs extends VdControl {
   // tslint:disable-next-line:no-null-keyword
   public selectedPane: VdTabPane | null = null;
 
+  private changing: boolean = false;
+
+  public select(pane: VdTabPane): void {
+    if (this.changing) {
+      return;
+    }
+
+    this.selectedPane = pane;
+  }
+
   @Watch('selectedPane')
   private movePane(newPane: VdTabPane, oldPane: VdTabPane): void {
     if (newPane && oldPane && newPane !== oldPane) {
+      this.changing = true;
+
       const newIndex: number = this.panes.indexOf(newPane);
       const oldIndex: number = this.panes.indexOf(oldPane);
 
@@ -44,22 +56,23 @@ export class VdTabs extends VdControl {
         to: -100 * oldIndex - direction * 50,
         ease: easing.easeIn,
         duration,
-      }).start((v: number) => oldPane.styler.set('x', `${v}%`));
+      }).start({
+        update: (v: number) => oldPane.styler.set('x', `${v}%`),
+        complete: () => {
+          this.changing = false;
+          oldPane.styler.set('x', 0);
+        },
+      });
 
       tween({
         from: -100 * newIndex + direction * 50,
         to: -100 * newIndex,
         ease: easing.easeOut,
         duration,
-      }).start((v: number) => newPane.styler.set('x', `${v}%`));
+      }).start({
+        update: (v: number) => newPane.styler.set('x', `${v}%`),
+      });
     }
-  }
-
-  public get headerItems(): MenuItem[] {
-    return this.panes.map(pane => ({
-      label: pane.label,
-      onClick: () => (this.selectedPane = pane),
-    }));
   }
 
   public get classes(): ClassName {

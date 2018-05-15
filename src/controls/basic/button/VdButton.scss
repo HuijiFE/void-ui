@@ -183,3 +183,16 @@
     }
   }
 }
+
+/**
+ * Control: ButtonWrapper
+ */
+@include comp('button-wrapper') {
+  $button-gutter: $gutter-base / 2;
+
+  margin: -$button-gutter;
+  padding: $button-gutter / 2;
+  .#{class-comp('button')} {
+    margin: $button-gutter / 2;
+  }
+}

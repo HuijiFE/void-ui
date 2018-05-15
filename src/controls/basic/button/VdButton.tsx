@@ -112,6 +112,7 @@ export class VdButton extends VdControl
     return this.to ? (
       <router-link
         class={this.classes}
+        to={this.to}
         nativeOnClick={this.onClick}
         disabled={this.disabled}
       >
@@ -138,5 +139,15 @@ export class VdButton extends VdControl
         {inner}
       </button>
     );
+  }
+}
+
+/**
+ * Control ButtonWrapper
+ */
+@Component
+export class VdButtonWrapper extends VdControl {
+  private render(h: CreateElement): VNode {
+    return <div class="vd-button-wrapper">{this.$slots.default}</div>;
   }
 }

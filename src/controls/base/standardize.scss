@@ -16,7 +16,7 @@ html {
 }
 
 body {
-  font-size: $font-base;
+  font-size: $font-size-base;
 }
 
 html,
@@ -45,6 +45,12 @@ button {
   outline: none;
 }
 
+a,
+button,
+input[type='button'] {
+  cursor: pointer;
+}
+
 /*-------- typographic --------*/
 
 p,
@@ -59,6 +65,6 @@ h6 {
 
 article,
 p {
-  font-size: $font-base;
+  font-size: $font-size-base;
   line-height: $line-height-base;
 }

@@ -170,15 +170,41 @@
  *   .vd-list_item.is-selected.is-raised {}
  * }
  */
-@mixin when($status-list...) {
+@mixin when($status) {
   $selector: &;
-  $status-selector: '';
+
+  @at-root {
+    #{$selector}.is-#{$status} {
+      @content;
+    }
+  }
+}
+
+@mixin when-and($status-list...) {
+  $status-selector: &;
   @each $status in $status-list {
     $status-selector: '#{$status-selector}.is-#{$status}';
   }
 
   @at-root {
-    #{$selector}#{$status-selector} {
+    #{$status-selector} {
+      @content;
+    }
+  }
+}
+
+@mixin when-or($status-list...) {
+  $selector: &;
+  $status-selector: '';
+  @each $status in $status-list {
+    @if $status-selector != '' {
+      $status-selector: '#{$status-selector}, ';
+    }
+    $status-selector: '#{$status-selector}#{$selector}.is-#{$status}';
+  }
+
+  @at-root {
+    #{$status-selector} {
       @content;
     }
   }

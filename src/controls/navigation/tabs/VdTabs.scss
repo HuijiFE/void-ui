@@ -3,9 +3,13 @@
  */
 @include comp('tabs') {
   position: relative;
+  width: 100%;
 
   @include elem('body') {
     padding: $tab-padding;
+
+    font-size: $font-size-base;
+    line-height: $line-height-normal;
   }
 
   @include elem('pane-wrapper') {
@@ -20,7 +24,7 @@
 
   @include prop((skin: 'plain')) {
     @include elem('header') {
-      padding: 0 $tab-padding;
+      // padding: 0 $tab-padding;
     }
   }
 

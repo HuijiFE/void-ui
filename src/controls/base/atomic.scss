@@ -11,6 +11,22 @@
   background-color: #000;
 }
 
+/*-------- grade --------*/
+@each $grade, $value in $grade-map {
+  @include define-atom('grade-#{$grade}') {
+    background-color: $value;
+  }
+  @include define-atom('grade-#{$grade}-bg') {
+    background-color: $value;
+  }
+  @include define-atom('grade-#{$grade}-fg') {
+    color: $value;
+  }
+  @include define-atom('grade-#{$grade}-bd') {
+    border-color: $value;
+  }
+}
+
 /*-------- raise --------*/
 @include define-atom('raise-0') {
   box-shadow: none;

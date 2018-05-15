@@ -1,11 +1,11 @@
-$menu-font-size: 1.4rem;
-$menu-padding: 0.4rem;
+$menu-font-size: $font-size-base;
+$menu-padding: $gutter-base / 2;
 
-$menu-indicator-width: 0.2rem;
+$menu-indicator-width: $border-width-base * 2;
 
 $menu-icon-size: 2rem;
 $menu-item-height: 3.2rem;
-$menu-item-padding: 1.6rem;
+$menu-item-padding: $gutter-base;
 
 $menu-anime-timing-function: ease-in-out;
 $menu-anime-duration: 300ms;

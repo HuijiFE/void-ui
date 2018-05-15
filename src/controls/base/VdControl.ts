@@ -69,6 +69,8 @@ export class VoidHub extends Vue {
   public static readonly $void: VoidHub = new VoidHub();
 
   public theme: Theme = Theme.lite;
+
+  public loading: boolean = false;
 }
 
 /**
