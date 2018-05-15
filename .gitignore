@@ -7,6 +7,7 @@ node_modules
 /types/locales
 /types/VoidUI.d.ts
 tsconfig.json
+vue.inspect.js
 
 # local env files
 .env.local

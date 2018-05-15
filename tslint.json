@@ -8,6 +8,8 @@
     "no-var-keyword": true,
     "no-null-keyword": true,
     "strict-boolean-expressions": false,
+    "prefer-type-cast": false,
+    "no-angle-bracket-type-assertion": true,
     "typedef": [
       true,
       "call-signature",

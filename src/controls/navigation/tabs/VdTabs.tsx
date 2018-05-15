@@ -37,6 +37,7 @@ export class VdTabs extends VdControl {
     }
 
     this.selectedPane = pane;
+    this.$emit('change', pane);
   }
 
   @Watch('selectedPane')

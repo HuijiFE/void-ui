@@ -2,15 +2,23 @@ const path = require('path');
 const package = require('./package.json');
 const Config = require('webpack-chain');
 
+const { version } = package;
+
 const HASH_FUNCTION = 'sha256';
 const HASH_DIGEST = 'hex';
 const HASH_DIGEST_LENGTH = 64;
 
-const solutionsAll = {
+const solutions = {
   docs: 'docs',
   void: 'void',
 };
+const dests = {
+  docs: 'www',
+  void: 'dist',
+};
+
 const SOLUTION = process.env.VUE_SOLUTION;
+const docsDir = 'docs';
 
 module.exports = {
   // Project deployment base
@@ -23,12 +31,7 @@ module.exports = {
   baseUrl: '/void-ui/',
 
   // where to output built files
-  outputDir:
-    SOLUTION === solutionsAll.docs
-      ? 'www'
-      : SOLUTION === solutionsAll.void
-        ? 'dist'
-        : 'dist',
+  outputDir: dests[SOLUTION],
 
   // whether to use eslint-loader for lint on save.
   // valid values: true | false | 'error'
@@ -38,6 +41,15 @@ module.exports = {
   // use the full build with in-browser compiler?
   // https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only
   compiler: true,
+
+  // babel-loader skips `node_modules` deps by default.
+  // explicitly transpile a dependency with this option.
+  transpileDependencies: [
+    /* string or regex */
+  ],
+
+  // generate sourceMap for production build?
+  productionSourceMap: true,
 
   // tweak internal webpack configuration.
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
@@ -49,12 +61,11 @@ module.exports = {
     const resolve = _path => path.resolve(context, _path);
 
     // hacking entry for docs
-    if (SOLUTION === solutionsAll.docs) {
+    if (SOLUTION === solutions.docs) {
       config
         .entry('app')
         .clear()
-        .add(resolve('docs/main.ts'));
-      config.module.rule('ts').include.add(resolve('docs'));
+        .add(resolve(`${docsDir}/main.ts`));
     }
 
     // customize alias
@@ -62,43 +73,32 @@ module.exports = {
     config.resolve.alias
       .delete('@')
       .set('@void', resolve('src'))
-      .set('@docs', resolve('docs'));
+      .set('@docs', resolve(docsDir));
 
     if (process.env.NODE_ENV === 'production') {
-      // customize js output file name
+      // Customize js output file name with hash.
       config.output
-        .filename(`js/[name].[chunkhash].js`)
-        .chunkFilename(`js/[id].[chunkhash].js`)
+        .filename(`js/void-ui.${version}.[name].[chunkhash].js`)
+        .chunkFilename(`js/void-ui.${version}.[name].[chunkhash].js`)
         .hashFunction(HASH_FUNCTION)
         .hashDigest(HASH_DIGEST)
         .hashDigestLength(HASH_DIGEST_LENGTH);
-
-      // customize css output file name
-      config.plugin('extract-css').tap(args => [
-        Object.assign(args[0], {
-          filename: `css/[name].[${HASH_FUNCTION}:contenthash:${HASH_DIGEST}:${HASH_DIGEST_LENGTH}].css`,
-        }),
-      ]);
     }
   },
   configureWebpack: () => {},
-
-  // vue-loader options
-  // https://vue-loader.vuejs.org/en/options.html
-  vueLoader: {},
-
-  // generate sourceMap for production build?
-  productionSourceMap: true,
 
   // CSS related options
   css: {
     // extract CSS in components into a single CSS file (only in production)
     // can also be an object of options to pass to extract-text-webpack-plugin
-    extract: true,
-
-    // Enable CSS modules for all css / pre-processor files.
-    // This option does not affect *.vue files.
-    modules: false,
+    extract: {
+      // Customize css output file name with hash.
+      filename: `css/void-ui.${version}.[name].[contenthash].css`,
+      chunkFilename: `css/void-ui.${version}.[name].[id].[contenthash].css`,
+      hashFunction: HASH_FUNCTION,
+      hashDigest: HASH_DIGEST,
+      hashDigestLength: HASH_DIGEST_LENGTH,
+    },
 
     // enable CSS source maps?
     sourceMap: false,
@@ -111,11 +111,6 @@ module.exports = {
   // use thread-loader for babel & TS in production build
   // enabled by default if the machine has more than 1 cores
   parallel: require('os').cpus().length > 1,
-
-  // split vendors using autoDLLPlugin?
-  // can also be an explicit Array of dependencies to include in the DLL chunk.
-  // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#dll-mode
-  dll: false,
 
   // options for the PWA plugin.
   // see https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa
@@ -133,11 +128,7 @@ module.exports = {
     https: false,
     hotOnly: false,
     // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#configuring-proxy
-    proxy: {
-      '/graphql': {
-        target: 'http://graphql.xy.huijitrans.com',
-      },
-    },
+    proxy: null, // string | Object
     before: app => {},
   },
 

@@ -21,7 +21,7 @@ import { Styler } from 'stylefire';
 @Component
 export class VdTabPane extends VdControl {
   // tslint:disable-next-line:no-any no-null-keyword
-  private tabs: VdTabs = <any>null;
+  private tabs: VdTabs = null as any;
 
   // no reactive, do not init
   public styler!: Styler;
@@ -48,15 +48,19 @@ export class VdTabPane extends VdControl {
   }
 
   private beforeMount(): void {
-    this.tabs = <VdTabs>this.$parent;
+    this.tabs = this.$parent as VdTabs;
     if (this.tabs.panes.length === 0) {
       this.select();
     }
     this.tabs.panes.push(this);
   }
 
-  public mounted(): void {
-    this.styler = styler(<Element>this.$el, {});
+  private mounted(): void {
+    this.styler = styler(this.$el as Element, {});
+  }
+
+  private beforeDestroy(): void {
+    this.tabs.panes.splice(this.tabs.panes.indexOf(this), 1);
   }
 
   private render(h: CreateElement): VNode {

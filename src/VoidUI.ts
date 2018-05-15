@@ -53,9 +53,9 @@ const VoidUI: VoidUIPlugin = {
 };
 
 if (window !== undefined) {
-  (<any>window).VoidUI = VoidUI;
-  if ((<any>window).Vue !== undefined) {
-    VoidUI.install((<any>window).Vue);
+  (window as any).VoidUI = VoidUI;
+  if ((window as any).Vue !== undefined) {
+    VoidUI.install((window as any).Vue);
   }
 }
 
