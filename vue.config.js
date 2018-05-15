@@ -96,9 +96,6 @@ module.exports = {
       // Customize css output file name with hash.
       filename: `css/${prefix}.[name].[contenthash].css`,
       chunkFilename: `css/${prefix}.[name].[id].[contenthash].css`,
-      hashFunction: HASH_FUNCTION,
-      hashDigest: HASH_DIGEST,
-      hashDigestLength: HASH_DIGEST_LENGTH,
     },
 
     // enable CSS source maps?
