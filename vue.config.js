@@ -3,6 +3,7 @@ const package = require('./package.json');
 const Config = require('webpack-chain');
 
 const { version } = package;
+const prefix = `void-ui.${version}`;
 
 const HASH_FUNCTION = 'sha256';
 const HASH_DIGEST = 'hex';
@@ -78,8 +79,8 @@ module.exports = {
     if (process.env.NODE_ENV === 'production') {
       // Customize js output file name with hash.
       config.output
-        .filename(`js/void-ui.${version}.[name].[chunkhash].js`)
-        .chunkFilename(`js/void-ui.${version}.[name].[chunkhash].js`)
+        .filename(`js/${prefix}.[name].[chunkhash].js`)
+        .chunkFilename(`js/${prefix}.[name].[chunkhash].js`)
         .hashFunction(HASH_FUNCTION)
         .hashDigest(HASH_DIGEST)
         .hashDigestLength(HASH_DIGEST_LENGTH);
@@ -93,8 +94,8 @@ module.exports = {
     // can also be an object of options to pass to extract-text-webpack-plugin
     extract: {
       // Customize css output file name with hash.
-      filename: `css/void-ui.${version}.[name].[contenthash].css`,
-      chunkFilename: `css/void-ui.${version}.[name].[id].[contenthash].css`,
+      filename: `css/${prefix}.[name].[contenthash].css`,
+      chunkFilename: `css/${prefix}.[name].[id].[contenthash].css`,
       hashFunction: HASH_FUNCTION,
       hashDigest: HASH_DIGEST,
       hashDigestLength: HASH_DIGEST_LENGTH,
