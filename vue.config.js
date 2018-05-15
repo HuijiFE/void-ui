@@ -54,6 +54,7 @@ module.exports = {
         .entry('app')
         .clear()
         .add(resolve('docs/main.ts'));
+      config.module.rule('ts').include.add(resolve('docs'));
     }
 
     // customize alias
@@ -78,19 +79,6 @@ module.exports = {
           filename: `css/[name].[${HASH_FUNCTION}:contenthash:${HASH_DIGEST}:${HASH_DIGEST_LENGTH}].css`,
         }),
       ]);
-
-      // if (SOLUTION === solutionsAll.void) {
-      //   config.module
-      //     .rule('ts')
-      //     .use('ts-loader')
-      //     .loader('ts-loader')
-      //     .tap(option => {
-      //       option.transpileOnly = false;
-      //       option.happyPackMode = false;
-      //       return option;
-      //     });
-      //   console.log('======== Void-UI ========');
-      // }
     }
   },
   configureWebpack: () => {},
@@ -145,7 +133,11 @@ module.exports = {
     https: false,
     hotOnly: false,
     // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#configuring-proxy
-    proxy: null, // string | Object
+    proxy: {
+      '/graphql': {
+        target: 'http://graphql.xy.huijitrans.com',
+      },
+    },
     before: app => {},
   },
 
