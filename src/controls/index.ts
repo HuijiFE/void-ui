@@ -21,6 +21,7 @@ export * from '@void/controls/navigation/menu/VdMenu';
 export * from '@void/controls/navigation/menu/VdMenuItem';
 export * from '@void/controls/navigation/menu/VdMenuItemGroup';
 export * from '@void/controls/navigation/menu/VdSubMenu';
+export * from '@void/controls/navigation/pagination/VdPagination';
 export * from '@void/controls/navigation/tabs/VdTabs';
 export * from '@void/controls/navigation/tabs/VdTabsHeaderItem';
 export { default as VdForm } from '@void/controls/form/VdForm.vue';

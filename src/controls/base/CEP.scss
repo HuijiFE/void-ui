@@ -134,20 +134,26 @@
  * 
  * NOTE: The prop mixin is only for components, not for elements
  */
-@mixin prop($property-map) {
-  $props-selector: '';
-  @each $property, $value in $property-map {
-    $props-selector: '#{$props-selector}.#{class-prop($property, $value)}';
-  }
+@mixin prop($property-map-list...) {
+  @each $property-map in $property-map-list {
+    $props-selector: '';
+    @each $property, $value in $property-map {
+      $props-selector: '#{$props-selector}.#{class-prop($property, $value)}';
+    }
 
-  @at-root {
-    .#{$C}#{$props-selector} {
-      @content;
+    @at-root {
+      .#{$C}#{$props-selector} {
+        @content;
+      }
     }
   }
 }
 
 /*----------  Status  ----------*/
+
+@function class-status($status) {
+  @return 'is-#{$status}';
+}
 
 /**
  * Generate selector for boolean properties of a component/control.
@@ -174,7 +180,7 @@
   $selector: &;
 
   @at-root {
-    #{$selector}.is-#{$status} {
+    #{$selector}.#{class-status($status)} {
       @content;
     }
   }
@@ -183,7 +189,7 @@
 @mixin when-and($status-list...) {
   $status-selector: &;
   @each $status in $status-list {
-    $status-selector: '#{$status-selector}.is-#{$status}';
+    $status-selector: '#{$status-selector}.#{class-status($status)}';
   }
 
   @at-root {
@@ -200,7 +206,7 @@
     @if $status-selector != '' {
       $status-selector: '#{$status-selector}, ';
     }
-    $status-selector: '#{$status-selector}#{$selector}.is-#{$status}';
+    $status-selector: '#{$status-selector}#{$selector}.#{class-status($status)}';
   }
 
   @at-root {

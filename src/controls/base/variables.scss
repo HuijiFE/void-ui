@@ -19,6 +19,7 @@ html {
   --vd-theme-lite-bg-hover:         #eeeeee;
   --vd-theme-lite-bg-disabled:      #efefef;
 
+  // The border color normal should use be same as background color hover.
   --vd-theme-lite-bd-normal:        #efefef;
   --vd-theme-lite-bd-disabled:      #bbbbbb;
   --vd-theme-lite-bd-focus:         #888888;
@@ -37,6 +38,7 @@ html {
   --vd-theme-dark-bg-hover:         #4e4e4e;
   --vd-theme-dark-bg-disabled:      #555555;
 
+  // The border color normal should use be same as background color hover.
   --vd-theme-dark-bd-normal:        #4e4e4e;
   --vd-theme-dark-bd-disabled:      #777777;
   --vd-theme-dark-bd-focus:         #aaaaaa;
