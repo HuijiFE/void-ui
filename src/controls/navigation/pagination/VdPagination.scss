@@ -28,6 +28,10 @@
 
     transition: transition(200ms);
     transition-property: all, color, background-color, border-color;
+
+    @include when('selected') {
+      position: relative;
+    }
   }
 
   @include elem('indicator-previous') {
@@ -114,9 +118,6 @@
     @include elem('item') {
       @include when('selected') {
         border-color: tone('primary-standard');
-        & + .#{class-elem(item)} {
-          border-left-color: tone('primary-standard');
-        }
       }
     }
   }

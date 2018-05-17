@@ -143,11 +143,29 @@ export class VdButton extends VdControl
 }
 
 /**
+ * Control ButtonGroup
+ */
+@Component
+export class VdButtonGroup extends VdControl {
+  private render(h: CreateElement): VNode {
+    return (
+      <div class="vd-button-group" role="group">
+        {this.$slots.default}
+      </div>
+    );
+  }
+}
+
+/**
  * Control ButtonWrapper
  */
 @Component
 export class VdButtonWrapper extends VdControl {
   private render(h: CreateElement): VNode {
-    return <div class="vd-button-wrapper">{this.$slots.default}</div>;
+    return (
+      <div class="vd-button-wrapper" role="group">
+        {this.$slots.default}
+      </div>
+    );
   }
 }

@@ -11,6 +11,46 @@
                            :end="100"
                            v-model="index"></vd-pagination>
           </vd-flexbox>
+          <vd-flexbox flex="100">
+            <vd-button-group>
+              <vd-button :tone="tone"
+                         :skin="skin"
+                         :shape="shape"
+                         :size="size">按钮</vd-button>
+              <vd-button :tone="tone"
+                         :skin="skin"
+                         :shape="shape"
+                         :size="size">按钮</vd-button>
+              <vd-button :tone="tone"
+                         :skin="skin"
+                         :shape="shape"
+                         :size="size">按钮</vd-button>
+              <vd-button :tone="tone"
+                         :skin="skin"
+                         :shape="shape"
+                         :size="size">按钮</vd-button>
+            </vd-button-group>
+          </vd-flexbox>
+          <vd-flexbox flex="100">
+            <vd-button-wrapper style="height: 1024px">
+              <vd-button :tone="tone"
+                         :skin="skin"
+                         :shape="shape"
+                         :size="size">按钮</vd-button>
+              <vd-button :tone="tone"
+                         :skin="skin"
+                         :shape="shape"
+                         :size="size">按钮</vd-button>
+              <vd-button :tone="tone"
+                         :skin="skin"
+                         :shape="shape"
+                         :size="size">按钮</vd-button>
+              <vd-button :tone="tone"
+                         :skin="skin"
+                         :shape="shape"
+                         :size="size">按钮</vd-button>
+            </vd-button-wrapper>
+          </vd-flexbox>
         </vd-flexbox>
       </vd-clamp>
     </vd-swimlane>
@@ -36,8 +76,8 @@ import { Tone, Skin, Shape, Size } from '@void/VoidUI';
 @Component
 export default class Controls extends Vue {
   public tone: Tone = Tone.primary;
-  public skin: Skin = Skin.flat;
-  public shape: Shape = Shape.square;
+  public skin: Skin = Skin.plain;
+  public shape: Shape = Shape.pill;
   public size: Size = Size.medium;
 
   public index: number = 1;
