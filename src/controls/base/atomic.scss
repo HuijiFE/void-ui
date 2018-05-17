@@ -4,25 +4,25 @@
  *
  */
 
-@include define-atom('bg-white') {
+@include define-atom('bg', 'white') {
   background-color: #fff;
 }
-@include define-atom('bg-black') {
+@include define-atom('bg', 'black') {
   background-color: #000;
 }
 
 /*-------- grade --------*/
 @each $grade, $value in $grade-map {
-  @include define-atom('grade-#{$grade}') {
+  @include define-atom('grade', $grade) {
     background-color: $value;
   }
-  @include define-atom('grade-#{$grade}-bg') {
+  @include define-atom('grade-bg', $grade) {
     background-color: $value;
   }
-  @include define-atom('grade-#{$grade}-fg') {
+  @include define-atom('grade-fg', $grade) {
     color: $value;
   }
-  @include define-atom('grade-#{$grade}-bd') {
+  @include define-atom('grade-bd', $grade) {
     border-color: $value;
   }
 }
@@ -33,6 +33,6 @@
 }
 @for $i from 1 through 9 {
   @include define-atom('raise', $i) {
-    box-shadow: 0 #{$i}px #{$i * 3}px 0 rgba(#000, 0.3);
+    box-shadow: 0 ($i * 1px) ($i * 3px) 0 rgba(#000, 0.3);
   }
 }
