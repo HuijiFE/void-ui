@@ -17,10 +17,10 @@ import { VdControl } from '@void/controls/base/VdControl';
 @Component
 export class VdCard extends VdControl {
   @Prop({ type: [Number, String], default: 1 })
-  public raise!: number | string;
+  public readonly raise!: number | string;
 
   public get classes(): ClassName {
-    return ['vd-card', `vdp-theme_${this.$theme}`, `vda-raise-${this.raise}`];
+    return ['vd-card', `vdp-theme_${this.$theme}`, `vda-raise_${this.raise}`];
   }
 
   private render(h: CreateElement): VNode {

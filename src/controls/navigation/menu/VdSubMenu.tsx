@@ -33,16 +33,16 @@ export class VdSubMenu extends Vue implements IconControl {
   private menu: VdMenu | null = null;
 
   @Prop({ type: String, required: true })
-  public subMenuLabel!: string;
+  public readonly subMenuLabel!: string;
 
   @Prop({ type: String })
-  public icon!: string;
+  public readonly icon!: string;
 
   @Prop({ type: String })
-  public fa!: string;
+  public readonly fa!: string;
 
   @Prop({ type: Array, default: () => [] })
-  public itemsSource!: (MenuItem | MenuItemGroup)[];
+  public readonly itemsSource!: (MenuItem | MenuItemGroup)[];
 
   public expanded: boolean = false;
 

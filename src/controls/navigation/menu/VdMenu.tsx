@@ -63,22 +63,22 @@ export class VdMenu extends VdControl {
    * 'label', 'groupLabel' and 'subMenuLabel'
    */
   @Prop({ type: Array, default: () => [] })
-  public itemsSource!: (MenuItem | MenuItemGroup | SubMenu)[];
+  public readonly itemsSource!: (MenuItem | MenuItemGroup | SubMenu)[];
 
   @Prop({ type: String, default: 'plain' })
-  public skin!: Skin;
+  public readonly skin!: Skin;
 
   @Prop({ type: String, default: 'vertical' })
-  public direction!: 'vertical' | 'horizontal';
+  public readonly direction!: 'vertical' | 'horizontal';
 
   /**
    * The position of the menu, only enable when the direction is vertical
    */
   @Prop({ type: String, default: 'left' })
-  public position!: 'left' | 'right';
+  public readonly position!: 'left' | 'right';
 
   @Prop({ type: Boolean, default: false })
-  public autoCollapse!: boolean;
+  public readonly autoCollapse!: boolean;
 
   /**
    * Shared CSS class names for the menu and its items.

@@ -28,11 +28,11 @@
 }
 
 /*-------- raise --------*/
-@include define-atom('raise-0') {
+@include define-atom('raise', 0) {
   box-shadow: none;
 }
 @for $i from 1 through 9 {
-  @include define-atom('raise-#{$i}') {
+  @include define-atom('raise', $i) {
     box-shadow: 0 #{$i}px #{$i * 3}px 0 rgba(#000, 0.3);
   }
 }

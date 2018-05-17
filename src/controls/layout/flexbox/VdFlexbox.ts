@@ -129,82 +129,82 @@ export class VdFlexbox extends Vue {
    * Flexibility.
    */
   @Prop({ type: [String, Number] })
-  public flex!: Flex;
+  public readonly flex!: Flex;
 
   @Prop({ type: [String, Number] })
-  public flexXsmall!: Flex;
+  public readonly flexXsmall!: Flex;
 
   @Prop({ type: [String, Number] })
-  public flexSmall!: Flex;
+  public readonly flexSmall!: Flex;
 
   @Prop({ type: [String, Number] })
-  public flexMedium!: Flex;
+  public readonly flexMedium!: Flex;
 
   @Prop({ type: [String, Number] })
-  public flexLarge!: Flex;
+  public readonly flexLarge!: Flex;
 
   @Prop({ type: [String, Number] })
-  public flexXlarge!: Flex;
+  public readonly flexXlarge!: Flex;
 
   /**
    * Visibility.
    */
   @Prop({ type: Boolean, default: false })
-  public hidden!: boolean;
+  public readonly hidden!: boolean;
 
   @Prop({ type: Boolean, default: false })
-  public hiddenXsmall!: boolean;
+  public readonly hiddenXsmall!: boolean;
 
   @Prop({ type: Boolean, default: false })
-  public hiddenSmall!: boolean;
+  public readonly hiddenSmall!: boolean;
 
   @Prop({ type: Boolean, default: false })
-  public hiddenMedium!: boolean;
+  public readonly hiddenMedium!: boolean;
 
   @Prop({ type: Boolean, default: false })
-  public hiddenLarge!: boolean;
+  public readonly hiddenLarge!: boolean;
 
   @Prop({ type: Boolean, default: false })
-  public hiddenXlarge!: boolean;
+  public readonly hiddenXlarge!: boolean;
 
   /**
    * Gutter between sub flexbox content.
    */
   @Prop({ type: String })
-  public gutter!: FlexGutter;
+  public readonly gutter!: FlexGutter;
 
   /**
    * Flex flow direction.
    */
   @Prop({ type: String })
-  public direction!: FlexDirection;
+  public readonly direction!: FlexDirection;
 
   /**
    * Flex line wrapping.
    */
   @Prop({ type: String })
-  public wrap!: FlexWrap;
+  public readonly wrap!: FlexWrap;
 
   // @Prop({ type: Number })
-  // public order: number;
+  // public readonly order: number;
 
   /**
    * Axis alignment.
    */
   @Prop({ type: String })
-  public justify!: FlexJustify;
+  public readonly justify!: FlexJustify;
 
   /**
    * Cross alignment.
    */
   @Prop({ type: String })
-  public align!: FlexAlign;
+  public readonly align!: FlexAlign;
 
   /**
    * Cross alignment for itself.
    */
   @Prop({ type: String })
-  public alignSelf!: FlexAlign;
+  public readonly alignSelf!: FlexAlign;
 
   private render(h: CreateElement): VNode {
     return h(

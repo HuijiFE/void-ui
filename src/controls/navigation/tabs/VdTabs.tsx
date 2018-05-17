@@ -22,7 +22,7 @@ const duration: number = 300;
 @Component
 export class VdTabs extends VdControl {
   @Prop({ type: String, default: 'plain' })
-  public skin!: Skin;
+  public readonly skin!: Skin;
 
   public readonly panes: VdTabPane[] = [];
 
@@ -82,7 +82,7 @@ export class VdTabs extends VdControl {
       `vdp-theme_${this.$theme}`,
       `vdp-skin_${this.skin}`,
       {
-        [`vda-raise-${this.raise}`]: this.raise,
+        [`vda-raise_${this.raise}`]: this.raise,
         'is-bordered': this.disabled,
       },
     ];

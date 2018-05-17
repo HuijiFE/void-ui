@@ -77,7 +77,7 @@
  * }
  */
 @mixin elem-adjacent($element-former, $element-target: null) {
-  @if not $element-target {
+  @if $element-target == null {
     $element-target: $element-former;
   }
   $selector: &;
@@ -103,7 +103,7 @@
  * }
  */
 @mixin elem-general($element-former, $element-target: null) {
-  @if not $element-target {
+  @if $element-target == null {
     $element-target: $element-former;
   }
   $selector: &;
@@ -218,28 +218,37 @@
 
 /*----------  Atomic  ----------*/
 
+@function class-atom($name, $value: null) {
+  $class-name: '#{$namespace}a-#{$name}';
+  @if $value != null {
+    $class-name: '#{$class-name}_#{$value}';
+  }
+  @return $class-name;
+}
+
 // Define a atomic rule.
-@mixin define-atom($name) {
+@mixin define-atom($name, $value: null) {
+  $class-name: class-atom($name, $value);
   @at-root {
-    .#{$namespace}a-#{$name},
-    %#{$namespace}a-#{$name} {
+    .#{$class-name},
+    %#{$class-name} {
       @content;
     }
   }
 }
 // Extend a atomic rule.
-@mixin extend-atom($name) {
-  @extend .#{$namespace}a-#{$name};
+@mixin extend-atom($name, $value: null) {
+  @extend .#{class-atom($name, $value)};
 }
 // Define a abstract atomic rule.
-@mixin abstract-atom($name) {
+@mixin abstract-atom($name, $value: null) {
   @at-root {
-    %#{$namespace}a-#{$name} {
+    %#{class-atom($name, $value)} {
       @content;
     }
   }
 }
 // Inherit a atomic rule.
-@mixin inherit-atom($name) {
-  @extend %#{$namespace}a-#{$name};
+@mixin inherit-atom($name, $value: null) {
+  @extend %#{class-atom($name, $value)};
 }

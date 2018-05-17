@@ -79,32 +79,32 @@ export class VoidHub extends Vue {
 @Component
 export class VdControl extends Vue {
   @Prop({ type: String })
-  public theme!: Theme;
+  public readonly theme!: Theme;
 
   public get $theme(): Theme {
     return this.theme || VoidHub.$void.theme;
   }
 
   @Prop({ type: String, default: 'primary' })
-  public tone!: Tone;
+  public readonly tone!: Tone;
 
   @Prop({ type: String, default: 'fill' })
-  public skin!: Skin;
+  public readonly skin!: Skin;
 
   @Prop({ type: String, default: 'rect' })
-  public shape!: Shape;
+  public readonly shape!: Shape;
 
   @Prop({ type: String, default: 'medium' })
-  public size!: Size;
+  public readonly size!: Size;
 
   @Prop({ type: [Number, String], default: 0 })
-  public raise!: number | string;
+  public readonly raise!: number | string;
 
   @Prop({ type: Boolean, default: false })
-  public disabled!: boolean;
+  public readonly disabled!: boolean;
 
   @Prop({ type: Boolean, default: false })
-  public bordered!: boolean;
+  public readonly bordered!: boolean;
 
   // public get classes(): ClassName {
   //   return [
@@ -114,7 +114,7 @@ export class VdControl extends Vue {
   //     `vdp-shape_${this.shape}`,
   //     `vdp-size_${this.size}`,
   //     {
-  //       [`vda-raise-${this.raise}`]: this.raise,
+  //       [`vda-raise_${this.raise}`]: this.raise,
   //       'is-disabled': this.disabled,
   //       'is-bordered': this.disabled,
   //     },

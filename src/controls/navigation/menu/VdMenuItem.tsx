@@ -30,22 +30,22 @@ export class VdMenuItem extends Vue implements IconControl, RouterControl {
   private group?: VdMenuItemGroup;
 
   @Prop({ type: String })
-  public label!: string;
+  public readonly label!: string;
 
   @Prop({ type: String })
-  public icon!: string;
+  public readonly icon!: string;
 
   @Prop({ type: [String, Array, Object] })
-  public fa!: string | string[] | FontAwesomeIconProps;
+  public readonly fa!: string | string[] | FontAwesomeIconProps;
 
   @Prop({ type: [String, Object] })
-  public to!: string | Location;
+  public readonly to!: string | Location;
 
   @Prop({ type: String })
-  public href!: string;
+  public readonly href!: string;
 
   @Prop({ type: String })
-  public target!: string;
+  public readonly target!: string;
 
   private isSubItem: boolean = false;
   private isGroupItem: boolean = false;

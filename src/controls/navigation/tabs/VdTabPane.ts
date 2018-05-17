@@ -27,7 +27,7 @@ export class VdTabPane extends VdControl {
   public styler!: Styler;
 
   @Prop({ type: String, required: true })
-  public label!: string;
+  public readonly label!: string;
 
   public get selected(): boolean {
     return this.tabs.selectedPane === this;

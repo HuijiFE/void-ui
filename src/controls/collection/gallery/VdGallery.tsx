@@ -22,11 +22,11 @@ export interface GalleryItem {
 @Component
 export class VdGallery extends VdControl {
   public get classes(): ClassName {
-    return ['vd-gallery', `vda-raise-${this.raise}`];
+    return ['vd-gallery', `vda-raise_${this.raise}`];
   }
 
   @Prop({ type: Array, required: true })
-  public itemsSource!: GalleryItem[];
+  public readonly itemsSource!: GalleryItem[];
 
   @Watch('itemsSource')
   private onItemsSourceChange(value: GalleryItem[]): void {

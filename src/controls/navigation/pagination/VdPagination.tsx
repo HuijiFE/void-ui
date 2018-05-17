@@ -25,7 +25,7 @@ export class VdPagination extends VdControl {
       `vdp-skin_${this.skin}`,
       `vdp-size_${this.size}`,
       {
-        [`vdp-raise_${this.raise}`]: this.raise,
+        [`vda-raise_${this.raise}`]: this.raise,
         'is-bordered': this.bordered,
       },
     ];

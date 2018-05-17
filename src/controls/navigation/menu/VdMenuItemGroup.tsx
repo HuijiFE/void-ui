@@ -24,10 +24,10 @@ export class VdMenuItemGroup extends Vue {
   private menu: VdMenu | null = null;
 
   @Prop({ type: String, required: true })
-  public groupLabel!: string;
+  public readonly groupLabel!: string;
 
   @Prop({ type: Array, default: () => [] })
-  public itemsSource!: MenuItem[];
+  public readonly itemsSource!: MenuItem[];
 
   private isSubItem: boolean = false;
 

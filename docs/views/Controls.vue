@@ -7,6 +7,7 @@
           <vd-flexbox flex="100">
             <vd-pagination :skin="skin"
                            :size="size"
+                           raise="1"
                            :end="100"
                            v-model="index"></vd-pagination>
           </vd-flexbox>
@@ -35,7 +36,7 @@ import { Tone, Skin, Shape, Size } from '@void/VoidUI';
 @Component
 export default class Controls extends Vue {
   public tone: Tone = Tone.primary;
-  public skin: Skin = Skin.fill;
+  public skin: Skin = Skin.flat;
   public shape: Shape = Shape.square;
   public size: Size = Size.medium;
 

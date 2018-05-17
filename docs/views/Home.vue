@@ -11,7 +11,7 @@
     <vd-swimlane oddeven
                  v-for="i in 9"
                  :key="i">
-      <vd-clamp :class="`vda-raise-${i}`">
+      <vd-clamp :class="`vda-raise_${i}`">
         <h1>test</h1>
         <p>test</p>
         <p>test</p>

@@ -17,7 +17,7 @@ import { VdControl } from '@void/controls/base/VdControl';
 @Component
 export class VdAcrylic extends VdControl {
   @Prop({ type: String, required: true })
-  public src!: string;
+  public readonly src!: string;
 
   public get classes(): ClassName {
     return ['vd-acrylic', `vdp-theme_${this.$theme}`];

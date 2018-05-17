@@ -19,7 +19,7 @@ import { VdTabPane } from '@void/controls/navigation/tabs/VdTabPane';
 @Component
 export class VdTabsHeaderItem extends VdControl {
   @Prop({ type: Object, required: true })
-  private pane!: VdTabPane;
+  public readonly pane!: VdTabPane;
 
   public get classes(): ClassName {
     return [

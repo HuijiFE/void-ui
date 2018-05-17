@@ -28,34 +28,34 @@ export class VdButton extends VdControl
   implements IconControl, RouterControl, LoadingControl {
   @Prop({ type: String, default: 'button' })
   // tslint:disable-next-line:no-reserved-keywords
-  public type!: string;
+  public readonly type!: string;
 
   @Prop({ type: String })
-  public content!: string;
+  public readonly content!: string;
 
   @Prop({ type: Boolean, default: false })
-  public wide!: boolean;
+  public readonly wide!: boolean;
 
   @Prop({ type: String })
-  public icon!: string;
+  public readonly icon!: string;
 
   @Prop({ type: [String, Array, Object] })
-  public fa!: string | string[] | FontAwesomeIconProps;
+  public readonly fa!: string | string[] | FontAwesomeIconProps;
 
   @Prop({ type: String, default: 'left' })
-  public iconPosition!: 'left' | 'right';
+  public readonly iconPosition!: 'left' | 'right';
 
   @Prop({ type: [String, Object] })
-  public to!: string | Location;
+  public readonly to!: string | Location;
 
   @Prop({ type: String })
-  public href!: string;
+  public readonly href!: string;
 
   @Prop({ type: String })
-  public target!: string;
+  public readonly target!: string;
 
   @Prop({ type: Boolean, default: false })
-  public loading!: boolean;
+  public readonly loading!: boolean;
 
   public get classes(): ClassName {
     return [
@@ -66,7 +66,7 @@ export class VdButton extends VdControl
       `vdp-shape_${this.shape}`,
       `vdp-size_${this.size}`,
       {
-        [`vda-raise-${this.raise}`]: this.raise,
+        [`vda-raise_${this.raise}`]: this.raise,
         'is-disabled': this.disabled,
         'is-bordered': this.disabled,
         'is-wide': this.wide,

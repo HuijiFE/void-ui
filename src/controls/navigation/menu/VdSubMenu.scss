@@ -78,7 +78,7 @@
 
       padding: $menu-padding 0;
 
-      @include extend-atom('raise-1');
+      @include extend-atom('raise', 0);
     }
   }
 
