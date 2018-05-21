@@ -1,4 +1,4 @@
-$root-font-size: 62.5%;
+$root-font-size: 100px;
 $root-font-size-scale-xlarge: 1.6;
 
 html {
@@ -93,9 +93,9 @@ html {
 
   /*-------- typographic --------*/
 
-  --vd-font-size-base:      1.4rem;
+  --vd-font-size-base:      0.14rem;
   --vd-line-height-normal:  1.571432;
-  --vd-line-height-base:    3.2rem;
+  --vd-line-height-base:    0.32rem;
 }
 
 /*-------- enum  --------*/
@@ -202,13 +202,13 @@ $grade-map: (
 );
 
 /*-------- shape --------*/
-$border-radius-base:    0.2rem;
-$border-width-base:     0.1rem;
+$border-radius-base:    0.02rem;
+$border-width-base:     0.01rem;
 $border-initial:        $border-width-base solid transparent;
 
 /*-------- size --------*/
 
-$gutter-base: 1.6rem;
+$gutter-base: 0.16rem;
 
 /*-------- skin --------*/
 
@@ -256,7 +256,7 @@ $clamp-map: (
   @return map-get($clamp-map, $key);
 }
 
-$clamp-padding: 1.6rem;
+$clamp-padding: $gutter-base;
 
 $flexbox-gutter-map: (
   xsmall:     8px,
@@ -277,49 +277,49 @@ $transition-1: all ease-in-out 0.1s;
 /*-------- button --------*/
 
 $button-font-size-map: (
-  xsmall:     1.2rem,
-  small:      1.2rem,
-  medium:     1.4rem,
-  large:      1.8rem,
-  xlarge:     2.4rem,
+  xsmall:     0.12rem,
+  small:      0.12rem,
+  medium:     0.14rem,
+  large:      0.18rem,
+  xlarge:     0.24rem,
 );
 
 $button-height-map: (
-  xsmall:     1.6rem,
-  small:      2.4rem,
-  medium:     3.2rem,
-  large:      4.0rem,
-  xlarge:     4.8rem,
+  xsmall:     0.16rem,
+  small:      0.24rem,
+  medium:     0.32rem,
+  large:      0.40rem,
+  xlarge:     0.48rem,
 );
 
 $button-size-map-square: (
-  xsmall:     3.2rem,
-  small:      4.0rem,
-  medium:     4.8rem,
-  large:      5.6rem,
-  xlarge:     6.4rem,
+  xsmall:     0.32rem,
+  small:      0.40rem,
+  medium:     0.48rem,
+  large:      0.56rem,
+  xlarge:     0.64rem,
 );
 
 $button-size-map-circle: (
-  xsmall:     3.2rem,
-  small:      4.0rem,
-  medium:     4.8rem,
-  large:      5.6rem,
-  xlarge:     6.4rem,
+  xsmall:     0.32rem,
+  small:      0.40rem,
+  medium:     0.48rem,
+  large:      0.56rem,
+  xlarge:     0.64rem,
 );
 
 /*-------- form --------*/
 
-$form-font-size: 1.4rem;
-$form-row-height: 3.2rem;
+$form-font-size:    0.14rem;
+$form-row-height:   0.32rem;
 
 $form-widget-transition-duration: 0.2s;
 $form-widget-height: $form-row-height;
-$form-widget-symbol-height: 1.6rem;
+$form-widget-symbol-height: 0.16rem;
 
 $form-widget-gutter: $gutter-base / 2;
 
 $form-radio-symbol-size: $form-widget-symbol-height;
-$form-radio-symbol-inner-size: $form-widget-symbol-height - 1rem;
+$form-radio-symbol-inner-size: $form-widget-symbol-height - 0.1rem;
 
-$form-checkbox-size: $form-widget-symbol-height - 0.2rem;
+$form-checkbox-size: $form-widget-symbol-height - 0.02rem;

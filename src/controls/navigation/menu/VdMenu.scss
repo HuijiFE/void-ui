@@ -3,14 +3,14 @@ $menu-padding: $gutter-base / 2;
 
 $menu-indicator-width: $border-width-base * 2;
 
-$menu-icon-size: 2rem;
-$menu-item-height: 3.2rem;
+$menu-icon-size: 0.2rem;
+$menu-item-height: 0.32rem;
 $menu-item-padding: $gutter-base;
 
 $menu-anime-timing-function: ease-in-out;
 $menu-anime-duration: 300ms;
 
-$menu-sub-wrapper-min-width: 12.8rem;
+$menu-sub-wrapper-min-width: 1.28rem;
 
 @include define-atom('menu-reset') {
   display: inline-block;

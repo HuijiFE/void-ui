@@ -37,9 +37,9 @@
   }
 
   @include elem('symbol-inner') {
-    width: $form-radio-symbol-size - 0.2rem;
-    height: $form-radio-symbol-size - 0.2rem;
-    line-height: $form-radio-symbol-size - 0.2rem;
+    width: $form-radio-symbol-size - 0.02rem;
+    height: $form-radio-symbol-size - 0.02rem;
+    line-height: $form-radio-symbol-size - 0.02rem;
 
     border-radius: 50%;
 
