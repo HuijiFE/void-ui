@@ -15,6 +15,7 @@ export * from '@void/controls/layout/flow/VdSwimlane';
 export * from '@void/controls/navigation/menu/VdMenuModels';
 export * from '@void/controls/navigation/tabs/VdTabPane';
 export * from '@void/controls/style/acrylic/VdAcrylic';
+export * from '@void/controls/form/VdRadio';
 export * from '@void/controls/basic/button/VdButton';
 export * from '@void/controls/collection/gallery/VdGallery';
 export * from '@void/controls/navigation/menu/VdMenu';

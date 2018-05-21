@@ -1,0 +1,110 @@
+/**
+ * Control: Radio
+ */
+@include comp('radio') {
+  position: relative;
+  user-select: none;
+  cursor: pointer;
+
+  font-size: $form-font-size;
+
+  height: $form-widget-height;
+
+  display: inline-flex;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  @include elem('widget') {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+
+  @include elem('symbol') {
+    width: $form-radio-symbol-size;
+    height: $form-radio-symbol-size;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    transition: transition($form-widget-transition-duration);
+  }
+
+  @include elem('symbol-inner') {
+    width: $form-radio-symbol-size - 0.2rem;
+    height: $form-radio-symbol-size - 0.2rem;
+    line-height: $form-radio-symbol-size - 0.2rem;
+
+    border-radius: 50%;
+
+    transition: transition($form-widget-transition-duration);
+    transform: translate3d(0);
+  }
+
+  @include elem('label') {
+    padding: 0 $form-widget-gutter;
+  }
+
+  // STYLE
+
+  @each $theme in $enum-theme {
+    @include prop((theme: $theme)) {
+      color: theme('#{$theme}-fg-normal');
+
+      @include elem('symbol') {
+        background-color: theme('#{$theme}-fg-normal');
+      }
+      @include elem('symbol-inner') {
+        background-color: theme('#{$theme}-bg-normal');
+      }
+    }
+  }
+
+  &:hover {
+    @include elem('symbol') {
+      background-color: tone('primary-standard');
+    }
+  }
+
+  @keyframes vd-radio-checked {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale($form-radio-symbol-inner-size / $form-radio-symbol-size);
+    }
+  }
+
+  @include when('checked') {
+    @include elem('symbol') {
+      background-color: tone('primary-standard');
+    }
+    @include elem('symbol-inner') {
+      background-color: $color-white;
+      animation: vd-radio-checked $form-widget-transition-duration ease-in-out forwards;
+    }
+  }
+}
+
+/**
+ * Control: RadioGroup
+ */
+@include comp('radio-group') {
+  $radio-gutter: $gutter-base / 2;
+
+  margin: -$radio-gutter;
+  padding: $radio-gutter / 2;
+
+  > .#{class-comp('radio')} {
+    margin: $radio-gutter / 2;
+  }
+}

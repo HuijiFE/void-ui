@@ -1,4 +1,4 @@
-$root-font-size: 10px;
+$root-font-size: 62.5%;
 $root-font-size-scale-xlarge: 1.6;
 
 html {
@@ -307,3 +307,19 @@ $button-size-map-circle: (
   large:      5.6rem,
   xlarge:     6.4rem,
 );
+
+/*-------- form --------*/
+
+$form-font-size: 1.4rem;
+$form-row-height: 3.2rem;
+
+$form-widget-transition-duration: 0.2s;
+$form-widget-height: $form-row-height;
+$form-widget-symbol-height: 1.6rem;
+
+$form-widget-gutter: $gutter-base / 2;
+
+$form-radio-symbol-size: $form-widget-symbol-height;
+$form-radio-symbol-inner-size: $form-widget-symbol-height - 1rem;
+
+$form-checkbox-size: $form-widget-symbol-height - 0.2rem;

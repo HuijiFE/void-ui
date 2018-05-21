@@ -48,18 +48,15 @@
  */
 @mixin elem($element-list...) {
   $selector: &;
-  $elements-selector: '';
-  @each $element in $element-list {
-    @if $elements-selector != '' {
-      $elements-selector: '#{$elements-selector}, ';
-    }
-    $elements-selector: '#{$elements-selector}.#{class-elem($element)}';
-  }
 
-  @at-root {
-    #{$selector} {
-      #{$elements-selector} {
-        @content;
+  @each $element in $element-list {
+    $elements-selector: '.#{class-elem($element)}';
+
+    @at-root {
+      #{$selector} {
+        #{$elements-selector} {
+          @content;
+        }
       }
     }
   }
@@ -203,15 +200,12 @@
   $selector: &;
   $status-selector: '';
   @each $status in $status-list {
-    @if $status-selector != '' {
-      $status-selector: '#{$status-selector}, ';
-    }
-    $status-selector: '#{$status-selector}#{$selector}.#{class-status($status)}';
-  }
+    $status-selector: '#{$selector}.#{class-status($status)}';
 
-  @at-root {
-    #{$status-selector} {
-      @content;
+    @at-root {
+      #{$status-selector} {
+        @content;
+      }
     }
   }
 }

@@ -1,7 +1,11 @@
 html {
   font-family: $font-family-base;
   font-size: $root-font-size;
+  font-weight: 400;
   line-height: 1;
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   /**
    * Set all elements' box-sizing as border-box:
