@@ -2,7 +2,7 @@
   <div class="controls">
     <vd-swimlane>
       <vd-clamp>
-        <vd-flexbox gutter="auto">
+        <vd-flexbox gutter="xlarge">
           <vd-flexbox flex="100">{{index}}</vd-flexbox>
           <vd-flexbox flex="100">
             <vd-pagination :skin="skin"
@@ -69,9 +69,31 @@
           </vd-flexbox>
 
           <vd-flexbox flex="100">
-            <vd-radio-group mode="button"
+            <vd-radio-group :mode="groupMode"
                             v-model="radioValue"
                             :items-source="radios"></vd-radio-group>
+          </vd-flexbox>
+
+          <vd-flexbox flex="100">
+            {{checkboxValue}}
+          </vd-flexbox>
+
+          <vd-flexbox flex="100">
+            <vd-checkbox value="a"
+                         label="Option A"
+                         v-model="checkboxValue"></vd-checkbox>
+            <vd-checkbox value="b"
+                         label="Option B"
+                         v-model="checkboxValue"></vd-checkbox>
+            <vd-checkbox value="c"
+                         label="Option C"
+                         v-model="checkboxValue"></vd-checkbox>
+          </vd-flexbox>
+
+          <vd-flexbox flex="100">
+            <vd-checkbox-group :mode="groupMode"
+                               v-model="checkboxValue"
+                               :items-source="checkboxs"></vd-checkbox-group>
           </vd-flexbox>
 
         </vd-flexbox>
@@ -91,7 +113,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { Tone, Skin, Shape, Size, Radio } from '@void/VoidUI';
+import { Tone, Skin, Shape, Size, Radio, Checkbox } from '@void/VoidUI';
 
 /**
  * Controls subfield
@@ -105,7 +127,9 @@ export default class Controls extends Vue {
 
   public index: number = 1;
 
-  public radioValue: string = 'a';
+  public groupMode: 'widget' | 'button' = 'widget';
+
+  public radioValue: string | number = 'a';
 
   public radios: Radio[] = [
     {
@@ -121,6 +145,23 @@ export default class Controls extends Vue {
       label: 'Option C',
     },
   ];
+
+  public checkboxs: Checkbox[] = [
+    {
+      value: 'a',
+      label: 'Option A',
+    },
+    {
+      value: 'b',
+      label: 'Option B',
+    },
+    {
+      value: 'c',
+      label: 'Option C',
+    },
+  ];
+
+  public checkboxValue: (string | number)[] = [];
 
   // tslint:disable
   private onClick(...args: any[]) {

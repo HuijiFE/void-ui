@@ -5,6 +5,7 @@ node_modules
 /www
 /types/controls
 /types/locales
+/types/utils
 /types/VoidUI.d.ts
 tsconfig.json
 vue.inspect.js

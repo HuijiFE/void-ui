@@ -9,19 +9,19 @@ import {
   Watch,
 } from 'vue-property-decorator';
 import { CreateElement, VNode } from 'vue';
-import { Theme, Tone, Skin, Shape, Size, VdControl } from '@void/controls/base/VdControl';
+import { Skin, VdControl } from '@void/controls/base/VdControl';
 import { FormWidget } from '@void/controls/form/VdForm';
 
 // tslint:disable-next-line:no-empty-interface
-export interface Radio extends FormWidget {
+export interface Checkbox extends FormWidget {
   value: string | number;
 }
 
 /**
- * Control Radio
+ * Control Checkbox
  */
 @Component
-export class VdRadio extends VdControl implements Radio {
+export class VdCheckbox extends VdControl implements Checkbox {
   @Prop({ type: String })
   public readonly id!: string;
 
@@ -34,20 +34,16 @@ export class VdRadio extends VdControl implements Radio {
   @Prop({ type: [String, Number], required: true })
   public readonly value!: string | number;
 
-  @Model('change', { type: [String, Number], required: true })
-  public readonly sourceValue!: string | number;
+  @Model('change', { type: Array, required: true })
+  public readonly sourceValue!: (string | number)[];
 
   public get checked(): boolean {
-    return this.value === this.sourceValue;
-  }
-
-  private onChange(event: Event): void {
-    this.$emit('change', this.value);
+    return this.sourceValue.includes(this.value);
   }
 
   public get classes(): ClassName {
     return [
-      'vd-radio',
+      'vd-checkbox',
       `vdp-theme_${this.$theme}`,
       {
         'is-checked': this.checked,
@@ -55,13 +51,30 @@ export class VdRadio extends VdControl implements Radio {
     ];
   }
 
+  private onChange(event: Event): void {
+    if (this.checked) {
+      const index: number = this.sourceValue.indexOf(this.value);
+      this.$emit(
+        'change',
+        this.sourceValue.slice(0, index).concat(this.sourceValue.slice(index + 1)),
+      );
+    } else {
+      this.$emit('change', this.sourceValue.concat([this.value]));
+    }
+  }
+
   private render(h: CreateElement): VNode {
     // tslint:disable:react-a11y-role-has-required-aria-props
     return (
-      <label class={this.classes} role="radio" aria-checked={this.checked} tabindex="0">
+      <label
+        class={this.classes}
+        role="checkbox"
+        aria-checked={this.checked}
+        tabindex="0"
+      >
         <input
-          class="vd-radio_widget"
-          type="radio"
+          class="vd-checkbox_widget"
+          type="checkbox"
           aria-hidden="true"
           tabindex="-1"
           id={this.id}
@@ -70,38 +83,55 @@ export class VdRadio extends VdControl implements Radio {
           checked={this.checked}
           onChange={this.onChange}
         />
-        <span class="vd-radio_symbol">
-          <span class="vd-radio_symbol-inner" />
+        <span class="vd-checkbox_symbol-outer">
+          <span class="vd-checkbox_symbol">
+            <span class="vd-checkbox_symbol-inner" />
+            <vd-icon class="vd-checkbox_symbol-check" fa={['fas', 'check']} />
+          </span>
         </span>
-        <span class="vd-radio_label">{this.label || this.$slots.default}</span>
+        <span class="vd-checkbox_label">{this.label || this.$slots.default}</span>
       </label>
     );
   }
 }
 
 /**
- * Control RadioGroup
+ * Control CheckboxGroup
  */
 @Component
-export class VdRadioGroup extends VdControl {
+export class VdCheckboxGroup extends VdControl {
   @Prop({ type: String, default: 'widget' })
   public mode!: 'widget' | 'button';
 
   @Prop({ type: Array, required: true })
-  public itemsSource!: Radio[];
+  public itemsSource!: Checkbox[];
 
-  @Model('change', { type: [String, Number], required: true })
-  public sourceValue!: string | number;
+  @Model('change', { type: Array, required: true })
+  public sourceValue!: (string | number)[];
 
-  private onChange(value: string | number): void {
+  private onChange(value: (string | number)[]): void {
     this.$emit('change', value);
+  }
+
+  private onClick(value: string | number): () => void {
+    return () => {
+      if (this.sourceValue.includes(value)) {
+        const index: number = this.sourceValue.indexOf(value);
+        this.$emit(
+          'change',
+          this.sourceValue.slice(0, index).concat(this.sourceValue.slice(index + 1)),
+        );
+      } else {
+        this.$emit('change', this.sourceValue.concat([value]));
+      }
+    };
   }
 
   private render(h: CreateElement): VNode {
     return (
       <div
         class={[
-          'vd-radio-group',
+          'vd-checkbox-group',
           {
             'vd-button-group': this.mode === 'button',
           },
@@ -109,7 +139,7 @@ export class VdRadioGroup extends VdControl {
       >
         {this.mode === 'widget'
           ? this.itemsSource.map(item => (
-              <vd-radio
+              <vd-checkbox
                 id={item.id}
                 name={item.name}
                 label={item.label}
@@ -127,14 +157,14 @@ export class VdRadioGroup extends VdControl {
                   `vdp-tone_${this.tone}`,
                   `vdp-size_${this.size}`,
                   `vdp-shape_${this.shape}`,
-                  `vdp-skin_${item.value === this.sourceValue ? Skin.fill : Skin.plain}`,
+                  `vdp-skin_${
+                    this.sourceValue.includes(item.value) ? Skin.fill : Skin.plain
+                  }`,
                   {
-                    'is-checked': item.value === this.sourceValue,
+                    'is-checked': this.sourceValue.includes(item.value),
                   },
                 ]}
-                role="radio"
-                aria-checked={item.value === this.sourceValue}
-                onClick={() => this.onChange(item.value)}
+                onClick={this.onClick(item.value)}
               >
                 {item.label}
               </button>

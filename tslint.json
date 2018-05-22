@@ -63,6 +63,7 @@
         "variable-declaration": "onespace"
       }
     ],
+    "no-void-expression": false,
     "no-trailing-whitespace": true,
     "comment-format": [true, "check-space"],
     "no-suspicious-comment": false,

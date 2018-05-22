@@ -2,19 +2,9 @@
  * Control: Radio
  */
 @include comp('radio') {
-  position: relative;
-  user-select: none;
-  cursor: pointer;
+  @include extend-atom('form-widget');
 
-  font-size: $form-font-size;
-
-  height: $form-widget-height;
-
-  display: inline-flex;
-  white-space: nowrap;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: center;
+  transition: transition($form-widget-transition-duration);
 
   @include elem('widget') {
     position: absolute;
@@ -26,6 +16,7 @@
   @include elem('symbol') {
     width: $form-radio-symbol-size;
     height: $form-radio-symbol-size;
+    line-height: $form-radio-symbol-size;
 
     display: inline-flex;
     justify-content: center;
@@ -66,13 +57,15 @@
     }
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
+    color: tone('primary-standard');
     @include elem('symbol') {
       background-color: tone('primary-standard');
     }
   }
 
-  @keyframes vd-radio-checked {
+  @keyframes vd-radio-checked-inner {
     0% {
       transform: scale(1);
     }
@@ -90,7 +83,8 @@
     }
     @include elem('symbol-inner') {
       background-color: $color-white;
-      animation: vd-radio-checked $form-widget-transition-duration ease-in-out forwards;
+      animation: vd-radio-checked-inner $form-widget-transition-duration ease-in-out
+        forwards;
     }
   }
 }

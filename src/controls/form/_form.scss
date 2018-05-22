@@ -1,0 +1,15 @@
+@include define-atom('form-widget') {
+  position: relative;
+  user-select: none;
+  cursor: pointer;
+
+  font-size: $form-font-size;
+
+  height: $form-widget-height;
+
+  display: inline-flex;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
