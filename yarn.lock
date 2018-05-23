@@ -3347,9 +3347,9 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-framesync@^3.0.2, framesync@^3.1.7:
-  version "3.1.8"
-  resolved "https://registry.npmjs.org/framesync/-/framesync-3.1.8.tgz#08faf2de048e82786b953bc976a5597e65192254"
+framesync@^3.1.8, framesync@^3.1.9:
+  version "3.1.9"
+  resolved "https://registry.npmjs.org/framesync/-/framesync-3.1.9.tgz#f65f815c711cf876f343b1f63da6e18b1384172f"
 
 fresh@0.5.2:
   version "0.5.2"
@@ -3718,6 +3718,10 @@ hawk@~6.0.2:
 he@1.1.x, he@^1.1.0:
   version "1.1.1"
   resolved "https://registry.npmjs.org/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
+
+hey-listen@^1.0.4, hey-listen@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/hey-listen/-/hey-listen-1.0.5.tgz#6d0a3a2f60177f65bc4404d571a00025bf5dc20e"
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
@@ -5885,13 +5889,15 @@ pn@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
 
-popmotion@^8.1.24:
-  version "8.1.24"
-  resolved "https://registry.npmjs.org/popmotion/-/popmotion-8.1.24.tgz#9c8943a0dda1a39163cf3e42116c1fb6c41e331e"
+popmotion@^8.2.2:
+  version "8.2.2"
+  resolved "https://registry.npmjs.org/popmotion/-/popmotion-8.2.2.tgz#0d1a0065e8ed626124e904688a43159491fb8b7e"
   dependencies:
-    framesync "^3.1.7"
-    style-value-types "^1.0.4"
-    stylefire "^1.2.9"
+    framesync "^3.1.9"
+    hey-listen "^1.0.5"
+    style-value-types "^1.0.8"
+    stylefire "^2.0.2"
+    tslib "^1.9.1"
 
 portfinder@^1.0.13, portfinder@^1.0.9:
   version "1.0.13"
@@ -7292,16 +7298,17 @@ strip-json-comments@^2.0.0, strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-style-value-types@^1.0.4:
-  version "1.0.6"
-  resolved "https://registry.npmjs.org/style-value-types/-/style-value-types-1.0.6.tgz#d1dd4cde4bd4d1bdf705b962f841c4369658f33e"
+style-value-types@^1.0.6, style-value-types@^1.0.8:
+  version "1.0.10"
+  resolved "https://registry.npmjs.org/style-value-types/-/style-value-types-1.0.10.tgz#e46a11922f7b9efe265fb22bfd3b5429611bc016"
 
-stylefire@^1.2.9:
-  version "1.2.15"
-  resolved "https://registry.npmjs.org/stylefire/-/stylefire-1.2.15.tgz#ee681669a1cce9205c973293723ae1b3ede1372f"
+stylefire@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.npmjs.org/stylefire/-/stylefire-2.0.2.tgz#2c0c5d2749a22f71d3c5ae95889dcee1b3597599"
   dependencies:
-    framesync "^3.0.2"
-    style-value-types "^1.0.4"
+    framesync "^3.1.8"
+    hey-listen "^1.0.4"
+    style-value-types "^1.0.6"
 
 subarg@^1.0.0:
   version "1.0.0"
@@ -7526,7 +7533,7 @@ tsconfig@^7.0.0:
     strip-bom "^3.0.0"
     strip-json-comments "^2.0.0"
 
-tslib@^1.8.0, tslib@^1.8.1:
+tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.1:
   version "1.9.1"
   resolved "https://registry.npmjs.org/tslib/-/tslib-1.9.1.tgz#a5d1f0532a49221c87755cfcc89ca37197242ba7"
 

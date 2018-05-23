@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "normalize.css": "^8.0.0",
-    "popmotion": "^8.1.24",
+    "popmotion": "^8.2.2",
     "vue-class-component": "^6.2.0",
     "vue-property-decorator": "^6.0.0"
   },
