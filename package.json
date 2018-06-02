@@ -48,9 +48,9 @@
   },
   "dependencies": {
     "normalize.css": "^8.0.0",
-    "popmotion": "^8.2.2",
+    "popmotion": "^8.2.3",
     "vue-class-component": "^6.2.0",
-    "vue-property-decorator": "^6.0.0"
+    "vue-property-decorator": "^6.1.0"
   },
   "peerDependencies": {
     "vue": "^2.5.16"
@@ -67,11 +67,11 @@
     "@types/mkdirp": "^0.5.2",
     "@types/node": "^10.0.9",
     "@types/rimraf": "^2.0.2",
-    "@types/webpack-chain": "^4.0.2",
-    "@vue/cli-plugin-babel": "^3.0.0-beta.11",
-    "@vue/cli-plugin-typescript": "^3.0.0-beta.11",
-    "@vue/cli-plugin-unit-jest": "^3.0.0-beta.11",
-    "@vue/cli-service": "^3.0.0-beta.11",
+    "@types/webpack-chain": "^4.8.0",
+    "@vue/cli-plugin-babel": "^3.0.0-beta.15",
+    "@vue/cli-plugin-typescript": "^3.0.0-beta.15",
+    "@vue/cli-plugin-unit-jest": "^3.0.0-beta.15",
+    "@vue/cli-service": "^3.0.0-beta.15",
     "@vue/test-utils": "^1.0.0-beta.16",
     "axios": "^0.18.0",
     "babel-core": "^7.0.0-bridge.0",
@@ -80,9 +80,9 @@
     "mkdirp": "^0.5.1",
     "node-sass": "^4.9.0",
     "rimraf": "^2.6.2",
-    "sass-loader": "^7.0.1",
+    "sass-loader": "^7.0.2",
     "ts-jest": "^22.4.6",
-    "ts-node": "^6.0.3",
+    "ts-node": "^6.0.5",
     "tslint": "^5.10.0",
     "tslint-microsoft-contrib": "^5.0.3",
     "typescript": "^2.8.3",

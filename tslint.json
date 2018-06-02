@@ -1,6 +1,9 @@
 {
   "defaultSeverity": "error",
-  "extends": "tslint-microsoft-contrib",
+  "extends": ["tslint-microsoft-contrib"],
+  "linterOptions": {
+    "exclude": ["node_modules/**"]
+  },
   "rules": {
     "class-name": true,
     "interface-name": false,
