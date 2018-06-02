@@ -1,11 +1,9 @@
 /**
- * 
  * CEP
  * The css class naming rule based on component, something like BEM.
- * 
  */
 
-/*----------  Component  ----------*/
+/* ----------  Component  ---------- */
 
 @function class-comp($component) {
   @if $component != to-lower-case($component) {
@@ -29,7 +27,7 @@
   }
 }
 
-/*----------  Element  ----------*/
+/* ----------  Element  ---------- */
 
 @function class-elem($element) {
   @return '#{$C}_#{$element}';
@@ -114,7 +112,7 @@
   }
 }
 
-/*----------  Property  ----------*/
+/* ----------  Property  ---------- */
 
 @function class-prop($property, $value) {
   @return '#{$namespace}p-#{$property}_#{$value}';
@@ -146,7 +144,7 @@
   }
 }
 
-/*----------  Status  ----------*/
+/* ----------  Status  ---------- */
 
 @function class-status($status) {
   @return 'is-#{$status}';
@@ -210,7 +208,7 @@
   }
 }
 
-/*----------  Atomic  ----------*/
+/* ----------  Atomic  ---------- */
 
 @function class-atom($name, $value: null) {
   $class-name: '#{$namespace}a-#{$name}';

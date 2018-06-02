@@ -8,19 +8,10 @@
   "emmet.includeLanguages": {
     "vue-html": "html"
   },
-  "css.validate": true,
-  "less.validate": true,
-  "scss.validate": true,
-  "css.lint.universalSelector": "warning",
-  "css.lint.important": "warning",
-  "css.lint.float": "warning",
-  "css.lint.idSelector": "warning",
-  "scss.lint.important": "warning",
-  "scss.lint.float": "warning",
-  "scss.lint.idSelector": "warning",
-  "less.lint.important": "warning",
-  "less.lint.float": "warning",
-
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "stylelint.enable": true,
   "tslint.enable": true,
   "tslint.run": "onSave",
   "tslint.configFile": "tslint.json",
@@ -54,7 +45,14 @@
     "keep_array_indentation": true,
     "space_before_conditional": true
   },
-  "beautify.ignore": ["**/extends.scss", "**/extends/*.scss", "**/mixins.scss", "**/normalize.css", "**/reset.scss", "**/variables.scss"],
+  "beautify.ignore": [
+    "**/extends.scss",
+    "**/extends/*.scss",
+    "**/mixins.scss",
+    "**/normalize.css",
+    "**/reset.scss",
+    "**/variables.scss"
+  ],
   "vetur.validation.template": true,
   "vetur.format.defaultFormatter.html": "js-beautify-html",
   "vetur.format.defaultFormatter.css": "prettier",

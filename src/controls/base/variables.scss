@@ -3,7 +3,7 @@ $root-font-size-scale-xlarge: 1.6;
 
 html {
 
-  /*-------- theme --------*/
+  /* -------- theme -------- */
 
   --vd-theme-lite-fg-emphasize:     #222222;
   --vd-theme-lite-fg-normal:        #333333;
@@ -43,7 +43,7 @@ html {
   --vd-theme-dark-bd-disabled:      #777777;
   --vd-theme-dark-bd-focus:         #aaaaaa;
 
-  /*-------- tone --------*/
+  /* -------- tone -------- */
 
   --vd-tone-primary-darkener:       #0080b0;
   --vd-tone-primary-darken:         #0098c2;
@@ -75,7 +75,7 @@ html {
   --vd-tone-danger-lighten:         #ff4d4d;
   --vd-tone-danger-lightener:       #ff6666;
 
-  /*-------- grade --------*/
+  /* -------- grade -------- */
 
   --vd-grade-1:     #ff3333;
   --vd-grade-2:     #ff7e34;
@@ -83,22 +83,22 @@ html {
   --vd-grade-4:     #58d000;
   --vd-grade-5:     #24cf4c;
 
-  /*-------- shape --------*/
+  /* -------- shape -------- */
 
-  /*-------- size --------*/
+  /* -------- size -------- */
 
-  /*-------- skin --------*/
+  /* -------- skin -------- */
 
-  /*-------- acrylic --------*/
+  /* -------- acrylic -------- */
 
-  /*-------- typographic --------*/
+  /* -------- typographic -------- */
 
   --vd-font-size-base:      0.14rem;
   --vd-line-height-normal:  1.571432;
   --vd-line-height-base:    0.32rem;
 }
 
-/*-------- enum  --------*/
+/* -------- enum  -------- */
 
 $enum-theme:    'lite', 'dark';
 $enum-tone:     'primary', 'secondary', 'success', 'warning', 'danger';
@@ -106,10 +106,10 @@ $enum-skin:     'fill', 'flat', 'plain', 'silk';
 $enum-shape:    'rect', 'pill', 'square', 'circle';
 $enum-size:     'xsmall', 'small', 'medium', 'large', 'xlarge';
 
-/*-------- theme --------*/
+/* -------- theme -------- */
 
-$color-white: #fff;
-$color-black: #000;
+$color-white: #ffffff;
+$color-black: #000fff;
 
 $theme-map: (
   lite-fg-emphasize:    var(--vd-theme-lite-fg-emphasize),
@@ -153,7 +153,7 @@ $theme-map: (
   @return map-get($theme-map, $key);
 }
 
-/*-------- tone -------*/
+/* -------- tone -------- */
 
 $tone-map: (
   primary-darkener:     var(--vd-tone-primary-darkener),
@@ -191,7 +191,7 @@ $tone-map: (
   @return map-get($tone-map, $key);
 }
 
-/*-------- grade --------*/
+/* -------- grade -------- */
 
 $grade-map: (
   1:    var(--vd-grade-1),
@@ -201,18 +201,18 @@ $grade-map: (
   5:    var(--vd-grade-5),
 );
 
-/*-------- shape --------*/
+/* -------- shape -------- */
 $border-radius-base:    0.02rem;
 $border-width-base:     0.01rem;
 $border-initial:        $border-width-base solid transparent;
 
-/*-------- size --------*/
+/* -------- size -------- */
 
 $gutter-base: 0.16rem;
 
-/*-------- skin --------*/
+/* -------- skin -------- */
 
-/*-------- acrylic --------*/
+/* -------- acrylic -------- */
 
 $acrylic-expand:    ($gutter-base * 4);
 $acrylic-blur:      32px;
@@ -221,7 +221,7 @@ $acrylic-brightness-map: (
   dark:     115%,
 );
 
-/*-------- typographic --------*/
+/* -------- typographic -------- */
 
 $font-family-base: 'Helvetica Neue', 'Helvetica', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', 'Arial', 'sans-serif';
 $font-family-code: 'Source Sans Pro', 'Helvetica Neue', 'Arial', 'sans-serif';
@@ -230,7 +230,7 @@ $font-size-base:      var(--vd-font-size-base);
 $line-height-normal:  var(--vd-line-height-normal);
 $line-height-base:    var(--vd-line-height-base);
 
-/**-------- layout --------*/
+/* -------- layout -------- */
 
 $breakpoint-map: (
   xsmall:     768px,
@@ -266,7 +266,7 @@ $flexbox-gutter-map: (
   xlarge:     40px,
 );
 
-/*-------- transition and anime --------*/
+/* -------- transition and anime -------- */
 
 $transition-1: all ease-in-out 0.1s;
 
@@ -274,7 +274,7 @@ $transition-1: all ease-in-out 0.1s;
   @return all ease-in-out $duration;
 }
 
-/*-------- button --------*/
+/* -------- button -------- */
 
 $button-font-size-map: (
   xsmall:     0.12rem,
@@ -308,7 +308,7 @@ $button-size-map-circle: (
   xlarge:     0.64rem,
 );
 
-/*-------- form --------*/
+/* -------- form -------- */
 
 $form-font-size:    0.14rem;
 $form-row-height:   0.32rem;

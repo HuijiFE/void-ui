@@ -42,13 +42,18 @@
     "build": "yarn build:types && yarn build:lib && yarn build:docs",
     "serve": "VUE_SOLUTION=docs vue-cli-service serve docs/main.ts",
     "test": "vue-cli-service test",
-    "lint": "vue-cli-service lint",
+    "lint:style": "stylelint **/*.scss",
+    "lint:script": "vue-cli-service lint",
+    "lint": "yarn lint:style && yarn lint:script",
     "vue:inspect": "vue-cli-service inspect > vue.inspect.js",
     "vue:help": "vue-cli-service -h"
   },
   "dependencies": {
     "normalize.css": "^8.0.0",
     "popmotion": "^8.2.3",
+    "stylelint": "^9.2.1",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-scss": "^3.1.0",
     "vue-class-component": "^6.2.0",
     "vue-property-decorator": "^6.1.0"
   },

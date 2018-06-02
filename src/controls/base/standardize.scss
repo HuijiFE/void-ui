@@ -12,6 +12,7 @@ html {
    * height and width include border-width.
    */
   box-sizing: border-box;
+
   *,
   *::before,
   *::after {
@@ -26,10 +27,6 @@ body {
 html,
 body {
   height: 100%;
-}
-
-a {
-  cursor: pointer;
 }
 
 a {
@@ -55,7 +52,7 @@ input[type='button'] {
   cursor: pointer;
 }
 
-/*-------- typographic --------*/
+/* -------- typographic -------- */
 
 p,
 h1,

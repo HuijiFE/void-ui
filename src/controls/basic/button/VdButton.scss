@@ -100,9 +100,11 @@
   @each $tone in $enum-tone {
     @include prop((skin: 'fill', tone: $tone)) {
       background-color: tone('#{$tone}-standard');
+
       &:hover {
         background-color: tone('#{$tone}-lighten');
       }
+
       &:active {
         background-color: tone('#{$tone}-darken');
       }
@@ -124,6 +126,7 @@
   @each $tone in $enum-tone {
     @include prop((skin: 'flat', tone: $tone)) {
       color: tone('#{$tone}-standard');
+
       &:hover,
       &:active {
         color: tone('#{$tone}-lighten');
@@ -143,6 +146,7 @@
     @include prop((skin: 'plain', tone: $tone)) {
       color: tone('#{$tone}-standard');
       border-color: tone('#{$tone}-standard');
+
       &:active {
         color: tone('#{$tone}-lighten');
       }
@@ -170,6 +174,7 @@
     @include prop((skin: 'silk', tone: $tone)) {
       color: tone('#{$tone}-standard');
       border-color: tone('#{$tone}-standard');
+
       &:hover,
       &:active {
         color: tone('#{$tone}-lighten');
@@ -199,11 +204,13 @@
 
   > .#{class-comp('button')} {
     position: initial;
+
     &:hover,
     &:active {
       position: relative;
     }
   }
+
   > .#{class-comp('button')}:not(:first-child) {
     margin-left: -$border-width-base;
   }

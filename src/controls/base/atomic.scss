@@ -5,13 +5,13 @@
  */
 
 @include define-atom('bg', 'white') {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 @include define-atom('bg', 'black') {
-  background-color: #000;
+  background-color: #000000;
 }
 
-/*-------- grade --------*/
+/* -------- grade -------- */
 @each $grade, $value in $grade-map {
   @include define-atom('grade', $grade) {
     background-color: $value;
@@ -27,12 +27,12 @@
   }
 }
 
-/*-------- raise --------*/
+/* -------- raise -------- */
 @include define-atom('raise', 0) {
   box-shadow: none;
 }
 @for $i from 1 through 9 {
   @include define-atom('raise', $i) {
-    box-shadow: 0 ($i * 1px) ($i * 3px) 0 rgba(#000, 0.3);
+    box-shadow: 0 ($i * 1px) ($i * 3px) 0 rgba(#000000, 0.3);
   }
 }

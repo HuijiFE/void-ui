@@ -2,7 +2,7 @@
 // tslint:disable:no-relative-imports
 // tslint:disable:missing-jsdoc
 
-console.log('\n/*-------- theme --------*/\n');
+console.log('\n/* -------- theme -------- */\n');
 
 {
   const keysAll: string[] = ['lite', 'dark'];
@@ -57,7 +57,7 @@ console.log('\n/*-------- theme --------*/\n');
   );
 }
 
-console.log('\n/*-------- tone --------*/\n');
+console.log('\n/* -------- tone -------- */\n');
 
 {
   const keysAll: string[] = ['primary', 'secondary', 'success', 'warning', 'danger'];
