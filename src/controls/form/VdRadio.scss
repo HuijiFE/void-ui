@@ -13,6 +13,10 @@
     opacity: 0;
   }
 
+  @include elem('symbol', 'symbol-inner') {
+    position: relative;
+  }
+
   @include elem('symbol') {
     width: $form-radio-symbol-size;
     height: $form-radio-symbol-size;

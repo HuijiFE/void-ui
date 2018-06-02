@@ -1,0 +1,6 @@
+/**
+ * Control: Switch
+ */
+@include comp('switch') {
+  @include extend-atom('form-widget');
+}

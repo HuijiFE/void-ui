@@ -127,7 +127,7 @@ export default class Controls extends Vue {
 
   public index: number = 1;
 
-  public groupMode: 'widget' | 'button' = 'widget';
+  public groupMode: 'widget' | 'button' = 'button';
 
   public radioValue: string | number = 'a';
 

@@ -12,8 +12,8 @@ import { CreateElement, VNode } from 'vue';
 import { Theme, Tone, Skin, Shape, Size, VdControl } from '@void/controls/base/VdControl';
 import { FormWidget } from '@void/controls/form/VdForm';
 
-// tslint:disable-next-line:no-empty-interface
 export interface Radio extends FormWidget {
+  label: string;
   value: string | number;
 }
 
@@ -41,7 +41,7 @@ export class VdRadio extends VdControl implements Radio {
     return this.value === this.sourceValue;
   }
 
-  private onChange(event: Event): void {
+  private onChange(): void {
     this.$emit('change', this.value);
   }
 
@@ -51,6 +51,7 @@ export class VdRadio extends VdControl implements Radio {
       `vdp-theme_${this.$theme}`,
       {
         'is-checked': this.checked,
+        'is-disabled': this.disabled,
       },
     ];
   }
@@ -59,18 +60,18 @@ export class VdRadio extends VdControl implements Radio {
     // tslint:disable:react-a11y-role-has-required-aria-props
     return (
       <label class={this.classes} role="radio" aria-checked={this.checked} tabindex="0">
-        <input
-          class="vd-radio_widget"
-          type="radio"
-          aria-hidden="true"
-          tabindex="-1"
-          id={this.id}
-          name={this.name}
-          value={this.value}
-          checked={this.checked}
-          onChange={this.onChange}
-        />
         <span class="vd-radio_symbol">
+          <input
+            class="vd-radio_widget"
+            type="radio"
+            aria-hidden="true"
+            tabindex="-1"
+            id={this.id}
+            name={this.name}
+            value={this.value}
+            checked={this.checked}
+            onChange={this.onChange}
+          />
           <span class="vd-radio_symbol-inner" />
         </span>
         <span class="vd-radio_label">{this.label || this.$slots.default}</span>

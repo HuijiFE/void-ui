@@ -13,6 +13,10 @@
     opacity: 0;
   }
 
+  @include elem('symbol-outer', 'symbol') {
+    position: relative;
+  }
+
   @include elem('symbol-outer') {
     width: $form-radio-symbol-size;
     height: $form-radio-symbol-size;
@@ -24,8 +28,6 @@
   }
 
   @include elem('symbol') {
-    position: relative;
-
     width: $form-checkbox-symbol-size;
     height: $form-checkbox-symbol-size;
     line-height: $form-checkbox-symbol-size;

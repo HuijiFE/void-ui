@@ -12,8 +12,8 @@ import { CreateElement, VNode } from 'vue';
 import { Skin, VdControl } from '@void/controls/base/VdControl';
 import { FormWidget } from '@void/controls/form/VdForm';
 
-// tslint:disable-next-line:no-empty-interface
 export interface Checkbox extends FormWidget {
+  label: string;
   value: string | number;
 }
 
@@ -47,11 +47,12 @@ export class VdCheckbox extends VdControl implements Checkbox {
       `vdp-theme_${this.$theme}`,
       {
         'is-checked': this.checked,
+        'is-disabled': this.disabled,
       },
     ];
   }
 
-  private onChange(event: Event): void {
+  private onChange(): void {
     if (this.checked) {
       const index: number = this.sourceValue.indexOf(this.value);
       this.$emit(
@@ -72,18 +73,18 @@ export class VdCheckbox extends VdControl implements Checkbox {
         aria-checked={this.checked}
         tabindex="0"
       >
-        <input
-          class="vd-checkbox_widget"
-          type="checkbox"
-          aria-hidden="true"
-          tabindex="-1"
-          id={this.id}
-          name={this.name}
-          value={this.value}
-          checked={this.checked}
-          onChange={this.onChange}
-        />
         <span class="vd-checkbox_symbol-outer">
+          <input
+            class="vd-checkbox_widget"
+            type="checkbox"
+            aria-hidden="true"
+            tabindex="-1"
+            id={this.id}
+            name={this.name}
+            value={this.value}
+            checked={this.checked}
+            onChange={this.onChange}
+          />
           <span class="vd-checkbox_symbol">
             <span class="vd-checkbox_symbol-inner" />
             <vd-icon class="vd-checkbox_symbol-check" fa={['fas', 'check']} />

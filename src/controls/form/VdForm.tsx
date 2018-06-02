@@ -12,9 +12,9 @@ import { CreateElement, VNode } from 'vue';
 import { VdControl } from '@void/controls/base/VdControl';
 
 export interface FormWidget {
+  disabled?: boolean;
   id?: string;
   name?: string;
-  label: string;
 }
 
 /**
@@ -23,6 +23,6 @@ export interface FormWidget {
 @Component
 export class VdForm extends VdControl {
   private render(h: CreateElement): VNode {
-    return <div class="vd-form">{this.$slots.default}</div>;
+    return <form class="vd-form">{this.$slots.default}</form>;
   }
 }
