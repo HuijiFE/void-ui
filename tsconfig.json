@@ -18,7 +18,7 @@
     "baseUrl": ".",
     "paths": {
       "@void/*": ["src/*"],
-      "@docs/*": ["gamelib/*"]
+      "@docs/*": ["docs/*"]
     }
   },
   "include": [
