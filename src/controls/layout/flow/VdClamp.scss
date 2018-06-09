@@ -1,4 +1,5 @@
 @include comp('clamp') {
+  position: relative;
   padding: 0 $clamp-padding;
   margin: 0 auto;
   max-width: clamp('large');
