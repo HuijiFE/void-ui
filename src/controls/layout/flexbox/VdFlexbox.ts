@@ -72,6 +72,7 @@ export type Flex =
 export enum FlexGutter {
   none = 'none',
   auto = 'auto',
+  base = 'base',
   xsmall = 'xsmall',
   small = 'small',
   medium = 'medium',
@@ -125,6 +126,9 @@ export enum FlexAlign {
  */
 @Component
 export class VdFlexbox extends Vue {
+  @Prop({ type: String, default: 'div' })
+  public readonly tag!: string;
+
   /**
    * Flexibility.
    */
@@ -208,7 +212,7 @@ export class VdFlexbox extends Vue {
 
   private render(h: CreateElement): VNode {
     return h(
-      'div',
+      this.tag,
       {
         class: [
           'vd-flexbox',

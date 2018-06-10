@@ -12,7 +12,7 @@
       )
     ) {
       color: theme(#{$theme-key}-fg-normal);
-      background-color: theme(#{$theme-key}-bg-normal);
+      background-color: theme(#{$theme-key}-bg-lower);
     }
   }
 }

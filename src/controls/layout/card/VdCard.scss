@@ -9,17 +9,27 @@
   font-size: $font-size-base;
   line-height: $line-height-normal;
 
-  @include elem('header') {
-    font-weight: bold;
+  @include elem('header', 'inner', 'separator') {
+    position: relative;
   }
 
-  @include elem('header', 'inner') {
-    position: relative;
-    padding: $gutter-base;
+  @include elem('header') {
+    font-weight: bold;
+
+    height: $card-header-height;
+    padding: 0 $gutter-base;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  @include elem('inner') {
+    padding: $gutter-base $gutter-base $gutter-base $gutter-base;
   }
 
   @include elem('header', 'separator') {
-    position: relative;
     border-bottom: 1px solid transparent;
   }
 
