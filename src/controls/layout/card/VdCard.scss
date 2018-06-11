@@ -29,6 +29,10 @@
     padding: $gutter-base $gutter-base $gutter-base $gutter-base;
   }
 
+  @include elem-adjacent('inner') {
+    padding-top: 0;
+  }
+
   @include elem('header', 'separator') {
     border-bottom: 1px solid transparent;
   }

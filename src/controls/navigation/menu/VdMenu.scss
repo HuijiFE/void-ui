@@ -4,7 +4,7 @@ $menu-padding: $gutter-base / 2;
 $menu-indicator-width: $border-width-base * 2;
 
 $menu-icon-size: 0.2rem;
-$menu-item-height: 0.32rem;
+$menu-item-height: 0.4rem;
 $menu-item-padding: $gutter-base;
 
 $menu-anime-timing-function: ease-in-out;
@@ -89,7 +89,11 @@ $menu-sub-wrapper-min-width: 1.28rem;
 
   // LAYOUT direction vertical
 
-  @include prop((direction: 'vertical')) {
+  @include prop(
+    (
+      direction: 'vertical',
+    )
+  ) {
     @include extend-atom('menu-part-v');
     height: 100%;
     padding: $menu-padding 0;
@@ -104,7 +108,11 @@ $menu-sub-wrapper-min-width: 1.28rem;
 
   // LAYOUT direction horizontal
 
-  @include prop((direction: 'horizontal')) {
+  @include prop(
+    (
+      direction: 'horizontal',
+    )
+  ) {
     @include extend-atom('menu-part-h');
 
     @include elem('start', 'center', 'end') {
@@ -118,7 +126,11 @@ $menu-sub-wrapper-min-width: 1.28rem;
 
   // STYLE skin plain
 
-  @include prop((skin: 'plain')) {
+  @include prop(
+    (
+      skin: 'plain',
+    )
+  ) {
     &::before {
       content: ' ';
       display: block;
@@ -126,7 +138,12 @@ $menu-sub-wrapper-min-width: 1.28rem;
     }
   }
 
-  @include prop((skin: 'plain', direction: 'vertical')) {
+  @include prop(
+    (
+      skin: 'plain',
+      direction: 'vertical',
+    )
+  ) {
     &::before {
       top: 0;
       bottom: 0;
@@ -134,18 +151,35 @@ $menu-sub-wrapper-min-width: 1.28rem;
     }
   }
 
-  @include prop((skin: 'plain', direction: 'vertical', position: 'left')) {
+  @include prop(
+    (
+      skin: 'plain',
+      direction: 'vertical',
+      position: 'left',
+    )
+  ) {
     &::before {
       right: 0;
     }
   }
-  @include prop((skin: 'plain', direction: 'vertical', position: 'right')) {
+  @include prop(
+    (
+      skin: 'plain',
+      direction: 'vertical',
+      position: 'right',
+    )
+  ) {
     &::before {
       left: 0;
     }
   }
 
-  @include prop((skin: 'plain', direction: 'horizontal')) {
+  @include prop(
+    (
+      skin: 'plain',
+      direction: 'horizontal',
+    )
+  ) {
     &::before {
       bottom: 0;
       left: 0;
@@ -155,7 +189,12 @@ $menu-sub-wrapper-min-width: 1.28rem;
   }
 
   @each $theme-key in $enum-theme {
-    @include prop((skin: 'plain', theme: $theme-key)) {
+    @include prop(
+      (
+        skin: 'plain',
+        theme: $theme-key,
+      )
+    ) {
       color: theme(#{$theme-key}-fg-normal);
       background-color: theme(#{$theme-key}-bg-normal);
 
