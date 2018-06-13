@@ -118,10 +118,10 @@ $gutter-base: 0.16rem;
 /* -------- acrylic -------- */
 
 $acrylic-expand:    ($gutter-base * 4);
-$acrylic-blur:      32px;
+$acrylic-blur:      16px;
 $acrylic-brightness-map: (
-  lite:     85%,
-  dark:     115%,
+  lite:     115%,
+  dark:     85%,
 );
 
 /* -------- typographic -------- */

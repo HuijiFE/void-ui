@@ -13,7 +13,8 @@ import { VdControl } from '@void/controls/base/VdControl';
 
 export interface GalleryItem {
   format: 'image' | 'video';
-  src: string;
+  thumb: string;
+  source: string;
   alt?: string;
 }
 
@@ -52,7 +53,7 @@ export class VdGallery extends VdControl {
           <div class="vd-gallery_selected-container">
             <img
               class="vd-gallery_selected"
-              src={this.selectedItem ? this.selectedItem.src : ''}
+              src={this.selectedItem ? this.selectedItem.source : ''}
               alt={
                 this.selectedItem ? this.selectedItem.alt || this.selectedItem.format : ''
               }
@@ -70,7 +71,7 @@ export class VdGallery extends VdControl {
                   <span class="vd-gallery_item-thumbnail-container">
                     <img
                       class="vd-gallery_item-thumbnail"
-                      src={item.src}
+                      src={item.thumb}
                       alt={item.alt || item.format}
                     />
                   </span>
