@@ -72,14 +72,14 @@ globby(['src/**/*.ts', 'src/**/*.tsx', 'src/**/*.vue']).then(files =>
 );
 
 // copy types files
-const typesToCopy: string[] = ['css.shims.d.ts', 'vue.jsx.d.ts', 'vue.shims.d.ts'];
+const typesToCopy: string[] = ['shims.css.d.ts', 'shims.vue.d.ts', 'shims.vue.tsx.d.ts'];
 typesToCopy.forEach(file =>
   fs.copyFile(`typings/${file}`, `temp/${file}`, () => undefined),
 );
 
-fs.readFile('typings/void-ui.shims.d.ts', (err, data) => {
+fs.readFile('typings/shims.void-ui.d.ts', (err, data) => {
   fs.writeFile(
-    'temp/void-ui.shims.d.ts',
+    'temp/shims.void-ui.d.ts',
     data.toString().replace('@void', '.'),
     () => undefined,
   );

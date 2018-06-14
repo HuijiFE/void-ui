@@ -1,70 +1,89 @@
-# Void-UI
+# Void-UI Controls
 
-## Controls
+## Basic
+
+- Button ButtonGroup ButtonWrapper
+- Icon
+- Typography: Article
+- Border
+- Shadow
+
+## Visual Effect
+
+- Acrylic
+- Parallax
+
+## Layout
+
+- Card
+- Flexbox
+- Grid GridSplitter
+- Flow: Main Swimlane Clamp
+- List
+- Tree
+- Gallery
+- Slider
+- Tile
+- Tabs
+
+## Interaction
+
+- Menu
+- Pagination
+- Tooltip
+- Flyout
+- Progress
+- Loading
+- Note
+- Alert
+- Dialog
+
+## Rich content
+
+- Avatar
+- Media
+
+## Form
 
 ### Basic
 
-- button button-group button-wrapper
-- icon
-- typography
+- Form
+- FromItem
+- AutoComplete
 
-### Visual Effect
+### Emum/Flag
 
-- acrylic
-- parallax
+- Checkbox
+- Radio
+- Switch
+- Select
+- Tags
 
-### Layout
+### Text
 
-- card
-- flexbox
-- grid
-- flow: main swimlane clamp
-- list
-- tree
-- gallery
-- slider
-- tile
-- tabs
+- TextInput
+- TextArea
 
-### Interaction
+### Number
 
-- menu
-- pagination
-- tooltip
-- flyout
-- progress
-- loading
+- Range
+- NumberInput
 
-### Rich content
+### Special Value
 
-- avatar
-- media
+- Datetime
+- Color
+- Rating
 
-### Form
+### Form Schema
 
-> Special: Form Schema
-
-- form
-- from-item
-- auto-complete
-
-- checkbox
-- radio
-- switch
-
-- select
-- tags
-- text-input
-- text-area
-
-- range
-- number-input
-
-- datetime
-- color
-- rating
+- schema
 
 ### Form validator
 
 - number integer price
 - string email password
+
+### Data
+
+- DataGrid
