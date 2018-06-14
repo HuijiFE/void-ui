@@ -9,8 +9,16 @@
   font-size: $font-size-base;
   line-height: $line-height-normal;
 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+
   @include elem('header', 'inner', 'separator') {
     position: relative;
+    width: 100%;
+    flex: 0 1 100%;
   }
 
   @include elem('header') {
