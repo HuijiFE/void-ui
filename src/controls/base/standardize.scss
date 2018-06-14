@@ -52,6 +52,21 @@ input[type='button'] {
   cursor: pointer;
 }
 
+/**
+ * Set media element size and position.
+ */
+audio,
+img,
+object,
+embed,
+canvas,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
 /* -------- typographic -------- */
 
 p,

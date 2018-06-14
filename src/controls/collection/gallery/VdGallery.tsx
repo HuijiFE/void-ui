@@ -39,7 +39,10 @@ export class VdGallery extends VdControl {
   public selectedItem: GalleryItem = null as any;
 
   public select(item: GalleryItem): (event: MouseEvent) => void {
-    return (event: MouseEvent) => (this.selectedItem = item);
+    return (event: MouseEvent) => {
+      this.$emit('change', item);
+      this.selectedItem = item;
+    };
   }
 
   private beforeMount(): void {

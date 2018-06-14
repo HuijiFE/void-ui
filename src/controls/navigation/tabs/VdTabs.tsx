@@ -29,6 +29,13 @@ export class VdTabs extends VdControl {
   // tslint:disable-next-line:no-null-keyword
   public selectedPane: VdTabPane | null = null;
 
+  @Watch('panes')
+  public resetSelectedPane(panes: VdTabPane[]): void {
+    if (panes.length > 0) {
+      this.selectedPane = panes[0];
+    }
+  }
+
   private changing: boolean = false;
 
   public select(pane: VdTabPane): void {
@@ -42,7 +49,7 @@ export class VdTabs extends VdControl {
 
   @Watch('selectedPane')
   private movePane(newPane: VdTabPane, oldPane: VdTabPane): void {
-    if (newPane && oldPane && newPane !== oldPane) {
+    if (newPane && oldPane && newPane !== oldPane && this.panes.includes(oldPane)) {
       this.changing = true;
 
       const newIndex: number = this.panes.indexOf(newPane);
