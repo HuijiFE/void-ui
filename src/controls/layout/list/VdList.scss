@@ -20,6 +20,7 @@
 
   @include elem('item') {
     @include extend-atom('list-base');
+    display: block;
 
     flex: 0 1 100%;
 

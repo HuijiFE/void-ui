@@ -1,6 +1,5 @@
 @include comp('acrylic') {
   position: absolute;
-
   top: 0;
   bottom: 0;
   left: 0;
@@ -34,7 +33,11 @@
   }
 
   @each $theme, $brightness in $acrylic-brightness-map {
-    @include prop((theme: $theme)) {
+    @include prop(
+      (
+        theme: $theme,
+      )
+    ) {
       @include elem('img') {
         filter: blur($acrylic-blur) brightness($brightness);
       }

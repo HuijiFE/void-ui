@@ -1,0 +1,16 @@
+/**
+ * Control: UniformScale
+ */
+@include comp('uniform-scale') {
+  position: relative;
+  width: 100%;
+
+  @include elem('container') {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+  }
+}

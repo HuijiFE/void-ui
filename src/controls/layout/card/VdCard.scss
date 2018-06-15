@@ -47,6 +47,12 @@
 
   @each $theme in $enum-theme {
     background-color: theme('#{$theme}-bg-normal');
+    @include elem('header') {
+      color: theme('#{$theme}-fg-emphasize');
+    }
+    @include elem('inner') {
+      color: theme('#{$theme}-fg-normal');
+    }
     @include elem('header', 'separator') {
       border-color: theme('#{$theme}-bd-normal');
     }
