@@ -9,10 +9,12 @@
   @include elem('inner') {
     position: absolute;
 
-    top: -$acrylic-blur;
-    bottom: -$acrylic-blur;
-    left: -$acrylic-blur;
-    right: -$acrylic-blur;
+    $acrylic-expand: -($acrylic-blur);
+
+    top: $acrylic-expand;
+    bottom: $acrylic-expand;
+    left: $acrylic-expand;
+    right: $acrylic-expand;
   }
 
   @include elem('img') {
