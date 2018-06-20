@@ -1,89 +1,120 @@
 # Void-UI Controls
 
-## Basic
+## Scss and TypeScripts
 
-- Button ButtonGroup ButtonWrapper
+- Scss: Variables and CEP
+- TypeScript: base class VdControl
+
+## Style Properties
+
+1.  theme: lite, dark
+1.  tone: primary, secondary, success, warning, danger
+1.  skin: fill, flat, plain, silk
+1.  shape: rect, pill, square, circle
+1.  size: xsmall, small, medium, large, xlarge
+1.  disabled: boolean
+1.  bordered: boolean
+1.  raise: number
+1.  grade: 1 ~ 5
+
+## Common Controls
+
+### Basic
+
+- Button, ButtonGroup, ButtonWrapper
 - Icon
-- Typography: Article
-- Border
-- Shadow
 
-## Visual Effect
+### Visual Effect
 
 - Acrylic
 - Parallax
 
-## Layout
-
-- Card
-- Flexbox
-- Grid GridSplitter
-- Flow: Main Swimlane Clamp
-- List
-- Tree
-- Gallery
-- Slider
-- Tile
-- Tabs
-
-## Interaction
-
-- Menu
-- Pagination
-- Tooltip
-- Flyout
-- Progress
-- Loading
-- Note
-- Alert
-- Dialog
-
-## Rich content
+### Rich Content
 
 - Avatar
-- Media
+- Article
+- Note
+- Music
+- Video
+- Calendar
 
-## Form
+### Layout
 
-### Basic
+- Flow: Main, Swimlane, Clamp
+- Flexbox
+- Grid, GridSplitter
+- Card
+- UniformScale
+- List
+- Tree
+- Scroll
+- Slide
+- Tabs
+- Gallery
+- Carousel
+- Collapse
+- Affix
 
-- Form
-- FromItem
+### Interaction
+
+- Menu
+- Dropdown
+- Pagination
+- Anchor
+- BackTop
+- Breadcrumb
+- Steps
+- Progress
+- Loading
+- Tooltip
+- Popover
+- Message
+- MessageBox
+- Dialog
+- Notification
+
+## Form Controls
+
+> Special: Form Schema
+
+- Form, FromItem
+- Input
+- Textarea
 - AutoComplete
 
-### Emum/Flag
+### Option
 
 - Checkbox
 - Radio
 - Switch
-- Select
 - Tags
-
-### Text
-
-- TextInput
-- TextArea
+- Select
+- TreeSelect
+- Transfer
+- OptionGroup
 
 ### Number
 
-- Range
 - NumberInput
+- Slider
+- Range
 
-### Special Value
+### Special
 
-- Datetime
+- Rate
+- Time, Date, DateTime
 - Color
-- Rating
+- Upload
 
-### Form Schema
+### Advanced
 
-- schema
+- RichEdit
 
-### Form validator
+### Validator
 
-- number integer price
-- string email password
+1.  number: integer price
+2.  string: email password
 
-### Data
+## Data
 
 - DataGrid
