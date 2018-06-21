@@ -1,11 +1,12 @@
 # Void-UI Controls
 
-## Scss and TypeScripts
+## System
 
-- Scss: Variables and CEP
-- TypeScript: base class VdControl
+> Scss: Variables and CEP
 
-## Style Properties
+> TypeScript: base class VdControl
+
+### Style Properties
 
 1.  theme: lite, dark
 1.  tone: primary, secondary, success, warning, danger
@@ -78,6 +79,9 @@
 > Special: Form Schema
 
 - Form, FromItem
+
+### Text
+
 - Input
 - Textarea
 - AutoComplete
@@ -87,9 +91,9 @@
 - Checkbox
 - Radio
 - Switch
-- Tags
 - Select
 - TreeSelect
+- Tags
 - Transfer
 - OptionGroup
 
@@ -102,8 +106,8 @@
 ### Special
 
 - Rate
-- Time, Date, DateTime
-- Color
+- Date Time: TimePicker, DatePicker, DateTimePicker
+- ColorPicker
 - Upload
 
 ### Advanced
