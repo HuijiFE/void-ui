@@ -30,15 +30,6 @@
 - Acrylic
 - Parallax
 
-### Rich Content
-
-- Avatar
-- Article
-- Note
-- Music
-- Video
-- Calendar
-
 ### Layout
 
 - Flow: Main, Swimlane, Clamp
@@ -51,7 +42,6 @@
 - Scroll
 - Slide
 - Tabs
-- Gallery
 - Carousel
 - Collapse
 - Affix
@@ -73,6 +63,16 @@
 - MessageBox
 - Dialog
 - Notification
+
+### Rich Content
+
+- Avatar
+- Article
+- Note
+- Music
+- Video
+- Gallery
+- Calendar
 
 ## Form Controls
 
