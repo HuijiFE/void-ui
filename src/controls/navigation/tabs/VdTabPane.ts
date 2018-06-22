@@ -35,7 +35,6 @@ export class VdTabPane extends VdControl {
 
   public get classes(): ClassName {
     return [
-      'vd-tab-pane',
       {
         'is-selected': this.selected,
         'is-hidden': !this.selected,
@@ -64,6 +63,13 @@ export class VdTabPane extends VdControl {
   }
 
   private render(h: CreateElement): VNode {
-    return h('div', { class: this.classes }, [this.$slots.default]);
+    return h(
+      'div',
+      {
+        staticClass: 'vd-tab-pane',
+        class: this.classes,
+      },
+      [this.$slots.default],
+    );
   }
 }

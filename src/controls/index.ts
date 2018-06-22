@@ -21,6 +21,7 @@ export * from '@void/controls/form/VdRadio';
 export * from '@void/controls/form/VdSwitch';
 export * from '@void/controls/basic/button/VdButton';
 export * from '@void/controls/collection/gallery/VdGallery';
+export * from '@void/controls/layout/carousel/VdCarousel';
 export * from '@void/controls/layout/list/VdList';
 export * from '@void/controls/layout/uniform-scale/VdUniformScale';
 export * from '@void/controls/navigation/menu/VdMenu';
