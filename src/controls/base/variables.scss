@@ -12,7 +12,7 @@ $enum-size:     'xsmall', 'small', 'medium', 'large', 'xlarge';
 /* -------- theme -------- */
 
 $color-white: #ffffff;
-$color-black: #000fff;
+$color-black: #000000;
 
 $theme-map: (
   lite-fg-emphasize:    var(--vd-theme-lite-fg-emphasize),
@@ -169,6 +169,10 @@ $flexbox-gutter-map: (
   large:      0.32rem,
   xlarge:     0.40rem,
 );
+
+$carousel-indicator-height: 0.04rem;
+$carousel-indicator-width: 0.16rem;
+
 
 /* -------- transition and anime -------- */
 

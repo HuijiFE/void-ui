@@ -210,6 +210,12 @@ export class VdFlexbox extends Vue {
   @Prop({ type: String })
   public readonly alignSelf!: FlexAlign;
 
+  /**
+   * Controls the order, by assigning them to ordinal groups
+   */
+  @Prop({ type: [String, Number] })
+  public readonly order!: string | number;
+
   private render(h: CreateElement): VNode {
     return h(
       this.tag,
@@ -237,6 +243,9 @@ export class VdFlexbox extends Vue {
             [`vdp-align-self_${this.alignSelf}`]: this.alignSelf,
           },
         ],
+        style: {
+          order: this.order !== undefined && this.order,
+        },
       },
       [this.$slots.default],
     );

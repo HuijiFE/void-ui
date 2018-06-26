@@ -10,7 +10,6 @@ import {
 } from 'vue-property-decorator';
 import { CreateElement, VNode } from 'vue';
 import { VdControl } from '@void/controls/base/VdControl';
-import { VdCarouselPane } from '@void/controls/layout/carousel/VdCarouselPane';
 
 /**
  * Component: Carousel
@@ -24,6 +23,14 @@ export class VdCarousel extends VdControl {
 
   public selectedPane: VdCarouselPane[] = [];
 
+  public select(index: number): void {
+    //
+  }
+
+  private onSelect(index: number): () => void {
+    return () => this.select(index);
+  }
+
   public get style(): object {
     return {
       paddingBottom:
@@ -34,19 +41,46 @@ export class VdCarousel extends VdControl {
   }
 
   public get classes(): ClassName {
-    return ['vd-carousel'];
+    return [`vdp-theme_${this.$theme}`];
   }
 
   private render(h: CreateElement): VNode {
     return (
-      <div class="vd-carousel">
-        <div class="vd-carousel_inner">{this.$slots.default}</div>
-        <div class="vd-carousel_control_previous" />
-        <div class="vd-carousel_control_next" />
+      <div staticClass="vd-carousel" class={this.classes}>
+        <div class="vd-carousel_inner" style={this.style}>
+          <div class="vd-carousel_pane-wrapper">{this.$slots.default}</div>
+          <button class="vd-carousel_control-previous">
+            <vd-icon class="vd-carousel_control-icon" fa={['fas', 'chevron-left']} />
+          </button>
+          <button class="vd-carousel_control-next">
+            <vd-icon class="vd-carousel_control-icon" fa={['fas', 'chevron-right']} />
+          </button>
+        </div>
         <div class="vd-carousel_indicator-wrapper">
-          <button class="vd-carousel_indicator" />
+          <button staticClass="vd-carousel_indicator" class="is-selected">
+            <span class="vd-carousel_indicator-inner" />
+          </button>
+          <button class="vd-carousel_indicator">
+            <span class="vd-carousel_indicator-inner" />
+          </button>
+          <button class="vd-carousel_indicator">
+            <span class="vd-carousel_indicator-inner" />
+          </button>
+          <button class="vd-carousel_indicator">
+            <span class="vd-carousel_indicator-inner" />
+          </button>
         </div>
       </div>
     );
+  }
+}
+
+/**
+ * Component: Pane
+ */
+@Component
+export class VdCarouselPane extends Vue {
+  private render(h: CreateElement): VNode {
+    return <div class="vd-carousel_pane">{this.$slots.default}</div>;
   }
 }
