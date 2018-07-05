@@ -4,6 +4,7 @@
 @include comp('card') {
   position: relative;
   width: 100%;
+  max-width: 100%;
   overflow: hidden;
 
   font-size: $font-size-base;
@@ -18,7 +19,13 @@
   @include elem('header', 'inner', 'separator') {
     position: relative;
     width: 100%;
+    max-width: 100%;
     flex: 0 1 100%;
+
+    > img {
+      position: relative;
+      max-width: 100%;
+    }
   }
 
   @include elem('header') {
