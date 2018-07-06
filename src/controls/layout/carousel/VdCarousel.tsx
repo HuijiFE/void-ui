@@ -64,7 +64,7 @@ export class VdCarousel extends VdControl {
     if (this.autoPlay && window !== undefined) {
       window.clearInterval(this.autoPlayHandle);
       this.autoPlayHandle = window.setInterval(() => {
-        this.selectedIndex++;
+        this.selectNext();
       }, 5000);
     }
   }
