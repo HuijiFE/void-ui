@@ -11,7 +11,7 @@
     padding-bottom: 30%;
   }
 
-  @include elem('pane-wrapper') {
+  @include elem('panel-wrapper') {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -28,7 +28,7 @@
     align-items: stretch;
   }
 
-  @include elem('pane') {
+  @include elem('panel') {
     position: absolute;
     top: 0;
     left: 0;
@@ -37,12 +37,9 @@
     height: 100%;
     min-width: 100%;
 
-    flex: 0 1 100%;
+    overflow: hidden;
 
-    display: none;
-    @include when('selected') {
-      display: initial;
-    }
+    flex: 0 1 100%;
   }
 
   @include elem('control-previous', 'control-next') {
@@ -106,6 +103,9 @@
       @include elem('control-previous', 'control-next') {
         color: theme('#{$theme}-fg-normal');
         background-color: theme('#{$theme}-bg-normal');
+        &:hover {
+          color: theme('#{$theme}-fg-emphasize');
+        }
       }
       @include elem('indicator') {
         background-color: theme('#{$theme}-fg-sub');
