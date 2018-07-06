@@ -16,6 +16,7 @@ import * as popmotion from 'popmotion';
 import { Easing } from 'popmotion/lib/easing';
 import { ValueReaction } from 'popmotion/lib/reactions/value';
 import { PointerProps } from 'popmotion/lib/input/pointer/types';
+import { ColdSubscription } from 'popmotion/lib/action/types';
 import { Styler } from 'stylefire';
 import { Setter } from 'stylefire/lib/styler/types';
 
@@ -50,6 +51,24 @@ export class VdCarousel extends VdControl {
 
   // ==== panels and selecting ====
 
+  @Prop({ type: Boolean, default: false })
+  public readonly autoPlay!: boolean;
+
+  @Prop({ type: Number, default: 5000 })
+  public readonly autoPlayInterval!: number;
+
+  private autoPlayHandle!: number;
+
+  @Watch('autoPlay', { immediate: true })
+  private initAutoPlay(): void {
+    if (this.autoPlay && window !== undefined) {
+      window.clearInterval(this.autoPlayHandle);
+      this.autoPlayHandle = window.setInterval(() => {
+        this.selectedIndex++;
+      }, 5000);
+    }
+  }
+
   public readonly panels: VdCarouselPanel[] = [];
 
   // tslint:disable-next-line:no-null-keyword no-any
@@ -79,13 +98,16 @@ export class VdCarousel extends VdControl {
     if (this.selectedIndex === value) {
       return;
     }
+    this.initAutoPlay();
     const length: number = this.panels.length;
     this.selectedPanel = this.panels[((value % length) + length) % length];
     this.emitChange();
   }
 
-  public selectPrevious(event: MouseEvent): void {
-    event.preventDefault();
+  public selectPrevious(event?: MouseEvent): void {
+    if (event) {
+      event.preventDefault();
+    }
     if (this.isMoving) {
       return;
     }
@@ -94,8 +116,10 @@ export class VdCarousel extends VdControl {
     this.move(-100, this.selectedPanel, this.leftPanel, this.rightPanel);
   }
 
-  public selectNext(event: MouseEvent): void {
-    event.preventDefault();
+  public selectNext(event?: MouseEvent): void {
+    if (event) {
+      event.preventDefault();
+    }
     if (this.isMoving) {
       return;
     }
@@ -104,9 +128,11 @@ export class VdCarousel extends VdControl {
     this.move(100, this.selectedPanel, this.leftPanel, this.rightPanel);
   }
 
-  protected onSelect(index: number): (event: MouseEvent) => void {
-    return (event: MouseEvent) => {
-      event.preventDefault();
+  protected onSelect(index: number): (event?: MouseEvent) => void {
+    return (event?: MouseEvent) => {
+      if (event) {
+        event.preventDefault();
+      }
       if (this.isMoving) {
         return;
       }
@@ -134,7 +160,7 @@ export class VdCarousel extends VdControl {
 
   protected wrapperStyler!: Styler;
   protected isMoving!: boolean;
-  protected subscription?: popmotion.ColdSubscription;
+  protected subscription?: ColdSubscription;
   protected delta!: number;
 
   protected initSlide(): void {
@@ -143,8 +169,10 @@ export class VdCarousel extends VdControl {
     this.delta = 0;
   }
 
-  protected onSlideStart(event: Event): void {
-    event.preventDefault();
+  protected onSlideStart(event?: MouseEvent | TouchEvent): void {
+    if (event) {
+      event.preventDefault();
+    }
     if (this.isMoving) {
       return;
     }
@@ -178,7 +206,10 @@ export class VdCarousel extends VdControl {
       .start(update);
   }
 
-  protected onSlideEnd(event: Event): void {
+  protected onSlideEnd(event?: MouseEvent | TouchEvent): void {
+    if (event) {
+      event.preventDefault();
+    }
     if (!this.isMoving) {
       return;
     }
@@ -201,39 +232,6 @@ export class VdCarousel extends VdControl {
     } else {
       this.move(this.delta, this.selectedPanel, this.leftPanel, this.rightPanel);
     }
-  }
-
-  protected revert(): void {
-    const left: VdCarouselPanel | undefined = this.leftPanel;
-    const right: VdCarouselPanel | undefined = this.rightPanel;
-    const update: (x: number) => void =
-      left && right
-        ? left === right
-          ? (x: number) => {
-              this.selectedPanel.styler.set('x', `${x}%`);
-              left.styler.set('x', `${x < 0 ? x + 100 : x - 100}%`);
-            }
-          : (x: number) => {
-              this.selectedPanel.styler.set('x', `${x}%`);
-              left.styler.set('x', `${x - 100}%`);
-              right.styler.set('x', `${x + 100}%`);
-            }
-        : (x: number) => this.selectedPanel.styler.set('x', `${x}%`);
-
-    popmotion
-      .tween({
-        from: this.delta,
-        to: 0,
-        ease,
-        duration: (duration * Math.abs(this.delta)) / 100,
-      })
-      .start({
-        update,
-        complete: () => {
-          this.isMoving = false;
-          this.delta = 0;
-        },
-      });
   }
 
   protected move(
