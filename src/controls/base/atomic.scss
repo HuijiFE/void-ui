@@ -31,8 +31,14 @@
 @include define-atom('raise', 0) {
   box-shadow: none;
 }
+@include define-atom('text-raise', 0) {
+  text-shadow: none;
+}
 @for $i from 1 through 9 {
   @include define-atom('raise', $i) {
-    box-shadow: 0 ($i * 1px) ($i * 3px) 0 rgba(#000000, 0.3);
+    box-shadow: 0 ($i * 1px) ($i * 3px) rgba(#000000, 0.3);
+  }
+  @include define-atom('text-raise', $i) {
+    text-shadow: 0 ($i * 1px) ($i * 3px) rgba(#000000, 0.3);
   }
 }
