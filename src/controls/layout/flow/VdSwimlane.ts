@@ -16,6 +16,9 @@ import { VdControl } from '@void/controls/base/VdControl';
  */
 @Component
 export class VdSwimlane extends VdControl {
+  @Prop({ type: String })
+  public readonly backgroundColor!: string;
+
   @Prop({ type: Boolean, default: false })
   public readonly oddeven!: boolean;
 
@@ -26,6 +29,7 @@ export class VdSwimlane extends VdControl {
         class: [
           'vd-swimlane',
           `vdp-theme_${this.$theme}`,
+          `vdp-background-color_${this.backgroundColor}`,
           {
             'is-oddeven': this.oddeven,
           },

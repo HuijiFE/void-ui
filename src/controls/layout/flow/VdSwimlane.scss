@@ -3,18 +3,29 @@
   width: 100%;
   padding: 0.3rem 0;
 
-  @each $theme-key in $enum-theme {
+  @each $theme in $enum-theme {
+    @each $lv in $enum-background-level {
+      @include prop(
+        (
+          theme: $theme,
+          background-color: $lv,
+        )
+      ) {
+        background-color: theme('#{$theme}-bg-#{$lv}');
+      }
+    }
+
     @include prop(
       (
-        theme: $theme-key,
+        theme: $theme,
       )
     ) {
       @include when('oddeven') {
         &:nth-child(odd) {
-          background-color: theme(#{$theme-key}-bg-high);
+          background-color: theme('#{$theme}-bg-high');
         }
         &:nth-child(even) {
-          background-color: theme(#{$theme-key}-bg-normal);
+          background-color: theme('#{$theme}-bg-normal');
         }
       }
     }
