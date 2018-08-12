@@ -1,0 +1,75 @@
+import {
+  Vue,
+  Component,
+  Emit,
+  Inject,
+  Model,
+  Prop,
+  Provide,
+  Watch,
+} from 'vue-property-decorator';
+import { CreateElement, VNode } from 'vue';
+import {
+  ClassName,
+  Theme,
+  ThemeComponent,
+  Tone,
+  Skin,
+  Shape,
+  Size,
+} from '@void/components/base';
+
+export type VdButtonProps = Partial<
+  Pick<VdButton, 'theme' | 'tone' | 'skin' | 'shape' | 'size' | 'type' | 'disabled'>
+>;
+
+/**
+ * Component Button
+ */
+@Component
+export class VdButton extends Vue implements ThemeComponent {
+  @Prop({ type: String })
+  public readonly theme!: Theme;
+  public get $theme(): Theme {
+    return this.theme || (this.$vdTheme && this.$vdTheme.theme) || 'lite';
+  }
+
+  @Prop({ type: String, default: 'primary' })
+  public readonly tone!: Tone;
+
+  @Prop({ type: String, default: 'fill' })
+  public readonly skin!: Skin;
+
+  @Prop({ type: String, default: 'rect' })
+  public readonly shape!: Shape;
+
+  @Prop({ type: String, default: 'medium' })
+  public readonly size!: Size;
+
+  public get classes(): ClassName {
+    return [`vdp-theme_${this.$theme}`];
+  }
+
+  // tslint:disable-next-line:no-reserved-keywords
+  @Prop({ type: String, default: 'button' })
+  public readonly type!: string;
+
+  @Prop({ type: Boolean, default: false })
+  public readonly disabled!: boolean;
+
+  private onClick(event: MouseEvent): void {
+    this.$emit('click', event);
+  }
+
+  private render(h: CreateElement): VNode {
+    return (
+      <button
+        staticClass="vd-button"
+        class={this.classes}
+        type={this.type}
+        disabled={this.disabled}
+        onClick={this.onClick}
+      />
+    );
+  }
+}
