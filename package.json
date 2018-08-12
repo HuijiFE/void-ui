@@ -79,6 +79,7 @@
     "@vue/test-utils": "^1.0.0-beta.24",
     "axios": "^0.18.0",
     "babel-core": "^6.26.3",
+    "cross-env": "^5.2.0",
     "ejs": "^2.6.1",
     "globby": "^8.0.1",
     "mkdirp": "^0.5.1",
