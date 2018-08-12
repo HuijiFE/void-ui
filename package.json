@@ -31,22 +31,14 @@
   "module": "dist/void-ui.common.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "ts": "ts-node -P scripts/tsconfig.script.json",
-    "switch-config": "yarn ts scripts/switch-config.ts",
+    "ts": "ts-node -P scripts/tsconfig.json",
     "gen-files": "yarn ts scripts/gen-files.ts",
-    "gen-variables": "yarn ts scripts/gen-variables.ts",
-    "build:types": "ts-node -P scripts/tsconfig.script.json scripts/gen-types-pre.ts && tsc -p types/tsconfig.json --emitDeclarationOnly && ts-node -P scripts/tsconfig.script.json scripts/gen-types-post.ts",
-    "build:lib": "VUE_SOLUTION=void vue-cli-service build src/VoidUI.ts --target lib",
-    "build:void": "yarn build:types && yarn build:lib",
-    "build:docs": "VUE_SOLUTION=docs vue-cli-service build docs/main.ts --modern",
-    "build": "yarn build:types && yarn build:lib && yarn build:docs",
-    "serve": "VUE_SOLUTION=docs vue-cli-service serve docs/main.ts",
+    "build:lib": "cross-env BUILD_SOLUTION=lib vue-cli-service build lib/void-ui.ts --target lib",
+    "build:docs": "cross-env VUE_SOLUTION=docs vue-cli-service build docs/main.ts --modern --report",
+    "build": "yarn build:lib && yarn build:docs",
+    "serve": "cross-env VUE_SOLUTION=docs vue-cli-service serve docs/main.ts --open --port 8102",
     "test": "vue-cli-service test",
-    "lint:style": "stylelint **/*.scss",
-    "lint:script": "vue-cli-service lint",
-    "lint": "yarn lint:style && yarn lint:script",
-    "vue:inspect": "vue-cli-service inspect > vue.inspect.js",
-    "vue:help": "vue-cli-service -h"
+    "lint": "stylelint **/*.scss && vue-cli-service lint"
   },
   "dependencies": {
     "normalize.css": "^8.0.0",
@@ -102,12 +94,7 @@
   },
   "engines": {
     "node": ">= 8.0.0",
-    "npm": ">= 5.0.0",
-    "yarn": ">= 1.5.0"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+    "npm": ">= 6.0.0",
+    "yarn": ">= 1.9.0"
+  }
 }

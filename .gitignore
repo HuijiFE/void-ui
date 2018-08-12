@@ -22,5 +22,6 @@ yarn-error.log*
 
 # Preject related
 
+/www
 /.temp
 temp.*

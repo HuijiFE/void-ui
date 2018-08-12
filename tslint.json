@@ -1,8 +1,8 @@
 {
-  "defaultSeverity": "error",
+  "defaultSeverity": "warning",
   "extends": ["tslint-microsoft-contrib"],
   "linterOptions": {
-    "exclude": ["node_modules/**"]
+    "exclude": ["node_modules/**", "**/*.json", "**/*.json.ts"]
   },
   "rules": {
     "class-name": true,
@@ -10,6 +10,8 @@
     "prefer-const": true,
     "no-var-keyword": true,
     "no-null-keyword": true,
+    "no-any": true,
+    "no-unsafe-any": true,
     "strict-boolean-expressions": false,
     "prefer-type-cast": false,
     "no-angle-bracket-type-assertion": true,
@@ -67,10 +69,13 @@
       }
     ],
     "no-unnecessary-local-variable": true,
+    "no-unnecessary-callback-wrapper": false,
+    "no-bitwise": false,
     "no-void-expression": false,
     "no-trailing-whitespace": true,
     "comment-format": [true, "check-space"],
     "no-suspicious-comment": false,
+    "no-single-line-block-comment": false,
     "jsdoc-format": true,
     "unified-signatures": false,
     "no-internal-module": true,
