@@ -1,42 +1,26 @@
-# OS related
-Thumbs.db
 .DS_Store
-
-# Dependency directories
-node_modules/
+node_modules
+/dist
 
 # local env files
 .env.local
 .env.*.local
 
 # Log files
-*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
 # Editor directories and files
-# .vscode
 .idea
+.vscode
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw*
 
-# Output directories and files
-temp/
-dist/
-www/
-!types/
-types/*
-!types/index.d.ts
-!types/shims.css.d.ts
-!types/tsconfig.json
-!types/vue.d.ts
+# Preject related
 
-# Some project related files
-# tsconfig.json
-void
-vue.inspect.js
-temp.md
+/.temp
+temp.*
