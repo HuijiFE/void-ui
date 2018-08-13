@@ -1,3 +1,7 @@
+// tslint:disable:no-import-side-effect
+
+import '@void/void-ui.scss';
+
 import Vue from 'vue';
 
 import VoidUI, { VoidTheme } from '@void/void-ui';

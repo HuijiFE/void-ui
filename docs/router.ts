@@ -12,7 +12,11 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/home',
+      redirect: '/test',
+    },
+    {
+      path: '/test',
+      component: async () => import('@docs/views/Test'),
     },
     {
       path: '/home',

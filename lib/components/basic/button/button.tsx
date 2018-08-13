@@ -28,6 +28,16 @@ export type VdButtonProps = Partial<
  */
 @Component
 export class VdButton extends Vue implements ThemeComponent {
+  @Prop({ type: String, default: 'button' })
+  public readonly tag!: keyof HTMLElementTagNameMap;
+
+  // tslint:disable-next-line:no-reserved-keywords
+  @Prop({ type: String, default: 'button' })
+  public readonly type!: string;
+
+  @Prop({ type: Boolean, default: false })
+  public readonly disabled!: boolean;
+
   @Prop({ type: String })
   public readonly theme!: Theme;
   public get $theme(): Theme {
@@ -46,30 +56,29 @@ export class VdButton extends Vue implements ThemeComponent {
   @Prop({ type: String, default: 'medium' })
   public readonly size!: Size;
 
-  public get classes(): ClassName {
-    return [`vdp-theme_${this.$theme}`];
-  }
-
-  // tslint:disable-next-line:no-reserved-keywords
-  @Prop({ type: String, default: 'button' })
-  public readonly type!: string;
-
-  @Prop({ type: Boolean, default: false })
-  public readonly disabled!: boolean;
-
   private onClick(event: MouseEvent): void {
     this.$emit('click', event);
   }
 
+  public get classes(): ClassName {
+    return [`vdp-theme_${this.$theme}`];
+  }
+
   private render(h: CreateElement): VNode {
-    return (
-      <button
-        staticClass="vd-button"
-        class={this.classes}
-        type={this.type}
-        disabled={this.disabled}
-        onClick={this.onClick}
-      />
+    return h(
+      this.tag,
+      {
+        staticClass: 'vd-button',
+        class: this.classes,
+        domProps: {
+          type: this.type,
+          disabled: this.disabled,
+        },
+        on: {
+          click: this.onClick,
+        },
+      },
+      [this.$slots.default],
     );
   }
 }

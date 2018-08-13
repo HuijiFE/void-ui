@@ -9,7 +9,7 @@ declare global {
     interface ElementClass extends Vue {}
     interface IntrinsicElements {
       [elem: string]: any;
-      'vd-button': VdButtonProps;
+      // 'vd-button': VdButtonProps;
     }
   }
 }
