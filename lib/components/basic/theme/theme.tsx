@@ -8,13 +8,13 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { CreateElement, VNode } from 'vue';
+import { CreateElement, VNode, ComponentOptions, ComputedOptions } from 'vue';
 import { Theme } from '@void/components/base';
 
 let $$Vue: typeof Vue | undefined;
 
 export interface ThemeHub {
-  theme: Theme;
+  readonly theme: Theme;
 }
 
 /**
@@ -53,15 +53,6 @@ export class VdTheme extends Vue implements ThemeHub {
 
   private beforeCreate(): void {
     this.$vdTheme = this;
-  }
-
-  private created(): void {
-    (this.$vdTheme as ThemeHub).theme = this.theme;
-  }
-
-  @Watch('theme')
-  private onThemeChange(): void {
-    (this.$vdTheme as ThemeHub).theme = this.theme;
   }
 
   public render(h: CreateElement): VNode {

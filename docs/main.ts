@@ -6,7 +6,11 @@ import Vue from 'vue';
 
 import VoidUI, { VdTheme } from '@void/void-ui';
 Vue.use(VoidUI);
-const vdTheme: VdTheme = new VdTheme();
+const vdTheme: VdTheme = new VdTheme({
+  propsData: {
+    theme: 'dark',
+  },
+});
 
 import router from '@docs/router';
 import App from '@docs/App';
