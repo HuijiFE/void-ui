@@ -1,18 +1,24 @@
-import { default as _Vue } from 'vue';
+import Vue from 'vue';
 
-export * from '@void/plugins/VoidTheme';
-import { VoidTheme } from '@void/plugins/VoidTheme';
-
+export * from '@void/components/all';
 import * as components from '@void/components/all';
+
+let $$Vue: typeof Vue | undefined;
 
 /**
  * Void-UI
  */
 export default {
   // tslint:disable-next-line:variable-name
-  install(Vue: typeof _Vue): void {
-    Vue.use(VoidTheme);
+  install($Vue: typeof Vue): void {
+    if ($$Vue && $$Vue === $Vue) {
+      return;
+    }
 
-    Object.entries(components).forEach(([name, comp]) => Vue.component(name, comp));
+    $$Vue = $Vue;
+
+    components.VdTheme.install($Vue);
+
+    Object.entries(components).forEach(([name, comp]) => $Vue.component(name, comp));
   },
 };

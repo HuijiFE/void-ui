@@ -4,9 +4,9 @@ import '@void/void-ui.scss';
 
 import Vue from 'vue';
 
-import VoidUI, { VoidTheme } from '@void/void-ui';
+import VoidUI, { VdTheme } from '@void/void-ui';
 Vue.use(VoidUI);
-const vdTheme: VoidTheme = new VoidTheme({ theme: 'lite' });
+const vdTheme: VdTheme = new VdTheme();
 
 import router from '@docs/router';
 import App from '@docs/App';

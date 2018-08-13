@@ -3,16 +3,16 @@
  */
 
 import Vue from 'vue';
-import { VoidThemeHub, VoidTheme } from '../lib/plugins/VoidTheme';
+import { ThemeHub, VdTheme } from '../lib/void-ui';
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $vdTheme?: VoidThemeHub;
+    $vdTheme?: ThemeHub;
   }
 }
 
 declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
-    vdTheme?: VoidTheme;
+    vdTheme?: VdTheme;
   }
 }
