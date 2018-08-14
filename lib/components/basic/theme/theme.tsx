@@ -8,7 +8,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { CreateElement, VNode, ComponentOptions, ComputedOptions } from 'vue';
+import { CreateElement, VNode, PluginFunction } from 'vue';
 import { Theme } from '@void/components/base';
 
 let $$Vue: typeof Vue | undefined;
@@ -23,12 +23,14 @@ export interface ThemeHub {
 @Component
 export class VdTheme extends Vue implements ThemeHub {
   // tslint:disable-next-line:function-name
-  public static install($Vue: typeof Vue): void {
+  public static install: PluginFunction<undefined> = $Vue => {
     if ($$Vue && $$Vue === $Vue) {
       return;
     }
 
     $$Vue = $Vue;
+
+    $Vue.component('VdTheme', VdTheme);
 
     $Vue.mixin({
       beforeCreate(): void {
@@ -41,14 +43,12 @@ export class VdTheme extends Vue implements ThemeHub {
         }
       },
     });
-
-    $Vue.component('VdTheme', VdTheme);
-  }
+  };
 
   @Prop({ type: String, default: 'div' })
   public readonly tag!: keyof HTMLElementTagNameMap;
 
-  @Prop({ type: String })
+  @Prop({ type: String, required: true })
   public readonly theme!: Theme;
 
   private beforeCreate(): void {
