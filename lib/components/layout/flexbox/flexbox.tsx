@@ -8,39 +8,51 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { CreateElement, VNode } from 'vue';
+import { CreateElement, VNode, VueConstructor } from 'vue';
 import { Size } from '@void/components/base';
+import { PropsDefinition, DefaultProps, ComponentOptions } from 'vue/types/options';
 
 export interface BreakPointMap extends Record<Size, number> {}
+
+function generateProps(
+  propsDef: PropsDefinition<DefaultProps>,
+): PropsDefinition<DefaultProps> {
+  return propsDef;
+}
+
+const props: PropsDefinition<DefaultProps> = generateProps({
+  tag: {
+    type: String,
+    default: 'div',
+  },
+});
 
 /**
  * Component Flexbox
  */
-@Component
+@Component({
+  props,
+})
 export class VdFlexbox extends Vue {
-  @Prop({ type: String, default: 'div' })
+  // region ======== props ========
+
   public readonly tag!: HTMLElementTagNameMap;
 
-  @Prop({ type: [Number, String] })
   public readonly flex!: number | string;
 
-  @Prop({ type: Boolean, default: false })
   public readonly hidden!: boolean;
 
-  @Prop({ type: Boolean, default: false })
   public readonly gap!: boolean;
 
-  @Prop({ type: String })
   public readonly direction!: string;
 
-  @Prop({ type: String })
   public readonly wrap!: string;
 
-  @Prop({ type: String })
   public readonly justify!: string;
 
-  @Prop({ type: String })
   public readonly align!: string;
+
+  // endregion
 
   private render(h: CreateElement): VNode {
     return <div staticClass="vd-flexbox">{this.$slots.default}</div>;
