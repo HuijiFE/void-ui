@@ -30,8 +30,6 @@ export class VdTheme extends Vue implements ThemeHub {
 
     $$Vue = $Vue;
 
-    $Vue.component('VdTheme', VdTheme);
-
     $Vue.mixin({
       beforeCreate(): void {
         if (!this.$vdTheme) {
