@@ -1,6 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import * as globby from 'globby';
+import chalk from 'chalk';
 
 /**
  * Replace the matching part with alias in the path.
@@ -112,7 +113,31 @@ ${
   }`;
 
   return new Promise<void>((resolve, reject) => {
-    fs.writeFile(options.output, content, error => (error ? reject(error) : resolve()));
+    fs.readFile(options.output, 'utf-8', (readError, oldContent) => {
+      if (readError) {
+        return reject(readError);
+      }
+      if (content === oldContent) {
+        console.log(
+          chalk.bgCyan.black(' Nothing Changed '.padEnd(20, ' ')),
+          chalk.green(options.output),
+        );
+
+        return resolve();
+      }
+
+      fs.writeFile(options.output, content, writeError => {
+        if (writeError) {
+          return reject(writeError);
+        }
+        console.log(
+          chalk.bgCyanBright.black(' File Updated '.padEnd(20, ' ')),
+          chalk.greenBright(options.output),
+        );
+
+        return resolve();
+      });
+    });
   });
 }
 
