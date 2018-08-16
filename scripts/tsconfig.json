@@ -2,24 +2,27 @@
   "compilerOptions": {
     "target": "es2015",
     "module": "CommonJS",
-    "lib": ["dom", "scripthost", "es5", "es2015", "es2016", "es2017", "es2018", "esnext"],
+    "lib": ["dom", "dom.iterable", "scripthost", "esnext"],
+    "types": ["node", "jest"],
     "strict": true,
     "strictNullChecks": true,
-    "strictPropertyInitialization": false,
+    "strictPropertyInitialization": true,
     "jsx": "preserve",
-    "moduleResolution": "node",
+    "jsxFactory": "h",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": false,
+    "rootDir": "../",
+    "outDir": "dist",
     "sourceMap": true,
-    "baseUrl": ".",
-    "types": ["node", "jest"],
+    "baseUrl": "../",
     "paths": {
-      "@/*": ["src/*"],
-      "@void/*": ["src/*"],
-      "@docs/*": ["docs/*"]
+      "@docs/*": ["docs/*"],
+      "@void/ui/lib/*": ["lib/*"]
     }
   },
-  "include": ["scripts/**/*.ts"],
+  "include": ["../docs", "../lib", "../typings", "../scripts"],
   "exclude": ["node_modules"]
 }

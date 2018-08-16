@@ -1,5 +1,5 @@
+import Vue, { CreateElement, VNode } from 'vue';
 import {
-  Vue,
   Component,
   Emit,
   Inject,
@@ -8,7 +8,6 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { CreateElement, VNode, VueConstructor } from 'vue';
 import { Size } from '@void/ui/lib/components/base';
 import { PropsDefinition, DefaultProps, ComponentOptions } from 'vue/types/options';
 

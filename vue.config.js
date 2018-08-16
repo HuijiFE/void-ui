@@ -7,21 +7,27 @@ const hashFunction = 'sha512';
 const hashDigest = 'hex';
 const hashDigestLength = 128;
 
-const solutionMap = {
-  docs: 'docs',
-  void: 'void',
+/**
+ * base64 inline encoding file size limit
+ */
+const limit = 4096;
+
+const baseUrlMap = {
+  docs: '/void-ui/static/',
+  lib: '/',
 };
+
 const destMap = {
-  docs: 'www',
-  void: 'dist',
+  docs: 'www/static',
+  lib: 'dist',
 };
 
 const SOLUTION = process.env.BUILD_SOLUTION;
 
 module.exports = {
-  baseUrl: process.env.NODE_ENV === 'production' ? '/void-ui/' : '/',
+  baseUrl: process.env.NODE_ENV === 'production' ? baseUrlMap[SOLUTION] : '/',
 
-  outputDir: 'dist/static',
+  outputDir: destMap[SOLUTION],
   indexPath: '../index.html',
 
   lintOnSave: true,
@@ -49,7 +55,7 @@ module.exports = {
       '@void/ui/lib': 'lib',
     }).forEach(([alias, dir]) => aliasMap.set(alias, resolve(dir)));
 
-    if (process.env.NODE_ENV === 'production') {
+    if (SOLUTION === 'docs' && process.env.NODE_ENV === 'production') {
       // Customize js output file name with hash.
       const jsFilename =
         process.env.VUE_CLI_MODERN_MODE && !process.env.VUE_CLI_MODERN_BUILD

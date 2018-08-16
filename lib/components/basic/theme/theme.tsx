@@ -1,5 +1,5 @@
+import Vue, { CreateElement, VNode, PluginFunction } from 'vue';
 import {
-  Vue,
   Component,
   Emit,
   Inject,
@@ -8,7 +8,6 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { CreateElement, VNode, PluginFunction } from 'vue';
 import { Theme } from '@void/ui/lib/components/base';
 
 let $$Vue: typeof Vue | undefined;

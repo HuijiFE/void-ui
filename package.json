@@ -33,9 +33,9 @@
   "scripts": {
     "ts": "ts-node -P scripts/tsconfig.json",
     "gen-files": "yarn ts scripts/gen-files.ts",
-    "serve": "VUE_SOLUTION=docs vue-cli-service serve docs/main.ts --open --port 8102",
+    "serve": "cross-env BUILD_SOLUTION=docs vue-cli-service serve docs/main.ts --open --port 8102",
     "build:lib": "cross-env BUILD_SOLUTION=lib vue-cli-service build lib/void-ui.ts --target lib",
-    "build:docs": "cross-env VUE_SOLUTION=docs vue-cli-service build docs/main.ts --modern --report",
+    "build:docs": "cross-env BUILD_SOLUTION=docs vue-cli-service build docs/main.ts --modern --report",
     "build": "yarn build:lib && yarn build:docs",
     "test": "vue-cli-service test",
     "lint": "stylelint **/*.scss && vue-cli-service lint"

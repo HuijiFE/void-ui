@@ -1,5 +1,3 @@
-import Vue, { ComponentOptions } from 'vue';
-
 /**
  * Type of computed property classes
  */
