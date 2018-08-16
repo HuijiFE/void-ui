@@ -18,10 +18,6 @@ import {
   Size,
 } from '@void/ui/lib/components/base';
 
-export type VdButtonProps = Partial<
-  Pick<VdButton, 'theme' | 'tone' | 'skin' | 'shape' | 'size' | 'type' | 'disabled'>
->;
-
 /**
  * Component Button
  */

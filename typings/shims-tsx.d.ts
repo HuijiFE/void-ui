@@ -1,5 +1,4 @@
 import Vue, { VNode } from 'vue';
-import { VdButtonProps } from '../lib/components/basic/button/button';
 
 declare global {
   namespace JSX {
@@ -9,7 +8,6 @@ declare global {
     interface ElementClass extends Vue {}
     interface IntrinsicElements {
       [elem: string]: any;
-      // 'vd-button': VdButtonProps;
     }
   }
 }
