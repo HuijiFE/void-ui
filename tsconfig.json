@@ -23,13 +23,13 @@
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "allowSyntheticDefaultImports": true,
+    "allowSyntheticDefaultImports": false,
     "sourceMap": true,
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
       "@docs/*": ["docs/*"],
-      "@void/*": ["lib/*"]
+      "@void/ui/lib/*": ["lib/*"]
     }
   },
   "include": ["docs", "lib", "typings", "scripts"],

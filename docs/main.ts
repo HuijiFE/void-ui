@@ -1,10 +1,10 @@
 // tslint:disable:no-import-side-effect
 
-import '@void/void-ui.scss';
+import '@void/ui/lib/void-ui.scss';
 
 import Vue from 'vue';
 
-import VoidUI, { VdTheme } from '@void/void-ui';
+import VoidUI, { VdTheme } from '@void/ui/lib/void-ui';
 Vue.use(VoidUI);
 const vdTheme: VdTheme = new VdTheme({
   propsData: {

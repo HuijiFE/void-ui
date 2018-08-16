@@ -9,7 +9,7 @@ import {
   Watch,
 } from 'vue-property-decorator';
 import { CreateElement, VNode, VueConstructor } from 'vue';
-import { Size } from '@void/components/base';
+import { Size } from '@void/ui/lib/components/base';
 import { PropsDefinition, DefaultProps, ComponentOptions } from 'vue/types/options';
 
 export interface BreakPointMap extends Record<Size, number> {}

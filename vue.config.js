@@ -46,7 +46,7 @@ module.exports = {
     const aliasMap = config.resolve.alias.delete('@');
     Object.entries({
       '@docs': 'docs',
-      '@void': 'lib',
+      '@void/ui/lib': 'lib',
     }).forEach(([alias, dir]) => aliasMap.set(alias, resolve(dir)));
 
     if (process.env.NODE_ENV === 'production') {
