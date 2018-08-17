@@ -3,11 +3,12 @@
  */
 
 import Vue from 'vue';
-import { ThemeHub, VdTheme } from '../lib/void-ui';
+import { ThemeHub, VdTheme, MediaHub } from '../lib/void-ui';
 
 declare module 'vue/types/vue' {
   interface Vue {
     $vd_theme?: ThemeHub;
+    $vd_media: MediaHub;
   }
 }
 

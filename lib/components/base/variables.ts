@@ -48,3 +48,20 @@ export type Shape = 'rect' | 'pill' | 'square' | 'circle';
 // Size
 
 export type Size = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+
+// --------------------------------
+// Layout
+
+export type BreakPointKey = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
+export interface BreakPoints extends Record<BreakPointKey, number> {}
+
+export const KEYOF_BREAK_POINTS: BreakPointKey[] = ['xs', 'sm', 'md', 'lg', 'xl'];
+
+export const DEFAULT_BREAK_POINTS: BreakPoints = {
+  xs: 600,
+  sm: 960,
+  md: 1280,
+  lg: 1920,
+  xl: 5000,
+};

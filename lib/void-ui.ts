@@ -8,18 +8,26 @@ import * as components from '@void/ui/lib/components/all';
 
 let $$Vue: typeof Vue | undefined;
 
+export interface VoidUIOptions {
+  defaultTheme?: base.Theme;
+  breakpoints?: base.BreakPoints;
+}
+
 // tslint:disable-next-line:variable-name
-const install: PluginFunction<undefined> = $Vue => {
+const install: PluginFunction<VoidUIOptions> = ($Vue, options) => {
   if ($$Vue && $$Vue === $Vue) {
     return;
   }
 
   $$Vue = $Vue;
 
+  // install all plugins
+  base.PluginMatchMedia.install($Vue, options && options.breakpoints);
+
   // install all components
   Object.entries(components).forEach(([name, comp]) => $Vue.component(name, comp));
 
-  // install all plugins
+  // install all component additional plugins
   components.VdTheme.install($Vue);
 };
 

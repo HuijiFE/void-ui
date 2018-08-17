@@ -3,3 +3,4 @@
  */
 
 export * from '@void/ui/lib/components/base/variables';
+export * from '@void/ui/lib/components/base/match-media/match-media';
