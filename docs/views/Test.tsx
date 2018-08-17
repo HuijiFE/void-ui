@@ -16,12 +16,16 @@ import {
 export default class ViewTest extends Vue {
   private windowWidth: number = 0;
 
-  private onResize(event: Event): void {
+  private onResize(event?: Event): void {
     this.windowWidth = document.documentElement.clientWidth;
   }
 
   private mounted(): void {
+    this.onResize();
     window.addEventListener('resize', this.onResize);
+    Object.entries(this.$vd_media.getMediaQueryLists()).forEach(([alias, mql]) => {
+      console.warn(alias, mql.media);
+    });
   }
 
   private render(h: CreateElement): VNode {
@@ -29,6 +33,7 @@ export default class ViewTest extends Vue {
       <div staticClass="view-test">
         <div>{this.windowWidth}</div>
         <hr />
+        <div>ltXs: N/A</div>
         <div>xs: {this.$vd_media.xs.toString()}</div>
         <div>gtXs: {this.$vd_media.gtXs.toString()}</div>
         <br />
@@ -46,20 +51,26 @@ export default class ViewTest extends Vue {
         <br />
         <div>ltXl: {this.$vd_media.ltXl.toString()}</div>
         <div>xl: {this.$vd_media.xl.toString()}</div>
+        <div>gtXl: N/A</div>
         <hr />
-        <vd-button>test</vd-button>
-        <vd-theme theme="lite">
-          <vd-button>test</vd-button>
-        </vd-theme>
-        <vd-theme theme="dark">
-          <vd-button>test</vd-button>
-        </vd-theme>
-        <vd-theme theme="lite">
-          <vd-button>test</vd-button>
-        </vd-theme>
-        <vd-theme theme="dark">
-          <vd-button>test</vd-button>
-        </vd-theme>
+        {[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 11, 1, 1, 1, 1, 1, 1, 1, 1].map(() => (
+          <div>
+            <hr />
+            <vd-button>test</vd-button>
+            <vd-theme theme="lite">
+              <vd-button>test</vd-button>
+            </vd-theme>
+            <vd-theme theme="dark">
+              <vd-button>test</vd-button>
+            </vd-theme>
+            <vd-theme theme="lite">
+              <vd-button>test</vd-button>
+            </vd-theme>
+            <vd-theme theme="dark">
+              <vd-button>test</vd-button>
+            </vd-theme>
+          </div>
+        ))}
       </div>
     );
   }
