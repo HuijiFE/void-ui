@@ -63,14 +63,14 @@ const plugin: PluginObject<BreakPoints> = {
         .replace('gt', '')
         .toLowerCase() as BreakPointKey;
       const breakpoint: number = breakpoints[key];
-      const previousKey: BreakPointKey | undefined = getPreviousKey(key);
-      const previousBreakpoint: number = previousKey ? breakpoints[previousKey] : 0;
+      const preKey: BreakPointKey | undefined = getPreviousKey(key);
+      const preBreakpoint: number = preKey ? breakpoints[preKey] : 0;
 
       return alias.startsWith('lt')
-        ? `(max-width: ${previousBreakpoint - 1}px)`
+        ? `(max-width: ${preBreakpoint - 0.02}px)`
         : alias.startsWith('gt')
           ? `(min-width: ${breakpoint}px)`
-          : `(min-width: ${previousBreakpoint}px) and (max-width: ${breakpoint - 1}px)`;
+          : `(min-width: ${preBreakpoint}px) and (max-width: ${breakpoint - 0.02}px)`;
     };
 
     const createMQL: (query: string) => MediaQueryList =
