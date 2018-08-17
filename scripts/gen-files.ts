@@ -118,7 +118,7 @@ ${
         return reject(readError);
       }
       if (content === oldContent) {
-        console.log(
+        console.info(
           chalk.bgCyan.black(' Nothing Changed '.padEnd(20, ' ')),
           chalk.green(options.output),
         );
@@ -130,7 +130,7 @@ ${
         if (writeError) {
           return reject(writeError);
         }
-        console.log(
+        console.info(
           chalk.bgCyanBright.black(' File Updated '.padEnd(20, ' ')),
           chalk.greenBright(options.output),
         );
