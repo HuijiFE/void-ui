@@ -21,7 +21,11 @@ export type BreakPointAlias =
   | 'gtLg'
   | 'ltXl';
 
-export interface MediaHub extends Record<BreakPointAlias, boolean> {}
+export interface MediaHub extends Readonly<Record<BreakPointAlias, boolean>> {
+  getMediaQueryLists(): Readonly<Record<BreakPointAlias, MediaQueryList>>;
+}
+
+interface MediaHubInternal extends Record<BreakPointAlias, boolean> {}
 
 /**
  * Media plugin for void-ui
@@ -79,7 +83,7 @@ const plugin: PluginObject<BreakPoints> = {
             removeListener: listener => undefined,
           });
 
-    const data: MediaHub = {
+    const data: MediaHubInternal = {
       xs: false,
       gtXs: false,
 
@@ -108,6 +112,9 @@ const plugin: PluginObject<BreakPoints> = {
 
     $Vue.prototype.$vd_media = new $Vue({
       data,
+      methods: {
+        getMediaQueryLists: () => mqlMap,
+      },
       created(): void {
         (Object.entries(mqlMap) as [BreakPointAlias, MediaQueryList][]).forEach(
           ([alias, mql]) =>
