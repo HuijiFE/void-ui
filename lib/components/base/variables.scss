@@ -2,6 +2,9 @@
  * Void-UI style variables
  */
 
+$root-font-size: 100 !default;
+$namespace: 'vd';
+
 // --------------------------------
 // Theme
 
@@ -37,7 +40,7 @@ $size-map: (
   xlarge:   56,
 );
 
-@function get-size($kye) {
+@function get-size($key) {
   @return map-get($size-map, $key);
 }
 

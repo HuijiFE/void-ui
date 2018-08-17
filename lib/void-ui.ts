@@ -1,6 +1,9 @@
 import Vue, { PluginFunction } from 'vue';
 
+export * from '@void/ui/lib/components/base/index';
 export * from '@void/ui/lib/components/all';
+
+import * as base from '@void/ui/lib/components/base/index';
 import * as components from '@void/ui/lib/components/all';
 
 let $$Vue: typeof Vue | undefined;

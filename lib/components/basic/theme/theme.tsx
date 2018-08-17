@@ -1,4 +1,4 @@
-import Vue, { CreateElement, VNode, PluginFunction } from 'vue';
+import Vue, { CreateElement, VNode, PluginObject, PluginFunction } from 'vue';
 import {
   Component,
   Emit,
@@ -9,11 +9,16 @@ import {
   Watch,
 } from 'vue-property-decorator';
 import { Theme } from '@void/ui/lib/components/base/variables';
+import { ComponentOptions, DefaultData, DefaultMethods } from 'vue/types/options';
 
 let $$Vue: typeof Vue | undefined;
 
 export interface ThemeHub {
   readonly theme: Theme;
+}
+
+export interface VdThemeComponentOptions {
+  propsData: ThemeHub;
 }
 
 /**
@@ -50,6 +55,10 @@ export class VdTheme extends Vue implements ThemeHub {
 
   private beforeCreate(): void {
     this.$vd_theme = this;
+  }
+
+  constructor(options: ComponentOptions<VdTheme> | VdThemeComponentOptions | undefined) {
+    super(options);
   }
 
   public render(h: CreateElement): VNode {

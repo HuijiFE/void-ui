@@ -143,21 +143,12 @@ ${
 
 const optionsList: GenerateOptions[] = [
   {
-    patterns: [
-      'lib/components/**/*.(tsx|ts)',
-      '!lib/components/**/*.d.ts',
-      '!lib/components/base/**/*.(tsx|ts)',
-      'lib/components/base/index.ts',
-    ],
+    patterns: ['lib/components/**/*.(tsx|ts)', '!lib/components/base/**/*'],
     output: 'lib/components/all.ts',
     comments: ['All components of void-ui'],
   },
   {
-    patterns: [
-      'lib/components/**/*.scss',
-      '!lib/components/base/**/*.scss',
-      'lib/components/base/index.scss',
-    ],
+    patterns: ['lib/components/**/*.scss', '!lib/components/base/**/*'],
     output: 'lib/components/all.scss',
     comments: ['All components style of void-ui'],
   },
