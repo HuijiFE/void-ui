@@ -7,7 +7,7 @@ import { ThemeHub, VdTheme } from '../lib/void-ui';
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $vdTheme?: ThemeHub;
+    $vd_theme?: ThemeHub;
   }
 }
 

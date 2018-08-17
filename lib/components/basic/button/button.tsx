@@ -36,7 +36,7 @@ export class VdButton extends Vue implements ThemeComponent {
   @Prop({ type: String })
   public readonly theme!: Theme;
   public get $theme(): Theme {
-    return this.theme || (this.$vdTheme && this.$vdTheme.theme) || 'lite';
+    return this.theme || (this.$vd_theme && this.$vd_theme.theme) || 'lite';
   }
 
   @Prop({ type: String, default: 'primary' })

@@ -31,11 +31,11 @@ export class VdTheme extends Vue implements ThemeHub {
 
     $Vue.mixin({
       beforeCreate(): void {
-        if (!this.$vdTheme) {
+        if (!this.$vd_theme) {
           if (this.$options.vdTheme) {
-            this.$vdTheme = this.$options.vdTheme;
-          } else if (this.$options.parent && this.$options.parent.$vdTheme) {
-            this.$vdTheme = this.$options.parent.$vdTheme;
+            this.$vd_theme = this.$options.vdTheme;
+          } else if (this.$options.parent && this.$options.parent.$vd_theme) {
+            this.$vd_theme = this.$options.parent.$vd_theme;
           }
         }
       },
@@ -49,7 +49,7 @@ export class VdTheme extends Vue implements ThemeHub {
   public readonly theme!: Theme;
 
   private beforeCreate(): void {
-    this.$vdTheme = this;
+    this.$vd_theme = this;
   }
 
   public render(h: CreateElement): VNode {
