@@ -1,0 +1,99 @@
+@function _get-previous-key($key) {
+  $n: index(
+      $list: $type-breakpoint-key,
+      $value: $key,
+    ) - 1;
+  @return if($n < 1, null, nth($list: $type-breakpoint-key, $n: $n));
+}
+
+@function _get-query($key, $modify: null) {
+  $breakpoint: breakpoint($key);
+  $pre-key: _get-previous-key($key);
+  $pre-breakpoint: if($pre-key, breakpoint($pre-key), 0);
+
+  @return if(
+    $modify == 'lt',
+    '(max-width: #{($pre-breakpoint - 0.02) * 1px})',
+    if(
+      $modify == 'gt',
+      '(min-width: #{$breakpoint * 1px})',
+      '(min-width: #{$pre-breakpoint * 1px}) and (max-width: #{($breakpoint - 0.02) * 1px})'
+    )
+  );
+}
+
+@mixin media($key, $prefix: null) {
+  @media #{_get-query($key, $prefix)} {
+    @content;
+  }
+}
+
+@mixin media-xs {
+  @include media('xs') {
+    @content;
+  }
+}
+@mixin media-gt-xs {
+  @include media('xs', 'gt') {
+    @content;
+  }
+}
+
+@mixin media-lt-sm {
+  @include media('sm', 'lt') {
+    @content;
+  }
+}
+@mixin media-sm {
+  @include media('sm') {
+    @content;
+  }
+}
+@mixin media-gt-sm {
+  @include media('sm', 'gt') {
+    @content;
+  }
+}
+
+@mixin media-lt-md {
+  @include media('md', 'lt') {
+    @content;
+  }
+}
+@mixin media-md {
+  @include media('md') {
+    @content;
+  }
+}
+@mixin media-gt-md {
+  @include media('md', 'gt') {
+    @content;
+  }
+}
+
+@mixin media-lt-lg {
+  @include media('lg', 'lt') {
+    @content;
+  }
+}
+@mixin media-lg {
+  @include media('lg') {
+    @content;
+  }
+}
+@mixin media-gt-lg {
+  @include media('lg', 'gt') {
+    @content;
+  }
+}
+
+@mixin media-lt-xl {
+  @include media('xl', 'lt') {
+    @content;
+  }
+}
+@mixin media-xl {
+  @include media('xl') {
+    @content;
+  }
+}

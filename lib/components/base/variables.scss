@@ -49,6 +49,20 @@ $size-base: get-size('medium');
 // --------------------------------
 // Layout
 
+$type-breakpoint-key: 'xs', 'sm', 'md', 'lg', 'xl';
+
+$breakpoints: (
+  xs: 600,
+  sm: 960,
+  md: 1280,
+  lg: 1920,
+  xl: 5000,
+);
+
+@function breakpoint($key) {
+  @return map-get($breakpoints, $key);
+}
+
 $gap-map: (
   xsmall:   4,
   small:    8,
