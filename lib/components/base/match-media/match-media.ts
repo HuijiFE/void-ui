@@ -104,7 +104,6 @@ const plugin: PluginObject<BreakPoints> = {
       const mql: MediaQueryList = createMQL(getQuery(alias));
       data[alias] = mql.matches;
       mqlMap[alias] = mql;
-      console.log(alias, mql.media);
     });
 
     $Vue.prototype.$vd_media = new $Vue({
