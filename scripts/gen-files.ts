@@ -11,7 +11,7 @@ function alias(p: string): string {
   return p
     .replace(/^docs/, '@docs')
     .replace(/^lib/, '@void/ui/lib')
-    .replace(/\/index.tsx?$/, '');
+    .replace(/\.tsx?$/, '');
 }
 
 /**

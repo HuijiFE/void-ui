@@ -16,7 +16,7 @@ import {
   Skin,
   Shape,
   Size,
-} from '@void/ui/lib/components/base';
+} from '@void/ui/lib/components/base/variables';
 
 /**
  * Component Button

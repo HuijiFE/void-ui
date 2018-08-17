@@ -8,7 +8,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { Size } from '@void/ui/lib/components/base';
+import { Size } from '@void/ui/lib/components/base/variables';
 import { PropsDefinition, DefaultProps, ComponentOptions } from 'vue/types/options';
 
 export interface BreakPointMap extends Record<Size, number> {}

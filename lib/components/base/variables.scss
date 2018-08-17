@@ -1,4 +1,61 @@
+/**
+ * Void-UI style variables
+ */
 
-$size-base: 32;
+// --------------------------------
+// Theme
+
+$type-theme: 'lite', 'dark';
+
+// --------------------------------
+// Tone
+
+$type-tone: 'primary', 'secondary', 'success', 'warning', 'danger';
+
+// --------------------------------
+// Skin
+
+$type-skin: 'fill', 'flat', 'plain', 'silk';
+
+// --------------------------------
+// Shape
+
+$type-shape: 'rect', 'pill', 'square', 'circle';
+
 $radius-base: 2;
-$gap-base: 16;
+
+// --------------------------------
+// Size
+
+$type-size: 'xsmall', 'small', 'medium', 'large', 'xlarge';
+
+$size-map: (
+  xsmall:   24,
+  small:    32,
+  medium:   40,
+  large:    48,
+  xlarge:   56,
+);
+
+@function get-size($kye) {
+  @return map-get($size-map, $key);
+}
+
+$size-base: get-size('medium');
+
+// --------------------------------
+// Layout
+
+$gap-map: (
+  xsmall:   4,
+  small:    8,
+  medium:   16,
+  large:    24,
+  xlarge:   32,
+);
+
+@function get-gap($key) {
+  @return map-get($gap-map, $key);
+}
+
+$gap-base: get-gap('medium');

@@ -6,7 +6,7 @@
  * All components of void-ui
  */
 
-export * from '@void/ui/lib/components/base';
-export * from '@void/ui/lib/components/basic/button/button.tsx';
-export * from '@void/ui/lib/components/basic/theme/theme.tsx';
-export * from '@void/ui/lib/components/layout/flexbox/flexbox.tsx';
+export * from '@void/ui/lib/components/base/index';
+export * from '@void/ui/lib/components/basic/button/button';
+export * from '@void/ui/lib/components/basic/theme/theme';
+export * from '@void/ui/lib/components/layout/flexbox/flexbox';
