@@ -9,6 +9,13 @@ $root-font-size: 14 !default;
 }
 
 /**
+ * Append px unit to a number value.
+ */
+@function px($value) {
+  @return $value * 1px;
+}
+
+/**
  * CEP
  * The css class naming rule based on component, something like BEM.
  */
