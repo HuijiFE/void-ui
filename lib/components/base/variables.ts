@@ -1,3 +1,4 @@
+// tslint:disable-next-line:no-any
 /**
  * Void-UI variables
  */
@@ -8,12 +9,11 @@ export const NAMESPACE: string = 'vd';
 /**
  * Type of computed property style
  */
-export type Style = Partial<CSSStyleDeclaration>;
+export type Style = { [P in keyof CSSStyleDeclaration]+?: string | number | null };
 
 /**
  * Type of computed property classes
  */
-// tslint:disable-next-line:no-any
 export type ClassName = (string | { [cssPropName: string]: any })[];
 
 // --------------------------------
