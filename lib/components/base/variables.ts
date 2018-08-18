@@ -56,7 +56,13 @@ export type BreakPointKey = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export interface BreakPoints extends Record<BreakPointKey, number> {}
 
-export const KEYOF_BREAK_POINTS: BreakPointKey[] = ['xs', 'sm', 'md', 'lg', 'xl'];
+export const BREAK_POINT_KEYS: ReadonlyArray<BreakPointKey> = [
+  'xs',
+  'sm',
+  'md',
+  'lg',
+  'xl',
+];
 
 export const DEFAULT_BREAK_POINTS: BreakPoints = {
   xs: 600,

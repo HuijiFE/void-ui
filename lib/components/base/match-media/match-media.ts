@@ -4,13 +4,13 @@ import Vue, { PluginObject } from 'vue';
 import {
   BreakPointKey,
   BreakPoints,
-  KEYOF_BREAK_POINTS,
+  BREAK_POINT_KEYS,
   DEFAULT_BREAK_POINTS,
 } from '@void/ui/lib/components/base/variables';
 
 let $$Vue: typeof Vue | undefined;
 
-export type BreakPointAlias =
+export type MediaAlias =
   | BreakPointKey
   | 'gtXs'
   | 'ltSm'
@@ -21,11 +21,23 @@ export type BreakPointAlias =
   | 'gtLg'
   | 'ltXl';
 
-export interface MediaHub extends Readonly<Record<BreakPointAlias, boolean>> {
-  getMediaQueryLists(): Readonly<Record<BreakPointAlias, MediaQueryList>>;
+export const MEDIA_ALIASES: ReadonlyArray<MediaAlias> = [
+  ...BREAK_POINT_KEYS,
+  'gtXs',
+  'ltSm',
+  'gtSm',
+  'ltMd',
+  'gtMd',
+  'ltLg',
+  'gtLg',
+  'ltXl',
+];
+
+export interface MediaHub extends Readonly<Record<MediaAlias, boolean>> {
+  getMediaQueryLists(): Readonly<Record<MediaAlias, MediaQueryList>>;
 }
 
-interface MediaHubInternal extends Record<BreakPointAlias, boolean> {}
+interface MediaHubInternal extends Record<MediaAlias, boolean> {}
 
 /**
  * Media plugin for void-ui
@@ -43,7 +55,7 @@ const plugin: PluginObject<BreakPoints> = {
     $$Vue = $Vue;
 
     // validate breakpoints
-    KEYOF_BREAK_POINTS.forEach(key => {
+    BREAK_POINT_KEYS.forEach(key => {
       if (
         typeof breakpoints[key] !== 'number' ||
         breakpoints[key] !== Math.round(breakpoints[key])
@@ -54,10 +66,10 @@ const plugin: PluginObject<BreakPoints> = {
 
     // tslint:disable-next-line:typedef
     const getPreviousKey = (key: BreakPointKey): BreakPointKey | undefined =>
-      KEYOF_BREAK_POINTS[KEYOF_BREAK_POINTS.indexOf(key) - 1];
+      BREAK_POINT_KEYS[BREAK_POINT_KEYS.indexOf(key) - 1];
 
     // tslint:disable-next-line:typedef
-    const getQuery = (alias: BreakPointAlias): string => {
+    const getQuery = (alias: MediaAlias): string => {
       const key: BreakPointKey = alias
         .replace('lt', '')
         .replace('gt', '')
@@ -102,9 +114,9 @@ const plugin: PluginObject<BreakPoints> = {
       ltXl: false,
       xl: false,
     };
-    const mqlMap: Record<BreakPointAlias, MediaQueryList> = {} as any;
+    const mqlMap: Record<MediaAlias, MediaQueryList> = {} as any;
 
-    (Object.keys(data) as BreakPointAlias[]).forEach(alias => {
+    (Object.keys(data) as MediaAlias[]).forEach(alias => {
       const mql: MediaQueryList = createMQL(getQuery(alias));
       data[alias] = mql.matches;
       mqlMap[alias] = mql;
@@ -116,7 +128,7 @@ const plugin: PluginObject<BreakPoints> = {
         getMediaQueryLists: () => mqlMap,
       },
       created(): void {
-        (Object.entries(mqlMap) as [BreakPointAlias, MediaQueryList][]).forEach(
+        (Object.entries(mqlMap) as [MediaAlias, MediaQueryList][]).forEach(
           ([alias, mql]) =>
             mql.addListener(e => {
               if (this[alias] !== e.matches) {

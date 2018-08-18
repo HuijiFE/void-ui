@@ -31,8 +31,9 @@
   "module": "dist/void-ui.common.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "ts": "ts-node -P scripts/tsconfig.json",
+    "ts": "ts-node -r tsconfig-paths/register -P scripts/tsconfig.json",
     "gen-files": "yarn ts scripts/gen-files.ts",
+    "gen-fields": "yarn ts scripts/gen-fields.ts",
     "serve": "cross-env BUILD_SOLUTION=docs vue-cli-service serve docs/main.ts --open --port 8102",
     "build:lib": "cross-env BUILD_SOLUTION=lib vue-cli-service build lib/void-ui.ts --target lib",
     "build:docs": "cross-env BUILD_SOLUTION=docs vue-cli-service build docs/main.ts --modern --report",
@@ -47,8 +48,8 @@
     "vue-property-decorator": "^7.0.0"
   },
   "peerDependencies": {
-    "vue": "^2.5.17",
-    "@vue/cli-plugin-typescript": "^3.0.0"
+    "@vue/cli-plugin-typescript": "^3.0.0",
+    "vue": "^2.5.17"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.2",
@@ -84,6 +85,7 @@
     "stylelint-scss": "^3.3.0",
     "ts-jest": "^23.1.3",
     "ts-node": "^7.0.1",
+    "tsconfig-paths": "^3.5.0",
     "tslib": "^1.9.3",
     "tslint": "^5.11.0",
     "tslint-microsoft-contrib": "^5.2.0",
