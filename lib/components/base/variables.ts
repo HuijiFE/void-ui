@@ -1,4 +1,4 @@
-// tslint:disable-next-line:no-any
+// tslint:disable:no-any
 /**
  * Void-UI variables
  */
