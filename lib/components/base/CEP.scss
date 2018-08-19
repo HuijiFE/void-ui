@@ -39,8 +39,10 @@ $root-font-size: 14 !default;
 @mixin comp($component) {
   $C: class-comp($component) !global;
 
-  .#{$C} {
-    @content;
+  @at-root {
+    .#{$C} {
+      @content;
+    }
   }
 }
 
@@ -180,7 +182,9 @@ $root-font-size: 14 !default;
  * 
  * @include comp('list') {
  *   @include elem('item') {
- *     @include when('selected', 'raised') {}
+ *     @include when('selected', 'raised') {
+ *       // ...
+ *     }
  *   }
  * }
  * 
@@ -188,17 +192,8 @@ $root-font-size: 14 !default;
  *   .vd-list_item.is-selected.is-raised {}
  * }
  */
-@mixin when($status) {
-  $selector: &;
 
-  @at-root {
-    #{$selector}.#{class-status($status)} {
-      @content;
-    }
-  }
-}
-
-@mixin when-and($status-list...) {
+@mixin when($status-list...) {
   $status-selector: &;
   @each $status in $status-list {
     $status-selector: '#{$status-selector}.#{class-status($status)}';
@@ -214,6 +209,7 @@ $root-font-size: 14 !default;
 @mixin when-or($status-list...) {
   $selector: &;
   $status-selector: '';
+
   @each $status in $status-list {
     $status-selector: '#{$selector}.#{class-status($status)}';
 
@@ -235,8 +231,8 @@ $root-font-size: 14 !default;
   @return $class-name;
 }
 
-// Define a atomic rule.
-@mixin define-atom($name, $value: null) {
+// Define a atomic selector.
+@mixin atom($name, $value: null) {
   $class-name: class-atom($name, $value);
   @at-root {
     .#{$class-name},
@@ -245,19 +241,13 @@ $root-font-size: 14 !default;
     }
   }
 }
-// Extend a atomic rule.
+
+// Extend a atomic selector.
 @mixin extend-atom($name, $value: null) {
   @extend .#{class-atom($name, $value)};
 }
-// Define a abstract atomic rule.
-@mixin abstract-atom($name, $value: null) {
-  @at-root {
-    %#{class-atom($name, $value)} {
-      @content;
-    }
-  }
-}
-// Inherit a atomic rule.
+
+// Inline the rules from a atomic selector.
 @mixin inherit-atom($name, $value: null) {
   @extend %#{class-atom($name, $value)};
 }
