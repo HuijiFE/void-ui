@@ -1,0 +1,97 @@
+$color-white: #ffffff !default;
+$color-black: #000000 !default;
+
+// theme
+// The border color `bd-normal` should use be same as `bg-hover`.
+
+$color-map-theme: (
+  lite-fg-emphasize:       #222222,
+  lite-fg-normal:          #333333,
+  lite-fg-sub:             #888888,
+  lite-fg-placeholder:     #999999,
+  lite-fg-disabled:        #bbbbbb,
+
+  lite-bg-higher:          #f5f5f5,
+  lite-bg-high:            #fafafa,
+  lite-bg-normal:          #ffffff,
+  lite-bg-low:             #fafafa,
+  lite-bg-lower:           #f5f5f5,
+  lite-bg-hover:           #eeeeee,
+  lite-bg-disabled:        #efefef,
+
+  lite-bd-normal:          #eeeeee,
+  lite-bd-disabled:        #bbbbbb,
+  lite-bd-focus:           #888888,
+
+  dark-fg-emphasize:       #f5f5f5,
+  dark-fg-normal:          #eeeeee,
+  dark-fg-sub:             #aaaaaa,
+  dark-fg-placeholder:     #999999,
+  dark-fg-disabled:        #777777,
+
+  dark-bg-higher:          #494949,
+  dark-bg-high:            #444444,
+  dark-bg-normal:          #3e3e3e,
+  dark-bg-low:             #383838,
+  dark-bg-lower:           #333333,
+  dark-bg-hover:           #4e4e4e,
+  dark-bg-disabled:        #555555,
+
+  dark-bd-normal:          #4e4e4e,
+  dark-bd-disabled:        #777777,
+  dark-bd-focus:           #aaaaaa,
+) !default;
+
+@function theme($theme: 'lite', $role: 'fg', $level: 'normal') {
+  $value: map-get($map: $color-map-theme, $key: #{$theme}-#{$role}-#{$level});
+
+  @if $value {
+    @return $value;
+  } @else {
+    @error 'Theme color no found #{$theme}-#{$role}-#{$level}';
+  }
+}
+
+// tone
+
+$color-map-tone: (
+  primary-darkener:       #0080b0,
+  primary-darken:         #0098c2,
+  primary-standard:       #00abd0,
+  primary-lighten:        #00bedb,
+  primary-lightener:      #34d2e9,
+
+  secondary-darkener:     #b000b0,
+  secondary-darken:       #c200b8,
+  secondary-standard:     #d000c6,
+  secondary-lighten:      #c900db,
+  secondary-lightener:    #e934e9,
+
+  success-darkener:       #1da63d,
+  success-darken:         #21bd45,
+  success-standard:       #24cf4c,
+  success-lighten:        #2cdb55,
+  success-lightener:      #46eb6d,
+
+  warning-darkener:       #ffaa00,
+  warning-darken:         #ffbb00,
+  warning-standard:       #ffcc00,
+  warning-lighten:        #ffdd33,
+  warning-lightener:      #ffee44,
+
+  danger-darkener:        #cc2828,
+  danger-darken:          #e62d2d,
+  danger-standard:        #ff3333,
+  danger-lighten:         #ff4d4d,
+  danger-lightener:       #ff6666,
+) !default;
+
+@function tone($tone: 'primary', $level: 'standard') {
+  $value: map-get($map: $color-map-tone, $key: #{$tone}-#{$level});
+
+  @if $value {
+    @return $value;
+  } @else {
+    @error 'Tone color no found: #{$tone}-#{$level}';
+  }
+}

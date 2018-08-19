@@ -6,51 +6,43 @@
 export const DEFAULT_ROOT_FONT_SIZE: number = 100;
 export const NAMESPACE: string = 'vd';
 
-/**
- * Type of computed property style
- */
 export type Style = { [P in keyof CSSStyleDeclaration]+?: string | number | null };
-
-/**
- * Type of computed property classes
- */
 export type ClassName = (string | { [cssPropName: string]: any })[];
 
 // --------------------------------
-// Theme
+// Core style system
 
 export type Theme = 'lite' | 'dark';
+export type Tone = 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+export type Skin = 'fill' | 'flat' | 'plain' | 'silk';
+export type Shape = 'rect' | 'pill' | 'square' | 'circle';
+export type Size = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
 
-/**
- * A component that can be styled via property theme.
- */
+export const THEME_KEYS: ReadonlyArray<Theme> = ['lite', 'dark'];
+export const TONE_KEYS: ReadonlyArray<Tone> = [
+  'primary',
+  'secondary',
+  'success',
+  'warning',
+  'danger',
+];
+export const SKIN_KEYS: ReadonlyArray<Skin> = ['fill', 'flat', 'plain', 'silk'];
+export const SHAPE_KEYS: ReadonlyArray<Shape> = ['rect', 'pill', 'square', 'circle'];
+export const SIZE_KEYS: ReadonlyArray<Size> = [
+  'xsmall',
+  'small',
+  'medium',
+  'large',
+  'xlarge',
+];
+
 export interface ThemeComponent {
   readonly theme: Theme;
   readonly $theme: Theme;
 }
 
 // --------------------------------
-// Tone
-
-export type Tone = 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
-
-// --------------------------------
-// Skin
-
-export type Skin = 'fill' | 'flat' | 'plain' | 'silk';
-
-// --------------------------------
-// Shape
-
-export type Shape = 'rect' | 'pill' | 'square' | 'circle';
-
-// --------------------------------
-// Size
-
-export type Size = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
-
-// --------------------------------
-// Layout
+// Responsive
 
 export type BreakPointKey = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type MediaAlias =

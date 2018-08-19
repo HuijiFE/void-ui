@@ -6,48 +6,21 @@ $root-font-size: 100 !default;
 $namespace: 'vd';
 
 // --------------------------------
-// Theme
+// Color maps
 
-$type-theme: 'lite', 'dark';
-
-// --------------------------------
-// Tone
-
-$type-tone: 'primary', 'secondary', 'success', 'warning', 'danger';
+@import '~@void/ui/lib/components/base/color-maps.scss';
 
 // --------------------------------
-// Skin
+// Core style system
 
-$type-skin: 'fill', 'flat', 'plain', 'silk';
-
-// --------------------------------
-// Shape
-
-$type-shape: 'rect', 'pill', 'square', 'circle';
-
-$radius-base: 2;
+$type-theme:  'lite', 'dark';
+$type-tone:   'primary', 'secondary', 'success', 'warning', 'danger';
+$type-skin:   'fill', 'flat', 'plain', 'silk';
+$type-shape:  'rect', 'pill', 'square', 'circle';
+$type-size:   'xsmall', 'small', 'medium', 'large', 'xlarge';
 
 // --------------------------------
-// Size
-
-$type-size: 'xsmall', 'small', 'medium', 'large', 'xlarge';
-
-$size-map: (
-  xsmall:   24,
-  small:    32,
-  medium:   40,
-  large:    48,
-  xlarge:   56,
-);
-
-@function get-size($key) {
-  @return map-get($size-map, $key);
-}
-
-$size-base: get-size('medium');
-
-// --------------------------------
-// Layout
+// Responsive
 
 $type-breakpoint-key: 'xs', 'sm', 'md', 'lg', 'xl';
 $type-media-alias: $type-breakpoint-key, 'gtXs', 'ltSm', 'gtSm', 'ltMd', 'gtMd', 'ltLg', 'gtLg', 'ltXl';
@@ -64,6 +37,32 @@ $breakpoints: (
   @return map-get($breakpoints, $key);
 }
 
+// --------------------------------
+// Typography
+
+$font-size-base: 14;
+
+// --------------------------------
+// Layout and shape
+
+// size
+
+$size-map: (
+  xsmall:   24,
+  small:    32,
+  medium:   40,
+  large:    48,
+  xlarge:   56,
+);
+
+@function get-size($key) {
+  @return map-get($size-map, $key);
+}
+
+$size-base: get-size('medium');
+
+// gap / gutter / padding / margin
+
 $gap-map: (
   xsmall:   4,
   small:    8,
@@ -77,3 +76,11 @@ $gap-map: (
 }
 
 $gap-base: get-gap('medium');
+
+// border
+
+$border-base: 1;
+
+// radius
+
+$radius-base: 2;

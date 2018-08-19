@@ -1,3 +1,11 @@
 * {
   box-sizing: border-box;
 }
+
+html {
+  font-size: px($root-font-size);
+}
+
+body {
+  font-size: rem($font-size-base);
+}
