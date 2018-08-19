@@ -16,6 +16,8 @@
   align-items: center;
   vertical-align: middle;
 
+  text-decoration: none;
+  user-select: none;
   font-weight: normal;
   line-height: 1;
   white-space: nowrap;
@@ -26,6 +28,8 @@
   color: inherit;
   background-color: transparent;
   border: rem($border-base) solid transparent;
+
+  cursor: pointer;
 
   // --------------------------------
   // shape & size
@@ -42,7 +46,24 @@
     border-radius: rem($radius-base);
   }
 
+  @include prop(
+    (
+      'shape': 'circle',
+    )
+  ) {
+    border-radius: 50%;
+  }
+
   @each $size, $height in $button-height-map {
+    @include prop(
+      (
+        'size': $size,
+        'shape': 'pill',
+      )
+    ) {
+      border-radius: rem($height / 2);
+    }
+
     @include prop(
       (
         'size': $size,

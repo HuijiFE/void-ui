@@ -9,6 +9,7 @@ import {
   Watch,
 } from 'vue-property-decorator';
 import {
+  Style,
   ClassName,
   Theme,
   ThemeComponent,
@@ -17,6 +18,7 @@ import {
   Shape,
   Size,
 } from '@void/ui/lib/components/base/variables';
+import { RawLocation } from 'vue-router';
 
 /**
  * Component Button
@@ -24,7 +26,10 @@ import {
 @Component
 export class VdButton extends Vue implements ThemeComponent {
   @Prop({ type: String, default: 'button' })
-  public readonly tag!: keyof HTMLElementTagNameMap;
+  public readonly tag!: string;
+
+  @Prop({ type: Boolean, default: false })
+  public readonly routerLink!: boolean;
 
   // tslint:disable-next-line:no-reserved-keywords
   @Prop({ type: String, default: 'button' })
@@ -63,6 +68,7 @@ export class VdButton extends Vue implements ThemeComponent {
       `vdp-shape_${this.shape}`,
       `vdp-size_${this.size}`,
       {
+        'is-router-link': this.routerLink,
         'is-disabled': this.disabled,
       },
     ];
@@ -70,13 +76,17 @@ export class VdButton extends Vue implements ThemeComponent {
 
   private render(h: CreateElement): VNode {
     return h(
-      this.tag,
+      this.routerLink ? 'router-link' : this.tag,
       {
         staticClass: 'vd-button',
         class: this.classes,
-        domProps: {
+        attrs: {
           type: this.type,
           disabled: this.disabled,
+        },
+        props: {
+          tag: this.tag,
+          ...this.$attrs,
         },
         on: {
           click: this.onClick,

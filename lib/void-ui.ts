@@ -36,4 +36,6 @@ const install: PluginFunction<VoidUIOptions> = ($Vue, options) => {
  */
 export default {
   install,
+  base,
+  components,
 };
