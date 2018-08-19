@@ -1,3 +1,7 @@
+// Learn more:
+// https://drafts.csswg.org/css-flexbox-1/
+// https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout
+
 import Vue, { CreateElement, VNode } from 'vue';
 import {
   Component,
@@ -8,52 +12,114 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { Size } from '@void/ui/lib/components/base/variables';
-import { PropsDefinition, DefaultProps, ComponentOptions } from 'vue/types/options';
+import {
+  Style,
+  ClassName,
+  Size,
+  ResponsiveValues,
+} from '@void/ui/lib/components/base/variables';
 
-export interface BreakPointMap extends Record<Size, number> {}
+export type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse';
+export type FlexWrap = 'nowrap' | 'wrap' | 'wrap-reverse';
 
-function generateProps(
-  propsDef: PropsDefinition<DefaultProps>,
-): PropsDefinition<DefaultProps> {
-  return propsDef;
+export type FlexAlign =
+  | 'start'
+  | 'center'
+  | 'end'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly'
+  | 'stretch';
+export type FlexJustify =
+  | 'start'
+  | 'center'
+  | 'end'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly';
+
+export type Flex = 'initial' | 'auto' | 'none' | number;
+
+export interface VdFlexbox {
+  props: {
+    tag?: keyof HTMLElementTagNameMap;
+  };
+  event: {
+    onClick?(event?: MouseEvent): void;
+  };
 }
-
-const props: PropsDefinition<DefaultProps> = generateProps({
-  tag: {
-    type: String,
-    default: 'div',
-  },
-});
 
 /**
  * Component Flexbox
  */
-@Component({
-  props,
-})
+@Component
 export class VdFlexbox extends Vue {
   // region ======== props ========
 
-  public readonly tag!: HTMLElementTagNameMap;
+  @Prop({ type: String, default: 'div' })
+  public readonly tag!: keyof HTMLElementTagNameMap;
 
-  public readonly flex!: number | string;
+  @Prop(String)
+  public readonly direction?: FlexDirection;
+  @Prop(String)
+  public readonly wrap?: FlexWrap;
 
-  public readonly hidden!: boolean;
+  @Prop(String)
+  public readonly align?: string;
+  @Prop(String)
+  public readonly justify?: string;
 
-  public readonly gap!: boolean;
+  @Prop({ type: [Boolean, String], default: false })
+  public readonly gap!: boolean | Size;
 
-  public readonly direction!: string;
+  @Prop([String, Number, Object])
+  public readonly flex?: ResponsiveValues<Flex>;
 
-  public readonly wrap!: string;
+  @Prop([String, Number, Object])
+  public readonly order?: ResponsiveValues<number>;
 
-  public readonly justify!: string;
-
-  public readonly align!: string;
+  @Prop({ type: [Boolean, Object], default: false })
+  public readonly hidden!: ResponsiveValues<boolean>;
+  @Prop({ type: [Boolean, Object], default: true })
+  public readonly show!: ResponsiveValues<boolean>;
 
   // endregion
 
+  private get presentFlex(): string {
+    return '';
+  }
+
+  public get style(): Style {
+    return {
+      order: this.order as number,
+      flex: this.flex as string,
+    };
+  }
+
+  public get classes(): ClassName {
+    return [
+      {
+        [`vdp-direction_${this.direction}`]: this.direction,
+        [`vdp-wrap_${this.wrap}`]: this.wrap,
+
+        [`vdp-align_${this.align}`]: this.align,
+        [`vdp-justify_${this.justify}`]: this.justify,
+
+        'is-gap': this.gap,
+        [`vdp-gap_${this.gap}`]: typeof this.gap === 'string',
+      },
+    ];
+  }
+
   private render(h: CreateElement): VNode {
-    return <div staticClass="vd-flexbox">{this.$slots.default}</div>;
+    return h(
+      this.tag,
+      {
+        style: this.style,
+        staticClass: 'vd-flexbox',
+        class: this.classes,
+      },
+      this.$slots.default,
+    );
   }
 }

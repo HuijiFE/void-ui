@@ -22,13 +22,13 @@ const install: PluginFunction<VoidUIOptions> = ($Vue, options) => {
   $$Vue = $Vue;
 
   // install all plugins
-  base.PluginMatchMedia.install($Vue, options && options.breakpoints);
-
-  // install all components
-  Object.entries(components).forEach(([name, comp]) => $Vue.component(name, comp));
 
   // install all component additional plugins
   components.VdTheme.install($Vue);
+  components.VdMedia.install($Vue, options && options.breakpoints);
+
+  // install all components
+  Object.entries(components).forEach(([name, comp]) => $Vue.component(name, comp));
 };
 
 /**

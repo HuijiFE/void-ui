@@ -2,5 +2,74 @@
  * Component: Flexbox
  */
 @include comp('flexbox') {
+  $type-flex-direction: row, row-reverse, column, column-reverse;
+  $type-flex-wrap: nowrap, wrap, wrap-reverse;
+  $type-flex-align: start, center, end, space-between, space-around, space-evenly, stretch;
+  $type-flex-justify: start, center, end, space-between, space-around, space-evenly;
+
+  position: relative;
   display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1 1 0%;
+
+  @each $value in $type-flex-direction {
+    @include prop(
+      (
+        'direction': $value,
+      )
+    ) {
+      flex-direction: $value;
+    }
+  }
+
+  @each $value in $type-flex-wrap {
+    @include prop(
+      (
+        'wrap': $value,
+      )
+    ) {
+      flex-wrap: $value;
+    }
+  }
+
+  @each $value in $type-flex-align {
+    @include prop(
+      (
+        'align': $value,
+      )
+    ) {
+      @if $value == start or $value == end {
+        $value: flex-#{$value};
+      }
+      align-items: $value;
+      align-content: $value;
+    }
+  }
+
+  @each $value in $type-flex-justify {
+    @include prop(
+      (
+        'justify': $value,
+      )
+    ) {
+      @if $value == start or $value == end {
+        $value: flex-#{$value};
+      }
+      justify-content: $value;
+    }
+  }
+
+  @include when('gap') {
+    margin: rem(-$gap-base / 2);
+    > .#{class-comp('flexbox')} {
+      padding: rem($gap-base / 2);
+      @include when('gap') {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
 }

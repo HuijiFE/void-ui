@@ -1,0 +1,46 @@
+@mixin media-only($key) {
+  $breakpoint: breakpoint($key);
+  $index-next: index($type-breakpoint-key, $key) + 1;
+  $key-next: if(
+    $index-next > length($type-breakpoint-key),
+    null,
+    nth($type-breakpoint-key, $index-next)
+  );
+  $breakpoint-next: if($key-next, breakpoint($key-next) - 0.02, null);
+
+  @if $breakpoint-next {
+    @media (min-width: px($breakpoint)) and (max-width: px($breakpoint-next)) {
+      @content;
+    }
+  } @else {
+    @media (min-width: px($breakpoint)) {
+      @content;
+    }
+  }
+}
+
+@mixin media-less-than($key) {
+  $breakpoint: breakpoint($key) - 0.02;
+
+  @if $breakpoint > 0 {
+    @media (max-width: px($breakpoint)) {
+      @content;
+    }
+  }
+}
+
+@mixin media-greater-than($key) {
+  $index-next: index($type-breakpoint-key, $key) + 1;
+  $key-next: if(
+    $index-next > length($type-breakpoint-key),
+    null,
+    nth($type-breakpoint-key, $index-next)
+  );
+  $breakpoint-next: if($key-next, breakpoint($key-next), null);
+
+  @if $breakpoint-next {
+    @media (min-width: px($breakpoint-next)) {
+      @content;
+    }
+  }
+}

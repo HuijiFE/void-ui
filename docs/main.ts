@@ -1,6 +1,6 @@
 // tslint:disable:no-import-side-effect
 
-import '@void/ui/lib/void-ui.scss';
+import '@docs/main.scss';
 
 import Vue from 'vue';
 

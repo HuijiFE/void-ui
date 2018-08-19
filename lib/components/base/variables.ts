@@ -53,8 +53,24 @@ export type Size = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
 // Layout
 
 export type BreakPointKey = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type MediaAlias =
+  | BreakPointKey
+  | 'gtXs'
+  | 'ltSm'
+  | 'gtSm'
+  | 'ltMd'
+  | 'gtMd'
+  | 'ltLg'
+  | 'gtLg'
+  | 'ltXl';
 
 export interface BreakPoints extends Record<BreakPointKey, number> {}
+
+export interface RecordResponsiveValues<T> extends Partial<Record<MediaAlias, T>> {
+  value: T;
+}
+
+export type ResponsiveValues<T> = T | RecordResponsiveValues<T>;
 
 export const BREAK_POINT_KEYS: ReadonlyArray<BreakPointKey> = [
   'xs',
@@ -63,11 +79,22 @@ export const BREAK_POINT_KEYS: ReadonlyArray<BreakPointKey> = [
   'lg',
   'xl',
 ];
+export const MEDIA_ALIASES: ReadonlyArray<MediaAlias> = [
+  ...BREAK_POINT_KEYS,
+  'gtXs',
+  'ltSm',
+  'gtSm',
+  'ltMd',
+  'gtMd',
+  'ltLg',
+  'gtLg',
+  'ltXl',
+];
 
 export const DEFAULT_BREAK_POINTS: BreakPoints = {
-  xs: 600,
-  sm: 960,
-  md: 1280,
-  lg: 1920,
-  xl: 5000,
+  xs: 0,
+  sm: 600,
+  md: 960,
+  lg: 1280,
+  xl: 1920,
 };

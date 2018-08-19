@@ -8,6 +8,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
+import { BREAK_POINT_KEYS, MediaAlias, MediaScreen } from '@void/ui/lib/void-ui';
 
 /**
  * View: Test
@@ -28,49 +29,84 @@ export default class ViewTest extends Vue {
     });
   }
 
+  @Watch('$vd_media.screen', { deep: true })
+  private onScreenChange(screen: MediaScreen): void {
+    console.info(
+      '$vd_media.screen changed.',
+      Object.entries(screen)
+        .filter(([alias, value]) => value)
+        .map(([alias, value]) => alias)
+        .join(', '),
+    );
+  }
+
   private render(h: CreateElement): VNode {
     return (
-      <div staticClass="view-test">
-        <div>{this.windowWidth}</div>
-        <hr />
-        <div>ltXs: N/A</div>
-        <div>xs: {this.$vd_media.xs.toString()}</div>
-        <div>gtXs: {this.$vd_media.gtXs.toString()}</div>
-        <br />
-        <div>ltSm: {this.$vd_media.ltSm.toString()}</div>
-        <div>sm: {this.$vd_media.sm.toString()}</div>
-        <div>gtSm: {this.$vd_media.gtSm.toString()}</div>
-        <br />
-        <div>ltMd: {this.$vd_media.ltMd.toString()}</div>
-        <div>md: {this.$vd_media.md.toString()}</div>
-        <div>gtMd: {this.$vd_media.gtMd.toString()}</div>
-        <br />
-        <div>ltLg: {this.$vd_media.ltLg.toString()}</div>
-        <div>lg: {this.$vd_media.lg.toString()}</div>
-        <div>gtLg: {this.$vd_media.gtLg.toString()}</div>
-        <br />
-        <div>ltXl: {this.$vd_media.ltXl.toString()}</div>
-        <div>xl: {this.$vd_media.xl.toString()}</div>
-        <div>gtXl: N/A</div>
-        <hr />
-        {[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 11, 1, 1, 1, 1, 1, 1, 1, 1].map(() => (
-          <div>
-            <hr />
-            <vd-button>test</vd-button>
-            <vd-theme theme="lite">
-              <vd-button>test</vd-button>
-            </vd-theme>
-            <vd-theme theme="dark">
-              <vd-button>test</vd-button>
-            </vd-theme>
-            <vd-theme theme="lite">
-              <vd-button>test</vd-button>
-            </vd-theme>
-            <vd-theme theme="dark">
-              <vd-button>test</vd-button>
-            </vd-theme>
-          </div>
-        ))}
+      <div staticClass="view-test" style={{ padding: '32px' }}>
+        <vd-flexbox gap>
+          <vd-flexbox flex="0 1 100%">
+            Screen Width: {this.windowWidth}
+            px
+          </vd-flexbox>
+
+          {BREAK_POINT_KEYS.map((key, index) => {
+            const lt: boolean = this.$vd_media.screen[
+              `lt${key.charAt(0).toUpperCase()}${key.substring(1)}` as MediaAlias
+            ];
+            const only: boolean = this.$vd_media.screen[key];
+            const gt: boolean = this.$vd_media.screen[
+              `gt${key.charAt(0).toUpperCase()}${key.substring(1)}` as MediaAlias
+            ];
+
+            return (
+              <vd-flexbox flex="0 1 100%" gap>
+                {index > 0 ? (
+                  <vd-flexbox
+                    justify="center"
+                    flex="0 1 100%"
+                    style={{
+                      maxWidth: `${20 * index}%`,
+                    }}
+                  >
+                    <div
+                      staticClass="view-test_debug"
+                      class={{ 'is-active': lt }}
+                    >{`lt-${key}`}</div>
+                  </vd-flexbox>
+                ) : (
+                  ''
+                )}
+                <vd-flexbox
+                  justify="center"
+                  flex="0 1 100%"
+                  style={{
+                    maxWidth: '20%',
+                  }}
+                >
+                  <div staticClass="view-test_debug" class={{ 'is-active': only }}>
+                    {key}
+                  </div>
+                </vd-flexbox>
+                {index < BREAK_POINT_KEYS.length - 1 ? (
+                  <vd-flexbox
+                    justify="center"
+                    flex="0 1 100%"
+                    style={{
+                      maxWidth: `${20 * (BREAK_POINT_KEYS.length - 1 - index)}%`,
+                    }}
+                  >
+                    <div
+                      staticClass="view-test_debug"
+                      class={{ 'is-active': gt }}
+                    >{`gt-${key}`}</div>
+                  </vd-flexbox>
+                ) : (
+                  ''
+                )}
+              </vd-flexbox>
+            );
+          })}
+        </vd-flexbox>
       </div>
     );
   }

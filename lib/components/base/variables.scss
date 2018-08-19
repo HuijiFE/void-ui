@@ -50,13 +50,14 @@ $size-base: get-size('medium');
 // Layout
 
 $type-breakpoint-key: 'xs', 'sm', 'md', 'lg', 'xl';
+$type-media-alias: $type-breakpoint-key, 'gtXs', 'ltSm', 'gtSm', 'ltMd', 'gtMd', 'ltLg', 'gtLg', 'ltXl';
 
 $breakpoints: (
-  xs: 600,
-  sm: 960,
-  md: 1280,
-  lg: 1920,
-  xl: 5000,
+  xs: 0,
+  sm: 600,
+  md: 960,
+  lg: 1280,
+  xl: 1920,
 );
 
 @function breakpoint($key) {
