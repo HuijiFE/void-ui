@@ -18,7 +18,6 @@ import {
   Shape,
   Size,
 } from '@void/ui/lib/components/base/variables';
-import { RawLocation } from 'vue-router';
 
 /**
  * Component Button
