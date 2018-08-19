@@ -1,0 +1,121 @@
+/**
+ * Component: Button
+ */
+@include comp('button') {
+  $button-height-map: $size-map;
+
+  $button-font-size: 0.5;
+  $button-min-width: 2.5;
+  $button-padding-h: 0.5;
+
+  position: relative;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  vertical-align: middle;
+
+  font-weight: normal;
+  line-height: 1;
+  white-space: nowrap;
+
+  padding: 0;
+  margin: 0;
+
+  color: inherit;
+  background-color: transparent;
+  border: rem($border-base) solid transparent;
+
+  // --------------------------------
+  // shape & size
+
+  // rect square
+  @include prop(
+    (
+      'shape': 'rect',
+    ),
+    (
+      'shape': 'square',
+    )
+  ) {
+    border-radius: rem($radius-base);
+  }
+
+  @each $size, $height in $button-height-map {
+    @include prop(
+      (
+        'size': $size,
+      )
+    ) {
+      font-size: rem($height / 2);
+      height: rem($height);
+    }
+
+    // rect, pill
+    @include prop(
+      (
+        'size': $size,
+        'shape': 'rect',
+      ),
+      (
+        'size': $size,
+        'shape': 'pill',
+      )
+    ) {
+      min-width: rem($height * $button-min-width);
+      padding: 0 rem($height * $button-padding-h);
+    }
+
+    // square, circle
+    @include prop(
+      (
+        'size': $size,
+        'shape': 'square',
+      ),
+      (
+        'size': $size,
+        'shape': 'circle',
+      )
+    ) {
+      width: rem($height);
+    }
+  }
+
+  // ----------------------------
+  // skin & tone & theme
+
+  @include prop(
+    (
+      'skin': 'fill',
+    )
+  ) {
+    color: $color-white;
+  }
+
+  @each $tone in $type-tone {
+    @include prop(
+      (
+        'skin': 'fill',
+        'tone': $tone,
+      )
+    ) {
+      background-color: tone($tone);
+
+      &:hover,
+      &:focus {
+        background-color: tone($tone, 'lighten');
+      }
+      &:active {
+        background-color: tone($tone, 'darken');
+      }
+    }
+  }
+
+  // ----------------------------
+  // disabled
+
+  @include when('disabled') {
+    cursor: not-allowed;
+  }
+}

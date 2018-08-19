@@ -56,7 +56,16 @@ export class VdButton extends Vue implements ThemeComponent {
   }
 
   public get classes(): ClassName {
-    return [`vdp-theme_${this.$theme}`];
+    return [
+      `vdp-theme_${this.$theme}`,
+      `vdp-tone_${this.tone}`,
+      `vdp-skin_${this.skin}`,
+      `vdp-shape_${this.shape}`,
+      `vdp-size_${this.size}`,
+      {
+        'is-disabled': this.disabled,
+      },
+    ];
   }
 
   private render(h: CreateElement): VNode {

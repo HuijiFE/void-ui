@@ -10,10 +10,16 @@ import {
 } from 'vue-property-decorator';
 import { BREAK_POINT_KEYS, MediaAlias, MediaScreen } from '@void/ui/lib/void-ui';
 
+import { DocExample } from '@docs/examples/general/button/overview';
+
 /**
  * View: Test
  */
-@Component
+@Component({
+  components: {
+    DocExample,
+  },
+})
 export default class ViewTest extends Vue {
   private windowWidth: number = 0;
 
@@ -44,6 +50,9 @@ export default class ViewTest extends Vue {
     return (
       <div staticClass="view-test" style={{ padding: '32px' }}>
         <vd-flexbox gap>
+          <vd-flexbox flex="0 1 100%">
+            <doc-example />
+          </vd-flexbox>
           <vd-flexbox flex="0 1 100%">
             Screen Width: {this.windowWidth}
             px
