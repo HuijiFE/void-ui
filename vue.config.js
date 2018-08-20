@@ -12,23 +12,21 @@ const hashDigestLength = 128;
  */
 const limit = 4096;
 
-const baseUrlMap = {
-  docs: '/void-ui/static/',
-  lib: '/',
-};
-
-const destMap = {
-  docs: 'www/static',
-  lib: 'dist',
-};
-
-const SOLUTION = process.env.BUILD_SOLUTION;
+/**
+ * @type {'lib' | 'scss' | 'docs'}
+ */
+const VUE_ENTRY = process.env.VUE_ENTRY;
 
 module.exports = {
-  baseUrl: process.env.NODE_ENV === 'production' ? baseUrlMap[SOLUTION] : '/',
+  baseUrl:
+    process.env.NODE_ENV === 'production'
+      ? VUE_ENTRY === 'docs'
+        ? '/void-ui/statice'
+        : '/'
+      : '/',
 
-  outputDir: destMap[SOLUTION],
-  indexPath: '../index.html',
+  outputDir: VUE_ENTRY === 'docs' ? 'www/static' : 'dist',
+  indexPath: VUE_ENTRY === 'docs' ? '../index.html' : undefined,
 
   lintOnSave: true,
 
@@ -48,14 +46,22 @@ module.exports = {
     const context = config.store.get('context');
     const resolve = _path => path.resolve(context, _path);
 
-    // customize alias
+    // Customize alias
     const aliasMap = config.resolve.alias.delete('@');
     Object.entries({
       '@docs': 'docs',
       '@void/ui/lib': 'lib',
     }).forEach(([alias, dir]) => aliasMap.set(alias, resolve(dir)));
 
-    if (SOLUTION === 'docs' && process.env.NODE_ENV === 'production') {
+    if (VUE_ENTRY === 'docs' && process.env.NODE_ENV === 'production') {
+      // Revise entry
+      config.entryPoints
+        .delete('app')
+        .end()
+        .entry('docs')
+        .clear()
+        .add(resolve('docs/main.ts'));
+
       // Customize js output file name with hash.
       const jsFilename =
         process.env.VUE_CLI_MODERN_MODE && !process.env.VUE_CLI_MODERN_BUILD
