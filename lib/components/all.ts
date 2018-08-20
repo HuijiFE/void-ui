@@ -3,7 +3,7 @@
 // To update this file, please run command "yarn gen-files".
 
 /**
- * All components of void-ui
+ * All components of void-ui.
  */
 
 export * from '@void/ui/lib/components/basic/match-media/match-media';

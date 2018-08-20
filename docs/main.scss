@@ -4,8 +4,14 @@ $root-font-size: 100;
 
 @import '~@void/ui/lib/void-ui.scss';
 
-$namespace: 'd';
+// Components
+$namespace: 'c';
+@import '@docs/components/all.scss';
+
+// Examples
+$namespace: 'e';
+@import '@docs/examples/all.scss';
 
 // Views
-$namespace: 'view';
-@import '@docs/views/Test.scss';
+$namespace: 'v';
+@import '@docs/views/all.scss';

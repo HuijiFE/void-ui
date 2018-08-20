@@ -3,9 +3,9 @@
 // To update this file, please run command "yarn gen-files".
 
 /**
- * All components style of void-ui
+ * All components style of void-ui.
  */
 
-@import '~@void/ui/lib/components/basic/match-media/match-media.scss';
-@import '~@void/ui/lib/components/general/button/button.scss';
-@import '~@void/ui/lib/components/layout/flexbox/flexbox.scss';
+@import '~@void/ui/lib/components/basic/match-media/match-media';
+@import '~@void/ui/lib/components/general/button/button';
+@import '~@void/ui/lib/components/layout/flexbox/flexbox';
