@@ -5,19 +5,29 @@
 $root-font-size: 100 !default;
 $namespace: 'vd';
 
-// --------------------------------
-// Color maps
+// ================================================================
+// Base
+// ================================================================
 
-@import '~@void/ui/lib/components/base/color-maps.scss';
+// --------------------------------
+// Typography
+
+$font-size-base: 15;
+$line-height-base: 24;
 
 // --------------------------------
-// Core style system
+// Core
 
 $type-theme:  'lite', 'dark';
 $type-tone:   'primary', 'secondary', 'success', 'warning', 'danger';
 $type-skin:   'fill', 'flat', 'plain', 'silk';
 $type-shape:  'rect', 'pill', 'square', 'circle';
 $type-size:   'xsmall', 'small', 'medium', 'large', 'xlarge';
+
+// --------------------------------
+// Colors
+
+@import '~@void/ui/lib/components/base/color-maps.scss';
 
 // --------------------------------
 // Responsive
@@ -38,28 +48,7 @@ $breakpoints: (
 }
 
 // --------------------------------
-// Typography
-
-$font-size-base: 14;
-
-// --------------------------------
-// Layout and shape
-
-// size
-
-$size-map: (
-  xsmall:   24,
-  small:    32,
-  medium:   40,
-  large:    48,
-  xlarge:   56,
-);
-
-@function get-size($key) {
-  @return map-get($size-map, $key);
-}
-
-$size-base: get-size('medium');
+// Layout Gap Shape
 
 // gap / gutter / padding / margin
 
@@ -84,3 +73,26 @@ $border-base: 1;
 // radius
 
 $radius-base: 2;
+
+// ================================================================
+// General
+// ================================================================
+
+// --------------------------------
+// Button
+
+$button-size-map: (
+  xsmall:   24,
+  small:    32,
+  medium:   40,
+  large:    48,
+  xlarge:   56,
+);
+
+$button-font-size-map: (
+  xsmall:   12,
+  small:    14,
+  medium:   18,
+  large:    20,
+  xlarge:   24,
+);

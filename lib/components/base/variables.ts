@@ -36,9 +36,20 @@ export const SIZE_KEYS: ReadonlyArray<Size> = [
   'xlarge',
 ];
 
+/**
+ * Component with theme color.
+ */
 export interface ThemeComponent {
   readonly theme: Theme;
   readonly $theme: Theme;
+}
+
+/**
+ * Component can be used as a anchor-link (<a href="..."/>) or a router-link.
+ */
+export interface LinkLikeComponent {
+  readonly tag: string;
+  readonly routerLink: boolean;
 }
 
 // --------------------------------

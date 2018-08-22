@@ -12,18 +12,19 @@ import {
   Style,
   ClassName,
   Theme,
-  ThemeComponent,
   Tone,
   Skin,
   Shape,
   Size,
+  ThemeComponent,
+  LinkLikeComponent,
 } from '@void/ui/lib/components/base/variables';
 
 /**
  * Component Button
  */
 @Component
-export class VdButton extends Vue implements ThemeComponent {
+export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
   @Prop({ type: String, default: 'button' })
   public readonly tag!: string;
 
@@ -52,7 +53,7 @@ export class VdButton extends Vue implements ThemeComponent {
   @Prop({ type: String, default: 'rect' })
   public readonly shape!: Shape;
 
-  @Prop({ type: String, default: 'medium' })
+  @Prop({ type: String, default: 'small' })
   public readonly size!: Size;
 
   private onClick(event: MouseEvent): void {
@@ -83,10 +84,12 @@ export class VdButton extends Vue implements ThemeComponent {
           type: this.type,
           disabled: this.disabled,
         },
-        props: {
-          tag: this.tag,
-          ...this.$attrs,
-        },
+        props: this.routerLink
+          ? {
+              tag: this.tag,
+              ...this.$attrs,
+            }
+          : undefined,
         on: {
           click: this.onClick,
         },
