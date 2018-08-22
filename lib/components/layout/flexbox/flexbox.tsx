@@ -17,6 +17,7 @@ import {
   ClassName,
   Size,
   ResponsiveValues,
+  LinkLikeComponent,
 } from '@void/ui/lib/components/base/variables';
 
 export type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse';
@@ -53,11 +54,12 @@ export interface VdFlexbox {
  * Component Flexbox
  */
 @Component
-export class VdFlexbox extends Vue {
-  // region ======== props ========
-
+export class VdFlexbox extends Vue implements LinkLikeComponent {
   @Prop({ type: String, default: 'div' })
   public readonly tag!: keyof HTMLElementTagNameMap;
+
+  @Prop({ type: Boolean, default: false })
+  public readonly routerLink!: boolean;
 
   @Prop(String)
   public readonly direction?: FlexDirection;
@@ -82,8 +84,6 @@ export class VdFlexbox extends Vue {
   public readonly hidden!: ResponsiveValues<boolean>;
   @Prop({ type: [Boolean, Object], default: true })
   public readonly show!: ResponsiveValues<boolean>;
-
-  // endregion
 
   private get presentFlex(): string {
     return '';
@@ -113,11 +113,17 @@ export class VdFlexbox extends Vue {
 
   private render(h: CreateElement): VNode {
     return h(
-      this.tag,
+      this.routerLink ? 'router-link' : this.tag,
       {
         style: this.style,
         staticClass: 'vd-flexbox',
         class: this.classes,
+        props: this.routerLink
+          ? {
+              tag: this.tag,
+              ...this.$attrs,
+            }
+          : undefined,
       },
       this.$slots.default,
     );

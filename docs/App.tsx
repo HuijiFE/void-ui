@@ -16,7 +16,8 @@ import {
 export default class App extends Vue {
   private render(h: CreateElement): VNode {
     return (
-      <div id="app">
+      <div id="app" staticClass="v-app" class={`vda-theme_${this.$vd_theme.theme}`}>
+        <c-nav-bar />
         <router-view />
       </div>
     );

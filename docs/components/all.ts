@@ -3,7 +3,7 @@
 // To update this file, please run command "yarn gen-files".
 
 /**
- * All components style of void-ui documentation.
+ * All components of void-ui documentation.
  */
 
-@import '~@docs/components/nav-bar/nav-bar';
+export * from '@docs/components/nav-bar/nav-bar';

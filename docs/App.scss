@@ -1,0 +1,8 @@
+/**
+ * Component: App
+ */
+@include comp('app') {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+}

@@ -15,6 +15,8 @@ let $$Vue: typeof Vue | undefined;
 
 export interface ThemeHub {
   readonly theme: Theme;
+  setColor(theme: Theme): void;
+  switchColor(): void;
 }
 
 export interface VdThemeComponentOptions {
@@ -51,7 +53,7 @@ export class VdTheme extends Vue implements ThemeHub {
   public readonly tag!: keyof HTMLElementTagNameMap;
 
   @Prop({ type: String, required: true })
-  public readonly theme!: Theme;
+  public theme!: Theme;
 
   private beforeCreate(): void {
     this.$vd_theme = this;
@@ -59,6 +61,18 @@ export class VdTheme extends Vue implements ThemeHub {
 
   constructor(options: ComponentOptions<VdTheme> | VdThemeComponentOptions | undefined) {
     super(options);
+  }
+
+  public setColor(theme: Theme): void {
+    this.theme = theme;
+  }
+
+  public switchColor(): void {
+    if (this.theme === 'lite') {
+      this.theme = 'dark';
+    } else {
+      this.theme = 'lite';
+    }
   }
 
   public render(h: CreateElement): VNode {

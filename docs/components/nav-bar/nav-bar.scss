@@ -1,0 +1,29 @@
+/**
+ * Component: NavBar
+ */
+@include comp('nav-bar') {
+  position: relative;
+  width: 100%;
+  padding: 0 rem($gap-base / 2);
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'theme': $theme,
+      )
+    ) {
+      color: theme($theme);
+      background-color: theme($theme, 'bg');
+      border-bottom: rem($border-base) solid theme($theme, 'bd');
+    }
+  }
+
+  @include elem('wrapper') {
+    height: rem(56);
+    margin: 0;
+  }
+
+  @include elem('item') {
+    font-size: 120%;
+  }
+}

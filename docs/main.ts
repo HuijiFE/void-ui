@@ -8,12 +8,17 @@ import VoidUI, { VdTheme } from '@void/ui/lib/void-ui';
 Vue.use(VoidUI);
 const vdTheme: VdTheme = new VdTheme({
   propsData: {
-    theme: 'dark',
+    theme: 'lite',
   },
 });
 
-import router from '@docs/router';
+import * as components from '@docs/components/all';
+Object.entries(components).forEach(([name, comp]) => {
+  Vue.component(name, comp);
+});
+
 import App from '@docs/App';
+import router from '@docs/router';
 
 Vue.config.productionTip = false;
 
