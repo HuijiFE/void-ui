@@ -28,9 +28,9 @@ export interface MediaHub {
   getMediaQueryLists(): Readonly<Record<BreakPointKey, MediaQueryList>>;
 }
 
-const additionalAliases: MediaAlias[] = MEDIA_ALIASES.filter(
-  a => !(BREAK_POINT_KEYS as string[]).includes(a),
-);
+export interface VdMediaOptions {
+  breakpoints?: BreakPoints;
+}
 
 /**
  * Vue plugin for responsive media query.
@@ -50,18 +50,22 @@ export class VdMedia extends Vue implements MediaHub {
       : `(min-width: ${breakpoint}px)`;
   }
 
-  public static readonly install: PluginFunction<BreakPoints> = ($Vue, breakpoints?) => {
+  public static readonly install: PluginFunction<VdMediaOptions> = ($Vue, options?) => {
     if ($$Vue && $$Vue === $Vue) {
       return;
     }
 
     $$Vue = $Vue;
 
+    const breakpoints: BreakPoints | undefined = options && options.breakpoints;
+
     if (breakpoints) {
       // validate breakpoints
       BREAK_POINT_KEYS.forEach(key => {
         if (typeof breakpoints[key] !== 'number' || isNaN(breakpoints[key])) {
-          throw Error(`Invalid breakpoints, breakpoints.${key} should be a number`);
+          throw Error(
+            `Invalid options for plugin VdMedia, breakpoints.${key} should be a number`,
+          );
         }
       });
 

@@ -19,8 +19,8 @@ export interface ThemeHub {
   switchColor(): void;
 }
 
-export interface VdThemeComponentOptions {
-  propsData: ThemeHub;
+export interface VdThemeOptions {
+  defaultTheme?: Theme;
 }
 
 /**
@@ -29,21 +29,23 @@ export interface VdThemeComponentOptions {
 @Component
 export class VdTheme extends Vue implements ThemeHub {
   // tslint:disable-next-line:function-name
-  public static install: PluginFunction<undefined> = $Vue => {
+  public static install: PluginFunction<VdThemeOptions> = ($Vue, options) => {
     if ($$Vue && $$Vue === $Vue) {
       return;
     }
 
     $$Vue = $Vue;
 
+    const defaultTheme: Theme = (options && options.defaultTheme) || 'lite';
+
     $Vue.mixin({
       beforeCreate(): void {
         if (!this.$vd_theme) {
-          if (this.$options.vdTheme) {
-            this.$vd_theme = this.$options.vdTheme;
-          } else if (this.$options.parent && this.$options.parent.$vd_theme) {
-            this.$vd_theme = this.$options.parent.$vd_theme;
-          }
+          this.$vd_theme =
+            this.$options.vdTheme ||
+            (this.$options.parent && this.$options.parent.$vd_theme) ||
+            (this.$options.name !== 'VdTheme' &&
+              new VdTheme({ propsData: { theme: defaultTheme } }));
         }
       },
     });
@@ -57,10 +59,6 @@ export class VdTheme extends Vue implements ThemeHub {
 
   private beforeCreate(): void {
     this.$vd_theme = this;
-  }
-
-  constructor(options: ComponentOptions<VdTheme> | VdThemeComponentOptions | undefined) {
-    super(options);
   }
 
   public setColor(theme: Theme): void {
