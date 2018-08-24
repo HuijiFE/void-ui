@@ -41,11 +41,13 @@ export class VdTheme extends Vue implements ThemeHub {
     $Vue.mixin({
       beforeCreate(): void {
         if (!this.$vd_theme) {
-          this.$vd_theme =
-            this.$options.vdTheme ||
-            (this.$options.parent && this.$options.parent.$vd_theme) ||
-            (this.$options.name !== 'VdTheme' &&
-              new VdTheme({ propsData: { theme: defaultTheme } }));
+          if (this.$options.vdTheme) {
+            this.$vd_theme = this.$options.vdTheme;
+          } else if (this.$options.parent && this.$options.parent.$vd_theme) {
+            this.$vd_theme = this.$options.parent.$vd_theme;
+          } else if (this === this.$root && this.$options.name !== 'VdTheme') {
+            this.$vd_theme = new VdTheme({ propsData: { theme: defaultTheme } });
+          }
         }
       },
     });
