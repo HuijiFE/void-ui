@@ -19,6 +19,7 @@ export default class ViewTest extends Vue {
     return (
       <div staticClass="view-test" style={{ padding: '32px' }}>
         <c-example path="general/button/overview" />
+        <c-example path="general/button/tone" />
       </div>
     );
   }

@@ -71,6 +71,31 @@ module.exports = {
         .clear()
         .add(resolve('docs/main.ts'));
 
+      // Chunk splitting
+      config.optimization.splitChunks({
+        cacheGroups: {
+          vendors: {
+            name: `chunk-vendors`,
+            test: /[\\/]node_modules[\\/](?!vue)/,
+            priority: -10,
+            chunks: 'initial',
+          },
+          common_vue: {
+            name: `chunk-vue`,
+            test: /[\\/]node_modules[\\/]vue/,
+            priority: -11,
+            chunks: 'initial',
+          },
+          common: {
+            name: `chunk-common`,
+            minChunks: 2,
+            priority: -20,
+            chunks: 'initial',
+            reuseExistingChunk: true,
+          },
+        },
+      });
+
       // Customize js output file name with hash.
       const jsFilename = isLegacyBundle
         ? `${assetsDir}/js/[name]-legacy.[chunkhash].js`
@@ -109,7 +134,6 @@ module.exports = {
             opt.limit = limit;
             opt.name = `${assetsDir}/${dir}/[name].[${hashFunction}:hash:${hashDigest}:${hashDigestLength}].[ext]`;
             if (opt.fallback && opt.fallback.options && opt.fallback.options.name) {
-              console.log(chalk.cyanBright(opt.fallback.options.name));
               opt.fallback.options.name = opt.name;
             }
 

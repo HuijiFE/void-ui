@@ -16,7 +16,8 @@ export default new Router({
     },
     {
       path: '/test',
-      component: async () => import('@docs/views/Test'),
+      component: async () =>
+        import(/* webpackChunkName: "chunk-general_button" */ '@docs/views/Test'),
     },
     {
       path: '/home',

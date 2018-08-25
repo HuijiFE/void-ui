@@ -7,5 +7,5 @@
  */
 
 export default {
-  'general/button/overview': async () => import(/* webpackChunkName: "button" */ '@docs/examples/general/button/overview.tsx'),
+  'general/button/overview': async () => import(/* webpackChunkName: "chunk-general_button" */ '@docs/examples/general/button/overview.tsx'),
 };

@@ -212,7 +212,7 @@ const optionsList: GenerateOptions[] = [
     footer: '};',
     item: ({ path, name, ext }) => {
       const key: string = path.replace('@docs/examples/', '').replace(/\.tsx/, '');
-      const chunkName: string = p.basename(p.dirname(path));
+      const chunkName: string = `chunk-${p.dirname(key).replace(/\//g, '_')}`;
 
       return `  '${key}': async () => import(/* webpackChunkName: "${chunkName}" */ '${path}'),`;
     },
@@ -225,7 +225,7 @@ const optionsList: GenerateOptions[] = [
     footer: '};',
     item: ({ path, name, ext }) => {
       const key: string = path.replace('@docs/examples/', '').replace(/\.vue/, '');
-      const chunkName: string = p.basename(p.dirname(path));
+      const chunkName: string = `chunk-${p.dirname(key).replace(/\//g, '_')}`;
 
       return `  '${key}': async () => import(/* webpackChunkName: "${chunkName}" */ '${path}'),`;
     },

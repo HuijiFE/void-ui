@@ -7,6 +7,6 @@
  */
 
 export default {
-  'general/button/overview': async () => import(/* webpackChunkName: "button" */ '@docs/examples/general/button/overview.vue'),
-  'general/button/tone': async () => import(/* webpackChunkName: "button" */ '@docs/examples/general/button/tone.vue'),
+  'general/button/overview': async () => import(/* webpackChunkName: "chunk-general_button" */ '@docs/examples/general/button/overview.vue'),
+  'general/button/tone': async () => import(/* webpackChunkName: "chunk-general_button" */ '@docs/examples/general/button/tone.vue'),
 };
