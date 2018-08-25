@@ -1,5 +1,6 @@
+const fs = require('fs');
 const path = require('path');
-const chalk = require('chalk');
+const chalk = require('chalk').default;
 const webpack = require('webpack');
 const Config = require('webpack-chain');
 const express = require('express');
@@ -21,16 +22,16 @@ const VUE_ENTRY = process.env.VUE_ENTRY;
 const baseUrl =
   process.env.NODE_ENV === 'production'
     ? VUE_ENTRY === 'docs'
-      ? '/void-ui/static'
+      ? '/void-ui/'
       : '/'
     : '/';
-const outputDir = VUE_ENTRY === 'docs' ? 'www/static' : 'dist';
-const indexPath = VUE_ENTRY === 'docs' ? '../index.html' : undefined;
+const outputDir = VUE_ENTRY === 'docs' ? 'www' : 'dist';
+const assetsDir = 'static';
 
 module.exports = {
   baseUrl,
   outputDir,
-  indexPath,
+  assetsDir,
 
   lintOnSave: true,
 
@@ -48,7 +49,7 @@ module.exports = {
    */
   chainWebpack(config) {
     const context = config.store.get('context');
-    const resolve = _path => path.resolve(context, _path);
+    const resolve = (...paths) => path.resolve(context, ...paths);
 
     // Customize alias
     const aliasMap = config.resolve.alias.delete('@');
@@ -57,7 +58,11 @@ module.exports = {
       '@void/ui/lib': 'lib',
     }).forEach(([alias, dir]) => aliasMap.set(alias, resolve(dir)));
 
+    // Resolve docs build
     if (VUE_ENTRY === 'docs' && process.env.NODE_ENV === 'production') {
+      const isLegacyBundle =
+        process.env.VUE_CLI_MODERN_MODE && !process.env.VUE_CLI_MODERN_BUILD;
+
       // Revise entry
       config.entryPoints
         .delete('app')
@@ -67,10 +72,9 @@ module.exports = {
         .add(resolve('docs/main.ts'));
 
       // Customize js output file name with hash.
-      const jsFilename =
-        process.env.VUE_CLI_MODERN_MODE && !process.env.VUE_CLI_MODERN_BUILD
-          ? 'js/[name]-legacy.[chunkhash].js'
-          : 'js/[name].[chunkhash].js';
+      const jsFilename = isLegacyBundle
+        ? `${assetsDir}/js/[name]-legacy.[chunkhash].js`
+        : `${assetsDir}/js/[name].[chunkhash].js`;
       config.output
         .filename(jsFilename)
         .chunkFilename(jsFilename)
@@ -79,7 +83,7 @@ module.exports = {
         .hashDigestLength(hashDigestLength);
 
       // Customize css output file name with hash.
-      const cssFilename = 'css/[name].[contenthash].css';
+      const cssFilename = `${assetsDir}/css/[name].[contenthash].css`;
       config.plugin('extract-css').tap(args => [
         {
           filename: cssFilename,
@@ -101,14 +105,38 @@ module.exports = {
           .rule(rule)
           .use(use)
           .loader(loader)
-          .tap(opt => ({
-            ...opt,
-            ...{
-              limit,
-              name: `${dir}/[name].[${hashFunction}:hash:${hashDigest}:${hashDigestLength}].[ext]`,
-            },
-          })),
+          .tap(opt => {
+            opt.limit = limit;
+            opt.name = `${assetsDir}/${dir}/[name].[${hashFunction}:hash:${hashDigest}:${hashDigestLength}].[ext]`;
+            if (opt.fallback && opt.fallback.options && opt.fallback.options.name) {
+              console.log(chalk.cyanBright(opt.fallback.options.name));
+              opt.fallback.options.name = opt.name;
+            }
+
+            return opt;
+          }),
       );
+
+      // Copy examples source code
+      if (!isLegacyBundle) {
+        config.plugin('copy').tap(args => [
+          [
+            ...args[0],
+            {
+              from: resolve('docs/examples'),
+              to: resolve(outputDir, 'examples', process.env.VUE_APP_VOID_UI_VERSION),
+              toType: 'dir',
+              ignore: ['.DS_Store'],
+            },
+          ],
+        ]);
+      }
+
+      // fs.writeFile(
+      //   isLegacyBundle ? 'webpack.build.docs-legacy.js' : 'webpack.build.docs.js',
+      //   `module.exports = ${Config.toString(config.toConfig())}`,
+      //   err => err && console.log(err),
+      // );
     }
   },
 

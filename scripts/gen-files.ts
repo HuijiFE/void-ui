@@ -7,6 +7,11 @@ import chalk from 'chalk';
 const labelLength: number = 20;
 
 type Resolver = (path: string, name: string, ext: string) => string;
+interface FileInfo {
+  path: string;
+  name: string;
+  ext: string;
+}
 
 interface GenerateOptions {
   patterns: string | string[];
@@ -14,7 +19,8 @@ interface GenerateOptions {
   comments?: string[];
   header?: string;
   footer?: string;
-  resolver?: Resolver;
+  body?(files: FileInfo[]): string;
+  item?(info: FileInfo): string;
 }
 
 /**
@@ -25,83 +31,39 @@ function alias(path: string): string {
   return path.replace(/^docs/, '@docs').replace(/^lib/, '@void/ui/lib');
 }
 
-function generateIndex(files: string[], resolver: Resolver): string {
-  return files
-    .sort()
-    .map(f => {
-      const path: string = alias(f);
-      const ext: string = p.extname(f);
-      const name: string = p.basename(f).replace(new RegExp(`${ext}$`), '');
+/**
+ * Use files paths to generate export/import statements.
+ */
+function scriptResolve({ path, name, ext }: FileInfo): string {
+  switch (ext) {
+    case '.vue':
+      return `export { default as ${name} } from '${path}';`;
 
-      return resolver(path, name, ext);
-    })
-    .join('\n');
+    case '.ts':
+    case '.tsx':
+    case '.js':
+    case '.jsx':
+      return `export * from '${path.replace(/\.(j|t)sx?$/, '')}';`;
+
+    default:
+      throw new Error(`Cannot import ${ext} file (${path}) in .ts file.`);
+  }
 }
 
 /**
  * Use files paths to generate export/import statements.
- * @param files paths of files
- * @param noVue forbidden .vue files
  */
-function generateIndexTs(files: string[], resolver?: Resolver): string {
-  const resolve: Resolver =
-    resolver ||
-    ((path, name, ext) => {
-      switch (ext) {
-        case '.vue':
-          return `export { default as ${name} } from '${path}';`;
+function styleResolve({ path, name, ext }: FileInfo): string {
+  switch (ext) {
+    case '.scss':
+    case '.less':
+      return `@import '~${path.replace(/\.(scss|less)$/, '')}';`;
+    case '.css':
+      return `@import url('~${path.replace(/\.css$/, '')}');`;
 
-        case '.ts':
-        case '.tsx':
-        case '.js':
-        case '.jsx':
-          return `export * from '${path.replace(/\.(j|t)sx?$/, '')}';`;
-
-        default:
-          throw new Error(`Cannot import ${ext} file (${path}) in .ts file.`);
-      }
-    });
-
-  return files
-    .sort()
-    .map(f => {
-      const path: string = alias(f);
-      const ext: string = p.extname(f);
-      const name: string = p.basename(f).replace(new RegExp(`${ext}$`), '');
-
-      return resolve(path, name, ext);
-    })
-    .join('\n');
-}
-
-/**
- * Use files paths to generate export/import statements.
- * @param files paths of files
- */
-function generateIndexScss(files: string[], resolver?: Resolver): string {
-  const resolve: Resolver =
-    resolver ||
-    ((path, name, ext) => {
-      switch (ext) {
-        case '.scss':
-        case '.less':
-          return `@import '~${path.replace(/\.(scss|less)$/, '')}';`;
-
-        default:
-          throw new Error(`Cannot import ${ext} file (${path}) in .scss/.less file.`);
-      }
-    });
-
-  return files
-    .sort()
-    .map(f => {
-      const path: string = alias(f);
-      const ext: string = p.extname(f);
-      const name: string = p.basename(f).replace(new RegExp(`${ext}$`), '');
-
-      return resolve(path, name, ext);
-    })
-    .join('\n');
+    default:
+      throw new Error(`Cannot import ${ext} file (${path}) in .scss/.less file.`);
+  }
 }
 
 function generateComments(comments: string[], jsdoc: boolean = true): string {
@@ -123,73 +85,60 @@ const banner: string = generateComments(
  * Auto generate source code
  */
 async function generateFiles(options: GenerateOptions): Promise<void> {
-  const outputExt: string = p.extname(options.output);
-
   let body: string;
-  const files: string[] = await globby([
+  const files: FileInfo[] = (await globby([
     ...(Array.isArray(options.patterns) ? options.patterns : [options.patterns]),
     `!${options.output}`,
-  ]);
+  ]))
+    .sort()
+    .map(f => ({
+      path: alias(f),
+      name: p.basename(f).replace(/\.[A-Za-z0-9\-\_]+/, ''),
+      ext: p.extname(f),
+    }));
 
   if (files.length === 0) {
-    console.info(
+    return console.info(
       chalk.bgYellow.black(' Files No Found '.padEnd(labelLength, ' ')),
       chalk.green(options.output),
     );
-
-    return;
   }
 
-  switch (outputExt) {
-    case '.ts':
-    case '.tsx':
-    case '.js':
-    case '.jsx':
-      body = generateIndexTs(files, options.resolver);
-      break;
-    case '.scss':
-    case '.less':
-      body = generateIndexScss(files, options.resolver);
-      break;
-
-    default:
-      if (options.resolver) {
-        body = generateIndex(files, options.resolver);
-      } else {
-        throw new Error(
-          `Cannot generate "${options.output}", ${p.extname(
-            options.output,
-          )} file is unsupported by default, please provide a resolver function.`,
-        );
-      }
+  if (options.body) {
+    body = options.body(files);
+  } else if (options.item) {
+    body = files.map(options.item).join('\n');
+  } else if (/\.(j|t)sx?$/.test(options.output)) {
+    body = files.map(scriptResolve).join('\n');
+  } else if (/\.(scss|less|css)$/.test(options.output)) {
+    body = files.map(styleResolve).join('\n');
+  } else {
+    throw new Error(
+      `
+Cannot generate "${options.output}",
+${p.extname(options.output)} file is not default supported,
+please provide a resolver function.
+`,
+    );
   }
 
-  const parts: string[] = [banner, '\n\n'];
-
-  if (options.comments && options.comments.length > 0) {
-    parts.push(generateComments(options.comments), '\n\n');
-  }
-
-  if (options.header) {
-    parts.push(options.header, '\n');
-  }
-
-  parts.push(body);
-
-  if (options.footer) {
-    parts.push('\n', options.footer);
-  }
-
-  parts.push('\n');
-
-  const content: string = parts.join('');
+  const content: string = [
+    banner,
+    '\n\n',
+    ...(options.comments && options.comments.length > 0
+      ? [generateComments(options.comments), '\n\n']
+      : []),
+    ...(options.header ? [options.header, '\n'] : []),
+    body,
+    ...(options.footer ? ['\n', options.footer] : []),
+    '\n',
+  ].join('');
 
   return new Promise<void>((resolve, reject) => {
     const dir: string = p.dirname(options.output);
     if (!fs.existsSync(dir)) {
       mkdirp.sync(dir);
     }
-
     if (!fs.existsSync(options.output)) {
       fs.writeFileSync(options.output, '');
     }
@@ -261,7 +210,7 @@ const optionsList: GenerateOptions[] = [
     comments: ['All .tsx examples of void-ui documentation.'],
     header: 'export default {',
     footer: '};',
-    resolver: (path, name, ext) => {
+    item: ({ path, name, ext }) => {
       const key: string = path.replace('@docs/examples/', '').replace(/\.tsx/, '');
       const chunkName: string = p.basename(p.dirname(path));
 
@@ -274,7 +223,7 @@ const optionsList: GenerateOptions[] = [
     comments: ['All .vue examples of void-ui documentation.'],
     header: 'export default {',
     footer: '};',
-    resolver: (path, name, ext) => {
+    item: ({ path, name, ext }) => {
       const key: string = path.replace('@docs/examples/', '').replace(/\.vue/, '');
       const chunkName: string = p.basename(p.dirname(path));
 
@@ -287,11 +236,23 @@ const optionsList: GenerateOptions[] = [
       'docs/examples/*/**/*.tsx',
       'docs/examples/*/**/*.vue',
     ],
-    output: 'docs/examples/all-src.ts',
+    output: 'docs/examples/all.ts',
     comments: ['All examples source code of void-ui documentation.'],
-    header: 'export default [',
-    footer: '];',
-    resolver: path => `  '${path.replace('@docs/examples/', '')}',`,
+    header: 'export default {',
+    footer: '};',
+    body: files => {
+      const record: Record<string, string[]> = {};
+      files.forEach(info => {
+        const key: string = info.path
+          .replace('@docs/examples/', '')
+          .replace(/\.(scss|tsx?|vue)/, '');
+        (record[key] || (record[key] = [])).push(`'${info.ext.substring(1)}'`);
+      });
+
+      return Object.entries(record)
+        .map(([path, exts]) => `  '${path}': [ ${exts.join(', ')} ],`)
+        .join('\n');
+    },
   },
 
   // views

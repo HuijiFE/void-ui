@@ -6,7 +6,7 @@
  * All examples source code of void-ui documentation.
  */
 
-export default [
-  'general/button/overview.tsx',
-  'general/button/overview.vue',
-];
+export default {
+  'general/button/overview': [ 'tsx', 'vue' ],
+  'general/button/tone': [ 'vue' ],
+};

@@ -1,4 +1,4 @@
-import Vue, { CreateElement, VNode } from 'vue';
+import Vue, { CreateElement, VNode, AsyncComponent } from 'vue';
 import {
   Component,
   Emit,
@@ -9,9 +9,11 @@ import {
   Watch,
 } from 'vue-property-decorator';
 import axios, { AxiosInstance } from 'axios';
-import examplesSrc from '@docs/examples/all-src';
+import examples from '@docs/examples/all';
 import examplesTsx from '@docs/examples/all-tsx';
 import examplesVue from '@docs/examples/all-vue';
+
+export type AsyncComponentRecord = Record<string, () => Promise<typeof import('vue')>>;
 
 const sourceCode: AxiosInstance = axios.create({
   baseURL: `${process.env.BASE_URL}examples/${process.env.VUE_APP_VOID_UI_VERSION}/`,
@@ -19,52 +21,77 @@ const sourceCode: AxiosInstance = axios.create({
   transformResponse: data => data,
 });
 
+const getSourceCode: (path: string) => Promise<string> = async path => {
+  try {
+    return (await sourceCode.get<string>(path)).data;
+  } catch (error) {
+    console.error(error);
+  }
+
+  return '';
+};
+
+const defaultTypes: string[] = ['vue', 'tsx', 'scss'];
+
 /**
  * Component: Example
  */
 @Component
 export class CExample extends Vue {
-  public static readonly src: string[] = examplesSrc;
-  public static readonly tsx: typeof examplesTsx = examplesTsx;
-  public static readonly vue: typeof examplesVue = examplesVue;
+  public static readonly all: Record<string, string[]> = examples;
+  public static readonly tsx: Record<string, AsyncComponent> = examplesTsx;
+  public static readonly vue: Record<string, AsyncComponent> = examplesVue;
+
+  public loaded: boolean = false;
 
   @Prop({ type: String, required: true })
-  public readonly path!: keyof typeof examplesTsx | keyof typeof examplesVue;
+  public readonly path!: string;
 
-  public readonly src: {
-    tsx: string;
-    vue: string;
-    scss: string;
-  } = {
-    tsx: '',
-    vue: '',
-    scss: '',
-  };
+  public existed: boolean = false;
+  public types: string[] = [];
+  public has: Record<string, boolean> = {};
+  public src: Record<string, string> = {};
 
-  public get tsx(): boolean {
-    return CExample.src.includes(`${this.path}.tsx`);
+  public async loadSourceCode(ext: string): Promise<void> {
+    if (this.has[ext]) {
+      this.src[ext] = await getSourceCode(`${this.path}.${ext}`);
+    }
   }
-  public get vue(): boolean {
-    return CExample.src.includes(`${this.path}.vue`);
-  }
-  public get scss(): boolean {
-    return CExample.src.includes(`${this.path}.scss`);
+
+  @Watch('path')
+  public async load(path: string): Promise<void> {
+    if (!CExample.all[path]) {
+      this.existed = false;
+
+      return;
+    }
+
+    const has: Record<string, boolean> = {};
+    const src: Record<string, string> = {};
+
+    defaultTypes.forEach(ext => {
+      has[ext] = false;
+      src[ext] = '';
+    });
+    CExample.all[path].forEach(ext => {
+      has[ext] = true;
+      src[ext] = '';
+    });
+
+    this.types = [...new Set<string>([...defaultTypes, ...CExample.all[path]])];
+    this.has = has;
+    this.src = src;
+    CExample.all[path].map(ext => this.loadSourceCode(ext));
   }
 
   private mounted(): void {
-    if (this.tsx) {
-      sourceCode.get(`${this.path}.tsx`).then(({ data }) => (this.src.tsx = data));
-    }
-    if (this.vue) {
-      sourceCode.get(`${this.path}.vue`).then(({ data }) => (this.src.vue = data));
-    }
-    if (this.scss) {
-      sourceCode.get(`${this.path}.scss`).then(({ data }) => (this.src.scss = data));
-    }
+    this.load(this.path);
+
+    this.loaded = true;
   }
 
   private render(h: CreateElement): VNode {
-    return (
+    return this.loaded ? (
       <div staticClass="c-example">
         <div staticClass="c-example_header">
           <c-file-icon icon="scss" />
@@ -73,12 +100,17 @@ export class CExample extends Vue {
           <c-file-icon icon="vue" />
           <c-file-icon icon="vuets" />
         </div>
-        {this.tsx ? h(CExample.tsx[this.path]) : ''}
-        {this.vue ? h(CExample.vue[this.path]) : ''}
-        {this.tsx ? <pre>{this.src.tsx}</pre> : ''}
-        {this.vue ? <pre>{this.src.vue}</pre> : ''}
-        {this.scss ? <pre>{this.src.scss}</pre> : ''}
+        {this.has.tsx ? h(CExample.tsx[this.path]) : ''}
+        {this.has.vue ? h(CExample.vue[this.path]) : ''}
+        {this.types.filter(ext => this.has[ext]).map(ext => (
+          <div>
+            <h2>{ext}</h2>
+            <pre>{this.src[ext]}</pre>
+          </div>
+        ))}
       </div>
+    ) : (
+      <div staticClass="c-example" />
     );
   }
 }
