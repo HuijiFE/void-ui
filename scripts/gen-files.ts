@@ -12,6 +12,8 @@ interface GenerateOptions {
   patterns: string | string[];
   output: string;
   comments?: string[];
+  header?: string;
+  footer?: string;
   resolver?: Resolver;
 }
 
@@ -104,11 +106,7 @@ function generateIndexScss(files: string[], resolver?: Resolver): string {
 
 function generateComments(comments: string[], jsdoc: boolean = true): string {
   return jsdoc
-    ? `
-/**
-${comments.map(c => ` * ${c}`).join('\n')}
- */
-`
+    ? ['/**', ...comments.map(c => ` * ${c}`), ' */'].join('\n')
     : comments.map(c => `// ${c}`).join('\n');
 }
 
@@ -166,15 +164,25 @@ async function generateFiles(options: GenerateOptions): Promise<void> {
       }
   }
 
-  const comments: string =
-    options.comments && options.comments.length > 0
-      ? generateComments(options.comments)
-      : '';
+  const parts: string[] = [banner, '\n\n'];
 
-  const content: string = `${banner}
-${comments}
-${body}
-`.replace(/\n+$/, '\n');
+  if (options.comments && options.comments.length > 0) {
+    parts.push(generateComments(options.comments), '\n\n');
+  }
+
+  if (options.header) {
+    parts.push(options.header, '\n');
+  }
+
+  parts.push(body);
+
+  if (options.footer) {
+    parts.push('\n', options.footer);
+  }
+
+  parts.push('\n');
+
+  const content: string = parts.join('');
 
   return new Promise<void>((resolve, reject) => {
     const dir: string = p.dirname(options.output);
@@ -246,6 +254,44 @@ const optionsList: GenerateOptions[] = [
     patterns: ['docs/examples/**/*.scss'],
     output: 'docs/examples/all.scss',
     comments: ['All examples style of void-ui documentation.'],
+  },
+  {
+    patterns: ['docs/examples/*/**/*.tsx'],
+    output: 'docs/examples/all-tsx.ts',
+    comments: ['All .tsx examples of void-ui documentation.'],
+    header: 'export default {',
+    footer: '};',
+    resolver: (path, name, ext) => {
+      const key: string = path.replace('@docs/examples/', '').replace(/\.tsx/, '');
+      const chunkName: string = p.basename(p.dirname(path));
+
+      return `  '${key}': async () => import(/* webpackChunkName: "${chunkName}" */ '${path}'),`;
+    },
+  },
+  {
+    patterns: ['docs/examples/*/**/*.vue'],
+    output: 'docs/examples/all-vue.ts',
+    comments: ['All .vue examples of void-ui documentation.'],
+    header: 'export default {',
+    footer: '};',
+    resolver: (path, name, ext) => {
+      const key: string = path.replace('@docs/examples/', '').replace(/\.vue/, '');
+      const chunkName: string = p.basename(p.dirname(path));
+
+      return `  '${key}': async () => import(/* webpackChunkName: "${chunkName}" */ '${path}'),`;
+    },
+  },
+  {
+    patterns: [
+      'docs/examples/*/**/*.scss',
+      'docs/examples/*/**/*.tsx',
+      'docs/examples/*/**/*.vue',
+    ],
+    output: 'docs/examples/all-src.ts',
+    comments: ['All examples source code of void-ui documentation.'],
+    header: 'export default [',
+    footer: '];',
+    resolver: path => `  '${path.replace('@docs/examples/', '')}',`,
   },
 
   // views

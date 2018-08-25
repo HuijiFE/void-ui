@@ -1,0 +1,8 @@
+/**
+ * Component: Example
+ */
+@include comp('example') {
+  @include elem('header') {
+    font-size: rem(16);
+  }
+}

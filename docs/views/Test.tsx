@@ -10,21 +10,15 @@ import {
 } from 'vue-property-decorator';
 import { BREAK_POINT_KEYS, MediaAlias, MediaScreen } from '@void/ui/lib/void-ui';
 
-import { Example as ButtonOverview } from '@docs/examples/general/button/overview';
-
 /**
  * View: Test
  */
-@Component({
-  components: {
-    ButtonOverview,
-  },
-})
+@Component
 export default class ViewTest extends Vue {
   private render(h: CreateElement): VNode {
     return (
       <div staticClass="view-test" style={{ padding: '32px' }}>
-        <button-overview />
+        <c-example path="general/button/overview" />
       </div>
     );
   }

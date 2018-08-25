@@ -34,6 +34,7 @@ const install: PluginFunction<VoidUIOptions> = ($Vue, options?) => {
  * Void-UI
  */
 export default {
+  version: process.env.VUE_APP_VOID_UI_VERSION,
   install,
   base,
   components,

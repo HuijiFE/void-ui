@@ -1,7 +1,7 @@
 {
   "name": "void-ui",
   "description": "A UI toolkit for Vue.js.",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "keywords": [
     "vue",
     "typescript",
@@ -34,7 +34,7 @@
     "ts": "ts-node -r tsconfig-paths/register -P scripts/tsconfig.json",
     "gen-files": "yarn ts scripts/gen-files.ts",
     "gen-fields": "yarn ts scripts/gen-fields.ts",
-    "serve": "vue-cli-service serve docs/main.ts --open --port 8102",
+    "serve": "vue-cli-service serve docs/main.ts",
     "build:lib": "cross-env VUE_ENTRY=lib vue-cli-service build lib/void-ui.ts --target lib",
     "build:scss": "cross-env VUE_ENTRY=scss vue-cli-service build",
     "build:docs": "cross-env VUE_ENTRY=docs vue-cli-service build --modern --report",

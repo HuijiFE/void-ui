@@ -2,6 +2,7 @@ const path = require('path');
 const chalk = require('chalk');
 const webpack = require('webpack');
 const Config = require('webpack-chain');
+const express = require('express');
 
 const hashFunction = 'sha512';
 const hashDigest = 'hex';
@@ -17,16 +18,19 @@ const limit = 4096;
  */
 const VUE_ENTRY = process.env.VUE_ENTRY;
 
-module.exports = {
-  baseUrl:
-    process.env.NODE_ENV === 'production'
-      ? VUE_ENTRY === 'docs'
-        ? '/void-ui/statice'
-        : '/'
-      : '/',
+const baseUrl =
+  process.env.NODE_ENV === 'production'
+    ? VUE_ENTRY === 'docs'
+      ? '/void-ui/static'
+      : '/'
+    : '/';
+const outputDir = VUE_ENTRY === 'docs' ? 'www/static' : 'dist';
+const indexPath = VUE_ENTRY === 'docs' ? '../index.html' : undefined;
 
-  outputDir: VUE_ENTRY === 'docs' ? 'www/static' : 'dist',
-  indexPath: VUE_ENTRY === 'docs' ? '../index.html' : undefined,
+module.exports = {
+  baseUrl,
+  outputDir,
+  indexPath,
 
   lintOnSave: true,
 
@@ -109,4 +113,23 @@ module.exports = {
   },
 
   parallel: require('os').cpus().length > 1,
+
+  devServer: {
+    host: '0.0.0.0',
+    port: 8102,
+    open: true,
+    /**
+     * @param {express.Application} app
+     */
+    before(app) {
+      app.use(
+        `${baseUrl}examples/${process.env.VUE_APP_VOID_UI_VERSION}`,
+        express.static('./docs/examples', {
+          setHeaders: response => {
+            response.setHeader('Content-Type', 'text/plain; charset=utf-8');
+          },
+        }),
+      );
+    },
+  },
 };
