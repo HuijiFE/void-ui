@@ -6,4 +6,5 @@
  * All components of void-ui documentation.
  */
 
+export * from '@docs/components/file-icon/file-icon';
 export * from '@docs/components/nav-bar/nav-bar';
