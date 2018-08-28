@@ -91,7 +91,10 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
             }
           : undefined,
         on: {
-          click: this.onClick,
+          '!click': this.onClick,
+        },
+        nativeOn: {
+          '!click': this.onClick,
         },
       },
       [this.$slots.default],
