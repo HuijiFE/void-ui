@@ -69,11 +69,14 @@ export type MediaAlias =
 
 export interface BreakPoints extends Record<BreakPointKey, number> {}
 
-export interface RecordResponsiveValues<T> extends Partial<Record<MediaAlias, T>> {
-  value: T;
+export interface RecordResponsiveValues<T extends number | string | boolean>
+  extends Partial<Record<MediaAlias, T>> {
+  staticValue?: T;
 }
 
-export type ResponsiveValues<T> = T | RecordResponsiveValues<T>;
+export type ResponsiveValues<T extends number | string | boolean> =
+  | T
+  | RecordResponsiveValues<T>;
 
 export const BREAK_POINT_KEYS: ReadonlyArray<BreakPointKey> = [
   'xs',
@@ -82,16 +85,21 @@ export const BREAK_POINT_KEYS: ReadonlyArray<BreakPointKey> = [
   'lg',
   'xl',
 ];
+
+/**
+ * Media query alias.
+ * DO NOT change the orders,these decide the priority for responsive values
+ */
 export const MEDIA_ALIASES: ReadonlyArray<MediaAlias> = [
   ...BREAK_POINT_KEYS,
-  'gtXs',
   'ltSm',
-  'gtSm',
   'ltMd',
-  'gtMd',
   'ltLg',
-  'gtLg',
   'ltXl',
+  'gtLg',
+  'gtMd',
+  'gtSm',
+  'gtXs',
 ];
 
 export const DEFAULT_BREAK_POINTS: BreakPoints = {

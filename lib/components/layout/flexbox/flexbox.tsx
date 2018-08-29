@@ -55,6 +55,8 @@ export interface VdFlexbox {
  */
 @Component
 export class VdFlexbox extends Vue implements LinkLikeComponent {
+  private parentFlexbox?: VdFlexbox;
+
   @Prop({ type: String, default: 'div' })
   public readonly tag!: keyof HTMLElementTagNameMap;
 
@@ -85,14 +87,36 @@ export class VdFlexbox extends Vue implements LinkLikeComponent {
   @Prop({ type: [Boolean, Object], default: true })
   public readonly show!: ResponsiveValues<boolean>;
 
-  private get presentFlex(): string {
-    return '';
+  private percentage: string = '';
+
+  @Watch('flex', { deep: true, immediate: true })
+  private watchFlex(): void {
+    this.$vd_media.subscribe(
+      this,
+      'flex',
+      this.flex,
+      (value: string | number | undefined) =>
+        (this.percentage = typeof value === 'number' ? `${value}%` : ''),
+    );
+  }
+
+  private beforeCreate(): void {
+    if (this.$parent instanceof VdFlexbox) {
+      this.parentFlexbox = this.$parent;
+    }
+  }
+
+  private beforeDestroy(): void {
+    this.$vd_media.unsubscribeAll(this);
   }
 
   public get style(): Style {
     return {
-      order: this.order as number,
-      flex: this.flex as string,
+      [this.parentFlexbox &&
+      (this.parentFlexbox.direction === 'column' ||
+        this.parentFlexbox.direction === 'column-reverse')
+        ? 'maxHeight'
+        : 'maxWidth']: this.percentage,
     };
   }
 
@@ -105,8 +129,9 @@ export class VdFlexbox extends Vue implements LinkLikeComponent {
         [`vdp-align_${this.align}`]: this.align,
         [`vdp-justify_${this.justify}`]: this.justify,
 
-        'is-gap': this.gap,
+        'is-gap': typeof this.gap === 'boolean' && this.gap,
         [`vdp-gap_${this.gap}`]: typeof this.gap === 'string',
+        'is-percentage': this.percentage,
       },
     ];
   }

@@ -1,6 +1,7 @@
 // tslint:disable:no-invalid-this no-any no-unsafe-any
 
 import Vue, { PluginFunction } from 'vue';
+import { RecordResponsiveValues, MEDIA_ALIASES } from '../../base/variables';
 import {
   Component,
   Emit,
@@ -17,6 +18,7 @@ import {
   BREAK_POINT_KEYS,
   MEDIA_ALIASES,
   DEFAULT_BREAK_POINTS,
+  ResponsiveValues,
 } from '@void/ui/lib/components/base/variables';
 
 let $$Vue: typeof Vue | undefined;
@@ -25,11 +27,25 @@ export interface MediaScreen extends Readonly<Record<MediaAlias, boolean>> {}
 
 export interface MediaHub {
   readonly screen: MediaScreen;
-  getMediaQueryLists(): Readonly<Record<BreakPointKey, MediaQueryList>>;
+  getMediaQueryListsMap(): Readonly<Record<BreakPointKey, MediaQueryList>>;
+  subscribe<T extends number | string | boolean>(
+    vm: Vue,
+    propName: string,
+    values: ResponsiveValues<T> | undefined,
+    update: (value: T | undefined) => void,
+  ): void;
+  unsubscribeAll(vm: Vue): void;
 }
 
 export interface VdMediaOptions {
   breakpoints?: BreakPoints;
+}
+
+interface Consumer<T extends number | string | boolean = any> {
+  vm: Vue;
+  propName: string;
+  values: RecordResponsiveValues<T>;
+  update(value: T): void;
 }
 
 /**
@@ -95,7 +111,11 @@ export class VdMedia extends Vue implements MediaHub {
     xl: false,
   };
 
-  private setScreen(activeKey: BreakPointKey): void {
+  public getMatchedAliases(): MediaAlias[] {
+    return MEDIA_ALIASES.filter(a => this.screen[a]);
+  }
+
+  private onScreenChange(activeKey: BreakPointKey): void {
     const activeIndex: number = BREAK_POINT_KEYS.indexOf(activeKey);
     BREAK_POINT_KEYS.forEach((key, index) => {
       this.screen[key] = key === activeKey;
@@ -108,8 +128,61 @@ export class VdMedia extends Vue implements MediaHub {
 
   private readonly mqlMap: Record<BreakPointKey, MediaQueryList> = {} as any;
 
-  public getMediaQueryLists(): Record<BreakPointKey, MediaQueryList> {
-    return this.mqlMap;
+  public getMediaQueryListsMap(): Record<BreakPointKey, MediaQueryList> {
+    return { ...this.mqlMap };
+  }
+
+  private consumerList!: Consumer[];
+
+  private dispatch(matchedAliases: MediaAlias[], consumer: Consumer): void {
+    // tslint:disable-next-line:prefer-for-of
+    for (let index: number = 0; index < matchedAliases.length; index++) {
+      const value: any = consumer.values[matchedAliases[index]];
+      if (value !== undefined) {
+        return consumer.update(value);
+      }
+    }
+    consumer.update(consumer.values.staticValue);
+  }
+
+  public subscribe<T extends number | string | boolean>(
+    vm: Vue,
+    propName: string,
+    values: ResponsiveValues<T> | undefined,
+    update: (value: T | undefined) => void,
+  ): void {
+    const index: number = this.consumerList.findIndex(
+      c => c.vm === vm && c.propName === propName,
+    );
+    if (index > -1) {
+      this.consumerList.splice(index, 1);
+    }
+
+    if (typeof values === 'object') {
+      const consumer: Consumer = {
+        vm,
+        propName,
+        update,
+        values,
+      };
+      this.dispatch(this.getMatchedAliases(), consumer);
+      this.consumerList.push(consumer);
+    } else {
+      update(values);
+    }
+  }
+
+  public unsubscribeAll(vm: Vue): void {
+    this.consumerList = this.consumerList.filter(c => c.vm !== vm);
+  }
+
+  @Watch('screen', { deep: true })
+  private watchScreen(): void {
+    const matchedAliases: MediaAlias[] = this.getMatchedAliases();
+    // tslint:disable-next-line:prefer-for-of
+    for (let index: number = 0; index < this.consumerList.length; index++) {
+      this.dispatch(matchedAliases, this.consumerList[index]);
+    }
   }
 
   private created(): void {
@@ -130,13 +203,15 @@ export class VdMedia extends Vue implements MediaHub {
       const mql: MediaQueryList = createMQL(VdMedia.getQuery(key));
       this.mqlMap[key] = mql;
       if (mql.matches) {
-        this.setScreen(key);
+        this.onScreenChange(key);
       }
       mql.addListener(e => {
         if (e.matches) {
-          this.setScreen(key);
+          this.onScreenChange(key);
         }
       });
     });
+
+    this.consumerList = [];
   }
 }

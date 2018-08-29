@@ -38,7 +38,12 @@ export default class Example extends Vue {
     return (
       <div staticClass="e-button-overview" class={`vda-theme_${this.theme}`}>
         <vd-flexbox gap>
-          <vd-flexbox flex="0 1 100%">
+          <vd-flexbox
+            flex={{
+              staticValue: 100,
+              md: 50,
+            }}
+          >
             <vd-flexbox gap>
               <vd-flexbox justify="center">
                 <vd-button
@@ -66,10 +71,10 @@ export default class Example extends Vue {
               </vd-flexbox>
             </vd-flexbox>
           </vd-flexbox>
-          <vd-flexbox flex="0 1 100%">
+          <vd-flexbox flex={100} align="stretch">
             <vd-flexbox direction="column" gap>
               {THEME_KEYS.map(value => (
-                <vd-flexbox>
+                <vd-flexbox flex={50}>
                   <label>
                     <input
                       type="radio"
