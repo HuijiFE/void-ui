@@ -1,0 +1,17 @@
+/**
+ * Mixin for styling a image's size,
+ * the behavior of `object-fit: cover` like `background-size: cover;`
+ */
+@mixin image-cover($width, $height, $radius: $radius-base) {
+  $width: if($width, $width, 100%);
+  $height: if($height, $height, $width);
+
+  font-size: 12px;
+  max-width: $width;
+  width: $width;
+  max-height: $height;
+  height: $height;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: rem($radius-base);
+}

@@ -15,6 +15,6 @@ import {
 @Component
 export default class ViewHome extends Vue {
   private render(h: CreateElement): VNode {
-    return <div staticClass="view-home">{this.$slots.default}</div>;
+    return <div staticClass="v-home">{this.$slots.default}</div>;
   }
 }

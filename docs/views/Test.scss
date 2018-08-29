@@ -2,35 +2,7 @@
  * View: Test
  */
 @include comp('test') {
-  @include elem('debug') {
-    width: 100%;
-    text-align: center;
-    padding: rem(32) 0;
-
-    color: white;
-    background-color: gray;
-    @include when('active') {
-      background-color: green;
-    }
-  }
-
-  @include elem('test-media') {
-    @each $key in $type-breakpoint-key {
-      &.lt-#{$key} {
-        @include media-less-than($key) {
-          max-width: breakpoint($key);
-        }
-      }
-      &.#{$key} {
-        @include media-only($key) {
-          width: px(breakpoint($key));
-        }
-      }
-      &.gt-#{$key} {
-        @include media-greater-than($key) {
-          min-width: breakpoint($key);
-        }
-      }
-    }
+  @include elem('cover') {
+    @include image-cover(rem(100), rem(100));
   }
 }
