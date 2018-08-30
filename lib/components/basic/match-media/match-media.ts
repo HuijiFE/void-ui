@@ -34,7 +34,6 @@ export interface MediaHub {
     values: ResponsiveValues<T> | undefined,
     update: (value: T | undefined) => void,
   ): void;
-  unsubscribeAll(vm: Vue): void;
 }
 
 export interface VdMediaOptions {
