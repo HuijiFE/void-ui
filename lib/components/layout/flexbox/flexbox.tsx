@@ -131,6 +131,8 @@ export class VdFlexbox extends Vue implements LinkLikeComponent {
 
         'is-gap': typeof this.gap === 'boolean' && this.gap,
         [`vdp-gap_${this.gap}`]: typeof this.gap === 'string',
+
+        [`vdp-flex_${this.flex}`]: typeof this.flex === 'string',
         'is-percentage': this.percentage,
       },
     ];

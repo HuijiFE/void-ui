@@ -6,6 +6,7 @@
   $type-flex-wrap: nowrap, wrap, wrap-reverse;
   $type-flex-align: start, center, end, space-between, space-around, space-evenly, stretch;
   $type-flex-justify: start, center, end, space-between, space-around, space-evenly;
+  $type-flex-preset: initial, auto, none;
 
   position: relative;
   display: flex;
@@ -73,6 +74,16 @@
         margin: 0;
         padding: 0;
       }
+    }
+  }
+
+  @each $preset in $type-flex-preset {
+    @include prop(
+      (
+        'flex': $preset,
+      )
+    ) {
+      flex: $preset;
     }
   }
 
