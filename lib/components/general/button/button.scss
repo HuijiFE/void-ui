@@ -2,10 +2,6 @@
  * Component: Button
  */
 @include comp('button') {
-  $button-font-size: 0.5;
-  $button-min-width: 2.5;
-  $button-padding-h: 0.5;
-
   position: relative;
   display: inline-flex;
   flex-wrap: nowrap;
@@ -30,7 +26,7 @@
   cursor: pointer;
 
   // --------------------------------
-  // shape & size
+  // STYLE shape & size
 
   @each $size, $value in $button-font-size-map {
     @include prop(
@@ -91,8 +87,8 @@
         'shape': 'pill',
       )
     ) {
-      min-width: rem($height * $button-min-width);
-      padding: 0 rem($height * $button-padding-h);
+      min-width: rem($height * $button-min-width-multiple);
+      padding: 0 rem($height * $button-padding-multiple);
     }
 
     // square, circle
@@ -111,7 +107,7 @@
   }
 
   // ----------------------------
-  // skin & tone & theme
+  // STYLE skin & tone & theme
 
   // fill
 
@@ -220,7 +216,7 @@
   }
 
   // ----------------------------
-  // disabled
+  // STYLE disabled
 
   @include when('disabled') {
     cursor: not-allowed;
@@ -313,8 +309,54 @@
   }
 
   // ----------------------------
+  // STYLE loading
+
+  @include when('loading') {
+    cursor: wait;
+  }
+
+  // ----------------------------
   // transition
 
   transition: ease-in-out 0.2s;
   transition-property: color, background-color, border-color, box-shadow;
+
+  // ----------------------------
+  // slots
+
+  @include elem-adjacent('loading', 'content') {
+    margin-left: $button-gap-icon-text;
+  }
+  @include elem-adjacent('left', 'content') {
+    margin-left: $button-gap-icon-text;
+  }
+  @include elem-adjacent('content', 'right') {
+    margin-left: $button-gap-icon-text;
+  }
+
+  @include elem('loading', 'left', 'right') {
+    width: 1em;
+  }
+
+  @include elem('loading-indicator') {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    vertical-align: middle;
+    border-radius: 50%;
+    border: rem(2) solid transparent;
+    border-right-color: currentColor;
+    border-bottom-color: currentColor;
+
+    @keyframes vd-button-loading-indicator-spin {
+      from {
+        transform: rotate(0);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    animation: vd-button-loading-indicator-spin 750ms linear infinite;
+  }
 }

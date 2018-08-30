@@ -38,6 +38,12 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
   @Prop({ type: Boolean, default: false })
   public readonly disabled!: boolean;
 
+  @Prop({ type: Boolean, default: false })
+  public readonly loading!: boolean;
+
+  @Prop({ type: String })
+  public readonly label?: string;
+
   @Prop({ type: String })
   public readonly theme!: Theme;
   public get $theme(): Theme {
@@ -70,6 +76,7 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
       {
         'is-router-link': this.routerLink,
         'is-disabled': this.disabled,
+        'is-loading': this.loading,
       },
     ];
   }
@@ -82,7 +89,7 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
         class: this.classes,
         attrs: {
           type: this.type,
-          disabled: this.disabled,
+          disabled: this.disabled || this.loading,
         },
         props: this.routerLink
           ? {
@@ -97,7 +104,23 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
           '!click': this.onClick,
         },
       },
-      [this.$slots.default],
+      [
+        this.loading ? (
+          <span staticClass="vd-button_loading">
+            <span staticClass="vd-button_loading-indicator" />
+          </span>
+        ) : this.$slots.left ? (
+          <span staticClass="vd-button_left">{this.$slots.left}</span>
+        ) : (
+          h()
+        ),
+        <span staticClass="vd-button_content">{this.$slots.default || this.label}</span>,
+        this.$slots.right ? (
+          <span staticClass="vd-button_right">{this.$slots.right}</span>
+        ) : (
+          h()
+        ),
+      ],
     );
   }
 }

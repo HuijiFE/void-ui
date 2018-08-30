@@ -12,8 +12,8 @@ $namespace: 'vd';
 // --------------------------------
 // Typography
 
-$font-size-base: 15;
-$line-height-base: 24;
+$font-size-base: 15 !default;
+$line-height-base: 1.618 !default;
 
 // --------------------------------
 // Core
@@ -64,15 +64,15 @@ $gap-map: (
   @return map-get($gap-map, $key);
 }
 
-$gap-base: gap('medium');
+$gap-base: gap('medium') !default;
 
 // border
 
-$border-base: 1;
+$border-base: 1 !default;
 
 // radius
 
-$radius-base: 2;
+$radius-base: 2 !default;
 
 // ================================================================
 // General
@@ -95,4 +95,8 @@ $button-font-size-map: (
   medium:   18,
   large:    20,
   xlarge:   24,
-);
+) !default;
+
+$button-min-width-multiple:   2.618 !default;
+$button-padding-multiple:     0.618 !default;
+$button-gap-icon-text:        0.618em !default;

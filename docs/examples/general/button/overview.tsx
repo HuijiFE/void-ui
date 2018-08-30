@@ -53,7 +53,9 @@ export default class Example extends Vue {
                   shape={this.shape}
                   size={this.size}
                   disabled={this.disabled}
+                  onClick={() => console.log('left button')}
                 >
+                  <fa-icon slot="right" icon={['fab', 'github']} />
                   {this.shape === 'circle' || this.shape === 'square' ? 'B' : 'Button'}
                 </vd-button>
               </vd-flexbox>
@@ -65,6 +67,8 @@ export default class Example extends Vue {
                   shape={this.shape}
                   size={this.size}
                   disabled={this.disabled}
+                  loading
+                  onClick={() => console.log('right button')}
                 >
                   {this.shape === 'circle' || this.shape === 'square' ? '按' : '按钮'}
                 </vd-button>
