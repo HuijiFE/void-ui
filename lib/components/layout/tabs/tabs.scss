@@ -93,7 +93,7 @@ $vd-transition-duration: 240ms;
         display: block;
       }
 
-      @keyframes vd-tabs-pane-right-in {
+      @keyframes vd-tab-pane-right-in {
         from {
           opacity: 0;
           transform: translateX(rem(64));
@@ -103,7 +103,7 @@ $vd-transition-duration: 240ms;
           transform: translateX(0);
         }
       }
-      @keyframes vd-tabs-pane-left-in {
+      @keyframes vd-tab-pane-left-in {
         from {
           opacity: 0;
           transform: translateX(rem(-64));
@@ -116,7 +116,7 @@ $vd-transition-duration: 240ms;
 
       @each $transition in 'right-in', 'left-in' {
         @include when($transition) {
-          animation: vd-tabs-pane-#{$transition} $vd-transition-duration ease-out;
+          animation: vd-tab-pane-#{$transition} $vd-transition-duration ease-out;
         }
       }
     }

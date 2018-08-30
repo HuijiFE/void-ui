@@ -25,19 +25,19 @@ export class VdTabs extends Vue implements ThemeComponent {
     return [`vdp-theme_${this.$theme}`];
   }
 
-  private panes: VdTabsPane[] = [];
-  public selectedPane: VdTabsPane | null = null;
+  private panes: VdTabPane[] = [];
+  public selectedPane: VdTabPane | null = null;
 
   private indicatorStyle: Style = { left: '', width: '' };
 
-  public add(pane: VdTabsPane): void {
+  public add(pane: VdTabPane): void {
     this.panes.push(pane);
     if (!this.selectedPane) {
       this.select(pane);
     }
   }
 
-  public remove(pane: VdTabsPane): void {
+  public remove(pane: VdTabPane): void {
     const index: number = this.panes.indexOf(pane);
     if (index > -1) {
       this.panes.splice(index, 1);
@@ -49,7 +49,7 @@ export class VdTabs extends Vue implements ThemeComponent {
 
   private frozen?: boolean;
 
-  public select(pane: VdTabsPane): void {
+  public select(pane: VdTabPane): void {
     if (!pane) {
       this.selectedPane = null;
 
@@ -62,7 +62,7 @@ export class VdTabs extends Vue implements ThemeComponent {
   }
 
   @Watch('selectedPane')
-  private watchSelectedPane(newPane: VdTabsPane, oldPane: VdTabsPane): void {
+  private watchSelectedPane(newPane: VdTabPane, oldPane: VdTabPane): void {
     if (newPane && oldPane && newPane !== oldPane) {
       this.panes.forEach(pane => {
         if (pane === newPane) {
@@ -133,7 +133,7 @@ export class VdTabs extends Vue implements ThemeComponent {
  * Child Component: TabPane
  */
 @Component
-export class VdTabsPane extends Vue {
+export class VdTabPane extends Vue {
   @Prop({ type: String })
   public readonly label?: string;
 
