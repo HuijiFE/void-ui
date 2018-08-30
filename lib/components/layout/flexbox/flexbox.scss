@@ -19,50 +19,50 @@
   color: inherit;
   text-decoration: none;
 
-  @each $value in $type-flex-direction {
+  @each $direction in $type-flex-direction {
     @include prop(
       (
-        'direction': $value,
+        'direction': $direction,
       )
     ) {
-      flex-direction: $value;
+      flex-direction: $direction;
     }
   }
 
-  @each $value in $type-flex-wrap {
+  @each $wrap in $type-flex-wrap {
     @include prop(
       (
-        'wrap': $value,
+        'wrap': $wrap,
       )
     ) {
-      flex-wrap: $value;
+      flex-wrap: $wrap;
     }
   }
 
-  @each $value in $type-flex-align {
+  @each $align in $type-flex-align {
     @include prop(
       (
-        'align': $value,
+        'align': $align,
       )
     ) {
-      @if $value == start or $value == end {
-        $value: flex-#{$value};
+      @if $align == start or $align == end {
+        $align: flex-#{$align};
       }
-      align-items: $value;
-      align-content: $value;
+      align-items: $align;
+      align-content: $align;
     }
   }
 
-  @each $value in $type-flex-justify {
+  @each $justify in $type-flex-justify {
     @include prop(
       (
-        'justify': $value,
+        'justify': $justify,
       )
     ) {
-      @if $value == start or $value == end {
-        $value: flex-#{$value};
+      @if $justify == start or $justify == end {
+        $justify: flex-#{$justify};
       }
-      justify-content: $value;
+      justify-content: $justify;
     }
   }
 
@@ -73,6 +73,19 @@
       @include when('gap') {
         margin: 0;
         padding: 0;
+      }
+    }
+  }
+
+  @each $gap, $value in $gap-map {
+    @include prop(
+      (
+        'gap': $gap,
+      )
+    ) {
+      margin: rem(-$value / 2);
+      > .#{class-comp('flexbox')} {
+        padding: rem($value / 2);
       }
     }
   }
@@ -89,5 +102,9 @@
 
   @include when('percentage') {
     flex: 1 1 100%;
+  }
+
+  @include when('hidden') {
+    display: none;
   }
 }

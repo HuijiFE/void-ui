@@ -72,7 +72,7 @@ export default class Example extends Vue {
             </vd-flexbox>
           </vd-flexbox>
           <vd-flexbox flex={100} align="stretch">
-            <vd-flexbox direction="column" gap>
+            <vd-flexbox direction="column" gap order={{ md: 3 }}>
               {THEME_KEYS.map(value => (
                 <vd-flexbox flex={50}>
                   <label>

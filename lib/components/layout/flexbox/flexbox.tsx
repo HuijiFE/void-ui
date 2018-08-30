@@ -79,24 +79,45 @@ export class VdFlexbox extends Vue implements LinkLikeComponent {
   @Prop([String, Number, Object])
   public readonly flex?: ResponsiveValues<Flex>;
 
-  @Prop([String, Number, Object])
+  @Prop([Number, Object])
   public readonly order?: ResponsiveValues<number>;
 
   @Prop({ type: [Boolean, Object], default: false })
   public readonly hidden!: ResponsiveValues<boolean>;
-  @Prop({ type: [Boolean, Object], default: true })
-  public readonly show!: ResponsiveValues<boolean>;
 
-  private percentage: string = '';
+  private percentageValue: string = '';
 
   @Watch('flex', { deep: true, immediate: true })
-  private watchFlex(): void {
+  private watchFlex(flex: ResponsiveValues<Flex>): void {
     this.$vd_media.subscribe(
       this,
       'flex',
-      this.flex,
-      (value: string | number | undefined) =>
-        (this.percentage = typeof value === 'number' ? `${value}%` : ''),
+      flex,
+      value => (this.percentageValue = typeof value === 'number' ? `${value}%` : ''),
+    );
+  }
+
+  private orderValue: string | number = '';
+
+  @Watch('order', { deep: true, immediate: true })
+  private watchOrder(order: ResponsiveValues<number>): void {
+    this.$vd_media.subscribe(
+      this,
+      'order',
+      order,
+      value => (this.orderValue = value === undefined ? '' : value),
+    );
+  }
+
+  private hiddenValue: boolean = false;
+
+  @Watch('hidden', { deep: true, immediate: true })
+  private watchHide(hidden: ResponsiveValues<boolean>): void {
+    this.$vd_media.subscribe(
+      this,
+      'hidden',
+      hidden,
+      value => (this.hiddenValue = value === undefined ? false : value),
     );
   }
 
@@ -106,23 +127,22 @@ export class VdFlexbox extends Vue implements LinkLikeComponent {
     }
   }
 
-  private beforeDestroy(): void {
-    this.$vd_media.unsubscribeAll(this);
-  }
-
   public get style(): Style {
     return {
       [this.parentFlexbox &&
       (this.parentFlexbox.direction === 'column' ||
         this.parentFlexbox.direction === 'column-reverse')
         ? 'maxHeight'
-        : 'maxWidth']: this.percentage,
+        : 'maxWidth']: this.percentageValue,
+      order: this.orderValue,
     };
   }
 
   public get classes(): ClassName {
     return [
       {
+        'is-router-link': this.routerLink,
+
         [`vdp-direction_${this.direction}`]: this.direction,
         [`vdp-wrap_${this.wrap}`]: this.wrap,
 
@@ -133,7 +153,9 @@ export class VdFlexbox extends Vue implements LinkLikeComponent {
         [`vdp-gap_${this.gap}`]: typeof this.gap === 'string',
 
         [`vdp-flex_${this.flex}`]: typeof this.flex === 'string',
-        'is-percentage': this.percentage,
+        'is-percentage': this.percentageValue,
+
+        'is-hidden': this.hiddenValue,
       },
     ];
   }

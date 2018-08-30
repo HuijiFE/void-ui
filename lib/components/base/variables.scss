@@ -41,7 +41,7 @@ $breakpoints: (
   md: 960,
   lg: 1280,
   xl: 1920,
-);
+) !default;
 
 @function breakpoint($key) {
   @return map-get($breakpoints, $key);
@@ -58,13 +58,13 @@ $gap-map: (
   medium:   16,
   large:    24,
   xlarge:   32,
-);
+) !default;
 
-@function get-gap($key) {
+@function gap($key) {
   @return map-get($gap-map, $key);
 }
 
-$gap-base: get-gap('medium');
+$gap-base: gap('medium');
 
 // border
 
@@ -87,7 +87,7 @@ $button-size-map: (
   medium:   40,
   large:    48,
   xlarge:   56,
-);
+) !default;
 
 $button-font-size-map: (
   xsmall:   12,

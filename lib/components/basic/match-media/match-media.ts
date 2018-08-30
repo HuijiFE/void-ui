@@ -133,6 +133,7 @@ export class VdMedia extends Vue implements MediaHub {
   }
 
   private consumerList!: Consumer[];
+  private vmSet!: Set<Vue>;
 
   private dispatch(matchedAliases: MediaAlias[], consumer: Consumer): void {
     // tslint:disable-next-line:prefer-for-of
@@ -151,6 +152,14 @@ export class VdMedia extends Vue implements MediaHub {
     values: ResponsiveValues<T> | undefined,
     update: (value: T | undefined) => void,
   ): void {
+    if (!this.vmSet.has(vm)) {
+      this.vmSet.add(vm);
+      vm.$on('hook:beforeDestroy', () => {
+        this.consumerList = this.consumerList.filter(c => c.vm !== vm);
+        this.vmSet.delete(vm);
+      });
+    }
+
     const index: number = this.consumerList.findIndex(
       c => c.vm === vm && c.propName === propName,
     );
@@ -170,10 +179,6 @@ export class VdMedia extends Vue implements MediaHub {
     } else {
       update(values);
     }
-  }
-
-  public unsubscribeAll(vm: Vue): void {
-    this.consumerList = this.consumerList.filter(c => c.vm !== vm);
   }
 
   @Watch('screen', { deep: true })
@@ -213,5 +218,6 @@ export class VdMedia extends Vue implements MediaHub {
     });
 
     this.consumerList = [];
+    this.vmSet = new Set();
   }
 }
