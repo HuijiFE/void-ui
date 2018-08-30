@@ -9,4 +9,5 @@
 
 export default {
   'general/button/overview': async () => import(/* webpackChunkName: "chunk-general_button" */ '@docs/examples/general/button/overview.tsx'),
+  'layout/tabs/overview': async () => import(/* webpackChunkName: "chunk-layout_tabs" */ '@docs/examples/layout/tabs/overview.tsx'),
 };

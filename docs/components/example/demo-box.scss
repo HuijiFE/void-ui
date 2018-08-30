@@ -1,0 +1,38 @@
+/**
+ * Component: DemoBox
+ */
+@include comp('demo-box') {
+  position: relative;
+  width: 100%;
+  padding-bottom: 61.8%;
+  border: rem(1) solid transparent;
+
+  @include elem('content') {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    font-size: rem(24);
+    font-weight: normal;
+  }
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'theme': $theme,
+      )
+    ) {
+      color: theme($theme, 'fg', 'disabled');
+      background-color: theme($theme, 'bg', 'higher');
+      border-color: theme($theme, 'bd', 'normal');
+    }
+  }
+}

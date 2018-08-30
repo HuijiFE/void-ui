@@ -48,7 +48,7 @@ $breakpoints: (
 }
 
 // --------------------------------
-// Layout Gap Shape
+// Gap Border Radius
 
 // gap / gutter / padding / margin
 
@@ -100,3 +100,12 @@ $button-font-size-map: (
 $button-min-width-multiple:   2.618 !default;
 $button-padding-multiple:     0.618 !default;
 $button-gap-icon-text:        0.618em !default;
+
+// ================================================================
+// General
+// ================================================================
+
+// --------------------------------
+// Card
+
+$card-header-height-base: 40 !default;

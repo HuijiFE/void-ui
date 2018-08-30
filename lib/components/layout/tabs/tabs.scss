@@ -1,13 +1,140 @@
 /**
  * Component: Tabs
  */
-@include comp('tabs') {
-  //
-}
 
-/**
- * Component: TabPane
- */
-@include comp('tab-pane') {
-  //
+$vd-transition-duration: 240ms;
+
+@include comp('tabs') {
+  position: relative;
+  border: rem($border-base) solid transparent;
+
+  overflow: hidden;
+
+  @include elem('header', 'header-item', 'separator', 'body', 'container', 'wrapper') {
+    position: relative;
+  }
+
+  @include elem('header-item', 'indicator', 'wrapper') {
+    transition-timing-function: ease-in-out;
+    transition-duration: $vd-transition-duration;
+  }
+
+  @include elem('header') {
+    width: 100%;
+    height: rem($card-header-height-base);
+    padding: 0 rem($gap-base);
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+  }
+
+  @include elem('header-item') {
+    cursor: pointer;
+
+    height: 100%;
+    flex: none;
+    padding: 0 rem($gap-base);
+    margin: 0;
+    border: none;
+
+    color: inherit;
+    background: transparent;
+
+    @include when('selected') {
+      color: tone();
+    }
+
+    transition-property: color;
+  }
+
+  @include elem('indicator') {
+    position: absolute;
+    left: 0;
+    bottom: rem(-1);
+    width: 0;
+    height: rem(2);
+
+    background-color: tone();
+
+    transition-property: left, width;
+  }
+
+  @include elem('separator') {
+    width: 100%;
+    height: 0;
+    border-bottom: rem($border-base) solid transparent;
+  }
+
+  @include elem('body') {
+    padding: rem($gap-base);
+  }
+
+  @include elem('container') {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  @include elem('wrapper') {
+    width: 100%;
+
+    > * {
+      display: none;
+    }
+
+    @include elem('pane') {
+      width: 100%;
+      overflow: hidden;
+      transform: translate3d(0, 0, 0);
+
+      @include when('selected') {
+        display: block;
+      }
+
+      @keyframes vd-tabs-pane-right-in {
+        from {
+          opacity: 0;
+          transform: translateX(rem(64));
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes vd-tabs-pane-left-in {
+        from {
+          opacity: 0;
+          transform: translateX(rem(-64));
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @each $transition in 'right-in', 'left-in' {
+        @include when($transition) {
+          animation: vd-tabs-pane-#{$transition} $vd-transition-duration ease-out;
+        }
+      }
+    }
+  }
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'theme': $theme,
+      )
+    ) {
+      color: theme($theme);
+      background-color: theme($theme, 'bg');
+      border-color: theme($theme, 'bd');
+
+      @include elem('separator') {
+        border-color: theme($theme, 'bd');
+      }
+    }
+  }
 }
