@@ -18,7 +18,7 @@ export type AsyncComponentRecord = Record<string, () => Promise<typeof import('v
 const sourceCode: AxiosInstance = axios.create({
   baseURL: `${process.env.BASE_URL}examples/${process.env.VUE_APP_VOID_UI_VERSION}/`,
   timeout: 1000,
-  transformResponse: data => data,
+  transformResponse: (data: string) => data,
 });
 
 const getSourceCode: (path: string) => Promise<string> = async path => {
@@ -81,11 +81,16 @@ export class CExample extends Vue {
     this.types = [...new Set<string>([...defaultTypes, ...CExample.all[path]])];
     this.has = has;
     this.src = src;
-    CExample.all[path].map(ext => this.loadSourceCode(ext));
+
+    await Promise.all(CExample.all[path].map(async ext => this.loadSourceCode(ext)));
   }
 
-  private mounted(): void {
-    this.load(this.path);
+  private async mounted(): Promise<void> {
+    try {
+      await this.load(this.path);
+    } catch (error) {
+      console.error(error);
+    }
 
     this.loaded = true;
   }

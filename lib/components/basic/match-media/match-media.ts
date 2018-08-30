@@ -1,7 +1,6 @@
 // tslint:disable:no-invalid-this no-any no-unsafe-any
 
 import Vue, { PluginFunction } from 'vue';
-import { RecordResponsiveValues, MEDIA_ALIASES } from '../../base/variables';
 import {
   Component,
   Emit,
@@ -19,6 +18,7 @@ import {
   MEDIA_ALIASES,
   DEFAULT_BREAK_POINTS,
   ResponsiveValues,
+  RecordResponsiveValues,
 } from '@void/ui/lib/components/base/variables';
 
 let $$Vue: typeof Vue | undefined;
