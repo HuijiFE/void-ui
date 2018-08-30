@@ -9,7 +9,7 @@
     "interface-name": false,
     "prefer-const": true,
     "no-var-keyword": true,
-    "no-null-keyword": true,
+    "no-null-keyword": false,
     "no-any": true,
     "no-unsafe-any": true,
     "strict-boolean-expressions": false,
