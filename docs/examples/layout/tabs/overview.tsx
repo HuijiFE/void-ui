@@ -19,13 +19,13 @@ export default class Example extends Vue {
       <div staticClass="e-tabs-overview">
         <vd-tabs>
           <vd-tab-pane label="tab 1">
-            tab 1{/* <c-demo-box>tab 1</c-demo-box> */}
+            <c-demo-box>tab 1</c-demo-box>
           </vd-tab-pane>
           <vd-tab-pane label="tab 2">
-            tab 2{/* <c-demo-box>tab 2</c-demo-box> */}
+            <c-demo-box>tab 2</c-demo-box>
           </vd-tab-pane>
           <vd-tab-pane label="tab 3">
-            tab 3{/* <c-demo-box>tab 3</c-demo-box> */}
+            <c-demo-box>tab 3</c-demo-box>
           </vd-tab-pane>
         </vd-tabs>
       </div>

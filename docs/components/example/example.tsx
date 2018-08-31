@@ -42,8 +42,6 @@ export class CExample extends Vue {
   public static readonly tsx: Record<string, AsyncComponent> = examplesTsx;
   public static readonly vue: Record<string, AsyncComponent> = examplesVue;
 
-  public loaded: boolean = false;
-
   @Prop({ type: String, required: true })
   public readonly path!: string;
 
@@ -91,12 +89,10 @@ export class CExample extends Vue {
     } catch (error) {
       console.error(error);
     }
-
-    this.loaded = true;
   }
 
   private render(h: CreateElement): VNode {
-    return this.loaded ? (
+    return (
       <div staticClass="c-example">
         <div staticClass="c-example_header">
           <c-file-icon icon="scss" />
@@ -114,8 +110,6 @@ export class CExample extends Vue {
           </div>
         ))}
       </div>
-    ) : (
-      <div staticClass="c-example" />
     );
   }
 }
