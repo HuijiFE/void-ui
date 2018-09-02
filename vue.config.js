@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const Config = require('webpack-chain');
@@ -55,7 +56,23 @@ module.exports = {
       .set('@docs', resolve('docs'))
       .set('@void/ui/lib', resolve('lib'));
 
+    // chainMarkdown(config);
     docsChainWebpack(config);
+
+    if (VUE_ENTRY === 'docs' && NODE_ENV === 'production') {
+      const isLegacyBundle =
+        process.env.VUE_CLI_MODERN_MODE && !process.env.VUE_CLI_MODERN_BUILD;
+      output(
+        config,
+        isLegacyBundle ? 'temp.webpack-legacy-config.js' : 'temp.webpack.config.js',
+      );
+    }
+  },
+
+  pluginOptions: {
+    markdownLoaderOptions: {
+      useAnchor: true,
+    },
   },
 
   parallel: require('os').cpus().length > 1,
@@ -207,4 +224,18 @@ function docsChainWebpack(config) {
       ],
     ]);
   }
+}
+
+// ======== Output config to file ========
+
+/**
+ * @param {Config} config
+ * @param {string} filename
+ */
+function output(config, filename) {
+  fs.writeFile(
+    filename,
+    `module.exports = ${Config.toString(config.toConfig())}`,
+    error => error && console.log(error),
+  );
 }

@@ -20,6 +20,10 @@ export default new Router({
         import(/* webpackChunkName: "chunk-general_button" */ '@docs/views/Test'),
     },
     {
+      path: '/markdown',
+      component: async () => import('@docs/views/Markdown.md'),
+    },
+    {
       path: '/home',
       component: async () => import('@docs/views/Home'),
     },
