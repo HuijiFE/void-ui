@@ -1,5 +1,25 @@
+// font-awesome
+@import '~@fortawesome/fontawesome-svg-core/styles.css';
+
+// custom variables
+$root-font-size: 100;
+
+@import '~@void/ui/lib/void-ui.scss';
+
+// Components
+$namespace: 'c';
+@import '@docs/components/all.scss';
+
+// Examples
+$namespace: 'e';
+@import '@docs/examples/all.scss';
+
+// Views
+$namespace: 'v';
+@import '@docs/views/all.scss';
+
 /**
- * Component: App
+ * View: App
  */
 @include comp('app') {
   position: relative;

@@ -2,7 +2,8 @@
  * Component: Tabs
  */
 
-$vd-transition-duration: 240ms;
+$vd-tabs_transition-duration: 5000ms !default;
+$vd-tabs_transition-distance: 64 !default;
 
 @include comp('tabs') {
   position: relative;
@@ -16,7 +17,7 @@ $vd-transition-duration: 240ms;
 
   @include elem('header-item', 'indicator', 'wrapper') {
     transition-timing-function: ease-in-out;
-    transition-duration: $vd-transition-duration;
+    transition-duration: $vd-tabs_transition-duration;
   }
 
   @include elem('header') {
@@ -85,39 +86,49 @@ $vd-transition-duration: 240ms;
     }
 
     @include elem('pane') {
-      width: 100%;
-      overflow: hidden;
-      transform: translate3d(0, 0, 0);
-
       @include when('selected') {
         display: block;
       }
+    }
+  }
 
-      @keyframes vd-tab-pane-right-in {
-        from {
-          opacity: 0;
-          transform: translateX(rem(64));
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
+  @include elem('pane') {
+    width: 100%;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+
+    @each $direction in 'left', 'right' {
+      @each $state in 'in', 'out' {
+        @keyframes '#{class-comp('tab-pane')}-#{$direction}-#{$state}' {
+          from {
+            display: block;
+            opacity: if($state == 'in', 0, 1);
+            transform: if(
+              $state == 'in',
+              translateX(
+                rem($vd-tabs_transition-distance) * if($direction == 'left', -1, 1)
+              ),
+              translateX(0)
+            );
+          }
+          to {
+            display: block;
+            opacity: if($state == 'in', 1, 0);
+            transform: if(
+              $state == 'in',
+              translateX(0),
+              translateX(
+                rem($vd-tabs_transition-distance) * if($direction == 'left', -1, 1)
+              )
+            );
+          }
         }
       }
-      @keyframes vd-tab-pane-left-in {
-        from {
-          opacity: 0;
-          transform: translateX(rem(-64));
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
+    }
 
-      @each $transition in 'right-in', 'left-in' {
-        @include when($transition) {
-          animation: vd-tab-pane-#{$transition} $vd-transition-duration ease-out;
-        }
+    @each $transition in 'left-in', 'left-out', 'right-in', 'right-out' {
+      @include when($transition) {
+        animation: vd-tab-pane-#{$transition} $vd-tabs_transition-duration ease-out forwards;
       }
     }
   }

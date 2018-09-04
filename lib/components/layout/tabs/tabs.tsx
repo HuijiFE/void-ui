@@ -64,16 +64,14 @@ export class VdTabs extends Vue implements ThemeComponent {
   @Watch('selectedPane')
   private watchSelectedPane(newPane: VdTabPane, oldPane: VdTabPane): void {
     if (newPane && oldPane && newPane !== oldPane) {
-      this.panes.forEach(pane => {
-        if (pane === newPane) {
-          pane.transition =
-            this.panes.indexOf(newPane) - this.panes.indexOf(oldPane) > 0
-              ? 'right-in'
-              : 'left-in';
-        } else {
-          pane.transition = '';
-        }
-      });
+      this.panes.forEach(pane => (pane.transition = ''));
+      if (this.panes.indexOf(newPane) - this.panes.indexOf(oldPane) > 0) {
+        newPane.transition = 'right-in';
+        oldPane.transition = 'left-out';
+      } else {
+        newPane.transition = 'left-in';
+        oldPane.transition = 'right-out';
+      }
     }
 
     this.$nextTick(() => {
@@ -143,7 +141,7 @@ export class VdTabPane extends Vue {
     return this.tabs.selectedPane === this;
   }
 
-  public transition: 'left-in' | 'right-in' | '' = '';
+  public transition: 'left-in' | 'left-out' | 'right-in' | 'right-out' | '' = '';
 
   public get classes(): ClassName {
     return [
@@ -154,7 +152,7 @@ export class VdTabPane extends Vue {
     ];
   }
 
-  private beforeMount(): void {
+  private beforeCreate(): void {
     if (this.$parent instanceof VdTabs) {
       this.tabs = this.$parent;
       this.tabs.add(this);
