@@ -10,11 +10,11 @@ import {
 } from 'vue-property-decorator';
 
 /**
- * Component: Components
+ * Component: Index
  */
 @Component
-export class VComponents extends Vue {
+export class VIndex extends Vue {
   private render(h: CreateElement): VNode {
-    return <div staticClass="v-components">{this.$slots.default}</div>;
+    return <router-view />;
   }
 }

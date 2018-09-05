@@ -35,7 +35,7 @@ class App extends Vue {
     return (
       <div id="app" staticClass="v-app" class={`vda-theme_${this.$vd_theme.theme}`}>
         <c-nav-bar />
-        <router-view />
+        <router-view staticClass="v-app_wrapper" />
       </div>
     );
   }

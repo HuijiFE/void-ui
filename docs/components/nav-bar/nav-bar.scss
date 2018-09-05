@@ -2,8 +2,11 @@
  * Component: NavBar
  */
 @include comp('nav-bar') {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: rem($nav-bar-height);
   padding: 0 rem($gap-base / 2);
 
   @each $theme in $type-theme {
@@ -19,7 +22,7 @@
   }
 
   @include elem('wrapper') {
-    height: rem(56);
+    height: 100%;
     margin: 0;
   }
 

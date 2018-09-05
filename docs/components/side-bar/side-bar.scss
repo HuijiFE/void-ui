@@ -1,0 +1,25 @@
+/**
+ * Component: SideBar
+ */
+@include comp('side-bar') {
+  position: relative;
+  flex: none;
+  width: rem(320);
+  height: 100%;
+  overflow-y: scroll;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+
+  @include elem('group') {
+    display: flex;
+    flex: none;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+  }
+}

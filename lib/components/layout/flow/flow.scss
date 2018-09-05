@@ -1,0 +1,21 @@
+/**
+ * Component: Swimlane
+ */
+@include comp('swimlane') {
+  //
+}
+
+/**
+ * Component: Container
+ */
+@include comp('container') {
+  position: relative;
+  margin: 0 auto;
+  max-width: 100%;
+
+  @each $screen, $value in $container-width-map {
+    @include media-only($screen) {
+      width: $value;
+    }
+  }
+}

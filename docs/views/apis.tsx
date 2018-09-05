@@ -10,11 +10,11 @@ import {
 } from 'vue-property-decorator';
 
 /**
- * View: Home
+ * Component: Apis
  */
 @Component
-export default class ViewHome extends Vue {
+export class VApis extends Vue {
   private render(h: CreateElement): VNode {
-    return <div staticClass="v-home">{this.$slots.default}</div>;
+    return <div staticClass="v-apis">{this.$slots.default}</div>;
   }
 }

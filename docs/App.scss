@@ -6,6 +6,8 @@ $root-font-size: 100;
 
 @import '~@void/ui/lib/void-ui.scss';
 
+@import '~@docs/variables.scss';
+
 // Components
 $namespace: 'c';
 @import '@docs/components/all.scss';
@@ -24,5 +26,27 @@ $namespace: 'v';
 @include comp('app') {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  padding-top: rem($nav-bar-height);
+
+  @include elem('wrapper') {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+  }
+
+  @include elem('content') {
+    flex: 100%;
+    position: relative;
+    height: 100%;
+    padding: 0 rem($gap-base);
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
 }

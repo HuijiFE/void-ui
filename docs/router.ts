@@ -1,5 +1,16 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Vue, { AsyncComponent } from 'vue';
+import VueRouter, { RouterOptions, RouteConfig } from 'vue-router';
+import { VTest } from '@docs/views/test';
+import { VIndex } from '@docs/views';
+import { VHome } from '@docs/views/home';
+import { VGuide } from '@docs/views/guide';
+import { VComponents } from '@docs/views/components';
+import { VApis } from '@docs/views/apis';
+
+import zhCN from '@docs/articles/zh-CN/all';
+const articleMap: Record<string, Record<string, () => Promise<typeof import('*.md')>>> = {
+  'zh-CN': zhCN,
+};
 
 Vue.use(VueRouter);
 
@@ -13,20 +24,43 @@ export const createRouter: () => VueRouter = () =>
     routes: [
       {
         path: '/',
-        redirect: '/test',
+        redirect: '/zh-CN',
       },
       {
         path: '/test',
-        component: async () =>
-          import(/* webpackChunkName: "chunk-general_button" */ '@docs/views/Test'),
+        name: 'test',
+        component: VTest,
       },
-      {
-        path: '/markdown',
-        component: async () => import('@docs/views/Markdown.md'),
-      },
-      {
-        path: '/home',
-        component: async () => import('@docs/views/Home'),
-      },
+      ...['zh-CN'].map<RouteConfig>(lang => ({
+        path: `/${lang}`,
+        component: VIndex,
+        children: [
+          {
+            path: '',
+            name: 'home',
+            component: VHome,
+          },
+          {
+            path: 'guide',
+            name: 'guide',
+            component: VGuide,
+          },
+          {
+            path: 'components',
+            component: VComponents,
+            children: Object.entries(articleMap[lang]).map<RouteConfig>(
+              ([path, component]) => ({
+                path,
+                component,
+              }),
+            ),
+          },
+          {
+            path: 'apis',
+            name: 'apis',
+            component: VApis,
+          },
+        ],
+      })),
     ],
   });

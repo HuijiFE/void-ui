@@ -39,7 +39,13 @@ export class CNavBar extends Vue implements ThemeComponent {
     return (
       <div staticClass="c-nav-bar" class={this.classes}>
         <vd-flexbox staticClass="c-nav-bar_wrapper" align="center" gap>
-          <vd-flexbox staticClass="c-nav-bar_item" flex="none" tag="a" router-link to="/">
+          <vd-flexbox
+            staticClass="c-nav-bar_item"
+            flex="none"
+            tag="a"
+            router-link
+            to={{ name: 'home' }}
+          >
             Void-UI
           </vd-flexbox>
           <vd-flexbox />
@@ -48,7 +54,7 @@ export class CNavBar extends Vue implements ThemeComponent {
             flex="none"
             tag="a"
             router-link
-            to="/guideline"
+            to={{ name: 'guideline' }}
           >
             指南
           </vd-flexbox>
@@ -57,7 +63,7 @@ export class CNavBar extends Vue implements ThemeComponent {
             flex="none"
             tag="a"
             router-link
-            to="/components"
+            to={{ name: 'components' }}
           >
             组件
           </vd-flexbox>
@@ -66,7 +72,7 @@ export class CNavBar extends Vue implements ThemeComponent {
             flex="none"
             tag="a"
             router-link
-            to="/apis"
+            to={{ name: 'apis' }}
           >
             API
           </vd-flexbox>

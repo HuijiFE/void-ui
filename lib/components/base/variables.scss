@@ -102,10 +102,22 @@ $button-padding-multiple:     0.618 !default;
 $button-gap-icon-text:        0.618em !default;
 
 // ================================================================
-// General
+// Layout
 // ================================================================
 
 // --------------------------------
 // Card
 
 $card-header-height-base: 40 !default;
+
+// --------------------------------
+// Flow
+
+$container-width-map: (
+  xs: 100%,
+  sm: 100%,
+  md: 80%,
+  lg: rem(1200),
+  xl: rem(1200),
+)
+

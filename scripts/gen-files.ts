@@ -213,7 +213,7 @@ const optionsList: GenerateOptions[] = [
     footer: '};',
     item: ({ path, name, ext }) => {
       const key: string = path.replace('@docs/examples/', '').replace(/\.tsx/, '');
-      const chunkName: string = `chunk-${p.dirname(key).replace(/\//g, '_')}`;
+      const chunkName: string = `examples-${p.dirname(key).replace(/\//g, '_')}`;
 
       return `  '${key}': async () => import(/* webpackChunkName: "${chunkName}" */ '${path}'),`;
     },
@@ -226,7 +226,7 @@ const optionsList: GenerateOptions[] = [
     footer: '};',
     item: ({ path, name, ext }) => {
       const key: string = path.replace('@docs/examples/', '').replace(/\.vue/, '');
-      const chunkName: string = `chunk-${p.dirname(key).replace(/\//g, '_')}`;
+      const chunkName: string = `examples-${p.dirname(key).replace(/\//g, '_')}`;
 
       return `  '${key}': async () => import(/* webpackChunkName: "${chunkName}" */ '${path}'),`;
     },
@@ -264,7 +264,55 @@ const optionsList: GenerateOptions[] = [
   },
 ];
 
-Promise.all(optionsList.map(generateFiles)).catch((e: Error) => {
+const optionsListArticle: GenerateOptions[] = ['zh-CN'].map<GenerateOptions>(lang => ({
+  patterns: [`docs/articles/${lang}/**/*.md`],
+  output: `docs/articles/${lang}/all.ts`,
+  comments: ['All articles'],
+  header: 'export default {',
+  footer: '};',
+  body: files => {
+    return files
+      .map(info => {
+        const path: string = info.path
+          .replace(`@docs/articles/${lang}/`, '')
+          .replace(/\.md$/, '');
+
+        return `  '${path}': async () => import('${info.path}'),`;
+      })
+      .join('\n');
+  },
+}));
+
+const optionsListArticleMenu: GenerateOptions[] = ['zh-CN'].map<GenerateOptions>(
+  lang => ({
+    patterns: [`docs/articles/${lang}/**/*.md`],
+    output: `docs/articles/${lang}/menu.ts`,
+    comments: ['All articles'],
+    header: 'export default {',
+    footer: '};',
+    body: files => {
+      return files
+        .map(info => {
+          const path: string = info.path
+            .replace(`@docs/articles/${lang}/`, '')
+            .replace(/\.md$/, '');
+
+          const name: string = fs
+            .readFileSync(info.path.replace('@', ''), 'utf-8')
+            .split('\n')[0]
+            .replace(/#/g, '')
+            .trim();
+
+          return `  '${path}': '${name}',`;
+        })
+        .join('\n');
+    },
+  }),
+);
+
+Promise.all(
+  [...optionsList, ...optionsListArticle, ...optionsListArticleMenu].map(generateFiles),
+).catch((e: Error) => {
   console.error(e.message);
   console.error(e.stack);
 });

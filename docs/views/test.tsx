@@ -14,7 +14,7 @@ import { BREAK_POINT_KEYS, MediaAlias, MediaScreen } from '@void/ui/lib/void-ui'
  * View: Test
  */
 @Component
-export default class ViewTest extends Vue {
+export class VTest extends Vue {
   private render(h: CreateElement): VNode {
     return (
       <div staticClass="v-test" style={{ padding: '32px' }}>
