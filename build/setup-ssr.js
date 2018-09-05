@@ -13,24 +13,25 @@ function createRenderer(bundle, options) {
  * @param {'development' | 'production'} mode
  * @param {express.Application} app
  * @param {string} templatePath
- * @param {string} serverOutputDir
- * @param {string} clientOutputDir
+ * @param {string} outputDir
  */
-module.exports.setup = (mode, app, templatePath, serverOutputDir, clientOutputDir) => {
+module.exports.setup = (mode, app, templatePath, outputDir) => {
   let isDev = mode === 'development';
   let renderer;
 
   const update = () =>
-    (renderer = createRenderer(require(`${serverOutputDir}/vue-ssr-server-bundle.json`), {
-      template: fs.readFileSync(templatePath, 'utf-8'),
-      clientManifest: clientOutputDir
-        ? require(`${clientOutputDir}/vue-ssr-client-manifest.json`)
-        : undefined,
-    }));
+    (renderer = createRenderer(
+      require(`${outputDir}/server/vue-ssr-server-bundle.json`),
+      {
+        template: fs.readFileSync(templatePath, 'utf-8'),
+        clientManifest: require(`${outputDir}/client/vue-ssr-client-manifest.json`),
+      },
+    ));
 
   update();
+
   if (isDev) {
-    [templatePath, serverOutputDir, clientOutputDir]
+    [templatePath, outputDir]
       .filter(path => path)
       .forEach(path => fs.watch(path, update));
   }

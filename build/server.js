@@ -27,16 +27,10 @@ const static = dir =>
       : undefined,
   );
 
-app.use('/static', express.static('www/client/static'));
-app.use('/examples', express.static('www/client/examples'));
+app.use('/void-ui/static', express.static(resolve('www/client/static')));
+app.use('/void-ui/examples', express.static(resolve('www/client/examples')));
 
-setup(
-  NODE_ENV,
-  app,
-  resolve('public/template.html'),
-  resolve('www/server'),
-  resolve('www/client'),
-);
+setup(NODE_ENV, app, resolve('public/template.html'), resolve('www'));
 
 app.listen(PORT, () => {
   console.info(`
