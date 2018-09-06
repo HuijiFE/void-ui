@@ -45,8 +45,8 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
   public readonly label?: string;
 
   @Prop({ type: String })
-  public readonly theme!: Theme;
-  public get $theme(): Theme {
+  public readonly theme?: Theme;
+  public get themeValue(): Theme {
     return this.theme || (this.$vd_theme && this.$vd_theme.theme) || 'lite';
   }
 
@@ -68,7 +68,7 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
 
   public get classes(): ClassName {
     return [
-      `vdp-theme_${this.$theme}`,
+      `vdp-theme_${this.themeValue}`,
       `vdp-tone_${this.tone}`,
       `vdp-skin_${this.skin}`,
       `vdp-shape_${this.shape}`,

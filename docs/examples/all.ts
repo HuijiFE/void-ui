@@ -9,6 +9,5 @@
 
 export default {
   'general/button/overview': [ 'tsx', 'vue' ],
-  'general/button/tone': [ 'vue' ],
   'layout/tabs/overview': [ 'tsx' ],
 };

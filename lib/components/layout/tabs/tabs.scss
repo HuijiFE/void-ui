@@ -2,11 +2,12 @@
  * Component: Tabs
  */
 
-$vd-tabs_transition-duration: 5000ms !default;
+$vd-tabs_transition-duration: 300ms !default;
 $vd-tabs_transition-distance: 64 !default;
 
 @include comp('tabs') {
   position: relative;
+  flex: 1;
   border: rem($border-base) solid transparent;
 
   overflow: hidden;

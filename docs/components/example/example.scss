@@ -2,7 +2,27 @@
  * Component: Example
  */
 @include comp('example') {
-  @include elem('header') {
+  @include elem('preview-header') {
+    margin-right: auto;
+  }
+
+  @include elem('header-icon') {
+    margin-right: rem(gap('xsmall'));
     font-size: rem(16);
+  }
+
+  @include elem('toggle-fullscreen') {
+    padding: 0 rem($gap-base);
+    margin: 0;
+    border: none;
+    background-color: transparent;
+  }
+
+  @include when('expanded') {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
   }
 }

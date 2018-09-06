@@ -40,8 +40,8 @@ export const SIZE_KEYS: ReadonlyArray<Size> = [
  * Component with theme color.
  */
 export interface ThemeComponent {
-  readonly theme: Theme;
-  readonly $theme: Theme;
+  readonly theme?: Theme;
+  readonly themeValue: Theme;
 }
 
 /**

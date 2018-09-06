@@ -8,10 +8,12 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
+import { ClassName } from 'void-ui';
 import axios, { AxiosInstance } from 'axios';
 import examples from '@docs/examples/all';
 import examplesTsx from '@docs/examples/all-tsx';
 import examplesVue from '@docs/examples/all-vue';
+import { isDevelopment } from '@docs/utils/environment';
 
 export type AsyncComponentRecord = Record<string, () => Promise<typeof import('vue')>>;
 
@@ -46,23 +48,43 @@ export class CExample extends Vue {
   public readonly path!: string;
 
   public existed: boolean = false;
-  public types: string[] = [];
+  public extensions: string[] = [];
   public has: Record<string, boolean> = {};
   public src: Record<string, string> = {};
 
-  public async loadSourceCode(ext: string): Promise<void> {
-    if (this.has[ext]) {
-      this.src[ext] = await getSourceCode(`${this.path}.${ext}`);
+  public expanded: boolean = false;
+
+  public get classes(): ClassName {
+    return [
+      {
+        'is-expanded': this.expanded,
+      },
+    ];
+  }
+
+  public toggleFullscreen(): void {
+    this.expanded = !this.expanded;
+  }
+
+  public loadSourceCode(): void {
+    if (!this.$isServer) {
+      this.extensions.forEach(async ext => {
+        if (this.has[ext]) {
+          this.src[ext] = await getSourceCode(`${this.path}.${ext}`);
+        }
+      });
     }
   }
 
-  @Watch('path')
-  public async load(path: string): Promise<void> {
+  @Watch('path', { immediate: true })
+  public watchPath(path: string): void {
     if (!CExample.all[path]) {
       this.existed = false;
 
       return;
     }
+
+    this.existed = true;
 
     const has: Record<string, boolean> = {};
     const src: Record<string, string> = {};
@@ -76,40 +98,56 @@ export class CExample extends Vue {
       src[ext] = '';
     });
 
-    this.types = [...new Set<string>([...defaultTypes, ...CExample.all[path]])];
+    this.extensions = [...new Set<string>([...defaultTypes, ...CExample.all[path]])];
     this.has = has;
     this.src = src;
 
-    await Promise.all(CExample.all[path].map(async ext => this.loadSourceCode(ext)));
-  }
-
-  private async mounted(): Promise<void> {
-    try {
-      await this.load(this.path);
-    } catch (error) {
-      console.error(error);
-    }
+    this.loadSourceCode();
   }
 
   private render(h: CreateElement): VNode {
     return (
-      <div staticClass="c-example">
-        <div staticClass="c-example_header">
-          <c-file-icon icon="scss" />
-          <c-file-icon icon="javascript" />
-          <c-file-icon icon="typescript" />
-          <c-file-icon icon="vue" />
-          <c-file-icon icon="vuets" />
-        </div>
-        {this.has.tsx ? h(CExample.tsx[this.path]) : ''}
-        {this.has.vue ? h(CExample.vue[this.path]) : ''}
-        {this.types.filter(ext => this.has[ext]).map(ext => (
-          <div>
-            <h2>{ext}</h2>
-            <pre>{this.src[ext]}</pre>
-          </div>
-        ))}
-      </div>
+      <vd-tabs staticClass="c-example" class={this.classes}>
+        <button
+          slot="right"
+          staticClass="c-example_toggle-fullscreen"
+          onClick={this.toggleFullscreen}
+        >
+          <fa-icon icon={this.expanded ? 'compress' : 'expand'} />
+        </button>
+        {this.has.vue && isDevelopment ? (
+          <vd-tab-pane label="Preview" data-source=".vue">
+            {h(CExample.vue[this.path])}
+          </vd-tab-pane>
+        ) : (
+          h()
+        )}
+        {this.has.tsx ? (
+          <vd-tab-pane
+            label="Preview"
+            label-extra-class="c-example_preview-header"
+            data-source=".tsx"
+          >
+            {h(CExample.tsx[this.path])}
+          </vd-tab-pane>
+        ) : (
+          h()
+        )}
+
+        {this.extensions.map(
+          ext =>
+            this.has[ext] ? (
+              <vd-tab-pane>
+                <span slot="label">
+                  <c-file-icon staticClass="c-example_header-icon" icon={ext} />.{ext}
+                </span>
+                <pre>{this.src[ext]}</pre>
+              </vd-tab-pane>
+            ) : (
+              h()
+            ),
+        )}
+      </vd-tabs>
     );
   }
 }

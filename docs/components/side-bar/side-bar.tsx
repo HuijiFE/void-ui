@@ -26,13 +26,12 @@ export interface SideBarItem {
 export class CSideBar extends Vue implements ThemeComponent {
   @Prop({ type: String })
   public readonly theme?: Theme;
-
-  public get $theme(): Theme {
+  public get themeValue(): Theme {
     return this.theme || this.$vd_theme.theme;
   }
 
   public get classes(): ClassName {
-    return [`cp-theme_${this.$theme}`];
+    return [`cp-theme_${this.themeValue}`];
   }
 
   @Prop({ type: Array, default: () => [] })

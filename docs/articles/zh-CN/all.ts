@@ -15,12 +15,12 @@ export default [
   },
   {
     path: 'layout/flexbox',
-    name: 'Flexbox Layout 弹性盒子布局',
+    name: 'Flexbox 弹性盒子',
     component: async () => import('@docs/articles/zh-CN/layout/flexbox.md'),
   },
   {
     path: 'layout/flow',
-    name: 'Flow Layout 流式布局',
+    name: 'Flow 流式',
     component: async () => import('@docs/articles/zh-CN/layout/flow.md'),
   },
   {

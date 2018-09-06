@@ -16,13 +16,13 @@ import { Style, ClassName, Theme, ThemeComponent } from '@void/ui/lib/components
 @Component
 export class VdTabs extends Vue implements ThemeComponent {
   @Prop({ type: String })
-  public readonly theme!: Theme;
-  public get $theme(): Theme {
+  public readonly theme?: Theme;
+  public get themeValue(): Theme {
     return this.theme || this.$vd_theme.theme;
   }
 
   public get classes(): ClassName {
-    return [`vdp-theme_${this.$theme}`];
+    return [`vdp-theme_${this.themeValue}`];
   }
 
   private panes: VdTabPane[] = [];
@@ -103,16 +103,25 @@ export class VdTabs extends Vue implements ThemeComponent {
     return (
       <div staticClass="vd-tabs" class={this.classes}>
         <div staticClass="vd-tabs_header" ref="header">
+          {this.$slots.left}
           {this.panes.map((pane, index) => (
             <button
               staticClass="vd-tabs_header-item"
               key={`${index}-${pane.label}`}
-              class={{ 'is-selected': pane.selected }}
+              class={[
+                { 'is-selected': pane.selected },
+                ...(pane.labelExtraClass
+                  ? typeof pane.labelExtraClass === 'string'
+                    ? [pane.labelExtraClass]
+                    : pane.labelExtraClass
+                  : []),
+              ]}
               onClick={() => this.select(pane)}
             >
-              {pane.$slots.header || pane.label}
+              {pane.$slots.label || pane.label}
             </button>
           ))}
+          {this.$slots.right}
         </div>
         <div staticClass="vd-tabs_separator">
           <div staticClass="vd-tabs_indicator" style={this.indicatorStyle} />
@@ -134,6 +143,9 @@ export class VdTabs extends Vue implements ThemeComponent {
 export class VdTabPane extends Vue {
   @Prop({ type: String })
   public readonly label?: string;
+
+  @Prop({ type: [String, Array] })
+  public readonly labelExtraClass?: string | ClassName;
 
   private tabs!: VdTabs;
 

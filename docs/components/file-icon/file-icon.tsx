@@ -72,6 +72,8 @@ const iconMap: Record<string, (h: CreateElement) => VNode[]> = {
   // tslint:enable
 };
 
+iconMap['tsx'] = iconMap['vuets'];
+
 /**
  * Component: FileIcon
  */

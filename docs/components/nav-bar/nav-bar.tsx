@@ -26,13 +26,13 @@ import {
 @Component
 export class CNavBar extends Vue implements ThemeComponent {
   @Prop({ type: String })
-  public readonly theme!: Theme;
-  public get $theme(): Theme {
+  public readonly theme?: Theme;
+  public get themeValue(): Theme {
     return this.theme || (this.$vd_theme && this.$vd_theme.theme) || 'lite';
   }
 
   public get classes(): ClassName {
-    return [`cp-theme_${this.$theme}`];
+    return [`cp-theme_${this.themeValue}`];
   }
 
   private render(h: CreateElement): VNode {
