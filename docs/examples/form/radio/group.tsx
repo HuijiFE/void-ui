@@ -50,6 +50,7 @@ export default class Example extends Vue {
               model={this.fruit}
               items-source={this.radios}
               onChange={this.onRadioChange}
+              direction="column"
             />
           </vd-flexbox>
         </vd-flexbox>

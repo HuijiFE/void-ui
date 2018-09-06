@@ -75,11 +75,21 @@
   flex-flow: row wrap;
   justify-content: flex-start;
   align-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
 
   margin: 0 rem(-$gap-base / 2);
   .#{class-comp('radio')} {
     flex: none;
     padding: 0 rem($gap-base / 2);
+  }
+
+  @each $direction in $type-direction {
+    @include prop(
+      (
+        'direction': $direction,
+      )
+    ) {
+      flex-direction: $direction;
+    }
   }
 }

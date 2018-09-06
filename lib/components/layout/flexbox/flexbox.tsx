@@ -18,9 +18,10 @@ import {
   Size,
   ResponsiveValues,
   LinkLikeComponent,
+  Direction,
 } from '@void/ui/lib/components/base/variables';
 
-export type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse';
+export type FlexDirection = Direction;
 export type FlexWrap = 'nowrap' | 'wrap' | 'wrap-reverse';
 
 export type FlexAlign =

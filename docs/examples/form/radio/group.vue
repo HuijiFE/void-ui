@@ -9,7 +9,8 @@
       </vd-flexbox>
       <vd-flexbox :flex="100">
         <vd-radio-group :items-source="radios"
-                        v-model="fruit" />
+                        v-model="fruit"
+                        direction="column" />
       </vd-flexbox>
     </vd-flexbox>
   </div>

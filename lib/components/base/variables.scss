@@ -112,6 +112,10 @@ $raise-shadow-map: (
   @return map-get($map: $raise-shadow-map, $key: $level);
 }
 
+// Other
+
+$type-direction: row, row-reverse, column, column-reverse;
+
 // ================================================================
 // General
 

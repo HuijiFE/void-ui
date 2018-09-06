@@ -109,3 +109,8 @@ export const DEFAULT_BREAK_POINTS: BreakPoints = {
   lg: 1280,
   xl: 1920,
 };
+
+// --------------------------------
+// Layout
+
+export type Direction = 'row' | 'row-reverse' | 'column' | 'column-reverse';

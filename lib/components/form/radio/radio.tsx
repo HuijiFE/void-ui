@@ -8,7 +8,12 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { ClassName, Theme, ThemeComponent } from '@void/ui/lib/components/base';
+import {
+  ClassName,
+  Theme,
+  ThemeComponent,
+  Direction,
+} from '@void/ui/lib/components/base';
 import { mixinFormComponent, FormComponent } from '@void/ui/lib/components/form/_base';
 import { VdForm } from '@void/ui/lib/components/form/form/form';
 
@@ -106,13 +111,24 @@ export class VdRadioGroup extends Vue {
   @Prop({ type: Array, required: true })
   public readonly itemsSource!: RadioData[];
 
+  @Prop({ type: String })
+  public readonly direction?: Direction;
+
+  public get classes(): ClassName {
+    return [
+      {
+        [`vdp-direction_${this.direction}`]: this.direction,
+      },
+    ];
+  }
+
   private onChange(value: string | number): void {
     this.$emit('change', value);
   }
 
   private render(h: CreateElement): VNode {
     return (
-      <div staticClass="vd-radio-group">
+      <div staticClass="vd-radio-group" class={this.classes}>
         {this.itemsSource.map(item => (
           <vd-radio
             model={this.model}
