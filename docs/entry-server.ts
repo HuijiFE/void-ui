@@ -2,7 +2,7 @@
  * Entry Server
  */
 import Vue from 'vue';
-import { createApp } from '@docs/App.tsx';
+import { createApp } from '@docs/main';
 
 export default async (context: { url: string; state?: any }): Promise<Vue> => {
   const { app, router } = createApp();

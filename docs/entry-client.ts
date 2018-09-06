@@ -2,7 +2,7 @@
  * Entry Client
  */
 
-import { createApp } from '@docs/App.tsx';
+import { createApp } from '@docs/main';
 
 const { app, router } = createApp();
 

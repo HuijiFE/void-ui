@@ -9,9 +9,34 @@
 
 export default [
   {
+    path: 'basic/cep',
+    name: 'CEP 命名约定',
+    component: async () => import('@docs/articles/zh-CN/basic/cep.md'),
+  },
+  {
+    path: 'basic/color',
+    name: 'Color 颜色',
+    component: async () => import('@docs/articles/zh-CN/basic/color.md'),
+  },
+  {
+    path: 'basic/responsive',
+    name: 'Responsive 响应式',
+    component: async () => import('@docs/articles/zh-CN/basic/responsive.md'),
+  },
+  {
+    path: 'basic/style',
+    name: 'Style 样式',
+    component: async () => import('@docs/articles/zh-CN/basic/style.md'),
+  },
+  {
     path: 'general/button',
     name: 'Button 按钮',
     component: async () => import('@docs/articles/zh-CN/general/button.md'),
+  },
+  {
+    path: 'general/icon',
+    name: 'Icon 图标',
+    component: async () => import('@docs/articles/zh-CN/general/icon.md'),
   },
   {
     path: 'layout/flexbox',

@@ -1,13 +1,4 @@
-import Vue, { CreateElement, VNode } from 'vue';
-import {
-  Component,
-  Emit,
-  Inject,
-  Model,
-  Prop,
-  Provide,
-  Watch,
-} from 'vue-property-decorator';
+import Vue from 'vue';
 
 import { config, library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -26,36 +17,25 @@ Object.entries(components).forEach(([name, comp]) => {
   Vue.component(name, comp);
 });
 
-/**
- * App
- */
-@Component
-class App extends Vue {
-  private render(h: CreateElement): VNode {
-    return (
-      <div id="app" staticClass="v-app" class={`vda-theme_${this.$vd_theme.theme}`}>
-        <c-nav-bar />
-        <router-view staticClass="v-app_wrapper" />
-      </div>
-    );
-  }
-}
-
 Vue.config.productionTip = false;
 
 import VueRouter from 'vue-router';
 import { createRouter } from '@docs/router';
+import { VApp } from '@docs/views/app';
 
+/**
+ * App factory
+ */
 export const createApp: () => { app: Vue; router: VueRouter } = () => {
   const router: VueRouter = createRouter();
 
   const app: Vue = new Vue({
     router,
-    render: h => h(App),
+    render: h => h(VApp),
   });
 
   return { app, router };
 };
 
 // tslint:disable:no-import-side-effect
-import '@docs/App.scss';
+import '@docs/main.scss';

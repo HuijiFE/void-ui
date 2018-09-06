@@ -1,8 +1,0 @@
-/**
- * View: Test
- */
-@include comp('test') {
-  @include elem('cover') {
-    @include image-cover(rem(100));
-  }
-}

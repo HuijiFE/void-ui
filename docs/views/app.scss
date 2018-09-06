@@ -1,25 +1,3 @@
-// font-awesome
-@import '~@fortawesome/fontawesome-svg-core/styles.css';
-
-// custom variables
-$root-font-size: 100;
-
-@import '~@void/ui/lib/void-ui.scss';
-
-@import '~@docs/variables.scss';
-
-// Components
-$namespace: 'c';
-@import '@docs/components/all.scss';
-
-// Examples
-$namespace: 'e';
-@import '@docs/examples/all.scss';
-
-// Views
-$namespace: 'v';
-@import '@docs/views/all.scss';
-
 /**
  * View: App
  */
@@ -49,4 +27,21 @@ $namespace: 'v';
     overflow-y: scroll;
     scroll-behavior: smooth;
   }
+}
+
+// transition
+
+.rise-fade-enter-active {
+  transition: all 200ms ease-in-out 200ms;
+}
+.rise-fade-leave-active {
+  transition: all 200ms ease-in-out;
+}
+.rise-fade-enter {
+  transform: translateY(rem(16));
+  opacity: 0;
+}
+.rise-fade-leave-to {
+  transform: translateY(rem(16));
+  opacity: 0;
 }

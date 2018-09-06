@@ -16,6 +16,8 @@ const routeConfigMap: Record<string, RouteConfig[]> = {
   'zh-CN': zhCN,
 };
 
+const categories: string[] = ['basic', 'general', 'layout', 'form'];
+
 /**
  * View: Components
  */
@@ -33,10 +35,6 @@ export class VComponents extends Vue {
     const routeConfigs: RouteConfig[] = routeConfigMap[language];
     if (this.language !== language && routeConfigs) {
       this.language = language;
-
-      const categories: string[] = [
-        ...new Set(routeConfigs.map(({ path }) => path.split('/')[0])),
-      ];
 
       this.menuData = categories.map<SideBarGroup>(cat => ({
         label: cat,
@@ -56,7 +54,9 @@ export class VComponents extends Vue {
         <c-side-bar items-source={this.menuData} />
         <div staticClass="v-app_content">
           <vd-container>
-            <router-view />
+            <transition name="rise-fade">
+              <router-view />
+            </transition>
           </vd-container>
         </div>
       </div>

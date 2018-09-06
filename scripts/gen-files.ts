@@ -255,13 +255,6 @@ const optionsList: GenerateOptions[] = [
         .join('\n');
     },
   },
-
-  // views
-  {
-    patterns: ['docs/views/**/*.scss'],
-    output: 'docs/views/all.scss',
-    comments: ['All views style of void-ui documentation.'],
-  },
 ];
 
 const optionsListArticle: GenerateOptions[] = ['zh-CN'].map<GenerateOptions>(lang => ({
