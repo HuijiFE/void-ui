@@ -17,15 +17,15 @@ export default class Example extends Vue {
   private render(h: CreateElement): VNode {
     return (
       <div staticClass="e-tabs-overview">
-        <vd-tabs>
+        <vd-tabs bordered>
           <vd-tab-pane label="tab 1">
-            <c-demo-box>tab 1</c-demo-box>
+            <c-demo-box label="tab 1" />
           </vd-tab-pane>
           <vd-tab-pane label="tab 2">
-            <c-demo-box>tab 2</c-demo-box>
+            <c-demo-box label="tab 2" />
           </vd-tab-pane>
           <vd-tab-pane label="tab 3">
-            <c-demo-box>tab 3</c-demo-box>
+            <c-demo-box label="tab 3" />
           </vd-tab-pane>
         </vd-tabs>
       </div>

@@ -23,9 +23,20 @@
     flex: 100%;
     position: relative;
     height: 100%;
-    padding: 0 rem($gap-base);
+    padding: rem($gap-base);
     overflow-y: scroll;
     scroll-behavior: smooth;
+  }
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'theme': $theme,
+      )
+    ) {
+      color: theme($theme);
+      background-color: theme($theme, 'bg');
+    }
   }
 }
 

@@ -20,19 +20,6 @@
   font-size: rem(15);
   line-height: rem(32);
 
-  @each $theme in $type-theme {
-    @include prop(
-      (
-        'theme': $theme,
-      )
-    ) {
-      color: theme($theme);
-      @include elem('group-label') {
-        color: theme($theme, 'fg', 'sub');
-      }
-    }
-  }
-
   @include elem('wrapper', 'group', 'group-label', 'group-wrapper', 'item') {
     display: block;
     padding: 0;
@@ -72,5 +59,26 @@
     }
 
     transition: border-color ease-in-out 200ms;
+  }
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'theme': $theme,
+      )
+    ) {
+      color: theme($theme);
+      background-color: theme($theme, 'bg');
+
+      @include elem('group-label') {
+        color: theme($theme, 'fg', 'sub');
+      }
+
+      @include elem('item-label') {
+        @include when('active') {
+          color: theme($theme, 'fg', 'emphasize');
+        }
+      }
+    }
   }
 }

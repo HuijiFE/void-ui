@@ -16,19 +16,14 @@ import { ClassName, Theme } from 'void-ui';
 @Component
 export class CDemoBox extends Vue {
   @Prop({ type: String })
-  public readonly theme?: Theme;
-  public get $theme(): Theme {
-    return this.theme || this.$vd_theme.theme;
-  }
-
-  public get classes(): ClassName {
-    return [`cp-theme_${this.$theme}`];
-  }
+  public readonly label?: String;
 
   private render(h: CreateElement): VNode {
     return (
-      <div staticClass="c-demo-box" class={this.classes}>
-        <div staticClass="c-demo-box_content">{this.$slots.default}</div>
+      <div staticClass="c-demo-box">
+        <div staticClass="c-demo-box_content">
+          {this.$slots.default || <div staticClass="c-demo-box_label">{this.label}</div>}
+        </div>
       </div>
     );
   }

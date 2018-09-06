@@ -11,5 +11,5 @@ export default {
   'form/radio/basic': [ 'tsx', 'vue' ],
   'form/radio/group': [ 'tsx', 'vue' ],
   'general/button/overview': [ 'tsx', 'vue' ],
-  'layout/tabs/overview': [ 'tsx' ],
+  'layout/tabs/basic': [ 'tsx' ],
 };

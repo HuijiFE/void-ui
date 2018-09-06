@@ -8,7 +8,6 @@ $vd-tabs_transition-distance: 64 !default;
 @include comp('tabs') {
   position: relative;
   flex: 1;
-  border: rem($border-base) solid transparent;
 
   overflow: hidden;
 
@@ -142,11 +141,18 @@ $vd-tabs_transition-distance: 64 !default;
     ) {
       color: theme($theme);
       background-color: theme($theme, 'bg');
-      border-color: theme($theme, 'bd');
+
+      @include when('bordered') {
+        border: rem($border-base) solid theme($theme, 'bd');
+      }
 
       @include elem('separator') {
         border-color: theme($theme, 'bd');
       }
     }
+  }
+
+  @include when('raise') {
+    box-shadow: raise-shadow();
   }
 }

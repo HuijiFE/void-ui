@@ -4,7 +4,7 @@
 @include comp('demo-box') {
   position: relative;
   width: 100%;
-  padding-bottom: 61.8%;
+  padding-bottom: rem(200);
   border: rem(1) solid transparent;
 
   @include elem('content') {
@@ -13,26 +13,20 @@
     bottom: 0;
     left: 0;
     right: 0;
+  }
 
+  @include elem('label') {
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
     justify-content: center;
     align-content: center;
     align-items: center;
 
-    font-size: rem(24);
-    font-weight: normal;
-  }
-
-  @each $theme in $type-theme {
-    @include prop(
-      (
-        'theme': $theme,
-      )
-    ) {
-      color: theme($theme, 'fg', 'disabled');
-      background-color: theme($theme, 'bg', 'higher');
-      border-color: theme($theme, 'bd', 'normal');
-    }
+    font-size: rem(32);
+    font-weight: bold;
+    opacity: 0.25;
   }
 }

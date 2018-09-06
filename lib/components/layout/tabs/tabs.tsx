@@ -21,8 +21,21 @@ export class VdTabs extends Vue implements ThemeComponent {
     return this.theme || this.$vd_theme.theme;
   }
 
+  @Prop({ type: Boolean, default: false })
+  public readonly bordered!: boolean;
+
+  @Prop({ type: [Boolean, Number], default: false })
+  public readonly raise!: boolean | number;
+
   public get classes(): ClassName {
-    return [`vdp-theme_${this.themeValue}`];
+    return [
+      `vdp-theme_${this.themeValue}`,
+      {
+        'is-bordered': this.bordered,
+        'is-raise': this.raise && typeof this.raise === 'boolean',
+        [`vdp-raise_${this.raise}`]: this.raise && typeof this.raise === 'number',
+      },
+    ];
   }
 
   private panes: VdTabPane[] = [];
