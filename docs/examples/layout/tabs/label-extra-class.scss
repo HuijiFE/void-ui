@@ -1,0 +1,8 @@
+/**
+ * Component: TabsDemo
+ */
+@include comp('tabs-demo') {
+  @include elem('repulsive-right') {
+    margin-right: auto;
+  }
+}

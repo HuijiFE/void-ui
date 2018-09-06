@@ -1,5 +1,5 @@
 <template>
-  <div staticClass="e-radio-basic">
+  <div class="e-radio-basic">
     <vd-flexbox gap>
       <vd-flexbox :flex="100">
         <div>

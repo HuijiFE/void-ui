@@ -18,7 +18,7 @@ export default class Example extends Vue {
     return (
       <div staticClass="e-tabs-demo">
         <vd-tabs bordered>
-          <vd-tab-pane label="tab 1">
+          <vd-tab-pane label="tab 1" label-extra-class="e-tabs-demo_repulsive-right">
             <c-demo-box label="tab 1" />
           </vd-tab-pane>
           <vd-tab-pane label="tab 2">

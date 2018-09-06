@@ -75,7 +75,6 @@ $vd-tabs_transition-distance: 64 !default;
 
   @include elem('container') {
     width: 100%;
-    overflow: hidden;
   }
 
   @include elem('wrapper') {
@@ -94,7 +93,6 @@ $vd-tabs_transition-distance: 64 !default;
 
   @include elem('pane') {
     width: 100%;
-    overflow: hidden;
     transform: translate3d(0, 0, 0);
 
     @each $direction in 'left', 'right' {

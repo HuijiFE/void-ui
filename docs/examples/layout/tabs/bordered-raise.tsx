@@ -17,7 +17,7 @@ export default class Example extends Vue {
   private render(h: CreateElement): VNode {
     return (
       <div staticClass="e-tabs-demo">
-        <vd-tabs bordered>
+        <vd-tabs bordered={false} raise>
           <vd-tab-pane label="tab 1">
             <c-demo-box label="tab 1" />
           </vd-tab-pane>
