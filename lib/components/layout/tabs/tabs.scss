@@ -22,7 +22,7 @@ $vd-tabs_transition-distance: 64 !default;
 
   @include elem('header') {
     width: 100%;
-    height: rem($card-header-height-base);
+    height: rem($card-header-height);
     padding: 0 rem($gap-base);
 
     display: flex;
@@ -30,6 +30,8 @@ $vd-tabs_transition-distance: 64 !default;
     justify-content: flex-start;
     align-content: stretch;
     align-items: stretch;
+
+    font-size: rem($card-header-font-size);
   }
 
   @include elem('header-item') {
@@ -54,9 +56,9 @@ $vd-tabs_transition-distance: 64 !default;
   @include elem('indicator') {
     position: absolute;
     left: 0;
-    bottom: rem(-1);
+    bottom: rem(-$border-base);
     width: 0;
-    height: rem(2);
+    height: rem($border-base * 2);
 
     background-color: tone();
 

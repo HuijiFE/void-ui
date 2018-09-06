@@ -1,0 +1,74 @@
+/**
+ * Component: Card
+ */
+@include comp('card') {
+  position: relative;
+  flex: 1;
+
+  overflow: hidden;
+
+  @include elem('header') {
+    height: rem($card-header-height + $border-base);
+    border-bottom: rem($border-base) solid;
+    padding: 0 rem($gap-base);
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+
+    font-size: rem($card-header-font-size);
+  }
+
+  @include elem('content') {
+    padding: rem($gap-base / 2) rem($gap-base);
+
+    &:first-child {
+      padding-top: rem($gap-base);
+    }
+    &:last-child {
+      padding-bottom: rem($gap-base);
+    }
+  }
+
+  @include elem-adjacent('header', 'content') {
+    padding-top: rem($gap-base);
+  }
+
+  @include elem('separator') {
+    margin: rem($gap-base / 2) 0;
+    border-bottom: rem($border-base) solid transparent;
+  }
+
+  @include when('bordered') {
+    border: rem($border-base) solid;
+  }
+
+  @include when('raise') {
+    box-shadow: raise-shadow();
+  }
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'theme': $theme,
+      )
+    ) {
+      color: theme($theme);
+      background-color: theme($theme, 'bg');
+
+      @include when('bordered') {
+        border-color: theme($theme, 'bd');
+      }
+
+      @include elem('header') {
+        color: theme($theme, 'fg', 'emphasize');
+      }
+
+      @include elem('header', 'separator') {
+        border-color: theme($theme, 'bd');
+      }
+    }
+  }
+}

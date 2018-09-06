@@ -44,6 +44,11 @@ export default [
     component: async () => import('@docs/articles/zh-CN/general/icon.md'),
   },
   {
+    path: 'layout/card',
+    name: 'Card 卡片',
+    component: async () => import('@docs/articles/zh-CN/layout/card.md'),
+  },
+  {
     path: 'layout/flexbox',
     name: 'Flexbox 弹性盒子',
     component: async () => import('@docs/articles/zh-CN/layout/flexbox.md'),
