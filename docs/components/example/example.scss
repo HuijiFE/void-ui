@@ -2,6 +2,8 @@
  * Component: Example
  */
 @include comp('example') {
+  margin: rem($gap-base) 0;
+
   @include elem('preview-header') {
     margin-right: auto;
   }

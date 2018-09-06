@@ -1,0 +1,13 @@
+/**
+ * Component: CardArray
+ */
+@include comp('card-array') {
+  @include elem('item') {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: rem(80);
+  }
+}
