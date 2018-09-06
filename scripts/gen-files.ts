@@ -175,7 +175,11 @@ please provide a resolver function.
 const optionsList: GenerateOptions[] = [
   // lib
   {
-    patterns: ['lib/components/**/*.(tsx|ts)', '!lib/components/base/**/*'],
+    patterns: [
+      'lib/components/**/*.(tsx|ts)',
+      '!lib/components/base/**/*',
+      '!lib/components/**/_base.*',
+    ],
     output: 'lib/components/all.ts',
     comments: ['All components of void-ui.'],
   },

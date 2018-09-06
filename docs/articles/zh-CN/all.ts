@@ -29,6 +29,11 @@ export default [
     component: async () => import('@docs/articles/zh-CN/basic/style.md'),
   },
   {
+    path: 'form/radio',
+    name: 'Radio 单选框',
+    component: async () => import('@docs/articles/zh-CN/form/radio.md'),
+  },
+  {
     path: 'general/button',
     name: 'Button 按钮',
     component: async () => import('@docs/articles/zh-CN/general/button.md'),

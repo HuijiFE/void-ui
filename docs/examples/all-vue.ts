@@ -8,5 +8,7 @@
  */
 
 export default {
+  'form/radio/basic': async () => import(/* webpackChunkName: "examples-form_radio" */ '@docs/examples/form/radio/basic.vue'),
+  'form/radio/group': async () => import(/* webpackChunkName: "examples-form_radio" */ '@docs/examples/form/radio/group.vue'),
   'general/button/overview': async () => import(/* webpackChunkName: "examples-general_button" */ '@docs/examples/general/button/overview.vue'),
 };

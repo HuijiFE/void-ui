@@ -1,0 +1,85 @@
+/**
+ * Component: Radio
+ */
+@include comp('radio') {
+  position: relative;
+  vertical-align: middle;
+  display: inline-flex;
+  flex: none;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+
+  height: rem($form-component-height);
+
+  cursor: pointer;
+  user-select: none;
+
+  font-size: rem($form-font-size);
+
+  @include elem('implicit') {
+    display: none;
+  }
+
+  @include elem('symbol') {
+    display: block;
+    width: rem($form-symbol-size);
+    height: rem($form-symbol-size);
+    border-radius: 50%;
+    border: rem(1) solid transparent;
+    margin-right: rem($form-font-size / 2);
+  }
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'theme': $theme,
+      )
+    ) {
+      color: theme($theme);
+      @include elem('symbol') {
+        border-color: theme($theme, 'fg', 'sub');
+        background-color: theme($theme, 'bg');
+      }
+    }
+  }
+
+  @include when('checked') {
+    @include elem('symbol') {
+      @keyframes vd-radio-checked {
+        0% {
+          //
+        }
+        50% {
+          border-width: rem($form-symbol-size / 2);
+        }
+        100% {
+          border-width: rem($form-symbol-size / 4);
+          border-color: tone();
+        }
+      }
+
+      animation: vd-radio-checked $form-symbol-transition-duration ease-in-out forwards;
+    }
+  }
+}
+
+/**
+ * Component: RadioGroup
+ */
+@include comp('radio-group') {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: center;
+
+  margin: 0 rem(-$gap-base / 2);
+  .#{class-comp('radio')} {
+    flex: none;
+    padding: 0 rem($gap-base / 2);
+  }
+}

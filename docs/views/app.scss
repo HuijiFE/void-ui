@@ -31,11 +31,13 @@
 
 // transition
 
+$router-view-transition-duration: 200ms;
 .rise-fade-enter-active {
-  transition: all 200ms ease-in-out 200ms;
+  transition: all $router-view-transition-duration ease-in-out
+    $router-view-transition-duration;
 }
 .rise-fade-leave-active {
-  transition: all 200ms ease-in-out;
+  transition: all $router-view-transition-duration ease-in-out;
 }
 .rise-fade-enter {
   transform: translateY(rem(16));

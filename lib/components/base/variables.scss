@@ -7,15 +7,12 @@ $namespace: 'vd';
 
 // ================================================================
 // Base
-// ================================================================
 
-// --------------------------------
 // Typography
 
 $font-size-base: 15 !default;
 $line-height-base: 1.618 !default;
 
-// --------------------------------
 // Core
 
 $type-theme:  'lite', 'dark';
@@ -24,12 +21,10 @@ $type-skin:   'fill', 'flat', 'plain', 'silk';
 $type-shape:  'rect', 'pill', 'square', 'circle';
 $type-size:   'xsmall', 'small', 'medium', 'large', 'xlarge';
 
-// --------------------------------
 // Colors
 
 @import '~@void/ui/lib/components/base/color-maps.scss';
 
-// --------------------------------
 // Responsive
 
 $type-breakpoint-key: 'xs', 'sm', 'md', 'lg', 'xl';
@@ -47,7 +42,6 @@ $breakpoints: (
   @return map-get($breakpoints, $key);
 }
 
-// --------------------------------
 // Gap Border Radius
 
 // gap / gutter / padding / margin
@@ -66,19 +60,13 @@ $gap-map: (
 
 $gap-base: gap('medium') !default;
 
-// border
-
 $border-base: 1 !default;
-
-// radius
 
 $radius-base: 2 !default;
 
 // ================================================================
 // General
-// ================================================================
 
-// --------------------------------
 // Button
 
 $button-size-map: (
@@ -103,14 +91,11 @@ $button-gap-icon-text:        0.618em !default;
 
 // ================================================================
 // Layout
-// ================================================================
 
-// --------------------------------
 // Card
 
 $card-header-height-base: 40 !default;
 
-// --------------------------------
 // Flow
 
 $container-width-map: (
@@ -119,5 +104,15 @@ $container-width-map: (
   md: 80%,
   lg: rem(1200),
   xl: rem(1200),
-)
+);
+
+// ================================================================
+// Form
+
+$form-font-size: 14;
+
+$form-row-height: 32;
+$form-component-height: 24;
+$form-symbol-size: $form-font-size + 2;
+$form-symbol-transition-duration: 300ms;
 

@@ -30,7 +30,7 @@ $root-font-size: 14 !default;
 }
 
 /**
- * Generate root selector for a component/control.
+ * Generate root selector for a component.
  * 
  * @include comp('button') {}
  * 
@@ -138,7 +138,7 @@ $root-font-size: 14 !default;
 }
 
 /**
- * Generate selector for properties of a component/control.
+ * Generate selector for properties of a component.
  * 
  * @include comp('button') {
  *   @include prop(( skin: 'plain', theme: 'dark', )) {}
@@ -170,7 +170,7 @@ $root-font-size: 14 !default;
 }
 
 /**
- * Generate selector for boolean properties of a component/control.
+ * Generate selector for boolean properties of a component.
  * 
  * @include comp('menu-item') {
  *   @include when('selected') {}
