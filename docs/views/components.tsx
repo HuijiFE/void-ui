@@ -8,10 +8,11 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import zhCN from '@docs/articles/zh-CN/menu';
+import { RouteConfig } from 'vue-router';
+import zhCN from '@docs/articles/zh-CN/all';
 import { SideBarGroup } from '@docs/components/all';
 
-const menuMap: Record<string, Record<string, string>> = {
+const routeConfigMap: Record<string, RouteConfig[]> = {
   'zh-CN': zhCN,
 };
 
@@ -22,17 +23,37 @@ const menuMap: Record<string, Record<string, string>> = {
 export class VComponents extends Vue {
   public path: string = 'test';
 
-  private menu: SideBarGroup[] = [];
+  private menuData: SideBarGroup[] = [];
 
-  @Watch('$route')
+  private language!: string;
+
+  @Watch('$route', { immediate: true })
   private watchRoute(): void {
-    //
+    const language: string = this.$route.matched[0].path.replace('/', '');
+    const routeConfigs: RouteConfig[] = routeConfigMap[language];
+    if (this.language !== language && routeConfigs) {
+      this.language = language;
+
+      const categories: string[] = [
+        ...new Set(routeConfigs.map(({ path }) => path.split('/')[0])),
+      ];
+
+      this.menuData = categories.map<SideBarGroup>(cat => ({
+        label: cat,
+        items: routeConfigs
+          .filter(conf => conf.path.startsWith(cat))
+          .map(({ path, name }) => ({
+            label: name as string,
+            path: `/${language}/components/${path}`,
+          })),
+      }));
+    }
   }
 
   private render(h: CreateElement): VNode {
     return (
       <div staticClass="v-components">
-        <c-side-bar />
+        <c-side-bar items-source={this.menuData} />
         <div staticClass="v-app_content">
           <vd-container>
             <router-view />

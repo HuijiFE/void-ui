@@ -18,7 +18,7 @@ config.autoAddCss = false;
 library.add(fab, far, fas);
 Vue.component('FaIcon', FontAwesomeIcon);
 
-import VoidUI, { VdTheme } from '@void/ui/lib/void-ui';
+import VoidUI, { VdTheme } from 'void-ui';
 Vue.use(VoidUI);
 
 import * as components from '@docs/components/all';

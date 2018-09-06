@@ -8,11 +8,36 @@
   height: 100%;
   overflow-y: scroll;
 
+  padding: rem($gap-base) 0;
+  margin: 0;
+
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-content: flex-start;
   align-items: flex-start;
+
+  font-size: rem(15);
+  line-height: rem(32);
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'theme': $theme,
+      )
+    ) {
+      color: theme($theme);
+      @include elem('group-label') {
+        color: theme($theme, 'fg', 'sub');
+      }
+    }
+  }
+
+  @include elem('wrapper', 'group', 'group-label', 'group-wrapper', 'item') {
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
 
   @include elem('group') {
     display: flex;
@@ -21,5 +46,29 @@
     justify-content: flex-start;
     align-content: flex-start;
     align-items: flex-start;
+  }
+
+  @include elem('group-label') {
+    padding: 0 rem($gap-base);
+
+    font-size: 90%;
+  }
+
+  @include elem('item') {
+    padding-left: rem($gap-base * 2);
+    padding-right: rem($gap-base);
+  }
+
+  @include elem('group-label', 'item') {
+    border-left: rem(4) solid transparent;
+  }
+
+  @include elem('item') {
+    @include when('active') {
+      font-weight: bold;
+      border-left-color: tone();
+    }
+
+    transition: border-color ease-in-out 200ms;
   }
 }

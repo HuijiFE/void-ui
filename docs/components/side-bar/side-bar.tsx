@@ -8,6 +8,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
+import { Theme, ThemeComponent, ClassName } from 'void-ui';
 
 export interface SideBarGroup {
   label: string;
@@ -15,21 +16,42 @@ export interface SideBarGroup {
 }
 export interface SideBarItem {
   label: string;
-  to: string;
+  path: string;
 }
 
 /**
  * Component: SideBar
  */
 @Component
-export class CSideBar extends Vue {
+export class CSideBar extends Vue implements ThemeComponent {
+  @Prop({ type: String })
+  public readonly theme?: Theme;
+
+  public get $theme(): Theme {
+    return this.theme || this.$vd_theme.theme;
+  }
+
+  public get classes(): ClassName {
+    return [`cp-theme_${this.$theme}`];
+  }
+
   @Prop({ type: Array, default: () => [] })
   public readonly itemsSource!: (SideBarGroup | SideBarItem)[];
 
   private render(h: CreateElement): VNode {
     return (
-      <div staticClass="c-side-bar">
-        <ul staticClass="c-side-bar_wrapper">{this.$slots.default}</ul>
+      <div staticClass="c-side-bar" class={this.classes}>
+        <ul staticClass="c-side-bar_wrapper">
+          {this.itemsSource.map(
+            item =>
+              'items' in item ? (
+                <c-side-bar-group label={item.label} items-source={item.items} />
+              ) : (
+                <c-side-bar-item label={item.label} path={item.path} />
+              ),
+          )}
+          {this.$slots.default}
+        </ul>
       </div>
     );
   }
@@ -43,11 +65,19 @@ export class CSideBarGroup extends Vue {
   @Prop({ type: String })
   public readonly label?: string;
 
+  @Prop({ type: Array, default: () => [] })
+  public readonly itemsSource!: SideBarItem[];
+
   private render(h: CreateElement): VNode {
     return (
       <li staticClass="c-side-bar_group">
         <span staticClass="c-side-bar_group-label">{this.label}</span>
-        <ul staticClass="c-side-bar_group-wrapper" />
+        <ul staticClass="c-side-bar_group-wrapper">
+          {this.itemsSource.map(item => (
+            <c-side-bar-item label={item.label} path={item.path} />
+          ))}
+          {this.$slots.default}
+        </ul>
       </li>
     );
   }
@@ -61,13 +91,19 @@ export class CSideBarItem extends Vue {
   @Prop({ type: String })
   public readonly label?: string;
 
+  @Prop({ type: String, required: true })
+  public readonly path!: string;
+
   private render(h: CreateElement): VNode {
     return (
-      <li staticClass="c-side-bar_item">
-        <router-link staticClass="c-side-bar_item-link">
-          {this.$slots.default || this.label}
-        </router-link>
-      </li>
+      <router-link
+        tag="li"
+        staticClass="c-side-bar_item"
+        exact-active-class="is-active"
+        to={this.path}
+      >
+        <a>{this.$slots.default || this.label}</a>
+      </router-link>
     );
   }
 }

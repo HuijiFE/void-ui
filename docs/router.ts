@@ -8,9 +8,7 @@ import { VComponents } from '@docs/views/components';
 import { VApis } from '@docs/views/apis';
 
 import zhCN from '@docs/articles/zh-CN/all';
-const articleMap: Record<string, Record<string, () => Promise<typeof import('*.md')>>> = {
-  'zh-CN': zhCN,
-};
+const articles: RouteConfig[][] = [zhCN];
 
 Vue.use(VueRouter);
 
@@ -31,7 +29,7 @@ export const createRouter: () => VueRouter = () =>
         name: 'test',
         component: VTest,
       },
-      ...['zh-CN'].map<RouteConfig>(lang => ({
+      ...['zh-CN'].map<RouteConfig>((lang, index) => ({
         path: `/${lang}`,
         component: VIndex,
         children: [
@@ -48,12 +46,7 @@ export const createRouter: () => VueRouter = () =>
           {
             path: 'components',
             component: VComponents,
-            children: Object.entries(articleMap[lang]).map<RouteConfig>(
-              ([path, component]) => ({
-                path,
-                component,
-              }),
-            ),
+            children: articles[index],
           },
           {
             path: 'apis',

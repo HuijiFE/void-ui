@@ -7,9 +7,25 @@
  * All articles
  */
 
-export default {
-  'general/button': async () => import('@docs/articles/zh-CN/general/button.md'),
-  'layout/flexbox': async () => import('@docs/articles/zh-CN/layout/flexbox.md'),
-  'layout/flow': async () => import('@docs/articles/zh-CN/layout/flow.md'),
-  'layout/tabs': async () => import('@docs/articles/zh-CN/layout/tabs.md'),
-};
+export default [
+  {
+    path: 'general/button',
+    name: 'Button 按钮',
+    component: async () => import('@docs/articles/zh-CN/general/button.md'),
+  },
+  {
+    path: 'layout/flexbox',
+    name: 'Flexbox Layout 弹性盒子布局',
+    component: async () => import('@docs/articles/zh-CN/layout/flexbox.md'),
+  },
+  {
+    path: 'layout/flow',
+    name: 'Flow Layout 流式布局',
+    component: async () => import('@docs/articles/zh-CN/layout/flow.md'),
+  },
+  {
+    path: 'layout/tabs',
+    name: 'Tabs 标签页',
+    component: async () => import('@docs/articles/zh-CN/layout/tabs.md'),
+  },
+];

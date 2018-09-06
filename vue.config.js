@@ -76,6 +76,7 @@ module.exports = {
     config.resolve.alias
       .delete('@')
       .set('@docs', resolve('docs'))
+      .set('void-ui$', resolve('lib/void-ui.ts'))
       .set('@void/ui/lib', resolve('lib'));
 
     // chainMarkdown(config);

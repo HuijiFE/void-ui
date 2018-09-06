@@ -19,7 +19,7 @@ import VoidUI, {
   SKIN_KEYS,
   SHAPE_KEYS,
   SIZE_KEYS,
-} from '@void/ui/lib/void-ui';
+} from 'void-ui';
 
 /**
  * Component: Example

@@ -8,7 +8,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { BREAK_POINT_KEYS, MediaAlias, MediaScreen } from '@void/ui/lib/void-ui';
+import { BREAK_POINT_KEYS, MediaAlias, MediaScreen } from 'void-ui';
 
 /**
  * View: Test

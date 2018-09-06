@@ -8,7 +8,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { ClassName, Theme } from '@void/ui/lib/void-ui';
+import { ClassName, Theme } from 'void-ui';
 
 /**
  * Component: DemoBox

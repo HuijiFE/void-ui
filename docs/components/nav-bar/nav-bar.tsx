@@ -18,7 +18,7 @@ import {
   Size,
   ThemeComponent,
   LinkLikeComponent,
-} from '@void/ui/lib/void-ui';
+} from 'void-ui';
 
 /**
  * Component: NavBar
