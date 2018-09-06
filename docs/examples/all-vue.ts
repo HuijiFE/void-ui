@@ -13,6 +13,7 @@ export default {
   'general/button/overview': async () => import(/* webpackChunkName: "examples-general_button" */ '@docs/examples/general/button/overview.vue'),
   'layout/card/array': async () => import(/* webpackChunkName: "examples-layout_card" */ '@docs/examples/layout/card/array.vue'),
   'layout/card/basic': async () => import(/* webpackChunkName: "examples-layout_card" */ '@docs/examples/layout/card/basic.vue'),
+  'layout/flexbox/basic': async () => import(/* webpackChunkName: "examples-layout_flexbox" */ '@docs/examples/layout/flexbox/basic.vue'),
   'layout/tabs/basic': async () => import(/* webpackChunkName: "examples-layout_tabs" */ '@docs/examples/layout/tabs/basic.vue'),
   'layout/tabs/bordered-raise': async () => import(/* webpackChunkName: "examples-layout_tabs" */ '@docs/examples/layout/tabs/bordered-raise.vue'),
   'layout/tabs/label-extra-class': async () => import(/* webpackChunkName: "examples-layout_tabs" */ '@docs/examples/layout/tabs/label-extra-class.vue'),

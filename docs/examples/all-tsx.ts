@@ -13,6 +13,7 @@ export default {
   'general/button/overview': async () => import(/* webpackChunkName: "examples-general_button" */ '@docs/examples/general/button/overview.tsx'),
   'layout/card/array': async () => import(/* webpackChunkName: "examples-layout_card" */ '@docs/examples/layout/card/array.tsx'),
   'layout/card/basic': async () => import(/* webpackChunkName: "examples-layout_card" */ '@docs/examples/layout/card/basic.tsx'),
+  'layout/flexbox/basic': async () => import(/* webpackChunkName: "examples-layout_flexbox" */ '@docs/examples/layout/flexbox/basic.tsx'),
   'layout/tabs/basic': async () => import(/* webpackChunkName: "examples-layout_tabs" */ '@docs/examples/layout/tabs/basic.tsx'),
   'layout/tabs/bordered-raise': async () => import(/* webpackChunkName: "examples-layout_tabs" */ '@docs/examples/layout/tabs/bordered-raise.tsx'),
   'layout/tabs/label-extra-class': async () => import(/* webpackChunkName: "examples-layout_tabs" */ '@docs/examples/layout/tabs/label-extra-class.tsx'),

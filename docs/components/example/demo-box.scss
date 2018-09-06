@@ -5,7 +5,14 @@
   position: relative;
   width: 100%;
   padding-bottom: rem(200);
-  border: rem(1) solid transparent;
+
+  @include elem('content', 'label') {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
 
   @include elem('content') {
     position: absolute;
@@ -19,14 +26,15 @@
     position: relative;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
 
-    font-size: rem(32);
-    font-weight: bold;
-    opacity: 0.25;
+    border: rem(4) solid;
+    font-size: rem(24);
+    opacity: 0.15;
+
+    &:hover {
+      opacity: 0.3;
+    }
+
+    transition: opacity ease-in-out 160ms;
   }
 }

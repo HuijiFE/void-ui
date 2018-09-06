@@ -13,6 +13,7 @@ export default {
   'general/button/overview': [ 'tsx', 'vue' ],
   'layout/card/array': [ 'scss', 'tsx', 'vue' ],
   'layout/card/basic': [ 'tsx', 'vue' ],
+  'layout/flexbox/basic': [ 'tsx', 'vue' ],
   'layout/tabs/basic': [ 'tsx', 'vue' ],
   'layout/tabs/bordered-raise': [ 'tsx', 'vue' ],
   'layout/tabs/label-extra-class': [ 'scss', 'tsx', 'vue' ],
