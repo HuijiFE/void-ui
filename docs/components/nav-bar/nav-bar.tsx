@@ -31,20 +31,27 @@ export class CNavBar extends Vue implements ThemeComponent {
     return this.theme || (this.$vd_theme && this.$vd_theme.theme) || 'lite';
   }
 
+  public languagePrefix: string = '';
+
+  @Watch('$route', { immediate: true })
+  private watchRoute(): void {
+    this.languagePrefix = this.$route.matched[0].path;
+  }
+
   public get classes(): ClassName {
     return [`cp-theme_${this.themeValue}`];
   }
 
   private render(h: CreateElement): VNode {
     return (
-      <div staticClass="c-nav-bar" class={this.classes}>
+      <header staticClass="c-nav-bar" class={this.classes}>
         <vd-flexbox staticClass="c-nav-bar_wrapper" align="center" gap>
           <vd-flexbox
             staticClass="c-nav-bar_item"
             flex="none"
             tag="a"
             router-link
-            to={{ name: 'home' }}
+            to={`${this.languagePrefix}`}
           >
             Void-UI
           </vd-flexbox>
@@ -54,7 +61,7 @@ export class CNavBar extends Vue implements ThemeComponent {
             flex="none"
             tag="a"
             router-link
-            to={{ name: 'guideline' }}
+            to={`${this.languagePrefix}/guide`}
           >
             指南
           </vd-flexbox>
@@ -63,7 +70,7 @@ export class CNavBar extends Vue implements ThemeComponent {
             flex="none"
             tag="a"
             router-link
-            to={{ name: 'components' }}
+            to={`${this.languagePrefix}/components`}
           >
             组件
           </vd-flexbox>
@@ -72,7 +79,7 @@ export class CNavBar extends Vue implements ThemeComponent {
             flex="none"
             tag="a"
             router-link
-            to={{ name: 'apis' }}
+            to={`${this.languagePrefix}/apis`}
           >
             API
           </vd-flexbox>
@@ -85,7 +92,7 @@ export class CNavBar extends Vue implements ThemeComponent {
             </vd-button>
           </vd-flexbox>
         </vd-flexbox>
-      </div>
+      </header>
     );
   }
 }
