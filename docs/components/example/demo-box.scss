@@ -4,6 +4,7 @@
 @include comp('demo-box') {
   position: relative;
   width: 100%;
+  height: 100%;
   padding-bottom: rem(200);
 
   @include elem('content', 'label') {
@@ -27,14 +28,41 @@
     width: 100%;
     height: 100%;
 
-    border: rem(4) solid;
-    font-size: rem(24);
-    opacity: 0.15;
-
-    &:hover {
-      opacity: 0.3;
-    }
-
     transition: opacity ease-in-out 160ms;
+  }
+
+  @include when('bordered') {
+    @include elem('label') {
+      border: rem($border-base) solid;
+    }
+  }
+
+  @include when('bold') {
+    @include elem('label') {
+      font-size: rem(24);
+    }
+  }
+
+  @each $num,
+    $value
+      in (
+        0: #ff6666,
+        1: #ffcc66,
+        2: #ccff66,
+        3: #66ff66,
+        4: #66ffcc,
+        5: #66ccff,
+        6: #6666ff,
+        7: #cc66ff,
+        8: #ff66cc
+      )
+  {
+    @include prop(
+      (
+        'rainbow': $num,
+      )
+    ) {
+      color: $value;
+    }
   }
 }

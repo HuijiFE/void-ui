@@ -94,7 +94,13 @@ export class VdFlexbox extends Vue implements LinkLikeComponent {
       this,
       'flex',
       flex,
-      value => (this.percentageValue = typeof value === 'number' ? `${value}%` : ''),
+      value =>
+        (this.percentageValue =
+          value !== undefined
+            ? typeof value === 'number'
+              ? `${value > 1 ? value : value * 100}%`
+              : value
+            : ''),
     );
   }
 

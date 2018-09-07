@@ -107,7 +107,7 @@ export class CExample extends Vue {
 
   private render(h: CreateElement): VNode {
     return (
-      <vd-tabs staticClass="c-example" class={this.classes} raise>
+      <vd-tabs staticClass="c-example" class={this.classes} bordered>
         <button
           slot="right"
           staticClass="c-example_toggle-fullscreen"
