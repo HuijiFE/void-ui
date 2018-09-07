@@ -34,6 +34,11 @@ export default [
     component: async () => import('@docs/articles/zh-CN/form/radio.md'),
   },
   {
+    path: 'form/switch',
+    name: 'Switch 开关',
+    component: async () => import('@docs/articles/zh-CN/form/switch.md'),
+  },
+  {
     path: 'general/button',
     name: 'Button 按钮',
     component: async () => import('@docs/articles/zh-CN/general/button.md'),

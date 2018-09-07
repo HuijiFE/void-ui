@@ -10,6 +10,7 @@
 export default {
   'form/radio/basic': async () => import(/* webpackChunkName: "examples-form_radio" */ '@docs/examples/form/radio/basic.vue'),
   'form/radio/group': async () => import(/* webpackChunkName: "examples-form_radio" */ '@docs/examples/form/radio/group.vue'),
+  'form/switch/basic': async () => import(/* webpackChunkName: "examples-form_switch" */ '@docs/examples/form/switch/basic.vue'),
   'general/button/overview': async () => import(/* webpackChunkName: "examples-general_button" */ '@docs/examples/general/button/overview.vue'),
   'layout/card/array': async () => import(/* webpackChunkName: "examples-layout_card" */ '@docs/examples/layout/card/array.vue'),
   'layout/card/basic': async () => import(/* webpackChunkName: "examples-layout_card" */ '@docs/examples/layout/card/basic.vue'),

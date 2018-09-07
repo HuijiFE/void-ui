@@ -3,9 +3,10 @@
  */
 @include comp('radio') {
   position: relative;
-  vertical-align: middle;
   display: inline-flex;
   flex: none;
+  vertical-align: middle;
+  white-space: nowrap;
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-content: center;
@@ -57,6 +58,7 @@
         100% {
           border-width: rem($form-symbol-size / 3);
           border-color: tone();
+          background-color: $color-white;
         }
       }
 

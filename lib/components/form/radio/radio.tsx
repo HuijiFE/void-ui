@@ -49,6 +49,9 @@ export class VdRadio extends Vue implements ThemeComponent, FormComponent {
   @Prop({ type: [String, Number], required: true })
   public readonly value!: string | number;
 
+  @Prop({ type: String })
+  public readonly label?: string;
+
   @Prop({ type: Boolean, default: false })
   public readonly disabled!: boolean;
 
@@ -59,9 +62,6 @@ export class VdRadio extends Vue implements ThemeComponent, FormComponent {
   private onChange(event: Event): void {
     this.$emit('change', this.value);
   }
-
-  @Prop({ type: String })
-  public readonly label?: string;
 
   public get classes(): ClassName {
     return [
@@ -104,7 +104,7 @@ export class VdRadio extends Vue implements ThemeComponent, FormComponent {
  * Component: RadioGroup
  */
 @Component
-export class VdRadioGroup extends Vue {
+export class VdRadioGroup extends Vue implements FormComponent {
   @Model('change', { type: [String, Number], required: true })
   public readonly model!: string | number;
 

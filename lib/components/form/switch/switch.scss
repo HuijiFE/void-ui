@@ -1,0 +1,73 @@
+/**
+ * Component: Switch
+ */
+@include comp('switch') {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+
+  height: rem($form-component-height);
+
+  cursor: pointer;
+  user-select: none;
+
+  font-size: rem($form-font-size);
+
+  @include elem('implicit') {
+    display: none;
+  }
+
+  @include elem('symbol') {
+    display: block;
+    width: rem($form-symbol-size * 2);
+    height: rem($form-symbol-size);
+    border-radius: rem($radius-base);
+    border: rem(2) solid transparent;
+    margin-right: rem($form-symbol-size / 2);
+
+    transition: background-color ease-in-out $form-symbol-transition-duration;
+  }
+
+  @include elem('symbol-inner') {
+    position: relative;
+    left: 0;
+    display: block;
+    width: 50%;
+    height: 100%;
+    border-radius: rem($radius-base);
+
+    background-color: $color-white;
+
+    transition: left ease-in-out $form-symbol-transition-duration;
+  }
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'theme': $theme,
+      )
+    ) {
+      @include elem('symbol') {
+        background-color: theme($theme, 'fg', 'sub');
+      }
+      // @include elem('symbol-inner') {
+      //   background-color: theme($theme, 'bg');
+      // }
+    }
+  }
+
+  @include when('checked') {
+    @include elem('symbol') {
+      background-color: tone();
+    }
+    @include elem('symbol-inner') {
+      left: 50%;
+    }
+  }
+}

@@ -10,6 +10,7 @@
 export default {
   'form/radio/basic': [ 'tsx', 'vue' ],
   'form/radio/group': [ 'tsx', 'vue' ],
+  'form/switch/basic': [ 'tsx', 'vue' ],
   'general/button/overview': [ 'tsx', 'vue' ],
   'layout/card/array': [ 'scss', 'tsx', 'vue' ],
   'layout/card/basic': [ 'tsx', 'vue' ],

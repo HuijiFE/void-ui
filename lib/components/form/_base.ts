@@ -8,12 +8,8 @@ import { VdForm } from '@void/ui/lib/components/form/form/form';
 // tslint:disable:no-invalid-this no-any
 
 export interface FormComponent {
-  form?: VdForm;
-  id?: string;
-  name?: string;
-  label?: string;
-  model: any;
-  value: any;
+  readonly form?: VdForm;
+  readonly model: any;
 }
 
 export const mixinFormComponent: ComponentOptions<Vue> = {
@@ -21,7 +17,7 @@ export const mixinFormComponent: ComponentOptions<Vue> = {
     let parent: Vue | undefined = this.$options.parent;
     while (parent) {
       if (parent instanceof VdForm) {
-        (this as Vue & FormComponent).form = parent;
+        (this as any).form = parent;
         break;
       }
       parent = parent.$options.parent;
