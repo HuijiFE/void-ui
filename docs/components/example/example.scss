@@ -23,10 +23,44 @@
   }
 
   @include when('expanded') {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    overflow: initial;
+
+    @include elem('container') {
+      display: block;
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    @include elem('toggle-fullscreen') {
+      position: fixed;
+      z-index: 200;
+      top: 0;
+      right: 0;
+      width: rem($card-header-height);
+      height: rem($card-header-height);
+      padding: 0;
+
+      opacity: 0.5;
+      &:hover {
+        opacity: 1;
+      }
+      transition: opacity ease-in-out 160ms;
+    }
+  }
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'theme': $theme,
+      )
+    ) {
+      @include elem('container') {
+        background-color: theme($theme, 'bg');
+      }
+    }
   }
 }

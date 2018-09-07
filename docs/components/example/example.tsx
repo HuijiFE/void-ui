@@ -8,7 +8,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { ClassName } from 'void-ui';
+import { ClassName, Theme, ThemeComponent } from 'void-ui';
 import axios, { AxiosInstance } from 'axios';
 import examples from '@docs/examples/all';
 import examplesTsx from '@docs/examples/all-tsx';
@@ -39,7 +39,13 @@ const defaultTypes: string[] = ['vue', 'tsx', 'scss'];
  * Component: Example
  */
 @Component
-export class CExample extends Vue {
+export class CExample extends Vue implements ThemeComponent {
+  @Prop({ type: String })
+  public readonly theme?: Theme;
+  public get themeValue(): Theme {
+    return this.theme || this.$vd_theme.theme;
+  }
+
   public static readonly all: Record<string, string[]> = examples;
   public static readonly tsx: Record<string, AsyncComponent> = examplesTsx;
   public static readonly vue: Record<string, AsyncComponent> = examplesVue;
@@ -56,6 +62,7 @@ export class CExample extends Vue {
 
   public get classes(): ClassName {
     return [
+      `cp-theme_${this.themeValue}`,
       {
         'is-expanded': this.expanded,
       },
@@ -108,13 +115,6 @@ export class CExample extends Vue {
   private render(h: CreateElement): VNode {
     return (
       <vd-tabs staticClass="c-example" class={this.classes} bordered>
-        <button
-          slot="right"
-          staticClass="c-example_toggle-fullscreen"
-          onClick={this.toggleFullscreen}
-        >
-          <fa-icon icon={this.expanded ? 'compress' : 'expand'} />
-        </button>
         {this.has.vue && isDevelopment ? (
           <vd-tab-pane label="Preview" data-source=".vue">
             {h(CExample.vue[this.path])}
@@ -133,6 +133,18 @@ export class CExample extends Vue {
         ) : (
           h()
         )}
+        {this.has.tsx && this.expanded ? (
+          <div staticClass="c-example_container">{h(CExample.tsx[this.path])}</div>
+        ) : (
+          h()
+        )}
+        <button
+          slot="right"
+          staticClass="c-example_toggle-fullscreen"
+          onClick={this.toggleFullscreen}
+        >
+          <fa-icon icon={this.expanded ? 'compress' : 'expand'} />
+        </button>
 
         {this.extensions.map(
           ext =>

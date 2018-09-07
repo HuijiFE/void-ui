@@ -95,7 +95,6 @@ $vd-tabs_transition-distance: 64 !default;
 
   @include elem('pane') {
     width: 100%;
-    transform: translate3d(0, 0, 0);
 
     @each $direction in 'left', 'right' {
       @each $state in 'in', 'out' {
@@ -128,7 +127,7 @@ $vd-tabs_transition-distance: 64 !default;
 
     @each $transition in 'left-in', 'left-out', 'right-in', 'right-out' {
       @include when($transition) {
-        animation: vd-tab-pane-#{$transition} $vd-tabs_transition-duration ease-out forwards;
+        animation: vd-tab-pane-#{$transition} $vd-tabs_transition-duration ease-out;
       }
     }
   }
