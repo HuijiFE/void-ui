@@ -72,6 +72,7 @@ const iconMap: Record<string, (h: CreateElement) => VNode[]> = {
   // tslint:enable
 };
 
+// tslint:disable-next-line:no-string-literal
 iconMap['tsx'] = iconMap['vuets'];
 
 /**

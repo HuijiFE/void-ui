@@ -2,7 +2,7 @@
   "defaultSeverity": "warning",
   "extends": ["tslint-microsoft-contrib"],
   "linterOptions": {
-    "exclude": ["node_modules/**", "**/*.json", "**/*.json.ts"]
+    "exclude": ["node_modules/**", "**/*.json", "**/*.vue"]
   },
   "rules": {
     "class-name": true,
