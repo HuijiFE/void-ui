@@ -1,0 +1,209 @@
+$color-white:   #ffffff !default;
+$color-gray:    #777777 !default;
+$color-black:   #000000 !default;
+
+// ================================================================
+// Base
+
+// theme
+// fg: foreground color, as well as text color
+// bg: background color
+// bd: border color
+// The border color `bd-normal` should be same as `bg-hover`.
+
+$color-map-theme: (
+  lite-fg-emphasize:       #222222,
+  lite-fg-normal:          #333333,
+  lite-fg-sub:             #888888,
+  lite-fg-placeholder:     #999999,
+  lite-fg-disabled:        #bbbbbb,
+
+  lite-bg-higher:          #f5f5f5,
+  lite-bg-high:            #fafafa,
+  lite-bg-normal:          #ffffff,
+  lite-bg-low:             #fafafa,
+  lite-bg-lower:           #f5f5f5,
+  lite-bg-hover:           #eeeeee,
+  lite-bg-disabled:        #efefef,
+
+  lite-bd-normal:          #eeeeee, // same as bg-hover
+  lite-bd-disabled:        #bbbbbb, // same as fg-disabled
+  lite-bd-focus:           #888888,
+
+  dark-fg-emphasize:       #f5f5f5,
+  dark-fg-normal:          #eeeeee,
+  dark-fg-sub:             #aaaaaa,
+  dark-fg-placeholder:     #999999,
+  dark-fg-disabled:        #777777,
+
+  dark-bg-higher:          #494949,
+  dark-bg-high:            #444444,
+  dark-bg-normal:          #3e3e3e,
+  dark-bg-low:             #383838,
+  dark-bg-lower:           #333333,
+  dark-bg-hover:           #4e4e4e,
+  dark-bg-disabled:        #555555,
+
+  dark-bd-normal:          #4e4e4e, // same as bg-hover
+  dark-bd-disabled:        #777777, // same as fg-disabled
+  dark-bd-focus:           #aaaaaa,
+) !default;
+
+// tone
+
+$color-map-tone: (
+  primary-darkener:       #0080b0,
+  primary-darken:         #0098c2,
+  primary-standard:       #00abd0,
+  primary-lighten:        #00bedb,
+  primary-lightener:      #34d2e9,
+
+  secondary-darkener:     #b000b0,
+  secondary-darken:       #c200b8,
+  secondary-standard:     #d000c6,
+  secondary-lighten:      #c900db,
+  secondary-lightener:    #e934e9,
+
+  success-darkener:       #1da63d,
+  success-darken:         #21bd45,
+  success-standard:       #24cf4c,
+  success-lighten:        #2cdb55,
+  success-lightener:      #46eb6d,
+
+  warning-darkener:       #ffaa00,
+  warning-darken:         #ffbb00,
+  warning-standard:       #ffcc00,
+  warning-lighten:        #ffdd33,
+  warning-lightener:      #ffee44,
+
+  danger-darkener:        #cc2828,
+  danger-darken:          #e62d2d,
+  danger-standard:        #ff3333,
+  danger-lighten:         #ff4d4d,
+  danger-lightener:       #ff6666,
+) !default;
+
+// Raise
+
+$raise-shadow-transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+$raise-shadow-map: (
+  2: (
+    0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2),
+  ),
+  3: (
+    0 3px 4px 0 rgba(0, 0, 0, 0.14),
+    0 1px 8px 0 rgba(0, 0, 0, 0.12),
+    0 3px 3px -2px rgba(0, 0, 0, 0.4),
+  ),
+  4: (
+    0 4px 5px 0 rgba(0, 0, 0, 0.14),
+    0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.4),
+  ),
+  6: (
+    0 6px 10px 0 rgba(0, 0, 0, 0.14),
+    0 1px 18px 0 rgba(0, 0, 0, 0.12),
+    0 3px 5px -1px rgba(0, 0, 0, 0.4),
+  ),
+  8: (
+    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12),
+    0 5px 5px -3px rgba(0, 0, 0, 0.4),
+  ),
+  12: (
+    0 12px 16px 1px rgba(0, 0, 0, 0.14),
+    0 4px 22px 3px rgba(0, 0, 0, 0.12),
+    0 6px 7px -4px rgba(0, 0, 0, 0.4),
+  ),
+  16: (
+    0 16px 24px 2px rgba(0, 0, 0, 0.14),
+    0 6px 30px 5px rgba(0, 0, 0, 0.12),
+    0 8px 10px -5px rgba(0, 0, 0, 0.4),
+  ),
+  24: (
+    0 24px 38px 3px rgba(0, 0, 0, 0.14),
+    0 9px 46px 8px rgba(0, 0, 0, 0.12),
+    0 11px 15px -7px rgba(0, 0, 0, 0.4),
+  ),
+) !default;
+
+// Gap Border Radius
+
+$gap-map: (
+  xsmall:   4,
+  small:    8,
+  medium:   16,
+  large:    24,
+  xlarge:   32,
+) !default;
+
+$border-base: 1 !default;
+
+$radius-base: 2 !default;
+
+// Responsive
+
+$breakpoints: (
+  xs: 0,
+  sm: 600,
+  md: 960,
+  lg: 1280,
+  xl: 1920,
+) !default;
+
+// ================================================================
+// General
+
+// Button
+
+$button-size-map: (
+  xsmall:   24,
+  small:    32,
+  medium:   40,
+  large:    48,
+  xlarge:   56,
+) !default;
+
+$button-font-size-map: (
+  xsmall:   12,
+  small:    14,
+  medium:   18,
+  large:    20,
+  xlarge:   24,
+) !default;
+
+$button-min-width-multiple:   2.618 !default;
+$button-padding-multiple:     0.618 !default;
+$button-gap-icon-text:        0.618em !default;
+
+// ================================================================
+// Layout
+
+// Card
+
+$card-header-height: 40 !default;
+$card-header-font-size: 15 !default;
+
+// Flow
+
+$container-width-map: (
+  xs: 100%,
+  sm: 100%,
+  md: 800px,
+  lg: 1200px,
+  xl: 1200px,
+) !default;
+
+// ================================================================
+// Form
+
+$form-font-size: 14 !default;
+
+$form-row-height: 32 !default;
+
+$form-component-height: 24 !default;
+
+$form-symbol-size: $form-font-size !default;
+$form-symbol-transition-duration: 300ms !default;

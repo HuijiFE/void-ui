@@ -1,6 +1,8 @@
 @import '~normalize.css/normalize.css';
 
+$namespace: 'vd';
 @import './CEP';
+@import './variables-maps.scss';
 @import './variables';
 @import './reset';
 @import './utils';

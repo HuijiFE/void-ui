@@ -4,5 +4,5 @@ package-lock.json
 yarn.lock
 
 variables.scss
-color-maps.scss
-color-maps-legacy.scss
+variables-maps.scss
+variables-maps-modern.scss
