@@ -72,13 +72,6 @@ module.exports = {
     const context = config.store.get('context');
     const resolve = (...paths) => path.resolve(context, ...paths);
 
-    // Customize alias
-    config.resolve.alias
-      .delete('@')
-      .set('@docs', resolve('docs'))
-      .set('void-ui$', resolve('lib/void-ui.ts'))
-      .set('@void/ui/lib', resolve('lib'));
-
     // chainMarkdown(config);
     docsChainWebpack(config);
 
@@ -151,6 +144,12 @@ function docsChainWebpack(config) {
     .end()
     .entry('docs')
     .add(resolve(`docs/entry-${VUE_ENV}.ts`));
+
+  // Customize alias
+  config.resolve.alias
+    .delete('@')
+    .set('@docs', resolve('docs'))
+    .set('void-ui$', resolve('lib/void-ui.ts'));
 
   config.resolve.alias.set('create-api', `./create-api-${VUE_ENV}.js`);
 

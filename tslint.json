@@ -87,7 +87,7 @@
     "export-name": false,
     "ordered-imports": false,
     "no-default-export": false,
-    "no-relative-imports": true,
+    "no-relative-imports": false,
     "no-console": [true, "log"],
     "react-this-binding-issue": false,
     "no-backbone-get-set-outside-model": false

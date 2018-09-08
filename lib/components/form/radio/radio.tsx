@@ -8,14 +8,9 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import {
-  ClassName,
-  Theme,
-  ThemeComponent,
-  Direction,
-} from '@void/ui/lib/components/base';
-import { mixinFormComponent, FormComponent } from '@void/ui/lib/components/form/_base';
-import { VdForm } from '@void/ui/lib/components/form/form/form';
+import { ClassName, Theme, ThemeComponent, Direction } from '../../base';
+import { mixinFormComponent, FormComponent } from '../_base';
+import { VdForm } from '../form/form';
 
 export interface RadioData {
   label: string;

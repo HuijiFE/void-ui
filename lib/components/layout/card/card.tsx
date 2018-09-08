@@ -8,7 +8,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { ClassName, Theme, ThemeComponent } from '@void/ui/lib/components/base';
+import { ClassName, Theme, ThemeComponent } from '../../base';
 
 /**
  * Component: Card

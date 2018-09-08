@@ -18,7 +18,7 @@ import {
   Size,
   ThemeComponent,
   LinkLikeComponent,
-} from '@void/ui/lib/components/base/variables';
+} from '../../base';
 
 /**
  * Component Button

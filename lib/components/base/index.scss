@@ -1,6 +1,6 @@
 @import '~normalize.css/normalize.css';
 
-@import '~@void/ui/lib/components/base/CEP';
-@import '~@void/ui/lib/components/base/variables';
-@import '~@void/ui/lib/components/base/reset';
-@import '~@void/ui/lib/components/base/utils';
+@import './CEP';
+@import './variables';
+@import './reset';
+@import './utils';

@@ -8,14 +8,14 @@
  */
 
 export default {
-  'form/radio/basic': async () => import(/* webpackChunkName: "examples-form_radio" */ '@docs/examples/form/radio/basic.tsx'),
-  'form/radio/group': async () => import(/* webpackChunkName: "examples-form_radio" */ '@docs/examples/form/radio/group.tsx'),
-  'form/switch/basic': async () => import(/* webpackChunkName: "examples-form_switch" */ '@docs/examples/form/switch/basic.tsx'),
-  'general/button/overview': async () => import(/* webpackChunkName: "examples-general_button" */ '@docs/examples/general/button/overview.tsx'),
-  'layout/card/array': async () => import(/* webpackChunkName: "examples-layout_card" */ '@docs/examples/layout/card/array.tsx'),
-  'layout/card/basic': async () => import(/* webpackChunkName: "examples-layout_card" */ '@docs/examples/layout/card/basic.tsx'),
-  'layout/flexbox/basic': async () => import(/* webpackChunkName: "examples-layout_flexbox" */ '@docs/examples/layout/flexbox/basic.tsx'),
-  'layout/tabs/basic': async () => import(/* webpackChunkName: "examples-layout_tabs" */ '@docs/examples/layout/tabs/basic.tsx'),
-  'layout/tabs/bordered-raise': async () => import(/* webpackChunkName: "examples-layout_tabs" */ '@docs/examples/layout/tabs/bordered-raise.tsx'),
-  'layout/tabs/label-extra-class': async () => import(/* webpackChunkName: "examples-layout_tabs" */ '@docs/examples/layout/tabs/label-extra-class.tsx'),
+  'form/radio/basic'                            : async () => import(/* webpackChunkName: "examples-form_radio" */ './form/radio/basic'),
+  'form/radio/group'                            : async () => import(/* webpackChunkName: "examples-form_radio" */ './form/radio/group'),
+  'form/switch/basic'                           : async () => import(/* webpackChunkName: "examples-form_switch" */ './form/switch/basic'),
+  'general/button/overview'                     : async () => import(/* webpackChunkName: "examples-general_button" */ './general/button/overview'),
+  'layout/card/array'                           : async () => import(/* webpackChunkName: "examples-layout_card" */ './layout/card/array'),
+  'layout/card/basic'                           : async () => import(/* webpackChunkName: "examples-layout_card" */ './layout/card/basic'),
+  'layout/flexbox/basic'                        : async () => import(/* webpackChunkName: "examples-layout_flexbox" */ './layout/flexbox/basic'),
+  'layout/tabs/basic'                           : async () => import(/* webpackChunkName: "examples-layout_tabs" */ './layout/tabs/basic'),
+  'layout/tabs/bordered-raise'                  : async () => import(/* webpackChunkName: "examples-layout_tabs" */ './layout/tabs/bordered-raise'),
+  'layout/tabs/label-extra-class'               : async () => import(/* webpackChunkName: "examples-layout_tabs" */ './layout/tabs/label-extra-class'),
 };

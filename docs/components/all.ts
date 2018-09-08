@@ -7,8 +7,8 @@
  * All components of void-ui documentation.
  */
 
-export * from '@docs/components/example/demo-box';
-export * from '@docs/components/example/example';
-export * from '@docs/components/file-icon/file-icon';
-export * from '@docs/components/nav-bar/nav-bar';
-export * from '@docs/components/side-bar/side-bar';
+export * from './example/demo-box';
+export * from './example/example';
+export * from './file-icon/file-icon';
+export * from './nav-bar/nav-bar';
+export * from './side-bar/side-bar';

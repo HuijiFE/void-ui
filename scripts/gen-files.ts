@@ -27,8 +27,8 @@ interface GenerateOptions {
  * Replace the matching part with alias in the path.
  * @param path the path
  */
-function alias(path: string): string {
-  return path.replace(/^docs/, '@docs').replace(/^lib/, '@void/ui/lib');
+function resolvePath(path: string, output: string): string {
+  return path.replace(p.dirname(output), '.');
 }
 
 /**
@@ -57,12 +57,11 @@ function styleResolve({ path, name, ext }: FileInfo): string {
   switch (ext) {
     case '.scss':
     case '.less':
-      return `@import '~${path.replace(/\.(scss|less)$/, '')}';`;
     case '.css':
-      return `@import url('~${path.replace(/\.css$/, '')}');`;
+      return `@import '${path.replace(/\.(scss|less)$/, '')}';`;
 
     default:
-      throw new Error(`Cannot import ${ext} file (${path}) in .scss/.less file.`);
+      throw new Error(`Cannot import ${ext} file (${path}) in scss/less/css file.`);
   }
 }
 
@@ -93,7 +92,7 @@ async function generateFiles(options: GenerateOptions): Promise<void> {
   ]))
     .sort()
     .map(f => ({
-      path: alias(f),
+      path: resolvePath(f, options.output),
       name: p.basename(f).replace(/\.[A-Za-z0-9\-\_]+/, ''),
       ext: p.extname(f),
     }));
@@ -216,10 +215,16 @@ const optionsList: GenerateOptions[] = [
     header: 'export default {',
     footer: '};',
     item: ({ path, name, ext }) => {
-      const key: string = path.replace('@docs/examples/', '').replace(/\.tsx/, '');
+      const key: string = path.replace('./', '').replace(/\.tsx/, '');
       const chunkName: string = `examples-${p.dirname(key).replace(/\//g, '_')}`;
 
-      return `  '${key}': async () => import(/* webpackChunkName: "${chunkName}" */ '${path}'),`;
+      return `${`  '${key}'`.padEnd(
+        48,
+        ' ',
+      )}: async () => import(/* webpackChunkName: "${chunkName}" */ '${path.replace(
+        /\.tsx$/,
+        '',
+      )}'),`;
     },
   },
   {
@@ -229,10 +234,13 @@ const optionsList: GenerateOptions[] = [
     header: 'export default {',
     footer: '};',
     item: ({ path, name, ext }) => {
-      const key: string = path.replace('@docs/examples/', '').replace(/\.vue/, '');
+      const key: string = path.replace('./', '').replace(/\.vue/, '');
       const chunkName: string = `examples-${p.dirname(key).replace(/\//g, '_')}`;
 
-      return `  '${key}': async () => import(/* webpackChunkName: "${chunkName}" */ '${path}'),`;
+      return `${`  '${key}'`.padEnd(
+        48,
+        ' ',
+      )}: async () => import(/* webpackChunkName: "${chunkName}" */ '${path}'),`;
     },
   },
   {
@@ -248,9 +256,7 @@ const optionsList: GenerateOptions[] = [
     body: files => {
       const record: Record<string, string[]> = {};
       files.forEach(info => {
-        const key: string = info.path
-          .replace('@docs/examples/', '')
-          .replace(/\.(scss|tsx?|vue)/, '');
+        const key: string = info.path.replace('./', '').replace(/\.(scss|tsx?|vue)/, '');
         (record[key] || (record[key] = [])).push(`'${info.ext.substring(1)}'`);
       });
 
@@ -270,12 +276,10 @@ const optionsListArticle: GenerateOptions[] = ['zh-CN'].map<GenerateOptions>(lan
   body: files => {
     return files
       .map(info => {
-        const path: string = info.path
-          .replace(`@docs/articles/${lang}/`, '')
-          .replace(/\.md$/, '');
+        const path: string = info.path.replace('./', '').replace(/\.md$/, '');
 
         const name: string = fs
-          .readFileSync(info.path.replace('@', ''), 'utf-8')
+          .readFileSync(info.path.replace('.', `docs/articles/${lang}`), 'utf-8')
           .split('\n')[0]
           .replace(/^#+/, '')
           .trim();

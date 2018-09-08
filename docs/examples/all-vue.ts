@@ -8,14 +8,14 @@
  */
 
 export default {
-  'form/radio/basic': async () => import(/* webpackChunkName: "examples-form_radio" */ '@docs/examples/form/radio/basic.vue'),
-  'form/radio/group': async () => import(/* webpackChunkName: "examples-form_radio" */ '@docs/examples/form/radio/group.vue'),
-  'form/switch/basic': async () => import(/* webpackChunkName: "examples-form_switch" */ '@docs/examples/form/switch/basic.vue'),
-  'general/button/overview': async () => import(/* webpackChunkName: "examples-general_button" */ '@docs/examples/general/button/overview.vue'),
-  'layout/card/array': async () => import(/* webpackChunkName: "examples-layout_card" */ '@docs/examples/layout/card/array.vue'),
-  'layout/card/basic': async () => import(/* webpackChunkName: "examples-layout_card" */ '@docs/examples/layout/card/basic.vue'),
-  'layout/flexbox/basic': async () => import(/* webpackChunkName: "examples-layout_flexbox" */ '@docs/examples/layout/flexbox/basic.vue'),
-  'layout/tabs/basic': async () => import(/* webpackChunkName: "examples-layout_tabs" */ '@docs/examples/layout/tabs/basic.vue'),
-  'layout/tabs/bordered-raise': async () => import(/* webpackChunkName: "examples-layout_tabs" */ '@docs/examples/layout/tabs/bordered-raise.vue'),
-  'layout/tabs/label-extra-class': async () => import(/* webpackChunkName: "examples-layout_tabs" */ '@docs/examples/layout/tabs/label-extra-class.vue'),
+  'form/radio/basic'                            : async () => import(/* webpackChunkName: "examples-form_radio" */ './form/radio/basic.vue'),
+  'form/radio/group'                            : async () => import(/* webpackChunkName: "examples-form_radio" */ './form/radio/group.vue'),
+  'form/switch/basic'                           : async () => import(/* webpackChunkName: "examples-form_switch" */ './form/switch/basic.vue'),
+  'general/button/overview'                     : async () => import(/* webpackChunkName: "examples-general_button" */ './general/button/overview.vue'),
+  'layout/card/array'                           : async () => import(/* webpackChunkName: "examples-layout_card" */ './layout/card/array.vue'),
+  'layout/card/basic'                           : async () => import(/* webpackChunkName: "examples-layout_card" */ './layout/card/basic.vue'),
+  'layout/flexbox/basic'                        : async () => import(/* webpackChunkName: "examples-layout_flexbox" */ './layout/flexbox/basic.vue'),
+  'layout/tabs/basic'                           : async () => import(/* webpackChunkName: "examples-layout_tabs" */ './layout/tabs/basic.vue'),
+  'layout/tabs/bordered-raise'                  : async () => import(/* webpackChunkName: "examples-layout_tabs" */ './layout/tabs/bordered-raise.vue'),
+  'layout/tabs/label-extra-class'               : async () => import(/* webpackChunkName: "examples-layout_tabs" */ './layout/tabs/label-extra-class.vue'),
 };

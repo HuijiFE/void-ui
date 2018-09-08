@@ -1,5 +1,5 @@
 import Vue, { ComponentOptions } from 'vue';
-import { VdForm } from '@void/ui/lib/components/form/form/form';
+import { VdForm } from './form/form';
 
 /**
  * Form base

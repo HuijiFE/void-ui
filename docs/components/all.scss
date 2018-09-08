@@ -7,8 +7,8 @@
  * All components style of void-ui documentation.
  */
 
-@import '~@docs/components/example/demo-box';
-@import '~@docs/components/example/example';
-@import '~@docs/components/file-icon/file-icon';
-@import '~@docs/components/nav-bar/nav-bar';
-@import '~@docs/components/side-bar/side-bar';
+@import './example/demo-box';
+@import './example/example';
+@import './file-icon/file-icon';
+@import './nav-bar/nav-bar';
+@import './side-bar/side-bar';

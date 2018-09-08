@@ -19,7 +19,7 @@ import {
   DEFAULT_BREAK_POINTS,
   ResponsiveValues,
   RecordResponsiveValues,
-} from '@void/ui/lib/components/base/variables';
+} from '../../base/variables';
 
 let $$Vue: typeof Vue | undefined;
 

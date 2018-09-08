@@ -19,7 +19,7 @@ import {
   ResponsiveValues,
   LinkLikeComponent,
   Direction,
-} from '@void/ui/lib/components/base/variables';
+} from '../../base';
 
 export type FlexDirection = Direction;
 export type FlexWrap = 'nowrap' | 'wrap' | 'wrap-reverse';

@@ -11,61 +11,61 @@ export default [
   {
     path: 'basic/cep',
     name: 'CEP 命名约定',
-    component: async () => import('@docs/articles/zh-CN/basic/cep.md'),
+    component: async () => import('./basic/cep.md'),
   },
   {
     path: 'basic/color',
     name: 'Color 颜色',
-    component: async () => import('@docs/articles/zh-CN/basic/color.md'),
+    component: async () => import('./basic/color.md'),
   },
   {
     path: 'basic/responsive',
     name: 'Responsive 响应式',
-    component: async () => import('@docs/articles/zh-CN/basic/responsive.md'),
+    component: async () => import('./basic/responsive.md'),
   },
   {
     path: 'basic/style',
     name: 'Style 样式',
-    component: async () => import('@docs/articles/zh-CN/basic/style.md'),
+    component: async () => import('./basic/style.md'),
   },
   {
     path: 'form/radio',
     name: 'Radio 单选框',
-    component: async () => import('@docs/articles/zh-CN/form/radio.md'),
+    component: async () => import('./form/radio.md'),
   },
   {
     path: 'form/switch',
     name: 'Switch 开关',
-    component: async () => import('@docs/articles/zh-CN/form/switch.md'),
+    component: async () => import('./form/switch.md'),
   },
   {
     path: 'general/button',
     name: 'Button 按钮',
-    component: async () => import('@docs/articles/zh-CN/general/button.md'),
+    component: async () => import('./general/button.md'),
   },
   {
     path: 'general/icon',
     name: 'Icon 图标',
-    component: async () => import('@docs/articles/zh-CN/general/icon.md'),
+    component: async () => import('./general/icon.md'),
   },
   {
     path: 'layout/card',
     name: 'Card 卡片',
-    component: async () => import('@docs/articles/zh-CN/layout/card.md'),
+    component: async () => import('./layout/card.md'),
   },
   {
     path: 'layout/flexbox',
     name: 'Flexbox 弹性盒子',
-    component: async () => import('@docs/articles/zh-CN/layout/flexbox.md'),
+    component: async () => import('./layout/flexbox.md'),
   },
   {
     path: 'layout/flow',
     name: 'Flow 流式',
-    component: async () => import('@docs/articles/zh-CN/layout/flow.md'),
+    component: async () => import('./layout/flow.md'),
   },
   {
     path: 'layout/tabs',
     name: 'Tabs 标签页',
-    component: async () => import('@docs/articles/zh-CN/layout/tabs.md'),
+    component: async () => import('./layout/tabs.md'),
   },
 ];

@@ -8,7 +8,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { Theme, ThemeComponent } from '@void/ui/lib/components/base';
+import { Theme, ThemeComponent } from '../../../components/base';
 
 /**
  * Component: From

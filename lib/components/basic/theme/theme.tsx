@@ -8,7 +8,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { Theme } from '@void/ui/lib/components/base/variables';
+import { Theme } from '../../base/variables';
 import { ComponentOptions, DefaultData, DefaultMethods } from 'vue/types/options';
 
 let $$Vue: typeof Vue | undefined;

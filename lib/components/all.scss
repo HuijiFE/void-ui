@@ -7,15 +7,15 @@
  * All components style of void-ui.
  */
 
-@import '~@void/ui/lib/components/basic/atom-colors/theme';
-@import '~@void/ui/lib/components/basic/match-media/match-media';
-@import '~@void/ui/lib/components/form/form/form';
-@import '~@void/ui/lib/components/form/radio/radio';
-@import '~@void/ui/lib/components/form/switch/switch';
-@import '~@void/ui/lib/components/general/button/button';
-@import '~@void/ui/lib/components/layout/card/card';
-@import '~@void/ui/lib/components/layout/flexbox/flexbox';
-@import '~@void/ui/lib/components/layout/flow/flow';
-@import '~@void/ui/lib/components/layout/list/list';
-@import '~@void/ui/lib/components/layout/tabs/tabs';
-@import '~@void/ui/lib/components/layout/tree/tree';
+@import './basic/atom-colors/theme';
+@import './basic/match-media/match-media';
+@import './form/form/form';
+@import './form/radio/radio';
+@import './form/switch/switch';
+@import './general/button/button';
+@import './layout/card/card';
+@import './layout/flexbox/flexbox';
+@import './layout/flow/flow';
+@import './layout/list/list';
+@import './layout/tabs/tabs';
+@import './layout/tree/tree';

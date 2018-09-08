@@ -7,15 +7,15 @@
  * All components of void-ui.
  */
 
-export * from '@void/ui/lib/components/basic/match-media/match-media';
-export * from '@void/ui/lib/components/basic/theme/theme';
-export * from '@void/ui/lib/components/form/form/form';
-export * from '@void/ui/lib/components/form/radio/radio';
-export * from '@void/ui/lib/components/form/switch/switch';
-export * from '@void/ui/lib/components/general/button/button';
-export * from '@void/ui/lib/components/layout/card/card';
-export * from '@void/ui/lib/components/layout/flexbox/flexbox';
-export * from '@void/ui/lib/components/layout/flow/flow';
-export * from '@void/ui/lib/components/layout/list/list';
-export * from '@void/ui/lib/components/layout/tabs/tabs';
-export * from '@void/ui/lib/components/layout/tree/tree';
+export * from './basic/match-media/match-media';
+export * from './basic/theme/theme';
+export * from './form/form/form';
+export * from './form/radio/radio';
+export * from './form/switch/switch';
+export * from './general/button/button';
+export * from './layout/card/card';
+export * from './layout/flexbox/flexbox';
+export * from './layout/flow/flow';
+export * from './layout/list/list';
+export * from './layout/tabs/tabs';
+export * from './layout/tree/tree';
