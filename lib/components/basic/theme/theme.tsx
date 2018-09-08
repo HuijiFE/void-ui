@@ -13,6 +13,18 @@ import { ComponentOptions, DefaultData, DefaultMethods } from 'vue/types/options
 
 let $$Vue: typeof Vue | undefined;
 
+declare module 'vue/types/vue' {
+  interface Vue {
+    $vd_theme: ThemeHub;
+  }
+}
+
+declare module 'vue/types/options' {
+  interface ComponentOptions<V extends Vue> {
+    vdTheme?: VdTheme;
+  }
+}
+
 export interface ThemeHub {
   readonly theme: Theme;
   setColor(theme: Theme): void;

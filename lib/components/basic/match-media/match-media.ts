@@ -23,6 +23,12 @@ import {
 
 let $$Vue: typeof Vue | undefined;
 
+declare module 'vue/types/vue' {
+  interface Vue {
+    $vd_media: MediaHub;
+  }
+}
+
 export interface MediaScreen extends Readonly<Record<MediaAlias, boolean>> {}
 
 export interface MediaHub {
