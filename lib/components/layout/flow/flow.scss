@@ -2,7 +2,9 @@
  * Component: Swimlane
  */
 @include comp('swimlane') {
-  //
+  position: relative;
+  max-width: 100%;
+  padding: rem($swimlane-padding) 0;
 }
 
 /**

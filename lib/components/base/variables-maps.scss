@@ -129,6 +129,10 @@ $raise-shadow-map: (
   ),
 ) !default;
 
+// Typographic
+
+$font-size-min: 12 !default;
+
 // Gap Border Radius
 
 $gap-map: (
@@ -181,12 +185,18 @@ $button-gap-icon-text:        0.618em !default;
 // ================================================================
 // Layout
 
+// z-index
+
+$z-index-float: 1600;
+
 // Card
 
 $card-header-height: 40 !default;
 $card-header-font-size: 15 !default;
 
 // Flow
+
+$swimlane-padding: 64 !default;
 
 $container-width-map: (
   xs: 100%,
