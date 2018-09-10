@@ -39,6 +39,9 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/
+      - add_ssh_keys:
+        fingerprints:
+          - 0e:fd:15:00:19:2d:f5:ec:1b:f2:3e:4b:01:59:ce:33
       - run: yarn build:csr
       - run: |
           cd www/client
