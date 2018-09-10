@@ -37,6 +37,8 @@ jobs:
   build-docs:
     <<: *default
     steps:
+      - attach_workspace:
+          at: ~/
       - run: yarn build:csr
       - run: |
           cd www/client
