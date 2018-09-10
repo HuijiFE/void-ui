@@ -4,47 +4,57 @@
 #
 version: 2
 
-general:
-  branches:
-    ignore:
-      - gh-pages
+default: &default
+  working_directory: ~/project/void-ui
+  docker:
+    - image: circleci/node:latest
+
+require_install: &require_install
+  requires:
+    - install
 
 jobs:
-  build-pages:
-    docker:
-      - image: circleci/node:latest
-
-    working_directory: ~/repo
-
+  install:
+    <<: *default
     steps:
       - checkout
-
-      # Download and cache dependencies
       - restore_cache:
           keys:
-            # when lock file changes, use increasingly general patterns to restore cache
-            - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-packages-v1-{{ .Branch }}-
-            - yarn-packages-v1-
-
-      - run: yarn install
-
+            - v1-void-ui-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - v1-void-ui-{{ .Branch }}-
+            - v1-void-ui-
+      - run: yarn --network-timeout 600000
       - save_cache:
           paths:
-            - ~/.cache/yarn
-          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
-
-      # build
+            - node_modules/
+            - ~/.cache
+          key: v1-void-ui-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - project/void-ui
+  
+  build-docs:
+    <<: *default
+    steps:
       - run: yarn build:csr
-      
-      # deploy
-      - run: ./build/deploy-gh-pages.sh
+      - run: |
+          cd www/client
+          git init
+          git config user.email huijife@outlook.com
+          git config user.name huijife-bot
+          git remote add origin git@github.com:HuijiFE/void-ui.git
+          git checkout gh-pages
+          git add .
+          git commit -m "auto deploy"
+          git push origin gh-pages --force
 
 workflows:
   version: 2
   workflow:
     jobs:
       - build-pages:
+          <<: *require_install
           filters:
             branches:
               only: master
