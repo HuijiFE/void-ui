@@ -1,3 +1,6 @@
+// tslint:disable-next-line:no-import-side-effect
+import '@docs/main.scss';
+
 import Vue from 'vue';
 
 import { config, library } from '@fortawesome/fontawesome-svg-core';
@@ -36,6 +39,3 @@ export const createApp: () => { app: Vue; router: VueRouter } = () => {
 
   return { app, router };
 };
-
-// tslint:disable:no-import-side-effect
-import '@docs/main.scss';

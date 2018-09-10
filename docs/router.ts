@@ -22,7 +22,7 @@ export const createRouter: () => VueRouter = () =>
     routes: [
       {
         path: '/',
-        redirect: '/zh-CN',
+        redirect: '/zh-CN/components',
       },
       {
         path: '/test',
