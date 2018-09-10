@@ -22,6 +22,7 @@ declare module 'vue/types/vue' {
 declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
     vdTheme?: VdTheme;
+    isVdTheme?: boolean;
   }
 }
 
@@ -38,7 +39,9 @@ export interface VdThemeOptions {
 /**
  * A wrapper class component for managing region theme.
  */
-@Component
+@Component({
+  isVdTheme: true,
+})
 export class VdTheme extends Vue implements ThemeHub {
   // tslint:disable-next-line:function-name
   public static install: PluginFunction<VdThemeOptions> = ($Vue, options) => {
@@ -57,7 +60,7 @@ export class VdTheme extends Vue implements ThemeHub {
             this.$vd_theme = this.$options.vdTheme;
           } else if (this.$options.parent && this.$options.parent.$vd_theme) {
             this.$vd_theme = this.$options.parent.$vd_theme;
-          } else if (this === this.$root && this.$options.name !== 'VdTheme') {
+          } else if (this === this.$root && !this.$options.isVdTheme) {
             this.$vd_theme = new VdTheme({ propsData: { theme: defaultTheme } });
           }
         }
