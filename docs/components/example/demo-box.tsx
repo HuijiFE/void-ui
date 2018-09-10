@@ -21,6 +21,9 @@ export class CDemoBox extends Vue {
   public readonly bordered!: boolean;
 
   @Prop({ type: Boolean, default: false })
+  public readonly padding!: boolean;
+
+  @Prop({ type: Boolean, default: false })
   public readonly bold!: boolean;
 
   @Prop({ type: Boolean, default: false })
@@ -42,6 +45,7 @@ export class CDemoBox extends Vue {
     return [
       {
         'is-bordered': this.bordered,
+        'is-padding': this.padding,
         'is-bold': this.bold,
         [`cp-rainbow_${this.rainbowId % 9}`]: this.rainbow,
       },

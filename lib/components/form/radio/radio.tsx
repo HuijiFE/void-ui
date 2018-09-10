@@ -14,7 +14,7 @@ import { VdForm } from '../form/form';
 
 export interface RadioData {
   label: string;
-  value: string | number;
+  value: boolean | string | number;
 }
 
 /**
@@ -38,11 +38,11 @@ export class VdRadio extends Vue implements ThemeComponent, FormComponent {
   @Prop({ type: String })
   public readonly name?: string;
 
-  @Model('change', { type: [String, Number], required: true })
-  public readonly model!: string | number;
+  @Model('change', { type: [Boolean, String, Number], required: true })
+  public readonly model!: boolean | string | number;
 
-  @Prop({ type: [String, Number], required: true })
-  public readonly value!: string | number;
+  @Prop({ type: [Boolean, String, Number], required: true })
+  public readonly value!: boolean | string | number;
 
   @Prop({ type: String })
   public readonly label?: string;

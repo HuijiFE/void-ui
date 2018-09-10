@@ -12,10 +12,10 @@ $root-font-size: 100;
 $namespace: 'c';
 @import '@docs/components/all.scss';
 
-// Examples
-$namespace: 'e';
-@import '@docs/examples/all.scss';
-
 // Views
 $namespace: 'v';
 @import '@docs/views/app.scss';
+
+// Examples
+$namespace: 'e';
+@import '@docs/examples/all.scss';

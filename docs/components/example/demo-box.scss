@@ -32,8 +32,12 @@
   }
 
   @include when('bordered') {
-    @include elem('label') {
-      border: rem($border-base) solid;
+    border: rem($border-base) solid;
+  }
+
+  @include when('padding') {
+    @include elem('content') {
+      padding: rem($gap-base);
     }
   }
 
@@ -62,7 +66,11 @@
         'rainbow': $num,
       )
     ) {
-      color: $value;
+      border-color: $value;
+
+      @include elem('label') {
+        color: $value;
+      }
     }
   }
 }
