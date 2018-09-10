@@ -45,6 +45,6 @@ workflows:
   workflow:
     jobs:
       - build-pages:
-        filters:
-          branches:
-            only: master
+          filters:
+            branches:
+              only: master
