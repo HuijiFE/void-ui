@@ -58,7 +58,7 @@ workflows:
             branches:
               ignore:
                 - gh-pages
-      - build-pages:
+      - build-docs:
           <<: *require_install
           filters:
             branches:
