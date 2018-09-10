@@ -53,6 +53,11 @@ workflows:
   version: 2
   workflow:
     jobs:
+      - install:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
       - build-pages:
           <<: *require_install
           filters:
