@@ -3,6 +3,8 @@ package.json
 package-lock.json
 yarn.lock
 
+/.circleci
+
 variables.scss
 variables-maps.scss
 variables-maps-modern.scss
