@@ -35,7 +35,7 @@ jobs:
           key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
       # build
-      - run: yarn build
+      - run: yarn build:csr
       
       # deploy
       - run: ./build/deploy-gh-pages.sh
