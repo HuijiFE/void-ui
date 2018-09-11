@@ -124,3 +124,23 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
     );
   }
 }
+
+/**
+ * Component: ButtonGroup
+ */
+@Component
+export class VdButtonGroup extends Vue {
+  @Prop({ type: String })
+  public readonly gap?: Size;
+
+  private render(h: CreateElement): VNode {
+    return h(
+      'div',
+      {
+        staticClass: 'vd-button-group',
+        class: [{ [`vdp-gap_${this.gap}`]: this.gap }],
+      },
+      this.$slots.default,
+    );
+  }
+}

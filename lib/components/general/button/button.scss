@@ -360,3 +360,15 @@
     animation: vd-button-loading-indicator-spin 750ms linear infinite;
   }
 }
+
+/**
+ * Component: ButtonGroup
+ */
+@include comp('button-group') {
+  margin: rem(-$gap-base);
+  padding: rem($gap-base / 2);
+
+  > .#{class-comp('button')} {
+    margin: rem($gap-base / 2);
+  }
+}
