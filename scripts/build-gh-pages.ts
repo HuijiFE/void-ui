@@ -30,6 +30,12 @@ async function copy(): Promise<void> {
     throw new Error(`No such file: ${indexPath}`);
   }
 
+  mkdirp.sync(resolvePath('www/client/.circleci'));
+  fs.copyFileSync(
+    resolvePath('.circleci/config.yml'),
+    resolvePath('www/client/.circleci/config.yml'),
+  );
+
   const paths: string[] = ['zh-CN']
     .map((lang, index) => [
       ...articles[index].map(a =>
