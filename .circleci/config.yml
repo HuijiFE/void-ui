@@ -44,6 +44,7 @@ jobs:
             - 0e:fd:15:00:19:2d:f5:ec:1b:f2:3e:4b:01:59:ce:33
       - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
       - run: yarn build:csr
+      - run: yarn build:gh
       - run: |
           cd www/client
           git init
