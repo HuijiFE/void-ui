@@ -33,7 +33,7 @@ async function copy(): Promise<void> {
   const paths: string[] = ['zh-CN']
     .map((lang, index) => [
       ...articles[index].map(a =>
-        resolvePath('www/client', 'components', lang, a, 'index.html'),
+        resolvePath('www/client', lang, 'components', a, 'index.html'),
       ),
     ])
     .reduce<string[]>((result, cur) => {
