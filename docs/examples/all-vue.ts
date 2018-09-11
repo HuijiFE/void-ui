@@ -8,6 +8,7 @@
  */
 
 export default {
+  'color/tone/overview'                         : async () => import(/* webpackChunkName: "examples-color_tone" */ './color/tone/overview.vue'),
   'form/radio/basic'                            : async () => import(/* webpackChunkName: "examples-form_radio" */ './form/radio/basic.vue'),
   'form/radio/group'                            : async () => import(/* webpackChunkName: "examples-form_radio" */ './form/radio/group.vue'),
   'form/switch/basic'                           : async () => import(/* webpackChunkName: "examples-form_switch" */ './form/switch/basic.vue'),

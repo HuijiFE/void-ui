@@ -271,8 +271,9 @@ const optionsListArticle: GenerateOptions[] = ['zh-CN'].map<GenerateOptions>(lan
   patterns: [`docs/articles/${lang}/**/*.md`],
   output: `docs/articles/${lang}/all.ts`,
   comments: ['All articles'],
-  header: 'export default [',
-  footer: '];',
+  header:
+    "import { RouteConfig } from 'vue-router';\n\n const articles: RouteConfig[] = [",
+  footer: '];\n\nexport default articles',
   body: files => {
     return files
       .map(info => {

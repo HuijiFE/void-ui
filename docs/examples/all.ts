@@ -8,6 +8,7 @@
  */
 
 export default {
+  'color/tone/overview': [ 'scss', 'tsx', 'vue' ],
   'form/radio/basic': [ 'tsx', 'vue' ],
   'form/radio/group': [ 'tsx', 'vue' ],
   'form/switch/basic': [ 'tsx', 'vue' ],

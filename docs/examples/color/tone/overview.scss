@@ -1,0 +1,25 @@
+/**
+ * Component: ToneOverview
+ */
+@include comp('tone-overview') {
+  @include elem('item') {
+    height: rem(40);
+
+    display: flex;
+    flex: 1;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    color: $color-white;
+
+    @each $level in ('lightener', 'lighten', 'standard', 'darken', 'darkener') {
+      @each $tone in $type-tone {
+        &.tone-#{$tone}-#{$level} {
+          background-color: tone($tone, $level);
+        }
+      }
+    }
+  }
+}

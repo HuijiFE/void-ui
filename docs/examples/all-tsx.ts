@@ -8,6 +8,7 @@
  */
 
 export default {
+  'color/tone/overview'                         : async () => import(/* webpackChunkName: "examples-color_tone" */ './color/tone/overview'),
   'form/radio/basic'                            : async () => import(/* webpackChunkName: "examples-form_radio" */ './form/radio/basic'),
   'form/radio/group'                            : async () => import(/* webpackChunkName: "examples-form_radio" */ './form/radio/group'),
   'form/switch/basic'                           : async () => import(/* webpackChunkName: "examples-form_switch" */ './form/switch/basic'),

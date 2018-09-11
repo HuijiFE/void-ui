@@ -16,7 +16,7 @@ const routeConfigMap: Record<string, RouteConfig[]> = {
   'zh-CN': zhCN,
 };
 
-const categories: string[] = ['basic', 'general', 'layout', 'form'];
+const categories: string[] = ['basic', 'color', 'general', 'layout', 'form'];
 
 /**
  * View: Components

@@ -7,7 +7,9 @@
  * All articles
  */
 
-export default [
+import { RouteConfig } from 'vue-router';
+
+ const articles: RouteConfig[] = [
   {
     path: 'basic/cep',
     name: 'CEP 命名约定',
@@ -27,6 +29,21 @@ export default [
     path: 'basic/style',
     name: 'Style 样式',
     component: async () => import('./basic/style.md'),
+  },
+  {
+    path: 'color/grade',
+    name: '',
+    component: async () => import('./color/grade.md'),
+  },
+  {
+    path: 'color/theme',
+    name: 'Theme 主题',
+    component: async () => import('./color/theme.md'),
+  },
+  {
+    path: 'color/tone',
+    name: 'Tone 色调',
+    component: async () => import('./color/tone.md'),
   },
   {
     path: 'form/radio',
@@ -69,3 +86,5 @@ export default [
     component: async () => import('./layout/tabs.md'),
   },
 ];
+
+export default articles
