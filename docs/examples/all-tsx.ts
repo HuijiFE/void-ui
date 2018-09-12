@@ -19,6 +19,7 @@ export default {
   'layout/flexbox/gap'                          : async () => import(/* webpackChunkName: "examples-layout_flexbox" */ './layout/flexbox/gap'),
   'layout/flexbox/tiles'                        : async () => import(/* webpackChunkName: "examples-layout_flexbox" */ './layout/flexbox/tiles'),
   'layout/flow/basic'                           : async () => import(/* webpackChunkName: "examples-layout_flow" */ './layout/flow/basic'),
+  'layout/popover/basic'                        : async () => import(/* webpackChunkName: "examples-layout_popover" */ './layout/popover/basic'),
   'layout/tabs/basic'                           : async () => import(/* webpackChunkName: "examples-layout_tabs" */ './layout/tabs/basic'),
   'layout/tabs/bordered-raise'                  : async () => import(/* webpackChunkName: "examples-layout_tabs" */ './layout/tabs/bordered-raise'),
   'layout/tabs/label-extra-class'               : async () => import(/* webpackChunkName: "examples-layout_tabs" */ './layout/tabs/label-extra-class'),

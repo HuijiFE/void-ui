@@ -17,5 +17,6 @@ export * from './layout/card/card';
 export * from './layout/flexbox/flexbox';
 export * from './layout/flow/flow';
 export * from './layout/list/list';
+export * from './layout/popover/popover';
 export * from './layout/tabs/tabs';
 export * from './layout/tree/tree';

@@ -8,7 +8,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { ClassName, Theme, ThemeComponent, Direction } from '../../base';
+import { ClassName, Theme, ThemeComponent, FlexDirection } from '../../base';
 import { mixinFormComponent, FormComponent } from '../_base';
 import { VdForm } from '../form/form';
 

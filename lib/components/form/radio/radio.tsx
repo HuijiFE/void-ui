@@ -8,7 +8,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { ClassName, Theme, ThemeComponent, Direction } from '../../base';
+import { ClassName, Theme, ThemeComponent, FlexDirection } from '../../base';
 import { mixinFormComponent, FormComponent } from '../_base';
 import { VdForm } from '../form/form';
 
@@ -107,7 +107,7 @@ export class VdRadioGroup extends Vue implements FormComponent {
   public readonly itemsSource!: RadioData[];
 
   @Prop({ type: String })
-  public readonly direction?: Direction;
+  public readonly direction?: FlexDirection;
 
   public get classes(): ClassName {
     return [

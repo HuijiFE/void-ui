@@ -87,7 +87,7 @@ module.exports = {
 
   pluginOptions: {
     markdownLoaderOptions: {
-      useAnchor: true,
+      useAnchor: false,
     },
   },
 

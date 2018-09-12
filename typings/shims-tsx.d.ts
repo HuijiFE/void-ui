@@ -1,6 +1,8 @@
-import Vue, { VNode } from 'vue';
+import Vue, { VNode, CreateElement } from 'vue';
 
 declare global {
+  const h: CreateElement;
+
   namespace JSX {
     // tslint:disable no-empty-interface
     interface Element extends VNode {}

@@ -187,7 +187,9 @@ $button-gap-icon-text:        0.618em !default;
 
 // z-index
 
-$z-index-float: 1600;
+$z-index-float: 1600 !default;
+
+$z-index-popover: $z-index-float;
 
 // Card
 

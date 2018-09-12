@@ -15,7 +15,7 @@ let $$Vue: typeof Vue | undefined;
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $vd_theme: ThemeHub;
+    $vd_theme: VdTheme;
   }
 }
 
@@ -24,12 +24,6 @@ declare module 'vue/types/options' {
     vdTheme?: VdTheme;
     isVdTheme?: boolean;
   }
-}
-
-export interface ThemeHub {
-  readonly theme: Theme;
-  setColor(theme: Theme): void;
-  switchColor(): void;
 }
 
 export interface VdThemeOptions {
@@ -42,7 +36,7 @@ export interface VdThemeOptions {
 @Component({
   isVdTheme: true,
 })
-export class VdTheme extends Vue implements ThemeHub {
+export class VdTheme extends Vue {
   // tslint:disable-next-line:function-name
   public static install: PluginFunction<VdThemeOptions> = ($Vue, options) => {
     if ($$Vue && $$Vue === $Vue) {
@@ -69,7 +63,7 @@ export class VdTheme extends Vue implements ThemeHub {
   };
 
   @Prop({ type: String, default: 'div' })
-  public readonly tag!: keyof HTMLElementTagNameMap;
+  private readonly tag!: keyof HTMLElementTagNameMap;
 
   @Prop({ type: String, required: true })
   public theme!: Theme;
@@ -90,7 +84,7 @@ export class VdTheme extends Vue implements ThemeHub {
     }
   }
 
-  public render(h: CreateElement): VNode {
+  private render(h: CreateElement): VNode {
     return h(
       this.tag,
       {

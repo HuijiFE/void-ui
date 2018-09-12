@@ -187,6 +187,11 @@ const optionsList: GenerateOptions[] = [
     output: 'lib/components/all.scss',
     comments: ['All components style of void-ui.'],
   },
+  {
+    patterns: ['lib/plugins/**/*.ts'],
+    output: 'lib/plugins/all.ts',
+    comments: ['All Vue plugins of void-ui.'],
+  },
 
   // docs
 

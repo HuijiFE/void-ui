@@ -2,9 +2,11 @@ import Vue, { PluginFunction } from 'vue';
 
 export * from './components/base/index';
 export * from './components/all';
+export * from './plugins/all';
 
 import * as base from './components/base/index';
 import * as components from './components/all';
+import * as plugins from './plugins/all';
 
 let $$Vue: typeof Vue | undefined;
 
@@ -21,6 +23,7 @@ const install: PluginFunction<VoidUIOptions> = ($Vue, options?) => {
   $$Vue = $Vue;
 
   // install all plugins
+  plugins.bodyRenderer.install($Vue);
 
   // install all component additional plugins
   components.VdTheme.install($Vue, options);

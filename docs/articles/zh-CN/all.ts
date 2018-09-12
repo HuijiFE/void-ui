@@ -81,6 +81,11 @@ import { RouteConfig } from 'vue-router';
     component: async () => import('./layout/flow.md'),
   },
   {
+    path: 'layout/popover',
+    name: 'Popover 弹出框',
+    component: async () => import('./layout/popover.md'),
+  },
+  {
     path: 'layout/tabs',
     name: 'Tabs 标签页',
     component: async () => import('./layout/tabs.md'),

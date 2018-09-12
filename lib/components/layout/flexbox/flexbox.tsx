@@ -18,29 +18,12 @@ import {
   Size,
   ResponsiveValues,
   LinkLikeComponent,
-  Direction,
+  FlexDirection,
+  FlexWrap,
+  FlexJustify,
+  FlexAlign,
+  Flex,
 } from '../../base';
-
-export type FlexDirection = Direction;
-export type FlexWrap = 'nowrap' | 'wrap' | 'wrap-reverse';
-
-export type FlexAlign =
-  | 'start'
-  | 'center'
-  | 'end'
-  | 'space-between'
-  | 'space-around'
-  | 'space-evenly'
-  | 'stretch';
-export type FlexJustify =
-  | 'start'
-  | 'center'
-  | 'end'
-  | 'space-between'
-  | 'space-around'
-  | 'space-evenly';
-
-export type Flex = 'initial' | 'auto' | 'none' | number;
 
 export interface VdFlexbox {
   props: {
