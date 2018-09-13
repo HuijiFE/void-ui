@@ -21,22 +21,32 @@ $type-size:   'xsmall', 'small', 'medium', 'large', 'xlarge';
 // Colors
 
 @function theme($theme: 'lite', $role: 'fg', $level: 'normal') {
-  $value: map-get($map: $color-map-theme, $key: #{$theme}-#{$role}-#{$level});
+  $sub-map: map-get($map: $color-map-theme, $key: $theme);
+  @if $sub-map == null {
+    @error 'Theme #{$theme} not found.';
+  }
+
+  $value: map-get($map: $sub-map, $key: #{$role}-#{$level});
 
   @if $value {
     @return $value;
   } @else {
-    @error 'Theme color no found #{$theme}-#{$role}-#{$level}';
+    @error 'Theme color #{$theme}-#{$role}-#{$level} not found.';
   }
 }
 
 @function tone($tone: 'primary', $level: 'standard') {
-  $value: map-get($map: $color-map-tone, $key: #{$tone}-#{$level});
+  $sub-map: map-get($map: $color-map-tone, $key: $tone);
+  @if $sub-map == null {
+    @error 'Tone #{$tone} not found.';
+  }
+
+  $value: map-get($map: $sub-map, $key: $level);
 
   @if $value {
     @return $value;
   } @else {
-    @error 'Tone color no found: #{$tone}-#{$level}';
+    @error 'Tone color #{$tone}-#{$level} not found.';
   }
 }
 
