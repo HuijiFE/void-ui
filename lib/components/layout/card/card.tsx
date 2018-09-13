@@ -27,6 +27,9 @@ export class VdCard extends Vue implements ThemeComponent {
   @Prop({ type: [Boolean, Number], default: false })
   public readonly raise!: boolean | number;
 
+  @Prop({ type: Boolean, default: false })
+  public readonly transparent!: boolean;
+
   public get classes(): ClassName {
     return [
       `vdp-theme_${this.themeValue}`,
@@ -34,6 +37,7 @@ export class VdCard extends Vue implements ThemeComponent {
         'is-bordered': this.bordered,
         'is-raise': this.raise && typeof this.raise === 'boolean',
         [`vdp-raise_${this.raise}`]: this.raise && typeof this.raise === 'number',
+        'is-transparent': this.transparent,
       },
     ];
   }

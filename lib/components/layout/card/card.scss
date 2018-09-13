@@ -7,10 +7,15 @@
 
   overflow: hidden;
 
+  @include elem('header', 'content', 'separator') {
+    position: relative;
+  }
+
   @include elem('header') {
     height: rem($card-header-height + $border-base);
-    border-bottom: rem($border-base) solid;
+    border-bottom: rem($border-base) solid transparent;
     padding: 0 rem($gap-base);
+    margin: 0;
 
     display: flex;
     flex-flow: row nowrap;
@@ -19,21 +24,11 @@
     align-items: center;
 
     font-size: rem($card-header-font-size);
+    line-height: 1;
   }
 
   @include elem('content') {
-    padding: rem($gap-base / 2) rem($gap-base);
-
-    &:first-child {
-      padding-top: rem($gap-base);
-    }
-    &:last-child {
-      padding-bottom: rem($gap-base);
-    }
-  }
-
-  @include elem-adjacent('header', 'content') {
-    padding-top: rem($gap-base);
+    padding: rem($gap-base);
   }
 
   @include elem('separator') {
@@ -70,5 +65,9 @@
         border-color: theme($theme, 'bd');
       }
     }
+  }
+
+  @include when('transparent') {
+    background-color: transparent;
   }
 }
