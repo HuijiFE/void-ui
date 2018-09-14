@@ -30,6 +30,9 @@ export class VdCard extends Vue implements ThemeComponent {
   @Prop({ type: Boolean, default: false })
   public readonly transparent!: boolean;
 
+  @Prop({ type: Boolean, default: false })
+  public readonly halfTransparent!: boolean;
+
   public get classes(): ClassName {
     return [
       `vdp-theme_${this.themeValue}`,
@@ -38,6 +41,7 @@ export class VdCard extends Vue implements ThemeComponent {
         'is-raise': this.raise && typeof this.raise === 'boolean',
         [`vdp-raise_${this.raise}`]: this.raise && typeof this.raise === 'number',
         'is-transparent': this.transparent,
+        'is-half-transparent': this.halfTransparent,
       },
     ];
   }
@@ -45,6 +49,7 @@ export class VdCard extends Vue implements ThemeComponent {
   private render(h: CreateElement): VNode {
     return (
       <div staticClass="vd-card" class={this.classes}>
+        <div staticClass="vd-card_background" />
         {this.$slots.default}
       </div>
     );

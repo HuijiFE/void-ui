@@ -7,6 +7,14 @@
 
   overflow: hidden;
 
+  @include elem('background') {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
   @include elem('header', 'content', 'separator') {
     position: relative;
   }
@@ -44,6 +52,17 @@
     box-shadow: raise-shadow();
   }
 
+  @include when('transparent') {
+    @include elem('background') {
+      opacity: 0;
+    }
+  }
+  @include when('half-transparent') {
+    @include elem('background') {
+      opacity: $opacity-half;
+    }
+  }
+
   @each $theme in $type-theme {
     @include prop(
       (
@@ -51,7 +70,15 @@
       )
     ) {
       color: theme($theme);
-      background-color: theme($theme, 'bg');
+
+      @include elem('background') {
+        background-color: theme($theme, 'bg');
+      }
+      @include when('half-transparent') {
+        @include elem('background') {
+          background-color: theme($theme, 'bg', 'lower');
+        }
+      }
 
       @include when('bordered') {
         border-color: theme($theme, 'bd');
@@ -65,9 +92,5 @@
         border-color: theme($theme, 'bd');
       }
     }
-  }
-
-  @include when('transparent') {
-    background-color: transparent;
   }
 }
