@@ -1,9 +1,20 @@
+@function sqrt($r) {
+  $x0: 1;
+  $x1: $x0;
+
+  @for $i from 1 through 10 {
+    $x1: $x0 - ($x0 * $x0 - abs($r)) / (2 * $x0);
+    $x0: $x1;
+  }
+
+  @return $x1;
+}
+
 /**
  * Mixin for styling a image's size,
  * the behavior of `object-fit: cover` like `background-size: cover;`
  */
 @mixin image-cover($width: 100%, $height: $width, $radius: $radius-base) {
-  font-size: 12px;
   max-width: $width;
   width: $width;
   max-height: $height;

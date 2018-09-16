@@ -1,0 +1,180 @@
+/**
+ * Component: Popover
+ */
+@include comp('popover') {
+  $arrow-size: sqrt($gap-base * $gap-base * 2);
+  $arrow-gap: -($arrow-size / 2 - 1);
+
+  width: 100%;
+  overflow: hidden;
+
+  @include elem('container', 'header', 'content') {
+    position: relative;
+  }
+
+  @include elem('container', 'arrow') {
+    box-shadow: raise-shadow();
+  }
+
+  @include elem('container') {
+    border-radius: rem($radius-base);
+  }
+
+  @include elem('arrow') {
+    position: absolute;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: rem($arrow-size);
+    width: rem($arrow-size);
+    height: rem($arrow-size);
+    transform: rotate(45deg);
+  }
+
+  @include elem('header') {
+    height: rem($card-header-height + $border-base);
+    line-height: rem($card-header-height);
+    padding: 0 rem($gap-base);
+    border-bottom: rem($border-base) solid transparent;
+
+    font-size: rem($card-header-font-size);
+  }
+
+  @include elem('content') {
+    padding: rem($gap-base);
+  }
+
+  @include prop(
+    (
+      'position': 'left',
+    )
+  ) {
+    @include elem('wrapper') {
+      padding-right: rem($gap-base);
+    }
+    @include elem('arrow') {
+      right: rem($arrow-gap);
+    }
+  }
+  @include prop(
+    (
+      'position': 'right',
+    )
+  ) {
+    @include elem('wrapper') {
+      padding-left: rem($gap-base);
+    }
+    @include elem('arrow') {
+      left: rem($arrow-gap);
+    }
+  }
+  @include prop(
+    (
+      'position': 'top',
+    )
+  ) {
+    @include elem('wrapper') {
+      padding-bottom: rem($gap-base);
+    }
+    @include elem('arrow') {
+      bottom: rem($arrow-gap);
+    }
+  }
+  @include prop(
+    (
+      'position': 'bottom',
+    )
+  ) {
+    @include elem('wrapper') {
+      padding-top: rem($gap-base);
+    }
+    @include elem('arrow') {
+      top: rem($arrow-gap);
+    }
+  }
+
+  @each $position in ('left', 'right') {
+    @include prop(
+      (
+        'position': $position,
+        'align': 'start',
+      )
+    ) {
+      @include elem('arrow') {
+        top: rem($gap-base);
+      }
+    }
+    @include prop(
+      (
+        'position': $position,
+        'align': 'end',
+      )
+    ) {
+      @include elem('arrow') {
+        bottom: rem($gap-base);
+      }
+    }
+    @include prop(
+      (
+        'position': $position,
+        'align': 'center',
+      )
+    ) {
+      @include elem('arrow') {
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+      }
+    }
+  }
+  @each $position in ('top', 'bottom') {
+    @include prop(
+      (
+        'position': $position,
+        'align': 'start',
+      )
+    ) {
+      @include elem('arrow') {
+        left: rem($gap-base);
+      }
+    }
+    @include prop(
+      (
+        'position': $position,
+        'align': 'end',
+      )
+    ) {
+      @include elem('arrow') {
+        right: rem($gap-base);
+      }
+    }
+    @include prop(
+      (
+        'position': $position,
+        'align': 'center',
+      )
+    ) {
+      @include elem('arrow') {
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'theme': $theme,
+      )
+    ) {
+      color: theme($theme);
+      @include elem('header') {
+        color: theme($theme, 'fg', 'emphasize');
+        border-color: theme($theme, 'bd');
+      }
+      @include elem('container', 'arrow', 'header', 'content') {
+        background-color: theme($theme, 'bg');
+      }
+    }
+  }
+}

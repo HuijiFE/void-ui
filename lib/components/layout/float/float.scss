@@ -1,0 +1,114 @@
+/**
+ * Component: Float
+ */
+@include comp('float') {
+  display: none;
+  z-index: $z-index-popover;
+  position: fixed; // the popover should be appended into body directly.
+
+  flex-wrap: row nowrap;
+
+  @include when('visible') {
+    display: flex;
+  }
+
+  & > * {
+    position: relative;
+  }
+
+  @include prop(
+    (
+      'position': 'top',
+    )
+  ) {
+    & > * {
+      bottom: 0;
+    }
+  }
+  @include prop(
+    (
+      'position': 'bottom',
+    )
+  ) {
+    & > * {
+      top: 0;
+    }
+  }
+  @include prop(
+    (
+      'position': 'left',
+    )
+  ) {
+    & > * {
+      right: 0;
+    }
+  }
+  @include prop(
+    (
+      'position': 'right',
+    )
+  ) {
+    & > * {
+      left: 0;
+    }
+  }
+
+  @include prop(
+    (
+      'align': 'start',
+    )
+  ) {
+    justify-content: flex-start;
+  }
+  @include prop(
+    (
+      'align': 'end',
+    )
+  ) {
+    justify-content: flex-end;
+  }
+  @include prop(
+    (
+      'align': 'center',
+    )
+  ) {
+    justify-content: center;
+  }
+  @each $position in ('left', 'right') {
+    @include prop(
+      (
+        'position': $position,
+      )
+    ) {
+      flex-direction: column;
+    }
+    @include prop(
+      (
+        'position': $position,
+        'align': 'center',
+      )
+    ) {
+      transform: translateY(-50%);
+    }
+  }
+  @each $position in ('top', 'bottom') {
+    @include prop(
+      (
+        'position': $position,
+      )
+    ) {
+      flex-direction: row;
+    }
+    @include prop(
+      (
+        'position': $position,
+        'align': 'center',
+      )
+    ) {
+      transform: translateX(-50%);
+    }
+  }
+
+  transition: ease 100ms;
+  transition-property: top bottom left right;
+}

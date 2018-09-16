@@ -56,6 +56,12 @@ $type-size:   'xsmall', 'small', 'medium', 'large', 'xlarge';
   @return map-get($map: $raise-shadow-map, $key: $level);
 }
 
+// Typographic
+
+@function font-size($key) {
+  @return map-get($font-size-map, $key);
+}
+
 // Gap Border Radius
 
 @function gap($key) {
@@ -77,4 +83,4 @@ $type-media-alias: $type-breakpoint-key, 'gtXs', 'ltSm', 'gtSm', 'ltMd', 'gtMd',
 // Layout
 
 $type-direction: row, row-reverse, column, column-reverse;
-
+$type-float-position:   'top', 'bottom', 'top-or-bottom', 'left', 'right', 'left-or-right';

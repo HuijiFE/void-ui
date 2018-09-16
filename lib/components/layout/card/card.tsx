@@ -33,6 +33,9 @@ export class VdCard extends Vue implements ThemeComponent {
   @Prop({ type: Boolean, default: false })
   public readonly halfTransparent!: boolean;
 
+  @Prop({ type: String })
+  public readonly title?: string;
+
   public get classes(): ClassName {
     return [
       `vdp-theme_${this.themeValue}`,
@@ -50,6 +53,7 @@ export class VdCard extends Vue implements ThemeComponent {
     return (
       <div staticClass="vd-card" class={this.classes}>
         <div staticClass="vd-card_background" />
+        {this.title ? <vd-card-header>{this.title}</vd-card-header> : h()}
         {this.$slots.default}
       </div>
     );

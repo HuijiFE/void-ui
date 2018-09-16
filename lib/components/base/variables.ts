@@ -135,8 +135,7 @@ export type Flex = 'initial' | 'auto' | 'none' | number;
 /**
  * Use for a float component, such as tooltip, popover, etc.
  */
-export type PopPosition =
-  | 'auto'
+export type FloatPosition =
   | 'top'
   | 'bottom'
   | 'top-or-bottom'

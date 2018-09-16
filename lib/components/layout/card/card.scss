@@ -15,6 +15,12 @@
     right: 0;
   }
 
+  & > img,
+  & > video {
+    width: 100%;
+    height: auto;
+  }
+
   @include elem('header', 'content', 'separator') {
     position: relative;
   }
