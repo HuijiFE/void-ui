@@ -19,6 +19,8 @@ import {
 import { BodyDestroyer } from '../../../plugins/all';
 import { getFirstTagChild } from '../../../utils/vdom';
 
+const closeDelay: number = 240;
+
 /**
  * Component: Float
  */
@@ -164,13 +166,19 @@ export class VdFloat extends Vue implements ThemeComponent {
   }
 
   public show(): void {
+    this.destroyBodyHandler = this.$vd_bodyRender(() => this.renderBody());
     this.anchor();
     window.addEventListener('scroll', this.anchor);
+    window.setTimeout(() => window.addEventListener('click', this.onWindowClick), 10);
     this.visible = true;
   }
   public close(): void {
+    if (this.destroyBodyHandler) {
+      this.destroyBodyHandler();
+    }
     this.visible = false;
     window.removeEventListener('scroll', this.anchor);
+    window.removeEventListener('click', this.onWindowClick);
   }
 
   protected onClick(event: MouseEvent): void {
@@ -185,10 +193,16 @@ export class VdFloat extends Vue implements ThemeComponent {
       this.close();
     }
   }
+  protected onContentClick(event: MouseEvent): void {
+    event.stopPropagation();
+  }
 
   protected timeoutHandler?: number;
 
   protected onMouseEnter(event: MouseEvent): void {
+    if (this.trigger !== 'hover') {
+      return;
+    }
     window.clearTimeout(this.timeoutHandler);
     if (!this.visible) {
       this.show();
@@ -196,13 +210,15 @@ export class VdFloat extends Vue implements ThemeComponent {
   }
 
   protected onMouseLeave(event: MouseEvent): void {
-    this.timeoutHandler = window.setTimeout(this.close, 200);
+    if (this.trigger !== 'hover') {
+      return;
+    }
+    this.timeoutHandler = window.setTimeout(this.close, closeDelay);
   }
 
   protected addListener(): void {
     if (this.trigger === 'click') {
       this.$el.addEventListener('click', this.onClick);
-      window.addEventListener('click', this.onWindowClick);
     } else {
       this.$el.addEventListener('mouseenter', this.onMouseEnter);
       this.$el.addEventListener('mouseleave', this.onMouseLeave);
@@ -211,18 +227,21 @@ export class VdFloat extends Vue implements ThemeComponent {
 
   protected removeListener(): void {
     this.$el.removeEventListener('click', this.onClick);
-    window.removeEventListener('click', this.onWindowClick);
 
     this.$el.removeEventListener('mouseenter', this.show);
     this.$el.removeEventListener('mouseleave', this.close);
   }
 
+  @Watch('trigger')
+  protected watchTrigger(): void {
+    this.removeListener();
+    this.addListener();
+  }
+
   protected destroyBodyHandler?: BodyDestroyer;
 
   protected mounted(): void {
-    this.destroyBodyHandler = this.$vd_bodyRender(() => this.renderBody());
     this.addListener();
-    this.$nextTick(() => this.show());
   }
 
   protected beforeDestroy(): void {
@@ -239,7 +258,7 @@ export class VdFloat extends Vue implements ThemeComponent {
   };
 
   public $refs!: {
-    content: Element;
+    content: HTMLElement;
   };
 
   protected readonly className?: string;
@@ -255,6 +274,10 @@ export class VdFloat extends Vue implements ThemeComponent {
         staticClass={this.className ? `vd-float ${this.className}` : 'vd-float'}
         class={this.classes}
         style={this.style}
+        onClick={this.onContentClick}
+        onMouseenter={this.onMouseEnter}
+        onMouseleave={this.onMouseLeave}
+        role="tooltip"
       >
         {this.renderContent()}
       </div>

@@ -2,11 +2,10 @@
  * Component: Popover
  */
 @include comp('popover') {
-  $arrow-size: sqrt($gap-base * $gap-base * 2);
-  $arrow-gap: -($arrow-size / 2 - 1);
-
-  width: 100%;
-  overflow: hidden;
+  $arrow-size: $gap-base;
+  // $arrow-size: sqrt($gap-base * $gap-base * 2);
+  $arrow-size: sqrt($gap-base * $gap-base / 4 * 2);
+  $arrow-gap: -($arrow-size / 2);
 
   @include elem('container', 'header', 'content') {
     position: relative;
@@ -27,7 +26,7 @@
     line-height: rem($arrow-size);
     width: rem($arrow-size);
     height: rem($arrow-size);
-    transform: rotate(45deg);
+    transform: rotate(-45deg);
   }
 
   @include elem('header') {
@@ -35,12 +34,18 @@
     line-height: rem($card-header-height);
     padding: 0 rem($gap-base);
     border-bottom: rem($border-base) solid transparent;
+    border-radius: rem($radius-base) 0;
 
     font-size: rem($card-header-font-size);
   }
 
   @include elem('content') {
     padding: rem($gap-base);
+    border-radius: rem($radius-base);
+  }
+
+  @include elem-adjacent('header', 'content') {
+    border-radius: 0 rem($radius-base);
   }
 
   @include prop(
@@ -100,7 +105,7 @@
       )
     ) {
       @include elem('arrow') {
-        top: rem($gap-base);
+        top: rem(($card-header-height - $arrow-size) / 2);
       }
     }
     @include prop(
@@ -110,7 +115,7 @@
       )
     ) {
       @include elem('arrow') {
-        bottom: rem($gap-base);
+        bottom: rem(($card-header-height - $arrow-size) / 2);
       }
     }
     @include prop(
@@ -134,7 +139,7 @@
       )
     ) {
       @include elem('arrow') {
-        left: rem($gap-base);
+        left: rem(($card-header-height - $arrow-size) / 2);
       }
     }
     @include prop(
@@ -144,7 +149,7 @@
       )
     ) {
       @include elem('arrow') {
-        right: rem($gap-base);
+        right: rem(($card-header-height - $arrow-size) / 2);
       }
     }
     @include prop(
