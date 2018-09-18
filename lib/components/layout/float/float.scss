@@ -109,6 +109,46 @@
     }
   }
 
+  @keyframes vd-float-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  & > * {
+    animation: 160ms ease-out;
+  }
+  @each $position in ('left', 'right', 'top', 'bottom') {
+    @each $align in ('start', 'end', 'center') {
+      $animation-name: 'vd-float-fade-in-#{$position}-#{$align}';
+      $parallel: if($position == 'left' or $position == 'top', 40%, -40%);
+      $cross: if($align == 'start', -40%, if($align == 'end', 40%, 0));
+      @keyframes '#{$animation-name}' {
+        from {
+          transform: scale(0.6)
+            translateX(if($position == 'left' or $position == 'right', $parallel, $cross))
+            translateY(if($position == 'left' or $position == 'right', $cross, $parallel));
+        }
+        to {
+          transform: scale(1) translateX(0) translateY(0);
+        }
+      }
+
+      @include prop(
+        (
+          'position': $position,
+          'align': $align,
+        )
+      ) {
+        & > * {
+          animation-name: vd-float-fade-in, $animation-name;
+        }
+      }
+    }
+  }
+
   transition: ease 100ms;
   transition-property: top bottom left right;
 }

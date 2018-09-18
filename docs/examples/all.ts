@@ -19,7 +19,7 @@ export default {
   'layout/flexbox/gap': [ 'tsx', 'vue' ],
   'layout/flexbox/tiles': [ 'tsx', 'vue' ],
   'layout/flow/basic': [ 'scss', 'tsx', 'vue' ],
-  'layout/popover/basic': [ 'tsx' ],
+  'layout/popover/basic': [ 'tsx', 'vue' ],
   'layout/tabs/basic': [ 'tsx', 'vue' ],
   'layout/tabs/bordered-raise': [ 'tsx', 'vue' ],
   'layout/tabs/label-extra-class': [ 'scss', 'tsx', 'vue' ],

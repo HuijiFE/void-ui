@@ -19,6 +19,7 @@ export default {
   'layout/flexbox/gap'                          : async () => import(/* webpackChunkName: "examples-layout_flexbox" */ './layout/flexbox/gap.vue'),
   'layout/flexbox/tiles'                        : async () => import(/* webpackChunkName: "examples-layout_flexbox" */ './layout/flexbox/tiles.vue'),
   'layout/flow/basic'                           : async () => import(/* webpackChunkName: "examples-layout_flow" */ './layout/flow/basic.vue'),
+  'layout/popover/basic'                        : async () => import(/* webpackChunkName: "examples-layout_popover" */ './layout/popover/basic.vue'),
   'layout/tabs/basic'                           : async () => import(/* webpackChunkName: "examples-layout_tabs" */ './layout/tabs/basic.vue'),
   'layout/tabs/bordered-raise'                  : async () => import(/* webpackChunkName: "examples-layout_tabs" */ './layout/tabs/bordered-raise.vue'),
   'layout/tabs/label-extra-class'               : async () => import(/* webpackChunkName: "examples-layout_tabs" */ './layout/tabs/label-extra-class.vue'),
