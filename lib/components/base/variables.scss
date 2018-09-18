@@ -220,6 +220,7 @@ $font-size-map: (
   @return map-get($font-size-map, $key);
 }
 
+$font-size-min:     12 !default;
 $font-size-base:    font-size('medium') !default;
 
 $line-height-base:  1.6 !default;
