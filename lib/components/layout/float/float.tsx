@@ -85,7 +85,7 @@ export class VdFloat extends Vue implements ThemeComponent {
 
     let position: FloatPosition = this.position;
     const align: Align = this.align;
-    const style: Style = this.style;
+    const style: Style = {};
 
     switch (position) {
       case 'left':
