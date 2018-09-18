@@ -20,6 +20,7 @@ import { BodyDestroyer } from '../../../plugins/all';
 import { getFirstTagChild } from '../../../utils/vdom';
 
 const closeDelay: number = 240;
+const animationDuration: number = 240;
 
 /**
  * Component: Float
@@ -46,6 +47,8 @@ export class VdFloat extends Vue implements ThemeComponent {
   public readonly trigger!: 'hover' | 'click';
 
   protected visible: boolean = false;
+  protected showing: boolean = false;
+  protected closing: boolean = false;
 
   public get classes(): ClassName {
     return [
@@ -54,6 +57,8 @@ export class VdFloat extends Vue implements ThemeComponent {
       `vdp-align_${this.align}`,
       {
         'is-visible': this.visible,
+        'is-showing': this.showing,
+        'is-closing': this.closing,
       },
     ];
   }
@@ -80,7 +85,7 @@ export class VdFloat extends Vue implements ThemeComponent {
 
     let position: FloatPosition = this.position;
     const align: Align = this.align;
-    const style: Style = {};
+    const style: Style = this.style;
 
     switch (position) {
       case 'left':
@@ -165,20 +170,37 @@ export class VdFloat extends Vue implements ThemeComponent {
     this.style = style;
   }
 
+  protected timeoutHandlerClose?: number;
+
   public show(): void {
+    window.clearTimeout(this.timeoutHandlerClose);
+    this.closing = false;
+    this.showing = true;
+    window.setTimeout(() => (this.showing = false), animationDuration);
+
     this.destroyBodyHandler = this.$vd_bodyRender(() => this.renderBody());
+
     this.anchor();
+
     window.addEventListener('scroll', this.anchor);
     window.setTimeout(() => window.addEventListener('click', this.onWindowClick), 10);
+
     this.visible = true;
   }
   public close(): void {
-    if (this.destroyBodyHandler) {
-      this.destroyBodyHandler();
+    if (this.closing) {
+      return;
     }
-    this.visible = false;
-    window.removeEventListener('scroll', this.anchor);
-    window.removeEventListener('click', this.onWindowClick);
+
+    const destroy: () => void = this.destroyBodyHandler || (() => undefined);
+
+    this.closing = true;
+    this.timeoutHandlerClose = window.setTimeout(() => {
+      this.visible = false;
+      window.removeEventListener('scroll', this.anchor);
+      window.removeEventListener('click', this.onWindowClick);
+      destroy();
+    }, animationDuration);
   }
 
   protected onClick(event: MouseEvent): void {
@@ -197,13 +219,13 @@ export class VdFloat extends Vue implements ThemeComponent {
     event.stopPropagation();
   }
 
-  protected timeoutHandler?: number;
+  protected timeoutHandlerMouseLeave?: number;
 
   protected onMouseEnter(event: MouseEvent): void {
     if (this.trigger !== 'hover') {
       return;
     }
-    window.clearTimeout(this.timeoutHandler);
+    window.clearTimeout(this.timeoutHandlerMouseLeave);
     if (!this.visible) {
       this.show();
     }
@@ -213,7 +235,7 @@ export class VdFloat extends Vue implements ThemeComponent {
     if (this.trigger !== 'hover') {
       return;
     }
-    this.timeoutHandler = window.setTimeout(this.close, closeDelay);
+    this.timeoutHandlerMouseLeave = window.setTimeout(this.close, closeDelay);
   }
 
   protected addListener(): void {

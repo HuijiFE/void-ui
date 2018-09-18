@@ -2,6 +2,8 @@
  * Component: Float
  */
 @include comp('float') {
+  $animation-duration: 240ms;
+
   display: none;
   z-index: $z-index-popover;
   position: fixed; // the popover should be appended into body directly.
@@ -117,17 +119,26 @@
       opacity: 1;
     }
   }
-  & > * {
-    animation: 160ms ease-out;
+
+  @include when('showing') {
+    & > * {
+      animation: $animation-duration ease;
+    }
   }
+  @include when('closing') {
+    & > * {
+      animation: $animation-duration ease reverse;
+    }
+  }
+
   @each $position in ('left', 'right', 'top', 'bottom') {
     @each $align in ('start', 'end', 'center') {
       $animation-name: 'vd-float-fade-in-#{$position}-#{$align}';
-      $parallel: if($position == 'left' or $position == 'top', 40%, -40%);
-      $cross: if($align == 'start', -40%, if($align == 'end', 40%, 0));
+      $parallel: if($position == 'left' or $position == 'top', 15%, -15%);
+      $cross: if($align == 'start', -15%, if($align == 'end', 15%, 0));
       @keyframes '#{$animation-name}' {
         from {
-          transform: scale(0.6)
+          transform: scale(0.7)
             translateX(if($position == 'left' or $position == 'right', $parallel, $cross))
             translateY(if($position == 'left' or $position == 'right', $cross, $parallel));
         }
@@ -142,9 +153,19 @@
           'align': $align,
         )
       ) {
-        & > * {
-          animation-name: vd-float-fade-in, $animation-name;
+        @include when('showing') {
+          & > * {
+            animation-name: vd-float-fade-in, $animation-name;
+          }
         }
+        @include when('closing') {
+          & > * {
+            animation-name: vd-float-fade-in, $animation-name;
+          }
+        }
+        // & > * {
+        //   animation-name: vd-float-fade-in, $animation-name;
+        // }
       }
     }
   }
