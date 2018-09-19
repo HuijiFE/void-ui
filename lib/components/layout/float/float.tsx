@@ -18,6 +18,7 @@ import {
 } from '../../base';
 import { BodyDestroyer } from '../../../plugins/all';
 import { getFirstTagChild } from '../../../utils/vdom';
+import debounce, { Debounced } from '../../../utils/functional/debounce';
 
 const closeDelay: number = 240;
 const animationDuration: number = 240;
@@ -64,6 +65,8 @@ export class VdFloat extends Vue implements ThemeComponent {
   }
 
   protected style: Style = {};
+
+  protected anchorDebounced!: Debounced<(event: UIEvent) => void>;
 
   // tslint:disable-next-line:max-func-body-length
   protected anchor(): void {
@@ -137,9 +140,9 @@ export class VdFloat extends Vue implements ThemeComponent {
           default:
             style.top = `${gapTop + height / 2}px`;
             style.maxHeight =
-              gapLeft > gapRight
-                ? `${gapRight * 2 + width}px`
-                : `${gapLeft * 2 + width}px`;
+              gapTop > gapBottom
+                ? `${gapBottom * 2 + height}px`
+                : `${gapTop * 2 + height}px`;
         }
         break;
 
@@ -182,7 +185,7 @@ export class VdFloat extends Vue implements ThemeComponent {
 
     this.anchor();
 
-    window.addEventListener('scroll', this.anchor);
+    window.addEventListener('scroll', this.anchorDebounced);
     window.setTimeout(() => window.addEventListener('click', this.onWindowClick), 10);
 
     this.visible = true;
@@ -263,10 +266,13 @@ export class VdFloat extends Vue implements ThemeComponent {
   protected destroyBodyHandler?: BodyDestroyer;
 
   protected mounted(): void {
+    this.anchorDebounced = debounce((event: UIEvent) => this.anchor(), 100);
     this.addListener();
   }
 
   protected beforeDestroy(): void {
+    this.anchorDebounced.clear();
+    this.anchorDebounced = undefined as any;
     this.removeListener();
     if (this.destroyBodyHandler) {
       this.destroyBodyHandler();
