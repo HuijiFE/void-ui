@@ -16,7 +16,7 @@ export type Debounced<T extends Function> = T & {
 export default function debounce<P extends any[], R>(
   action: (...args: P) => R,
   delay?: number,
-): Debounced<(...args: P) => R>;
+): Debounced<(...args: P) => void>;
 
 /**
  * Create a debounced function.
@@ -28,7 +28,7 @@ export default function debounce<P extends any[], R>(
   action: (...args: P) => R,
   delay: number,
   immediate: boolean,
-): Debounced<(...args: P) => void>;
+): Debounced<(...args: P) => R>;
 
 /**
  * Create a debounced function.
