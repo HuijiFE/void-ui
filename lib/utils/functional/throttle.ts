@@ -7,7 +7,13 @@ export type Throttled<P extends any[], R> = ((...args: P) => void) & {
   clear(): void;
 };
 
-export default function throttle<P extends any[], R>(
+/**
+ *
+ * @param action the function to throttle
+ * @param interval the number of milliseconds between invoking
+ * @param lazy if true, not invoke the function at first calling
+ */
+export function throttle<P extends any[], R>(
   action: (...args: P) => R,
   interval: number = 0,
   lazy: boolean = false,

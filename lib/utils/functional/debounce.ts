@@ -11,43 +11,9 @@ export type Debounced<P extends any[], R> = ((...args: P) => void) & {
  * Create a debounced function.
  * @param action the function to debounce
  * @param delay the number of milliseconds to delay invoking
+ * @param immediate if true, invoke the function at leading edge, instead of the trailing
  */
-export default function debounce<P extends any[], R>(
-  action: (...args: P) => R,
-  delay?: number,
-): Debounced<P, R>;
-
-/**
- * Create a debounced function.
- * @param action the function to debounce
- * @param delay the number of milliseconds to delay invoking
- * @param immediate if true invoke the function at leading edge, instead of the trailing
- */
-export default function debounce<P extends any[], R>(
-  action: (...args: P) => R,
-  delay: number,
-  immediate: true,
-): Debounced<P, R>;
-
-/**
- * Create a debounced function.
- * @param action the function to debounce
- * @param delay the number of milliseconds to delay invoking
- * @param immediate if true invoke the function at leading edge, instead of the trailing
- */
-export default function debounce<P extends any[], R>(
-  action: (...args: P) => R,
-  delay: number,
-  immediate: false,
-): Debounced<P, R>;
-
-/**
- * Create a debounced function.
- * @param action the function to debounce
- * @param delay the number of milliseconds to delay invoking
- * @param immediate invoke the function at leading edge, instead of the trailing
- */
-export default function debounce<P extends any[], R>(
+export function debounce<P extends any[], R>(
   action: (...args: P) => R,
   delay: number = 0,
   immediate: boolean = false,

@@ -18,8 +18,7 @@ import {
 } from '../../base';
 import { BodyDestroyer } from '../../../plugins/all';
 import { getFirstTagChild } from '../../../utils/vdom';
-import debounce, { Debounced } from '../../../utils/functional/debounce';
-import throttle, { Throttled } from '../../../utils/functional/throttle';
+import { Throttled, throttle } from '../../../utils/functional/';
 
 const closeDelay: number = 240;
 const animationDuration: number = 240;
