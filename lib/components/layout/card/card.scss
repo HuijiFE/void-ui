@@ -76,6 +76,7 @@
       )
     ) {
       color: theme($theme);
+      border-color: theme($theme, 'bd');
 
       @include elem('background') {
         background-color: theme($theme, 'bg');
@@ -84,10 +85,6 @@
         @include elem('background') {
           background-color: theme($theme, 'bg', 'lower');
         }
-      }
-
-      @include when('bordered') {
-        border-color: theme($theme, 'bd');
       }
 
       @include elem('header') {

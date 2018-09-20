@@ -8,14 +8,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import {
-  Style,
-  ClassName,
-  Theme,
-  ThemeComponent,
-  FloatPosition,
-  Align,
-} from '../../base';
+import { Style, ClassName, FloatPosition, Align } from '../../base';
 import { BodyDestroyer } from '../../../plugins/all';
 import { getFirstTagChild } from '../../../utils/vdom';
 import { Throttled, throttle } from '../../../utils/functional/';
@@ -27,13 +20,7 @@ const animationDuration: number = 240;
  * Component: Float
  */
 @Component
-export class VdFloat extends Vue implements ThemeComponent {
-  @Prop({ type: String })
-  public readonly theme?: Theme;
-  public get themeValue(): Theme {
-    return this.theme || this.$vd_theme.theme;
-  }
-
+export class VdFloat extends Vue {
   @Prop({ type: String })
   public readonly content?: string;
 
@@ -51,9 +38,8 @@ export class VdFloat extends Vue implements ThemeComponent {
   protected showing: boolean = false;
   protected closing: boolean = false;
 
-  public get classes(): ClassName {
+  public get superClasses(): ClassName {
     return [
-      `vdp-theme_${this.themeValue}`,
       `vdp-position_${this.positionValue}`,
       `vdp-align_${this.align}`,
       {
@@ -62,6 +48,10 @@ export class VdFloat extends Vue implements ThemeComponent {
         'is-closing': this.closing,
       },
     ];
+  }
+
+  public get classes(): ClassName {
+    return this.classes;
   }
 
   protected style: Style = {};
