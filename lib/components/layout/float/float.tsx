@@ -19,6 +19,7 @@ import {
 import { BodyDestroyer } from '../../../plugins/all';
 import { getFirstTagChild } from '../../../utils/vdom';
 import debounce, { Debounced } from '../../../utils/functional/debounce';
+import throttle, { Throttled } from '../../../utils/functional/throttle';
 
 const closeDelay: number = 240;
 const animationDuration: number = 240;
@@ -66,7 +67,7 @@ export class VdFloat extends Vue implements ThemeComponent {
 
   protected style: Style = {};
 
-  protected anchorDebounced!: Debounced<(event: UIEvent) => void>;
+  protected anchorDebounced!: Throttled<[UIEvent], void>;
 
   // tslint:disable-next-line:max-func-body-length
   protected anchor(): void {
@@ -266,7 +267,7 @@ export class VdFloat extends Vue implements ThemeComponent {
   protected destroyBodyHandler?: BodyDestroyer;
 
   protected mounted(): void {
-    this.anchorDebounced = debounce((event: UIEvent) => this.anchor(), 100);
+    this.anchorDebounced = throttle((event: UIEvent) => this.anchor(), 100, true);
     this.addListener();
   }
 
