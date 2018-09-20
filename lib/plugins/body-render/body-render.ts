@@ -22,7 +22,7 @@ function vd_bodyRender(this: Vue, renderFn: (h: CreateElement) => VNode): BodyDe
   const el: Element = document.createElement('div');
   document.body.appendChild(el);
 
-  const vm: Vue = new Vue({ vdTheme: this.$vd_theme, render: renderFn });
+  const vm: Vue = new Vue({ parent: this, render: renderFn });
   vm.$mount(el);
 
   let isDestroyed: boolean = false;
