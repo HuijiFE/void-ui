@@ -90,6 +90,11 @@ import { RouteConfig } from 'vue-router';
     name: 'Tabs 标签页',
     component: async () => import('./layout/tabs.md'),
   },
+  {
+    path: 'layout/uniform-scale',
+    name: 'Uniform-Scale 等比缩放',
+    component: async () => import('./layout/uniform-scale.md'),
+  },
 ];
 
 export default articles

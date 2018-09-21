@@ -1,0 +1,19 @@
+/**
+ * Component: UniformScale
+ */
+@include comp('uniform-scale') {
+  position: relative;
+  flex: 1;
+
+  @include elem('brace') {
+    padding-bottom: 100%;
+  }
+
+  @include elem('container') {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}

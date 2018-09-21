@@ -23,4 +23,5 @@ export default {
   'layout/tabs/basic'                           : async () => import(/* webpackChunkName: "examples-layout_tabs" */ './layout/tabs/basic'),
   'layout/tabs/bordered-raise'                  : async () => import(/* webpackChunkName: "examples-layout_tabs" */ './layout/tabs/bordered-raise'),
   'layout/tabs/label-extra-class'               : async () => import(/* webpackChunkName: "examples-layout_tabs" */ './layout/tabs/label-extra-class'),
+  'layout/uniform-scale/basic'                  : async () => import(/* webpackChunkName: "examples-layout_uniform-scale" */ './layout/uniform-scale/basic'),
 };

@@ -21,3 +21,4 @@ export * from './layout/flow/flow';
 export * from './layout/list/list';
 export * from './layout/tabs/tabs';
 export * from './layout/tree/tree';
+export * from './layout/uniform-scale/uniform-scale';

@@ -23,4 +23,5 @@ export default {
   'layout/tabs/basic': [ 'tsx', 'vue' ],
   'layout/tabs/bordered-raise': [ 'tsx', 'vue' ],
   'layout/tabs/label-extra-class': [ 'scss', 'tsx', 'vue' ],
+  'layout/uniform-scale/basic': [ 'scss', 'tsx' ],
 };
