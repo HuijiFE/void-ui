@@ -57,5 +57,7 @@ export function throttle<P extends any[], R>(
     }
   };
 
+  (wrapper as InternalThrottled).clear = clear;
+
   return wrapper as InternalThrottled;
 }
