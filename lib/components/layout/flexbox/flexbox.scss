@@ -29,6 +29,12 @@
       )
     ) {
       flex-direction: $direction;
+
+      @if $direction == 'column' or $direction == 'column-reverse' {
+        > .#{class-comp('flexbox')} {
+          flex: none;
+        }
+      }
     }
   }
 
