@@ -1,10 +1,10 @@
 import Vue, { PluginFunction } from 'vue';
 
-export * from './components/base/index';
+export * from './components/base';
 export * from './components/all';
 export * from './plugins/all';
 
-import * as base from './components/base/index';
+import * as base from './components/base';
 import * as components from './components/all';
 import * as plugins from './plugins/all';
 

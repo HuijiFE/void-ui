@@ -23,7 +23,7 @@ Object.entries(components).forEach(([name, comp]) => {
 Vue.config.productionTip = false;
 
 import VueRouter from 'vue-router';
-import { createRouter } from '@docs/router';
+import { createRouter } from '@docs/src/router';
 import { VApp } from '@docs/views/app';
 
 /**

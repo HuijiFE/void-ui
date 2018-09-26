@@ -1,112 +1,35 @@
 {
   "name": "void-ui",
-  "description": "A UI toolkit for Vue.js.",
-  "version": "0.2.0",
-  "keywords": [
-    "vue",
-    "typescript",
-    "components",
-    "ui",
-    "huiji"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
   "license": "MIT",
-  "homepage": "http://void.huijiwiki.com",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/HuijiFE/void-ui"
-  },
-  "bugs": {
-    "url": "https://github.com/HuijiFE/void-ui/issues"
-  },
-  "files": [
-    "dist",
-    "public",
-    "src",
-    "types"
+  "private": true,
+  "workspaces": [
+    "docs",
+    "packages/*"
   ],
-  "main": "dist/void-ui.common.js",
-  "module": "dist/void-ui.common.js",
-  "types": "types/index.d.ts",
   "scripts": {
-    "ts": "ts-node -r tsconfig-paths/register -P scripts/tsconfig.json",
-    "gen-files": "yarn ts scripts/gen-files.ts",
-    "gen-fields": "yarn ts scripts/gen-fields.ts",
-    "serve:csr": "cross-env VUE_ENTRY=docs VUE_ENV=client vue-cli-service serve docs/entry-client.ts",
-    "serve:ssr": "cross-env VUE_ENTRY=docs VUE_ENV=server NODE_ENV=development PORT=8102 node build/server.js",
-    "start": "cross-env NODE_ENV=production PORT=8102 node build/server.js",
-    "build:lib": "cross-env VUE_ENTRY=lib vue-cli-service build lib/void-ui.ts --target lib",
-    "build:csr": "cross-env VUE_ENTRY=docs VUE_ENV=client vue-cli-service build --report",
-    "build:ssr": "cross-env VUE_ENTRY=docs VUE_ENV=server vue-cli-service build",
-    "build:gh": "yarn ts scripts/build-gh-pages.ts",
-    "deploy": "scp -r www/client/* root@192.168.71.71:/var/www/void-ui && scp -r www/client/* root@192.168.71.71:/var/www/void-ui/void-ui",
-    "test": "vue-cli-service test",
-    "lint": "stylelint **/*.scss && vue-cli-service lint",
-    "vue-h": "vue-cli-service --help"
-  },
-  "dependencies": {
-    "normalize.css": "^8.0.0",
-    "popmotion": "^8.3.8",
-    "vue-class-component": "^6.2.0",
-    "vue-property-decorator": "^7.0.0"
-  },
-  "peerDependencies": {
-    "vue": "^2.5.0"
+    "serve": "yarn --cwd docs serve"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.4",
-    "@fortawesome/free-brands-svg-icons": "^5.3.1",
-    "@fortawesome/free-regular-svg-icons": "^5.3.1",
-    "@fortawesome/free-solid-svg-icons": "^5.3.1",
-    "@fortawesome/vue-fontawesome": "^0.1.1",
     "@huiji/gen-files": "^1.0.2",
-    "@huiji/vue-cli-plugin-markdown": "^1.0.0",
-    "@types/ejs": "^2.6.0",
-    "@types/express": "^4.16.0",
+    "@huiji/tslint-rules": "^1.0.1",
     "@types/globby": "^8.0.0",
-    "@types/jest": "^23.3.1",
     "@types/mkdirp": "^0.5.2",
     "@types/node": "^10.9.4",
     "@types/rimraf": "^2.0.2",
-    "@types/webpack": "^4.4.11",
-    "@types/webpack-chain": "^4.8.1",
-    "@vue/cli-plugin-babel": "^3.0.1",
-    "@vue/cli-plugin-typescript": "^3.0.1",
-    "@vue/cli-plugin-unit-jest": "^3.0.1",
-    "@vue/cli-service": "^3.0.1",
-    "@vue/test-utils": "^1.0.0-beta.24",
-    "axios": "^0.18.0",
-    "babel-core": "^6.26.3",
-    "change-case": "^3.0.2",
-    "cross-env": "^5.2.0",
-    "ejs": "^2.6.1",
     "globby": "^8.0.1",
     "mkdirp": "^0.5.1",
-    "node-sass": "^4.9.3",
     "rimraf": "^2.6.2",
-    "sass-loader": "^7.1.0",
     "stylelint": "^9.5.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-scss": "^3.3.0",
-    "ts-jest": "^23.1.4",
     "ts-node": "^7.0.1",
     "tsconfig-paths": "^3.5.0",
     "tslib": "^1.9.3",
     "tslint": "^5.11.0",
-    "tslint-microsoft-contrib": "^5.2.1",
-    "typescript": "^3.0.3",
-    "vue": "^2.5.17",
-    "vue-router": "^3.0.1",
-    "vue-server-renderer": "^2.5.17",
-    "vue-template-compiler": "^2.5.17",
-    "vuex": "^3.0.1",
-    "vuex-router-sync": "^5.0.0",
-    "webpack-node-externals": "^1.7.2"
+    "typescript": "^3.0.3"
   },
   "engines": {
-    "node": ">= 8.0.0",
+    "node": ">= 10.0.0",
     "npm": ">= 6.0.0",
     "yarn": ">= 1.9.0"
   }

@@ -2,7 +2,7 @@
  * Entry Server
  */
 import Vue from 'vue';
-import { createApp } from '@docs/main';
+import { createApp } from '@docs/src/main';
 
 // tslint:disable-next-line:no-any
 export default async (context: { url: string; state?: any }): Promise<Vue> => {
