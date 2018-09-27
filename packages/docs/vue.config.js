@@ -1,4 +1,4 @@
-const pth = require('path');
+const path = require('path');
 const Config = require('webpack-chain');
 const express = require('express');
 const chalk = require('chalk');
@@ -10,12 +10,21 @@ const options = {
   assetsDir: 'static',
   filenameHashing: true,
 
+  css: {
+    loaderOptions: {
+      postcss: {
+        // https://github.com/vuejs/vue-cli/issues/2572
+        path: __dirname,
+      },
+    },
+  },
+
   /**
    * @param {Config} config
    */
   chainWebpack: config => {
     const context = config.store.get('context');
-    const resolve = (...paths) => pth.resolve(context, ...paths);
+    const resolve = (...paths) => path.resolve(context, ...paths);
     const getAssetPath = require('@vue/cli-service/lib/util/getAssetPath');
 
     const isProd = process.env.NODE_ENV === 'production';
@@ -31,6 +40,11 @@ const options = {
     // base --------------------------------------------------------
 
     config.resolve.symlinks(false);
+
+    // https://github.com/vuejs/vue-cli/issues/2599
+    config.resolveLoader.modules.add(
+      `${path.dirname(require.resolve('@vue/cli-plugin-babel'))}/node_modules`,
+    );
 
     config.resolve.alias
       .delete('@')
