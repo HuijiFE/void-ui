@@ -24,3 +24,5 @@ dist/
 www/
 .temp/
 temp.*
+test/
+test

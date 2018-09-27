@@ -1,5 +1,5 @@
-// tslint:disable-next-line:no-import-side-effect
-import '@docs/main.scss';
+// tslint:disable:no-import-side-effect
+import '@src/main.scss';
 
 import Vue from 'vue';
 
@@ -8,14 +8,14 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-config.autoAddCss = false;
+// config.autoAddCss = false;
 library.add(fab, far, fas);
 Vue.component('FaIcon', FontAwesomeIcon);
 
 import VoidUI, { VdTheme } from 'void-ui';
 Vue.use(VoidUI);
 
-import * as components from '@docs/components/all';
+import * as components from '@src/components/all';
 Object.entries(components).forEach(([name, comp]) => {
   Vue.component(name, comp);
 });
@@ -23,8 +23,8 @@ Object.entries(components).forEach(([name, comp]) => {
 Vue.config.productionTip = false;
 
 import VueRouter from 'vue-router';
-import { createRouter } from '@docs/src/router';
-import { VApp } from '@docs/views/app';
+import { createRouter } from '@src/router';
+import { VApp } from '@src/views/app';
 
 /**
  * App factory

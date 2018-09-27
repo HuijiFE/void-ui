@@ -3,11 +3,11 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "docs",
+    "docs/*",
     "packages/*"
   ],
   "scripts": {
-    "serve": "yarn --cwd docs serve"
+    "serve": "yarn --cwd packages/docs serve"
   },
   "devDependencies": {
     "@huiji/gen-files": "^1.0.2",

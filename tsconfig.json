@@ -18,11 +18,9 @@
     "esModuleInterop": true,
     "rootDir": ".",
     "outDir": "dist",
-    "declaration": true,
-    "declarationMap": true,
     "sourceMap": true,
     "baseUrl": "."
   },
-  "include": ["docs", "packages"],
+  "include": ["packages/**/scripts", "packages/**/src", "packages/**/typings"],
   "exclude": ["node_modules", "packages/**/dist"]
 }
