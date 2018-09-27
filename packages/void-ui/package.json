@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "normalize.css": "^8.0.0",
+    "tslib": "^1.9.3",
     "vue-class-component": "^6.2.0",
     "vue-property-decorator": "^7.0.0"
   },

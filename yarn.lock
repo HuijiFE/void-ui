@@ -705,8 +705,8 @@
     tslib "^1.9.3"
 
 "@huiji/tslint-rules@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@huiji/tslint-rules/-/tslint-rules-1.0.1.tgz#7eb0044fafb4b82d04bf6cd455024534782be12f"
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@huiji/tslint-rules/-/tslint-rules-1.0.2.tgz#245a1294f16623243cbd41c61e35dc79bd9d06c0"
   dependencies:
     tslint-microsoft-contrib "^5.2.1"
 
