@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const Config = require('webpack-chain');
 const express = require('express');
@@ -20,6 +21,7 @@ const options = {
   },
 
   /**
+   * https://github.com/neutrinojs/webpack-chain
    * @param {Config} config
    */
   chainWebpack: config => {
@@ -133,6 +135,12 @@ const options = {
         ...opt,
         ...genFileLoaderOptions('img'),
       }));
+
+    fs.writeFile(
+      resolve('temp.webpack.config.js'),
+      `module.exports = ${Config.toString(config.toConfig())}`,
+      writeFileError => writeFileError && console.error(writeFileError),
+    );
   },
 
   devServer: {
