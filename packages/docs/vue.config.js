@@ -1,9 +1,12 @@
 const pth = require('path');
 const Config = require('webpack-chain');
 const express = require('express');
+const chalk = require('chalk');
+
+const VERSION = require('void-ui/package.json').version;
 
 const options = {
-  baseUrl: 'void-ui',
+  baseUrl: '/void-ui/',
   assetsDir: 'static',
   filenameHashing: true,
 
@@ -127,8 +130,8 @@ const options = {
      */
     before: app => {
       app.use(
-        `${options.baseUrl}examples/${process.env.VUE_APP_VOID_UI_VERSION}`,
-        express.static('./docs/examples', {
+        `${options.baseUrl}examples/${VERSION}`,
+        express.static('./src/examples', {
           setHeaders: response => {
             response.setHeader('Content-Type', 'text/plain; charset=utf-8');
           },

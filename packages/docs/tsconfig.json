@@ -7,5 +7,6 @@
       "void-ui": ["../void-ui/src/index.ts"]
     }
   },
-  "include": ["scripts", "src", "typings", "../void-ui/src/*"]
+  "include": ["scripts", "src", "typings", "../void-ui/src/*"],
+  "exclude": ["node_modules"]
 }
