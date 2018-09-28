@@ -207,6 +207,11 @@ export class VdMedia extends Vue implements MediaHub {
             media: query,
             addListener: listener => undefined,
             removeListener: listener => undefined,
+            // TODO: need to upgrade for new standard
+            onchange: undefined as any,
+            addEventListener: undefined as any,
+            removeEventListener: undefined as any,
+            dispatchEvent: undefined as any,
           });
 
     BREAK_POINT_KEYS.forEach(key => {

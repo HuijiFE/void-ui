@@ -63,6 +63,11 @@ export class VdFloat extends Vue {
     // const scrollTop: number = window.document.documentElement.scrollTop;
     // const scrollLeft: number = window.document.documentElement.scrollLeft;
 
+    // TODO need to detect document element existed or not
+    if (!window.document.documentElement) {
+      return;
+    }
+
     const viewWidth: number = window.document.documentElement.clientWidth;
     const viewHeight: number = window.document.documentElement.clientHeight;
 
