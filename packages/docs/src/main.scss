@@ -4,18 +4,18 @@
 // custom variables
 $root-font-size: 100;
 
-@import '../lib/void-ui.scss';
+@import '../../void-ui/src/index.scss';
 
-@import '~@docs/variables.scss';
+@import '~@src/variables.scss';
 
 // Components
 $namespace: 'c';
-@import '@docs/components/all.scss';
+@import '@src/components/all.scss';
 
 // Views
 $namespace: 'v';
-@import '@docs/views/app.scss';
+@import '@src/views/app.scss';
 
 // Examples
 $namespace: 'e';
-@import '@docs/examples/all.scss';
+@import '@src/examples/all.scss';

@@ -4,6 +4,7 @@
     "module": "esnext",
     "lib": ["dom", "dom.iterable", "scripthost", "esnext"],
     "types": ["node", "jest"],
+    "typeRoots": ["./node_modules/@types"],
     "strict": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
@@ -13,16 +14,13 @@
     "emitDecoratorMetadata": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "allowSyntheticDefaultImports": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "rootDir": ".",
     "outDir": "dist",
     "sourceMap": true,
-    "baseUrl": ".",
-    "paths": {
-      "@docs/*": ["docs/*"],
-      "void-ui": ["lib/void-ui.ts"]
-    }
+    "baseUrl": "."
   },
-  "include": ["docs", "lib", "typings", "scripts"],
-  "exclude": ["node_modules"]
+  "include": ["packages/**/scripts", "packages/**/src", "packages/**/typings"],
+  "exclude": ["node_modules", "packages/**/dist"]
 }

@@ -1,0 +1,66 @@
+{
+  "name": "void-ui",
+  "description": "An robust and high customizable UI toolkit for Vue.js 2.0",
+  "version": "0.3.0",
+  "keywords": [
+    "void-ui",
+    "vue",
+    "typescript",
+    "ui",
+    "framework",
+    "frontend",
+    "form",
+    "components"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "homepage": "https://huijife.github.io/void-ui",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HuijiFE/void-ui"
+  },
+  "bugs": {
+    "url": "https://github.com/HuijiFE/void-ui/issues"
+  },
+  "main": "dist/void-ui.common.js",
+  "module": "dist/void-ui.esm.js",
+  "types": "types/index.d.ts",
+  "style": "dist/void-ui.css",
+  "scss": "lib/void-ui.scss",
+  "scripts": {
+    "clean:dist": "rimraf ./dist",
+    "build:cjs": "",
+    "build:umd": "webpack --config ./build/webpack.umd.config.js --progress --hide-modules",
+    "build:scss": "webpack --config ./build/webpack.scss.config.js --progress --hide-modules && rimraf ./dist/void-ui.css.js",
+    "build": "clean:dist && build:cjs && build:esm && build:scss",
+    "ts": "ts-node -r tsconfig-paths/register -P tsconfig.scripts.json"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.0",
+    "tslib": "^1.9.3",
+    "vue-class-component": "^6.2.0",
+    "vue-property-decorator": "^7.0.0"
+  },
+  "peerDependencies": {
+    "vue": "^2.5.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.1.0",
+    "@types/jest": "^23.1.4",
+    "@vue/cli-plugin-babel": "^3.0.4",
+    "@vue/cli-plugin-typescript": "^3.0.4",
+    "@vue/cli-plugin-unit-jest": "^3.0.4",
+    "@vue/cli-service": "^3.0.4",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-core": "7.0.0-bridge.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "ts-jest": "^23.0.0",
+    "typescript": "^3.0.0",
+    "vue": "^2.5.17",
+    "vue-template-compiler": "^2.5.17",
+    "webpack-cli": "^3.1.1"
+  }
+}

@@ -2,7 +2,7 @@
  * Entry Client
  */
 
-import { createApp } from '@docs/main';
+import { createApp } from '@src/main';
 
 const { app, router } = createApp();
 
