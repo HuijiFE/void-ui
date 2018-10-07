@@ -1,5 +1,5 @@
 @each $theme in $type-theme {
-  @include atom('theme', $theme) {
+  @include define-atom('theme', $theme) {
     color: theme($theme);
     background-color: theme($theme, 'bg');
   }

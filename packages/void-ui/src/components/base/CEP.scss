@@ -231,8 +231,15 @@ $root-font-size: 14 !default;
   @return $class-name;
 }
 
-// Define a atomic selector.
 @mixin atom($name, $value: null) {
+  $class-name: class-atom($name, $value);
+  .#{$class-name} {
+    @content;
+  }
+}
+
+// Define a atomic selector.
+@mixin define-atom($name, $value: null) {
   $class-name: class-atom($name, $value);
   @at-root {
     .#{$class-name},
