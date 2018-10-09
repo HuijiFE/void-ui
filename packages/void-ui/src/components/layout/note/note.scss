@@ -1,0 +1,119 @@
+/**
+ * Component: Note
+ */
+@include comp('note') {
+  position: relative;
+  flex: 1;
+
+  // stick
+  @include elem('stick') {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    content: ' ';
+    display: block;
+
+    width: rem($border-base * 2);
+  }
+
+  // backdrop
+  &::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: ' ';
+    display: block;
+  }
+
+  @include when('transparent') {
+    &::before {
+      opacity: 0;
+    }
+  }
+  @include when('half-transparent') {
+    &::before {
+      opacity: $opacity-half;
+    }
+  }
+
+  @include when('bordered') {
+    border: rem($border-base) solid;
+    border-left-width: rem($border-base * 2);
+
+    @include elem('stick') {
+      top: rem(-$border-base);
+      bottom: rem(-$border-base);
+      left: rem(-$border-base);
+    }
+  }
+
+  @include when('raise') {
+    box-shadow: raise-shadow();
+  }
+
+  @include elem('title', 'content') {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  @include elem('title') {
+    padding: rem($gap-base) rem($gap-base) 0;
+    margin: 0;
+
+    font-size: rem($card-header-font-size);
+    font-weight: normal;
+  }
+
+  @include elem('content') {
+    padding: rem($gap-base);
+
+    font-size: rem($card-content-font-size);
+
+    > p {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'theme': $theme,
+      )
+    ) {
+      border-color: theme($theme, 'bd');
+      &::before {
+        background-color: theme($theme, 'bg', 'higher');
+      }
+      @include when('half-transparent') {
+        &::before {
+          background-color: theme($theme, 'bg', 'lower');
+        }
+      }
+
+      @include elem('title') {
+        color: theme($theme, 'fg', 'emphasize');
+      }
+
+      @include elem('content') {
+        color: theme($theme, 'fg', 'normal');
+      }
+    }
+  }
+
+  @each $tone in $type-tone {
+    @include prop(
+      (
+        'tone': $tone,
+      )
+    ) {
+      @include elem('stick') {
+        background-color: tone($tone);
+      }
+    }
+  }
+}
