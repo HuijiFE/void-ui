@@ -9,12 +9,12 @@ default: &default
   docker:
     - image: circleci/node:latest
 
-require_install: &require_install
+require_frame: &require_frame
   requires:
-    - install
+    - frame
 
 jobs:
-  install:
+  frame:
     <<: *default
     steps:
       - checkout
@@ -29,47 +29,50 @@ jobs:
             - node_modules/
             - ~/.cache
           key: v1-void-ui-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - add_ssh_keys:
+          fingerprints:
+            - 0e:fd:15:00:19:2d:f5:ec:1b:f2:3e:4b:01:59:ce:33
+      - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
       - persist_to_workspace:
           root: ~/
           paths:
             - project/void-ui
+            - .ssh
   
   build-docs:
     <<: *default
     steps:
       - attach_workspace:
           at: ~/
-      - add_ssh_keys:
-          fingerprints:
-            - 0e:fd:15:00:19:2d:f5:ec:1b:f2:3e:4b:01:59:ce:33
-      - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
-      - run: yarn build:csr
-      - run: yarn build:gh
-      - run: |
-          cd www/client
-          git init
-          git config user.email huijife@outlook.com
-          git config user.name huijife-bot
-          git remote add origin git@github.com:HuijiFE/void-ui.git
-          git add .
-          git commit -m "auto deploy"
-          git branch gh-pages
-          git checkout gh-pages
-          git branch -D master
-          git push origin gh-pages --force
+      - run: yarn --cwd packages/docs build
+      - run: yarn --cwd gen-pages
+      - run:
+          name: deploy to github-pages
+          working_directory: packages/docs/dist
+          command: |
+            git init
+            git config user.email huijife@outlook.com
+            git config user.name huijife-bot
+            git remote add origin git@github.com:HuijiFE/void-ui.git
+            git add .
+            git commit -m "auto deploy"
+            git branch gh-pages
+            git checkout gh-pages
+            git branch -D master
+            git push origin gh-pages --force
 
 workflows:
   version: 2
   workflow:
     jobs:
-      - install:
+      - frame:
           filters:
             branches:
               only:
                 - master
       - build-docs:
           requires:
-            - install
+            - frame
           filters:
             branches:
               only: master

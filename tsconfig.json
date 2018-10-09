@@ -21,6 +21,6 @@
     "sourceMap": true,
     "baseUrl": "."
   },
-  "include": ["packages/**/scripts", "packages/**/src", "packages/**/typings"],
+  "include": ["scripts", "packages/**/scripts", "packages/**/src", "packages/**/typings"],
   "exclude": ["node_modules", "packages/**/dist"]
 }

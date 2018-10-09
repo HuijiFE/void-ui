@@ -4,8 +4,10 @@
   "private": true,
   "license": "MIT",
   "scripts": {
+    "gen-pages": "yarn ts scripts/gen-pages.ts",
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "ts": "ts-node -r tsconfig-paths/register -P ../../tsconfig.scripts.json"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.4",

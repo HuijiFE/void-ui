@@ -7,10 +7,12 @@
     "packages/*"
   ],
   "scripts": {
-    "serve": "yarn --cwd packages/docs serve"
+    "gen-files": "yarn ts scripts/gen-files",
+    "serve": "yarn --cwd packages/docs serve",
+    "ts": "ts-node -r tsconfig-paths/register -P tsconfig.scripts.json"
   },
   "devDependencies": {
-    "@huiji/gen-files": "^1.0.2",
+    "@huiji/shared-utils": "^1.0.0",
     "@huiji/tslint-rules": "^1.0.1",
     "@types/globby": "^8.0.0",
     "@types/mkdirp": "^0.5.2",
