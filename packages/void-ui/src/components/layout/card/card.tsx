@@ -33,8 +33,14 @@ export class VdCard extends Vue implements ThemeComponent {
   @Prop({ type: Boolean, default: false })
   public readonly halfTransparent!: boolean;
 
+  @Prop({ type: String, default: 'div' })
+  public readonly tag!: string;
+
   @Prop({ type: String })
   public readonly title?: string;
+
+  @Prop({ type: String, default: 'h2' })
+  public readonly titleTag!: string;
 
   public get classes(): ClassName {
     return [
@@ -50,12 +56,21 @@ export class VdCard extends Vue implements ThemeComponent {
   }
 
   private render(h: CreateElement): VNode {
-    return (
-      <div staticClass="vd-card" class={this.classes}>
-        <div staticClass="vd-card_background" />
-        {this.title ? <vd-card-header>{this.title}</vd-card-header> : h()}
-        {this.$slots.default}
-      </div>
+    return h(
+      this.tag,
+      {
+        staticClass: 'vd-card',
+        class: this.classes,
+      },
+      [
+        <div staticClass="vd-card_background" />,
+        this.title ? (
+          <vd-card-header tag={this.titleTag}>{this.title}</vd-card-header>
+        ) : (
+          h()
+        ),
+        this.$slots.default,
+      ],
     );
   }
 }
@@ -65,8 +80,17 @@ export class VdCard extends Vue implements ThemeComponent {
  */
 @Component
 export class VdCardHeader extends Vue {
+  @Prop({ type: String, default: 'h2' })
+  public readonly tag!: string;
+
   private render(h: CreateElement): VNode {
-    return <div staticClass="vd-card_header">{this.$slots.default}</div>;
+    return h(
+      this.tag,
+      {
+        staticClass: 'vd-card_header',
+      },
+      this.$slots.default,
+    );
   }
 }
 
@@ -75,8 +99,17 @@ export class VdCardHeader extends Vue {
  */
 @Component
 export class VdCardContent extends Vue {
+  @Prop({ type: String, default: 'div' })
+  public readonly tag!: string;
+
   private render(h: CreateElement): VNode {
-    return <div staticClass="vd-card_content">{this.$slots.default}</div>;
+    return h(
+      this.tag,
+      {
+        staticClass: 'vd-card_content',
+      },
+      this.$slots.default,
+    );
   }
 }
 
