@@ -7,12 +7,14 @@
 
   overflow: hidden;
 
-  @include elem('background') {
+  &::before {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+    content: ' ';
+    display: block;
   }
 
   & > img,
@@ -60,12 +62,12 @@
   }
 
   @include when('transparent') {
-    @include elem('background') {
+    &::before {
       opacity: 0;
     }
   }
   @include when('half-transparent') {
-    @include elem('background') {
+    &::before {
       opacity: $opacity-half;
     }
   }
@@ -79,11 +81,11 @@
       color: theme($theme);
       border-color: theme($theme, 'bd');
 
-      @include elem('background') {
+      &::before {
         background-color: theme($theme, 'bg');
       }
       @include when('half-transparent') {
-        @include elem('background') {
+        &::before {
           background-color: theme($theme, 'bg', 'lower');
         }
       }

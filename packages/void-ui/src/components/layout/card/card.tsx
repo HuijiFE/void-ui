@@ -63,7 +63,6 @@ export class VdCard extends Vue implements ThemeComponent {
         class: this.classes,
       },
       [
-        <div staticClass="vd-card_background" />,
         this.title ? (
           <vd-card-header tag={this.titleTag}>{this.title}</vd-card-header>
         ) : (
