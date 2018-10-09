@@ -66,12 +66,14 @@
 
     font-size: rem($card-header-font-size);
     font-weight: normal;
+    line-height: 1;
   }
 
   @include elem('content') {
     padding: rem($gap-base);
 
     font-size: rem($card-content-font-size);
+    line-height: $line-height-base;
 
     > p {
       padding: 0;
