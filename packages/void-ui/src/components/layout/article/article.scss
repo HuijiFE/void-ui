@@ -1,0 +1,21 @@
+/**
+ * Component: Article
+ */
+@include comp('article') {
+  position: relative;
+  flex: 1;
+
+  padding: rem($gap-base) 0;
+  margin: rem(-$gap-base) 0;
+
+  .#{class-comp('note')} {
+    margin: rem($gap-base) 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

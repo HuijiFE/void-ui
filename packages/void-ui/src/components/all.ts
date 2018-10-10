@@ -13,6 +13,7 @@ export * from './form/form/form';
 export * from './form/radio/radio';
 export * from './form/switch/switch';
 export * from './general/button/button';
+export * from './layout/article/article';
 export * from './layout/card/card';
 export * from './layout/flexbox/flexbox';
 export * from './layout/float/float';
