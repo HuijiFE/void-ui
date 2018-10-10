@@ -115,14 +115,13 @@ export class CExample extends Vue implements ThemeComponent {
   private render(h: CreateElement): VNode {
     return (
       <vd-tabs staticClass="c-example" class={this.classes} bordered>
-        {this.has.vue && isDevelopment ? (
-          <vd-tab-pane label="Preview" data-source=".vue">
-            {h(CExample.vue[this.path])}
-          </vd-tab-pane>
-        ) : (
-          h()
-        )}
-        {this.has.tsx ? (
+        {this.has.vue &&
+          isDevelopment && (
+            <vd-tab-pane label="Preview" data-source=".vue">
+              {h(CExample.vue[this.path])}
+            </vd-tab-pane>
+          )}
+        {this.has.tsx && (
           <vd-tab-pane
             label="Preview"
             label-extra-class="c-example_preview-header"
@@ -130,8 +129,6 @@ export class CExample extends Vue implements ThemeComponent {
           >
             {h(CExample.tsx[this.path])}
           </vd-tab-pane>
-        ) : (
-          h()
         )}
         {this.has.tsx && this.expanded ? (
           <div staticClass="c-example_container">{h(CExample.tsx[this.path])}</div>

@@ -42,6 +42,9 @@ const options = {
     // base --------------------------------------------------------
 
     config.resolve.symlinks(false);
+    config.resolve.extensions
+      .clear()
+      .merge(['.ts', '.tsx', '.js', '.jsx', '.vue', '.json', '.md']);
 
     // https://github.com/vuejs/vue-cli/issues/2599
     config.resolveLoader.modules.add(
