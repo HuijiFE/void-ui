@@ -5,6 +5,8 @@
   position: relative;
   flex: 1;
 
+  padding: rem($gap-base / 2);
+
   // stick
   @include elem('stick') {
     position: absolute;
@@ -61,7 +63,7 @@
   }
 
   @include elem('title') {
-    padding: rem($gap-base) rem($gap-base) 0;
+    padding: rem($gap-base / 2);
     margin: 0;
 
     font-size: rem($card-header-font-size);
@@ -70,7 +72,7 @@
   }
 
   @include elem('content') {
-    padding: rem($gap-base);
+    padding: rem($gap-base / 2);
 
     font-size: rem($card-content-font-size);
     line-height: $line-height-base;
