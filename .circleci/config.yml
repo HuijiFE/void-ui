@@ -45,7 +45,7 @@ jobs:
       - attach_workspace:
           at: ~/
       - run: yarn --cwd packages/docs build
-      - run: yarn --cwd gen-pages
+      - run: yarn --cwd packages/docs gen-pages
       - run:
           name: deploy to github-pages
           working_directory: packages/docs/dist
