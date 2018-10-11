@@ -164,6 +164,8 @@ const options = {
       );
     },
   },
+
+  parallel: false,
 };
 
 module.exports = options;
