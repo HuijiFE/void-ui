@@ -66,7 +66,7 @@ export class VdCard extends Vue implements ThemeComponent {
         this.title ? (
           <vd-card-header tag={this.titleTag}>{this.title}</vd-card-header>
         ) : (
-          h()
+          ''
         ),
         this.$slots.default,
       ],

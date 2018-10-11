@@ -130,11 +130,10 @@ export class CExample extends Vue implements ThemeComponent {
             {h(CExample.tsx[this.path])}
           </vd-tab-pane>
         )}
-        {this.has.tsx && this.expanded ? (
-          <div staticClass="c-example_container">{h(CExample.tsx[this.path])}</div>
-        ) : (
-          h()
-        )}
+        {this.has.tsx &&
+          this.expanded && (
+            <div staticClass="c-example_container">{h(CExample.tsx[this.path])}</div>
+          )}
         <button
           slot="right"
           staticClass="c-example_toggle-fullscreen"
@@ -145,15 +144,13 @@ export class CExample extends Vue implements ThemeComponent {
 
         {this.extensions.map(
           ext =>
-            this.has[ext] ? (
+            this.has[ext] && (
               <vd-tab-pane>
                 <span slot="label">
                   <c-file-icon staticClass="c-example_header-icon" icon={ext} />.{ext}
                 </span>
                 <pre>{this.src[ext]}</pre>
               </vd-tab-pane>
-            ) : (
-              h()
             ),
         )}
       </vd-tabs>

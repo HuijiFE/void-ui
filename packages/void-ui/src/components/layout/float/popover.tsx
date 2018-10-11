@@ -45,7 +45,7 @@ export class VdPopover extends VdFloat implements ThemeComponent {
       <div staticClass="vd-popover_wrapper">
         <div staticClass="vd-popover_container">
           <div staticClass="vd-popover_arrow" />
-          {this.title ? <div staticClass="vd-popover_header">{this.title}</div> : h()}
+          {this.title && <div staticClass="vd-popover_header">{this.title}</div>}
           <div staticClass="vd-popover_content">
             {this.$slots.default || this.content}
           </div>

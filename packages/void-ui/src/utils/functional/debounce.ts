@@ -1,4 +1,4 @@
-// tslint:disable:no-any no-this-assignment
+// tslint:disable:no-any no-unsafe-any no-this-assignment
 
 /**
  * The type of the debounced function.

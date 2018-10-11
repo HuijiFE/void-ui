@@ -45,6 +45,7 @@ export const bodyRenderer: PluginObject<undefined> = {
 
     $$Vue = $Vue;
 
+    // tslint:disable-next-line:no-unsafe-any
     $Vue.prototype.$vd_bodyRender = vd_bodyRender;
   },
 };

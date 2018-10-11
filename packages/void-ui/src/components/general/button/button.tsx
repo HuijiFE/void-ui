@@ -105,20 +105,17 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
         },
       },
       [
-        this.loading ? (
+        (this.loading && (
           <span staticClass="vd-button_loading">
             <span staticClass="vd-button_loading-indicator" />
           </span>
-        ) : this.$slots.left ? (
-          <span staticClass="vd-button_left">{this.$slots.left}</span>
-        ) : (
-          h()
-        ),
+        )) ||
+          (this.$slots.left && (
+            <span staticClass="vd-button_left">{this.$slots.left}</span>
+          )),
         <span staticClass="vd-button_content">{this.$slots.default || this.label}</span>,
-        this.$slots.right ? (
+        this.$slots.right && (
           <span staticClass="vd-button_right">{this.$slots.right}</span>
-        ) : (
-          h()
         ),
       ],
     );

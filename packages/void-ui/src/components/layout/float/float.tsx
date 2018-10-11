@@ -1,3 +1,5 @@
+// tslint:disable:no-any no-unsafe-any
+
 import Vue, { CreateElement, VNode } from 'vue';
 import {
   Component,
@@ -287,7 +289,7 @@ export class VdFloat extends Vue {
   protected readonly className?: string;
 
   protected renderContent(): VNode {
-    return h();
+    return '' as any;
   }
 
   protected renderBody(): VNode {

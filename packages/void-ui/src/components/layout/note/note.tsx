@@ -76,7 +76,7 @@ export class VdNote extends Vue implements ThemeComponent {
               },
               this.title,
             )
-          : h(),
+          : '',
         <div staticClass="vd-note_content">{this.$slots.default}</div>,
       ],
     );
