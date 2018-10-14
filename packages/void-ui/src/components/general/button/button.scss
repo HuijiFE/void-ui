@@ -365,10 +365,147 @@
  * Component: ButtonGroup
  */
 @include comp('button-group') {
-  margin: rem(-$gap-base);
-  padding: rem($gap-base / 2);
+  position: relative;
+  flex: 1;
 
-  > .#{class-comp('button')} {
-    margin: rem($gap-base / 2);
+  @include elem('wrapper') {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    align-content: stretch;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  @each $direction in $type-flex-direction {
+    @include prop(
+      (
+        'direction': $direction,
+      )
+    ) {
+      @include elem('wrapper') {
+        flex-direction: $direction;
+      }
+
+      @if str-index($direction, 'column') == 1 {
+        @include when('dropdown') {
+          @include elem('item') {
+            justify-content: flex-start;
+          }
+        }
+      }
+    }
+  }
+
+  @include when('compact') {
+    @include elem('item') {
+      border-radius: 0;
+    }
+  }
+
+  @each $direction in $type-flex-direction {
+    @include prop(
+      (
+        'direction': $direction,
+      )
+    ) {
+      @include when('compact') {
+        @include elem-adjacent('item') {
+          @if str-index($direction, 'row') == 1 {
+            margin-left: rem(-$border-base);
+          } @else {
+            margin-top: rem(-$border-base);
+          }
+        }
+      }
+    }
+  }
+
+  // rect square
+  @include prop(
+    (
+      'shape': 'rect',
+    ),
+    (
+      'shape': 'square',
+    )
+  ) {
+    border-radius: rem($radius-base);
+  }
+
+  @each $size, $size-value in $button-size-map {
+    $font-size-value: map-get(
+      $map: $button-font-size-map,
+      $key: $size,
+    );
+    @include prop(
+      (
+        'shape': 'pill',
+        'size': $size,
+      ),
+      (
+        'shape': 'circle',
+        'size': $size,
+      )
+    ) {
+      border-radius: rem($size-value / 2);
+    }
+
+    @each $direction in $type-direction {
+      @include prop(
+        (
+          'shape': 'rect',
+          'size': $size,
+          'direction': $direction,
+        ),
+        (
+          'shape': 'square',
+          'size': $size,
+          'direction': $direction,
+        )
+      ) {
+        @include when('compact') {
+          @if str-index($direction, 'row') == 1 {
+            padding: 0 rem(($size-value - $font-size-value) / 2);
+          } @else {
+            padding: rem(($size-value - $font-size-value) / 2) 0;
+          }
+        }
+      }
+
+      @include prop(
+        (
+          'shape': 'pill',
+          'size': $size,
+          'direction': $direction,
+        ),
+        (
+          'shape': 'circle',
+          'size': $size,
+          'direction': $direction,
+        )
+      ) {
+        @include when('compact') {
+          @if str-index($direction, 'row') == 1 {
+            padding: 0 rem(($size-value) / 2);
+          } @else {
+            padding: rem(($size-value) / 2) 0;
+          }
+        }
+      }
+    }
+  }
+
+  @each $tone in $type-tone {
+    @include prop(
+      (
+        'tone': $tone,
+        'skin': 'fill',
+      )
+    ) {
+      @include when('compact') {
+        background-color: tone($tone);
+      }
+    }
   }
 }

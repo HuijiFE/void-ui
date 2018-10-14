@@ -9,7 +9,6 @@ import {
   Watch,
 } from 'vue-property-decorator';
 import {
-  Style,
   ClassName,
   Theme,
   Tone,
@@ -18,13 +17,105 @@ import {
   Size,
   ThemeComponent,
   LinkLikeComponent,
+  FlexDirection,
 } from '../../base';
+import { VdDropdown } from '../../layout/float/dropdown';
+
+/**
+ * Component: ButtonGroup
+ */
+@Component
+export class VdButtonGroup extends Vue implements ThemeComponent {
+  private dropdown?: VdDropdown;
+
+  @Prop({ type: String })
+  public readonly theme?: Theme;
+  public get themeValue(): Theme {
+    return this.theme || (this.$vd_theme && this.$vd_theme.theme) || 'lite';
+  }
+
+  @Prop({ type: String, default: 'primary' })
+  public readonly tone!: Tone;
+
+  @Prop({ type: String, default: 'fill' })
+  public readonly skin!: Skin;
+
+  @Prop({ type: String, default: 'rect' })
+  public readonly shape!: Shape;
+
+  @Prop({ type: String, default: 'small' })
+  public readonly size!: Size;
+
+  @Prop({ type: String })
+  public readonly direction?: FlexDirection;
+
+  @Prop({ type: Boolean, default: false })
+  public readonly gap!: boolean | Size;
+
+  public get classes(): ClassName {
+    return [
+      `vdp-theme_${this.themeValue}`,
+      `vdp-tone_${this.tone}`,
+      `vdp-skin_${this.skin}`,
+      `vdp-shape_${this.shape}`,
+      `vdp-size_${this.size}`,
+      `vdp-direction_${this.direction || (!!this.dropdown && 'column') || 'row'}`,
+      {
+        'is-gap': this.gap,
+        'is-compact': !this.gap,
+        'is-dropdown': !!this.dropdown,
+      },
+    ];
+  }
+
+  public onClick(event: MouseEvent): void {
+    this.$emit('click', event);
+    if (this.dropdown) {
+      this.dropdown.close();
+    }
+  }
+
+  private beforeCreate(): void {
+    let parent: Vue = this.$parent;
+    for (let index = 0; index < 3; index++) {
+      if (!parent) {
+        break;
+      }
+      if (parent instanceof VdDropdown) {
+        this.dropdown = parent;
+        break;
+      }
+      parent = parent.$parent;
+    }
+  }
+
+  private render(h: CreateElement): VNode {
+    return h(
+      'div',
+      {
+        staticClass: 'vd-button-group',
+        class: this.classes,
+      },
+      [
+        h(
+          'div',
+          {
+            staticClass: 'vd-button-group_wrapper',
+          },
+          this.$slots.default,
+        ),
+      ],
+    );
+  }
+}
 
 /**
  * Component Button
  */
 @Component
 export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
+  private group?: VdButtonGroup;
+
   @Prop({ type: String, default: 'button' })
   public readonly tag!: string;
 
@@ -62,23 +153,33 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
   @Prop({ type: String, default: 'small' })
   public readonly size!: Size;
 
-  private onClick(event: MouseEvent): void {
-    this.$emit('click', event);
-  }
-
   public get classes(): ClassName {
     return [
-      `vdp-theme_${this.themeValue}`,
-      `vdp-tone_${this.tone}`,
-      `vdp-skin_${this.skin}`,
-      `vdp-shape_${this.shape}`,
-      `vdp-size_${this.size}`,
+      `vdp-theme_${(this.group && this.group.themeValue) || this.themeValue}`,
+      `vdp-tone_${(this.group && this.group.tone) || this.tone}`,
+      `vdp-skin_${(this.group && this.group.skin) || this.skin}`,
+      `vdp-shape_${(this.group && this.group.shape) || this.shape}`,
+      `vdp-size_${(this.group && this.group.size) || this.size}`,
       {
         'is-router-link': this.routerLink,
         'is-disabled': this.disabled,
         'is-loading': this.loading,
+        'vd-button-group_item': !!this.group,
       },
     ];
+  }
+
+  private onClick(event: MouseEvent): void {
+    this.$emit('click', event);
+    if (this.group) {
+      this.group.onClick(event);
+    }
+  }
+
+  private beforeCreate(): void {
+    if (this.$parent instanceof VdButtonGroup) {
+      this.group = this.$parent;
+    }
   }
 
   private render(h: CreateElement): VNode {
@@ -118,26 +219,6 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
           <span staticClass="vd-button_right">{this.$slots.right}</span>
         ),
       ],
-    );
-  }
-}
-
-/**
- * Component: ButtonGroup
- */
-@Component
-export class VdButtonGroup extends Vue {
-  @Prop({ type: String })
-  public readonly gap?: Size;
-
-  private render(h: CreateElement): VNode {
-    return h(
-      'div',
-      {
-        staticClass: 'vd-button-group',
-        class: [{ [`vdp-gap_${this.gap}`]: this.gap }],
-      },
-      this.$slots.default,
     );
   }
 }

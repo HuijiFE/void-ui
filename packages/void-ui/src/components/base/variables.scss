@@ -307,6 +307,13 @@ $z-index-float: 1600 !default;
 $z-index-popover: $z-index-float;
 
 $type-direction: row, row-reverse, column, column-reverse;
+
+$type-flex-direction: row, row-reverse, column, column-reverse;
+$type-flex-wrap: nowrap, wrap, wrap-reverse;
+$type-flex-align: start, center, end, space-between, space-around, space-evenly, stretch;
+$type-flex-justify: start, center, end, space-between, space-around, space-evenly;
+$type-flex-preset: initial, auto, none;
+
 $type-float-position:   'top', 'bottom', 'top-or-bottom', 'left', 'right', 'left-or-right';
 
 // Card
