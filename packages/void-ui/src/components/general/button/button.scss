@@ -368,6 +368,9 @@
   position: relative;
   flex: 1;
 
+  // --------------------------------
+  // STYLE layout
+
   @include elem('wrapper') {
     position: relative;
     display: flex;
@@ -386,115 +389,154 @@
       @include elem('wrapper') {
         flex-direction: $direction;
       }
-
-      @if str-index($direction, 'column') == 1 {
-        @include when('dropdown') {
-          @include elem('item') {
-            justify-content: flex-start;
-          }
-        }
-      }
-    }
-  }
-
-  @include when('compact') {
-    @include elem('item') {
-      border-radius: 0;
     }
   }
 
   @each $direction in $type-flex-direction {
+    // gap
+    @each $size, $size-value in $button-size-map {
+      @include prop(
+        (
+          'size': $size,
+          'direction': $direction,
+        )
+      ) {
+        $gap-size: $size-value / 2;
+        @include when('gap') {
+          @include elem('item') {
+            &:not(:first-child) {
+              @if str-index($string: $direction, $substring: 'column') == 1 {
+                margin-top: rem($gap-size);
+              } @else {
+                margin-left: rem($gap-size);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // compact
     @include prop(
       (
         'direction': $direction,
       )
     ) {
       @include when('compact') {
-        @include elem-adjacent('item') {
-          @if str-index($direction, 'row') == 1 {
-            margin-left: rem(-$border-base);
+        @include elem('item') {
+          @if str-index($string: $direction, $substring: 'column') == 1 {
+            border-left: 0;
+            border-right: 0;
           } @else {
-            margin-top: rem(-$border-base);
+            border-top: 0;
+            border-bottom: 0;
+          }
+
+          &:not(:first-child) {
+            @if str-index($string: $direction, $substring: 'column') == 1 {
+              margin-top: rem(-$border-base);
+            } @else {
+              margin-left: rem(-$border-base);
+            }
           }
         }
       }
     }
   }
 
-  // rect square
-  @include prop(
-    (
-      'shape': 'rect',
-    ),
-    (
-      'shape': 'square',
-    )
-  ) {
-    border-radius: rem($radius-base);
+  // --------------------------------
+  // STYLE shape & size
+
+  @include when('compact') {
+    overflow: hidden;
+    border: rem($border-base) solid transparent;
+
+    @include elem('item') {
+      border-radius: 0;
+    }
+  }
+
+  @each $shape in ('rect', 'square') {
+    @include when('compact') {
+      border-radius: rem($radius-base);
+    }
   }
 
   @each $size, $size-value in $button-size-map {
-    $font-size-value: map-get(
-      $map: $button-font-size-map,
-      $key: $size,
-    );
-    @include prop(
-      (
-        'shape': 'pill',
-        'size': $size,
-      ),
-      (
-        'shape': 'circle',
-        'size': $size,
-      )
-    ) {
-      border-radius: rem($size-value / 2);
-    }
-
-    @each $direction in $type-direction {
+    @each $shape in ('pill', 'circle') {
       @include prop(
         (
-          'shape': 'rect',
+          'shape': $shape,
           'size': $size,
-          'direction': $direction,
-        ),
+        )
+      ) {
+        @include when('compact') {
+          border-radius: rem($size-value / 2);
+        }
+      }
+    }
+
+    @each $direction in $type-flex-direction {
+      @include prop(
         (
-          'shape': 'square',
           'size': $size,
           'direction': $direction,
         )
       ) {
         @include when('compact') {
-          @if str-index($direction, 'row') == 1 {
-            padding: 0 rem(($size-value - $font-size-value) / 2);
+          @if str-index($string: $direction, $substring: 'column') {
+            padding: rem($size-value / 4) 0;
           } @else {
-            padding: rem(($size-value - $font-size-value) / 2) 0;
+            padding: 0 rem($size-value / 4);
           }
         }
       }
 
-      @include prop(
-        (
-          'shape': 'pill',
-          'size': $size,
-          'direction': $direction,
-        ),
-        (
-          'shape': 'circle',
-          'size': $size,
-          'direction': $direction,
-        )
-      ) {
-        @include when('compact') {
-          @if str-index($direction, 'row') == 1 {
-            padding: 0 rem(($size-value) / 2);
-          } @else {
-            padding: rem(($size-value) / 2) 0;
+      @each $skin in ('plain', 'silk') {
+        @each $shape in ('rect', 'square') {
+          @include prop(
+            (
+              'skin': $skin,
+              'shape': $shape,
+              'size': $size,
+              'direction': $direction,
+            )
+          ) {
+            @include when('compact') {
+              padding: 0;
+              @if str-index($string: $direction, $substring: 'column') {
+                border-width: 0 rem($border-base);
+              } @else {
+                border-width: rem($border-base) 0;
+              }
+            }
+          }
+        }
+
+        @each $shape in ('pill', 'circle') {
+          @include prop(
+            (
+              'skin': $skin,
+              'shape': $shape,
+              'size': $size,
+              'direction': $direction,
+            )
+          ) {
+            @include when('compact') {
+              @if str-index($string: $direction, $substring: 'column') {
+                padding: rem($size-value / 2) 0;
+              } @else {
+                padding: 0 rem($size-value / 2);
+              }
+            }
           }
         }
       }
     }
   }
+
+  // ----------------------------
+  // STYLE skin & tone & theme
 
   @each $tone in $type-tone {
     @include prop(
@@ -505,6 +547,59 @@
     ) {
       @include when('compact') {
         background-color: tone($tone);
+      }
+    }
+  }
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'skin': 'flat',
+        'theme': $theme,
+      ),
+      (
+        'skin': 'plain',
+        'theme': $theme,
+      )
+    ) {
+      @include when('compact') {
+        background-color: theme($theme, 'bg');
+      }
+    }
+  }
+
+  @each $tone in $type-tone {
+    @include prop(
+      (
+        'skin': 'plain',
+        'tone': $tone,
+      ),
+      (
+        'skin': 'silk',
+        'tone': $tone,
+      )
+    ) {
+      border-color: tone($tone);
+    }
+  }
+
+  // dropdown
+
+  @each $direction in $type-flex-direction {
+    @each $shape in ('rect', 'pill') {
+      @include prop(
+        (
+          'direction': $direction,
+          'shape': $shape,
+        )
+      ) {
+        @if str-index($string: $direction, $substring: 'column') == 1 {
+          @include when('dropdown') {
+            @include elem('item') {
+              justify-content: flex-start;
+            }
+          }
+        }
       }
     }
   }
