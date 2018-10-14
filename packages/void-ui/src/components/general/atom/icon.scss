@@ -1,9 +1,9 @@
 @each $position in ('right', 'left') {
   @include define-atom('icon', $position) {
     @if $position == 'right' {
-      margin-left: 0.5em;
+      margin-left: $gap-icon-multiplier * 1em;
     } @else {
-      margin-right: 0.5em;
+      margin-right: $gap-icon-multiplier * 1em;
     }
   }
 }
