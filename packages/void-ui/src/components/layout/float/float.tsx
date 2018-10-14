@@ -173,6 +173,8 @@ export class VdFloat extends Vue {
   protected timeoutHandlerClose?: number;
 
   public show(): void {
+    this.$emit('show');
+
     window.clearTimeout(this.timeoutHandlerClose);
     this.closing = false;
     this.showing = true;
@@ -191,6 +193,8 @@ export class VdFloat extends Vue {
     if (this.closing) {
       return;
     }
+
+    this.$emit('close');
 
     const destroy: () => void = this.destroyBodyHandler || (() => undefined);
 
