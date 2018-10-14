@@ -10,7 +10,14 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { Style, ClassName, Align, FloatPosition, Trigger } from '../../base';
+import {
+  Style,
+  ClassName,
+  Align,
+  FloatPosition,
+  Trigger,
+  FloatComponent,
+} from '../../base';
 import { BodyDestroyer } from '../../../plugins/all';
 import { getFirstTagChild } from '../../../utils/vdom';
 import { Throttled, throttle } from '../../../utils/functional/';
@@ -22,7 +29,7 @@ const animationDuration: number = 240;
  * Component: Float
  */
 @Component
-export class VdFloat extends Vue {
+export class VdFloat extends Vue implements FloatComponent {
   @Prop({ type: String })
   public readonly content?: string;
 
@@ -290,9 +297,10 @@ export class VdFloat extends Vue {
     content: HTMLElement;
   };
 
-  protected readonly className?: string;
-
-  protected renderContent(): undefined | VNode | VNode[] {
+  public className(): string {
+    return '';
+  }
+  public renderContent(): undefined | VNode | VNode[] {
     return this.$slots.default;
   }
 
@@ -300,7 +308,7 @@ export class VdFloat extends Vue {
     return (
       <div
         ref="content"
-        staticClass={this.className ? `vd-float ${this.className}` : 'vd-float'}
+        staticClass={`vd-float ${this.className()}`}
         class={this.classes}
         style={this.style}
         onClick={this.onContentClick}

@@ -2,6 +2,7 @@
 /**
  * Void-UI variables
  */
+import { VNode } from 'vue';
 
 export const DEFAULT_ROOT_FONT_SIZE: number = 100;
 export const NAMESPACE: string = 'vd';
@@ -140,3 +141,11 @@ export type FloatPosition =
   | 'left-or-right';
 
 export type Trigger = 'hover' | 'click';
+
+/**
+ * Component with theme color.
+ */
+export interface FloatComponent {
+  className(): string;
+  renderContent(): VNode | VNode[] | string | undefined;
+}

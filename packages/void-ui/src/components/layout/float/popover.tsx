@@ -28,7 +28,9 @@ export class VdPopover extends VdFloat implements ThemeComponent {
   @Prop({ type: String })
   public readonly title?: string;
 
-  protected readonly className: string = 'vd-popover';
+  public className(): string {
+    return 'vd-popover';
+  }
 
   public get classes(): ClassName {
     return [
@@ -40,7 +42,7 @@ export class VdPopover extends VdFloat implements ThemeComponent {
     ];
   }
 
-  protected renderContent(): VNode {
+  public renderContent(): VNode {
     return (
       <div staticClass="vd-popover_wrapper">
         <div staticClass="vd-popover_container">

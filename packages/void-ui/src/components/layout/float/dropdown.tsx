@@ -39,13 +39,15 @@ export class VdDropdown extends VdFloat implements ThemeComponent {
   @Prop({ type: String, default: 'click' })
   public readonly trigger!: Trigger;
 
-  protected readonly className: string = 'vd-popover';
+  public className(): string {
+    return 'vd-dropdown';
+  }
 
   public get classes(): ClassName {
     return [...this.superClasses, `vdp-theme_${this.themeValue}`];
   }
 
-  protected renderContent(): VNode {
-    return <div staticClass="vd-dropdown">{this.$slots.default}</div>;
+  public renderContent(): VNode {
+    return <div staticClass="vd-dropdown_wrapper">{this.$slots.default}</div>;
   }
 }
