@@ -65,7 +65,7 @@ export class VdFloat extends Vue implements FloatComponent {
 
   protected style: Style = {};
 
-  protected anchorDebounced!: Throttled<[UIEvent], void>;
+  protected anchorThrottle!: Throttled<[UIEvent], void>;
 
   // tslint:disable-next-line:max-func-body-length
   protected anchor(): void {
@@ -191,7 +191,8 @@ export class VdFloat extends Vue implements FloatComponent {
 
     this.anchor();
 
-    window.addEventListener('scroll', this.anchorDebounced);
+    window.addEventListener('scroll', this.anchorThrottle);
+    window.addEventListener('resize', this.anchorThrottle);
     window.setTimeout(() => window.addEventListener('click', this.onWindowClick), 10);
 
     this.visible = true;
@@ -274,13 +275,13 @@ export class VdFloat extends Vue implements FloatComponent {
   protected destroyBodyHandler?: BodyDestroyer;
 
   protected mounted(): void {
-    this.anchorDebounced = throttle((event: UIEvent) => this.anchor(), 100, true);
+    this.anchorThrottle = throttle((event: UIEvent) => this.anchor(), 100, true);
     this.addListener();
   }
 
   protected beforeDestroy(): void {
-    this.anchorDebounced.clear();
-    this.anchorDebounced = undefined as any;
+    this.anchorThrottle.clear();
+    this.anchorThrottle = undefined as any;
     this.removeListener();
     if (this.destroyBodyHandler) {
       this.destroyBodyHandler();
