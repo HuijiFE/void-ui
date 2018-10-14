@@ -1,0 +1,41 @@
+/**
+ * Component: Dropdown
+ */
+@include comp('dropdown') {
+  @include prop(
+    (
+      'position': 'left',
+    )
+  ) {
+    @include elem('wrapper') {
+      padding-right: rem(gap('small'));
+    }
+  }
+  @include prop(
+    (
+      'position': 'right',
+    )
+  ) {
+    @include elem('wrapper') {
+      padding-left: rem(gap('small'));
+    }
+  }
+  @include prop(
+    (
+      'position': 'top',
+    )
+  ) {
+    @include elem('wrapper') {
+      padding-bottom: rem(gap('small'));
+    }
+  }
+  @include prop(
+    (
+      'position': 'bottom',
+    )
+  ) {
+    @include elem('wrapper') {
+      padding-top: rem(gap('small'));
+    }
+  }
+}
