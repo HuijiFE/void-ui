@@ -10,7 +10,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { Style, ClassName, FloatPosition, Align } from '../../base';
+import { Style, ClassName, Align, FloatPosition, Trigger } from '../../base';
 import { BodyDestroyer } from '../../../plugins/all';
 import { getFirstTagChild } from '../../../utils/vdom';
 import { Throttled, throttle } from '../../../utils/functional/';
@@ -34,7 +34,7 @@ export class VdFloat extends Vue {
   public readonly align!: Align;
 
   @Prop({ type: String, default: 'hover' })
-  public readonly trigger!: 'hover' | 'click';
+  public readonly trigger!: Trigger;
 
   protected visible: boolean = false;
   protected showing: boolean = false;
@@ -292,8 +292,8 @@ export class VdFloat extends Vue {
 
   protected readonly className?: string;
 
-  protected renderContent(): VNode {
-    return '' as any;
+  protected renderContent(): undefined | VNode | VNode[] {
+    return this.$slots.default;
   }
 
   protected renderBody(): VNode {

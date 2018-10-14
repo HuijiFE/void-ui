@@ -16,6 +16,7 @@ export * from './general/button/button';
 export * from './layout/article/article';
 export * from './layout/card/card';
 export * from './layout/flexbox/flexbox';
+export * from './layout/float/dropdown';
 export * from './layout/float/float';
 export * from './layout/float/popover';
 export * from './layout/flow/flow';

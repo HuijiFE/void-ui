@@ -113,9 +113,6 @@ export const DEFAULT_BREAK_POINTS: BreakPoints = {
 // --------------------------------
 // Layout
 
-/**
- * Use for items direction in a flexbox
- */
 export type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse';
 
 export type FlexWrap = 'nowrap' | 'wrap' | 'wrap-reverse';
@@ -132,9 +129,8 @@ export type FlexJustify = Align | 'space-between' | 'space-around' | 'space-even
 
 export type Flex = 'initial' | 'auto' | 'none' | number;
 
-/**
- * Use for a float component, such as tooltip, popover, etc.
- */
+// Use for a float component, such as tooltip, popover, etc.
+
 export type FloatPosition =
   | 'top'
   | 'bottom'
@@ -142,3 +138,5 @@ export type FloatPosition =
   | 'left'
   | 'right'
   | 'left-or-right';
+
+export type Trigger = 'hover' | 'click';
