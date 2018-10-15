@@ -101,7 +101,7 @@ export class CSideBarItem extends Vue {
         exact-active-class="is-active"
         to={this.path}
       >
-        <a>{this.$slots.default || this.label}</a>
+        <a staticClass="c-side-bar_item-label">{this.$slots.default || this.label}</a>
       </router-link>
     );
   }
