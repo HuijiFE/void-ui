@@ -8,6 +8,7 @@ const VERSION = require('void-ui/package.json').version;
 
 const options = {
   baseUrl: '/void-ui/',
+  outputDir: 'dist',
   assetsDir: 'static',
   filenameHashing: true,
 

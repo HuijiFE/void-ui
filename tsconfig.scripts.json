@@ -2,6 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "target": "esnext",
-    "module": "CommonJS"
+    "module": "CommonJS",
+    "allowJs": true,
+    "resolveJsonModule": true
   }
 }

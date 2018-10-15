@@ -1,16 +1,21 @@
+// tslint:disable:no-require-imports no-var-requires no-unsafe-any
 /**
  * Auto copy index.html for gh-pages
  */
-
 import fs from 'fs';
-import p from 'path';
+import pth from 'path';
 import globby from 'globby';
 import mkdirp from 'mkdirp';
 import { genPathResolve } from '@huiji/shared-utils';
 
 const resolvePath = genPathResolve(__dirname, '..');
 
-async function copy(): Promise<void> {
+const vueConfig = require('../vue.config.js');
+const version = require('void-ui/package.json').version;
+
+const { outputDir } = vueConfig;
+
+async function generatePages(): Promise<void> {
   const articles: string[][] = await Promise.all(
     ['zh-CN'].map(async lang =>
       globby(resolvePath(`src/articles/${lang}/**/*.md`)).then(pathsMarkdown =>
@@ -24,21 +29,21 @@ async function copy(): Promise<void> {
     ),
   );
 
-  const indexPath: string = resolvePath('dist/index.html');
+  const indexPath: string = resolvePath(`${outputDir}/index.html`);
   if (!fs.existsSync(indexPath)) {
     throw new Error(`No such file: ${indexPath}`);
   }
 
-  mkdirp.sync(resolvePath('dist/.circleci'));
+  mkdirp.sync(resolvePath(`${outputDir}/.circleci`));
   fs.copyFileSync(
     resolvePath('../../.circleci/config.yml'),
-    resolvePath('dist/.circleci/config.yml'),
+    resolvePath(`${outputDir}/.circleci/config.yml`),
   );
 
   const pathsHtml: string[] = ['zh-CN']
     .map((lang, index) => [
       ...articles[index].map(a =>
-        resolvePath('dist', lang, 'components', a, 'index.html'),
+        resolvePath(outputDir, lang, 'components', a, 'index.html'),
       ),
     ])
     .reduce<string[]>((result, cur) => {
@@ -51,7 +56,7 @@ async function copy(): Promise<void> {
     pathsHtml.map(
       async path =>
         new Promise((resolve, reject) => {
-          const dir: string = p.dirname(path);
+          const dir: string = pth.dirname(path);
           fs.exists(dir, exists => {
             if (exists) {
               fs.copyFile(
@@ -78,4 +83,24 @@ async function copy(): Promise<void> {
   );
 }
 
-copy().catch(console.error);
+async function copyExamples(): Promise<void> {
+  const dirSrc: string = resolvePath('src/examples');
+  const dirDest: string = resolvePath(`${outputDir}/examples/${version}`);
+  const examples: string[] = await globby(resolvePath('src/examples/**/*'));
+
+  await Promise.all(
+    examples.map(
+      src =>
+        new Promise((resolve, reject) => {
+          const dest = src.replace(dirSrc, dirDest);
+          const dir = pth.dirname(dest);
+          if (!fs.existsSync(dir)) {
+            mkdirp.sync(dir);
+          }
+          fs.copyFile(src, dest, error => (error ? reject(error) : resolve()));
+        }),
+    ),
+  );
+}
+
+Promise.all([generatePages(), copyExamples()]).catch(console.error);
