@@ -46,8 +46,4 @@ export class VdDropdown extends VdFloat implements ThemeComponent {
   public get classes(): ClassName {
     return [...this.superClasses, `vdp-theme_${this.themeValue}`];
   }
-
-  public renderContent(): VNode {
-    return <div staticClass="vd-dropdown_wrapper">{this.$slots.default}</div>;
-  }
 }

@@ -7,35 +7,27 @@
       'position': 'left',
     )
   ) {
-    @include elem('wrapper') {
-      padding-right: rem(gap('small'));
-    }
+    padding-right: rem(gap('small'));
   }
   @include prop(
     (
       'position': 'right',
     )
   ) {
-    @include elem('wrapper') {
-      padding-left: rem(gap('small'));
-    }
+    padding-left: rem(gap('small'));
   }
   @include prop(
     (
       'position': 'top',
     )
   ) {
-    @include elem('wrapper') {
-      padding-bottom: rem(gap('small'));
-    }
+    padding-bottom: rem(gap('small'));
   }
   @include prop(
     (
       'position': 'bottom',
     )
   ) {
-    @include elem('wrapper') {
-      padding-top: rem(gap('small'));
-    }
+    padding-top: rem(gap('small'));
   }
 }

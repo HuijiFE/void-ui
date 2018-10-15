@@ -25,16 +25,27 @@
 
   cursor: pointer;
 
+  overflow: hidden;
+
   // --------------------------------
   // STYLE shape & size
 
-  @each $size, $value in $button-font-size-map {
+  @each $size in $type-size {
+    $font-size-value: map-get(
+      $map: $button-font-size-map,
+      $key: $size,
+    );
+    $size-value: map-get(
+      $map: $button-size-map,
+      $key: $size,
+    );
     @include prop(
       (
         'size': $size,
       )
     ) {
-      font-size: rem($value);
+      font-size: rem($font-size-value);
+      line-height: rem($size-value);
     }
   }
 
@@ -58,14 +69,14 @@
     border-radius: 50%;
   }
 
-  @each $size, $height in $button-size-map {
+  @each $size, $size-value in $button-size-map {
     @include prop(
       (
         'size': $size,
         'shape': 'pill',
       )
     ) {
-      border-radius: rem($height / 2);
+      border-radius: rem($size-value / 2);
     }
 
     @include prop(
@@ -73,7 +84,7 @@
         'size': $size,
       )
     ) {
-      height: rem($height);
+      height: rem($size-value);
     }
 
     // rect, pill
@@ -87,8 +98,8 @@
         'shape': 'pill',
       )
     ) {
-      min-width: rem($height * $button-min-width-multiple);
-      padding: 0 rem($height * $button-padding-multiple);
+      min-width: rem($size-value * $button-min-width-multiple);
+      padding: 0 rem($size-value * $button-padding-multiple);
     }
 
     // square, circle
@@ -102,7 +113,7 @@
         'shape': 'circle',
       )
     ) {
-      width: rem($height);
+      width: rem($size-value);
     }
   }
 
@@ -119,6 +130,34 @@
     color: $color-white;
   }
 
+  &::before {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+
+    transition: opacity ease-in-out $button-transition-duration;
+  }
+  @include prop(
+    (
+      'skin': 'plain',
+    ),
+    (
+      'skin': 'flat',
+    ),
+    (
+      'skin': 'silk',
+    )
+  ) {
+    &::before {
+      content: ' ';
+    }
+  }
+
   @each $tone in $type-tone {
     @include prop(
       (
@@ -128,8 +167,7 @@
     ) {
       background-color: tone($tone);
 
-      &:hover,
-      &:focus {
+      &:hover {
         background-color: tone($tone, 'lighten');
       }
       &:active {
@@ -152,14 +190,6 @@
       )
     ) {
       background-color: theme($theme, 'bg');
-
-      &:hover,
-      &:focus {
-        background-color: theme($theme, 'bg', 'higher');
-      }
-      &:active {
-        background-color: theme($theme, 'bg', 'lower');
-      }
     }
   }
 
@@ -195,22 +225,21 @@
 
     @include prop(
       (
-        'skin': 'plain',
-        'tone': $tone,
-      ),
-      (
-        'skin': 'silk',
         'tone': $tone,
       )
     ) {
-      &:hover,
-      &:focus {
-        color: tone($tone, 'lighten');
-        border-color: tone($tone, 'lighten');
+      &::before {
+        background-color: tone($tone);
+      }
+      &:hover {
+        &::before {
+          opacity: 0.05;
+        }
       }
       &:active {
-        color: tone($tone, 'darken');
-        border-color: tone($tone, 'darken');
+        &::before {
+          opacity: 0.1;
+        }
       }
     }
   }
@@ -242,9 +271,7 @@
       )
     ) {
       @include when('disabled') {
-        &,
         &:hover,
-        &:focus,
         &:active {
           color: theme($theme, 'fg', 'disabled');
         }
@@ -258,9 +285,7 @@
       )
     ) {
       @include when('disabled') {
-        &,
         &:hover,
-        &:focus,
         &:active {
           background-color: theme($theme, 'bg', 'disabled');
         }
@@ -278,9 +303,7 @@
       )
     ) {
       @include when('disabled') {
-        &,
         &:hover,
-        &:focus,
         &:active {
           background-color: theme($theme, 'bg', 'normal');
         }
@@ -298,9 +321,7 @@
       )
     ) {
       @include when('disabled') {
-        &,
         &:hover,
-        &:focus,
         &:active {
           border-color: theme($theme, 'bd', 'disabled');
         }
@@ -318,7 +339,7 @@
   // ----------------------------
   // transition
 
-  transition: ease-in-out 0.2s;
+  transition: ease-in-out $button-transition-duration;
   transition-property: color, background-color, border-color, box-shadow;
 
   // ----------------------------
@@ -366,7 +387,7 @@
  */
 @include comp('button-group') {
   position: relative;
-  flex: 1;
+  flex: none;
 
   // --------------------------------
   // STYLE layout
@@ -374,10 +395,17 @@
   @include elem('wrapper') {
     position: relative;
     display: flex;
-    flex-flow: row nowrap;
+    flex-direction: row;
     align-content: stretch;
     align-items: stretch;
     justify-content: flex-start;
+  }
+
+  @include when('gap') {
+    flex-wrap: wrap;
+  }
+  @include when('compact') {
+    flex-wrap: nowrap;
   }
 
   @each $direction in $type-flex-direction {
@@ -401,16 +429,18 @@
           'direction': $direction,
         )
       ) {
-        $gap-size: $size-value / 2;
         @include when('gap') {
+          $gap-value-half: $size-value / 2 * $button-group-gap-multiple;
+
+          padding: rem($gap-value-half);
+
+          @include elem('wrapper') {
+            margin: rem(-$gap-value-half * 3);
+            padding: rem($gap-value-half);
+          }
+
           @include elem('item') {
-            &:not(:first-child) {
-              @if str-index($string: $direction, $substring: 'column') == 1 {
-                margin-top: rem($gap-size);
-              } @else {
-                margin-left: rem($gap-size);
-              }
-            }
+            margin: rem($gap-value-half);
           }
         }
       }
@@ -484,10 +514,11 @@
         )
       ) {
         @include when('compact') {
+          $gap-value-half: $size-value / 2 * $button-group-gap-multiple;
           @if str-index($string: $direction, $substring: 'column') {
-            padding: rem($size-value / 4) 0;
+            padding: rem($gap-value-half - $border-base) 0;
           } @else {
-            padding: 0 rem($size-value / 4);
+            padding: 0 rem($gap-value-half - $border-base);
           }
         }
       }
@@ -524,9 +555,9 @@
           ) {
             @include when('compact') {
               @if str-index($string: $direction, $substring: 'column') {
-                padding: rem($size-value / 2) 0;
+                padding: rem($size-value / 2 - $border-base) 0;
               } @else {
-                padding: 0 rem($size-value / 2);
+                padding: 0 rem($size-value / 2 - $border-base);
               }
             }
           }
@@ -601,6 +632,19 @@
           }
         }
       }
+    }
+  }
+
+  @include when('dropdown', 'compact') {
+    box-shadow: raise-shadow();
+  }
+  @include prop(
+    (
+      'skin': 'silk',
+    )
+  ) {
+    @include when('dropdown', 'compact') {
+      box-shadow: none;
     }
   }
 }

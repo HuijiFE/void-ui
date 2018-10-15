@@ -297,7 +297,9 @@ $button-font-size-map: (
 
 $button-min-width-multiple:   2.618 !default;
 $button-padding-multiple:     0.618 !default;
-$button-gap-icon-text:        0.618em !default;
+$button-gap-icon-text:        $gap-icon-multiplier !default;
+$button-transition-duration:  0.2s !default;
+$button-group-gap-multiple:   1 / 2 * 0.618;
 
 // ================================================================
 // Layout
