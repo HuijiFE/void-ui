@@ -16,7 +16,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
     "@fortawesome/vue-fontawesome": "^0.1.1",
     "register-service-worker": "^1.0.0",
-    "void-ui": "0.3.0",
     "vue": "^2.5.17",
     "vue-class-component": "^6.2.0",
     "vue-property-decorator": "^7.0.0",
