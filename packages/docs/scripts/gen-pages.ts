@@ -12,9 +12,9 @@ const resolvePath = genPathResolve(__dirname, '..');
 
 async function copy(): Promise<void> {
   const articles: string[][] = await Promise.all(
-    ['zh-CN'].map(lang =>
-      globby(resolvePath(`src/articles/${lang}/**/*.md`)).then(paths =>
-        paths.map(path =>
+    ['zh-CN'].map(async lang =>
+      globby(resolvePath(`src/articles/${lang}/**/*.md`)).then(pathsMarkdown =>
+        pathsMarkdown.map(path =>
           path
             .replace(resolvePath(`src/articles/${lang}/`), '')
             .replace(/^\//, '')
@@ -35,7 +35,7 @@ async function copy(): Promise<void> {
     resolvePath('dist/.circleci/config.yml'),
   );
 
-  const paths: string[] = ['zh-CN']
+  const pathsHtml: string[] = ['zh-CN']
     .map((lang, index) => [
       ...articles[index].map(a =>
         resolvePath('dist', lang, 'components', a, 'index.html'),
@@ -48,8 +48,8 @@ async function copy(): Promise<void> {
     }, []);
 
   await Promise.all(
-    paths.map(
-      path =>
+    pathsHtml.map(
+      async path =>
         new Promise((resolve, reject) => {
           const dir: string = p.dirname(path);
           fs.exists(dir, exists => {
