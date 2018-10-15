@@ -14,8 +14,8 @@ $line-height-base: 1.618 !default;
 
 // Core
 
-$type-theme:  'lite', 'dark';
-$type-tone:   'primary', 'secondary', 'success', 'warning', 'danger';
+$type-theme:  'lite', 'dark' !default;
+$type-tone:   'primary', 'secondary', 'success', 'warning', 'danger' !default;
 $type-skin:   'fill', 'flat', 'plain', 'silk';
 $type-shape:  'rect', 'pill', 'square', 'circle';
 $type-size:   'xsmall', 'small', 'medium', 'large', 'xlarge';
@@ -75,7 +75,7 @@ $color-map-theme-dark: (
 $color-map-theme: (
   lite: $color-map-theme-lite,
   dark: $color-map-theme-dark,
-);
+) !default;
 
 @function theme($theme: 'lite', $role: 'fg', $level: 'normal') {
   $sub-map: map-get($map: $color-map-theme, $key: $theme);
@@ -140,7 +140,7 @@ $color-map-tone: (
   success:      $color-map-tone-success,
   warning:      $color-map-tone-warning,
   danger:       $color-map-tone-danger,
-);
+) !default;
 
 @function tone($tone: 'primary', $level: 'standard') {
   $sub-map: map-get($map: $color-map-tone, $key: $tone);
