@@ -8,7 +8,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { VERSION, ClassName, Theme, ThemeComponent } from 'void-ui';
+import { ClassName, Theme, ThemeComponent } from 'void-ui';
 import axios, { AxiosInstance } from 'axios';
 import examples from '@src/examples/all';
 import examplesTsx from '@src/examples/all-tsx';
@@ -17,6 +17,8 @@ import { isDevelopment } from '@src/utils/environment';
 
 export type AsyncComponentRecord = Record<string, () => Promise<typeof import('vue')>>;
 
+// tslint:disable-next-line:no-require-imports no-var-requires no-unsafe-any
+const VERSION = require('void-ui/package.json').version;
 const sourceCode: AxiosInstance = axios.create({
   baseURL: `${process.env.BASE_URL}examples/${VERSION}/`,
   timeout: 1000,

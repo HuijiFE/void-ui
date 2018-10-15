@@ -1,7 +1,5 @@
 import Vue, { PluginFunction } from 'vue';
 
-export const VERSION: string = '0.3.0';
-
 export * from './components/base';
 export * from './components/all';
 export * from './plugins/all';
@@ -39,7 +37,6 @@ const install: PluginFunction<VoidUIOptions> = ($Vue, options?) => {
  * Void-UI
  */
 export default {
-  VERSION,
   install,
   base,
   components,
