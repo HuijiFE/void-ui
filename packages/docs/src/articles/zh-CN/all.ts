@@ -71,6 +71,11 @@ import { RouteConfig } from 'vue-router';
     component: async () => import('./layout/card.md'),
   },
   {
+    path: 'layout/dropdown',
+    name: 'Dropdown 下拉',
+    component: async () => import('./layout/dropdown.md'),
+  },
+  {
     path: 'layout/flexbox',
     name: 'Flexbox 弹性盒子',
     component: async () => import('./layout/flexbox.md'),

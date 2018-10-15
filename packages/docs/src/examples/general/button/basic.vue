@@ -1,5 +1,5 @@
 <template>
-  <div class="e-button-overview">
+  <div class="e-button-basic">
     <vd-flexbox gap>
       <vd-flexbox flex="none">
         <vd-button>button</vd-button>
