@@ -300,6 +300,8 @@ $button-padding-multiple:     0.618 !default;
 $button-gap-icon-text:        $gap-icon-multiplier !default;
 $button-transition-duration:  0.2s !default;
 $button-group-gap-multiple:   1 / 2 * 0.618;
+$button-translucent-hover:    0.12;
+$button-translucent-active:   0.16;
 
 // ================================================================
 // Layout

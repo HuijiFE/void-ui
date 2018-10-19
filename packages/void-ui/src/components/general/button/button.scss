@@ -233,12 +233,12 @@
       }
       &:hover {
         &::before {
-          opacity: 0.05;
+          opacity: $button-translucent-hover;
         }
       }
       &:active {
         &::before {
-          opacity: 0.1;
+          opacity: $button-translucent-active;
         }
       }
     }
