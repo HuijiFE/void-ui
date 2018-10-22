@@ -202,7 +202,6 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
         break;
 
       default:
-        break;
     }
   }
 
