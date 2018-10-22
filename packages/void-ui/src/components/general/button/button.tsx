@@ -28,6 +28,9 @@ import { VdDropdown } from '../../layout/float/dropdown';
 export class VdButtonGroup extends Vue implements ThemeComponent {
   private dropdown?: VdDropdown;
 
+  private isHover: boolean = false;
+  private isActive: boolean = true;
+
   @Prop({ type: String })
   public readonly theme?: Theme;
   public get themeValue(): Theme {
@@ -39,6 +42,12 @@ export class VdButtonGroup extends Vue implements ThemeComponent {
 
   @Prop({ type: String, default: 'fill' })
   public readonly skin!: Skin;
+
+  @Prop({ type: String })
+  public readonly hoverSkin?: Skin;
+
+  @Prop({ type: String })
+  public readonly activeSkin?: Skin;
 
   @Prop({ type: String, default: 'rect' })
   public readonly shape!: Shape;
@@ -147,6 +156,9 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
   @Prop({ type: String, default: 'fill' })
   public readonly skin!: Skin;
 
+  @Prop({ type: String })
+  public readonly hoverSkin?: Skin;
+
   @Prop({ type: String, default: 'rect' })
   public readonly shape!: Shape;
 
@@ -157,10 +169,13 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
     return [
       `vdp-theme_${(this.group && this.group.themeValue) || this.themeValue}`,
       `vdp-tone_${(this.group && this.group.tone) || this.tone}`,
-      `vdp-skin_${(this.group && this.group.skin) || this.skin}`,
+      `vdp-skin_${(this.group && this.group.skin) ||
+        (this.hover && this.hoverSkin) ||
+        this.skin}`,
       `vdp-shape_${(this.group && this.group.shape) || this.shape}`,
       `vdp-size_${(this.group && this.group.size) || this.size}`,
       {
+        'is-hover': this.hover,
         'is-router-link': this.routerLink,
         'is-disabled': this.disabled,
         'is-loading': this.loading,
@@ -169,10 +184,25 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
     ];
   }
 
-  private onClick(event: MouseEvent): void {
-    this.$emit('click', event);
-    if (this.group) {
-      this.group.onClick(event);
+  public hover: boolean = false;
+
+  private eventHandler(event: MouseEvent): void {
+    this.$emit(event.type, event);
+    switch (event.type) {
+      case 'click':
+        if (this.group) {
+          this.group.onClick(event);
+        }
+        break;
+      case 'mouseenter':
+        this.hover = true;
+        break;
+      case 'mouseleave':
+        this.hover = false;
+        break;
+
+      default:
+        break;
     }
   }
 
@@ -199,10 +229,14 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
             }
           : undefined,
         on: {
-          '!click': this.onClick,
+          '!click': this.eventHandler,
+          '!mouseenter': this.eventHandler,
+          '!mouseleave': this.eventHandler,
         },
         nativeOn: {
-          '!click': this.onClick,
+          '!click': this.eventHandler,
+          '!mouseenter': this.eventHandler,
+          '!mouseleave': this.eventHandler,
         },
       },
       [
