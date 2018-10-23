@@ -127,7 +127,6 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
 
   @Prop({ type: String, default: 'button' })
   public readonly tag!: string;
-
   @Prop({ type: Boolean, default: false })
   public readonly routerLink!: boolean;
 

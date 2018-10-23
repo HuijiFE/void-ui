@@ -8,13 +8,18 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { Style } from '../../base';
+import { Style, LinkLikeComponent } from '../../base';
 
 /**
  * Component: UniformScale
  */
 @Component
-export class VdUniformScale extends Vue {
+export class VdUniformScale extends Vue implements LinkLikeComponent {
+  @Prop({ type: String, default: 'div' })
+  public readonly tag!: string;
+  @Prop({ type: Boolean, default: false })
+  public readonly routerLink!: boolean;
+
   @Prop({ type: [Number, String] })
   public readonly ratio?: number | string;
 
@@ -33,11 +38,21 @@ export class VdUniformScale extends Vue {
   }
 
   private render(h: CreateElement): VNode {
-    return (
-      <div staticClass="vd-uniform-scale">
-        <div staticClass="vd-uniform-scale_brace" style={this.braceStyle} />
-        <div staticClass="vd-uniform-scale_container">{this.$slots.default}</div>
-      </div>
+    return h(
+      this.routerLink ? 'router-link' : this.tag,
+      {
+        staticClass: 'vd-uniform-scale',
+        props: this.routerLink
+          ? {
+              tag: this.tag,
+              ...this.$attrs,
+            }
+          : undefined,
+      },
+      [
+        <div staticClass="vd-uniform-scale_brace" style={this.braceStyle} />,
+        <div staticClass="vd-uniform-scale_container">{this.$slots.default}</div>,
+      ],
     );
   }
 }
