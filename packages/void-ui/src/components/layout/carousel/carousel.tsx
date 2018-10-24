@@ -40,6 +40,7 @@ export class VdCarousel extends Vue implements ThemeComponent {
     }
   }
 
+  private timeoutHandler?: number;
   private selectedItem: VdCarouselItem | null = null;
   public get selectedIndex(): number {
     return this.selectedItem ? this.items.indexOf(this.selectedItem) : -1;
@@ -48,20 +49,24 @@ export class VdCarousel extends Vue implements ThemeComponent {
     let index = value;
     const selectedIndex = this.selectedIndex;
     const size = this.items.length;
-    if (this.switching || size < 2 || index === selectedIndex) {
+
+    if (window === undefined || this.switching || size < 2 || index === selectedIndex) {
       return;
     }
-    this.switching = true;
 
     if (index < 0) {
       index = (size + (index % size)) % size;
     } else if (index > size - 1) {
       index = index % size;
     }
+
+    this.switching = true;
     this.selectedItem = this.items[index];
     this.$emit('change', index);
 
-    setTimeout(() => (this.switching = false), 320);
+    window.setTimeout(() => (this.switching = false), 320);
+    window.clearTimeout(this.timeoutHandler);
+    window.setTimeout(() => this.selectedIndex++, 5000);
   }
 
   public get classes(): ClassName {
@@ -77,6 +82,10 @@ export class VdCarousel extends Vue implements ThemeComponent {
     return {
       transform: `translateX(-${this.selectedIndex * 100}%)`,
     };
+  }
+
+  private mounted(): void {
+    window.setTimeout(() => this.selectedIndex++, 5000);
   }
 
   private render(h: CreateElement): VNode {
