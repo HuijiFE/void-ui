@@ -130,8 +130,14 @@ export type FlexJustify = Align | 'space-between' | 'space-around' | 'space-even
 
 export type Flex = 'initial' | 'auto' | 'none' | number;
 
-// Use for a float component, such as tooltip, popover, etc.
+/**
+ * Use for absolute position components, how the component dock to its parent or screen.
+ */
+export type DockPosition = 'center' | 'top' | 'bottom' | 'left' | 'right';
 
+/**
+ * Use for float components, where the component show related to its trigger.
+ */
 export type FloatPosition =
   | 'top'
   | 'bottom'
@@ -140,6 +146,7 @@ export type FloatPosition =
   | 'right'
   | 'left-or-right';
 
+// Use for a float component, trigger show event
 export type Trigger = 'hover' | 'click';
 
 /**

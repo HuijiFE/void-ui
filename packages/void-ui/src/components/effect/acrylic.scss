@@ -1,0 +1,81 @@
+/**
+ * Component: Acrylic
+ */
+@include comp('acrylic') {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  overflow: hidden;
+
+  @include elem('inner') {
+    position: absolute;
+    top: rem(-$acrylic-blur-amount);
+    bottom: rem(-$acrylic-blur-amount);
+    left: rem(-$acrylic-blur-amount);
+    right: rem(-$acrylic-blur-amount);
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+
+  @each $position in $type-dock-position {
+    @include prop(
+      (
+        'position': $position,
+      )
+    ) {
+      @if $position == 'top' {
+        @include elem('inner') {
+          bottom: initial;
+        }
+      } @else if $position == 'bottom' {
+        @include elem('inner') {
+          top: initial;
+        }
+      }
+    }
+  }
+
+  @include elem('image') {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    filter: blur(rem($acrylic-blur-amount));
+  }
+
+  @include elem('cover') {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    opacity: $acrylic-cover-layer-opacity;
+    mix-blend-mode: multiply;
+    background-blend-mode: multiply;
+  }
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'theme': $theme,
+      )
+    ) {
+      @include elem('inner') {
+        filter: brightness(map-get($acrylic-brightness-map, $theme));
+      }
+
+      @include elem('cover') {
+        background-color: theme($theme, 'bg');
+      }
+    }
+  }
+}

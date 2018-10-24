@@ -320,7 +320,8 @@ $type-flex-align: start, center, end, space-between, space-around, space-evenly,
 $type-flex-justify: start, center, end, space-between, space-around, space-evenly;
 $type-flex-preset: initial, auto, none;
 
-$type-float-position:   'top', 'bottom', 'top-or-bottom', 'left', 'right', 'left-or-right';
+$type-dock-position: 'center', 'top', 'bottom', 'left', 'right';
+$type-float-position: 'top', 'bottom', 'top-or-bottom', 'left', 'right', 'left-or-right';
 
 // Card
 
@@ -339,6 +340,20 @@ $container-width-map: (
   lg: 1200px,
   xl: 1200px,
 ) !default;
+
+// ================================================================
+// Effect
+
+// Acrylic
+
+$acrylic-blur-amount: 16 !default;
+
+$acrylic-brightness-map: (
+  lite: 85%,
+  dark: 115%,
+) !default;
+
+$acrylic-cover-layer-opacity: 0.75;
 
 // ================================================================
 // Form

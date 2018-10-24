@@ -9,6 +9,7 @@
 
 export * from './basic/match-media/match-media';
 export * from './basic/theme/theme';
+export * from './effect/acrylic';
 export * from './form/form/form';
 export * from './form/radio/radio';
 export * from './form/switch/switch';
