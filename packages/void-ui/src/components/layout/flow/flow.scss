@@ -20,4 +20,8 @@
       width: $value;
     }
   }
+
+  @include media-less-than('md') {
+    padding: 0 rem($gap-base);
+  }
 }

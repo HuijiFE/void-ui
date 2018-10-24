@@ -1,0 +1,134 @@
+/**
+ * Component: Carousel
+ */
+@include comp('carousel') {
+  $carousel-indicator-height: 8;
+
+  position: relative;
+
+  @include elem('container') {
+    position: relative;
+    overflow: hidden;
+  }
+
+  @include elem('wrapper') {
+    position: relative;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    transition: transform ease-in-out 320ms;
+  }
+
+  @include elem('item') {
+    position: relative;
+
+    flex: 1 0 100%;
+    max-width: 100%;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    overflow: hidden;
+  }
+
+  @include elem('button-previous', 'button-next') {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: rem(48);
+    height: rem(80);
+    margin: auto 0;
+    padding: 0;
+    border: none;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    font-size: rem(22);
+    background: transparent;
+
+    opacity: 0.75;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  @include elem('button-previous') {
+    left: 0;
+  }
+  @include elem('button-next') {
+    right: 0;
+  }
+
+  @include elem('indicator-wrapper') {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: initial;
+
+    padding: rem($gap-base / 2);
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+
+  @include elem('indicator') {
+    display: flex;
+    padding: rem($gap-base / 2);
+    margin: 0;
+    border: none;
+    background-color: transparent;
+  }
+
+  @include elem('indicator-inner') {
+    display: flex;
+    width: rem($carousel-indicator-height * 1.618 * 2);
+    height: rem($carousel-indicator-height);
+    border-radius: rem($radius-base);
+  }
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'theme': $theme,
+      )
+    ) {
+      color: theme($theme);
+
+      @include elem('button-previous', 'button-next') {
+        color: theme($theme, 'fg', 'emphasize');
+        background-color: theme($theme, 'bg');
+      }
+
+      @include elem('indicator-inner') {
+        background-color: theme($theme);
+      }
+    }
+  }
+
+  @include elem('indicator') {
+    @include when('selected') {
+      @include elem('indicator-inner') {
+        background-color: tone();
+      }
+    }
+  }
+}

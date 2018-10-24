@@ -16,6 +16,7 @@ export * from './form/switch/switch';
 export * from './general/button/button';
 export * from './layout/article/article';
 export * from './layout/card/card';
+export * from './layout/carousel/carousel';
 export * from './layout/flexbox/flexbox';
 export * from './layout/float/dropdown';
 export * from './layout/float/float';
