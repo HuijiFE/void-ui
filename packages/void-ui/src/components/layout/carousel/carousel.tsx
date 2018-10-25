@@ -66,7 +66,7 @@ export class VdCarousel extends Vue implements ThemeComponent {
 
     window.setTimeout(() => (this.switching = false), 320);
     window.clearTimeout(this.timeoutHandler);
-    window.setTimeout(() => this.selectedIndex++, 5000);
+    this.timeoutHandler = window.setTimeout(() => this.selectedIndex++, 5000);
   }
 
   public get classes(): ClassName {
