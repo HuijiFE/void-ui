@@ -185,6 +185,14 @@
     @include prop(
       (
         'skin': 'flat',
+        'tone': $theme,
+      )
+    ) {
+      color: theme($theme, 'fg', 'emphasize');
+    }
+    @include prop(
+      (
+        'skin': 'flat',
         'theme': $theme,
       ),
       (
@@ -198,10 +206,6 @@
 
   @each $tone in $type-tone {
     @include prop(
-      (
-        'skin': 'flat',
-        'tone': $tone,
-      ),
       (
         'skin': 'plain',
         'tone': $tone,
