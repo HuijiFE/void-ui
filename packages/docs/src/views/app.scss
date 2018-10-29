@@ -35,7 +35,7 @@
       )
     ) {
       color: theme($theme);
-      background-color: theme($theme, 'bg');
+      background-color: theme($theme, 'bg', 'lower');
     }
   }
 }

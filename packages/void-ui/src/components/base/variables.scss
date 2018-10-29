@@ -26,6 +26,8 @@ $color-white:   #ffffff !default;
 $color-gray:    #777777 !default;
 $color-black:   #000000 !default;
 
+$color-border-common: rgba(128, 128, 128, 0.1) !default;
+
 // theme
 // fg: foreground color, as well as text color
 // bg: background color
@@ -33,43 +35,43 @@ $color-black:   #000000 !default;
 // The border color `bd-normal` should be same as `bg-hover`.
 
 $color-map-theme-lite: (
-  fg-emphasize:       #222222,
-  fg-normal:          #333333,
-  fg-sub:             #888888,
-  fg-placeholder:     #999999,
-  fg-disabled:        #bbbbbb,
+  fg-emphasize:       rgb(24, 24, 24),
+  fg-normal:          rgb(56, 56, 56),
+  fg-sub:             rgb(88, 88, 88),
+  fg-placeholder:     rgb(88, 88, 88),
+  fg-disabled:        rgb(88, 88, 88),
 
-  bg-higher:          #f5f5f5,
-  bg-high:            #fafafa,
-  bg-normal:          #ffffff,
-  bg-low:             #fafafa,
-  bg-lower:           #f5f5f5,
-  bg-hover:           #eeeeee,
-  bg-disabled:        #efefef,
+  bg-higher:          rgb(247, 247, 247),
+  bg-high:            rgb(251, 251, 251),
+  bg-normal:          rgb(255, 255, 255),
+  bg-low:             rgb(251, 251, 251),
+  bg-lower:           rgb(247, 247, 247),
+  bg-hover:           rgb(227, 227, 227),
+  bg-disabled:        rgb(227, 227, 227),
 
-  bd-normal:          #eeeeee, // same as bg-hover
-  bd-disabled:        #bbbbbb, // same as fg-disabled
-  bd-focus:           #888888,
+  bd-normal:          rgb(227, 227, 227), // same as bg-hover
+  bd-disabled:        rgb(227, 227, 227), // same as fg-disabled
+  bd-focus:           rgb(227, 227, 227),
 ) !default;
 
 $color-map-theme-dark: (
-  fg-emphasize:       #f5f5f5,
-  fg-normal:          #eeeeee,
-  fg-sub:             #aaaaaa,
-  fg-placeholder:     #999999,
-  fg-disabled:        #777777,
+  fg-emphasize:       rgb(255, 255, 255),
+  fg-normal:          rgb(223, 223, 223),
+  fg-sub:             rgb(191, 191, 191),
+  fg-placeholder:     rgb(191, 191, 191),
+  fg-disabled:        rgb(191, 191, 191),
 
-  bg-higher:          #494949,
-  bg-high:            #444444,
-  bg-normal:          #3e3e3e,
-  bg-low:             #383838,
-  bg-lower:           #333333,
-  bg-hover:           #4e4e4e,
-  bg-disabled:        #555555,
+  bg-higher:          rgb(40, 40, 40),
+  bg-high:            rgb(36, 36, 36),
+  bg-normal:          rgb(32, 32, 32),
+  bg-low:             rgb(28, 28, 28),
+  bg-lower:           rgb(24, 24, 24),
+  bg-hover:           rgb(52, 52, 52),
+  bg-disabled:        rgb(52, 52, 52),
 
-  bd-normal:          #4e4e4e, // same as bg-hover
-  bd-disabled:        #777777, // same as fg-disabled
-  bd-focus:           #aaaaaa,
+  bd-normal:          rgb(52, 52, 52), // same as bg-hover
+  bd-disabled:        rgb(52, 52, 52), // same as fg-disabled
+  bd-focus:           rgb(52, 52, 52),
 ) !default;
 
 $color-map-theme: (
@@ -91,6 +93,7 @@ $color-map-theme: (
     @error 'Theme color #{$theme}-#{$role}-#{$level} not found.';
   }
 }
+
 
 // tone
 

@@ -81,13 +81,12 @@
       }
 
       @include elem('item') {
-        &:hover {
-          background-color: theme($theme, 'bg', 'high');
-        }
-
         @include when('active') {
           // color: theme($theme, 'fg', 'emphasize');
           background-color: theme($theme, 'bg', 'higher');
+        }
+        &:hover {
+          background-color: theme($theme, 'bg', 'hover');
         }
       }
     }
