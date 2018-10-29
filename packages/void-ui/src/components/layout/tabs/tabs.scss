@@ -152,6 +152,6 @@ $vd-tabs_transition-distance: 64 !default;
   }
 
   @include when('raise') {
-    box-shadow: raise-shadow();
+    box-shadow: $raise-base;
   }
 }

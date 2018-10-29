@@ -53,7 +53,7 @@
   }
 
   @include when('raise') {
-    box-shadow: raise-shadow();
+    box-shadow: $raise-base;
   }
 
   @include elem('title', 'content') {

@@ -58,7 +58,12 @@
   }
 
   @include when('raise') {
-    box-shadow: raise-shadow();
+    box-shadow: $raise-base;
+    &:hover {
+      box-shadow: $raise-hover;
+    }
+
+    transition: $raise-shadow-transition;
   }
 
   @include when('transparent') {

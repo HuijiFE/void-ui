@@ -643,7 +643,7 @@
   }
 
   @include when('dropdown', 'compact') {
-    box-shadow: raise-shadow();
+    box-shadow: raise-shadow(2);
   }
   @include prop(
     (
