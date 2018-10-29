@@ -58,9 +58,26 @@
     left: 0;
     right: 0;
 
-    opacity: $acrylic-cover-layer-opacity;
-    mix-blend-mode: multiply;
-    background-blend-mode: multiply;
+    &::before,
+    &::after {
+      content: ' ';
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    &::before {
+      opacity: $acrylic-cover-theme-opacity;
+    }
+
+    &::after {
+      opacity: $acrylic-cover-tone-opacity;
+      mix-blend-mode: multiply;
+      background-blend-mode: multiply;
+    }
   }
 
   @each $theme in $type-theme {
@@ -74,7 +91,12 @@
       }
 
       @include elem('cover') {
-        background-color: theme($theme, 'bg');
+        &::before {
+          background-color: theme($theme, 'bg');
+        }
+        &::after {
+          background-color: tone();
+        }
       }
     }
   }

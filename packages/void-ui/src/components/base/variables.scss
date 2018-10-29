@@ -331,7 +331,8 @@ $acrylic-brightness-map: (
   dark: 115%,
 ) !default;
 
-$acrylic-cover-layer-opacity: 0.75;
+$acrylic-cover-tone-opacity:    0.2 !default;
+$acrylic-cover-theme-opacity:   0.5 !default;
 
 // ================================================================
 // Form
