@@ -12,11 +12,11 @@ function toStringRGB({ r, g, b }: RGB): string {
   return `rgb(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)})`;
 }
 
-function averageRGB(a: RGB, b: RGB): RGB {
+function averageRGB(...rgbs: RGB[]): RGB {
   return {
-    r: Math.round((a.r + b.r) / 2),
-    g: Math.round((a.g + b.g) / 2),
-    b: Math.round((a.b + b.b) / 2),
+    r: Math.round(rgbs.map(rgb => rgb.r).reduce((a, c) => a + c) / rgbs.length),
+    g: Math.round(rgbs.map(rgb => rgb.g).reduce((a, c) => a + c) / rgbs.length),
+    b: Math.round(rgbs.map(rgb => rgb.b).reduce((a, c) => a + c) / rgbs.length),
   };
 }
 
