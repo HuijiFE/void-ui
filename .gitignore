@@ -23,6 +23,6 @@ yarn-error.log*
 dist/
 www/
 .temp/
-temp.*
-test/
-test
+.temp.*
+.tmp/
+.tmp.*

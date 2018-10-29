@@ -31,11 +31,12 @@
   "scss": "lib/void-ui.scss",
   "scripts": {
     "clean:dist": "rimraf ./dist",
+    "ts": "ts-node -r tsconfig-paths/register -P ../../tsconfig.scripts.json",
+    "gen-colors": "yarn ts scripts/gen-colors.ts",
     "build:cjs": "",
     "build:umd": "webpack --config ./build/webpack.umd.config.js --progress --hide-modules",
     "build:scss": "webpack --config ./build/webpack.scss.config.js --progress --hide-modules && rimraf ./dist/void-ui.css.js",
-    "build": "clean:dist && build:cjs && build:esm && build:scss",
-    "ts": "ts-node -r tsconfig-paths/register -P tsconfig.scripts.json"
+    "build": "clean:dist && build:cjs && build:esm && build:scss"
   },
   "dependencies": {
     "normalize.css": "^8.0.0",
