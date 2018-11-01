@@ -29,6 +29,9 @@
 
   // overwrite
   -webkit-appearance: none;
+  &:focus {
+    outline: none;
+  }
 
   // --------------------------------
   // STYLE shape & size
