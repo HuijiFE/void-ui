@@ -356,13 +356,13 @@
   // slots
 
   @include elem-adjacent('loading', 'content') {
-    margin-left: $button-gap-icon-text;
+    margin-left: $button-gap-icon-text * 1em;
   }
   @include elem-adjacent('left', 'content') {
-    margin-left: $button-gap-icon-text;
+    margin-left: $button-gap-icon-text * 1em;
   }
   @include elem-adjacent('content', 'right') {
-    margin-left: $button-gap-icon-text;
+    margin-left: $button-gap-icon-text * 1em;
   }
 
   @include elem('loading', 'left', 'right') {
