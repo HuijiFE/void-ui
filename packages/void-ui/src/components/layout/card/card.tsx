@@ -33,13 +33,13 @@ export class VdCard extends Vue implements ThemeComponent {
   @Prop({ type: Boolean, default: false })
   public readonly halfTransparent!: boolean;
 
-  @Prop({ type: String, default: 'div' })
+  @Prop({ type: String, default: 'section' })
   public readonly tag!: string;
 
   @Prop({ type: String })
   public readonly title?: string;
 
-  @Prop({ type: String, default: 'h2' })
+  @Prop({ type: String, default: 'h3' })
   public readonly titleTag!: string;
 
   public get classes(): ClassName {
