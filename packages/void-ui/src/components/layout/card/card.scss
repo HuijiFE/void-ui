@@ -29,6 +29,7 @@
   }
 
   @include elem('header') {
+    max-width: 100%;
     height: rem($card-header-height + $border-base);
     border-bottom: rem($border-base) solid transparent;
     padding: 0 rem($gap-base);
@@ -42,10 +43,12 @@
 
     font-size: rem($card-header-font-size);
     font-weight: normal;
-    line-height: 1;
+    line-height: 1.28;
   }
 
   @include elem('content') {
+    display: block;
+    margin: 0;
     padding: rem($gap-base);
   }
 
