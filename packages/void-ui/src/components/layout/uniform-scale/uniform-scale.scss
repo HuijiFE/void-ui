@@ -3,6 +3,7 @@
  */
 @include comp('uniform-scale') {
   position: relative;
+  width: 100%;
   flex: 1;
 
   @include elem('brace') {
