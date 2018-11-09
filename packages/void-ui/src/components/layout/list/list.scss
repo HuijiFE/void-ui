@@ -2,5 +2,21 @@
  * Component: List
  */
 @include comp('list') {
-  //
+  position: relative;
+  flex: 1;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: stretch;
+
+  padding: 0;
+  margin: 0;
+
+  @include elem('item') {
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
 }
