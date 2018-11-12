@@ -69,7 +69,7 @@ export class VdFlexbox extends Vue implements LinkLikeComponent {
   @Prop({ type: [Boolean, Object], default: false })
   public readonly hidden!: ResponsiveValues<boolean>;
 
-  private percentageValue: string = '';
+  private percentageValue: string | null = null;
 
   @Watch('flex', { deep: true, immediate: true })
   private watchFlex(flex: ResponsiveValues<Flex>): void {
@@ -79,11 +79,11 @@ export class VdFlexbox extends Vue implements LinkLikeComponent {
       flex,
       value =>
         (this.percentageValue =
-          typeof value === 'number' ? `${value > 1 ? value : value * 100}%` : ''),
+          typeof value === 'number' ? `${value > 1 ? value : value * 100}%` : null),
     );
   }
 
-  private orderValue: string | number = '';
+  private orderValue: string | number | null = null;
 
   @Watch('order', { deep: true, immediate: true })
   private watchOrder(order: ResponsiveValues<number>): void {
@@ -91,7 +91,7 @@ export class VdFlexbox extends Vue implements LinkLikeComponent {
       this,
       'order',
       order,
-      value => (this.orderValue = value === undefined ? '' : value),
+      value => (this.orderValue = value === undefined ? null : value),
     );
   }
 
