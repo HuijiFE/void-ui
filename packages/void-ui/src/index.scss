@@ -1,4 +1,10 @@
+/*! void-ui | MIT License | https://github.com/HuijiFE/void-ui */
+
 @import '~cep.scss';
+
+// configs
+$vd-modern-css-variables: true !default;
+$vd-reset: true !default;
 
 @import './components/base/index';
 

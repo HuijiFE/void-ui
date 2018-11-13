@@ -1,25 +1,29 @@
-* {
-  box-sizing: border-box;
-}
+@if $vd-reset {
+  @import url('~normalize.css');
 
-html {
-  font-size: px($root-font-size);
-}
+  * {
+    box-sizing: border-box;
+  }
 
-body {
-  font-family: $font-family-base;
-  font-size: rem($font-size-base);
-  line-height: $line-height-base;
-}
+  :root {
+    font-size: px($root-font-size);
+  }
 
-// click-able elements
-a,
-button {
-  cursor: pointer;
-}
+  body {
+    font-family: $font-family-base;
+    font-size: rem($font-size-base);
+    line-height: $line-height-base;
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
-  outline: 0;
+  // click-able elements
+  a,
+  button {
+    cursor: pointer;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    outline: 0;
+  }
 }
