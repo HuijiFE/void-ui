@@ -141,7 +141,7 @@ const options = {
       }));
 
     fs.writeFile(
-      resolve('temp.webpack.config.js'),
+      resolve('.tmp.webpack.config.js'),
       `module.exports = ${Config.toString(config.toConfig())}`,
       writeFileError => writeFileError && console.error(writeFileError),
     );

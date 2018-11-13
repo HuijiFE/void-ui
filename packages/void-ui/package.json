@@ -39,6 +39,7 @@
     "build": "clean:dist && build:cjs && build:esm && build:scss"
   },
   "dependencies": {
+    "cep.scss": "^1.0.0",
     "normalize.css": "^8.0.0",
     "tslib": "^1.9.3",
     "vue-class-component": "^6.2.0",
