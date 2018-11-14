@@ -79,7 +79,7 @@ export class VdCard extends Vue implements ThemeComponent {
  */
 @Component
 export class VdCardHeader extends Vue {
-  @Prop({ type: String, default: 'h2' })
+  @Prop({ type: String, default: 'header' })
   public readonly tag!: string;
 
   private render(h: CreateElement): VNode {
@@ -87,6 +87,25 @@ export class VdCardHeader extends Vue {
       this.tag,
       {
         staticClass: 'vd-card_header',
+      },
+      this.$slots.default,
+    );
+  }
+}
+
+/**
+ * Component: CardFooter
+ */
+@Component
+export class VdCardFooter extends Vue {
+  @Prop({ type: String, default: 'footer' })
+  public readonly tag!: string;
+
+  private render(h: CreateElement): VNode {
+    return h(
+      this.tag,
+      {
+        staticClass: 'vd-card_footer',
       },
       this.$slots.default,
     );
@@ -113,11 +132,49 @@ export class VdCardContent extends Vue {
 }
 
 /**
- * Component: CardContent
+ * Component: CardTitle
  */
 @Component
-export class VdCardSeparator extends Vue {
+export class VdCardTitle extends Vue {
+  @Prop({ type: String, default: 'h3' })
+  public readonly tag!: string;
+
   private render(h: CreateElement): VNode {
-    return <div staticClass="vd-card_separator" />;
+    return h(
+      this.tag,
+      {
+        staticClass: 'vd-card_title',
+      },
+      this.$slots.default,
+    );
+  }
+}
+
+/**
+ * Component: CardSummary
+ */
+@Component
+export class VdCardSummary extends Vue {
+  @Prop({ type: String, default: 'p' })
+  public readonly tag!: string;
+
+  private render(h: CreateElement): VNode {
+    return h(
+      this.tag,
+      {
+        staticClass: 'vd-card_summary',
+      },
+      this.$slots.default,
+    );
+  }
+}
+
+/**
+ * Component: CardDivider
+ */
+@Component
+export class VdCardDivider extends Vue {
+  private render(h: CreateElement): VNode {
+    return <div staticClass="vd-card_divider" />;
   }
 }

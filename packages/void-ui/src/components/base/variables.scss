@@ -336,9 +336,10 @@ $type-float-position: 'top', 'bottom', 'top-or-bottom', 'left', 'right', 'left-o
 
 // Card
 
+$card-font-size: font-size('medium') !default;
+$card-line-hight: 1.32 !default;
 $card-header-height: 40 !default;
-$card-header-font-size: font-size('medium') + 1 !default;
-$card-content-font-size: font-size('medium');
+$card-header-font-size: font-size('large') !default;
 
 // Flow
 
