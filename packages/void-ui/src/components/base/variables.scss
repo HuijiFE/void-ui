@@ -86,7 +86,7 @@ $color-map-theme: (
   }
 }
 
-@function theme($theme: 'lite', $role: 'fg', $level: 'normal') {
+@function theme($theme, $role: 'fg', $level: 'normal') {
   $sub-map: map-get($map: $color-map-theme, $key: $theme);
   @if $sub-map == null {
     @error 'Theme #{$theme} not found.';
@@ -343,7 +343,7 @@ $card-header-font-size: font-size('large') !default;
 
 // Flow
 
-$swimlane-padding: 32 !default;
+$swimlane-padding: 54 !default;
 
 $container-width-map: (
   xs: 100%,

@@ -8,14 +8,43 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
+import { ClassName, Theme, ThemeComponent } from '../../base';
 
 /**
  * Component: Swimlane
  */
 @Component
-export class VdSwimlane extends Vue {
+export class VdSwimlane extends Vue implements ThemeComponent {
+  @Prop({ type: String })
+  public readonly theme?: Theme;
+  public get themeValue(): Theme {
+    return this.theme || this.$vd_theme.theme;
+  }
+
+  @Prop({ type: Boolean, default: false })
+  public readonly oddEven!: boolean;
+  @Prop({ type: Boolean, default: false })
+  public readonly odd!: boolean;
+  @Prop({ type: Boolean, default: false })
+  public readonly even!: boolean;
+
+  public get classes(): ClassName {
+    return [
+      {
+        [`vdp-theme_${this.themeValue}`]: this.oddEven || this.odd || this.even,
+        'is-odd-even': this.oddEven,
+        'is-odd': this.odd,
+        'is-even': this.even,
+      },
+    ];
+  }
+
   private render(h: CreateElement): VNode {
-    return <div staticClass="vd-swimlane">{this.$slots.default}</div>;
+    return (
+      <div staticClass="vd-swimlane" class={this.classes}>
+        {this.$slots.default}
+      </div>
+    );
   }
 }
 

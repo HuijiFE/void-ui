@@ -5,6 +5,30 @@
   position: relative;
   max-width: 100%;
   padding: rem($swimlane-padding) 0;
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'theme': $theme,
+      )
+    ) {
+      color: theme($theme);
+      @include when('odd-even') {
+        &:nth-child(2n) {
+          background-color: theme($theme, 'bg', 'normal');
+        }
+        &:nth-child(2n + 1) {
+          background-color: theme($theme, 'bg', 'lower');
+        }
+      }
+      @include when('odd') {
+        background-color: theme($theme, 'bg', 'normal');
+      }
+      @include when('even') {
+        background-color: theme($theme, 'bg', 'lower');
+      }
+    }
+  }
 }
 
 /**
