@@ -3,20 +3,126 @@
  */
 @include comp('list') {
   position: relative;
-  flex: 1;
 
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-content: stretch;
   align-items: stretch;
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
 
   padding: 0;
   margin: 0;
 
-  @include elem('item') {
-    display: block;
+  @include elem('item', 'item-container', 'item-content', 'item-left', 'item-right') {
+    position: relative;
+  }
+
+  @include elem('item', 'item-container') {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+
     padding: 0;
     margin: 0;
+
+    color: inherit;
+
+    transition: background-color ease-in-out $button-transition-duration;
+  }
+
+  @include elem('item-content') {
+    flex: 1;
+  }
+  @include elem('item-left', 'item-right') {
+    flex: none;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+  }
+  @include elem('item-left') {
+    margin-right: rem($gap-base);
+  }
+  @include elem('item-right') {
+    margin-left: rem($gap-base);
+  }
+
+  // status & properties
+
+  @include when('raise') {
+    box-shadow: $raise-base;
+  }
+  @each $raise, $value in $raise-shadow-map {
+    @include prop(
+      (
+        'raise': $raise,
+      )
+    ) {
+      box-shadow: $value;
+    }
+  }
+
+  @include when('gap') {
+    margin: rem(-$gap-base / 2) 0;
+    @include elem('item-container') {
+      padding: 0 rem($gap-base);
+    }
+    @include elem('item-content') {
+      padding: rem($gap-base / 2) 0;
+    }
+  }
+
+  @include when('gap', 'divided') {
+    margin: 0;
+    @include elem('item-content', 'item-left', 'item-right') {
+      padding: rem($gap-base) 0;
+    }
+  }
+
+  @include when('divided') {
+    @include elem('item') {
+      &:not(:last-child) {
+        @include elem('item-content', 'item-left', 'item-right') {
+          border-bottom: rem($border-base) solid transparent;
+        }
+      }
+    }
+  }
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'theme': $theme,
+      )
+    ) {
+      color: theme($theme);
+      background-color: theme($theme, 'bg');
+
+      @include elem('item') {
+        &:hover {
+          background-color: theme($theme, 'bg', 'hover');
+        }
+      }
+
+      @include when('divided') {
+        @include elem('item') {
+          &:not(:last-child) {
+            @include elem('item-content') {
+              border-color: theme($theme, 'bd');
+            }
+          }
+        }
+      }
+    }
   }
 }
