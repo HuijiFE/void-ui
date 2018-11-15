@@ -42,20 +42,6 @@
     }
   }
 
-  @each $align in $type-flex-align {
-    @include prop(
-      (
-        'align': $align,
-      )
-    ) {
-      @if $align == start or $align == end {
-        $align: flex-#{$align};
-      }
-      align-items: $align;
-      align-content: $align;
-    }
-  }
-
   @each $justify in $type-flex-justify {
     @include prop(
       (
@@ -66,6 +52,33 @@
         $justify: flex-#{$justify};
       }
       justify-content: $justify;
+    }
+  }
+
+  @each $align in $type-flex-align {
+    @include prop(
+      (
+        'align': $align,
+      )
+    ) {
+      @if $align == start or $align == end {
+        align-items: flex-#{$align};
+        align-content: flex-#{$align};
+      } @else {
+        align-items: $align;
+        align-content: $align;
+      }
+    }
+    @include prop(
+      (
+        'align-self': $align,
+      )
+    ) {
+      @if $align == start or $align == end {
+        align-self: flex-#{$align};
+      } @else {
+        align-self: $align;
+      }
     }
   }
 

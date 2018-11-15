@@ -53,9 +53,11 @@ export class VdFlexbox extends Vue implements LinkLikeComponent {
   public readonly wrap?: FlexWrap;
 
   @Prop(String)
-  public readonly align?: string;
+  public readonly justify?: FlexJustify;
   @Prop(String)
-  public readonly justify?: string;
+  public readonly align?: FlexAlign;
+  @Prop(String)
+  public readonly alignSelf?: FlexAlign;
 
   @Prop({ type: [Boolean, String], default: false })
   public readonly gap!: boolean | Size;
@@ -132,8 +134,9 @@ export class VdFlexbox extends Vue implements LinkLikeComponent {
         [`vdp-direction_${this.direction}`]: this.direction,
         [`vdp-wrap_${this.wrap}`]: this.wrap,
 
-        [`vdp-align_${this.align}`]: this.align,
         [`vdp-justify_${this.justify}`]: this.justify,
+        [`vdp-align_${this.align}`]: this.align,
+        [`vdp-align-self_${this.alignSelf}`]: this.alignSelf,
 
         'is-gap': typeof this.gap === 'boolean' && this.gap,
         [`vdp-gap_${this.gap}`]: typeof this.gap === 'string',
