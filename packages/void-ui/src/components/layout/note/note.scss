@@ -35,9 +35,9 @@
       opacity: 0;
     }
   }
-  @include when('half-transparent') {
+  @include when('translucent') {
     &::before {
-      opacity: $opacity-half;
+      opacity: $opacity-translucent;
     }
   }
 
@@ -96,7 +96,7 @@
       &::before {
         background-color: theme($theme, 'bg', 'higher');
       }
-      @include when('half-transparent') {
+      @include when('translucent') {
         &::before {
           background-color: theme($theme, 'bg', 'lower');
         }

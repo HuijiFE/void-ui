@@ -34,7 +34,7 @@ export class VdNote extends Vue implements ThemeComponent {
   public readonly transparent!: boolean;
 
   @Prop({ type: Boolean, default: false })
-  public readonly halfTransparent!: boolean;
+  public readonly translucent!: boolean;
 
   @Prop({ type: String, default: 'div' })
   public readonly tag!: string;
@@ -54,7 +54,7 @@ export class VdNote extends Vue implements ThemeComponent {
         'is-raise': this.raise && typeof this.raise === 'boolean',
         [`vdp-raise_${this.raise}`]: this.raise && typeof this.raise === 'number',
         'is-transparent': this.transparent,
-        'is-half-transparent': this.halfTransparent,
+        'is-translucent': this.translucent,
       },
     ];
   }

@@ -36,10 +36,7 @@ export class VdCard extends Vue implements ThemeComponent, LinkLikeComponent {
   public readonly transparent!: boolean;
 
   @Prop({ type: Boolean, default: false })
-  public readonly halfTransparent!: boolean;
-
-  @Prop({ type: String, default: 'section' })
-  public readonly tag!: string;
+  public readonly translucent!: boolean;
 
   @Prop({ type: String })
   public readonly title?: string;
@@ -55,7 +52,7 @@ export class VdCard extends Vue implements ThemeComponent, LinkLikeComponent {
         'is-raise': this.raise && typeof this.raise === 'boolean',
         [`vdp-raise_${this.raise}`]: this.raise && typeof this.raise === 'number',
         'is-transparent': this.transparent,
-        'is-half-transparent': this.halfTransparent,
+        'is-translucent': this.translucent,
       },
     ];
   }
