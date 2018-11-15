@@ -8,13 +8,18 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { ClassName, Theme, ThemeComponent } from '../../base';
+import { ClassName, Theme, ThemeComponent, LinkLikeComponent } from '../../base';
 
 /**
  * Component: Card
  */
 @Component
-export class VdCard extends Vue implements ThemeComponent {
+export class VdCard extends Vue implements ThemeComponent, LinkLikeComponent {
+  @Prop({ type: String, default: 'section' })
+  public readonly tag!: string;
+  @Prop({ type: Boolean, default: false })
+  public readonly routerLink!: boolean;
+
   @Prop({ type: String })
   public readonly theme?: Theme;
   public get themeValue(): Theme {
@@ -57,10 +62,16 @@ export class VdCard extends Vue implements ThemeComponent {
 
   private render(h: CreateElement): VNode {
     return h(
-      this.tag,
+      this.routerLink ? 'router-link' : this.tag,
       {
         staticClass: 'vd-card',
         class: this.classes,
+        props: this.routerLink
+          ? {
+              tag: this.tag,
+              ...this.$attrs,
+            }
+          : undefined,
       },
       [
         this.title ? (
