@@ -8,7 +8,14 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { ClassName, Theme, ThemeComponent, Style, AroundPosition } from '../../base';
+import {
+  ClassName,
+  Theme,
+  ThemeComponent,
+  Style,
+  AroundPosition,
+  LinkLikeComponent,
+} from '../../base';
 
 /**
  * Component: Carousel
@@ -146,7 +153,12 @@ export class VdCarousel extends Vue implements ThemeComponent {
  * Component: CarouselItem
  */
 @Component
-export class VdCarouselItem extends Vue {
+export class VdCarouselItem extends Vue implements LinkLikeComponent {
+  @Prop({ type: String, default: 'div' })
+  public readonly tag!: string;
+  @Prop({ type: Boolean, default: false })
+  public readonly routerLink!: boolean;
+
   private carousel?: VdCarousel;
 
   private beforeCreate(): void {
@@ -162,6 +174,18 @@ export class VdCarouselItem extends Vue {
   }
 
   private render(h: CreateElement): VNode {
-    return <div staticClass="vd-carousel_item">{this.$slots.default}</div>;
+    return h(
+      this.routerLink ? 'router-link' : this.tag,
+      {
+        staticClass: 'vd-carousel_item',
+        props: this.routerLink
+          ? {
+              tag: this.tag,
+              ...this.$attrs,
+            }
+          : undefined,
+      },
+      [this.$slots.default],
+    );
   }
 }
