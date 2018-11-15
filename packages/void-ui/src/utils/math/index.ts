@@ -18,6 +18,7 @@ export function randomInt(min: number, max: number): number {
   min = Math.ceil(min);
   max = Math.floor(max);
   // tslint:enable:no-parameter-reassignment
+
   return Math.floor(Math.random() * (max - min)) + min;
 }
 // tslint:enable:insecure-random
