@@ -8,6 +8,7 @@
   font-size: rem($card-font-size);
   line-height: $card-line-hight;
 
+  border-radius: rem($radius-base);
   overflow: hidden;
 
   &::before {
