@@ -367,8 +367,8 @@ $container-width-transition: width ease-in-out 160ms;
 $acrylic-blur-amount: 12 !default;
 
 $acrylic-brightness-map: (
-  lite: 85%,
-  dark: 115%,
+  lite: 115%,
+  dark: 85%,
 ) !default;
 
 $acrylic-cover-tone-opacity:    0.2 !default;
