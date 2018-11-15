@@ -8,7 +8,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { ClassName, Theme, ThemeComponent, Style } from '../../base';
+import { ClassName, Theme, ThemeComponent, Style, AroundPosition } from '../../base';
 
 /**
  * Component: Carousel
@@ -23,6 +23,12 @@ export class VdCarousel extends Vue implements ThemeComponent {
 
   @Prop({ type: String, default: 'div' })
   public readonly containerTag!: string;
+
+  @Prop({ type: String, default: 'outside' })
+  public readonly indicatorPosition!: AroundPosition;
+
+  @Prop({ type: String, default: 'outside' })
+  public readonly switchButtonPosition!: AroundPosition;
 
   private switching: boolean = false;
 
@@ -100,33 +106,37 @@ export class VdCarousel extends Vue implements ThemeComponent {
             <div staticClass="vd-carousel_wrapper" style={this.wrapperStyle}>
               {this.$slots.default}
             </div>,
-
-            <button
-              staticClass="vd-carousel_button-previous"
-              onClick={() => this.selectedIndex--}
-            >
-              {this.$slots.previous}
-            </button>,
-            <button
-              staticClass="vd-carousel_button-next"
-              onClick={() => this.selectedIndex++}
-            >
-              {this.$slots.next}
-            </button>,
-            <div staticClass="vd-carousel_indicator-wrapper">
-              {this.items.map((_, index) => (
-                <button
-                  staticClass="vd-carousel_indicator"
-                  class={{ 'is-selected': this.selectedIndex === index }}
-                  type="button"
-                  onClick={() => (this.selectedIndex = index)}
-                >
-                  <span staticClass="vd-carousel_indicator-inner" />
-                </button>
-              ))}
-            </div>,
           ],
         )}
+        <button
+          staticClass="vd-carousel_button-previous"
+          class={{ 'is-inside': this.switchButtonPosition === 'inside' }}
+          onClick={() => this.selectedIndex--}
+        >
+          {this.$slots.previous || <span>&lsaquo;</span>}
+        </button>
+        <button
+          staticClass="vd-carousel_button-next"
+          class={{ 'is-inside': this.switchButtonPosition === 'inside' }}
+          onClick={() => this.selectedIndex++}
+        >
+          {this.$slots.next || <span>&rsaquo;</span>}
+        </button>
+        <div
+          staticClass="vd-carousel_indicator-wrapper"
+          class={{ 'is-inside': this.indicatorPosition === 'inside' }}
+        >
+          {this.items.map((_, index) => (
+            <button
+              staticClass="vd-carousel_indicator"
+              class={{ 'is-selected': this.selectedIndex === index }}
+              type="button"
+              onClick={() => (this.selectedIndex = index)}
+            >
+              <span staticClass="vd-carousel_indicator-inner" />
+            </button>
+          ))}
+        </div>
       </div>
     );
   }

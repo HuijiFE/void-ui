@@ -334,6 +334,10 @@ $type-flex-preset: initial, auto, none;
 $type-dock-position: 'center', 'top', 'bottom', 'left', 'right';
 $type-float-position: 'top', 'bottom', 'top-or-bottom', 'left', 'right', 'left-or-right';
 
+// Carousel
+
+$carousel-switch-button-size: 48;
+
 // Card
 
 $card-font-size: font-size('medium') !default;

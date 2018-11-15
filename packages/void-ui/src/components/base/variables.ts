@@ -130,6 +130,13 @@ export type FlexJustify = Align | 'space-between' | 'space-around' | 'space-even
 
 export type Flex = 'initial' | 'auto' | 'none' | number;
 
+// Various Positions --------
+
+/**
+ * Use for various indicators, where are they placed related to the component main element.
+ */
+export type AroundPosition = 'inside' | 'outside';
+
 /**
  * Use for absolute position components, how the component dock to its parent or screen.
  */

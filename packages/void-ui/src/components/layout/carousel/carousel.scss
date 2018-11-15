@@ -17,8 +17,8 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-start;
-    align-content: center;
-    align-items: center;
+    align-content: stretch;
+    align-items: stretch;
 
     width: 100%;
 
@@ -44,8 +44,8 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    width: rem(48);
-    height: rem(80);
+    width: rem($carousel-switch-button-size);
+    height: rem($carousel-switch-button-size) * 1.618;
     margin: auto 0;
     padding: 0;
     border: none;
@@ -56,7 +56,7 @@
     align-content: center;
     align-items: center;
 
-    font-size: rem(22);
+    font-size: rem($carousel-switch-button-size) * 0.618;
     background: transparent;
 
     opacity: 0.75;
@@ -66,17 +66,26 @@
   }
 
   @include elem('button-previous') {
-    left: 0;
+    left: rem($carousel-switch-button-size + $gap-base) * -1;
+    @include when('inside') {
+      left: 0;
+    }
   }
   @include elem('button-next') {
-    right: 0;
+    right: rem($carousel-switch-button-size + $gap-base) * -1;
+    @include when('inside') {
+      right: 0;
+    }
   }
 
   @include elem('indicator-wrapper') {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    position: relative;
+    @include when('inside') {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
 
     width: 100%;
     height: initial;
