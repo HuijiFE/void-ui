@@ -16,6 +16,12 @@
   color: inherit;
   text-decoration: none;
 
+  & > img {
+    position: relative;
+    max-width: 100%;
+    height: auto;
+  }
+
   @each $direction in $type-flex-direction {
     @include prop(
       (
