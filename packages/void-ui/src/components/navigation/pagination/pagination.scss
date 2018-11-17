@@ -1,0 +1,105 @@
+/**
+ * Component: Pagination
+ */
+@include comp('pagination') {
+  position: relative;
+  flex: none;
+
+  white-space: nowrap;
+
+  user-select: none;
+
+  @include elem('wrapper', 'item-container') {
+    position: relative;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+
+    padding: 0;
+    margin: 0;
+  }
+
+  @include elem('wrapper') {
+    flex: 1;
+  }
+  @include elem('item-container') {
+    flex: none;
+  }
+
+  @include elem('item') {
+    cursor: pointer;
+
+    flex: 1;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    white-space: nowrap;
+
+    padding: 0;
+    margin: 0;
+    border: rem($border-base) solid transparent;
+
+    line-height: 1.44;
+
+    &[disabled] {
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+
+    &::before {
+      content: ' ';
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      opacity: 0;
+
+      transition: opacity ease-in-out $button-transition-duration;
+    }
+  }
+
+  @include elem-adjacent('element') {
+    margin-left: rem(-$border-base);
+  }
+
+  @each $size in $type-size {
+    @include prop(
+      (
+        'size': $size,
+      )
+    ) {
+      $font-size-value: map-get(
+        $map: $button-font-size-map,
+        $key: $size,
+      );
+      $size-value: map-get(
+        $map: $button-size-map,
+        $key: $size,
+      );
+      @include elem('item') {
+        font-size: rem($font-size-value);
+        height: rem($size-value);
+        min-width: rem($size-value);
+        padding: $button-padding-multiple * 1em;
+      }
+    }
+  }
+
+  @include elem('item') {
+    @include when('active') {
+      position: relative;
+
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+}
