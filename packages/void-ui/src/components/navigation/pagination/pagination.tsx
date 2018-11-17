@@ -110,37 +110,47 @@ export class VdPagination extends Vue implements ThemeComponent, LinkLikeCompone
     serials[0] = first;
     serials[serials.length - 1] = last;
 
+    const clamp = (value: number) =>
+      value < first ? first : value > last ? last : value;
+    let previous: number;
+    let next: number;
+
     return (
       <nav staticClass="vd-pagination" class={this.classes}>
         <ul staticClass="vd-pagination_wrapper">
           <li staticClass="vd-pagination_item-container">
-            {h(
-              this.routerLink ? 'router-link' : this.tag,
-              {
-                staticClass: 'vd-pagination_item',
-                attrs: {
-                  disabled: this.page === first || this.disabled,
-                  'aria-label': this.$slots.previous
-                    ? undefined
-                    : this.previousLabel || first,
-                  href:
-                    !this.routerLink && this.resolve ? this.resolve(first) : undefined,
+            {(previous = clamp(page - 1)) &&
+              h(
+                this.routerLink ? 'router-link' : this.tag,
+                {
+                  staticClass: 'vd-pagination_item',
+                  attrs: {
+                    disabled: this.page === first || this.disabled,
+                    'aria-label': this.$slots.previous
+                      ? undefined
+                      : this.previousLabel || previous,
+                    href:
+                      !this.routerLink && this.resolve
+                        ? this.resolve(previous)
+                        : undefined,
+                  },
+                  props: {
+                    tag: this.tag,
+                    to:
+                      this.routerLink && this.resolve
+                        ? this.resolve(previous)
+                        : undefined,
+                  },
+                  nativeOn: {
+                    click: this.onChange(previous),
+                  },
                 },
-                props: {
-                  tag: this.tag,
-                  disabled: (this.routerLink && this.page === last) || this.disabled,
-                  to: this.routerLink && this.resolve ? this.resolve(first) : undefined,
-                },
-                nativeOn: {
-                  click: this.onChange(first),
-                },
-              },
-              this.$slots.previous ||
-                this.previousLabel || [
-                  <span aria-hidden="true">&laquo;</span>,
-                  <span class="sr-only">{first}</span>,
-                ],
-            )}
+                this.$slots.previous ||
+                  this.previousLabel || [
+                    <span aria-hidden="true">&laquo;</span>,
+                    <span class="sr-only">{previous}</span>,
+                  ],
+              )}
           </li>
           {serials.map(current => {
             const ariaLabel =
@@ -168,7 +178,6 @@ export class VdPagination extends Vue implements ThemeComponent, LinkLikeCompone
                     },
                     props: {
                       tag: this.tag,
-                      disabled: (this.routerLink && this.page === last) || this.disabled,
                       to:
                         this.routerLink && this.resolve
                           ? this.resolve(current)
@@ -189,30 +198,31 @@ export class VdPagination extends Vue implements ThemeComponent, LinkLikeCompone
             );
           })}
           <li staticClass="vd-pagination_item-container">
-            {h(
-              this.routerLink ? 'router-link' : this.tag,
-              {
-                staticClass: 'vd-pagination_item',
-                attrs: {
-                  disabled: this.page === last || this.disabled,
-                  'aria-label': this.$slots.next ? undefined : this.nextLabel || last,
-                  href: !this.routerLink && this.resolve ? this.resolve(last) : undefined,
+            {(next = clamp(page + 1)) &&
+              h(
+                this.routerLink ? 'router-link' : this.tag,
+                {
+                  staticClass: 'vd-pagination_item',
+                  attrs: {
+                    disabled: this.page === last || this.disabled,
+                    'aria-label': this.$slots.next ? undefined : this.nextLabel || next,
+                    href:
+                      !this.routerLink && this.resolve ? this.resolve(next) : undefined,
+                  },
+                  props: {
+                    tag: this.tag,
+                    to: this.routerLink && this.resolve ? this.resolve(next) : undefined,
+                  },
+                  nativeOn: {
+                    click: this.onChange(next),
+                  },
                 },
-                props: {
-                  tag: this.tag,
-                  disabled: (this.routerLink && this.page === last) || this.disabled,
-                  to: this.routerLink && this.resolve ? this.resolve(last) : undefined,
-                },
-                nativeOn: {
-                  click: this.onChange(last),
-                },
-              },
-              this.$slots.next ||
-                this.nextLabel || [
-                  <span aria-hidden="true">&raquo;</span>,
-                  <span class="sr-only">{last}</span>,
-                ],
-            )}
+                this.$slots.next ||
+                  this.nextLabel || [
+                    <span aria-hidden="true">&raquo;</span>,
+                    <span class="sr-only">{next}</span>,
+                  ],
+              )}
           </li>
         </ul>
       </nav>
