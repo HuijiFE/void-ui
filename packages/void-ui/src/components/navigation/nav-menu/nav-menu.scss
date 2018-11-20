@@ -1,0 +1,7 @@
+/**
+ * Component: NavMenu
+ */
+@include comp('nav-menu') {
+  position: relative;
+  flex: 1;
+}
