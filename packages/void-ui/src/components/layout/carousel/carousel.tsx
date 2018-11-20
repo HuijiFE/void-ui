@@ -8,26 +8,13 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import {
-  ClassName,
-  Theme,
-  ThemeComponent,
-  Style,
-  AroundPosition,
-  LinkLikeComponent,
-} from '../../base';
+import { ClassName, Style, AroundPosition, LinkLikeComponent } from '../../base';
 
 /**
  * Component: Carousel
  */
 @Component
-export class VdCarousel extends Vue implements ThemeComponent {
-  @Prop({ type: String })
-  public readonly theme?: Theme;
-  public get themeValue(): Theme {
-    return this.theme || this.$vd_theme.theme || 'lite';
-  }
-
+export class VdCarousel extends Vue {
   @Prop({ type: String, default: 'div' })
   public readonly containerTag!: string;
 
@@ -84,7 +71,6 @@ export class VdCarousel extends Vue implements ThemeComponent {
 
   public get classes(): ClassName {
     return [
-      `vdp-theme_${this.themeValue}`,
       {
         'is-switching': this.switching,
       },

@@ -356,12 +356,12 @@ $container-width-transition: width ease-in-out 160ms;
 $acrylic-blur-amount: 12 !default;
 
 $acrylic-brightness-map: (
-  lite: 115%,
-  dark: 85%,
+  lite: 110%,
+  dark: 90%,
 ) !default;
 
-$acrylic-cover-tone-opacity:    0.2 !default;
-$acrylic-cover-theme-opacity:   0.5 !default;
+$acrylic-cover-tone-opacity:    0.1 !default;
+$acrylic-cover-theme-opacity:   0.3 !default;
 
 // ================================================================
 // Form

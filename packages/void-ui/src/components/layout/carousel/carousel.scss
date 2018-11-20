@@ -61,12 +61,18 @@
     align-content: center;
     align-items: center;
 
+    border-radius: rem($radius-base);
     font-size: rem($carousel-switch-button-size) * 0.618;
-    background: transparent;
+    color: $color-white;
+    background: $color-black;
 
-    opacity: 0.75;
-    &:hover {
-      opacity: 1;
+    opacity: 0.5;
+
+    transition: opacity ease-in-out $button-transition-duration;
+  }
+  &:hover {
+    @include elem('button-previous', 'button-next') {
+      opacity: 0.75;
     }
   }
 
@@ -117,25 +123,10 @@
     width: rem($carousel-indicator-height * 1.618 * 2);
     height: rem($carousel-indicator-height);
     border-radius: rem($radius-base);
-  }
 
-  @each $theme in $type-theme {
-    @include prop(
-      (
-        'theme': $theme,
-      )
-    ) {
-      color: theme($theme);
+    opacity: 0.75;
 
-      @include elem('button-previous', 'button-next') {
-        color: theme($theme, 'fg', 'emphasize');
-        background-color: theme($theme, 'bg');
-      }
-
-      @include elem('indicator-inner') {
-        background-color: theme($theme);
-      }
-    }
+    background-color: $color-white;
   }
 
   @include elem('indicator') {

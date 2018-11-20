@@ -15,14 +15,14 @@
       color: theme($theme);
       @include when('odd-even') {
         &:nth-child(2n) {
-          background-color: theme($theme, 'bg', 'normal');
+          background-color: theme($theme, 'bg', 'low');
         }
         &:nth-child(2n + 1) {
           background-color: theme($theme, 'bg', 'lower');
         }
       }
       @include when('odd') {
-        background-color: theme($theme, 'bg', 'normal');
+        background-color: theme($theme, 'bg', 'low');
       }
       @include when('even') {
         background-color: theme($theme, 'bg', 'lower');
