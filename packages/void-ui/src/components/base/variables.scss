@@ -4,7 +4,16 @@
 
 // Typography
 
-$font-family-base: 'Helvetica Neue', 'Helvetica', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', 'Arial', sans-serif;
+$font-family-base: (
+  'Helvetica Neue',
+  'Helvetica',
+  'PingFang SC',
+  'Hiragino Sans GB',
+  'Microsoft YaHei',
+  '微软雅黑',
+  'Arial',
+  sans-serif
+) !default;
 
 $font-size-base: 15 !default;
 $line-height-base: 1.618 !default;
@@ -76,16 +85,6 @@ $color-map-theme: (
   dark: $color-map-theme-dark,
 ) !default;
 
-@if $vd-modern-css-variables {
-  :root {
-    @each $theme, $color-map in $color-map-theme {
-      @each $role-level, $value in $color-map {
-        --theme-#{$theme}-#{$role-level}: #{$value};
-      }
-    }
-  }
-}
-
 @function theme($theme, $role: 'fg', $level: 'normal') {
   $sub-map: map-get($map: $color-map-theme, $key: $theme);
   @if $sub-map == null {
@@ -154,16 +153,6 @@ $color-map-tone: (
   danger:       $color-map-tone-danger,
 ) !default;
 
-@if $vd-modern-css-variables {
-  :root {
-    @each $tone, $color-map in $color-map-tone {
-      @each $level, $value in $color-map {
-        --tone-#{$tone}-#{$level}: #{$value};
-      }
-    }
-  }
-}
-
 @function tone($tone: 'primary', $level: 'standard') {
   $sub-map: map-get($map: $color-map-tone, $key: $tone);
   @if $sub-map == null {
@@ -202,16 +191,16 @@ $raise-shadow-map: (
   8: __gen-raise-shadow(8),
 ) !default;
 
-@if $vd-modern-css-variables {
-  :root {
-    @each $level, $value in $raise-shadow-map {
-      --raise-#{$level}: #{$value};
-    }
-  }
-}
-
 @function raise-shadow($level: 1) {
-  @return map-get($map: $raise-shadow-map, $key: $level);
+  $value: map-get($map: $raise-shadow-map, $key: $level);
+  @if $value {
+    @if $vd-modern-css-variables {
+      @return var(--raise-#{$level});
+    }
+    @return $value;
+  } @else {
+    @error 'raise-shadow #{$level} not found.';
+  }
 }
 
 $raise-base:    raise-shadow(1) !default;
@@ -385,3 +374,27 @@ $form-component-height: 24 !default;
 
 $form-symbol-size: $form-font-size !default;
 $form-symbol-transition-duration: 240ms !default;
+
+// ================================================================
+// Modern
+
+@if $vd-modern-css-variables {
+  #{$vd-modern-css-selector} {
+    // theme
+    @each $theme, $color-map in $color-map-theme {
+      @each $role-level, $value in $color-map {
+        --theme-#{$theme}-#{$role-level}: #{$value};
+      }
+    }
+    // tone
+    @each $tone, $color-map in $color-map-tone {
+      @each $level, $value in $color-map {
+        --tone-#{$tone}-#{$level}: #{$value};
+      }
+    }
+    // raise shadow
+    @each $level, $value in $raise-shadow-map {
+      --raise-#{$level}: #{$value};
+    }
+  }
+}

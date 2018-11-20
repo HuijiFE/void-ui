@@ -4,6 +4,7 @@
 
 // configs
 $vd-modern-css-variables: true !default;
+$vd-modern-css-selector: ':root' !default;
 $vd-reset: true !default;
 
 @import './components/base/index';
