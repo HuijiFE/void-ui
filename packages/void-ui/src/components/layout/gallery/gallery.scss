@@ -51,6 +51,10 @@
   @include elem('thumbnail-item') {
     max-width: 1 / 6 * 100%;
     border: rem($thumbnail-gap / 2) solid transparent;
+
+    @include when('selected') {
+      border-color: tone();
+    }
   }
 
   @include elem('placement') {
@@ -99,12 +103,8 @@
     &:last-child {
       margin-left: rem($thumbnail-gap);
     }
-  }
 
-  @include elem('thumbnail-item') {
-    @include when('selected') {
-      border-color: tone();
-    }
+    transition: background-color ease-in-out $button-transition-duration;
   }
 
   @each $theme in $type-theme {
@@ -118,7 +118,13 @@
 
       @include elem('thumbnail-slide-button') {
         color: theme($theme);
-        background-color: theme($theme, 'bg', 'higher');
+        background-color: theme($theme, 'bg');
+        &:hover {
+          background-color: theme($theme, 'bg', 'higher');
+        }
+        &:active {
+          background-color: theme($theme, 'bg', 'lower');
+        }
       }
     }
   }
