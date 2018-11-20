@@ -66,6 +66,7 @@ export class VdListItem extends Vue implements LinkLikeComponent {
   public readonly routerLink!: boolean;
 
   private render(h: CreateElement): VNode {
+    // TODO $attrs 的处理
     return (
       <li staticClass="vd-list_item">
         {h(

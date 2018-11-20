@@ -59,22 +59,16 @@ async function generatePages(): Promise<void> {
           const dir: string = pth.dirname(path);
           fs.exists(dir, exists => {
             if (exists) {
-              fs.copyFile(
-                indexPath,
-                path,
-                cpError => (cpError ? reject(cpError) : resolve()),
+              fs.copyFile(indexPath, path, cpError =>
+                cpError ? reject(cpError) : resolve(),
               );
             } else {
-              mkdirp(
-                dir,
-                mkError =>
-                  mkError
-                    ? reject(mkError)
-                    : fs.copyFile(
-                        indexPath,
-                        path,
-                        cpError => (cpError ? reject(cpError) : resolve()),
-                      ),
+              mkdirp(dir, mkError =>
+                mkError
+                  ? reject(mkError)
+                  : fs.copyFile(indexPath, path, cpError =>
+                      cpError ? reject(cpError) : resolve(),
+                    ),
               );
             }
           });
@@ -90,7 +84,7 @@ async function copyExamples(): Promise<void> {
 
   await Promise.all(
     examples.map(
-      src =>
+      async src =>
         new Promise((resolve, reject) => {
           const dest = src.replace(dirSrc, dirDest);
           const dir = pth.dirname(dest);
