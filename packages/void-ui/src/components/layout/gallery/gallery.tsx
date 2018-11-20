@@ -58,8 +58,14 @@ export class VdGallery extends Vue implements ThemeComponent {
 
     this.offset.transform = `translateX(${-100 * index}%)`;
 
-    const fuse = this.itemsSource.length - 6;
-    const thumbnailIndex = fuse < index ? fuse : index > 0 ? index - 1 : index;
+    const thumbnailIndex =
+      this.itemsSource.length <= 6
+        ? 0
+        : this.itemsSource.length - 6 < index
+        ? this.itemsSource.length - 6
+        : index > 0
+        ? index - 1
+        : index;
     this.thumbnailOffset.transform = `translateX(${-100 * thumbnailIndex}%)`;
   }
 
