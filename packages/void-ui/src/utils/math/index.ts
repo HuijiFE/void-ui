@@ -29,3 +29,13 @@ export function randomInt(min: number, max: number): number {
 export function randomElement<T>(array: T[]): T {
   return array[randomInt(0, array.length)];
 }
+
+export function mobius(index: number, size: number): number {
+  if (index < 0) {
+    return (size + (index % size)) % size;
+  } else if (index > size - 1) {
+    return index % size;
+  }
+
+  return index;
+}

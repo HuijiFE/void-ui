@@ -1,0 +1,125 @@
+/**
+ * Component: Gallery
+ */
+@include comp('gallery') {
+  $thumbnail-gap: gap('small');
+
+  position: relative;
+  flex: 1;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: stretch;
+
+  @include elem('preview-wrapper', 'thumbnail-slide', 'thumbnail-wrapper') {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 0;
+    margin: 0;
+  }
+  @include elem('preview-wrapper', 'thumbnail-slide') {
+    flex: 1 0 100%;
+    max-width: 100%;
+  }
+  @include elem('thumbnail-slide') {
+    padding: rem($thumbnail-gap / 2) 0;
+  }
+  @include elem('thumbnail-wrapper') {
+    flex: 1;
+    margin: rem($thumbnail-gap / -2);
+  }
+  @include elem('preview-wrapper', 'thumbnail-wrapper') {
+    overflow: hidden;
+  }
+
+  @include elem('preview-item', 'thumbnail-item') {
+    position: relative;
+
+    display: block;
+    flex: 1 0 100%;
+    margin: 0;
+
+    transform: translateX(0);
+    transition: transform ease $slide-transition-duration;
+  }
+  @include elem('preview-item') {
+    max-width: 100%;
+  }
+  @include elem('thumbnail-item') {
+    max-width: 1 / 6 * 100%;
+    border: rem($thumbnail-gap / 2) solid transparent;
+  }
+
+  @include elem('placement') {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-bottom: 9 / 16 * 100%;
+  }
+
+  @include elem('container', 'container') {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    overflow: hidden;
+  }
+
+  @include elem('image') {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @include elem('thumbnail-slide-button') {
+    position: relative;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    padding: 0 rem($thumbnail-gap / 2);
+    margin: rem($thumbnail-gap / -2) 0;
+    border: none;
+
+    font-size: font-size('xsmall');
+
+    &:first-child {
+      margin-right: rem($thumbnail-gap);
+    }
+
+    &:last-child {
+      margin-left: rem($thumbnail-gap);
+    }
+  }
+
+  @include elem('thumbnail-item') {
+    @include when('selected') {
+      border-color: tone();
+    }
+  }
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'theme': $theme,
+      )
+    ) {
+      color: theme($theme);
+      background-color: theme($theme, 'bg');
+
+      @include elem('thumbnail-slide-button') {
+        color: theme($theme);
+        background-color: theme($theme, 'bg', 'higher');
+      }
+    }
+  }
+}
