@@ -15,6 +15,9 @@ import { ClassName, Theme, ThemeComponent } from '../../base';
  */
 @Component
 export class VdSwimlane extends Vue implements ThemeComponent {
+  @Prop({ type: String, default: 'div' })
+  public readonly tag!: string;
+
   @Prop({ type: String })
   public readonly theme?: Theme;
   public get themeValue(): Theme {
@@ -40,10 +43,13 @@ export class VdSwimlane extends Vue implements ThemeComponent {
   }
 
   private render(h: CreateElement): VNode {
-    return (
-      <div staticClass="vd-swimlane" class={this.classes}>
-        {this.$slots.default}
-      </div>
+    return h(
+      this.tag,
+      {
+        staticClass: 'vd-swimlane',
+        class: this.classes,
+      },
+      this.$slots.default,
     );
   }
 }
@@ -53,7 +59,16 @@ export class VdSwimlane extends Vue implements ThemeComponent {
  */
 @Component
 export class VdContainer extends Vue {
+  @Prop({ type: String, default: 'div' })
+  public readonly tag!: string;
+
   private render(h: CreateElement): VNode {
-    return <div staticClass="vd-container">{this.$slots.default}</div>;
+    return h(
+      this.tag,
+      {
+        staticClass: 'vd-container',
+      },
+      this.$slots.default,
+    );
   }
 }
