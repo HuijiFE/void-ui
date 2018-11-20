@@ -26,6 +26,7 @@
   }
   @include elem('thumbnail-slide') {
     padding: rem($thumbnail-gap / 2) 0;
+    border-top: rem($border-base) solid transparent;
   }
   @include elem('thumbnail-wrapper') {
     flex: 1;
@@ -115,6 +116,14 @@
     ) {
       color: theme($theme);
       background-color: theme($theme, 'bg');
+
+      @include elem('preview-wrapper') {
+        background-color: theme($theme, 'bg', 'low');
+      }
+
+      @include elem('thumbnail-slide') {
+        border-color: theme($theme, 'bd');
+      }
 
       @include elem('thumbnail-slide-button') {
         color: theme($theme);
