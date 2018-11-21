@@ -27,6 +27,9 @@ export class VdTabs extends Vue implements ThemeComponent {
   @Prop({ type: [Boolean, Number], default: false })
   public readonly raise!: boolean | number;
 
+  @Prop({ type: Boolean, default: false })
+  public readonly noGap!: boolean;
+
   public get classes(): ClassName {
     return [
       `vdp-theme_${this.themeValue}`,
@@ -34,6 +37,7 @@ export class VdTabs extends Vue implements ThemeComponent {
         'is-bordered': this.bordered,
         'is-raise': this.raise && typeof this.raise === 'boolean',
         [`vdp-raise_${this.raise}`]: this.raise && typeof this.raise === 'number',
+        'is-no-gap': this.noGap,
       },
     ];
   }
@@ -171,6 +175,7 @@ export class VdTabPane extends Vue {
   public get classes(): ClassName {
     return [
       {
+        'is-no-gap': this.noGap,
         'is-selected': this.selected,
         [`is-${this.transition}`]: this.transition,
       },
