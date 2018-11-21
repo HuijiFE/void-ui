@@ -171,6 +171,28 @@ $color-map-tone: (
   }
 }
 
+// Grade (Score Level)
+$color-map-grade: (
+  1: #ff3333,
+  2: #ff7e34,
+  3: #ffcc00,
+  4: #58d000,
+  5: #24cf4c,
+);
+
+@function grade($grade) {
+  $value: map-get($map: $color-map, $key: $level);
+  
+  @if $value {
+    @if $vd-modern-css-variables {
+      @return var(--grade-#{$grade});
+    }
+    @return $value;
+  } @else {
+    @error 'Grade color #{$grade} not found.';
+  }
+}
+
 // Raise (Shadow)
 
 @function __gen-raise-shadow($level) {
@@ -393,6 +415,10 @@ $form-symbol-transition-duration: 240ms !default;
       @each $level, $value in $color-map {
         --tone-#{$tone}-#{$level}: #{$value};
       }
+    }
+    // grade
+    @each $grade, $value in $color-map-grade {
+      --grade-#{$grade}: #{$value};
     }
     // raise shadow
     @each $level, $value in $raise-shadow-map {
