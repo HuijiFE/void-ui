@@ -66,7 +66,7 @@ export class VdGallery extends Vue implements ThemeComponent {
         : index > 0
         ? index - 1
         : index;
-    this.thumbnailOffset.transform = `translateX(${-100 * thumbnailIndex}%)`;
+    this.thumbnailOffset.transform = `translateX(${(-100 * thumbnailIndex) / 6}%)`;
   }
 
   private onSelect(index: number): (event: MouseEvent) => void {
@@ -82,39 +82,47 @@ export class VdGallery extends Vue implements ThemeComponent {
   private render(h: CreateElement): VNode {
     return (
       <div staticClass="vd-gallery" class={this.classes}>
-        <ul staticClass="vd-gallery_preview-wrapper" role="presentation">
-          {this.itemsSource.map((item, index) => (
-            <li
-              staticClass="vd-gallery_preview-item"
-              class={{ 'is-selected': index === this.index }}
-              style={this.offset}
-              role="presentation"
-            >
-              <section staticClass="vd-gallery_placement">
-                <div staticClass="vd-gallery_container">
-                  <img
-                    staticClass="vd-gallery_image"
-                    src={item.preview || item.fullscreen || item.origin}
-                    alt={item.label || `${this.label} ${index + 1}`}
-                  />
-                </div>
-              </section>
-            </li>
-          ))}
-        </ul>
-        <div staticClass="vd-gallery_thumbnail-slide">
-          <button
-            staticClass="vd-gallery_thumbnail-slide-button"
-            onClick={this.onSelectPreview}
+        <div staticClass="vd-gallery_slide is-full">
+          <ul
+            staticClass="vd-gallery_preview-wrapper"
+            style={this.offset}
+            role="presentation"
           >
-            &lsaquo;
-          </button>
-          <ul staticClass="vd-gallery_thumbnail-wrapper" role="presentation">
+            {this.itemsSource.map((item, index) => (
+              <li
+                staticClass="vd-gallery_preview-item"
+                class={{ 'is-selected': index === this.index }}
+                role="presentation"
+              >
+                <section staticClass="vd-gallery_placement">
+                  <div staticClass="vd-gallery_container">
+                    <img
+                      staticClass="vd-gallery_image"
+                      src={item.preview || item.fullscreen || item.origin}
+                      alt={item.label || `${this.label} ${index + 1}`}
+                    />
+                  </div>
+                </section>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <button
+          staticClass="vd-gallery_thumbnail-slide-button is-left"
+          onClick={this.onSelectPreview}
+        >
+          &lsaquo;
+        </button>
+        <div staticClass="vd-gallery_slide">
+          <ul
+            staticClass="vd-gallery_thumbnail-wrapper"
+            style={this.thumbnailOffset}
+            role="presentation"
+          >
             {this.itemsSource.map((item, index) => (
               <li
                 staticClass="vd-gallery_thumbnail-item"
                 class={{ 'is-selected': index === this.index }}
-                style={this.thumbnailOffset}
                 role="presentation"
               >
                 <section staticClass="vd-gallery_placement">
@@ -136,13 +144,13 @@ export class VdGallery extends Vue implements ThemeComponent {
               </li>
             ))}
           </ul>
-          <button
-            staticClass="vd-gallery_thumbnail-slide-button"
-            onClick={this.onSelectNext}
-          >
-            &rsaquo;
-          </button>
         </div>
+        <button
+          staticClass="vd-gallery_thumbnail-slide-button is-right"
+          onClick={this.onSelectNext}
+        >
+          &rsaquo;
+        </button>
       </div>
     );
   }

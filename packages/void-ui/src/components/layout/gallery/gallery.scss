@@ -13,27 +13,37 @@
   align-content: stretch;
   align-items: stretch;
 
-  @include elem('preview-wrapper', 'thumbnail-slide', 'thumbnail-wrapper') {
+  @include elem('slide', 'preview-wrapper', 'thumbnail-wrapper') {
     position: relative;
     display: flex;
     flex-flow: row nowrap;
     padding: 0;
     margin: 0;
   }
-  @include elem('preview-wrapper', 'thumbnail-slide') {
+
+  @include elem('slide') {
+    flex: 1;
+    padding: rem($thumbnail-gap / 2);
+    border-top: rem($border-base) solid transparent;
+    overflow: hidden;
+
+    @include when('full') {
+      flex: 1 0 100%;
+      padding: 0;
+    }
+  }
+
+  @include elem('preview-wrapper', 'thumbnail-wrapper') {
+    transform: translateX(0);
+    transition: transform ease $slide-transition-duration;
+  }
+  @include elem('preview-wrapper') {
     flex: 1 0 100%;
     max-width: 100%;
-  }
-  @include elem('thumbnail-slide') {
-    padding: rem($thumbnail-gap / 2) 0;
-    border-top: rem($border-base) solid transparent;
   }
   @include elem('thumbnail-wrapper') {
     flex: 1;
     margin: rem($thumbnail-gap / -2);
-  }
-  @include elem('preview-wrapper', 'thumbnail-wrapper') {
-    overflow: hidden;
   }
 
   @include elem('preview-item', 'thumbnail-item') {
@@ -42,9 +52,6 @@
     display: block;
     flex: 1 0 100%;
     margin: 0;
-
-    transform: translateX(0);
-    transition: transform ease $slide-transition-duration;
   }
   @include elem('preview-item') {
     max-width: 100%;
@@ -92,18 +99,10 @@
     align-content: center;
 
     padding: 0 rem($thumbnail-gap / 2);
-    margin: rem($thumbnail-gap / -2) 0;
+    margin: 0;
     border: none;
 
     font-size: font-size('xsmall');
-
-    &:first-child {
-      margin-right: rem($thumbnail-gap);
-    }
-
-    &:last-child {
-      margin-left: rem($thumbnail-gap);
-    }
 
     transition: background-color ease-in-out $button-transition-duration;
   }
