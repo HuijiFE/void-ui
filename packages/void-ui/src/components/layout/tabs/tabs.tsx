@@ -175,7 +175,6 @@ export class VdTabPane extends Vue {
   public get classes(): ClassName {
     return [
       {
-        'is-no-gap': this.noGap,
         'is-selected': this.selected,
         [`is-${this.transition}`]: this.transition,
       },

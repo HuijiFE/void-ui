@@ -6,7 +6,7 @@
   flex: 1;
 
   font-size: rem($card-font-size);
-  line-height: $card-line-hight;
+  line-height: $card-line-height;
 
   border-radius: rem($radius-base);
   overflow: hidden;
@@ -52,6 +52,7 @@
 
   @include elem('header') {
     border-bottom: rem($border-base) solid transparent;
+    line-height: rem($card-header-height - $gap-base * 2);
   }
   @include elem('footer') {
     border-top: rem($border-base) solid transparent;
@@ -67,7 +68,8 @@
     }
   }
 
-  @include elem('title') {
+  @include elem('header', 'title') {
+    font-weight: normal;
     font-size: rem($card-header-font-size);
   }
 
