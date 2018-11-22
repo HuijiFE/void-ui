@@ -108,6 +108,11 @@
       margin: rem(-$value / 2);
       > .#{class-comp('flexbox')} {
         padding: rem($value / 2);
+
+        &.#{class-prop('gap', $gap)} {
+          margin: 0;
+          padding: 0;
+        }
       }
     }
   }
