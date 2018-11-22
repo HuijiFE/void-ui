@@ -1,3 +1,4 @@
+// tslint:disable:no-any
 import Vue, { CreateElement, VNode } from 'vue';
 import {
   Component,
@@ -45,12 +46,12 @@ export class VdTabs extends Vue implements ThemeComponent {
   private panes: VdTabPane[] = [];
   public selectedPane: VdTabPane | null = null;
 
-  private indicatorStyle: Style = { left: '', width: '' };
+  private indicatorStyle: Style = { left: null, width: null };
 
   public add(pane: VdTabPane): void {
     this.panes.push(pane);
     if (!this.selectedPane) {
-      this.select(pane);
+      this.selectedPane = pane;
     }
   }
 
@@ -63,8 +64,6 @@ export class VdTabs extends Vue implements ThemeComponent {
       this.select(this.panes[0]);
     }
   }
-
-  private frozen?: boolean;
 
   public select(pane: VdTabPane): void {
     if (!pane) {
@@ -106,8 +105,8 @@ export class VdTabs extends Vue implements ThemeComponent {
           this.$refs.header.getBoundingClientRect().left}px`;
         this.indicatorStyle.width = `${selectedHeaderItem.scrollWidth}px`;
       } else {
-        this.indicatorStyle.left = '';
-        this.indicatorStyle.width = '';
+        this.indicatorStyle.left = null;
+        this.indicatorStyle.width = null;
       }
     });
   }
@@ -158,21 +157,34 @@ export class VdTabs extends Vue implements ThemeComponent {
  */
 @Component
 export class VdTabPane extends Vue {
+  private static count: number = 0;
+
+  private id!: number;
+
   @Prop({ type: String })
   public readonly label?: string;
 
   @Prop({ type: [String, Array] })
   public readonly labelExtraClass?: string | ClassName;
 
-  private tabs!: VdTabs;
+  private tabs: VdTabs = null as any;
 
   public get selected(): boolean {
-    return this.tabs.selectedPane === this;
+    return (
+      this.tabs.selectedPane === this ||
+      !!(
+        this.$isServer &&
+        this.tabs.selectedPane &&
+        this.tabs.selectedPane.id === this.id
+      )
+    );
   }
 
   public transition: 'left-in' | 'left-out' | 'right-in' | 'right-out' | '' = '';
 
   public get classes(): ClassName {
+    console.info(this.tabs.selectedPane && this.tabs.selectedPane.id, this.id);
+
     return [
       {
         'is-selected': this.selected,
@@ -181,7 +193,8 @@ export class VdTabPane extends Vue {
     ];
   }
 
-  private beforeCreate(): void {
+  private created(): void {
+    this.id = VdTabPane.count++;
     if (this.$parent instanceof VdTabs) {
       this.tabs = this.$parent;
       this.tabs.add(this);
@@ -191,6 +204,7 @@ export class VdTabPane extends Vue {
   }
   private beforeDestroy(): void {
     this.tabs.remove(this);
+    this.tabs = undefined as any;
   }
 
   private render(h: CreateElement): VNode {
