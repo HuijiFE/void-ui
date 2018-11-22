@@ -183,8 +183,6 @@ export class VdTabPane extends Vue {
   public transition: 'left-in' | 'left-out' | 'right-in' | 'right-out' | '' = '';
 
   public get classes(): ClassName {
-    console.info(this.tabs.selectedPane && this.tabs.selectedPane.id, this.id);
-
     return [
       {
         'is-selected': this.selected,
