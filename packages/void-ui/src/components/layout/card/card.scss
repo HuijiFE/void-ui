@@ -97,6 +97,16 @@
     transition: $raise-shadow-transition;
   }
 
+  @each $raise, $value in $raise-shadow-map {
+    @include prop(
+      (
+        'raise': $raise,
+      )
+    ) {
+      box-shadow: $value;
+    }
+  }
+
   @include when('transparent') {
     &::before {
       opacity: 0;
