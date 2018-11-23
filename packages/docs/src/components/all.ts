@@ -10,5 +10,6 @@
 export * from './example/demo-box';
 export * from './example/example';
 export * from './file-icon/file-icon';
+export * from './machine-learn/machine-learn';
 export * from './nav-bar/nav-bar';
 export * from './side-bar/side-bar';

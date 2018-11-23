@@ -6,6 +6,7 @@ import { VHome } from '@src/views/home';
 import { VGuide } from '@src/views/guide';
 import { VComponents } from '@src/views/components';
 import { VApis } from '@src/views/apis';
+import { VMachineLearn } from './views/machine-learn';
 
 import zhCN from '@src/articles/zh-CN/all';
 const articles: RouteConfig[][] = [zhCN];
@@ -55,5 +56,11 @@ export const createRouter: () => VueRouter = () =>
           },
         ],
       })),
+
+      {
+        path: '/machine-learn/:tag',
+        component: VMachineLearn,
+        name: 'machine-learn',
+      },
     ],
   });
