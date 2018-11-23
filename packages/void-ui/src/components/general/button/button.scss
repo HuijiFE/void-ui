@@ -188,7 +188,7 @@
     @include prop(
       (
         'skin': 'flat',
-        'tone': $theme,
+        'theme': $theme,
       )
     ) {
       color: theme($theme, 'fg', 'emphasize');
