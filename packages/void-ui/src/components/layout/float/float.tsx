@@ -22,7 +22,7 @@ import { BodyDestroyer } from '../../../plugins/all';
 import { getFirstTagChild } from '../../../utils/vdom';
 import { Throttled, throttle } from '../../../utils/functional/';
 
-const closeDelay: number = 240;
+const hideDelay: number = 240;
 const animationDuration: number = 240;
 
 /**
@@ -43,9 +43,12 @@ export class VdFloat extends Vue implements FloatComponent {
   @Prop({ type: String, default: 'hover' })
   public readonly trigger!: Trigger;
 
+  @Prop(Boolean)
+  public readonly shouldShow?: boolean;
+
   protected visible: boolean = false;
   protected showing: boolean = false;
-  protected closing: boolean = false;
+  protected hiding: boolean = false;
 
   public get superClasses(): ClassName {
     return [
@@ -54,7 +57,7 @@ export class VdFloat extends Vue implements FloatComponent {
       {
         'is-visible': this.visible,
         'is-showing': this.showing,
-        'is-closing': this.closing,
+        'is-closing': this.hiding,
       },
     ];
   }
@@ -177,13 +180,13 @@ export class VdFloat extends Vue implements FloatComponent {
     this.style = style;
   }
 
-  protected timeoutHandlerClose?: number;
+  protected timeoutHandlerHide?: number;
 
   public show(): void {
     this.$emit('show');
 
-    window.clearTimeout(this.timeoutHandlerClose);
-    this.closing = false;
+    window.clearTimeout(this.timeoutHandlerHide);
+    this.hiding = false;
     this.showing = true;
     window.setTimeout(() => (this.showing = false), animationDuration);
 
@@ -197,17 +200,17 @@ export class VdFloat extends Vue implements FloatComponent {
 
     this.visible = true;
   }
-  public close(): void {
-    if (this.closing) {
+  public hide(): void {
+    if (this.hiding) {
       return;
     }
 
-    this.$emit('close');
+    this.$emit('hide');
 
     const destroy: () => void = this.destroyBodyHandler || (() => undefined);
 
-    this.closing = true;
-    this.timeoutHandlerClose = window.setTimeout(() => {
+    this.hiding = true;
+    this.timeoutHandlerHide = window.setTimeout(() => {
       this.visible = false;
       window.removeEventListener('scroll', this.anchor);
       window.removeEventListener('click', this.onWindowClick);
@@ -215,21 +218,33 @@ export class VdFloat extends Vue implements FloatComponent {
     }, animationDuration);
   }
 
+  // --------------------------------
+  // trigger === click
+
   protected onClick(event: MouseEvent): void {
+    if (this.trigger !== 'click') {
+      return;
+    }
     if (this.visible) {
-      this.close();
+      this.hide();
     } else {
       this.show();
     }
   }
   protected onWindowClick(event: MouseEvent): void {
+    if (this.trigger !== 'click') {
+      return;
+    }
     if (this.visible) {
-      this.close();
+      this.hide();
     }
   }
   protected onContentClick(event: MouseEvent): void {
     event.stopPropagation();
   }
+
+  // --------------------------------
+  // trigger === hover
 
   protected timeoutHandlerMouseLeave?: number;
 
@@ -247,15 +262,62 @@ export class VdFloat extends Vue implements FloatComponent {
     if (this.trigger !== 'hover') {
       return;
     }
-    this.timeoutHandlerMouseLeave = window.setTimeout(this.close, closeDelay);
+    this.timeoutHandlerMouseLeave = window.setTimeout(this.hide, hideDelay);
+  }
+
+  // --------------------------------
+  // trigger === focus
+
+  protected onFocus(event: Event): void {
+    if (this.trigger !== 'focus') {
+      return;
+    }
+    if (!this.visible) {
+      this.show();
+    }
+  }
+
+  protected onBlur(event: Event): void {
+    if (this.trigger !== 'focus') {
+      return;
+    }
+    if (this.visible) {
+      this.hide();
+    }
+  }
+
+  // --------------------------------
+  // trigger === none
+
+  @Watch('shouldShow')
+  protected watchShouldShow(value: boolean): void {
+    if (this.trigger !== 'none') {
+      return;
+    }
+    if (value && !this.visible) {
+      this.show();
+    } else if (!value && this.visible) {
+      this.hide();
+    }
   }
 
   protected addListener(): void {
-    if (this.trigger === 'click') {
-      this.$el.addEventListener('click', this.onClick);
-    } else {
-      this.$el.addEventListener('mouseenter', this.onMouseEnter);
-      this.$el.addEventListener('mouseleave', this.onMouseLeave);
+    switch (this.trigger) {
+      case 'click':
+        this.$el.addEventListener('click', this.onClick);
+        break;
+
+      case 'hover':
+        this.$el.addEventListener('mouseenter', this.onMouseEnter);
+        this.$el.addEventListener('mouseleave', this.onMouseLeave);
+        break;
+
+      case 'focus':
+        this.$el.addEventListener('focus', this.onFocus);
+        this.$el.addEventListener('blur', this.onBlur);
+        break;
+
+      default:
     }
   }
 
@@ -263,7 +325,15 @@ export class VdFloat extends Vue implements FloatComponent {
     this.$el.removeEventListener('click', this.onClick);
 
     this.$el.removeEventListener('mouseenter', this.show);
-    this.$el.removeEventListener('mouseleave', this.close);
+    this.$el.removeEventListener('mouseleave', this.hide);
+
+    this.$el.removeEventListener('focus', this.onFocus);
+    this.$el.removeEventListener('blur', this.onBlur);
+
+    if (!this.$isServer && window) {
+      window.removeEventListener('scroll', this.anchor);
+      window.removeEventListener('click', this.onWindowClick);
+    }
   }
 
   @Watch('trigger')

@@ -80,7 +80,7 @@ export class VdButtonGroup extends Vue implements ThemeComponent {
   public onClick(event: MouseEvent): void {
     this.$emit('click', event);
     if (this.dropdown) {
-      this.dropdown.close();
+      this.dropdown.hide();
     }
   }
 

@@ -154,7 +154,7 @@ export type FloatPosition =
   | 'left-or-right';
 
 // Use for a float component, trigger show event
-export type Trigger = 'hover' | 'click';
+export type Trigger = 'hover' | 'click' | 'focus' | 'none';
 
 /**
  * Component with theme color.
