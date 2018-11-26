@@ -24,19 +24,18 @@
   & > img,
   & > video {
     position: relative;
-    width: 100%;
-    height: auto;
+    max-width: 100%;
   }
 
   @include elem('header', 'footer', 'content', 'title', 'sub-content', 'divider') {
     position: relative;
+    max-width: 100%;
 
     line-height: inherit;
   }
 
   @include elem('header', 'footer', 'content') {
     display: block;
-    max-width: 100%;
     min-height: rem($card-header-height + $border-base);
     padding: rem($gap-base);
     margin: 0;
@@ -56,6 +55,14 @@
   }
   @include elem('footer') {
     border-top: rem($border-base) solid transparent;
+  }
+
+  @include elem('content') {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
   }
 
   @include elem('title', 'summary') {
@@ -78,8 +85,9 @@
   }
 
   @include elem('divider') {
+    width: 100%;
+    height: rem($border-base);
     margin: rem($gap-base / 2) 0;
-    border-bottom: rem($border-base) solid transparent;
   }
 
   // status & properties
@@ -144,8 +152,63 @@
         color: theme($theme, 'fg', 'sub');
       }
 
-      @include elem('header', 'divider') {
+      @include elem('header', 'footer') {
         border-color: theme($theme, 'bd');
+      }
+
+      @include elem('divider') {
+        background-color: theme($theme, 'bd');
+      }
+    }
+  }
+
+  @each $direction in $type-direction {
+    @include prop(
+      (
+        'direction': $direction,
+      )
+    ) {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-content: flex-start;
+      align-items: flex-start;
+    }
+    @include prop(
+      (
+        'direction': $direction,
+      )
+    ) {
+      flex-direction: $direction;
+
+      & > img,
+      & > video {
+        flex: none;
+      }
+
+      @include elem('divider') {
+        flex: none;
+      }
+
+      @if $direction == row or $direction == row-reverse {
+        align-content: flex-start;
+        align-items: flex-start;
+
+        @include elem('header', 'footer', 'content') {
+          flex: 1;
+        }
+        @include elem('divider') {
+          width: rem($border-base);
+          height: 100%;
+        }
+      } @else {
+        @include elem('header', 'footer', 'content') {
+          flex: none;
+        }
+        @include elem('divider') {
+          width: 100%;
+          height: rem($border-base);
+        }
       }
     }
   }

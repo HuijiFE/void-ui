@@ -8,7 +8,13 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { ClassName, Theme, ThemeComponent, LinkLikeComponent } from '../../base';
+import {
+  ClassName,
+  Theme,
+  ThemeComponent,
+  LinkLikeComponent,
+  FlexDirection,
+} from '../../base';
 
 /**
  * Component: Card
@@ -25,6 +31,9 @@ export class VdCard extends Vue implements ThemeComponent, LinkLikeComponent {
   public get themeValue(): Theme {
     return this.theme || this.$vd_theme.theme;
   }
+
+  @Prop(String)
+  public readonly direction?: FlexDirection;
 
   @Prop({ type: Boolean, default: false })
   public readonly bordered!: boolean;
@@ -48,6 +57,7 @@ export class VdCard extends Vue implements ThemeComponent, LinkLikeComponent {
     return [
       `vdp-theme_${this.themeValue}`,
       {
+        [`vdp-direction_${this.direction}`]: this.direction,
         'is-bordered': this.bordered,
         'is-raise': this.raise && typeof this.raise === 'boolean',
         [`vdp-raise_${this.raise}`]: this.raise && typeof this.raise === 'number',
