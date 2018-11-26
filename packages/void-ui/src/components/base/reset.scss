@@ -15,6 +15,10 @@
     line-height: $line-height-base;
   }
 
+  img {
+    overflow: hidden;
+  }
+
   // click-able elements
   a,
   button {
