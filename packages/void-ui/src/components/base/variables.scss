@@ -40,6 +40,9 @@ $color-border-common: rgba(128, 128, 128, 0.1) !default;
 // bd: border color
 // The border color `bd-normal` should be same as `bg-hover`.
 
+$enum-theme-fg-levels: 'emphasize', 'normal', 'sub';
+$enum-theme-bg-levels: 'higher', 'high', 'normal', 'low', 'lower';
+
 $color-map-theme-lite: (
   fg-emphasize:       rgb(24, 24, 24),
   fg-normal:          rgb(56, 56, 56),

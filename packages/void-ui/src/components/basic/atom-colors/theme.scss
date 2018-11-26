@@ -1,6 +1,17 @@
 @each $theme in $type-theme {
-  @include define-atom('theme', $theme) {
-    color: theme($theme);
-    background-color: theme($theme, 'bg');
+  .#{class-prop('theme', $theme)} {
+    // foreground
+    @each $level in $enum-theme-fg-levels {
+      @include atom('fg', $level) {
+        color: theme($theme, 'fg', $level);
+      }
+    }
+
+    // background
+    @each $level in $enum-theme-bg-levels {
+      @include atom('bg', $level) {
+        color: theme($theme, 'bg', $level);
+      }
+    }
   }
 }
