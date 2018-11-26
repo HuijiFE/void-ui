@@ -31,8 +31,14 @@ export class VdAcrylic extends Vue implements ThemeComponent {
   @Prop({ type: String, required: true })
   public readonly image!: string;
 
+  private isMounted: boolean = false;
+
+  private mounted(): void {
+    this.isMounted = true;
+  }
+
   private render(h: CreateElement): VNode {
-    return (
+    return this.isMounted ? (
       <div staticClass="vd-acrylic" class={this.classes}>
         <div staticClass="vd-acrylic_inner">
           <img
@@ -44,6 +50,8 @@ export class VdAcrylic extends Vue implements ThemeComponent {
           <div staticClass="vd-acrylic_cover" />
         </div>
       </div>
+    ) : (
+      h()
     );
   }
 }
