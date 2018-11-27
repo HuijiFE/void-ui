@@ -1,13 +1,25 @@
 @if $vd-reset {
   @import url('~normalize.css');
 
+  /**
+   * Set all element as border-box, for instinctive size calculating
+   */
+
   * {
     box-sizing: border-box;
   }
 
+  /**
+   * Set the root element font-size for the size unit `rem`.
+   */
+
   :root {
     font-size: px($root-font-size);
   }
+
+  /**
+   * Restore the font-size, and set basic font style.
+   */
 
   body {
     font-family: $font-family-base;
@@ -15,19 +27,56 @@
     line-height: $line-height-base;
   }
 
+  /**
+   * Hide the overflow alternative text for image
+   */
   img {
     overflow: hidden;
   }
 
-  // click-able elements
-  a,
-  button {
+  /**
+   * ------------------------------------------------
+   * Interactive Elements
+   */
+
+  /**
+   * Remove weird in normalize.css
+   */
+  button,
+  [type='button'],
+  [type='reset'],
+  [type='submit'] {
+    -webkit-appearance: none;
+  }
+
+  /**
+   * Style hyper link.
+   */
+  a {
+    color: tone();
+    text-decoration: none;
+    outline: 0; /** Remove outline in firefox */
+  }
+
+  /**
+   * Style cursor for all clickable elements.
+   */
+  a[href],
+  button,
+  [type='button'],
+  [type='reset'],
+  [type='submit'] {
     cursor: pointer;
   }
 
-  a {
-    color: inherit;
-    text-decoration: none;
+  /**
+   * Remove outline in Chrome
+   */
+  button,
+  input,
+  [type='button'],
+  [type='reset'],
+  [type='submit'] {
     outline: 0;
   }
 }
