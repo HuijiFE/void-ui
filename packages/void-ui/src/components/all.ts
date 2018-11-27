@@ -14,6 +14,7 @@ export * from './form/form/form';
 export * from './form/radio/radio';
 export * from './form/switch/switch';
 export * from './general/button/button';
+export * from './general/hyper-link/hyper-link';
 export * from './layout/article/article';
 export * from './layout/card/card';
 export * from './layout/carousel/carousel';
