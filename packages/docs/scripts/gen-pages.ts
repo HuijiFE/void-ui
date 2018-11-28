@@ -42,6 +42,7 @@ async function generatePages(): Promise<void> {
 
   const pathsHtml: string[] = ['zh-CN']
     .map((lang, index) => [
+      resolvePath(outputDir, lang, 'components', 'index.html'),
       ...articles[index].map(a =>
         resolvePath(outputDir, lang, 'components', a, 'index.html'),
       ),
