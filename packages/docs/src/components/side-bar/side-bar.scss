@@ -65,6 +65,8 @@
     flex: 1;
     padding-left: rem($gap-base * 2);
     padding-right: rem($gap-base);
+
+    color: inherit;
   }
 
   @each $theme in $type-theme {
