@@ -1,0 +1,8 @@
+@each $object-fit in ('cover', 'contain') {
+  @include define-atom('image', $object-fit) {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: $object-fit;
+  }
+}
