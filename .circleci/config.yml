@@ -44,8 +44,8 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/
-      -- run: yarn lint:style
-      -- run: yarn lint:script
+      - run: yarn lint:style
+      - run: yarn lint:script
   
   build-docs:
     <<: *default
