@@ -77,6 +77,9 @@ workflows:
       - lint:
           requires:
             - frame
+          filters:
+            branches:
+              only: dev
       - build-docs:
           requires:
             - frame
