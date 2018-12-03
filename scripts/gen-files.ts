@@ -6,53 +6,52 @@ import * as fs from 'fs';
 import * as pth from 'path';
 
 const optionsList: GenFilesOptions[] = [
+  // ----------------------------------------------------------------
   // lib
   {
     patterns: [
-      'packages/void-ui/src/components/**/*.(tsx|ts)',
-      '!packages/void-ui/src/components/base/**/*',
-      '!packages/void-ui/src/components/**/_base.*',
+      'src/components/**/*.(tsx|ts)',
+      '!src/components/base/**/*',
+      '!src/components/**/_base.*',
     ],
-    output: 'packages/void-ui/src/components/all.ts',
+    output: 'src/components/all.ts',
     comments: ['All components of void-ui.'],
   },
   {
-    patterns: [
-      'packages/void-ui/src/components/**/*.scss',
-      '!packages/void-ui/src/components/base/**/*',
-    ],
-    output: 'packages/void-ui/src/components/all.scss',
+    patterns: ['src/components/**/*.scss', '!src/components/base/**/*'],
+    output: 'src/components/all.scss',
     comments: ['All components style of void-ui.'],
   },
   {
-    patterns: ['packages/void-ui/src/plugins/**/*.ts'],
-    output: 'packages/void-ui/src/plugins/all.ts',
+    patterns: ['src/plugins/**/*.ts'],
+    output: 'src/plugins/all.ts',
     comments: ['All Vue plugins of void-ui.'],
   },
 
-  // packages/docs/src
+  // ----------------------------------------------------------------
+  // docs
 
   // components
   {
-    patterns: ['packages/docs/src/components/**/*.(tsx|ts)'],
-    output: 'packages/docs/src/components/all.ts',
+    patterns: ['docs/components/**/*.(tsx|ts)'],
+    output: 'docs/components/all.ts',
     comments: ['All components of void-ui documentation.'],
   },
   {
-    patterns: ['packages/docs/src/components/**/*.scss'],
-    output: 'packages/docs/src/components/all.scss',
+    patterns: ['docs/components/**/*.scss'],
+    output: 'docs/components/all.scss',
     comments: ['All components style of void-ui documentation.'],
   },
 
   // examples
   {
-    patterns: ['packages/docs/src/examples/**/*.scss'],
-    output: 'packages/docs/src/examples/all.scss',
+    patterns: ['docs/examples/**/*.scss'],
+    output: 'docs/examples/all.scss',
     comments: ['All examples style of void-ui documentation.'],
   },
   {
-    patterns: ['packages/docs/src/examples/*/**/*.tsx'],
-    output: 'packages/docs/src/examples/all-tsx.ts',
+    patterns: ['docs/examples/*/**/*.tsx'],
+    output: 'docs/examples/all-tsx.ts',
     comments: ['All .tsx examples of void-ui documentation.'],
     header: 'export default {',
     footer: '};',
@@ -70,8 +69,8 @@ const optionsList: GenFilesOptions[] = [
     },
   },
   {
-    patterns: ['packages/docs/src/examples/*/**/*.vue'],
-    output: 'packages/docs/src/examples/all-vue.ts',
+    patterns: ['docs/examples/*/**/*.vue'],
+    output: 'docs/examples/all-vue.ts',
     comments: ['All .vue examples of void-ui documentation.'],
     header: 'export default {',
     footer: '};',
@@ -87,11 +86,11 @@ const optionsList: GenFilesOptions[] = [
   },
   {
     patterns: [
-      'packages/docs/src/examples/*/**/*.scss',
-      'packages/docs/src/examples/*/**/*.tsx',
-      'packages/docs/src/examples/*/**/*.vue',
+      'docs/examples/*/**/*.scss',
+      'docs/examples/*/**/*.tsx',
+      'docs/examples/*/**/*.vue',
     ],
-    output: 'packages/docs/src/examples/all.ts',
+    output: 'docs/examples/all.ts',
     comments: ['All examples source code of void-ui documentation.'],
     header: 'export default {',
     footer: '};',
@@ -110,8 +109,8 @@ const optionsList: GenFilesOptions[] = [
 ];
 
 const optionsListArticle: GenFilesOptions[] = ['zh-CN'].map<GenFilesOptions>(lang => ({
-  patterns: [`packages/docs/src/articles/${lang}/**/*.md`],
-  output: `packages/docs/src/articles/${lang}/all.ts`,
+  patterns: [`docs/articles/${lang}/**/*.md`],
+  output: `docs/articles/${lang}/all.ts`,
   comments: ['All articles'],
   header:
     "import { RouteConfig } from 'vue-router';\n\n const articles: RouteConfig[] = [",
@@ -122,10 +121,7 @@ const optionsListArticle: GenFilesOptions[] = ['zh-CN'].map<GenFilesOptions>(lan
         const path: string = info.path.replace('./', '').replace(/\.md$/, '');
 
         const name: string = fs
-          .readFileSync(
-            info.path.replace('.', `packages/docs/src/articles/${lang}`),
-            'utf-8',
-          )
+          .readFileSync(info.path.replace('.', `docs/articles/${lang}`), 'utf-8')
           .split('\n')[0]
           .replace(/^#+/, '')
           .trim();

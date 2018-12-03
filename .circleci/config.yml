@@ -38,17 +38,25 @@ jobs:
           paths:
             - project/void-ui
             - .ssh
+
+  lint:
+    <<: *default
+    steps:
+      - attach_workspace:
+          at: ~/
+      -- run: yarn lint:style
+      -- run: yarn lint:script
   
   build-docs:
     <<: *default
     steps:
       - attach_workspace:
           at: ~/
-      - run: yarn --cwd packages/docs build
-      - run: yarn --cwd packages/docs gen-pages
+      - run: yarn build:docs
+      - run: yarn gen-pages
       - run:
           name: deploy to github-pages
-          working_directory: packages/docs/dist
+          working_directory: dist
           command: |
             git init
             git config user.email huijife@outlook.com
@@ -66,10 +74,9 @@ workflows:
   workflow:
     jobs:
       - frame:
-          filters:
-            branches:
-              only:
-                - master
+      - lint:
+          requires:
+            - frame
       - build-docs:
           requires:
             - frame

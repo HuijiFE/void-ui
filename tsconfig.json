@@ -4,23 +4,36 @@
     "module": "esnext",
     "lib": ["dom", "dom.iterable", "scripthost", "esnext"],
     "types": ["node", "jest"],
-    "typeRoots": ["./node_modules/@types"],
     "strict": true,
+    "strictFunctionTypes": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "jsx": "preserve",
     "jsxFactory": "h",
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "rootDir": ".",
     "outDir": "dist",
     "sourceMap": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@docs/*": ["docs/*"],
+      "void-ui": ["src/index.ts"]
+    }
   },
-  "include": ["scripts", "packages/**/scripts", "packages/**/src", "packages/**/typings"],
-  "exclude": ["node_modules", "packages/**/dist"]
+  "include": [
+    "docs/**/*.ts",
+    "docs/**/*.tsx",
+    "docs/**/*.vue",
+    "scripts/**/*.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "typings"
+  ],
+  "exclude": ["node_modules"]
 }

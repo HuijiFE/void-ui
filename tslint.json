@@ -1,7 +1,8 @@
 {
+  "defaultSeverity": "error",
   "extends": ["@huiji/tslint-rules"],
   "linterOptions": {
-    "exclude": ["node_modules/**", "build/**", "dist/**"]
+    "exclude": ["node_modules/**", "build/**", "dist/**", "**/*.vue"]
   },
   "rules": {
     "no-null-keyword": false
