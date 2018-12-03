@@ -1,4 +1,8 @@
 {
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "../.tmp"
+  },
   "extends": "../tsconfig.json",
   "include": ["./**/*.ts", "./**/*.tsx"]
 }

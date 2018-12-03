@@ -20,6 +20,7 @@ yarn-error.log*
 *.sw*
 
 # Preject related
+lib/
 dist/
 www/
 .temp/

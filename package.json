@@ -25,12 +25,15 @@
     "url": "https://github.com/HuijiFE/void-ui/issues"
   },
   "scripts": {
-    "ts": "ts-node -r tsconfig-paths/register -P scripts/tsconfig.json",
+    "ts": "ts-node -r tsconfig-paths/register -P ./scripts/tsconfig.json",
+    "clean:dist": "rimraf ./dist ./.tmp",
     "gen-files": "yarn ts scripts/gen-files",
-    "gen-pages": "yarn ts scripts/gen-pages",
-    "serve:docs": "vue-cli-service serve docs/entry-client.ts",
+    "build:lib:tsc": "tsc --pretty -p ./src/tsconfig.json",
+    "build:lib:babel": "babel .tmp --config-file ./src/babel.config.js -d lib --input-source-map --source-maps",
+    "serve:docs": "vue-cli-service serve ./docs/entry-client.ts",
     "build:docs": "vue-cli-service build",
-    "lint:style": "stylelint **/*.scss --config .stylelintrc",
+    "gen-pages": "yarn ts scripts/gen-pages",
+    "lint:style": "stylelint **/*.scss --config ./.stylelintrc",
     "lint:script": "tslint -p tsconfig.json -c tslint.json -t verbose",
     "lint": "yarn lint:script && yarn lint:style"
   },
@@ -40,13 +43,13 @@
   "dependencies": {
     "cep.scss": "^1.0.1",
     "normalize.css": "^8.0.1",
+    "tslib": "^1.9.3",
     "vue-class-component": "^6.3.2",
     "vue-property-decorator": "^7.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.6",
-    "@babel/plugin-syntax-jsx": "^7.0.0",
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.1.6",
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
@@ -73,6 +76,7 @@
     "@vue/cli-service": "^3.2.0",
     "axios": "^0.18.0",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
+    "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-vue-jsx": "^3.7.0",
     "chalk": "^2.4.1",
     "compression": "^1.7.3",
@@ -92,7 +96,6 @@
     "ts-jest": "^23.10.5",
     "ts-node": "^7.0.1",
     "tsconfig-paths": "^3.7.0",
-    "tslib": "^1.9.3",
     "tslint": "^5.11.0",
     "typescript": "^3.2.1",
     "vue": "^2.5.17",
