@@ -24,6 +24,9 @@
   "bugs": {
     "url": "https://github.com/HuijiFE/void-ui/issues"
   },
+  "files": ["src", "lib"],
+  "main": "lib/index.js",
+  "module": "lib/index.js",
   "scripts": {
     "ts": "ts-node -r tsconfig-paths/register -P ./scripts/tsconfig.json",
     "clean:dist": "rimraf ./dist ./.tmp",
