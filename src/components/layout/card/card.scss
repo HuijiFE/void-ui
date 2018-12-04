@@ -51,10 +51,12 @@
 
   @include elem('header') {
     height: rem($card-header-height);
+    padding: 0 rem($gap-base);
     border-bottom: rem($border-base) solid transparent;
     line-height: rem($card-header-height - $gap-base * 2);
   }
   @include elem('footer') {
+    padding: rem($gap-base);
     border-top: rem($border-base) solid transparent;
   }
 
@@ -64,9 +66,6 @@
     justify-content: flex-start;
     align-content: stretch;
     align-items: stretch;
-  }
-
-  @include elem('content', 'footer') {
     padding: rem($gap-base);
   }
 
