@@ -29,7 +29,7 @@
   "module": "lib/index.js",
   "scripts": {
     "ts": "ts-node -r tsconfig-paths/register -P ./scripts/tsconfig.json",
-    "clean:dist": "rimraf ./dist ./.tmp",
+    "clean:dist": "rimraf ./dist ./.tmp ./lib",
     "gen-files": "yarn ts scripts/gen-files",
     "build:lib:tsc": "tsc --pretty -p ./src/tsconfig.json",
     "build:lib:babel": "babel .tmp --config-file ./src/babel.config.js -d lib --input-source-map --source-maps",
@@ -51,10 +51,10 @@
     "vue-property-decorator": "^7.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.5",
-    "@babel/core": "^7.1.6",
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
     "@babel/polyfill": "^7.0.0",
-    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-env": "^7.2.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
     "@fortawesome/free-brands-svg-icons": "^5.5.0",
     "@fortawesome/free-regular-svg-icons": "^5.5.0",
@@ -68,7 +68,7 @@
     "@types/globby": "^8.0.0",
     "@types/jest": "^23.3.10",
     "@types/mkdirp": "^0.5.2",
-    "@types/node": "^10.12.11",
+    "@types/node": "^10.12.12",
     "@types/rimraf": "^2.0.2",
     "@types/serve-favicon": "^2.2.30",
     "@types/webpack": "^4.4.20",

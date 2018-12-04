@@ -24,11 +24,9 @@ const install: PluginFunction<VoidUIOptions> = ($Vue, options?) => {
   $$Vue = $Vue;
 
   // install all plugins
-  plugins.bodyRenderer.install($Vue);
-
-  // install all component additional plugins
-  components.VdTheme.install($Vue, options);
-  components.VdMedia.install($Vue, options);
+  [plugins.bodyRenderer, components.VdTheme, components.VdMedia].forEach(plugin =>
+    $Vue.use(plugin, options),
+  );
 
   // install all components
   Object.entries(components).forEach(([name, comp]) => $Vue.component(name, comp));
