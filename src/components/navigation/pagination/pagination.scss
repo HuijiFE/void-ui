@@ -46,7 +46,7 @@
     margin: 0;
     border: rem($border-base) solid transparent;
 
-    line-height: 1.44;
+    line-height: $button-line-height;
 
     &[disabled] {
       pointer-events: none;

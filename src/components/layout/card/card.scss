@@ -37,7 +37,7 @@
   @include elem('header', 'footer', 'content') {
     display: block;
     min-height: rem($card-header-height + $border-base);
-    padding: rem($gap-base);
+    padding: 0;
     margin: 0;
   }
 
@@ -50,6 +50,7 @@
   }
 
   @include elem('header') {
+    height: rem($card-header-height);
     border-bottom: rem($border-base) solid transparent;
     line-height: rem($card-header-height - $gap-base * 2);
   }
@@ -63,6 +64,10 @@
     justify-content: flex-start;
     align-content: stretch;
     align-items: stretch;
+  }
+
+  @include elem('content', 'footer') {
+    padding: rem($gap-base);
   }
 
   @include elem('title', 'summary') {

@@ -2,7 +2,15 @@
  * Void-UI style variables
  */
 
-// Typography
+// Core
+
+$type-theme:  'lite', 'dark' !default;
+$type-tone:   'primary', 'secondary', 'success', 'warning', 'danger' !default;
+$type-skin:   'fill', 'flat', 'plain', 'silk';
+$type-shape:  'rect', 'pill', 'square', 'circle';
+$type-size:   'xsmall', 'small', 'medium', 'large', 'xlarge';
+
+// Typographic
 
 $font-family-base: (
   'Helvetica Neue',
@@ -15,16 +23,22 @@ $font-family-base: (
   sans-serif
 ) !default;
 
-$font-size-base: 15 !default;
-$line-height-base: 1.618 !default;
+$font-size-map: (
+  xsmall:   12,
+  small:    14,
+  medium:   15,
+  large:    16,
+  xlarge:   18,
+) !default;
 
-// Core
+@function font-size($key) {
+  @return map-get($font-size-map, $key);
+}
 
-$type-theme:  'lite', 'dark' !default;
-$type-tone:   'primary', 'secondary', 'success', 'warning', 'danger' !default;
-$type-skin:   'fill', 'flat', 'plain', 'silk';
-$type-shape:  'rect', 'pill', 'square', 'circle';
-$type-size:   'xsmall', 'small', 'medium', 'large', 'xlarge';
+$font-size-base:    14 !default;
+$font-size-min:     12 !default;
+
+$line-height-base:  1.618 !default;
 
 // Colors
 
@@ -233,25 +247,6 @@ $raise-hover:   raise-shadow(8) !default;
 
 $raise-shadow-transition: box-shadow 0.32s ease-out 0s !default;
 
-// Typographic
-
-$font-size-map: (
-  xsmall:   12,
-  small:    14,
-  medium:   15,
-  large:    16,
-  xlarge:   18,
-) !default;
-
-@function font-size($key) {
-  @return map-get($font-size-map, $key);
-}
-
-$font-size-min:     12 !default;
-$font-size-base:    font-size('medium') !default;
-
-$line-height-base:  1.6 !default;
-
 // Gap Border Radius Opacity
 
 $gap-map: (
@@ -320,13 +315,17 @@ $button-font-size-map: (
   xlarge:   24,
 ) !default;
 
+$button-line-height: 1.44;
+
 $button-min-width-multiple:   2.618 !default;
 $button-padding-multiple:     0.618 !default;
 $button-gap-icon-text:        $gap-icon-multiplier !default;
-$button-transition-duration:  160ms !default;
 $button-group-gap-multiple:   1 / 2 * 0.618;
+
 $button-translucent-hover:    0.12;
 $button-translucent-active:   0.16;
+
+$button-transition-duration:  160ms !default;
 
 // ================================================================
 // Layout
@@ -357,9 +356,9 @@ $carousel-switch-button-size: 48;
 // Card
 
 $card-font-size: font-size('medium') !default;
-$card-line-height: 1.32 !default;
+$card-line-height: $line-height-base !default;
 $card-header-font-size: font-size('large') !default;
-$card-header-height: 54 !default;
+$card-header-height: 48 !default;
 
 // Flow
 
