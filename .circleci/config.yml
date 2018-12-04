@@ -73,7 +73,7 @@ workflows:
   version: 2
   workflow:
     jobs:
-      - frame:
+      - frame
       - lint:
           requires:
             - frame
