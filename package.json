@@ -24,7 +24,10 @@
   "bugs": {
     "url": "https://github.com/HuijiFE/void-ui/issues"
   },
-  "files": ["src", "lib"],
+  "files": [
+    "src",
+    "lib"
+  ],
   "main": "lib/index.js",
   "module": "lib/index.js",
   "scripts": {
