@@ -6,6 +6,9 @@
   flex: 1;
 
   padding: rem($gap-base / 2);
+  border-radius: rem($radius-base);
+
+  line-height: $card-line-height;
 
   // stick
   @include elem('stick') {
@@ -62,19 +65,19 @@
   }
 
   @include elem('title') {
-    padding: rem($gap-base / 2) rem($gap-base / 2) rem($gap-base / 4);
+    padding: rem($gap-base / 2);
     margin: 0;
 
     font-size: rem($card-header-font-size);
     font-weight: normal;
-    line-height: 1;
+    line-height: inherit;
   }
 
   @include elem('content') {
     padding: rem($gap-base / 2);
 
     font-size: rem($card-font-size);
-    line-height: $line-height-base;
+    line-height: inherit;
 
     > p {
       padding: 0;

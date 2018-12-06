@@ -73,23 +73,17 @@
   }
 
   @include when('gap') {
-    margin: rem(-$gap-base / 2) 0;
     @include elem('item-container') {
-      padding: 0 rem($gap-base);
-    }
-    @include elem('item-content') {
-      padding: rem($gap-base / 2) 0;
-    }
-  }
-
-  @include when('gap', 'divided') {
-    margin: 0;
-    @include elem('item-content', 'item-left', 'item-right') {
-      padding: rem($gap-base) 0;
+      padding-left: rem($gap-base);
+      padding-right: rem($gap-base);
     }
   }
 
   @include when('divided') {
+    @include elem('item-content', 'item-left', 'item-right') {
+      padding-top: rem($gap-base);
+      padding-bottom: rem($gap-base);
+    }
     @include elem('item') {
       &:not(:last-child) {
         @include elem('item-content', 'item-left', 'item-right') {
