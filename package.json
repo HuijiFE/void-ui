@@ -28,6 +28,7 @@
     "src"
   ],
   "main": "src/index.ts",
+  "source": "true",
   "scripts": {
     "ts": "ts-node -r tsconfig-paths/register -P ./scripts/tsconfig.json",
     "clean:dist": "rimraf ./dist ./.tmp ./lib",
