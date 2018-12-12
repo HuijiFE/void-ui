@@ -82,7 +82,8 @@ workflows:
             - frame
       - build-docs:
           requires:
-            - frame
+            - test
           filters:
             branches:
-              only: master
+              only:
+                - master
