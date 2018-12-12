@@ -11,17 +11,17 @@ import { genPathResolve } from '@huiji/shared-utils';
 const resolvePath = genPathResolve(__dirname, '..');
 
 const vueConfig = require('../vue.config.js');
-const version = require('../package.json').version;
+const version = require('../../void-ui/package.json').version;
 
 const { outputDir } = vueConfig;
 
 async function generatePages(): Promise<void> {
   const articles: string[][] = await Promise.all(
     ['zh-CN'].map(async lang =>
-      globby(resolvePath(`docs/articles/${lang}/**/*.md`)).then(pathsMarkdown =>
+      globby(resolvePath(`src/articles/${lang}/**/*.md`)).then(pathsMarkdown =>
         pathsMarkdown.map(path =>
           path
-            .replace(resolvePath(`docs/articles/${lang}/`), '')
+            .replace(resolvePath(`src/articles/${lang}/`), '')
             .replace(/^\//, '')
             .replace(/\.md$/, ''),
         ),
@@ -36,7 +36,7 @@ async function generatePages(): Promise<void> {
 
   mkdirp.sync(resolvePath(`${outputDir}/.circleci`));
   fs.copyFileSync(
-    resolvePath('.circleci/config.yml'),
+    resolvePath('../../.circleci/config.yml'),
     resolvePath(`${outputDir}/.circleci/config.yml`),
   );
 
@@ -79,9 +79,9 @@ async function generatePages(): Promise<void> {
 }
 
 async function copyExamples(): Promise<void> {
-  const dirSrc: string = resolvePath('docs/examples');
+  const dirSrc: string = resolvePath('src/examples');
   const dirDest: string = resolvePath(`${outputDir}/examples/${version}`);
-  const examples: string[] = await globby(resolvePath('docs/examples/**/*'));
+  const examples: string[] = await globby(resolvePath('src/examples/**/*'));
 
   await Promise.all(
     examples.map(

@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "ts": "ts-node -r tsconfig-paths/register -P ../../scripts/tsconfig.json",
     "serve": "vue-cli-service serve src/entry-client.ts",
     "build": "vue-cli-service build",
     "gen-pages": "yarn ts scripts/gen-pages"

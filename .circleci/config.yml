@@ -5,7 +5,6 @@
 version: 2
 
 default: &default
-  working_directory: ~/project/void-ui
   docker:
     - image: circleci/node:latest
 
@@ -16,6 +15,7 @@ require_frame: &require_frame
 jobs:
   frame:
     <<: *default
+    working_directory: ~/project/void-ui
     steps:
       - checkout
       - restore_cache:
@@ -39,8 +39,9 @@ jobs:
             - project/void-ui
             - .ssh
 
-  lint:
+  test:
     <<: *default
+    working_directory: ~/project/void-ui/packages/void-ui
     steps:
       - attach_workspace:
           at: ~/
@@ -49,10 +50,11 @@ jobs:
   
   build-docs:
     <<: *default
+    working_directory: ~/project/void-ui/packages/docs
     steps:
       - attach_workspace:
           at: ~/
-      - run: yarn build:docs
+      - run: yarn build
       - run: yarn gen-pages
       - run:
           name: deploy to github-pages
@@ -74,7 +76,7 @@ workflows:
   workflow:
     jobs:
       - frame
-      - lint:
+      - test:
           requires:
             - frame
           filters:

@@ -155,7 +155,7 @@ const options = {
     before: app => {
       app.use(
         `${options.baseUrl}examples/${VERSION}`,
-        express.static('./docs/examples', {
+        express.static('./src/examples', {
           setHeaders: response => {
             response.setHeader('Content-Type', 'text/plain; charset=utf-8');
           },
