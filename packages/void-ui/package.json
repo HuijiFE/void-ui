@@ -33,6 +33,11 @@
   ],
   "main": "src/index.ts",
   "source": "true",
+  "scripts": {
+    "lint:style": "stylelint **/*.scss --config ../../.stylelintrc",
+    "lint:script": "tslint -p tsconfig.json -c ../../tslint.json -t verbose",
+    "lint": "yarn lint:script && yarn lint:style"
+  },
   "peerDependencies": {
     "vue": "^2.5.0",
     "vue-class-component": "^6.3.2",
