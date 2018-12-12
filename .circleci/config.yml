@@ -8,10 +8,6 @@ default: &default
   docker:
     - image: circleci/node:latest
 
-require_frame: &require_frame
-  requires:
-    - frame
-
 jobs:
   frame:
     <<: *default
@@ -73,15 +69,17 @@ jobs:
 
 workflows:
   version: 2
-  workflow:
+  test_and_build_docs:
     jobs:
-      - frame
+      - frame:
+          filters:
+            branches:
+              only:
+                - master
+                - dev
       - test:
           requires:
             - frame
-          filters:
-            branches:
-              only: dev
       - build-docs:
           requires:
             - frame
