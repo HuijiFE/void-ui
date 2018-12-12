@@ -1,8 +1,0 @@
-{
-  "compilerOptions": {
-    "rootDirs": [".", "../typings"],
-    "outDir": "../.tmp"
-  },
-  "extends": "../tsconfig.json",
-  "include": ["./**/*.ts", "./**/*.tsx", "../typings"]
-}

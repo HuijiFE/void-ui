@@ -1,0 +1,55 @@
+{
+  "name": "void-ui-docs",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "serve": "vue-cli-service serve src/entry-client.ts",
+    "build": "vue-cli-service build",
+    "gen-pages": "yarn ts scripts/gen-pages"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.8",
+    "@fortawesome/free-brands-svg-icons": "^5.5.0",
+    "@fortawesome/free-regular-svg-icons": "^5.5.0",
+    "@fortawesome/free-solid-svg-icons": "^5.5.0",
+    "@fortawesome/vue-fontawesome": "^0.1.2",
+    "vue": "^2.5.17",
+    "vue-class-component": "^6.3.2",
+    "vue-property-decorator": "^7.2.0",
+    "vue-router": "^3.0.2"
+  },
+  "devDependencies": {
+    "@huiji/vue-cli-plugin-markdown": "^1.0.3",
+    "@vue/cli-plugin-babel": "^3.2.0",
+    "@vue/cli-plugin-pwa": "^3.2.0",
+    "@vue/cli-plugin-typescript": "^3.2.0",
+    "@vue/cli-service": "^3.2.0",
+    "axios": "^0.18.0",
+    "compression": "^1.7.3",
+    "express": "^4.16.4",
+    "node-sass": "^4.10.0",
+    "register-service-worker": "^1.5.2",
+    "sass-loader": "^7.1.0",
+    "tslint": "^5.11.0",
+    "typescript": "^3.2.1",
+    "vue-server-renderer": "^2.5.17",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie <= 8",
+    "not op_mini all"
+  ],
+  "engines": {
+    "node": ">= 10.0.0",
+    "npm": ">= 6.0.0",
+    "yarn": ">= 1.9.0"
+  }
+}

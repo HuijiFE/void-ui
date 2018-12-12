@@ -1,0 +1,50 @@
+{
+  "name": "void-ui",
+  "author": {
+    "name": "duduluu",
+    "email": "duduluu@outlook.com"
+  },
+  "description": "An robust and high customizable UI toolkit for Vue.js 2.0",
+  "version": "0.6.2",
+  "keywords": [
+    "void-ui",
+    "vue",
+    "typescript",
+    "ui",
+    "framework",
+    "frontend",
+    "form",
+    "components"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "homepage": "https://huijife.github.io/void-ui",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HuijiFE/void-ui"
+  },
+  "bugs": {
+    "url": "https://github.com/HuijiFE/void-ui/issues"
+  },
+  "files": [
+    "src"
+  ],
+  "main": "src/index.ts",
+  "source": "true",
+  "peerDependencies": {
+    "vue": "^2.5.0",
+    "vue-class-component": "^6.3.2",
+    "vue-property-decorator": "^7.2.0"
+  },
+  "dependencies": {
+    "cep.scss": "^1.0.1",
+    "normalize.css": "^8.0.1"
+  },
+  "engines": {
+    "node": ">= 10.0.0",
+    "npm": ">= 6.0.0",
+    "yarn": ">= 1.9.0"
+  }
+}

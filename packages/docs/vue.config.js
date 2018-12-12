@@ -9,14 +9,28 @@ const VERSION = require('./package.json').version;
 const options = {
   baseUrl: '/void-ui/',
   outputDir: 'dist',
-  assetsDir: 'static',
   filenameHashing: true,
+
+  css: {
+    loaderOptions: {
+      postcss: {
+        // https://github.com/vuejs/vue-cli/issues/2572
+        path: __dirname,
+        plugins: [require('autoprefixer')],
+      },
+    },
+  },
 
   /**
    * https://github.com/neutrinojs/webpack-chain
    * @param {Config} config
    */
   chainWebpack: config => {
+    // https://github.com/vuejs/vue-cli/issues/2572
+    // config.resolveLoader.modules.add(
+    //   `${path.dirname(require.resolve('@vue/cli-plugin-babel'))}/node_modules`,
+    // );
+
     const context = config.store.get('context');
     const resolve = (...paths) => path.resolve(context, ...paths);
     const getAssetPath = require('@vue/cli-service/lib/util/getAssetPath');
@@ -33,21 +47,18 @@ const options = {
 
     // base --------------------------------------------------------
 
-    config.resolve.symlinks(false);
+    // config.resolve.symlinks(false);
     config.resolve.extensions
       .clear()
       .merge(['.ts', '.tsx', '.js', '.jsx', '.vue', '.json', '.md']);
 
-    config.resolve.alias
-      .delete('@')
-      .set('@docs', resolve('docs'))
-      .set('void-ui$', resolve('src/index.ts'));
+    config.resolve.alias.delete('@').set('@docs', resolve('src'));
 
     config.entryPoints
       .delete('app')
       .end()
       .entry('docs')
-      .add(resolve('docs/entry-client.ts'));
+      .add(resolve('src/entry-client.ts'));
 
     // js --------------------------------------------------------
 
@@ -126,11 +137,12 @@ const options = {
         ...genFileLoaderOptions('img'),
       }));
 
-    fs.writeFile(
-      resolve('.tmp.webpack.config.js'),
-      `module.exports = ${Config.toString(config.toConfig())}`,
-      writeFileError => writeFileError && console.error(writeFileError),
-    );
+    // print config
+    // fs.writeFile(
+    //   resolve('.tmp.webpack.config.js'),
+    //   `module.exports = ${Config.toString(config.toConfig())}`,
+    //   writeFileError => writeFileError && console.error(writeFileError),
+    // );
   },
 
   devServer: {

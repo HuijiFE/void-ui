@@ -18,16 +18,9 @@
     "rootDir": ".",
     "outDir": "dist",
     "sourceMap": true,
-    "baseUrl": ".",
-    "paths": {
-      "@docs/*": ["docs/*"],
-      "void-ui": ["src/index.ts"]
-    }
+    "baseUrl": "."
   },
   "include": [
-    "docs/**/*.ts",
-    "docs/**/*.tsx",
-    "docs/**/*.vue",
     "scripts/**/*.ts",
     "src/**/*.ts",
     "src/**/*.tsx",

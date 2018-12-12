@@ -1,5 +1,5 @@
 {
-  "ignoreFiles": ["dist/**/*", "*.vue"],
+  "ignoreFiles": ["dist/**/*", "**/dist/**/*", "*.vue"],
   "extends": ["stylelint-config-standard", "stylelint-scss"],
   "rules": {
     "at-rule-empty-line-before": null,
