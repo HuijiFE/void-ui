@@ -23,11 +23,13 @@ export default class Example extends Vue {
           </vd-flexbox>
           <vd-flexbox flex={60}>
             <vd-flexbox gap>
-              {Array(6).map((item, index) => (
-                <vd-flexbox key={index} flex={1 / 3}>
-                  <c-demo-box bordered rainbow bold label={index + 1} ratio={100} />
-                </vd-flexbox>
-              ))}
+              {Array<number>(6)
+                .fill(0)
+                .map((item, index) => (
+                  <vd-flexbox key={index} flex={1 / 3}>
+                    <c-demo-box bordered rainbow bold label={index + 1} ratio={100} />
+                  </vd-flexbox>
+                ))}
             </vd-flexbox>
           </vd-flexbox>
         </vd-flexbox>
