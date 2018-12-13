@@ -367,6 +367,7 @@ export class VdFloat extends Vue implements FloatComponent {
   public $refs!: {
     content: HTMLElement;
   };
+  public $el!: HTMLElement;
 
   public className(): string {
     return '';

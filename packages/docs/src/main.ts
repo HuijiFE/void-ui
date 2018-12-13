@@ -1,7 +1,8 @@
 // tslint:disable:no-import-side-effect
 import '@docs/main.scss';
 
-import Vue from 'vue';
+import Vue, { FunctionalComponentOptions } from 'vue';
+import { RecordPropsDefinition } from 'vue/types/options';
 
 import { config, library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -10,7 +11,15 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 config.autoAddCss = false;
 library.add(fab, far, fas);
-Vue.component('FaIcon', FontAwesomeIcon);
+// tslint:disable:no-any
+Vue.component<Record<string, any>>(
+  'FaIcon',
+  FontAwesomeIcon as FunctionalComponentOptions<
+    Record<string, any>,
+    RecordPropsDefinition<Record<string, any>>
+  >,
+);
+// tslint:enable:no-any
 
 import VoidUI, { VdTheme } from 'void-ui';
 Vue.use(VoidUI);
