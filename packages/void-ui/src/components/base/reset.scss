@@ -78,5 +78,8 @@
   [type='reset'],
   [type='submit'] {
     outline: 0;
+    &:focus {
+      outline: 0;
+    }
   }
 }
