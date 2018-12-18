@@ -41,6 +41,9 @@ export class VdCard extends Vue implements ThemeComponent, LinkLikeComponent {
   @Prop({ type: [Boolean, Number], default: false })
   public readonly raise!: boolean | number;
 
+  @Prop(Number)
+  public readonly hoverRaise?: number;
+
   @Prop({ type: Boolean, default: false })
   public readonly transparent!: boolean;
 
@@ -61,6 +64,8 @@ export class VdCard extends Vue implements ThemeComponent, LinkLikeComponent {
         'is-bordered': this.bordered,
         'is-raise': this.raise && typeof this.raise === 'boolean',
         [`vdp-raise_${this.raise}`]: this.raise && typeof this.raise === 'number',
+        [`vdp-hover-raise_${this.hoverRaise}`]:
+          this.raise && typeof this.raise === 'number',
         'is-transparent': this.transparent,
         'is-translucent': this.translucent,
       },

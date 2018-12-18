@@ -119,6 +119,18 @@
     }
   }
 
+  @each $raise, $value in $raise-shadow-map {
+    @include prop(
+      (
+        'hover-raise': $raise,
+      )
+    ) {
+      &:hover {
+        box-shadow: $value;
+      }
+    }
+  }
+
   @include when('transparent') {
     &::before {
       opacity: 0;
