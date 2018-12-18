@@ -59,7 +59,7 @@
   }
 
   /**
-   * Style cursor for all clickable elements.
+   * Style all clickable elements.
    */
   a[href],
   button,
@@ -67,6 +67,8 @@
   [type='reset'],
   [type='submit'] {
     cursor: pointer;
+
+    transition: all ease-in-out $button-transition-duration;
   }
 
   /**
