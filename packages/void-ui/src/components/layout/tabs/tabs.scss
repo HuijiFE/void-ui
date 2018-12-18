@@ -74,11 +74,6 @@ $vd-tabs_transition-distance: 64 !default;
   @include elem('body') {
     padding: rem($gap-base);
   }
-  @include when('no-gap') {
-    @include elem('body') {
-      padding: 0;
-    }
-  }
 
   @include elem('container') {
     width: 100%;
@@ -144,14 +139,8 @@ $vd-tabs_transition-distance: 64 !default;
       )
     ) {
       color: theme($theme);
-      background-color: theme($theme, 'bg');
-
-      @include when('bordered') {
-        border: rem($border-base) solid theme($theme, 'bd');
-      }
-
-      @include elem('separator') {
-        border-color: theme($theme, 'bd');
+      @include elem('header') {
+        background-color: theme($theme, 'bg');
       }
     }
   }
