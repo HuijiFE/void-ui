@@ -123,7 +123,11 @@
         'flex': $preset,
       )
     ) {
-      flex: $preset;
+      @if $preset == expand {
+        flex: 1;
+      } @else {
+        flex: $preset;
+      }
     }
   }
 
