@@ -11,6 +11,8 @@
   border-radius: rem($card-radius);
   overflow: hidden;
 
+  transition: $raise-shadow-transition;
+
   &::before {
     position: absolute;
     top: 0;
@@ -105,8 +107,6 @@
     &:hover {
       box-shadow: $raise-hover;
     }
-
-    transition: $raise-shadow-transition;
   }
 
   @each $raise, $value in $raise-shadow-map {
