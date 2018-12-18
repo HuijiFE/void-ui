@@ -65,7 +65,7 @@ export class VdCard extends Vue implements ThemeComponent, LinkLikeComponent {
         'is-raise': this.raise && typeof this.raise === 'boolean',
         [`vdp-raise_${this.raise}`]: this.raise && typeof this.raise === 'number',
         [`vdp-hover-raise_${this.hoverRaise}`]:
-          this.raise && typeof this.raise === 'number',
+          this.hoverRaise && typeof this.hoverRaise === 'number',
         'is-transparent': this.transparent,
         'is-translucent': this.translucent,
       },
