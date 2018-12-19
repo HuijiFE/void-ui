@@ -23,6 +23,7 @@
 
   body {
     font-family: $font-family-base;
+    font-size: px($font-size-base);
     font-size: rem($font-size-base);
     line-height: $line-height-base;
   }
