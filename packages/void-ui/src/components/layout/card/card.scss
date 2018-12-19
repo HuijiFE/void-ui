@@ -160,10 +160,16 @@
         }
       }
 
-      @include elem('header', 'title') {
+      @include elem('header') {
         color: theme($theme, 'fg', 'emphasize');
       }
+      @include elem('footer', 'content') {
+        color: theme($theme);
+      }
 
+      @include elem('title') {
+        color: theme($theme, 'fg', 'emphasize');
+      }
       @include elem('summary') {
         color: theme($theme, 'fg', 'sub');
       }
