@@ -5,6 +5,8 @@
   $carousel-indicator-height: 8;
 
   position: relative;
+  flex: 1 0 100%;
+  max-width: 100%;
 
   @include elem('container') {
     position: relative;

@@ -18,10 +18,10 @@ export class VdCarousel extends Vue {
   @Prop({ type: String, default: 'div' })
   public readonly containerTag!: string;
 
-  @Prop({ type: String, default: 'outside' })
+  @Prop({ type: String, default: 'inside' })
   public readonly indicatorPosition!: AroundPosition;
 
-  @Prop({ type: String, default: 'outside' })
+  @Prop({ type: String, default: 'inside' })
   public readonly switchButtonPosition!: AroundPosition;
 
   private switching: boolean = false;
