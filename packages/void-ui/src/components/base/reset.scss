@@ -1,18 +1,18 @@
+/**
+ * Set all element as border-box, for instinctive size calculating
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 @if $vd-reset {
   @import url('~normalize.css');
 
   /**
-   * Set all element as border-box, for instinctive size calculating
-   */
-
-  * {
-    box-sizing: border-box;
-  }
-
-  /**
    * Set the root element font-size for the size unit `rem`.
    */
-
   :root {
     font-size: px($root-font-size);
   }
@@ -20,7 +20,6 @@
   /**
    * Restore the font-size, and set basic font style.
    */
-
   body {
     font-family: $font-family-base;
     font-size: px($font-size-base);
