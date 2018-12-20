@@ -1,4 +1,4 @@
-@each $object-fit in ('cover', 'contain') {
+@each $object-fit in (cover, contain) {
   @include define-atom('image', $object-fit) {
     position: relative;
     width: 100%;
