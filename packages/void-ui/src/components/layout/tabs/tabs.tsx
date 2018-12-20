@@ -22,8 +22,16 @@ export class VdTabs extends Vue implements ThemeComponent {
     return this.theme || this.$vd_theme.theme;
   }
 
+  @Prop({ type: Boolean, default: false })
+  public readonly noGap!: boolean;
+
   public get classes(): ClassName {
-    return [`vdp-theme_${this.themeValue}`];
+    return [
+      `vdp-theme_${this.themeValue}`,
+      {
+        'is-no-gap': this.noGap,
+      },
+    ];
   }
 
   private panes: VdTabPane[] = [];
