@@ -5,8 +5,9 @@
   $thumbnail-gap: gap('small');
 
   position: relative;
-  flex: 1 0 100%;
+  flex: 1 1 100%;
   max-width: 100%;
+  min-width: 0;
 
   display: flex;
   flex-flow: row wrap;
@@ -24,12 +25,15 @@
 
   @include elem('slide') {
     flex: 1;
+    min-width: 0;
     padding: rem($thumbnail-gap / 2);
     border-top: rem($border-base) solid transparent;
     overflow: hidden;
 
     @include when('full') {
-      flex: 1 0 100%;
+      flex: 1 1 100%;
+      max-width: 100%;
+      min-width: 0;
       padding: 0;
     }
   }
@@ -39,11 +43,13 @@
     transition: transform ease $slide-transition-duration;
   }
   @include elem('preview-wrapper') {
-    flex: 1 0 100%;
+    flex: 1 1 100%;
     max-width: 100%;
+    min-width: 0;
   }
   @include elem('thumbnail-wrapper') {
     flex: 1;
+    min-width: 0;
     margin: rem($thumbnail-gap / -2);
   }
 
@@ -51,7 +57,9 @@
     position: relative;
 
     display: block;
-    flex: 1 0 100%;
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-width: 0;
     margin: 0;
   }
   @include elem('preview-item') {

@@ -7,8 +7,9 @@ $vd-tabs_transition-distance: 64 !default;
 
 @include comp('tabs') {
   position: relative;
-  flex: 1 0 100%;
+  flex: 1 1 100%;
   max-width: 100%;
+  min-width: 0;
 
   overflow: hidden;
 
@@ -38,6 +39,7 @@ $vd-tabs_transition-distance: 64 !default;
   @include elem('header-item') {
     cursor: pointer;
 
+    min-width: 0;
     height: 100%;
     flex: none;
     padding: 0 rem($gap-base);

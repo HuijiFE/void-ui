@@ -5,8 +5,9 @@
   $carousel-indicator-height: 8;
 
   position: relative;
-  flex: 1 0 100%;
+  flex: 1 1 100%;
   max-width: 100%;
+  min-width: 0;
 
   @include elem('container') {
     position: relative;
@@ -29,9 +30,9 @@
 
   @include elem('item') {
     position: relative;
-
-    flex: 1 0 100%;
+    flex: 1 1 100%;
     max-width: 100%;
+    min-width: 0;
 
     display: flex;
     flex-flow: row nowrap;

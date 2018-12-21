@@ -3,8 +3,9 @@
  */
 @include comp('note') {
   position: relative;
-  flex: 1 0 100%;
+  flex: 1 1 100%;
   max-width: 100%;
+  min-width: 0;
 
   padding: rem($gap-base / 2);
   border-radius: rem($radius-base);

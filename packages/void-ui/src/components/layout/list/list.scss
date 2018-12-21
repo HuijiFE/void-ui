@@ -3,8 +3,9 @@
  */
 @include comp('list') {
   position: relative;
-  flex: 1 0 100%;
+  flex: 1 1 100%;
   max-width: 100%;
+  min-width: 0;
 
   display: flex;
   flex-flow: column nowrap;
@@ -17,6 +18,7 @@
 
   @include elem('item', 'container', 'content', 'left', 'right') {
     position: relative;
+    min-width: 0;
   }
 
   @include elem('item', 'container') {
