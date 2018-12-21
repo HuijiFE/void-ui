@@ -9,7 +9,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { Style, ClassName, Theme, ThemeComponent } from '../../base';
+import { Style, ClassName, Theme, ThemeComponent, Flex } from '../../base';
 
 /**
  * Component: Tabs
