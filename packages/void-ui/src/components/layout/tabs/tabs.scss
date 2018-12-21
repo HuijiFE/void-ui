@@ -163,8 +163,13 @@ $vd-tabs_transition-distance: 64 !default;
       )
     ) {
       color: theme($theme);
+
       @include elem('header') {
         background-color: theme($theme, 'bg');
+      }
+
+      @include elem('separator') {
+        border-color: theme($theme, 'bd');
       }
     }
   }
