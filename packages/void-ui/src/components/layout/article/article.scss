@@ -3,7 +3,8 @@
  */
 @include comp('article') {
   position: relative;
-  flex: 1;
+  flex: 1 0 100%;
+  max-width: 100%;
 
   padding: rem($gap-base) 0;
   margin: rem(-$gap-base) 0;

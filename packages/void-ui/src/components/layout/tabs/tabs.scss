@@ -7,7 +7,6 @@ $vd-tabs_transition-distance: 64 !default;
 
 @include comp('tabs') {
   position: relative;
-  flex: 1;
   flex: 1 0 100%;
   max-width: 100%;
 

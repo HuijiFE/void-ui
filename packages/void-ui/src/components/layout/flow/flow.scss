@@ -3,7 +3,9 @@
  */
 @include comp('swimlane') {
   position: relative;
+  flex: 1 0 100%;
   max-width: 100%;
+
   padding: rem($swimlane-padding) 0;
 
   @each $theme in $type-theme {

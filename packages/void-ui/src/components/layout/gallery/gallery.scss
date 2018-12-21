@@ -5,7 +5,8 @@
   $thumbnail-gap: gap('small');
 
   position: relative;
-  flex: 1;
+  flex: 1 0 100%;
+  max-width: 100%;
 
   display: flex;
   flex-flow: row wrap;

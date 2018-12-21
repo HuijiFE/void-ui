@@ -3,8 +3,8 @@
  */
 @include comp('uniform-scale') {
   position: relative;
-  width: 100%;
-  flex: 1;
+  flex: 1 0 100%;
+  max-width: 100%;
 
   @include elem('brace') {
     padding-bottom: 100%;
