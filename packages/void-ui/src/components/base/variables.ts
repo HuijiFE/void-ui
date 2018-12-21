@@ -128,7 +128,7 @@ export type FlexAlign =
   | 'stretch';
 export type FlexJustify = Align | 'space-between' | 'space-around' | 'space-evenly';
 
-export type Flex = 'initial' | 'auto' | 'none' | number;
+export type Flex = 'initial' | 'auto' | 'none' | 'expand' | number;
 
 // Various Positions --------
 
