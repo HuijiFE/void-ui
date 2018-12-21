@@ -30,7 +30,7 @@
 
   @include elem('item') {
     position: relative;
-    flex: 1 1 100%;
+    flex: 1 0 100%;
     max-width: 100%;
     min-width: 0;
 
