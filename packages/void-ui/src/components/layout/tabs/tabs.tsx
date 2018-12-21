@@ -25,10 +25,14 @@ export class VdTabs extends Vue implements ThemeComponent {
   @Prop({ type: Boolean, default: false })
   public readonly noGap!: boolean;
 
+  @Prop(String)
+  public readonly headerFlex?: Flex;
+
   public get classes(): ClassName {
     return [
       `vdp-theme_${this.themeValue}`,
       {
+        [`vdp-header-flex_${this.headerFlex}`]: this.headerFlex,
         'is-no-gap': this.noGap,
       },
     ];

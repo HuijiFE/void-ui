@@ -24,7 +24,7 @@ $vd-tabs_transition-distance: 64 !default;
   @include elem('header') {
     width: 100%;
     height: rem($card-header-height);
-    padding: 0 rem($gap-base);
+    padding: 0;
 
     display: flex;
     flex-flow: row nowrap;
@@ -46,12 +46,30 @@ $vd-tabs_transition-distance: 64 !default;
 
     color: inherit;
     background: transparent;
+    white-space: nowrap;
 
     @include when('selected') {
       color: tone();
     }
 
     transition-property: color;
+  }
+
+  @each $flex in $type-flex-preset {
+    @include prop(
+      (
+        'header-flex': $flex,
+      )
+    ) {
+      @include elem('header-item') {
+        padding: 0;
+        @if $flex == expand {
+          flex: 1;
+        } @else {
+          flex: $flex;
+        }
+      }
+    }
   }
 
   @include elem('indicator') {
