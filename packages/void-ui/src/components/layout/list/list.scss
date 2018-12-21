@@ -15,11 +15,11 @@
   padding: 0;
   margin: 0;
 
-  @include elem('item', 'item-container', 'item-content', 'item-left', 'item-right') {
+  @include elem('item', 'container', 'content', 'left', 'right') {
     position: relative;
   }
 
-  @include elem('item', 'item-container') {
+  @include elem('item', 'container') {
     flex: none;
     width: 100%;
     max-width: 100%;
@@ -38,10 +38,10 @@
     transition: background-color ease-in-out $button-transition-duration;
   }
 
-  @include elem('item-content') {
+  @include elem('content') {
     flex: 1;
   }
-  @include elem('item-left', 'item-right') {
+  @include elem('left', 'right') {
     flex: none;
     display: flex;
     flex-flow: row nowrap;
@@ -49,10 +49,10 @@
     align-content: stretch;
     align-items: stretch;
   }
-  @include elem('item-left') {
+  @include elem('left') {
     margin-right: rem($gap-base);
   }
-  @include elem('item-right') {
+  @include elem('right') {
     margin-left: rem($gap-base);
   }
 
@@ -72,20 +72,24 @@
   }
 
   @include when('gap') {
-    @include elem('item-container') {
+    @include elem('container') {
       padding-left: rem($gap-base);
       padding-right: rem($gap-base);
     }
   }
 
   @include when('divided') {
-    @include elem('item-content', 'item-left', 'item-right') {
+    @include elem('content', 'left', 'right') {
       padding-top: rem($gap-base);
       padding-bottom: rem($gap-base);
     }
     @include elem('item') {
+      &:not(:first-child) {
+        margin-top: rem(-$border-base);
+        border-top: rem($border-base);
+      }
       &:not(:last-child) {
-        @include elem('item-content', 'item-left', 'item-right') {
+        @include elem('content', 'left', 'right') {
           border-bottom: rem($border-base) solid transparent;
         }
       }
@@ -110,7 +114,7 @@
       @include when('divided') {
         @include elem('item') {
           &:not(:last-child) {
-            @include elem('item-content') {
+            @include elem('content') {
               border-color: theme($theme, 'bd');
             }
           }

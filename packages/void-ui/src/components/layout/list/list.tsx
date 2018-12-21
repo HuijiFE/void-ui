@@ -72,7 +72,7 @@ export class VdListItem extends Vue implements LinkLikeComponent {
         {h(
           this.routerLink ? 'router-link' : this.tag,
           {
-            staticClass: 'vd-list_item-container',
+            staticClass: 'vd-list_container',
             attrs: this.$attrs,
             props: this.routerLink
               ? {
@@ -82,15 +82,13 @@ export class VdListItem extends Vue implements LinkLikeComponent {
               : undefined,
           },
           [
-            this.$slots.left && (
-              <div staticClass="vd-list_item-left">{this.$slots.left}</div>
-            ),
+            this.$slots.left && <div staticClass="vd-list_left">{this.$slots.left}</div>,
             /* tslint:disable-next-line:no-unsafe-any */
-            <div staticClass="vd-list_item-content" class={this.contentClass}>
+            <div staticClass="vd-list_content" class={this.contentClass}>
               {this.$slots.default}
             </div>,
             this.$slots.right && (
-              <div staticClass="vd-list_item-right">{this.$slots.right}</div>
+              <div staticClass="vd-list_right">{this.$slots.right}</div>
             ),
           ],
         )}
