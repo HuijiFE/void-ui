@@ -5,6 +5,7 @@
   position: relative;
   flex: 1 0 100%;
   max-width: 100%;
+  min-width: 0;
 
   font-size: rem($card-font-size);
   line-height: $card-line-height;
