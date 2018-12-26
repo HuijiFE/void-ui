@@ -2,6 +2,101 @@
  * Component: NavMenu
  */
 @include comp('nav-menu') {
+  $default-height: rem(
+    map-get(
+      $map: $button-size-map,
+      $key: 'medium',
+    )
+  );
+
   position: relative;
-  flex: 1;
+  flex: 1 1 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-content: stretch;
+  align-items: stretch;
+
+  height: $default-height;
+  border-bottom: rem($border-base) solid transparent;
+
+  @include elem('wrapper') {
+    position: relative;
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+    margin: 0 0 rem(-$border-base) 0;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: stretch;
+    align-items: stretch;
+  }
+
+  @include elem('item') {
+    position: relative;
+    flex: 1 1;
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    color: inherit;
+
+    @include when('active') {
+      color: tone();
+
+      &::after {
+        content: ' ';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: rem($border-base * 2);
+        background-color: tone();
+      }
+    }
+  }
+
+  @each $size in $type-size {
+    @include prop(
+      (
+        'size': $size,
+      )
+    ) {
+      $height: map-get(
+        $map: $button-size-map,
+        $key: $size,
+      );
+      $font-size: map-get(
+        $map: $button-font-size-map,
+        $key: $size,
+      );
+      height: rem($height);
+      font-size: rem($font-size);
+    }
+  }
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'theme': $theme,
+      )
+    ) {
+      color: theme($theme);
+      background-color: theme($theme, 'bg');
+      border-color: theme($theme, 'bd');
+    }
+  }
 }
