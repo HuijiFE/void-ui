@@ -8,7 +8,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { ClassName, Theme, ThemeComponent, DockPosition } from '../base';
+import { Style, ClassName, Theme, ThemeComponent, DockPosition } from '../base';
 
 /**
  * Component: Acrylic
@@ -31,6 +31,18 @@ export class VdAcrylic extends Vue implements ThemeComponent {
   @Prop({ type: String, required: true })
   public readonly image!: string;
 
+  @Prop([Number, String])
+  public readonly amount?: number | string;
+
+  public get imageStyle(): Style {
+    return {
+      filter:
+        this.amount !== undefined && this.amount !== null
+          ? `blur(${this.amount}px)`
+          : null,
+    };
+  }
+
   private isMounted: boolean = false;
 
   private mounted(): void {
@@ -38,11 +50,12 @@ export class VdAcrylic extends Vue implements ThemeComponent {
   }
 
   private render(h: CreateElement): VNode {
-    return this.isMounted ? (
+    return this.isMounted && this.image ? (
       <div staticClass="vd-acrylic" class={this.classes}>
         <div staticClass="vd-acrylic_inner">
           <img
             staticClass="vd-acrylic_image"
+            style={this.imageStyle}
             src={this.image}
             role="presentation"
             alt=""
