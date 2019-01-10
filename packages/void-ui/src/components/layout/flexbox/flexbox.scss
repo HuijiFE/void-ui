@@ -39,6 +39,7 @@
       @if $direction == 'column' or $direction == 'column-reverse' {
         > * {
           flex: none;
+          max-width: 100%;
         }
       }
     }
