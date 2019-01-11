@@ -57,7 +57,7 @@
     position: relative;
 
     display: block;
-    flex: 1 1 100%;
+    flex: 1 0 100%;
     max-width: 100%;
     min-width: 0;
     margin: 0;
@@ -68,10 +68,14 @@
   @include elem('thumbnail-item') {
     max-width: 1 / 6 * 100%;
     border: rem($thumbnail-gap / 2) solid transparent;
+    filter: brightness(0.8) saturate(0.8);
 
     @include when('selected') {
       border-color: tone();
+      filter: brightness(1) saturate(1);
     }
+
+    transition: all ease $button-transition-duration;
   }
 
   @include elem('placement') {
