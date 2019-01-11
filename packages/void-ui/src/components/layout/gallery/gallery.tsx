@@ -35,7 +35,7 @@ export class VdGallery extends Vue implements ThemeComponent {
     return [`vdp-theme_${this.themeValue}`];
   }
 
-  @Prop({ type: String, required: true })
+  @Prop(String)
   public readonly label?: string;
 
   @Prop(Number)
