@@ -378,6 +378,24 @@ $container-width-map: (
 
 $container-width-transition: width ease-in-out 160ms;
 
+// Tabs
+
+$tabs-header-size-map: (
+  xsmall:   24,
+  small:    32,
+  medium:   40,
+  large:    48,
+  xlarge:   56,
+) !default;
+
+$tabs-header-font-size-map: (
+  xsmall:   12,
+  small:    14,
+  medium:   16,
+  large:    20,
+  xlarge:   24,
+) !default;
+
 // ================================================================
 // Effect
 

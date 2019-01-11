@@ -24,7 +24,7 @@ $vd-tabs_transition-distance: 64 !default;
 
   @include elem('header') {
     width: 100%;
-    height: rem($card-header-height);
+    height: rem(map-get($map: $tabs-header-size-map, $key: 'medium'));
     padding: 0;
 
     display: flex;
@@ -33,7 +33,7 @@ $vd-tabs_transition-distance: 64 !default;
     align-content: stretch;
     align-items: stretch;
 
-    font-size: rem($card-header-font-size);
+    font-size: rem(map-get($map: $tabs-header-font-size-map, $key: 'medium'));
   }
 
   @include elem('header-item') {
@@ -55,6 +55,19 @@ $vd-tabs_transition-distance: 64 !default;
     }
 
     transition-property: color;
+  }
+
+  @each $size in $type-size {
+    @include prop(
+      (
+        'size': $size,
+      )
+    ) {
+      @include elem('header') {
+        height: rem(map-get($map: $tabs-header-size-map, $key: $size));
+        font-size: rem(map-get($map: $tabs-header-font-size-map, $key: $size));
+      }
+    }
   }
 
   @each $flex in $type-flex-preset {

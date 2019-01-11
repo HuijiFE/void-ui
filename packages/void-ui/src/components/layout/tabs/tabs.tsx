@@ -9,7 +9,7 @@ import {
   Provide,
   Watch,
 } from 'vue-property-decorator';
-import { Style, ClassName, Theme, ThemeComponent, Flex } from '../../base';
+import { Style, ClassName, Theme, ThemeComponent, Flex, Size } from '../../base';
 
 /**
  * Component: Tabs
@@ -22,16 +22,23 @@ export class VdTabs extends Vue implements ThemeComponent {
     return this.theme || this.$vd_theme.theme;
   }
 
+  @Prop(String)
+  public readonly size!: Size;
+
   @Prop({ type: Boolean, default: false })
   public readonly noGap!: boolean;
 
   @Prop(String)
   public readonly headerFlex?: Flex;
 
+  @Prop([String, Array, Object])
+  public readonly indicatorClass?: string | ClassName;
+
   public get classes(): ClassName {
     return [
       `vdp-theme_${this.themeValue}`,
       {
+        [`vdp-size_${this.size}`]: this.size,
         [`vdp-header-flex_${this.headerFlex}`]: this.headerFlex,
         'is-no-gap': this.noGap,
       },
@@ -135,7 +142,13 @@ export class VdTabs extends Vue implements ThemeComponent {
           {this.$slots.right}
         </div>
         <div staticClass="vd-tabs_separator">
-          <div staticClass="vd-tabs_indicator" style={this.indicatorStyle} />
+          <div
+            staticClass="vd-tabs_indicator"
+            class={this.indicatorClass}
+            style={this.indicatorStyle}
+          >
+            {this.$slots.indicator}
+          </div>
         </div>
         <div staticClass="vd-tabs_body">
           <div staticClass="vd-tabs_container">
