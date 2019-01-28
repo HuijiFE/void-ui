@@ -106,6 +106,12 @@
     ) {
       min-width: rem($size-value * $button-min-width-multiple);
       padding: 0 rem($size-value * $button-padding-multiple);
+
+      @include when('wide') {
+        flex: 1 0 100%;
+        width: 100%;
+        max-width: 100%;
+      }
     }
 
     // square, circle

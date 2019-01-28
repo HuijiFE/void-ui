@@ -164,6 +164,9 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
   @Prop({ type: String, default: 'small' })
   public readonly size!: Size;
 
+  @Prop({ type: Boolean, default: false })
+  public readonly wide!: boolean;
+
   public get classes(): ClassName {
     return [
       `vdp-theme_${(this.group && this.group.themeValue) || this.themeValue}`,
@@ -174,6 +177,7 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
       `vdp-shape_${(this.group && this.group.shape) || this.shape}`,
       `vdp-size_${(this.group && this.group.size) || this.size}`,
       {
+        'is-wide': this.wide,
         'is-hover': this.hover,
         'is-router-link': this.routerLink,
         'is-disabled': this.disabled,
