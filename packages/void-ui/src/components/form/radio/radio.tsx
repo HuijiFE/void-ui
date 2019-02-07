@@ -39,7 +39,7 @@ export class VdRadio extends Vue implements ThemeComponent, FormComponent {
   public readonly name?: string;
 
   @Model('change', { type: [Boolean, String, Number], required: true })
-  public readonly model!: boolean | string | number;
+  public readonly modelSource!: boolean | string | number;
 
   @Prop({ type: [Boolean, String, Number], required: true })
   public readonly value!: boolean | string | number;
@@ -51,7 +51,7 @@ export class VdRadio extends Vue implements ThemeComponent, FormComponent {
   public readonly disabled!: boolean;
 
   public get checked(): boolean {
-    return this.value === this.model;
+    return this.value === this.modelSource;
   }
 
   private onChange(event: Event): void {
@@ -101,7 +101,7 @@ export class VdRadio extends Vue implements ThemeComponent, FormComponent {
 @Component
 export class VdRadioGroup extends Vue implements FormComponent {
   @Model('change', { type: [String, Number], required: true })
-  public readonly model!: string | number;
+  public readonly modelSource!: string | number;
 
   @Prop({ type: Array, required: true })
   public readonly itemsSource!: RadioData[];
@@ -126,7 +126,7 @@ export class VdRadioGroup extends Vue implements FormComponent {
       <div staticClass="vd-radio-group" class={this.classes}>
         {this.itemsSource.map(item => (
           <vd-radio
-            model={this.model}
+            model-source={this.modelSource}
             label={item.label}
             value={item.value}
             onChange={this.onChange}

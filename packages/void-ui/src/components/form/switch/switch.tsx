@@ -34,7 +34,7 @@ export class VdSwitch extends Vue implements ThemeComponent, FormComponent {
   public readonly name?: string;
 
   @Model('change', { type: [Boolean, String, Number], required: true })
-  public readonly model!: boolean | string | number;
+  public readonly modelSource!: boolean | string | number;
 
   @Prop({ type: [Boolean, String, Number], default: true })
   public readonly trueValue!: boolean | string | number;
@@ -55,7 +55,7 @@ export class VdSwitch extends Vue implements ThemeComponent, FormComponent {
   public readonly disabled!: boolean;
 
   public get checked(): boolean {
-    return this.trueValue === this.model;
+    return this.trueValue === this.modelSource;
   }
 
   private onChange(event: Event): void {

@@ -9,7 +9,7 @@ import { VdForm } from './form/form';
 
 export interface FormComponent {
   readonly form?: VdForm;
-  readonly model: any;
+  readonly modelSource: any;
 }
 
 export const mixinFormComponent: ComponentOptions<Vue> = {
