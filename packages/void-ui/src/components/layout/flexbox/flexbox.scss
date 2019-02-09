@@ -19,8 +19,9 @@
   align-items: flex-start;
   justify-content: flex-start;
 
-  color: inherit;
   text-decoration: none;
+  color: inherit;
+  background-color: transparent;
 
   & > img {
     position: relative;
