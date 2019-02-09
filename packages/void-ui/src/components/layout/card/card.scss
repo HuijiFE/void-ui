@@ -149,6 +149,13 @@
     }
   }
 
+  @include when('center') {
+    text-align: center;
+    @include elem('header') {
+      justify-content: center;
+    }
+  }
+
   @each $theme in $type-theme {
     @include prop(
       (

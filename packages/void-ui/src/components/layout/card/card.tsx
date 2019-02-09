@@ -50,6 +50,9 @@ export class VdCard extends Vue implements ThemeComponent, LinkLikeComponent {
   @Prop({ type: Boolean, default: false })
   public readonly translucent!: boolean;
 
+  @Prop({ type: Boolean, default: false })
+  public readonly center!: boolean;
+
   @Prop({ type: String })
   public readonly title?: string;
 
@@ -68,6 +71,7 @@ export class VdCard extends Vue implements ThemeComponent, LinkLikeComponent {
           this.hoverRaise && typeof this.hoverRaise === 'number',
         'is-transparent': this.transparent,
         'is-translucent': this.translucent,
+        'is-center': this.center,
       },
     ];
   }
