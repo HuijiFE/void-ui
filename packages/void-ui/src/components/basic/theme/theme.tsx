@@ -73,15 +73,11 @@ export class VdTheme extends Vue {
   }
 
   public setColor(theme: Theme): void {
-    this.theme = theme;
+    this.theme = theme === 'dark' ? 'dark' : 'lite';
   }
 
   public switchColor(): void {
-    if (this.theme === 'lite') {
-      this.theme = 'dark';
-    } else {
-      this.theme = 'lite';
-    }
+    this.setColor(this.theme === 'lite' ? 'dark' : 'lite');
   }
 
   private render(h: CreateElement): VNode {
