@@ -7,7 +7,7 @@ const chalk = require('chalk');
 const VERSION = require('./package.json').version;
 
 const options = {
-  baseUrl: '/void-ui/',
+  publicPath: '/void-ui/',
   outputDir: 'dist',
   filenameHashing: true,
 
@@ -154,7 +154,7 @@ const options = {
      */
     before: app => {
       app.use(
-        `${options.baseUrl}examples/${VERSION}`,
+        `${options.baseUrl}examples`,
         express.static('./src/examples', {
           setHeaders: response => {
             response.setHeader('Content-Type', 'text/plain; charset=utf-8');

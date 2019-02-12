@@ -1,10 +1,11 @@
 {
-  "defaultSeverity": "error",
+  "defaultSeverity": "warn",
   "extends": ["@huiji/tslint-rules"],
   "linterOptions": {
-    "exclude": ["node_modules/**", "build/**", "dist/**", "**/*.vue"]
+    "exclude": ["node_modules/**", "**/*.js", "**/*.json", "**/*.vue"]
   },
   "rules": {
-    "no-null-keyword": false
+    "no-null-keyword": false,
+    "no-require-imports": false
   }
 }
