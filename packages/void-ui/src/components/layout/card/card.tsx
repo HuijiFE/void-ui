@@ -147,11 +147,17 @@ export class VdCardContent extends Vue {
   @Prop({ type: String, default: 'div' })
   public readonly tag!: string;
 
+  @Prop({ type: Boolean, default: false })
+  public readonly noGap!: boolean;
+
   private render(h: CreateElement): VNode {
     return h(
       this.tag,
       {
         staticClass: 'vd-card_content',
+        class: {
+          'is-no-gap': this.noGap,
+        },
       },
       this.$slots.default,
     );
