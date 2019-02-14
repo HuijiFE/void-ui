@@ -50,8 +50,8 @@
     }
   }
 
-  @include media-less-than('md') {
-    padding: 0 rem($gap-base);
+  @include when('gap') {
+    padding: 0 rem($container-padding);
   }
 
   transition: $container-width-transition;
