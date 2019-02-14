@@ -230,10 +230,6 @@
         align-content: flex-start;
         align-items: flex-start;
 
-        & > img,
-        & > video {
-          flex: 1;
-        }
         @include elem('header', 'footer', 'content') {
           flex: 1;
         }
