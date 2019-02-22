@@ -43,7 +43,7 @@
     "vue-property-decorator": "^7.3.0"
   },
   "dependencies": {
-    "cep.scss": "^1.0.1",
+    "cep.scss": "^1.1.0",
     "normalize.css": "^8.0.1"
   },
   "engines": {
