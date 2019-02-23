@@ -17,8 +17,8 @@ import { TONE_KEYS, SKIN_KEYS, SHAPE_KEYS, SIZE_KEYS } from 'void-ui';
 export default class Example extends Vue {
   private show: boolean = false;
 
-  private isGroup: boolean = true;
-  private gap: boolean = false;
+  private readonly isGroup: boolean = true;
+  private readonly gap: boolean = false;
 
   private render(h: CreateElement): VNode {
     return (
