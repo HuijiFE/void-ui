@@ -34,6 +34,9 @@ export class VdTabs extends Vue implements ThemeComponent {
   @Prop([String, Array, Object])
   public readonly indicatorClass?: string | ClassName;
 
+  @Prop({ type: Boolean, default: false })
+  public readonly hover!: boolean;
+
   public get classes(): ClassName {
     return [
       `vdp-theme_${this.themeValue}`,
@@ -118,6 +121,8 @@ export class VdTabs extends Vue implements ThemeComponent {
   };
 
   private render(h: CreateElement): VNode {
+    const elem = document.createElement('button');
+
     return (
       <div staticClass="vd-tabs" class={this.classes}>
         <div staticClass="vd-tabs_header" ref="header">
@@ -135,6 +140,7 @@ export class VdTabs extends Vue implements ThemeComponent {
                   : []),
               ]}
               onClick={() => this.select(pane)}
+              onMouseenter={() => this.hover && this.select(pane)}
             >
               {pane.$slots.label || pane.label}
             </button>

@@ -1,6 +1,6 @@
 {
   "name": "void-ui-docs",
-  "version": "0.7.22",
+  "version": "0.7.25",
   "license": "MIT",
   "scripts": {
     "gen-files": "yarn ts scripts/gen-files",

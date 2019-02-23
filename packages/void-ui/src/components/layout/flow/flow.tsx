@@ -62,11 +62,23 @@ export class VdContainer extends Vue {
   @Prop({ type: String, default: 'div' })
   public readonly tag!: string;
 
+  @Prop({ type: Boolean, default: false })
+  public readonly gap!: boolean;
+
+  public get classes(): ClassName {
+    return [
+      {
+        'is-gap': this.gap,
+      },
+    ];
+  }
+
   private render(h: CreateElement): VNode {
     return h(
       this.tag,
       {
         staticClass: 'vd-container',
+        class: this.classes,
       },
       this.$slots.default,
     );

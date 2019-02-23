@@ -1,6 +1,6 @@
 {
   "name": "void-ui-monorepo",
-  "version": "0.7.22",
+  "version": "0.7.25",
   "private": true,
   "workspaces": [
     "packages/*"

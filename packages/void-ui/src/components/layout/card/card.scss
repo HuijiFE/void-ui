@@ -76,6 +76,9 @@
     align-content: stretch;
     align-items: stretch;
     padding: rem($gap-base);
+    @include when('no-gap') {
+      padding: rem($gap-base) 0;
+    }
   }
 
   @include elem('title', 'summary') {
@@ -230,10 +233,6 @@
         align-content: flex-start;
         align-items: flex-start;
 
-        & > img,
-        & > video {
-          flex: 1;
-        }
         @include elem('header', 'footer', 'content') {
           flex: 1;
         }
