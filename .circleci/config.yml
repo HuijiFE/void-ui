@@ -61,6 +61,9 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/
+      - run:
+        name: Authenticate with registry
+        command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
       - run: npx lerna publish from-package --yes
 
   deploy_docs:
