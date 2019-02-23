@@ -56,6 +56,13 @@ jobs:
             - void-ui
             - .ssh
 
+  publish:
+    <<: *container_config
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: npx lerna publish
+
   deploy_docs:
     <<: *container_config
     steps:

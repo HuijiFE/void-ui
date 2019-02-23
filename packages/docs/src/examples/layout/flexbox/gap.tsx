@@ -17,7 +17,7 @@ import { Size, RadioData } from 'void-ui';
 export default class Example extends Vue {
   private gap: boolean | Size = false;
 
-  private radios: RadioData[] = [
+  private readonly radios: RadioData[] = [
     false,
     true,
     'xsmall',

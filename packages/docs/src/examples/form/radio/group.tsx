@@ -17,7 +17,7 @@ import { RadioData } from 'void-ui';
 export default class Example extends Vue {
   private fruit: string = 'apple';
 
-  private radios: RadioData[] = [
+  private readonly radios: RadioData[] = [
     {
       label: 'Apple',
       value: 'apple',

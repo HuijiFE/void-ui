@@ -41,13 +41,12 @@ export class CSideBar extends Vue implements ThemeComponent {
     return (
       <div staticClass="c-side-bar" class={this.classes}>
         <ul staticClass="c-side-bar_wrapper">
-          {this.itemsSource.map(
-            item =>
-              'items' in item ? (
-                <c-side-bar-group label={item.label} items-source={item.items} />
-              ) : (
-                <c-side-bar-item label={item.label} path={item.path} />
-              ),
+          {this.itemsSource.map(item =>
+            'items' in item ? (
+              <c-side-bar-group label={item.label} items-source={item.items} />
+            ) : (
+              <c-side-bar-item label={item.label} path={item.path} />
+            ),
           )}
           {this.$slots.default}
         </ul>
@@ -101,6 +100,7 @@ export class CSideBarItem extends Vue {
         exact-active-class="is-active"
         to={this.path}
       >
+        {/* tslint:disable-next-line:react-a11y-anchors */}
         <a staticClass="c-side-bar_item-label">{this.$slots.default || this.label}</a>
       </router-link>
     );

@@ -14,7 +14,7 @@ import {
  */
 @Component
 export default class Example extends Vue {
-  private itemsSource: { src: string; alt: string }[] = [
+  private readonly items: { src: string; alt: string }[] = [
     {
       src: 'https://cdn.steamstatic.com.8686c.com/steam/apps/838350/header.jpg',
       alt: '太吾绘卷',
@@ -42,7 +42,7 @@ export default class Example extends Vue {
       <div staticClass="e-uniform-scale-basic">
         <vd-flexbox gap>
           <vd-flexbox flex={100} gap>
-            {this.itemsSource.map(item => (
+            {this.items.map(item => (
               <vd-flexbox>
                 <vd-uniform-scale>
                   <img
@@ -56,7 +56,7 @@ export default class Example extends Vue {
           </vd-flexbox>
 
           <vd-flexbox flex={100} gap>
-            {this.itemsSource.map(item => (
+            {this.items.map(item => (
               <vd-flexbox>
                 <vd-uniform-scale ratio={215 / 460}>
                   <img
