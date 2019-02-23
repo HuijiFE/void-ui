@@ -81,6 +81,7 @@ export class VdSwitch extends Vue implements ThemeComponent, FormComponent {
         aria-checked={this.checked}
         tabindex={this.disabled ? -1 : 0}
       >
+        {/* tslint:disable-next-line:react-a11y-input-elements */}
         <input
           staticClass="vd-switch_implicit"
           type="checkbox"

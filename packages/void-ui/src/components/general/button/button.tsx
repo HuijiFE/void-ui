@@ -28,9 +28,6 @@ import { VdDropdown } from '../../layout/float/dropdown';
 export class VdButtonGroup extends Vue implements ThemeComponent {
   private dropdown?: VdDropdown;
 
-  private isHover: boolean = false;
-  private isActive: boolean = true;
-
   @Prop({ type: String })
   public readonly theme?: Theme;
   public get themeValue(): Theme {
@@ -242,6 +239,7 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
         },
       },
       [
+        // tslint:disable:no-unsafe-any
         (this.loading && (
           <span staticClass="vd-button_loading">
             <span staticClass="vd-button_loading-indicator" />
@@ -254,6 +252,7 @@ export class VdButton extends Vue implements ThemeComponent, LinkLikeComponent {
         this.$slots.right && (
           <span staticClass="vd-button_right">{this.$slots.right}</span>
         ),
+        // tslint:enable:no-unsafe-any
       ],
     );
   }

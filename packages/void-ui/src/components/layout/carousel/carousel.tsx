@@ -26,7 +26,7 @@ export class VdCarousel extends Vue {
 
   private switching: boolean = false;
 
-  private items: VdCarouselItem[] = [];
+  private readonly items: VdCarouselItem[] = [];
   public add(item: VdCarouselItem): void {
     const length = this.items.push(item);
     if (length === 1) {
