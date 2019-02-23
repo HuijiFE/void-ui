@@ -258,6 +258,15 @@
         }
       }
     }
+    @include when('disabled') {
+      &,
+      &:hover,
+      &:active {
+        &::before {
+          opacity: 0;
+        }
+      }
+    }
   }
 
   // ----------------------------
@@ -287,6 +296,7 @@
       )
     ) {
       @include when('disabled') {
+        &,
         &:hover,
         &:active {
           color: theme($theme, 'fg', 'disabled');
@@ -301,6 +311,7 @@
       )
     ) {
       @include when('disabled') {
+        &,
         &:hover,
         &:active {
           background-color: theme($theme, 'bg', 'disabled');
@@ -319,6 +330,7 @@
       )
     ) {
       @include when('disabled') {
+        &,
         &:hover,
         &:active {
           background-color: theme($theme, 'bg', 'normal');
@@ -337,6 +349,7 @@
       )
     ) {
       @include when('disabled') {
+        &,
         &:hover,
         &:active {
           border-color: theme($theme, 'bd', 'disabled');
