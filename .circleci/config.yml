@@ -9,6 +9,15 @@ aliases:
     docker:
       - image: circleci/node:latest
     working_directory: ~/void-ui
+  - &persist_to_workspace
+    - persist_to_workspace:
+        root: ~/
+        paths:
+          - void-ui
+          - .ssh
+  - &attach_workspace
+    - attach_workspace:
+        at: ~/
 
 jobs:
   dependencies:
@@ -30,36 +39,25 @@ jobs:
           fingerprints:
             - 0e:fd:15:00:19:2d:f5:ec:1b:f2:3e:4b:01:59:ce:33
       - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - void-ui
-            - .ssh
+      <<: *persist_to_workspace
 
   test:
     <<: *container_config
     steps:
-      - attach_workspace:
-          at: ~/
+      <<: *attach_workspace
       - run: npx lerna run lint
 
   build:
     <<: *container_config
     steps:
-      - attach_workspace:
-          at: ~/
+      <<: *attach_workspace
       - run: npx lerna run build
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - void-ui
-            - .ssh
+      <<: *persist_to_workspace
 
   deploy_docs:
     <<: *container_config
     steps:
-      - attach_workspace:
-          at: ~/
+      <<: *attach_workspace
       - run:
           name: deploy to github-pages
           working_directory: packages/docs/dist
