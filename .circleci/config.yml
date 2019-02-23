@@ -79,7 +79,7 @@ jobs:
 
 workflows:
   version: 2
-  test_and_build_docs:
+  build_test:
     jobs:
       - dependencies:
           filters:
