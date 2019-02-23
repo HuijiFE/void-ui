@@ -61,7 +61,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/
-      - run: npx lerna publish
+      - run: npx lerna publish from-package --yes
 
   deploy_docs:
     <<: *container_config
