@@ -1,30 +1,24 @@
 {
   "name": "void-ui-monorepo",
-  "version": "0.1.0",
+  "version": "0.7.22",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
     "dep": "yarn ts scripts/dependencies.ts",
-    "clean:dist": "lerna run clean:dist",
-    "gen-files": "lerna run gen-files",
-    "env": "lerna run env",
-    "build": "lerna run build",
-    "lint": "lerna run lint",
-    "test": "lerna run test",
     "ts": "ts-node -r tsconfig-paths/register -P scripts/tsconfig.json"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.14",
-    "@fortawesome/free-brands-svg-icons": "^5.7.1",
-    "@fortawesome/free-regular-svg-icons": "^5.7.1",
-    "@fortawesome/free-solid-svg-icons": "^5.7.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.15",
+    "@fortawesome/free-brands-svg-icons": "^5.7.2",
+    "@fortawesome/free-regular-svg-icons": "^5.7.2",
+    "@fortawesome/free-solid-svg-icons": "^5.7.2",
     "@fortawesome/vue-fontawesome": "^0.1.5",
     "@huiji/graphql-tools": "^0.3.4",
     "@huiji/shared-utils": "^1.1.0",
     "@huiji/tslint-rules": "^2.0.2",
-    "@huiji/vue-cli-plugin-markdown": "^1.0.3",
+    "@huiji/vue-cli-plugin-markdown": "^1.0.4",
     "@huiji/vue-cli-utils": "^0.1.1",
     "@huiji/vue-locale": "^1.2.0",
     "@types/compression": "^0.0.36",

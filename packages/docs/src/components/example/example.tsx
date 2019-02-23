@@ -10,17 +10,20 @@ import {
 } from 'vue-property-decorator';
 import { ClassName, Theme, ThemeComponent } from 'void-ui';
 import axios, { AxiosInstance } from 'axios';
-import examples from '@docs/examples/all';
-import examplesTsx from '@docs/examples/all-tsx';
-import examplesVue from '@docs/examples/all-vue';
-import { isDevelopment } from '@docs/utils/environment';
+import examples from '@src/examples/all';
+import examplesTsx from '@src/examples/all-tsx';
+import examplesVue from '@src/examples/all-vue';
+import { isDevelopment } from '@src/utils/environment';
+import packageJson from 'void-ui/package.json';
 
 export type AsyncComponentRecord = Record<string, () => Promise<typeof import('vue')>>;
 
 // tslint:disable-next-line:no-require-imports no-var-requires no-unsafe-any
-const VERSION = require('../../../package.json').version;
 const sourceCode: AxiosInstance = axios.create({
-  baseURL: `${process.env.BASE_URL}examples/${VERSION}/`,
+  baseURL: `${process.env.BASE_URL}examples/`,
+  params: {
+    v: packageJson.version,
+  },
   timeout: 1000,
   transformResponse: (data: string) => data,
 });

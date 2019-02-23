@@ -1,14 +1,14 @@
 import Vue, { AsyncComponent } from 'vue';
 import VueRouter, { RouterOptions, RouteConfig } from 'vue-router';
-import { VTest } from '@docs/views/test';
-import { VIndex } from '@docs/views';
-import { VHome } from '@docs/views/home';
-import { VGuide } from '@docs/views/guide';
-import { VComponents } from '@docs/views/components';
-import { VApis } from '@docs/views/apis';
+import { VTest } from '@src/views/test';
+import { VIndex } from '@src/views';
+import { VHome } from '@src/views/home';
+import { VGuide } from '@src/views/guide';
+import { VComponents } from '@src/views/components';
+import { VApis } from '@src/views/apis';
 import { VMachineLearn } from './views/machine-learn';
 
-import zhCN from '@docs/articles/zh-CN/all';
+import zhCN from '@src/articles/zh-CN/all';
 const articles: RouteConfig[][] = [zhCN];
 
 Vue.use(VueRouter);

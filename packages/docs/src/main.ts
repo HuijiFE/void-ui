@@ -1,5 +1,5 @@
 // tslint:disable:no-import-side-effect
-import '@docs/main.scss';
+import '@src/main.scss';
 
 import Vue, { FunctionalComponentOptions } from 'vue';
 import { RecordPropsDefinition } from 'vue/types/options';
@@ -24,7 +24,7 @@ Vue.component<Record<string, any>>(
 import VoidUI, { VdTheme } from 'void-ui';
 Vue.use(VoidUI);
 
-import * as components from '@docs/components/all';
+import * as components from '@src/components/all';
 Object.entries(components).forEach(([name, comp]) => {
   Vue.component(name, comp);
 });
@@ -32,8 +32,8 @@ Object.entries(components).forEach(([name, comp]) => {
 Vue.config.productionTip = false;
 
 import VueRouter from 'vue-router';
-import { createRouter } from '@docs/router';
-import { VApp } from '@docs/views/app';
+import { createRouter } from '@src/router';
+import { VApp } from '@src/views/app';
 
 /**
  * App factory

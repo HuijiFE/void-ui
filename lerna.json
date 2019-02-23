@@ -1,6 +1,12 @@
 {
-  "lerna": "3.10.0",
-  "version": "0.1.0",
   "npmClient": "yarn",
-  "packages": ["packages/*"]
+  "useWorkspaces": true,
+  "ignoreChanges": [
+    "**/scripts/**",
+    "**/tests/**",
+    "**/__tests__/**",
+    "**/*.test.*",
+    "**/*.spec.*",
+    "**/*.md"
+  ]
 }

@@ -1,148 +1,47 @@
-const fs = require('fs');
-const path = require('path');
-const Config = require('webpack-chain');
 const express = require('express');
-const chalk = require('chalk');
+const Config = require('webpack-chain');
+const { genPathResolve } = require('@huiji/shared-utils');
+const { chainWebpackHash, chainWebpackSSR } = require('@huiji/vue-cli-utils');
 
-const VERSION = require('./package.json').version;
+const resolvePath = genPathResolve(__dirname);
+
+const isProd = process.env.NODE_ENV === 'production';
+const examplesDir = resolvePath('src', 'examples');
 
 const options = {
-  publicPath: '/void-ui/',
+  publicPath: isProd ? '/void-ui/' : '/',
   outputDir: 'dist',
-  filenameHashing: true,
-
-  css: {
-    loaderOptions: {
-      postcss: {
-        // https://github.com/vuejs/vue-cli/issues/2572
-        path: __dirname,
-        plugins: [require('autoprefixer')],
-      },
-    },
-  },
 
   /**
    * https://github.com/neutrinojs/webpack-chain
    * @param {Config} config
    */
   chainWebpack: config => {
-    // https://github.com/vuejs/vue-cli/issues/2572
-    // config.resolveLoader.modules.add(
-    //   `${path.dirname(require.resolve('@vue/cli-plugin-babel'))}/node_modules`,
-    // );
-
-    const context = config.store.get('context');
-    const resolve = (...paths) => path.resolve(context, ...paths);
-    const getAssetPath = require('@vue/cli-service/lib/util/getAssetPath');
-
-    const isProd = process.env.NODE_ENV === 'production';
-    const isLegacyBundle =
-      process.env.VUE_CLI_MODERN_MODE && !process.env.VUE_CLI_MODERN_BUILD;
-
-    const hashDigest = 'hex';
-    const hashDigestLength = 128;
-    const hashFunction = 'sha512';
-
-    const inlineLimit = 32;
-
-    // base --------------------------------------------------------
-
-    // config.resolve.symlinks(false);
-    config.resolve.extensions
-      .clear()
-      .merge(['.ts', '.tsx', '.js', '.jsx', '.vue', '.json', '.md']);
-
-    config.resolve.alias.delete('@').set('@docs', resolve('src'));
+    config.resolve.symlinks(true);
+    config.resolve.alias.delete('@').set('@src', resolvePath('src'));
 
     config.entryPoints
       .delete('app')
       .end()
       .entry('docs')
-      .add(resolve('src/entry-client.ts'));
+      .add(resolvePath('src/entry-client.ts'));
 
-    // js --------------------------------------------------------
-
-    if (isProd) {
-      const filename = getAssetPath(
-        options,
-        `js/[name]${isLegacyBundle ? '-legacy' : ''}${
-          options.filenameHashing ? '.[contenthash]' : ''
-        }.js`,
-      );
-
-      config.output
-        .filename(filename)
-        .chunkFilename(filename)
-        .hashDigest(hashDigest)
-        .hashDigestLength(hashDigestLength)
-        .hashFunction(hashFunction);
-    }
-
-    // css
+    config.resolve.extensions
+      .clear()
+      .merge(['.ts', '.tsx', '.js', '.jsx', '.vue', '.json', '.md']);
 
     if (isProd) {
-      const filename = getAssetPath(
-        options,
-        `css/[name]${options.filenameHashing ? '.[contenthash]' : ''}.css`,
-      );
+      chainWebpackHash(options)(config);
+      config.plugin('copy').tap(opts => {
+        opts[0].push({
+          from: examplesDir,
+          to: 'examples',
+          toType: 'dir',
+        });
 
-      config.plugin('extract-css').tap(([opt]) => [
-        {
-          ...opt,
-          filename: filename,
-          chunkFilename: filename,
-          hashDigest,
-          hashDigestLength,
-          hashFunction,
-        },
-      ]);
+        return opts;
+      });
     }
-
-    // static assets --------------------------------------------------------
-
-    const genFileLoaderOptions = dir => ({
-      name: getAssetPath(
-        options,
-        `${dir}/[name]${
-          options.filenameHashing
-            ? `.[${hashFunction}:hash:${hashDigest}:${hashDigestLength}]`
-            : ''
-        }.[ext]`,
-      ),
-    });
-
-    [['images', 'img'], ['media', 'media'], ['fonts', 'fonts']].forEach(([rule, dir]) => {
-      config.module
-        .rule(rule)
-        .use('url-loader')
-        .loader('url-loader')
-        .tap(opt => ({
-          ...opt,
-          ...{
-            limit: inlineLimit,
-            fallback: {
-              loader: 'file-loader',
-              options: genFileLoaderOptions(dir),
-            },
-          },
-        }));
-    });
-
-    config.module
-      .rule('svg')
-      .use('file-loader')
-      .loader('file-loader')
-      .tap(opt => ({
-        ...opt,
-        ...genFileLoaderOptions('img'),
-      }));
-
-    // print config
-    // fs.writeFile(
-    //   resolve('.tmp.webpack.config.js'),
-    //   `module.exports = ${Config.toString(config.toConfig())}`,
-    //   writeFileError => writeFileError && console.error(writeFileError),
-    // );
   },
 
   devServer: {
@@ -155,7 +54,7 @@ const options = {
     before: app => {
       app.use(
         `${options.baseUrl}examples`,
-        express.static('./src/examples', {
+        express.static(examplesDir, {
           setHeaders: response => {
             response.setHeader('Content-Type', 'text/plain; charset=utf-8');
           },

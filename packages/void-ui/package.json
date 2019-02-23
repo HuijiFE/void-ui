@@ -33,9 +33,11 @@
   "main": "src/index.ts",
   "source": "true",
   "scripts": {
+    "gen-files": "yarn ts scripts/gen-files",
     "lint:style": "stylelint **/*.scss --config ../../.stylelintrc",
     "lint:script": "tslint -p tsconfig.json -c ../../tslint.json -t verbose",
-    "lint": "yarn lint:script && yarn lint:style"
+    "lint": "yarn lint:script && yarn lint:style",
+    "ts": "ts-node -r tsconfig-paths/register -P ./scripts/tsconfig.json"
   },
   "peerDependencies": {
     "vue": "^2.6.5",
@@ -43,7 +45,7 @@
     "vue-property-decorator": "^7.3.0"
   },
   "dependencies": {
-    "cep.scss": "^1.1.0",
+    "cep.scss": "^1.1.1",
     "normalize.css": "^8.0.1"
   },
   "engines": {

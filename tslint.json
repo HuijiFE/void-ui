@@ -5,7 +5,7 @@
     "exclude": ["node_modules/**", "**/*.js", "**/*.json", "**/*.vue"]
   },
   "rules": {
-    "no-null-keyword": false,
+    "use-simple-attributes": false,
     "no-require-imports": false
   }
 }

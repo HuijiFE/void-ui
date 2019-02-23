@@ -1,28 +1,9 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "lib": ["dom", "dom.iterable", "scripthost", "esnext"],
-    "types": ["node", "jest"],
-    "strict": true,
-    "jsx": "preserve",
-    "experimentalDecorators": true,
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
-    "rootDir": ".",
+    "target": "es2015",
+    "rootDir": "src",
     "outDir": "dist"
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "tests/**/*.ts",
-    "tests/**/*.tsx",
-    "typings/**/*.d.ts"
-  ],
-  "exclude": ["node_modules"]
+  "include": ["src"]
 }

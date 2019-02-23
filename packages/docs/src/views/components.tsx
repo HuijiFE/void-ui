@@ -9,8 +9,8 @@ import {
   Watch,
 } from 'vue-property-decorator';
 import { RouteConfig } from 'vue-router';
-import zhCN from '@docs/articles/zh-CN/all';
-import { SideBarGroup } from '@docs/components/all';
+import zhCN from '@src/articles/zh-CN/all';
+import { SideBarGroup } from '@src/components/all';
 
 const routeConfigMap: Record<string, RouteConfig[]> = {
   'zh-CN': zhCN,

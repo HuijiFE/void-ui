@@ -5,31 +5,26 @@
     "lib": ["dom", "dom.iterable", "scripthost", "esnext"],
     "types": ["node", "jest"],
     "strict": true,
-    "strictFunctionTypes": true,
-    "strictNullChecks": true,
-    "strictPropertyInitialization": true,
     "jsx": "preserve",
-    "jsxFactory": "h",
-    "experimentalDecorators": true,
-    "moduleResolution": "node",
     "importHelpers": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "rootDir": ".",
-    "outDir": "dist",
+    "allowJs": true,
+    "resolveJsonModule": true,
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      "@docs/*": ["src/*"]
+      "@src/*": ["src/*"]
     }
   },
   "include": [
-    "scripts/**/*.ts",
     "src/**/*.ts",
     "src/**/*.tsx",
     "tests/**/*.ts",
     "tests/**/*.tsx",
-    "typings"
+    "typings/**/*.d.ts"
   ],
   "exclude": ["node_modules"]
 }
