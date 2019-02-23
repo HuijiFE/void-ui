@@ -35,7 +35,7 @@
   "scripts": {
     "gen-files": "yarn ts scripts/gen-files",
     "lint:style": "stylelint **/*.scss --config ../../.stylelintrc",
-    "lint:script": "tslint -p tsconfig.json -c ../../tslint.json -t verbose",
+    "lint:script": "tslint -p tsconfig.json -c ./tslint.json -t verbose",
     "lint": "yarn lint:script && yarn lint:style",
     "ts": "ts-node -r tsconfig-paths/register -P ./scripts/tsconfig.json"
   },

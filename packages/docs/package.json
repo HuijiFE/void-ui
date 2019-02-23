@@ -6,6 +6,9 @@
     "gen-files": "yarn ts scripts/gen-files",
     "serve": "vue-cli-service serve src/entry-client.ts",
     "build": "vue-cli-service build --report --report-json",
+    "lint:style": "stylelint **/*.scss --config ../../.stylelintrc",
+    "lint:script": "tslint -p tsconfig.json -c ./tslint.json -t verbose",
+    "lint": "yarn lint:script && yarn lint:style",
     "ts": "ts-node -r tsconfig-paths/register -P ./scripts/tsconfig.json"
   },
   "dependencies": {

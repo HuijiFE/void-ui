@@ -4,14 +4,24 @@
 #
 version: 2
 
-default: &default
-  docker:
-    - image: circleci/node:latest
+aliases:
+  - &container_config
+    docker:
+      - image: circleci/node:latest
+    working_directory: ~/void-ui
+  - &persist_to_workspace
+    - persist_to_workspace:
+        root: ~/
+        paths:
+          - void-ui
+          - .ssh
+  - &attach_workspace
+    - attach_workspace:
+        at: ~/
 
 jobs:
-  frame:
-    <<: *default
-    working_directory: ~/project/void-ui
+  dependencies:
+    <<: *container_config
     steps:
       - checkout
       - restore_cache:
@@ -29,33 +39,30 @@ jobs:
           fingerprints:
             - 0e:fd:15:00:19:2d:f5:ec:1b:f2:3e:4b:01:59:ce:33
       - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - project/void-ui
-            - .ssh
+      <<: *persist_to_workspace
 
   test:
-    <<: *default
-    working_directory: ~/project/void-ui/packages/void-ui
+    <<: *container_config
     steps:
-      - attach_workspace:
-          at: ~/
-      - run: yarn lint:style
-      - run: yarn lint:script
-  
-  build-docs:
-    <<: *default
-    working_directory: ~/project/void-ui/packages/docs
+      <<: *attach_workspace
+      - run: npx lerna run lint
+
+  build:
+    <<: *container_config
     steps:
-      - attach_workspace:
-          at: ~/
-      - run: yarn build
-      - run: yarn gen-pages
+      <<: *attach_workspace
+      - run: npx lerna run build
+      <<: *persist_to_workspace
+
+  deploy_docs:
+    <<: *container_config
+    steps:
+      <<: *attach_workspace
       - run:
           name: deploy to github-pages
-          working_directory: dist
+          working_directory: packages/docs/dist
           command: |
+            cp -r ../../../.circleci .circleci
             git init
             git config user.email huijife@outlook.com
             git config user.name huijife-bot
@@ -71,7 +78,7 @@ workflows:
   version: 2
   test_and_build_docs:
     jobs:
-      - frame:
+      - dependencies:
           filters:
             branches:
               only:
@@ -79,10 +86,13 @@ workflows:
                 - dev
       - test:
           requires:
-            - frame
-      - build-docs:
+            - dependencies
+      - build:
           requires:
-            - test
+            - dependencies
+      - deploy_docs:
+          requires:
+            - build
           filters:
             branches:
               only:
