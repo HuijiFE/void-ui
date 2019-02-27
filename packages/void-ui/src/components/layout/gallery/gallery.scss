@@ -128,7 +128,7 @@
     background-color: transparent;
   }
 
-  @include elem('fullscreen-item', 'preview-item', 'thumbnail-item') {
+  @include elem('fullscreen-item', 'preview-item', 'thumbnail-item', 'thumbnail-filler') {
     position: relative;
     padding: 0;
     margin: 0;
@@ -157,6 +157,9 @@
     @include when('selected') {
       background-color: tone();
     }
+  }
+  @include elem('thumbnail-filler') {
+    flex: 1;
   }
 
   @include elem('image') {

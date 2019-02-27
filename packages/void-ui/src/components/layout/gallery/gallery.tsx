@@ -172,6 +172,9 @@ export class VdGallery extends Vue implements ThemeComponent {
             style={this.thumbnailOffset}
             role="presentation"
           >
+            {this.itemsSource.length < 6 && (
+              <li staticClass="vd-gallery_thumbnail-filler" />
+            )}
             {this.itemsSource.map((item, index) => (
               <li
                 staticClass="vd-gallery_thumbnail-item"
@@ -196,6 +199,9 @@ export class VdGallery extends Vue implements ThemeComponent {
                 </button>
               </li>
             ))}
+            {this.itemsSource.length < 6 && (
+              <li staticClass="vd-gallery_thumbnail-filler" />
+            )}
           </ul>
         </div>
         <button staticClass="vd-gallery_close-button" onClick={this.switchFullscreen}>
@@ -238,6 +244,9 @@ export class VdGallery extends Vue implements ThemeComponent {
             style={this.thumbnailOffset}
             role="presentation"
           >
+            {this.itemsSource.length < 6 && (
+              <li staticClass="vd-gallery_thumbnail-filler" />
+            )}
             {this.itemsSource.map((item, index) => (
               <li
                 staticClass="vd-gallery_thumbnail-item"
@@ -262,6 +271,9 @@ export class VdGallery extends Vue implements ThemeComponent {
                 </button>
               </li>
             ))}
+            {this.itemsSource.length < 6 && (
+              <li staticClass="vd-gallery_thumbnail-filler" />
+            )}
           </ul>
           <button
             staticClass="vd-gallery_switch-button is-left"
