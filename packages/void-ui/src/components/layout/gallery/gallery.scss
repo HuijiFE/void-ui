@@ -151,7 +151,8 @@
   }
   @include elem('thumbnail-item') {
     cursor: pointer;
-    flex: 1 0 (1 / 6 * 100%);
+    flex: 1 0 100%;
+    max-width: 1 / 6 * 100%;
     padding: rem($thumbnail-border);
     @include when('selected') {
       background-color: tone();
