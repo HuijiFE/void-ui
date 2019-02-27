@@ -2,7 +2,9 @@
  * Component: Gallery
  */
 @include comp('gallery') {
-  $thumbnail-gap: gap('small');
+  $thumbnail-border: 4;
+  $indicator-width: 24;
+  $close-button-size: 40;
 
   position: relative;
   flex: 1 1 100%;
@@ -10,89 +12,150 @@
   min-width: 0;
 
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column nowrap;
   justify-content: flex-start;
   align-content: stretch;
   align-items: stretch;
 
-  @include elem('slide', 'preview-wrapper', 'thumbnail-wrapper') {
+  overflow: hidden;
+
+  @include when('fullscreen') {
+    z-index: $z-index-dialog;
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  @include elem('fullscreen') {
     position: relative;
-    display: flex;
-    flex-flow: row nowrap;
-    padding: 0;
-    margin: 0;
-  }
-
-  @include elem('slide') {
-    flex: 1;
     min-width: 0;
-    padding: rem($thumbnail-gap / 2);
-    border-top: rem($border-base) solid transparent;
-    overflow: hidden;
-
-    @include when('full') {
-      flex: 1 1 100%;
-      max-width: 100%;
-      min-width: 0;
-      padding: 0;
-    }
-  }
-
-  @include elem('preview-wrapper', 'thumbnail-wrapper') {
-    transform: translateX(0);
-    transition: transform ease $slide-transition-duration;
-  }
-  @include elem('preview-wrapper') {
     flex: 1 1 100%;
-    max-width: 100%;
-    min-width: 0;
   }
-  @include elem('thumbnail-wrapper') {
-    flex: 1;
-    min-width: 0;
-    margin: rem($thumbnail-gap / -2);
-  }
-
-  @include elem('preview-item', 'thumbnail-item') {
-    position: relative;
-
-    display: block;
-    flex: 1 0 100%;
-    max-width: 100%;
-    min-width: 0;
-    margin: 0;
-  }
-  @include elem('preview-item') {
-    max-width: 100%;
-  }
-  @include elem('thumbnail-item') {
-    max-width: 1 / 6 * 100%;
-    border: rem($thumbnail-gap / 2) solid transparent;
-    filter: brightness(0.8) saturate(0.8);
-
-    @include when('selected') {
-      border-color: tone();
-      filter: brightness(1) saturate(1);
-    }
-
-    transition: all ease $button-transition-duration;
-  }
-
   @include elem('placement') {
     position: relative;
-    display: block;
     width: 100%;
     padding-bottom: 9 / 16 * 100%;
   }
-
-  @include elem('container', 'container') {
+  @include elem('container') {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    display: block;
-    overflow: hidden;
+  }
+
+  @include elem('close-button') {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: rem($close-button-size);
+    height: rem($close-button-size);
+    font-size: rem($close-button-size * 0.618);
+    line-height: 1;
+    border-radius: 50%;
+    border: none;
+    color: $color-white;
+    background-color: tone();
+
+    opacity: 0.75;
+    &:hover {
+      opacity: 1;
+    }
+    transition: opacity ease-in-out $button-transition-duration;
+  }
+
+  @include elem('indicator-wrapper') {
+    position: relative;
+
+    flex: none;
+
+    padding: 0 rem($indicator-width);
+  }
+  @include when('fullscreen') {
+    @include elem('indicator-wrapper') {
+      padding: rem($gap-base / 2) 20%;
+    }
+  }
+
+  @include elem('switch-button') {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: rem($indicator-width);
+
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+
+    @include when('left') {
+      left: 0;
+    }
+    @include when('right') {
+      right: 0;
+    }
+  }
+
+  @include elem('wrapper') {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+
+    padding: 0;
+    margin: 0;
+
+    transition: transform ease-in-out $slide-transition-duration;
+  }
+
+  @include elem('item-container') {
+    cursor: inherit;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+  }
+
+  @include elem('fullscreen-item', 'preview-item', 'thumbnail-item') {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+  @include elem('fullscreen-item') {
+    flex: 1 0 100%;
+    padding: rem($close-button-size);
+  }
+  @include elem('preview-item') {
+    cursor: zoom-in;
+    flex: 1 0 100%;
+  }
+  @include elem('thumbnail-item') {
+    cursor: pointer;
+    flex: 1 0 (1 / 6 * 100%);
+    padding: rem($thumbnail-border);
+    @include when('selected') {
+      background-color: tone();
+    }
   }
 
   @include elem('image') {
@@ -102,42 +165,15 @@
     object-fit: contain;
   }
 
-  @include elem('thumbnail-slide-button') {
-    position: relative;
-
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-
-    padding: 0 rem($thumbnail-gap / 2);
-    margin: 0;
-    border: none;
-
-    font-size: font-size('xsmall');
-
-    transition: background-color ease-in-out $button-transition-duration;
-  }
-
   @each $theme in $type-theme {
     @include prop(
       (
         'theme': $theme,
       )
     ) {
-      color: theme($theme);
       background-color: theme($theme, 'bg');
 
-      @include elem('preview-wrapper') {
-        background-color: theme($theme, 'bg', 'low');
-      }
-
-      @include elem('thumbnail-slide') {
-        border-color: theme($theme, 'bd');
-      }
-
-      @include elem('thumbnail-slide-button') {
+      @include elem('switch-button') {
         color: theme($theme);
         background-color: theme($theme, 'bg');
         &:hover {
@@ -147,6 +183,18 @@
           background-color: theme($theme, 'bg', 'lower');
         }
       }
+    }
+  }
+
+  @include when('fullscreen') {
+    background-color: rgba($color: $color-black, $alpha: 0.75);
+
+    @include elem('indicator-wrapper') {
+      background-color: rgba($color: $color-black, $alpha: 0.25);
+    }
+    @include elem('switch-button') {
+      color: $color-white;
+      background-color: transparent;
     }
   }
 }
