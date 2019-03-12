@@ -121,8 +121,6 @@ export class VdTabs extends Vue implements ThemeComponent {
   };
 
   private render(h: CreateElement): VNode {
-    const elem = document.createElement('button');
-
     return (
       <div staticClass="vd-tabs" class={this.classes}>
         <div staticClass="vd-tabs_header" ref="header">
