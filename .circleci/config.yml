@@ -1,0 +1,119 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+
+aliases:
+  - &container_config
+    docker:
+      - image: circleci/node:latest
+    working_directory: ~/void-ui
+  - &persist_to_workspace
+
+jobs:
+  dependencies:
+    <<: *container_config
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-void-ui-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - v1-void-ui-{{ .Branch }}-
+            - v1-void-ui-
+      - run: yarn --network-timeout 600000
+      - save_cache:
+          paths:
+            - node_modules/
+            - ~/.cache
+          key: v1-void-ui-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - add_ssh_keys:
+          fingerprints:
+            - 0e:fd:15:00:19:2d:f5:ec:1b:f2:3e:4b:01:59:ce:33
+      - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - void-ui
+            - .ssh
+
+  test:
+    <<: *container_config
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: npx lerna run lint
+
+  build:
+    <<: *container_config
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: npx lerna run build
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - void-ui
+            - .ssh
+
+  publish:
+    <<: *container_config
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
+      - run: npx lerna publish from-package --yes
+
+  deploy_docs:
+    <<: *container_config
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: deploy to github-pages
+          working_directory: packages/docs/dist
+          command: |
+            cp -r ../../../.circleci .circleci
+            git init
+            git config user.email huijife@outlook.com
+            git config user.name huijife-bot
+            git remote add origin git@github.com:HuijiFE/void-ui.git
+            git add .
+            git commit -m "auto deploy"
+            git branch gh-pages
+            git checkout gh-pages
+            git branch -D master
+            git push origin gh-pages --force
+
+workflows:
+  version: 2
+  build_test_deploy:
+    jobs:
+      - dependencies:
+          filters:
+            branches:
+              only:
+                - master
+                - dev
+      - test:
+          requires:
+            - dependencies
+      - build:
+          requires:
+            - dependencies
+      - publish:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+      - deploy_docs:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
