@@ -1,0 +1,185 @@
+/**
+ * Component: Designer
+ */
+@include comp('designer') {
+  position: relative;
+  flex: 1 0 100%;
+  max-width: 100%;
+  min-width: 0;
+  width: 100%;
+  height: 100vh;
+  top: rem(-$nav-bar-height);
+  padding-top: rem($nav-bar-height);
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: stretch;
+
+  overflow: hidden;
+
+  @include elem('main', 'side') {
+    height: 100%;
+  }
+  @include elem('main') {
+    position: relative;
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: rem($gap-base);
+
+    overflow: auto;
+  }
+  @include elem('side') {
+    position: relative;
+    flex: none;
+    min-width: 0;
+    width: rem(320);
+    border-left: rem($border-base) solid transparent;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+
+    overflow: hidden;
+  }
+
+  @include elem('view-container') {
+    position: relative;
+    min-height: 100%;
+
+    * {
+      // 使用 designer-selected 而不是 select，避免冲突
+      @include when('designer-selected') {
+        outline: rem($border-base) solid tone();
+      }
+    }
+  }
+
+  @include elem('menu-container', 'options-container') {
+    position: relative;
+    padding: rem($gap-base) 0;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
+  @include elem('menu-container') {
+    flex: 1 1 100%;
+  }
+  @include elem('options-container') {
+    flex: none;
+    height: rem(320);
+    border-top: rem($border-base) solid transparent;
+  }
+
+  @include elem('menu', 'menu-label', 'menu-wrapper', 'menu-item') {
+    position: relative;
+    flex: 1 0 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+  }
+
+  @include elem('menu-label') {
+    padding: 0 rem($gap-base);
+    height: rem(32);
+    border-left: rem($border-base * 2) solid transparent;
+    @include when('selected') {
+      border-color: tone();
+    }
+    flex-wrap: nowrap;
+
+    transition: ease-in-out $button-transition-duration;
+    transition-property: border-color, background-color;
+  }
+
+  @include elem('menu-expand-button', 'menu-label-content') {
+    position: relative;
+
+    display: inline-flex;
+    flex-flow: row nowrap;
+    align-content: center;
+    align-items: center;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    padding: 0;
+    margin: 0;
+    border: none;
+
+    background-color: transparent;
+  }
+
+  @include elem('menu-expand-button') {
+    justify-content: center;
+
+    flex: none;
+  }
+  @include elem('menu-expand-icon') {
+    width: 1em;
+    height: 1em;
+    transition: transform ease $button-transition-duration;
+  }
+  @include elem('menu-expand-button') {
+    @include when('expanded') {
+      @include elem('menu-expand-icon') {
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  @include elem('menu-label-content') {
+    justify-content: flex-start;
+
+    flex: 1 0 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: 100%;
+  }
+
+  @include elem('menu-wrapper') {
+    display: none;
+    @include when('expanded') {
+      display: flex;
+    }
+  }
+
+  @each $theme in $type-theme {
+    @include prop(
+      (
+        'theme': $theme,
+      )
+    ) {
+      @include elem('main') {
+        background-color: theme($theme, 'bg', 'lower');
+      }
+      @include elem('side') {
+        background-color: theme($theme, 'bg');
+        border-color: theme($theme, 'bd');
+      }
+
+      @include elem('view-container', 'options-container') {
+        border-color: theme($theme, 'bd');
+      }
+
+      @include elem('menu-label') {
+        background-color: theme($theme, 'bg');
+        @include when('selected') {
+          background-color: theme($theme, 'bg', 'lower');
+        }
+      }
+    }
+  }
+}

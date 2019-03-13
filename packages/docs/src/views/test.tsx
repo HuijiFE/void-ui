@@ -17,8 +17,8 @@ import { BREAK_POINT_KEYS, MediaAlias, MediaScreen } from 'void-ui';
 export class VTest extends Vue {
   private render(h: CreateElement): VNode {
     return (
-      <div staticClass="v-test" style={{ padding: '32px' }}>
-        <c-example path="layout/tabs/overview" />
+      <div staticClass="v-test">
+        <c-designer />
       </div>
     );
   }
